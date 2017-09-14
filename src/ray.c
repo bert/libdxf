@@ -782,4 +782,41 @@ dxf_ray_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a DXF \c RAY entity.
+ *
+ * \return \c layer when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_ray_get_layer
+(
+        DxfRay *ray
+                /*!< a pointer to a DXF \c RAY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ray->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ray->layer));
+}
+
+
 /* EOF */
