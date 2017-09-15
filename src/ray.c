@@ -919,4 +919,41 @@ dxf_ray_set_elevation
 }
 
 
+/*!
+ * \brief Get the \c thickness from a DXF \c RAY entity.
+ *
+ * \return \c thickness.
+ */
+double
+dxf_ray_get_thickness
+(
+        DxfRay *ray
+                /*!< a pointer to a DXF \c RAY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ray->thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray->thickness);
+}
+
+
 /* EOF */

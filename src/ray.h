@@ -230,6 +230,7 @@ char *dxf_ray_get_layer (DxfRay *ray);
 DxfRay *dxf_ray_set_layer (DxfRay *ray, char *layer);
 double dxf_ray_get_elevation (DxfRay *ray);
 DxfRay *dxf_ray_set_elevation (DxfRay *ray, double elevation);
+double dxf_ray_get_thickness (DxfRay *ray);
 
 
 #ifdef __cplusplus
