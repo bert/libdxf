@@ -232,6 +232,7 @@ double dxf_ray_get_elevation (DxfRay *ray);
 DxfRay *dxf_ray_set_elevation (DxfRay *ray, double elevation);
 double dxf_ray_get_thickness (DxfRay *ray);
 DxfRay *dxf_ray_set_thickness (DxfRay *ray, double thickness);
+double dxf_ray_get_linetype_scale (DxfRay *ray);
 
 
 #ifdef __cplusplus
