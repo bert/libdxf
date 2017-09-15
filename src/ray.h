@@ -229,6 +229,7 @@ DxfRay *dxf_ray_set_linetype (DxfRay *ray, char *linetype);
 char *dxf_ray_get_layer (DxfRay *ray);
 DxfRay *dxf_ray_set_layer (DxfRay *ray, char *layer);
 double dxf_ray_get_elevation (DxfRay *ray);
+DxfRay *dxf_ray_set_elevation (DxfRay *ray, double elevation);
 
 
 #ifdef __cplusplus

@@ -888,4 +888,35 @@ dxf_ray_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c RAY entity.
+ */
+DxfRay *
+dxf_ray_set_elevation
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
