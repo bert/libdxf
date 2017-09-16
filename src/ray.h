@@ -235,6 +235,7 @@ DxfRay *dxf_ray_set_thickness (DxfRay *ray, double thickness);
 double dxf_ray_get_linetype_scale (DxfRay *ray);
 DxfRay *dxf_ray_set_linetype_scale (DxfRay *ray, double linetype_scale);
 int16_t dxf_ray_get_visibility (DxfRay *ray);
+DxfRay *dxf_ray_set_visibility (DxfRay *ray, int16_t visibility);
 
 
 #ifdef __cplusplus
