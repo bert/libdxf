@@ -241,6 +241,7 @@ DxfRay *dxf_ray_set_color (DxfRay *ray, int color);
 int dxf_ray_get_paperspace (DxfRay *ray);
 DxfRay *dxf_ray_set_paperspace (DxfRay *ray, int paperspace);
 int dxf_ray_get_graphics_data_size (DxfRay *ray);
+DxfRay *dxf_ray_set_graphics_data_size (DxfRay *ray, int graphics_data_size);
 
 
 #ifdef __cplusplus
