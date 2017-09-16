@@ -246,6 +246,7 @@ int16_t dxf_ray_get_shadow_mode (DxfRay *ray);
 DxfRay *dxf_ray_set_shadow_mode (DxfRay *ray, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_ray_get_binary_graphics_data (DxfRay *ray);
 DxfRay *dxf_ray_set_binary_graphics_data (DxfRay *ray, DxfBinaryGraphicsData *data);
+char *dxf_ray_get_dictionary_owner_soft (DxfRay *ray);
 
 
 #ifdef __cplusplus
