@@ -1273,4 +1273,50 @@ dxf_ray_get_paperspace
 }
 
 
+/*!
+ * \brief Set the \c paperspace flag for a DXF \c RAY entity.
+ */
+DxfRay *
+dxf_ray_set_paperspace
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        int paperspace
+                /*!< the \c paperspace flag value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
