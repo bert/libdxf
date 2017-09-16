@@ -248,6 +248,7 @@ DxfBinaryGraphicsData *dxf_ray_get_binary_graphics_data (DxfRay *ray);
 DxfRay *dxf_ray_set_binary_graphics_data (DxfRay *ray, DxfBinaryGraphicsData *data);
 char *dxf_ray_get_dictionary_owner_soft (DxfRay *ray);
 DxfRay *dxf_ray_set_dictionary_owner_soft (DxfRay *ray, char *dictionary_owner_soft);
+char *dxf_ray_get_material (DxfRay *ray);
 
 
 #ifdef __cplusplus
