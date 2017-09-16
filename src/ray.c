@@ -1455,4 +1455,52 @@ dxf_ray_get_shadow_mode
 }
 
 
+/*!
+ * \brief Set the \c shadow_mode for a DXF \c RAY entity.
+ *
+ * \return a pointer to \c ray when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRay *
+dxf_ray_set_shadow_mode
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        int16_t shadow_mode
+                /*!< the \c shadow_mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
