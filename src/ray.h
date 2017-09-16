@@ -242,6 +242,7 @@ int dxf_ray_get_paperspace (DxfRay *ray);
 DxfRay *dxf_ray_set_paperspace (DxfRay *ray, int paperspace);
 int dxf_ray_get_graphics_data_size (DxfRay *ray);
 DxfRay *dxf_ray_set_graphics_data_size (DxfRay *ray, int graphics_data_size);
+int16_t dxf_ray_get_shadow_mode (DxfRay *ray);
 
 
 #ifdef __cplusplus
