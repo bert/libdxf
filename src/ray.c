@@ -1194,4 +1194,41 @@ dxf_ray_get_color
 }
 
 
+/*!
+ * \brief Set the \c color for a DXF \c RAY entity.
+ */
+DxfRay *
+dxf_ray_set_color
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        int color
+                /*!< the \c color to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        ray->color = color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
