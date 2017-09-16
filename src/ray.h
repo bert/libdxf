@@ -245,6 +245,7 @@ DxfRay *dxf_ray_set_graphics_data_size (DxfRay *ray, int graphics_data_size);
 int16_t dxf_ray_get_shadow_mode (DxfRay *ray);
 DxfRay *dxf_ray_set_shadow_mode (DxfRay *ray, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_ray_get_binary_graphics_data (DxfRay *ray);
+DxfRay *dxf_ray_set_binary_graphics_data (DxfRay *ray, DxfBinaryGraphicsData *data);
 
 
 #ifdef __cplusplus
