@@ -259,6 +259,7 @@ DxfRay *dxf_ray_set_plot_style_name (DxfRay *ray, char *plot_style_name);
 long dxf_ray_get_color_value (DxfRay *ray);
 DxfRay *dxf_ray_set_color_value (DxfRay *ray, long color_value);
 char *dxf_ray_get_color_name (DxfRay *ray);
+DxfRay *dxf_ray_set_color_name (DxfRay *ray, char *color_name);
 
 
 #ifdef __cplusplus
