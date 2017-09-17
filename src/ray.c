@@ -1890,4 +1890,42 @@ dxf_ray_set_lineweight
 }
 
 
+/*!
+ * \brief Get the \c plot_style_name from a DXF \c RAY entity.
+ *
+ * \return a pointer to \c plot_style_name when sucessful, or \c NULL
+ * when an error occurred.
+ */
+char *
+dxf_ray_get_plot_style_name
+(
+        DxfRay *ray
+                /*!< a pointer to a DXF \c RAY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ray->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ray->plot_style_name));
+}
+
+
 /* EOF */

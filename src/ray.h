@@ -254,6 +254,7 @@ char *dxf_ray_get_dictionary_owner_hard (DxfRay *ray);
 DxfRay *dxf_ray_set_dictionary_owner_hard (DxfRay *ray, char *dictionary_owner_hard);
 int16_t dxf_ray_get_lineweight (DxfRay *ray);
 DxfRay *dxf_ray_set_lineweight (DxfRay *ray, int16_t lineweight);
+char *dxf_ray_get_plot_style_name (DxfRay *ray);
 
 
 #ifdef __cplusplus
