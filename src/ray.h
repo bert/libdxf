@@ -261,6 +261,7 @@ DxfRay *dxf_ray_set_color_value (DxfRay *ray, long color_value);
 char *dxf_ray_get_color_name (DxfRay *ray);
 DxfRay *dxf_ray_set_color_name (DxfRay *ray, char *color_name);
 long dxf_ray_get_transparency (DxfRay *ray);
+DxfRay *dxf_ray_set_transparency (DxfRay *ray, long transparency);
 
 
 #ifdef __cplusplus

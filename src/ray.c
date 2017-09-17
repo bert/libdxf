@@ -2146,4 +2146,38 @@ dxf_ray_get_transparency
 }
 
 
+/*!
+ * \brief Set the \c transparency for a DXF \c RAY entity.
+ *
+ * \return a pointer to \c ray when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRay *
+dxf_ray_set_transparency
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        long transparency
+                /*!< the \c transparency to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->transparency = transparency;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
