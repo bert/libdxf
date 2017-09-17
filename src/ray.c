@@ -2001,4 +2001,38 @@ dxf_ray_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a DXF \c RAY entity.
+ *
+ * \return a pointer to \c ray when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRay *
+dxf_ray_set_color_value
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */

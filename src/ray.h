@@ -257,6 +257,7 @@ DxfRay *dxf_ray_set_lineweight (DxfRay *ray, int16_t lineweight);
 char *dxf_ray_get_plot_style_name (DxfRay *ray);
 DxfRay *dxf_ray_set_plot_style_name (DxfRay *ray, char *plot_style_name);
 long dxf_ray_get_color_value (DxfRay *ray);
+DxfRay *dxf_ray_set_color_value (DxfRay *ray, long color_value);
 
 
 #ifdef __cplusplus
