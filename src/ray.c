@@ -236,42 +236,42 @@ dxf_ray_read
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ray->x0);
+                        fscanf (fp->fp, "%lf\n", &ray->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ray->y0);
+                        fscanf (fp->fp, "%lf\n", &ray->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ray->z0);
+                        fscanf (fp->fp, "%lf\n", &ray->p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ray->x1);
+                        fscanf (fp->fp, "%lf\n", &ray->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ray->y1);
+                        fscanf (fp->fp, "%lf\n", &ray->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ray->z1);
+                        fscanf (fp->fp, "%lf\n", &ray->p1->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
