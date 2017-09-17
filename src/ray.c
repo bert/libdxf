@@ -121,6 +121,24 @@ dxf_ray_init
         ray->id_code = 0;
         ray->linetype = strdup (DXF_DEFAULT_LINETYPE);
         ray->layer = strdup (DXF_DEFAULT_LAYER);
+        ray->elevation = 0.0;
+        ray->thickness = 0.0;
+        ray->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        ray->visibility = DXF_DEFAULT_VISIBILITY;
+        ray->color = DXF_COLOR_BYLAYER;
+        ray->paperspace = DXF_MODELSPACE;
+        ray->graphics_data_size = 0;
+        ray->shadow_mode = 0;
+        ray->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        ray->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) ray->binary_graphics_data);
+        ray->dictionary_owner_soft = strdup ("");
+        ray->material = strdup ("");
+        ray->dictionary_owner_hard = strdup ("");
+        ray->lineweight = 0;
+        ray->plot_style_name = strdup ("");
+        ray->color_value = 0;
+        ray->color_name = strdup ("");
+        ray->transparency = 0;
         ray->p0 = (DxfPoint *) dxf_point_new ();
         ray->p0 = dxf_point_init ((DxfPoint *) ray->p0);
         ray->p0->x0 = 0.0;
@@ -131,14 +149,6 @@ dxf_ray_init
         ray->p1->x0 = 0.0;
         ray->p1->y0 = 0.0;
         ray->p1->z0 = 0.0;
-        ray->elevation = 0.0;
-        ray->thickness = 0.0;
-        ray->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        ray->visibility = DXF_DEFAULT_VISIBILITY;
-        ray->color = DXF_COLOR_BYLAYER;
-        ray->paperspace = DXF_MODELSPACE;
-        ray->dictionary_owner_soft = strdup ("");
-        ray->dictionary_owner_hard = strdup ("");
         ray->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
