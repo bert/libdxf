@@ -252,6 +252,7 @@ char *dxf_ray_get_material (DxfRay *ray);
 DxfRay *dxf_ray_set_material (DxfRay *ray, char *material);
 char *dxf_ray_get_dictionary_owner_hard (DxfRay *ray);
 DxfRay *dxf_ray_set_dictionary_owner_hard (DxfRay *ray, char *dictionary_owner_hard);
+int16_t dxf_ray_get_lineweight (DxfRay *ray);
 
 
 #ifdef __cplusplus
