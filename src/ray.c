@@ -1970,4 +1970,35 @@ dxf_ray_set_plot_style_name
 }
 
 
+/*!
+ * \brief Get the \c color_value from a DXF \c RAY entity.
+ *
+ * \return \c color_value when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_ray_get_color_value
+(
+        DxfRay *ray
+                /*!< a pointer to a DXF \c RAY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray->color_value);
+}
+
+
 /* EOF */
