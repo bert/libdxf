@@ -588,6 +588,8 @@ dxf_ray_free
         free (ray->layer);
         free (ray->dictionary_owner_soft);
         free (ray->dictionary_owner_hard);
+        dxf_point_free (ray->p0);
+        dxf_point_free (ray->p1);
         free (ray);
         ray = NULL;
 #if DEBUG
