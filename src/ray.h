@@ -189,27 +189,9 @@ dxf_ray_struct
         DxfPoint *p0;
                 /*!< Start point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< group code = 10\n
-                 * start point. */
-        double y0;
-                /*!< group code = 20\n
-                 * start point. */
-        double z0;
-                /*!< group code = 30\n
-                 * start point. */
         DxfPoint *p1;
                 /*!< End point.\n
                  * Group codes = 11, 21 and 31.*/
-        double x1;
-                /*!< group code = 11\n
-                 * end point. */
-        double y1;
-                /*!< group code = 21\n
-                 * end point. */
-        double z1;
-                /*!< group code = 31\n
-                 * end point. */
         struct DxfRay *next;
                 /*!< pointer to the next DxfRay.\n
                  * \c NULL in the last DxfRay. */
