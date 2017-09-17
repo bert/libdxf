@@ -423,9 +423,9 @@ dxf_ray_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((ray->x0 == ray->x1)
-                && (ray->y0 == ray->y1)
-                && (ray->z0 == ray->z1))
+        if ((ray->p0->x0 == ray->p1->x0)
+                && (ray->p0->y0 == ray->p1->y0)
+                && (ray->p0->z0 == ray->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
@@ -530,12 +530,12 @@ dxf_ray_write
         {
                 fprintf (fp->fp, " 39\n%f\n", ray->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", ray->x0);
-        fprintf (fp->fp, " 20\n%f\n", ray->y0);
-        fprintf (fp->fp, " 30\n%f\n", ray->z0);
-        fprintf (fp->fp, " 11\n%f\n", ray->x1);
-        fprintf (fp->fp, " 21\n%f\n", ray->y1);
-        fprintf (fp->fp, " 31\n%f\n", ray->z1);
+        fprintf (fp->fp, " 10\n%f\n", ray->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", ray->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", ray->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", ray->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", ray->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", ray->p1->z0);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
