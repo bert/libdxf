@@ -1856,4 +1856,38 @@ dxf_ray_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c RAY entity.
+ *
+ * \return a pointer to \c ray when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRay *
+dxf_ray_set_lineweight
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
