@@ -246,6 +246,7 @@ long dxf_ray_get_transparency (DxfRay *ray);
 DxfRay *dxf_ray_set_transparency (DxfRay *ray, long transparency);
 DxfPoint *dxf_ray_get_p0 (DxfRay *ray);
 DxfRay *dxf_ray_set_p0 (DxfRay *ray, DxfPoint *p0);
+double dxf_ray_get_x0 (DxfRay *ray);
 
 
 #ifdef __cplusplus
