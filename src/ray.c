@@ -2394,4 +2394,47 @@ dxf_ray_get_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the start point \c y0 of a DXF \c RAY
+ * entity.
+ *
+ * \return a pointer to \c ray when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRay *
+dxf_ray_set_y0
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        double y0
+                /*!< the Y-value of the start point \c y0 of a DXF
+                 * \c RAY entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ray->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
