@@ -257,6 +257,7 @@ DxfRay *dxf_ray_set_p1 (DxfRay *ray, DxfPoint *p1);
 double dxf_ray_get_x1 (DxfRay *ray);
 DxfRay *dxf_ray_set_x1 (DxfRay *ray, double x1);
 double dxf_ray_get_y1 (DxfRay *ray);
+DxfRay *dxf_ray_set_y1 (DxfRay *ray, double y1);
 
 
 #ifdef __cplusplus
