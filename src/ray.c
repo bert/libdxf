@@ -2921,4 +2921,49 @@ dxf_ray_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c RAY entity from a linked list
+ * of DXF \c RAY entities.
+ *
+ * \return pointer to the last \c RAY entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfRay *
+dxf_ray_get_last
+(
+        DxfRay *ray
+                /*!< a pointer to a DXF \c RAY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ray->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfRay *) ray);
+        }
+        DxfRay *iter = (DxfRay *) ray->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfRay *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfRay *) iter);
+}
+
+
 /* EOF */
