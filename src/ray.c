@@ -2556,4 +2556,44 @@ dxf_ray_get_p1
 }
 
 
+/*!
+ * \brief Set the end point \c p1 of a DXF \c RAY entity.
+ *
+ * \return a pointer to a DXF \c RAY entity.
+ */
+DxfRay *
+dxf_ray_set_p1
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        DxfPoint *p1
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->p1 = p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
