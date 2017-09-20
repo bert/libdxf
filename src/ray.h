@@ -254,6 +254,7 @@ double dxf_ray_get_z0 (DxfRay *ray);
 DxfRay *dxf_ray_set_z0 (DxfRay *ray, double z0);
 DxfPoint *dxf_ray_get_p1 (DxfRay *ray);
 DxfRay *dxf_ray_set_p1 (DxfRay *ray, DxfPoint *p1);
+double dxf_ray_get_x1 (DxfRay *ray);
 
 
 #ifdef __cplusplus
