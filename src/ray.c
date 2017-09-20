@@ -2882,4 +2882,43 @@ dxf_ray_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c RAY for a DXF \c RAY
+ * entity.
+ */
+DxfRay *
+dxf_ray_set_next
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        DxfRay *next
+                /*!< a pointer to the next \c RAY for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->next = (struct DxfRay *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */
