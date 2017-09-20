@@ -2519,4 +2519,41 @@ dxf_ray_set_z0
 }
 
 
+/*!
+ * \brief Get the end point \c p1 of a DXF \c RAY entity.
+ *
+ * \return the end point \c p0.
+ */
+DxfPoint *
+dxf_ray_get_p1
+(
+        DxfRay *ray
+                /*!< a pointer to a DXF \c RAY entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ray->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray->p1);
+}
+
+
 /* EOF */
