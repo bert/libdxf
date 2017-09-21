@@ -215,6 +215,7 @@ DxfRegion *dxf_region_set_id_code (DxfRegion *region, int id_code);
 char *dxf_region_get_linetype (DxfRegion *region);
 DxfRegion *dxf_region_set_linetype (DxfRegion *region, char *linetype);
 char *dxf_region_get_layer (DxfRegion *region);
+DxfRegion *dxf_region_set_layer (DxfRegion *region, char *layer);
 
 
 #ifdef __cplusplus
