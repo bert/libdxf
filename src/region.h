@@ -213,6 +213,7 @@ void dxf_region_free_chain (DxfRegion *regions);
 int dxf_region_get_id_code (DxfRegion *region);
 DxfRegion *dxf_region_set_id_code (DxfRegion *region, int id_code);
 char *dxf_region_get_linetype (DxfRegion *region);
+DxfRegion *dxf_region_set_linetype (DxfRegion *region, char *linetype);
 
 
 #ifdef __cplusplus
