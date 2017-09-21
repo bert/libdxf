@@ -211,6 +211,7 @@ int dxf_region_write (DxfFile *fp, DxfRegion *region);
 int dxf_region_free (DxfRegion *region);
 void dxf_region_free_chain (DxfRegion *regions);
 int dxf_region_get_id_code (DxfRegion *region);
+DxfRegion *dxf_region_set_id_code (DxfRegion *region, int id_code);
 
 
 #ifdef __cplusplus
