@@ -204,35 +204,12 @@ dxf_region_struct
 } DxfRegion;
 
 
-DxfRegion *
-dxf_region_new ();
-DxfRegion *
-dxf_region_init
-(
-        DxfRegion *region
-);
-DxfRegion *
-dxf_region_read
-(
-        DxfFile *fp,
-        DxfRegion *region
-);
-int
-dxf_region_write
-(
-        DxfFile *fp,
-        DxfRegion *region
-);
-int
-dxf_region_free
-(
-        DxfRegion *region
-);
-void
-dxf_region_free_chain
-(
-        DxfRegion *regions
-);
+DxfRegion *dxf_region_new ();
+DxfRegion *dxf_region_init (DxfRegion *region);
+DxfRegion *dxf_region_read (DxfFile *fp, DxfRegion *region);
+int dxf_region_write (DxfFile *fp, DxfRegion *region);
+int dxf_region_free (DxfRegion *region);
+void dxf_region_free_chain (DxfRegion *regions);
 
 
 #ifdef __cplusplus
