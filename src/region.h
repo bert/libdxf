@@ -6,6 +6,14 @@
  *
  * \brief Header file for a DXF region entity (\c REGION).
  *
+ * \since The region entity was introduced in DXF version R13.\n
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -47,12 +55,6 @@ extern "C" {
 
 /*!
  * \brief DXF definition of an AutoCAD region entity (\c REGION).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_region_struct

@@ -6,6 +6,14 @@
  *
  * \brief Functions for a DXF region entity (\c REGION).
  *
+ * \since The region entity was introduced in DXF version R13.\n
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -40,12 +48,6 @@
  * \brief Allocate memory for a \c DxfRegion.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfRegion *
 dxf_region_new ()
@@ -83,12 +85,6 @@ dxf_region_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfRegion *
 dxf_region_init
@@ -154,12 +150,6 @@ dxf_region_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfRegion *
 dxf_region_read
@@ -363,12 +353,6 @@ dxf_region_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_region_write
@@ -530,12 +514,6 @@ dxf_region_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_region_free
@@ -586,12 +564,6 @@ dxf_region_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c REGION
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_region_free_chain
