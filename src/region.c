@@ -668,4 +668,41 @@ dxf_region_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c linetype from a DXF \c REGION entity.
+ *
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_region_get_linetype
+(
+        DxfRegion *region
+                /*!< a pointer to a DXF \c REGION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (region->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (region->linetype));
+}
+
+
 /* EOF */
