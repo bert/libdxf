@@ -219,6 +219,7 @@ DxfRegion *dxf_region_set_layer (DxfRegion *region, char *layer);
 double dxf_region_get_elevation (DxfRegion *region);
 DxfRegion *dxf_region_set_elevation (DxfRegion *region, double elevation);
 double dxf_region_get_thickness (DxfRegion *region);
+DxfRegion *dxf_region_set_thickness (DxfRegion *region, double thickness);
 
 
 #ifdef __cplusplus
