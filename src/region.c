@@ -850,4 +850,35 @@ dxf_region_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c REGION entity.
+ */
+DxfRegion *
+dxf_region_set_elevation
+(
+        DxfRegion *region,
+                /*!< a pointer to a DXF \c REGION entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        region->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region);
+}
+
+
 /* EOF */
