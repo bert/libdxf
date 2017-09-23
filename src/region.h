@@ -221,6 +221,7 @@ DxfRegion *dxf_region_set_elevation (DxfRegion *region, double elevation);
 double dxf_region_get_thickness (DxfRegion *region);
 DxfRegion *dxf_region_set_thickness (DxfRegion *region, double thickness);
 double dxf_region_get_linetype_scale (DxfRegion *region);
+DxfRegion *dxf_region_set_linetype_scale (DxfRegion *region, double linetype_scale);
 
 
 #ifdef __cplusplus
