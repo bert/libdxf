@@ -956,4 +956,41 @@ dxf_region_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a DXF \c REGION entity.
+ *
+ * \return \c linetype_scale.
+ */
+double
+dxf_region_get_linetype_scale
+(
+        DxfRegion *region
+                /*!< a pointer to a DXF \c REGION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (region->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region->linetype_scale);
+}
+
+
 /* EOF */
