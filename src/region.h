@@ -222,6 +222,7 @@ double dxf_region_get_thickness (DxfRegion *region);
 DxfRegion *dxf_region_set_thickness (DxfRegion *region, double thickness);
 double dxf_region_get_linetype_scale (DxfRegion *region);
 DxfRegion *dxf_region_set_linetype_scale (DxfRegion *region, double linetype_scale);
+int16_t dxf_region_get_visibility (DxfRegion *region);
 
 
 #ifdef __cplusplus
