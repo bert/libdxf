@@ -227,6 +227,7 @@ DxfRegion *dxf_region_set_visibility (DxfRegion *region, int16_t visibility);
 int dxf_region_get_color (DxfRegion *region);
 DxfRegion *dxf_region_set_color (DxfRegion *region, int color);
 int dxf_region_get_paperspace (DxfRegion *region);
+DxfRegion *dxf_region_set_paperspace (DxfRegion *region, int paperspace);
 
 
 #ifdef __cplusplus
