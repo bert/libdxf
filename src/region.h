@@ -225,6 +225,7 @@ DxfRegion *dxf_region_set_linetype_scale (DxfRegion *region, double linetype_sca
 int16_t dxf_region_get_visibility (DxfRegion *region);
 DxfRegion *dxf_region_set_visibility (DxfRegion *region, int16_t visibility);
 int dxf_region_get_color (DxfRegion *region);
+DxfRegion *dxf_region_set_color (DxfRegion *region, int color);
 
 
 #ifdef __cplusplus
