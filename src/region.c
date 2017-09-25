@@ -1418,4 +1418,52 @@ dxf_region_get_shadow_mode
 }
 
 
+/*!
+ * \brief Set the \c shadow_mode for a DXF \c REGION entity.
+ *
+ * \return a pointer to \c region when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRegion *
+dxf_region_set_shadow_mode
+(
+        DxfRegion *region,
+                /*!< a pointer to a DXF \c REGION entity. */
+        int16_t shadow_mode
+                /*!< the \c shadow_mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        region->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region);
+}
+
+
 /* EOF */
