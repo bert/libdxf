@@ -1933,4 +1933,35 @@ dxf_region_set_plot_style_name
 }
 
 
+/*!
+ * \brief Get the \c color_value from a DXF \c REGION entity.
+ *
+ * \return \c color_value when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_region_get_color_value
+(
+        DxfRegion *region
+                /*!< a pointer to a DXF \c REGION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region->color_value);
+}
+
+
 /* EOF */
