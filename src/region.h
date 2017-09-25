@@ -237,6 +237,7 @@ DxfRegion *dxf_region_set_binary_graphics_data (DxfRegion *region, DxfBinaryGrap
 char *dxf_region_get_dictionary_owner_soft (DxfRegion *region);
 DxfRegion *dxf_region_set_dictionary_owner_soft (DxfRegion *region, char *dictionary_owner_soft);
 char *dxf_region_get_material (DxfRegion *region);
+DxfRegion *dxf_region_set_material (DxfRegion *region, char *material);
 
 
 #ifdef __cplusplus
