@@ -230,6 +230,7 @@ int dxf_region_get_paperspace (DxfRegion *region);
 DxfRegion *dxf_region_set_paperspace (DxfRegion *region, int paperspace);
 int dxf_region_get_graphics_data_size (DxfRegion *region);
 DxfRegion *dxf_region_set_graphics_data_size (DxfRegion *region, int graphics_data_size);
+int16_t dxf_region_get_shadow_mode (DxfRegion *region);
 
 
 #ifdef __cplusplus
