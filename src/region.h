@@ -241,6 +241,7 @@ DxfRegion *dxf_region_set_material (DxfRegion *region, char *material);
 char *dxf_region_get_dictionary_owner_hard (DxfRegion *region);
 DxfRegion *dxf_region_set_dictionary_owner_hard (DxfRegion *region, char *dictionary_owner_hard);
 int16_t dxf_region_get_lineweight (DxfRegion *region);
+DxfRegion *dxf_region_set_lineweight (DxfRegion *region, int16_t lineweight);
 
 
 #ifdef __cplusplus
