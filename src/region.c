@@ -1506,4 +1506,44 @@ dxf_region_get_binary_graphics_data
 }
 
 
+/*!
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
+ * \c REGION entity.
+ */
+DxfRegion *
+dxf_region_set_binary_graphics_data
+(
+        DxfRegion *region,
+                /*!< a pointer to a DXF \c REGION entity. */
+        DxfBinaryGraphicsData *data
+                /*!< a string containing the pointer to the
+                 * \c binary_graphics_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        region->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region);
+}
+
+
 /* EOF */
