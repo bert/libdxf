@@ -242,6 +242,7 @@ char *dxf_region_get_dictionary_owner_hard (DxfRegion *region);
 DxfRegion *dxf_region_set_dictionary_owner_hard (DxfRegion *region, char *dictionary_owner_hard);
 int16_t dxf_region_get_lineweight (DxfRegion *region);
 DxfRegion *dxf_region_set_lineweight (DxfRegion *region, int16_t lineweight);
+char *dxf_region_get_plot_style_name (DxfRegion *region);
 
 
 #ifdef __cplusplus
