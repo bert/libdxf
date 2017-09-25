@@ -238,6 +238,7 @@ char *dxf_region_get_dictionary_owner_soft (DxfRegion *region);
 DxfRegion *dxf_region_set_dictionary_owner_soft (DxfRegion *region, char *dictionary_owner_soft);
 char *dxf_region_get_material (DxfRegion *region);
 DxfRegion *dxf_region_set_material (DxfRegion *region, char *material);
+char *dxf_region_get_dictionary_owner_hard (DxfRegion *region);
 
 
 #ifdef __cplusplus
