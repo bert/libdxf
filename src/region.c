@@ -1466,4 +1466,44 @@ dxf_region_set_shadow_mode
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF
+ * \c REGION entity.
+ *
+ * \return pointer to the \c binary_graphics_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_region_get_binary_graphics_data
+(
+        DxfRegion *region
+                /*!< a pointer to a DXF \c REGION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (region->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryGraphicsData *) region->binary_graphics_data);
+}
+
+
 /* EOF */

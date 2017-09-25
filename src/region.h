@@ -232,6 +232,7 @@ int dxf_region_get_graphics_data_size (DxfRegion *region);
 DxfRegion *dxf_region_set_graphics_data_size (DxfRegion *region, int graphics_data_size);
 int16_t dxf_region_get_shadow_mode (DxfRegion *region);
 DxfRegion *dxf_region_set_shadow_mode (DxfRegion *region, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_region_get_binary_graphics_data (DxfRegion *region);
 
 
 #ifdef __cplusplus
