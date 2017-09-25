@@ -246,6 +246,7 @@ char *dxf_region_get_plot_style_name (DxfRegion *region);
 DxfRegion *dxf_region_set_plot_style_name (DxfRegion *region, char *plot_style_name);
 long dxf_region_get_color_value (DxfRegion *region);
 DxfRegion *dxf_region_set_color_value (DxfRegion *region, long color_value);
+char *dxf_region_get_color_name (DxfRegion *region);
 
 
 #ifdef __cplusplus
