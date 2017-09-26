@@ -2180,4 +2180,43 @@ dxf_region_get_modeler_format_version_number
 }
 
 
+/*!
+ * \brief Set the \c modeler_format_version_number for a DXF \c REGION
+ * entity.
+ */
+DxfRegion *
+dxf_region_set_modeler_format_version_number
+(
+        DxfRegion *region,
+                /*!< a pointer to a DXF \c REGION entity. */
+        int modeler_format_version_number
+                /*!< the \c modeler_format_version_number to be set for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (modeler_format_version_number != 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an invalid value was passed.\n")),
+                  __FUNCTION__);
+        }
+        region->modeler_format_version_number = modeler_format_version_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region);
+}
+
+
 /* EOF */
