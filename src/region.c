@@ -2298,4 +2298,49 @@ dxf_region_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c REGION entity from a linked list
+ * of DXF \c REGION entities.
+ *
+ * \return pointer to the last \c REGION entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfRegion *
+dxf_region_get_last
+(
+        DxfRegion *region
+                /*!< a pointer to a DXF \c REGION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (region->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfRegion *) region);
+        }
+        DxfRegion *iter = (DxfRegion *) region->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfRegion *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfRegion *) iter);
+}
+
+
 /* EOF */
