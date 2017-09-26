@@ -2219,4 +2219,44 @@ dxf_region_set_modeler_format_version_number
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c REGION entity from a DXF
+ * \c REGION entity.
+ *
+ * \return pointer to the next \c REGION entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfRegion *
+dxf_region_get_next
+(
+        DxfRegion *region
+                /*!< a pointer to a DXF \c REGION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (region->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfRegion *) region->next);
+}
+
+
 /* EOF */
