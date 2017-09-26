@@ -2259,4 +2259,43 @@ dxf_region_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c REGION for a DXF \c REGION
+ * entity.
+ */
+DxfRegion *
+dxf_region_set_next
+(
+        DxfRegion *region,
+                /*!< a pointer to a DXF \c REGION entity. */
+        DxfRegion *next
+                /*!< a pointer to the next \c REGION for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        region->next = (struct DxfRegion *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region);
+}
+
+
 /* EOF */
