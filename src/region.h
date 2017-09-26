@@ -250,6 +250,7 @@ char *dxf_region_get_color_name (DxfRegion *region);
 DxfRegion *dxf_region_set_color_name (DxfRegion *region, char *color_name);
 long dxf_region_get_transparency (DxfRegion *region);
 DxfRegion *dxf_region_set_transparency (DxfRegion *region, long transparency);
+int dxf_region_get_modeler_format_version_number (DxfRegion *region);
 
 
 #ifdef __cplusplus
