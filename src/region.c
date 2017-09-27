@@ -2208,6 +2208,55 @@ dxf_region_get_proprietary_data
 
 
 /*!
+ * \brief Set the \c proprietary_data for a DXF \c REGION entity.
+ *
+ * \return a pointer to \c region when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRegion *
+dxf_region_set_proprietary_data
+(
+        DxfRegion *region,
+                /*!< a pointer to a DXF \c REGION entity. */
+        DxfChar *proprietary_data
+                /*!< a pointer containing the \c proprietary_data for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (proprietary_data->value == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        region->proprietary_data = proprietary_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (region);
+}
+
+
+/*!
  * \brief Get the \c modeler_format_version_number from a DXF \c REGION
  * entity.
  *
