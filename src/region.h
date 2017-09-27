@@ -253,6 +253,7 @@ long dxf_region_get_transparency (DxfRegion *region);
 DxfRegion *dxf_region_set_transparency (DxfRegion *region, long transparency);
 DxfChar *dxf_region_get_proprietary_data (DxfRegion *region);
 DxfRegion *dxf_region_set_proprietary_data (DxfRegion *region, DxfChar *proprietary_data);
+DxfChar *dxf_region_get_additional_proprietary_data (DxfRegion *region);
 int dxf_region_get_modeler_format_version_number (DxfRegion *region);
 DxfRegion *dxf_region_set_modeler_format_version_number (DxfRegion *region, int modeler_format_version_number);
 DxfRegion *dxf_region_get_next (DxfRegion *region);
