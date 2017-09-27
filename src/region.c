@@ -96,8 +96,6 @@ dxf_region_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (region == NULL)
         {
@@ -124,11 +122,16 @@ dxf_region_init
         region->color = DXF_COLOR_BYLAYER;
         region->paperspace = DXF_MODELSPACE;
         region->modeler_format_version_number = 1;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                region->proprietary_data[i] = strdup ("");
-                region->additional_proprietary_data[i] = strdup ("");
-        }
+        dxf_char_new (region->proprietary_data);
+        region->proprietary_data = dxf_char_init (region->proprietary_data);
+        region->proprietary_data->value = strdup ("");
+        region->proprietary_data->length = 0;
+        region->proprietary_data->next = NULL;
+        dxf_char_new (region->additional_proprietary_data);
+        region->additional_proprietary_data = dxf_char_init (region->additional_proprietary_data);
+        region->additional_proprietary_data->value = strdup ("");
+        region->additional_proprietary_data->length = 0;
+        region->additional_proprietary_data->next = NULL;
         region->dictionary_owner_soft = strdup ("");
         region->dictionary_owner_hard = strdup ("");
         region->next = NULL;
@@ -164,11 +167,9 @@ dxf_region_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
-        int j;
+        DxfChar *iter1 = NULL;
+        DxfChar *iter2 = NULL;
 
-        i = 0;
-        j = 0;
         /* Do some basic checks. */
         if (fp == NULL)
         {
@@ -187,6 +188,8 @@ dxf_region_read
                 region = dxf_region_new ();
                 region = dxf_region_init (region);
         }
+        iter1 = (DxfChar *) region->proprietary_data;
+        iter2 = (DxfChar *) region->additional_proprietary_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -206,16 +209,18 @@ dxf_region_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", region->proprietary_data[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", iter1->value);
+                        iter1->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter1->next);
+                        iter1 = (DxfChar *) iter1->next;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
                 {
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", region->additional_proprietary_data[j]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", iter2->value);
+                        iter2->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter2->next);
+                        iter2 = (DxfChar *) iter2->next;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -367,7 +372,8 @@ dxf_region_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("REGION");
-        int i;
+        DxfChar *iter1 = NULL;
+        DxfChar *iter2 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -487,17 +493,31 @@ dxf_region_write
         {
                 fprintf (fp->fp, " 70\n%d\n", region->modeler_format_version_number);
         }
-        i = 0;
-        while (strlen (region->proprietary_data[i]) > 0)
+        if (region->proprietary_data != NULL)
         {
-                fprintf (fp->fp, "  1\n%s\n", region->proprietary_data[i]);
-                i++;
+                iter1 = (DxfChar*) region->proprietary_data;
+                while ((iter1 != NULL) && (iter1->value != NULL))
+                {
+                        fprintf (fp->fp, "  1\n%s\n", iter1->value);
+                        iter1 = (DxfChar*) iter1->next;
+                }
         }
-        i = 0;
-        while (strlen (region->additional_proprietary_data[i]) > 0)
+        else
         {
-                fprintf (fp->fp, "  3\n%s\n", region->additional_proprietary_data[i]);
-                i++;
+                fprintf (fp->fp, "  1\n\n");
+        }
+        if (region->additional_proprietary_data != NULL)
+        {
+                iter2 = (DxfChar*) region->additional_proprietary_data;
+                while ((iter2 != NULL) && (iter2->value != NULL))
+                {
+                        fprintf (fp->fp, "  3\n%s\n", iter2->value);
+                        iter2 = (DxfChar*) iter2->next;
+                }
+        }
+        else
+        {
+                fprintf (fp->fp, "  3\n\n");
         }
         /* Clean up. */
         free (dxf_entity_name);
@@ -526,8 +546,6 @@ dxf_region_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (region == NULL)
         {
@@ -545,11 +563,8 @@ dxf_region_free
         }
         free (region->linetype);
         free (region->layer);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (region->proprietary_data[i]);
-                free (region->additional_proprietary_data[i]);
-        }
+        dxf_char_free_chain (region->proprietary_data);
+        dxf_char_free_chain (region->additional_proprietary_data);
         free (region->dictionary_owner_soft);
         free (region->dictionary_owner_hard);
         free (region);

@@ -48,6 +48,7 @@
 #include "global.h"
 #include "point.h"
 #include "binary_graphics_data.h"
+#include "util.h"
 
 
 #ifdef __cplusplus
@@ -186,11 +187,11 @@ dxf_region_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF region. */
-        char *proprietary_data[DXF_MAX_PARAM];
+        DxfChar *proprietary_data;
                 /*!< Proprietary data (multiple lines < 255 characters
                  * each).\n
                  * Group code = 1. */
-        char *additional_proprietary_data[DXF_MAX_PARAM];
+        DxfChar *additional_proprietary_data;
                 /*!< Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
                  * (optional).\n
