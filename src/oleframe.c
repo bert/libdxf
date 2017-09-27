@@ -502,7 +502,7 @@ dxf_oleframe_write
                 iter = (DxfChar*) oleframe->binary_data;
                 while ((iter != NULL) && (iter->value != NULL))
                 {
-                        fprintf (fp->fp, "310\n%s\n", oleframe->binary_data->value);
+                        fprintf (fp->fp, "310\n%s\n", iter->value);
                         iter = (DxfChar*) iter->next;
                 }
         }
