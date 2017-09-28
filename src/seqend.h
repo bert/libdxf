@@ -120,30 +120,11 @@ dxf_seqend_struct
 } DxfSeqend;
 
 
-DxfSeqend *
-dxf_seqend_new ();
-DxfSeqend *
-dxf_seqend_init
-(
-        DxfSeqend *seqend
-);
-DxfSeqend *
-dxf_seqend_read
-(
-        DxfFile *fp,
-        DxfSeqend *seqend
-);
-int
-dxf_seqend_write
-(
-        DxfFile *fp,
-        DxfSeqend *seqend
-);
-int
-dxf_seqend_free
-(
-        DxfSeqend *seqend
-);
+DxfSeqend *dxf_seqend_new ();
+DxfSeqend *dxf_seqend_init (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_read (DxfFile *fp, DxfSeqend *seqend);
+int dxf_seqend_write (DxfFile *fp, DxfSeqend *seqend);
+int dxf_seqend_free (DxfSeqend *seqend);
 
 
 #ifdef __cplusplus
