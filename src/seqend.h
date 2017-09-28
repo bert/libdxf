@@ -55,7 +55,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_seqend
+dxf_seqend_struct
 {
         char *app_name;
                 /*!< APP: name of entity that began the sequence.\n
