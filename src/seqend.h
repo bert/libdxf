@@ -222,6 +222,7 @@ DxfSeqend *dxf_seqend_set_paperspace (DxfSeqend *seqend, int paperspace);
 int dxf_seqend_get_graphics_data_size (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_graphics_data_size (DxfSeqend *seqend, int graphics_data_size);
 int16_t dxf_seqend_get_shadow_mode (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_shadow_mode (DxfSeqend *seqend, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
