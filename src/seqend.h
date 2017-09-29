@@ -204,6 +204,7 @@ int dxf_seqend_free (DxfSeqend *seqend);
 int dxf_seqend_get_id_code (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_id_code (DxfSeqend *seqend, int id_code);
 char *dxf_seqend_get_linetype (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_linetype (DxfSeqend *seqend, char *linetype);
 
 
 #ifdef __cplusplus
