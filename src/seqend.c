@@ -816,4 +816,42 @@ dxf_seqend_get_thickness
 }
 
 
+/*!
+ * \brief Set the \c thickness for a DXF \c SEQEND entity.
+ */
+DxfSeqend *
+dxf_seqend_set_thickness
+(
+        DxfSeqend *seqend,
+                /*!< a pointer to a DXF \c SEQEND entity. */
+        double thickness
+                /*!< the \c thickness to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        seqend->thickness = thickness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend);
+}
+
+
 /* EOF */
