@@ -220,6 +220,7 @@ DxfSeqend *dxf_seqend_set_color (DxfSeqend *seqend, int color);
 int dxf_seqend_get_paperspace (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_paperspace (DxfSeqend *seqend, int paperspace);
 int dxf_seqend_get_graphics_data_size (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_graphics_data_size (DxfSeqend *seqend, int graphics_data_size);
 
 
 #ifdef __cplusplus
