@@ -216,6 +216,7 @@ DxfSeqend *dxf_seqend_set_linetype_scale (DxfSeqend *seqend, double linetype_sca
 int16_t dxf_seqend_get_visibility (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_visibility (DxfSeqend *seqend, int16_t visibility);
 int dxf_seqend_get_color (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_color (DxfSeqend *seqend, int color);
 
 
 #ifdef __cplusplus
