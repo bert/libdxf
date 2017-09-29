@@ -718,4 +718,34 @@ dxf_seqend_set_layer
 }
 
 
+/*!
+ * \brief Get the \c elevation from a DXF \c SEQEND entity.
+ *
+ * \return \c elevation.
+ */
+double
+dxf_seqend_get_elevation
+(
+        DxfSeqend *seqend
+                /*!< a pointer to a DXF \c SEQEND entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend->elevation);
+}
+
+
 /* EOF */
