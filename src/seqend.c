@@ -1405,4 +1405,44 @@ dxf_seqend_get_binary_graphics_data
 }
 
 
+/*!
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
+ * \c SEQEND entity.
+ */
+DxfSeqend *
+dxf_seqend_set_binary_graphics_data
+(
+        DxfSeqend *seqend,
+                /*!< a pointer to a DXF \c SEQEND entity. */
+        DxfBinaryGraphicsData *data
+                /*!< a string containing the pointer to the
+                 * \c binary_graphics_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        seqend->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend);
+}
+
+
 /* EOF */
