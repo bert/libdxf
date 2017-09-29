@@ -218,6 +218,7 @@ DxfSeqend *dxf_seqend_set_visibility (DxfSeqend *seqend, int16_t visibility);
 int dxf_seqend_get_color (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_color (DxfSeqend *seqend, int color);
 int dxf_seqend_get_paperspace (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_paperspace (DxfSeqend *seqend, int paperspace);
 
 
 #ifdef __cplusplus
