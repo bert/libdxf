@@ -929,4 +929,48 @@ dxf_seqend_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the \c visibility from a DXF \c SEQEND entity.
+ *
+ * \return \c visibility.
+ */
+int16_t
+dxf_seqend_get_visibility
+(
+        DxfSeqend *seqend
+                /*!< a pointer to a DXF \c SEQEND entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (seqend->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (seqend->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend->visibility);
+}
+
+
 /* EOF */

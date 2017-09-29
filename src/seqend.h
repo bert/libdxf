@@ -213,6 +213,7 @@ double dxf_seqend_get_thickness (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_thickness (DxfSeqend *seqend, double thickness);
 double dxf_seqend_get_linetype_scale (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_linetype_scale (DxfSeqend *seqend, double linetype_scale);
+int16_t dxf_seqend_get_visibility (DxfSeqend *seqend);
 
 
 #ifdef __cplusplus
