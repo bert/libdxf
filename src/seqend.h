@@ -206,6 +206,7 @@ DxfSeqend *dxf_seqend_set_id_code (DxfSeqend *seqend, int id_code);
 char *dxf_seqend_get_linetype (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_linetype (DxfSeqend *seqend, char *linetype);
 char *dxf_seqend_get_layer (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_layer (DxfSeqend *seqend, char *layer);
 
 
 #ifdef __cplusplus

@@ -679,4 +679,43 @@ dxf_seqend_get_layer
 }
 
 
+/*!
+ * \brief Set the \c layer for a DXF \c SEQEND entity.
+ */
+DxfSeqend *
+dxf_seqend_set_layer
+(
+        DxfSeqend *seqend,
+                /*!< a pointer to a DXF \c SEQEND entity. */
+        char *layer
+                /*!< a pointer to a string containing the \c layer to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        seqend->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend);
+}
+
+
 /* EOF */
