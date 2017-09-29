@@ -1018,4 +1018,40 @@ dxf_seqend_set_visibility
 }
 
 
+/*!
+ * \brief Get the \c color from a DXF \c SEQEND entity.
+ *
+ * \return \c color.
+ */
+int
+dxf_seqend_get_color
+(
+        DxfSeqend *seqend
+                /*!< a pointer to a DXF \c SEQEND entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (seqend->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend->color);
+}
+
+
 /* EOF */
