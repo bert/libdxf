@@ -1607,4 +1607,44 @@ dxf_seqend_set_material
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
+ * \c SEQEND entity.
+ *
+ * \return pointer to the \c dictionary_owner_hard.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_seqend_get_dictionary_owner_hard
+(
+        DxfSeqend *seqend
+                /*!< a pointer to a DXF \c SEQEND entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (seqend->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (seqend->dictionary_owner_hard));
+}
+
+
 /* EOF */
