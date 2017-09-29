@@ -1525,4 +1525,44 @@ dxf_seqend_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the \c material from a DXF \c SEQEND entity.
+ *
+ * \return a pointer to \c material when successful, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_seqend_get_material
+(
+        DxfSeqend *seqend
+                /*!< a pointer to a DXF \c SEQEND entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (seqend->material ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (seqend->material));
+}
+
+
 /* EOF */

@@ -227,6 +227,7 @@ DxfBinaryGraphicsData *dxf_seqend_get_binary_graphics_data (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_binary_graphics_data (DxfSeqend *seqend, DxfBinaryGraphicsData *data);
 char *dxf_seqend_get_dictionary_owner_soft (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_dictionary_owner_soft (DxfSeqend *seqend, char *dictionary_owner_soft);
+char *dxf_seqend_get_material (DxfSeqend *seqend);
 
 
 #ifdef __cplusplus
