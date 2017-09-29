@@ -209,6 +209,7 @@ char *dxf_seqend_get_layer (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_layer (DxfSeqend *seqend, char *layer);
 double dxf_seqend_get_elevation (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_elevation (DxfSeqend *seqend, double elevation);
+double dxf_seqend_get_thickness (DxfSeqend *seqend);
 
 
 #ifdef __cplusplus
