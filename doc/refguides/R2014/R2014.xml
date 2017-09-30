@@ -98,23 +98,33 @@
         <title>About the DXF Format (DXF).</title>
 
         <para>The DXF<superscript>TM</superscript> format is a tagged data
-        representation of all the information contained ® in an AutoCAD
-        drawing file. Tagged data means that each data element in the file is
-        preceded by an integer number that is called a group code. A group
-        code's value indicates what type of data element follows. This value
-        also indicates the meaning of a data element for a given object (or
-        record) type. Virtually all user-specified information in a drawing
-        file can be represented in DXF format.</para>
+        representation of all the information contained in an
+        AutoCAD<superscript>®</superscript> drawing file.</para>
+
+        <para>Tagged data means that each data element in the file is preceded
+        by an integer number that is called a group code.</para>
+
+        <para>A group code's value indicates what type of data element
+        follows.</para>
+
+        <para>This value also indicates the meaning of a data element for a
+        given object (or record) type.</para>
+
+        <para>Virtually all user-specified information in a drawing file can
+        be represented in DXF format.</para>
       </section>
 
       <section>
         <title>About DXF Formatting Conventions.</title>
 
         <para>Each group code listed in the DXF reference topics is presented
-        by a numeric group code value and a description. All group codes can
-        apply to DXFTM files, applications (AutoLISP or ObjectARX), or both.
-        When the description of a code is different for applications and DXF
-        files (or applies to only one or the other), the description is
+        by a numeric group code value and a description.</para>
+
+        <para>All group codes can apply to DXFTM files, applications (AutoLISP
+        or ObjectARX), or both.</para>
+
+        <para>When the description of a code is different for applications and
+        DXF files (or applies to only one or the other), the description is
         preceded by the following indicators:</para>
 
         <itemizedlist>
@@ -141,27 +151,34 @@
 
         <para>In the DXF<superscript>TM</superscript> format, the definition
         of objects differs from entities: objects have no graphical
-        representation and entities do. For example, dictionaries are objects,
-        and not entities. Entities are also referred to as graphical objects
-        while objects are referred to as nongraphical objects.</para>
+        representation and entities do.</para>
+
+        <para>For example, dictionaries are objects, and not entities.</para>
+
+        <para>Entities are also referred to as graphical objects while objects
+        are referred to as nongraphical objects.</para>
 
         <para>Entities appear in both the BLOCK and ENTITIES sections of the
-        DXF file. The use of group codes in the two sections is
-        identical.</para>
+        DXF file.</para>
+
+        <para>The use of group codes in the two sections is identical.</para>
 
         <para>Some group codes that define an entity always appear; others are
         optional and appear only if their values differ from the
         defaults.</para>
 
-        <para>Do not write programs that rely on the order given here. The end
-        of an entity is indicated by the next 0 group, which begins the next
-        entity or indicates the end of the section.<note>
-            <para>Accommodating DXF files from future releases of AutoCAD will
-            be easier if you write your DXF processing program in a
-            table-driven way, ignore undefined group codes, and make no
-            assumptions about the order of group codes in an entity. With each
-            new AutoCAD release, new group codes will be added to entities to
-            accommodate additional features.</para>
+        <para>Do not write programs that rely on the order given here.</para>
+
+        <para>The end of an entity is indicated by the next 0 group, which
+        begins the next entity or indicates the end of the section.<note>
+            <para>Accommodating DXF files from future releases of
+            AutoCAD<superscript>®</superscript> will be easier if you write
+            your DXF processing program in a table-driven way, ignore
+            undefined group codes, and make no assumptions about the order of
+            group codes in an entity.</para>
+
+            <para>With each new AutoCAD release, new group codes will be added
+            to entities to accommodate additional features.</para>
           </note></para>
       </section>
 
@@ -176,9 +193,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry>Code range</entry>
+                  <entry align="left">Code range</entry>
 
-                  <entry>Group value type</entry>
+                  <entry align="left">Group value type</entry>
                 </row>
               </thead>
 
@@ -447,9 +464,9 @@
           <tgroup cols="2">
             <thead>
               <row>
-                <entry>Group code</entry>
+                <entry align="left">Group code</entry>
 
-                <entry>Description</entry>
+                <entry align="left">Description</entry>
               </row>
             </thead>
 
