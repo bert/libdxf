@@ -1790,4 +1790,46 @@ dxf_seqend_get_plot_style_name
 }
 
 
+/*!
+ * \brief Set the \c plot_style_name for a DXF \c SEQEND entity.
+ *
+ * \return a pointer to \c seqend when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSeqend *
+dxf_seqend_set_plot_style_name
+(
+        DxfSeqend *seqend,
+                /*!< a pointer to a DXF \c SEQEND entity. */
+        char *plot_style_name
+                /*!< a string containing the \c plot_style_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        seqend->plot_style_name = strdup (plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend);
+}
+
+
 /* EOF */
