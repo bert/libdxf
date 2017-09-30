@@ -232,6 +232,7 @@ DxfSeqend *dxf_seqend_set_material (DxfSeqend *seqend, char *material);
 char *dxf_seqend_get_dictionary_owner_hard (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_dictionary_owner_hard (DxfSeqend *seqend, char *dictionary_owner_hard);
 int16_t dxf_seqend_get_lineweight (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_lineweight (DxfSeqend *seqend, int16_t lineweight);
 
 
 #ifdef __cplusplus
