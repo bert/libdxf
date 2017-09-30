@@ -233,6 +233,7 @@ char *dxf_seqend_get_dictionary_owner_hard (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_dictionary_owner_hard (DxfSeqend *seqend, char *dictionary_owner_hard);
 int16_t dxf_seqend_get_lineweight (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_lineweight (DxfSeqend *seqend, int16_t lineweight);
+char *dxf_seqend_get_plot_style_name (DxfSeqend *seqend);
 
 
 #ifdef __cplusplus
