@@ -235,6 +235,7 @@ int16_t dxf_seqend_get_lineweight (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_lineweight (DxfSeqend *seqend, int16_t lineweight);
 char *dxf_seqend_get_plot_style_name (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_plot_style_name (DxfSeqend *seqend, char *plot_style_name);
+long dxf_seqend_get_color_value (DxfSeqend *seqend);
 
 
 #ifdef __cplusplus
