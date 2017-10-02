@@ -240,6 +240,7 @@ DxfSeqend *dxf_seqend_set_color_value (DxfSeqend *seqend, long color_value);
 char *dxf_seqend_get_color_name (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_color_name (DxfSeqend *seqend, char *color_name);
 long dxf_seqend_get_transparency (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_transparency (DxfSeqend *seqend, long transparency);
 
 
 #ifdef __cplusplus
