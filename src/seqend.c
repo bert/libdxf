@@ -1863,4 +1863,38 @@ dxf_seqend_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a DXF \c SEQEND entity.
+ *
+ * \return a pointer to \c seqend when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSeqend *
+dxf_seqend_set_color_value
+(
+        DxfSeqend *seqend,
+                /*!< a pointer to a DXF \c SEQEND entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        seqend->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend);
+}
+
+
 /* EOF */
