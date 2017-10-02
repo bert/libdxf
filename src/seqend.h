@@ -238,6 +238,7 @@ DxfSeqend *dxf_seqend_set_plot_style_name (DxfSeqend *seqend, char *plot_style_n
 long dxf_seqend_get_color_value (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_color_value (DxfSeqend *seqend, long color_value);
 char *dxf_seqend_get_color_name (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_color_name (DxfSeqend *seqend, char *color_name);
 
 
 #ifdef __cplusplus
