@@ -124,8 +124,19 @@ dxf_seqend_init
         seqend->visibility = DXF_DEFAULT_VISIBILITY;
         seqend->color = DXF_COLOR_BYLAYER;
         seqend->paperspace = DXF_MODELSPACE;
+        seqend->graphics_data_size = 0;
+        seqend->shadow_mode = 0;
+        seqend->binary_graphics_data = dxf_binary_graphics_data_new ();
+        seqend->binary_graphics_data = dxf_binary_graphics_data_init (seqend->binary_graphics_data);
         seqend->dictionary_owner_soft = strdup ("");
+        seqend->material = strdup ("");
         seqend->dictionary_owner_hard = strdup ("");
+        seqend->lineweight = 0;
+        seqend->plot_style_name = strdup ("");
+        seqend->color_value = 0;
+        seqend->color_name = strdup ("");
+        seqend->transparency = 0;
+        seqend->app_name = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
