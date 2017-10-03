@@ -2080,4 +2080,46 @@ dxf_seqend_get_app_name
 }
 
 
+/*!
+ * \brief Set the \c app_name for a DXF \c SEQEND entity.
+ *
+ * \return a pointer to \c seqend when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSeqend *
+dxf_seqend_set_app_name
+(
+        DxfSeqend *seqend,
+                /*!< a pointer to a DXF \c SEQEND entity. */
+        char *app_name
+                /*!< a string containing the \c app_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (app_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        seqend->app_name = strdup (app_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (seqend);
+}
+
+
 /* EOF */

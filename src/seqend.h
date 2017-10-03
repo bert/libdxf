@@ -242,6 +242,7 @@ DxfSeqend *dxf_seqend_set_color_name (DxfSeqend *seqend, char *color_name);
 long dxf_seqend_get_transparency (DxfSeqend *seqend);
 DxfSeqend *dxf_seqend_set_transparency (DxfSeqend *seqend, long transparency);
 char *dxf_seqend_get_app_name (DxfSeqend *seqend);
+DxfSeqend *dxf_seqend_set_app_name (DxfSeqend *seqend, char *app_name);
 
 
 #ifdef __cplusplus
