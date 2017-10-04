@@ -493,29 +493,42 @@ dxf_seqend_write
                 fprintf (fp->fp, "360\n%s\n", seqend->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
-
-        if (seqend->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
+        if (seqend->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
         fprintf (fp->fp, "  8\n%s\n", seqend->layer);
+        if (strcmp (seqend->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", seqend->linetype);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (seqend->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", seqend->material);
+        }
+        if (seqend->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", seqend->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", seqend->lineweight);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (seqend->elevation != 0.0))
         {
                 fprintf (fp->fp, " 38\n%f\n", seqend->elevation);
         }
-        if (strcmp (seqend->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if ((fp->acad_version_number <= AutoCAD_13)
+          && (seqend->thickness != 0.0))
         {
-                fprintf (fp->fp, "  6\n%s\n", seqend->linetype);
-        }
-        if (seqend->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", seqend->color);
+                fprintf (fp->fp, " 39\n%f\n", seqend->thickness);
         }
         if (seqend->linetype_scale != 1.0)
         {
@@ -524,6 +537,36 @@ dxf_seqend_write
         if (seqend->visibility != 0)
         {
                 fprintf (fp->fp, " 60\n%d\n", seqend->visibility);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (seqend->graphics_data_size > 0))
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", seqend->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", seqend->graphics_data_size);
+#endif
+                if (seqend->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) seqend->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", seqend->color_value);
+                fprintf (fp->fp, "430\n%s\n", seqend->color_name);
+                fprintf (fp->fp, "440\n%ld\n", seqend->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", seqend->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", seqend->shadow_mode);
         }
         /* Clean up. */
         free (dxf_entity_name);
