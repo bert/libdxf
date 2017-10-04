@@ -55,7 +55,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_shape
+dxf_shape_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
