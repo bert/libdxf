@@ -151,35 +151,12 @@ dxf_shape_struct
 } DxfShape;
 
 
-DxfShape *
-dxf_shape_new ();
-DxfShape *
-dxf_shape_init
-(
-        DxfShape *shape
-);
-DxfShape *
-dxf_shape_read
-(
-        DxfFile *fp,
-        DxfShape *shape
-);
-int
-dxf_shape_write
-(
-        DxfFile *fp,
-        DxfShape *shape
-);
-int
-dxf_shape_free
-(
-        DxfShape *shape
-);
-void
-dxf_shape_free_chain
-(
-        DxfShape *shapes
-);
+DxfShape *dxf_shape_new ();
+DxfShape *dxf_shape_init (DxfShape *shape);
+DxfShape *dxf_shape_read (DxfFile *fp, DxfShape *shape);
+int dxf_shape_write (DxfFile *fp, DxfShape *shape);
+int dxf_shape_free (DxfShape *shape);
+void dxf_shape_free_chain (DxfShape *shapes);
 
 
 #ifdef __cplusplus
