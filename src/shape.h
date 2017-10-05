@@ -244,6 +244,7 @@ DxfShape *dxf_shape_set_layer (DxfShape *shape, char *layer);
 double dxf_shape_get_elevation (DxfShape *shape);
 DxfShape *dxf_shape_set_elevation (DxfShape *shape, double elevation);
 double dxf_shape_get_thickness (DxfShape *shape);
+DxfShape *dxf_shape_set_thickness (DxfShape *shape, double thickness);
 
 
 #ifdef __cplusplus
