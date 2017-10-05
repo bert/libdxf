@@ -900,4 +900,34 @@ dxf_shape_set_layer
 }
 
 
+/*!
+ * \brief Get the \c elevation from a DXF \c SHAPE entity.
+ *
+ * \return \c elevation.
+ */
+double
+dxf_shape_get_elevation
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape->elevation);
+}
+
+
 /* EOF */

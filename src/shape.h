@@ -241,6 +241,7 @@ char *dxf_shape_get_linetype (DxfShape *shape);
 DxfShape *dxf_shape_set_linetype (DxfShape *shape, char *linetype);
 char *dxf_shape_get_layer (DxfShape *shape);
 DxfShape *dxf_shape_set_layer (DxfShape *shape, char *layer);
+double dxf_shape_get_elevation (DxfShape *shape);
 
 
 #ifdef __cplusplus
