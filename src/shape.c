@@ -861,4 +861,43 @@ dxf_shape_get_layer
 }
 
 
+/*!
+ * \brief Set the \c layer for a DXF \c SHAPE entity.
+ */
+DxfShape *
+dxf_shape_set_layer
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        char *layer
+                /*!< a pointer to a string containing the \c layer to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
