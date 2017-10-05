@@ -238,6 +238,7 @@ void dxf_shape_free_chain (DxfShape *shapes);
 int dxf_shape_get_id_code (DxfShape *shape);
 DxfShape *dxf_shape_set_id_code (DxfShape *shape, int id_code);
 char *dxf_shape_get_linetype (DxfShape *shape);
+DxfShape *dxf_shape_set_linetype (DxfShape *shape, char *linetype);
 
 
 #ifdef __cplusplus
