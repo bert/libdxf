@@ -236,6 +236,7 @@ int dxf_shape_write (DxfFile *fp, DxfShape *shape);
 int dxf_shape_free (DxfShape *shape);
 void dxf_shape_free_chain (DxfShape *shapes);
 int dxf_shape_get_id_code (DxfShape *shape);
+DxfShape *dxf_shape_set_id_code (DxfShape *shape, int id_code);
 
 
 #ifdef __cplusplus
