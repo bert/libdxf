@@ -1072,4 +1072,42 @@ dxf_shape_get_linetype_scale
 }
 
 
+/*!
+ * \brief Set the \c linetype_scale for a DXF \c SHAPE entity.
+ */
+DxfShape *
+dxf_shape_set_linetype_scale
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        double linetype_scale
+                /*!< the \c linetype_scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
