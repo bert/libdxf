@@ -1231,4 +1231,41 @@ dxf_shape_get_color
 }
 
 
+/*!
+ * \brief Set the \c color for a DXF \c SHAPE entity.
+ */
+DxfShape *
+dxf_shape_set_color
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        int color
+                /*!< the \c color to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        shape->color = color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */

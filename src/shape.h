@@ -250,6 +250,7 @@ DxfShape *dxf_shape_set_linetype_scale (DxfShape *shape, double linetype_scale);
 int16_t dxf_shape_get_visibility (DxfShape *shape);
 DxfShape *dxf_shape_set_visibility (DxfShape *shape, int16_t visibility);
 int dxf_shape_get_color (DxfShape *shape);
+DxfShape *dxf_shape_set_color (DxfShape *shape, int color);
 
 
 #ifdef __cplusplus
