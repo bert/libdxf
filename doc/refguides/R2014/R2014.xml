@@ -1089,4 +1089,1889 @@
       </section>
     </section>
   </chapter>
+
+  <chapter>
+    <title>HEADER Section.</title>
+
+    <section>
+      <title>About the DXF HEADER Section.</title>
+
+      <para>The HEADER section of a DXF file contains the settings of
+      variables associated with the drawing.</para>
+
+      <para>Each variable is specified by a 9 group code giving the variable's
+      name, followed by groups that supply the variable's value.</para>
+
+      <para>Only the variables that are saved in the drawing file are
+      listed.</para>
+    </section>
+
+    <section>
+      <title>HEADER Section Group Codes (DXF).</title>
+
+      <para>The following table lists the variables that are represented in
+      the HEADER section of a DXF<superscript>TM</superscript> file.</para>
+
+      <table>
+        <title>DXF header variables.</title>
+
+        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry align="left">Variable</entry>
+
+              <entry align="left">Group Code</entry>
+
+              <entry align="left">Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>$ACADMAINTVER</entry>
+
+              <entry>70</entry>
+
+              <entry>Maintenance version number (should be ignored)</entry>
+            </row>
+
+            <row>
+              <entry>$ACADVER</entry>
+
+              <entry>1</entry>
+
+              <entry>The AutoCAD drawing database version number: AC1006 =
+              R10, AC1009 = R11 and R12, AC1012 = R13, AC1014 = R14, AC1015 =
+              AutoCAD 2000, AC1018 = AutoCAD 2004, AC1021 = AutoCAD 2007,
+              AC1024 = AutoCAD 2010, AC1027 = AutoCAD 2013.</entry>
+            </row>
+
+            <row>
+              <entry>$ANGBASE</entry>
+
+              <entry>50</entry>
+
+              <entry>Angle 0 direction.</entry>
+            </row>
+
+            <row>
+              <entry>$ANGDIR</entry>
+
+              <entry>70</entry>
+
+              <entry>1 = Clockwise angles, 0 = Counterclockwise
+              angles.</entry>
+            </row>
+
+            <row>
+              <entry>$ATTMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Attribute visibility: 0 = None, 1 = Normal, 2 =
+              All.</entry>
+            </row>
+
+            <row>
+              <entry>$AUNITS</entry>
+
+              <entry>70</entry>
+
+              <entry>Units format for angles.</entry>
+            </row>
+
+            <row>
+              <entry>$AUPREC</entry>
+
+              <entry>70</entry>
+
+              <entry>Units precision for angles.</entry>
+            </row>
+
+            <row>
+              <entry>$CECOLOR</entry>
+
+              <entry>62</entry>
+
+              <entry>Current entity color number: 0 = BYBLOCK, 256 =
+              BYLAYER.</entry>
+            </row>
+
+            <row>
+              <entry>$CELTSCALE</entry>
+
+              <entry>40</entry>
+
+              <entry>Current entity linetype scale.</entry>
+            </row>
+
+            <row>
+              <entry>$CELTYPE</entry>
+
+              <entry>6</entry>
+
+              <entry>Entity linetype name, or BYBLOCK or BYLAYER.</entry>
+            </row>
+
+            <row>
+              <entry>$CELWEIGHT</entry>
+
+              <entry>370</entry>
+
+              <entry>Lineweight of new objects.</entry>
+            </row>
+
+            <row>
+              <entry>$CEPSNID</entry>
+
+              <entry>390</entry>
+
+              <entry>Plotstyle handle of new objects; if CEPSNTYPE is 3, then
+              this value indicates the handle.</entry>
+            </row>
+
+            <row>
+              <entry>$CEPSNTYPE</entry>
+
+              <entry>380</entry>
+
+              <entry>Plot style type of new objects: 0 = Plot style by layer;
+              1 = Plot style by block; 2 = Plot style by dictionary default; 3
+              = Plot style by object ID/handle.</entry>
+            </row>
+
+            <row>
+              <entry>$CHAMFERA</entry>
+
+              <entry>40</entry>
+
+              <entry>First chamfer distance.</entry>
+            </row>
+
+            <row>
+              <entry>$CHAMFERB</entry>
+
+              <entry>40</entry>
+
+              <entry>Second chamfer distance.</entry>
+            </row>
+
+            <row>
+              <entry>$CHAMFERC</entry>
+
+              <entry>40</entry>
+
+              <entry>Chamfer length.</entry>
+            </row>
+
+            <row>
+              <entry>$CHAMFERD</entry>
+
+              <entry>40</entry>
+
+              <entry>Chamfer angle.</entry>
+            </row>
+
+            <row>
+              <entry>$CLAYER</entry>
+
+              <entry>8</entry>
+
+              <entry>Current layer name.</entry>
+            </row>
+
+            <row>
+              <entry>$CMLJUST</entry>
+
+              <entry>70</entry>
+
+              <entry>Current multiline justification: 0 = Top; 1 = Middle; 2 =
+              Bottom.</entry>
+            </row>
+
+            <row>
+              <entry>$CMLSCALE</entry>
+
+              <entry>40</entry>
+
+              <entry>Current multiline scale.</entry>
+            </row>
+
+            <row>
+              <entry>$CMLSTYLE</entry>
+
+              <entry>7</entry>
+
+              <entry>Current multiline style name.</entry>
+            </row>
+
+            <row>
+              <entry>$CSHADOW</entry>
+
+              <entry>280</entry>
+
+              <entry>Shadow mode for a 3D object: 0 = Casts and receives
+              shadows; 1 = Casts shadows; 2 = Receives shadows; 3 = Ignores
+              shadows.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMADEC</entry>
+
+              <entry>70</entry>
+
+              <entry>Number of precision places displayed in angular
+              dimensions.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALT</entry>
+
+              <entry>70</entry>
+
+              <entry>Alternate unit dimensioning performed if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALTD</entry>
+
+              <entry>70</entry>
+
+              <entry>Alternate unit decimal places.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALTF</entry>
+
+              <entry>40</entry>
+
+              <entry>Alternate unit scale factor.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALTRND</entry>
+
+              <entry>40</entry>
+
+              <entry>Determines rounding of alternate units.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALTTD</entry>
+
+              <entry>70</entry>
+
+              <entry>Number of decimal places for tolerance values of an
+              alternate units dimension.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALTTZ</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls suppression of zeros for alternate tolerance
+              values: 0 = Suppresses zero feet and precisely zero inches 1 =
+              Includes zero feet and precisely zero inches 2 = Includes zero
+              feet and suppresses zero inches 3 = Includes zero inches and
+              suppresses zero feet.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALTU</entry>
+
+              <entry>70</entry>
+
+              <entry>Units format for alternate units of all dimension style
+              family members except angular: 1 = Scientific; 2 = Decimal; 3 =
+              Engineering; 4 = Architectural (stacked); 5 = Fractional
+              (stacked); 6 = Architectural; 7 = Fractional.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMALTZ</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls suppression of zeros for alternate unit
+              dimension values: 0 = Suppresses zero feet and precisely zero
+              inches 1 = Includes zero feet and precisely zero inches 2 =
+              Includes zero feet and suppresses zero inches 3 = Includes zero
+              inches and suppresses zero feet.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMAPOST</entry>
+
+              <entry>1</entry>
+
+              <entry>Alternate dimensioning suffix.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMASO</entry>
+
+              <entry>70</entry>
+
+              <entry>1 = Create associative dimensioning; 0 = Draw individual
+              entities.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMASSOC</entry>
+
+              <entry>280</entry>
+
+              <entry>Controls the associativity of dimension objects 0 =
+              Creates exploded dimensions; there is no association between
+              elements of the dimension, and the lines, arcs, arrowheads, and
+              text of a dimension are drawn as separate objects; 1 = Creates
+              non-associative dimension objects, the elements of the dimension
+              are formed into a single object, and if the definition point on
+              the object moves, then the dimension value is updated, 2 =
+              Creates associative dimension objects; the elements of the
+              dimension are formed into a single object and one or more
+              definition points of the dimension are coupled with association
+              points on geometric objects.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMASZ</entry>
+
+              <entry>40</entry>
+
+              <entry>Dimensioning arrow size.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMATFIT</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls dimension text and arrow placement when space is
+              not sufficient to place both within the extension lines: 0 =
+              Places both text and arrows outside extension lines; 1 = Moves
+              arrows first, then text; 2 = Moves text first, then arrows; 3 =
+              Moves either text or arrows, whichever fits best AutoCAD adds a
+              leader to moved dimension text when DIMTMOVE is set to
+              1.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMAUNIT</entry>
+
+              <entry>70</entry>
+
+              <entry>Angle format for angular dimensions: 0 = Decimal degrees;
+              1 = Degrees/minutes/seconds; 2 = Gradians; 3 = Radians; 4 =
+              Surveyor's units.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMAZIN</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls suppression of zeros for angular dimensions: 0 =
+              Displays all leading and trailing zeros; 1 = Suppresses leading
+              zeros in decimal dimensions; 2 = Suppresses trailing zeros in
+              decimal dimensions; 3 = Suppresses leading and trailing
+              zeros.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMBLK</entry>
+
+              <entry>1</entry>
+
+              <entry>Arrow block name.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMBLK1</entry>
+
+              <entry>1</entry>
+
+              <entry>First arrow block name.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMBLK2</entry>
+
+              <entry>1</entry>
+
+              <entry>Second arrow block name.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMCEN</entry>
+
+              <entry>40</entry>
+
+              <entry>Size of center mark/lines.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMCLRD</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension line color: range is 0 = BYBLOCK; 256 =
+              BYLAYER.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMCLRE</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension extension line color: range is 0 = BYBLOCK; 256
+              = BYLAYER.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMCLRT</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension text color: range is 0 = BYBLOCK; 256 =
+              BYLAYER.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMDEC</entry>
+
+              <entry>70</entry>
+
+              <entry>Number of decimal places for the tolerance values of a
+              primary units dimension.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMDLE</entry>
+
+              <entry>40</entry>
+
+              <entry>Dimension line extension.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMDLI</entry>
+
+              <entry>40</entry>
+
+              <entry>Dimension line increment.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMDSEP</entry>
+
+              <entry>70</entry>
+
+              <entry>Single-character decimal separator used when creating di-
+              mensions whose unit format is decimal.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMEXE</entry>
+
+              <entry>40</entry>
+
+              <entry>Extension line extension.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMEXO</entry>
+
+              <entry>40</entry>
+
+              <entry>Extension line offset.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMFAC</entry>
+
+              <entry>40</entry>
+
+              <entry>Scale factor used to calculate the height of text for
+              dimension fractions and tolerances. AutoCAD multiplies DIMTXT by
+              DIMTFAC to set the fractional or tolerance text height.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMGAP</entry>
+
+              <entry>40</entry>
+
+              <entry>Dimension line gap.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMJUST</entry>
+
+              <entry>70</entry>
+
+              <entry>Horizontal dimension text position: 0 = above dimension
+              line and center-justified between extension lines; 1 = above
+              dimension line and next to first extension line; 2 = above
+              dimension line and next to second extension line; 3 = above and
+              center-justified to first extension line; 4 = above and
+              center-justified to second extension line.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMLDRBLK</entry>
+
+              <entry>1</entry>
+
+              <entry>Arrow block name for leaders.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMLFAC</entry>
+
+              <entry>40</entry>
+
+              <entry>Linear measurements scale factor.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMLIM</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension limits generated if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMLUNIT</entry>
+
+              <entry>70</entry>
+
+              <entry>Sets units for all dimension types except Angular: 1 =
+              Scientific; 2 = Decimal; 3 = Engineering; 4 = Architectural; 5 =
+              Fractional; 6 = Windows desktop.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMLWD</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension line lineweight: -3 = Standard; -2 = ByLayer;
+              -1 = ByBlock; 0-211 = an integer representing 100th of
+              mm.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMLWE</entry>
+
+              <entry>70</entry>
+
+              <entry>Extension line lineweight: -3 = Standard; -2 = ByLayer;
+              -1 = ByBlock; 0-211 = an integer representing 100th of
+              mm.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMPOST</entry>
+
+              <entry>1</entry>
+
+              <entry>General dimensioning suffix.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMRND</entry>
+
+              <entry>40</entry>
+
+              <entry>Rounding value for dimension distances.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSAH</entry>
+
+              <entry>70</entry>
+
+              <entry>Use separate arrow blocks if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSCALE</entry>
+
+              <entry>40</entry>
+
+              <entry>Overall dimensioning scale factor.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSD1</entry>
+
+              <entry>70</entry>
+
+              <entry>Suppression of first extension line: 0 = Not suppressed;
+              1 = Suppressed.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSD2</entry>
+
+              <entry>70</entry>
+
+              <entry>Suppression of second extension line: 0 = Not suppressed;
+              1 = Suppressed.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSE1</entry>
+
+              <entry>70</entry>
+
+              <entry>First extension line suppressed if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSE2</entry>
+
+              <entry>70</entry>
+
+              <entry>Second extension line suppressed if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSHO</entry>
+
+              <entry>70</entry>
+
+              <entry>1 = Recompute dimensions while dragging; 0 = Drag
+              original image.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSOXD</entry>
+
+              <entry>70</entry>
+
+              <entry>Suppress outside-extensions dimension lines if
+              nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMSTYLE</entry>
+
+              <entry>2</entry>
+
+              <entry>Dimension style name.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTAD</entry>
+
+              <entry>70</entry>
+
+              <entry>Text above dimension line if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTDEC</entry>
+
+              <entry>70</entry>
+
+              <entry>Number of decimal places to display the tolerance
+              values.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTFAC</entry>
+
+              <entry>40</entry>
+
+              <entry>Dimension tolerance display scale factor.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTIH</entry>
+
+              <entry>70</entry>
+
+              <entry>Text inside horizontal if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTIX</entry>
+
+              <entry>70</entry>
+
+              <entry>Force text inside extensions if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTM</entry>
+
+              <entry>40</entry>
+
+              <entry>Minus tolerance.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTMOVE</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension text movement rules: 0 = Moves the dimension
+              line with dimension text; 1 = Adds a leader when dimension text
+              is moved; 2 = Allows text to be moved freely without a
+              leader.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTOFL</entry>
+
+              <entry>70</entry>
+
+              <entry>If text outside extensions, force line extensions between
+              extensions if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTOH</entry>
+
+              <entry>70</entry>
+
+              <entry>Text outside horizontal if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTOL</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension tolerances generated if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTOLJ</entry>
+
+              <entry>70</entry>
+
+              <entry>Vertical justification for tolerance values: 0 = Top; 1 =
+              Middle; 2 = Bottom.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTP</entry>
+
+              <entry>40</entry>
+
+              <entry>Plus tolerance.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTSZ</entry>
+
+              <entry>40</entry>
+
+              <entry>Dimensioning tick size: 0 = no ticks.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTVP</entry>
+
+              <entry>40</entry>
+
+              <entry>Text vertical position.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTXSTY</entry>
+
+              <entry>70</entry>
+
+              <entry>Dimension text style.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTXT</entry>
+
+              <entry>40</entry>
+
+              <entry>Dimensioning text height.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMTZIN</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls suppression of zeros for tolerance values: 0 =
+              Suppresses zero feet and precisely zero inches; 1 = Includes
+              zero feet and precisely zero inches; 2 = Includes zero feet and
+              suppresses zero inches; 3 = Includes zero inches and suppresses
+              zero feet.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMUPT</entry>
+
+              <entry>70</entry>
+
+              <entry>Cursor functionality for user-positioned text: 0 =
+              Controls only the dimension line location; 1 = Controls the text
+              position as well as the dimension line location.</entry>
+            </row>
+
+            <row>
+              <entry>$DIMZIN</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls suppression of zeros for primary unit values: 0
+              = Suppresses zero feet and precisely zero inches; 1 = Includes
+              zero feet and precisely zero inches; 2 = Includes zero feet and
+              suppresses zero inches; 3 = Includes zero inches and suppresses
+              zero feet.</entry>
+            </row>
+
+            <row>
+              <entry>$DISPSILH</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls the display of silhouette curves of body objects
+              in wireframe mode: 0 = Off; 1 = On.</entry>
+            </row>
+
+            <row>
+              <entry>$DRAGVS</entry>
+
+              <entry>349</entry>
+
+              <entry>Hard-pointer ID to visual style while creating 3D solid
+              primitives. The default value is NULL.</entry>
+            </row>
+
+            <row>
+              <entry>$DWGCODEPAGE</entry>
+
+              <entry>3</entry>
+
+              <entry>Drawing code page; Set to the system code page when a new
+              drawing is created, but not otherwise maintained by
+              AutoCAD.</entry>
+            </row>
+
+            <row>
+              <entry>$ELEVATION</entry>
+
+              <entry>40</entry>
+
+              <entry>Current elevation set by ELEV command.</entry>
+            </row>
+
+            <row>
+              <entry>$ENDCAPS</entry>
+
+              <entry>280</entry>
+
+              <entry>Lineweight endcaps setting for new objects: 0 = none; 1 =
+              round; 2 = angle; 3 = square.</entry>
+            </row>
+
+            <row>
+              <entry>$EXTMAX</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>X, Y, and Z drawing extents upper-right corner (in
+              WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$EXTMIN</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>X, Y, and Z drawing extents lower-left corner (in
+              WCS).</entry>
+            </row>
+
+            <row>
+              <entry>EXTNAMES</entry>
+
+              <entry>290</entry>
+
+              <entry>Controls symbol table naming: 0 = Release 14
+              compatibility. Limits names to 31 characters in length. Names
+              can include the letters A to Z, the numerals 0 to 9, and the
+              special characters dollar sign ($), underscore (_), and hyphen
+              (-); 1 = AutoCAD 2000. Names can be up to 255 characters in
+              length, and can include the letters A to Z, the numerals 0 to 9,
+              spaces, and any special characters not used for other purposes
+              by Microsoft Windows and AutoCAD.</entry>
+            </row>
+
+            <row>
+              <entry>$FILLETRAD</entry>
+
+              <entry>40</entry>
+
+              <entry>Fillet radius.</entry>
+            </row>
+
+            <row>
+              <entry>$FILLMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Fill mode on if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$FINGERPRINTGUID</entry>
+
+              <entry>2</entry>
+
+              <entry>Set at creation time, uniquely identifies a particular
+              drawing.</entry>
+            </row>
+
+            <row>
+              <entry>$HALOGAP</entry>
+
+              <entry>280</entry>
+
+              <entry>Specifies a gap to be displayed where an object is hidden
+              by another object; the value is specified as a percent of one
+              unit and is independent of the zoom level. A haloed line is
+              shortened at the point where it is hidden when HIDE or the
+              Hidden option of SHADEMODE is used.</entry>
+            </row>
+
+            <row>
+              <entry>$HANDSEED</entry>
+
+              <entry>5</entry>
+
+              <entry>Next available handle.</entry>
+            </row>
+
+            <row>
+              <entry>$HIDETEXT</entry>
+
+              <entry>290</entry>
+
+              <entry>Specifies HIDETEXT system variable: 0 = HIDE ignores text
+              objects when producing the hidden view; 1 = HIDE does not ignore
+              text objects.</entry>
+            </row>
+
+            <row>
+              <entry>$HYPERLINKBASE</entry>
+
+              <entry>1</entry>
+
+              <entry>Path for all relative hyperlinks in the drawing. If null,
+              the drawing path is used.</entry>
+            </row>
+
+            <row>
+              <entry>$INDEXCTL</entry>
+
+              <entry>280</entry>
+
+              <entry>Controls whether layer and spatial indexes are created
+              and saved in drawing files: 0 = No indexes are created; 1 =
+              Layer index is created; 2 = Spatial index is created; 3 = Layer
+              and spatial indexes are created.</entry>
+            </row>
+
+            <row>
+              <entry>$INSBASE</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Insertion base set by BASE command (in WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$INSUNITS</entry>
+
+              <entry>70</entry>
+
+              <entry>Default drawing units for AutoCAD DesignCenter blocks: 0
+              = Unitless; 1 = Inches; 2 = Feet; 3 = Miles; 4 = Millimeters; 5
+              = Centimeters; 6 = Meters; 7 = Kilometers; 8 = Mi- croinches; 9
+              = Mils; 10 = Yards; 11 = Angstroms; 12 = Nanometers; 13 =
+              Microns; 14 = Decimeters; 15 = Decameters; 16 = Hectometers; 17
+              = Gigameters; 18 = Astronomical units; 19 = Light years; 20 =
+              Parsecs.</entry>
+            </row>
+
+            <row>
+              <entry>$INTERFERECOLOR</entry>
+
+              <entry>62</entry>
+
+              <entry>Represents the ACI color index of the "interference
+              objects" created during the interfere command. Default value is
+              1.</entry>
+            </row>
+
+            <row>
+              <entry>$INTERFEREOBJVS</entry>
+
+              <entry>345</entry>
+
+              <entry>Hard-pointer ID to the visual style for interference
+              objects. Default visual style is Conceptual.</entry>
+            </row>
+
+            <row>
+              <entry>$INTERFEREVPVS</entry>
+
+              <entry>346</entry>
+
+              <entry>Hard-pointer ID to the visual style for the viewport
+              during interference checking. Default visual style is 3d
+              Wireframe.</entry>
+            </row>
+
+            <row>
+              <entry>$INTERSECTIONCOLOR</entry>
+
+              <entry>70</entry>
+
+              <entry>Specifies the entity color of intersection polylines:
+              Values 1-255 designate an AutoCAD color index (ACI); 0 = Color
+              BYBLOCK; 256 = Color BYLAYER; 257 = Color BYENTITY.</entry>
+            </row>
+
+            <row>
+              <entry>$INTERSECTIONDISPLAY</entry>
+
+              <entry>290</entry>
+
+              <entry>Specifies the display of intersection polylines: 0 =
+              Turns off the display of intersection polylines; 1 = Turns on
+              the display of intersection polylines.</entry>
+            </row>
+
+            <row>
+              <entry>$JOINSTYLE</entry>
+
+              <entry>280</entry>
+
+              <entry>Lineweight joint setting for new objects: 0=none; 1=
+              round; 2 = angle; 3 = flat.</entry>
+            </row>
+
+            <row>
+              <entry>$LIMCHECK</entry>
+
+              <entry>70</entry>
+
+              <entry>Nonzero if limits checking is on.</entry>
+            </row>
+
+            <row>
+              <entry>$LIMMAX</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>XY drawing limits upper-right corner (in WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$LIMMIN</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>XY drawing limits lower-left corner (in WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$LTSCALE</entry>
+
+              <entry>40</entry>
+
+              <entry>Global linetype scale.</entry>
+            </row>
+
+            <row>
+              <entry>$LUNITS</entry>
+
+              <entry>70</entry>
+
+              <entry>Units format for coordinates and distances.</entry>
+            </row>
+
+            <row>
+              <entry>$LUPREC</entry>
+
+              <entry>70</entry>
+
+              <entry>Units precision for coordinates and distances.</entry>
+            </row>
+
+            <row>
+              <entry>$LWDISPLAY</entry>
+
+              <entry>290</entry>
+
+              <entry>Controls the display of lineweights on the Model or
+              Layout tab: 0 = Lineweight is not displayed; 1 = Lineweight is
+              displayed.</entry>
+            </row>
+
+            <row>
+              <entry>$MAXACTVP</entry>
+
+              <entry>70</entry>
+
+              <entry>Sets maximum number of viewports to be
+              regenerated.</entry>
+            </row>
+
+            <row>
+              <entry>$MEASUREMENT</entry>
+
+              <entry>70</entry>
+
+              <entry>Sets drawing units: 0 = English; 1 = Metric.</entry>
+            </row>
+
+            <row>
+              <entry>$MENU</entry>
+
+              <entry>1</entry>
+
+              <entry>Name of menu file.</entry>
+            </row>
+
+            <row>
+              <entry>$MIRRTEXT</entry>
+
+              <entry>70</entry>
+
+              <entry>Mirror text if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$OBSCOLOR</entry>
+
+              <entry>70</entry>
+
+              <entry>Specifies the color of obscured lines. An obscured line
+              is a hidden line made visible by changing its color and linetype
+              and is visible only when the HIDE or SHADEMODE command is used.
+              The OBSCUREDCOLOR setting is visible only if the OBSCUREDLTYPE
+              is turned ON by setting it to a value other than 0. 0 and 256 =
+              Entity color; 1-255 = An AutoCAD color index (ACI).</entry>
+            </row>
+
+            <row>
+              <entry>$OBSLTYPE</entry>
+
+              <entry>280</entry>
+
+              <entry>Specifies the linetype of obscured lines. Obscured
+              linetypes are independent of zoom level, unlike regular AutoCAD
+              linetypes. Value 0 turns off display of obscured lines and is
+              the default. Linetype values are defined as follows: 0 = Off; 1
+              = Solid; 2 = Dashed; 3 = Dotted; 4 = Short Dash; 5 = Medium
+              Dash; 6 = Long Dash; 7 = Double Short Dash; 8 = Double Medium
+              Dash; 9 = Double Long Dash; 10 = Medium Long Dash; 11 = Sparse
+              Dot.</entry>
+            </row>
+
+            <row>
+              <entry>$ORTHOMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Ortho mode on if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$PDMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Point display mode.</entry>
+            </row>
+
+            <row>
+              <entry>$PDSIZE</entry>
+
+              <entry>40</entry>
+
+              <entry>Point display size.</entry>
+            </row>
+
+            <row>
+              <entry>$PELEVATION</entry>
+
+              <entry>40</entry>
+
+              <entry>Current paper space elevation.</entry>
+            </row>
+
+            <row>
+              <entry>$PEXTMAX</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Maximum X, Y, and Z extents for paper space.</entry>
+            </row>
+
+            <row>
+              <entry>$PEXTMIN</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Minimum X, Y, and Z extents for paper space.</entry>
+            </row>
+
+            <row>
+              <entry>$PINSBASE</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Paper space insertion base point.</entry>
+            </row>
+
+            <row>
+              <entry>$PLIMCHECK</entry>
+
+              <entry>70</entry>
+
+              <entry>Limits checking in paper space when nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$PLIMMAX</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>Maximum X and Y limits in paper space.</entry>
+            </row>
+
+            <row>
+              <entry>$PLIMMIN</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>Minimum X and Y limits in paper space.</entry>
+            </row>
+
+            <row>
+              <entry>$PLINEGEN</entry>
+
+              <entry>70</entry>
+
+              <entry>Governs the generation of linetype patterns around the
+              vertices of a 2D polyline: 1 = linetype is generated in a
+              continuous pattern around vertices of the polyline; 0 = each
+              segment of the polyline starts and ends with a dash.</entry>
+            </row>
+
+            <row>
+              <entry>$PLINEWID</entry>
+
+              <entry>40</entry>
+
+              <entry>Default polyline width.</entry>
+            </row>
+
+            <row>
+              <entry>$PROJECTNAME</entry>
+
+              <entry>1</entry>
+
+              <entry>Assigns a project name to the current drawing. Used when
+              an external reference or image is not found on its original
+              path. The project name points to a section in the registry that
+              can contain one or more search paths for each project name
+              defined. Project names and their search directories are created
+              from the Files tab of the Options dialog box.</entry>
+            </row>
+
+            <row>
+              <entry>$PROXYGRAPHICS</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls the saving of proxy object images.</entry>
+            </row>
+
+            <row>
+              <entry>$PSLTSCALE</entry>
+
+              <entry>70</entry>
+
+              <entry>Controls paper space linetype scaling: 1 = no special
+              linetype scaling 0 = viewport scaling governs linetype
+              scaling.</entry>
+            </row>
+
+            <row>
+              <entry>$PSTYLEMODE</entry>
+
+              <entry>290</entry>
+
+              <entry>Indicates whether the current drawing is in a
+              Color-Depend- ent or Named Plot Style mode: 0 = Uses named plot
+              style tables in the current drawing; 1 = Uses color-dependent
+              plot style tables in the current drawing.</entry>
+            </row>
+
+            <row>
+              <entry>$PSVPSCALE</entry>
+
+              <entry>40</entry>
+
+              <entry>View scale factor for new viewports: 0 = Scaled to fit;
+              &gt;0 = Scale factor (a positive real value).</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSBASE</entry>
+
+              <entry>2</entry>
+
+              <entry>Name of the UCS that defines the origin and orientation
+              of orthographic UCS settings (paper space only).</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSNAME</entry>
+
+              <entry>2</entry>
+
+              <entry>Current paper space UCS name.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORG</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Current paper space UCS origin.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORGBACK</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              paper space UCS to BACK when PUCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORGBOTTOM</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              paper space UCS to BOTTOM when PUCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORGFRONT</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              paper space UCS to FRONT when PUCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORGLEFT</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              paper space UCS to LEFT when PUCSBASE is set to WORLD</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORGRIGHT</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              paper space UCS to RIGHT when PUCSBASE is set to WORLD</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORGTOP</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              paper space UCS to TOP when PUCSBASE is set to WORLD</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORTHOREF</entry>
+
+              <entry>2</entry>
+
+              <entry>If paper space UCS is orthographic (PUCSORTHOVIEW not
+              equal to 0), this is the name of the UCS that the orthograph- ic
+              UCS is relative to. If blank, UCS is relative to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSORTHOVIEW</entry>
+
+              <entry>70</entry>
+
+              <entry>Orthographic view type of paper space UCS: 0 = UCS is not
+              orthographic; 1 = Top; 2 = Bottom; 3 = Front; 4 = Back; 5 =
+              Left; 6 = Right.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSXDIR</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Current paper space UCS X axis.</entry>
+            </row>
+
+            <row>
+              <entry>$PUCSYDIR</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Current paper space UCS Y axis.</entry>
+            </row>
+
+            <row>
+              <entry>$QTEXTMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Quick text mode on if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$REGENMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>REGENAUTO mode on if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$SHADEDGE</entry>
+
+              <entry>70</entry>
+
+              <entry>0 = faces shaded, edges not highlighted 1 = faces shaded,
+              edges highlighted in black 2 = faces not filled, edges in entity
+              color 3 = faces in entity color, edges in black.</entry>
+            </row>
+
+            <row>
+              <entry>$SHADEDIF</entry>
+
+              <entry>70</entry>
+
+              <entry>Percent ambient/diffuse light, range 1 ... 100, default
+              70.</entry>
+            </row>
+
+            <row>
+              <entry>$SHADOWPLANELOCATION</entry>
+
+              <entry>40</entry>
+
+              <entry>Location of the ground shadow plane. This is a Z axis
+              ordinate.</entry>
+            </row>
+
+            <row>
+              <entry>$SKETCHINC</entry>
+
+              <entry>40</entry>
+
+              <entry>Sketch record increment.</entry>
+            </row>
+
+            <row>
+              <entry>$SKPOLY</entry>
+
+              <entry>70</entry>
+
+              <entry>0 = sketch lines, 1 = sketch polylines.</entry>
+            </row>
+
+            <row>
+              <entry>$SORTENTS</entry>
+
+              <entry>280</entry>
+
+              <entry>Controls the object sorting methods; accessible from the
+              Options dialog box User Preferences tab. SORTENTS uses the
+              following bitcodes: 0 = Disables SORTENTS; 1 = Sorts for object
+              selection; 2 = Sorts for object snap; 4 = Sorts for redraws; 8 =
+              Sorts for MSLIDE command slide creation; 16 = Sorts for REGEN
+              commands; 32 = Sorts for plotting; 64 = Sorts for PostScript
+              output.</entry>
+            </row>
+
+            <row>
+              <entry>$SPLINESEGS</entry>
+
+              <entry>70</entry>
+
+              <entry>Number of line segments per spline patch.</entry>
+            </row>
+
+            <row>
+              <entry>$SPLINETYPE</entry>
+
+              <entry>70</entry>
+
+              <entry>Spline curve type for PEDIT Spline.</entry>
+            </row>
+
+            <row>
+              <entry>$SURFTAB1</entry>
+
+              <entry>70</entry>
+
+              <entry>Number of mesh tabulations in first direction.</entry>
+            </row>
+
+            <row>
+              <entry>$SURFTAB2</entry>
+
+              <entry>70</entry>
+
+              <entry>Number of mesh tabulations in second direction.</entry>
+            </row>
+
+            <row>
+              <entry>$SURFTYPE</entry>
+
+              <entry>70</entry>
+
+              <entry>Surface type for PEDIT Smooth.</entry>
+            </row>
+
+            <row>
+              <entry>$SURFU</entry>
+
+              <entry>70</entry>
+
+              <entry>Surface density (for PEDIT Smooth) in M
+              direction.</entry>
+            </row>
+
+            <row>
+              <entry>$SURFV</entry>
+
+              <entry>70</entry>
+
+              <entry>Surface density (for PEDIT Smooth) in N
+              direction.</entry>
+            </row>
+
+            <row>
+              <entry>$TDCREATE</entry>
+
+              <entry>40</entry>
+
+              <entry>Date/time of drawing creation.</entry>
+            </row>
+
+            <row>
+              <entry>$TDINDWG</entry>
+
+              <entry>40</entry>
+
+              <entry>Cumulative editing time for this drawing.</entry>
+            </row>
+
+            <row>
+              <entry>$TDUPDATE</entry>
+
+              <entry>40</entry>
+
+              <entry>Date/time of last drawing update.</entry>
+            </row>
+
+            <row>
+              <entry>$TDUSRTIMER</entry>
+
+              <entry>40</entry>
+
+              <entry>User elapsed timer.</entry>
+            </row>
+
+            <row>
+              <entry>$TDUUPDATE</entry>
+
+              <entry>40</entry>
+
+              <entry>Universal date/time of the last update/save (see Special
+              Handling of Date/Time Variables).</entry>
+            </row>
+
+            <row>
+              <entry>$TEXTSIZE</entry>
+
+              <entry>40</entry>
+
+              <entry>Default text height.</entry>
+            </row>
+
+            <row>
+              <entry>$TEXTSTYLE</entry>
+
+              <entry>7</entry>
+
+              <entry>Current text style name.</entry>
+            </row>
+
+            <row>
+              <entry>$THICKNESS</entry>
+
+              <entry>40</entry>
+
+              <entry>Current thickness set by ELEV command.</entry>
+            </row>
+
+            <row>
+              <entry>$TILEMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>1 for previous release compatibility mode, 0
+              otherwise.</entry>
+            </row>
+
+            <row>
+              <entry>$TRACEWID</entry>
+
+              <entry>40</entry>
+
+              <entry>Default trace width.</entry>
+            </row>
+
+            <row>
+              <entry>$TREEDEPTH</entry>
+
+              <entry>70</entry>
+
+              <entry>Specifies the maximum depth of the spatial index.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSBASE</entry>
+
+              <entry>2</entry>
+
+              <entry>Name of the UCS that defines the origin and orientation
+              of orthographic UCS settings.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSNAME</entry>
+
+              <entry>2</entry>
+
+              <entry>Name of current UCS.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORG</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Origin of current UCS (in WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORGBACK</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              model space UCS to BACK when UCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORGBOTTOM</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              model space UCS to BOTTOM when UCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORGFRONT</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              model space UCS to FRONT when UCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORGLEFT</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              model space UCS to LEFT when UCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORGRIGHT</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              model space UCS to RIGHT when UCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORGTOP</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Point which becomes the new UCS origin after changing
+              model space UCS to TOP when UCSBASE is set to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORTHOREF</entry>
+
+              <entry>2</entry>
+
+              <entry>If model space UCS is orthographic (UCSORTHOVIEW not
+              equal to 0), this is the name of the UCS that the orthograph- ic
+              UCS is relative to. If blank, UCS is relative to WORLD.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSORTHOVIEW</entry>
+
+              <entry>70</entry>
+
+              <entry>Orthographic view type of model space UCS: 0 = UCS is not
+              orthographic; 1 = Top; 2 = Bottom; 3 = Front; 4 = Back; 5 =
+              Left; 6 = Right.</entry>
+            </row>
+
+            <row>
+              <entry>$UCSXDIR</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Direction of current UCS's X axis (in WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$UCSYDIR</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Direction of current UCS's Y axis (in WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$UNITMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Low bit set = display fractions, feet-and-inches, and
+              surveyor's angles in input format.</entry>
+            </row>
+
+            <row>
+              <entry>$USERI1 ... $USERI5</entry>
+
+              <entry>70</entry>
+
+              <entry>Five integer variables intended for use by third-party
+              developers.</entry>
+            </row>
+
+            <row>
+              <entry>$USERR1 ... $USERR5</entry>
+
+              <entry>40</entry>
+
+              <entry>Five real variables intended for use by third-party
+              developers.</entry>
+            </row>
+
+            <row>
+              <entry>$USRTIMER</entry>
+
+              <entry>70</entry>
+
+              <entry>0 = Timer off; 1 = Timer on.</entry>
+            </row>
+
+            <row>
+              <entry>$VERSIONGUID</entry>
+
+              <entry>2</entry>
+
+              <entry>Uniquely identifies a particular version of a drawing.
+              Up- dated when the drawing is modified.</entry>
+            </row>
+
+            <row>
+              <entry>$VISRETAIN</entry>
+
+              <entry>70</entry>
+
+              <entry>0 = don't retain xref-dependent visibility settings, 1 =
+              retain xref-dependent visibility settings.</entry>
+            </row>
+
+            <row>
+              <entry>$WORLDVIEW</entry>
+
+              <entry>70</entry>
+
+              <entry>1 = set UCS to WCS during DVIEW/VPOINT, 0 = don't change
+              UCS.</entry>
+            </row>
+
+            <row>
+              <entry>$XCLIPFRAME</entry>
+
+              <entry>290</entry>
+
+              <entry>Controls the visibility of xref clipping boundaries: 0 =
+              Clipping boundary is not visible; 1 = Clipping boundary is
+              visible.</entry>
+            </row>
+
+            <row>
+              <entry>$XEDIT</entry>
+
+              <entry>290</entry>
+
+              <entry>Controls whether the current drawing can be edited
+              in-place when being referenced by another drawing. 0 = Can't use
+              in-place reference editing; 1 = Can use in-place reference
+              editing.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </chapter>
 </book>
