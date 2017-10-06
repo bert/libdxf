@@ -1110,4 +1110,46 @@ dxf_shape_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the \c visibility from a DXF \c SHAPE entity.
+ *
+ * \return \c visibility.
+ */
+int16_t
+dxf_shape_get_visibility
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (shape->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (shape->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape->visibility);
+}
+
+
 /* EOF */
