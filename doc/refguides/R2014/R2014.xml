@@ -2973,5 +2973,135 @@
         </tgroup>
       </table>
     </section>
+
+    <section>
+      <title>Revised VPORT Header Variables (DXF).</title>
+
+      <para>The following header variables existed before AutoCAD Release 11
+      but now have independent settings for each active viewport.</para>
+
+      <para>OPEN honors these variables when read from
+      DXF<superscript>TM</superscript> files.</para>
+
+      <para>If a VPORT symbol table with *ACTIVE entries is present (as is
+      true for any DXF file produced by Release 11 or later), the values in
+      the VPORT table entries override the values of these header
+      variables.</para>
+
+      <table align="left">
+        <title>Revised VPORT header variables.</title>
+
+        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Variable</entry>
+
+              <entry>Group code</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>$FASTZOOM</entry>
+
+              <entry>70</entry>
+
+              <entry>Fast zoom enabled if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$GRIDMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Grid mode on if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$GRIDUNIT</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>Grid X and Y spacing.</entry>
+            </row>
+
+            <row>
+              <entry>$SNAPANG</entry>
+
+              <entry>50</entry>
+
+              <entry>Snap grid rotation angle</entry>
+            </row>
+
+            <row>
+              <entry>$SNAPBASE</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>Snap/grid base point (in UCS).</entry>
+            </row>
+
+            <row>
+              <entry>$SNAPISOPAIR</entry>
+
+              <entry>70</entry>
+
+              <entry>Isometric plane: 0 = left, 1 = top, 2 = right.</entry>
+            </row>
+
+            <row>
+              <entry>$SNAPMODE</entry>
+
+              <entry>70</entry>
+
+              <entry>Snap mode on if nonzero.</entry>
+            </row>
+
+            <row>
+              <entry>$SNAPSTYLE</entry>
+
+              <entry>70</entry>
+
+              <entry>Snap style: 0 = standard, 1 = isometric.</entry>
+            </row>
+
+            <row>
+              <entry>$SNAPUNIT</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>Snap grid X and Y spacing.</entry>
+            </row>
+
+            <row>
+              <entry>$VIEWCTR</entry>
+
+              <entry>10, 20</entry>
+
+              <entry>XY center of current view on screen.</entry>
+            </row>
+
+            <row>
+              <entry>$VIEWDIR</entry>
+
+              <entry>10, 20, 30</entry>
+
+              <entry>Viewing direction (direction from target, in
+              WCS).</entry>
+            </row>
+
+            <row>
+              <entry>$VIEWSIZE</entry>
+
+              <entry>40</entry>
+
+              <entry>Height of view.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
   </chapter>
 </book>
