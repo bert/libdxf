@@ -251,6 +251,7 @@ int16_t dxf_shape_get_visibility (DxfShape *shape);
 DxfShape *dxf_shape_set_visibility (DxfShape *shape, int16_t visibility);
 int dxf_shape_get_color (DxfShape *shape);
 DxfShape *dxf_shape_set_color (DxfShape *shape, int color);
+int dxf_shape_get_paperspace (DxfShape *shape);
 
 
 #ifdef __cplusplus
