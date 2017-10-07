@@ -253,6 +253,7 @@ int dxf_shape_get_color (DxfShape *shape);
 DxfShape *dxf_shape_set_color (DxfShape *shape, int color);
 int dxf_shape_get_paperspace (DxfShape *shape);
 DxfShape *dxf_shape_set_paperspace (DxfShape *shape, int paperspace);
+int dxf_shape_get_graphics_data_size (DxfShape *shape);
 
 
 #ifdef __cplusplus
