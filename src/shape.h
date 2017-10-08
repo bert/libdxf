@@ -256,6 +256,7 @@ DxfShape *dxf_shape_set_paperspace (DxfShape *shape, int paperspace);
 int dxf_shape_get_graphics_data_size (DxfShape *shape);
 DxfShape *dxf_shape_set_graphics_data_size (DxfShape *shape, int graphics_data_size);
 int16_t dxf_shape_get_shadow_mode (DxfShape *shape);
+DxfShape *dxf_shape_set_shadow_mode (DxfShape *shape, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
