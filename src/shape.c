@@ -1533,4 +1533,44 @@ dxf_shape_set_shadow_mode
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF
+ * \c SHAPE entity.
+ *
+ * \return pointer to the \c binary_graphics_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_shape_get_binary_graphics_data
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shape->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryGraphicsData *) shape->binary_graphics_data);
+}
+
+
 /* EOF */
