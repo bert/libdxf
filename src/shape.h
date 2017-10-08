@@ -258,6 +258,7 @@ DxfShape *dxf_shape_set_graphics_data_size (DxfShape *shape, int graphics_data_s
 int16_t dxf_shape_get_shadow_mode (DxfShape *shape);
 DxfShape *dxf_shape_set_shadow_mode (DxfShape *shape, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_shape_get_binary_graphics_data (DxfShape *shape);
+DxfShape *dxf_shape_set_binary_graphics_data (DxfShape *shape, DxfBinaryGraphicsData *data);
 
 
 #ifdef __cplusplus
