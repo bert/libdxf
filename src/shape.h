@@ -260,6 +260,7 @@ DxfShape *dxf_shape_set_shadow_mode (DxfShape *shape, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_shape_get_binary_graphics_data (DxfShape *shape);
 DxfShape *dxf_shape_set_binary_graphics_data (DxfShape *shape, DxfBinaryGraphicsData *data);
 char *dxf_shape_get_dictionary_owner_soft (DxfShape *shape);
+DxfShape *dxf_shape_set_dictionary_owner_soft (DxfShape *shape, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus

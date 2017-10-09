@@ -1653,4 +1653,44 @@ dxf_shape_get_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
+ * \c SHAPE entity.
+ */
+DxfShape *
+dxf_shape_set_dictionary_owner_soft
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        char *dictionary_owner_soft
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->dictionary_owner_soft = strdup (dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
