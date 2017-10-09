@@ -262,6 +262,7 @@ DxfShape *dxf_shape_set_binary_graphics_data (DxfShape *shape, DxfBinaryGraphics
 char *dxf_shape_get_dictionary_owner_soft (DxfShape *shape);
 DxfShape *dxf_shape_set_dictionary_owner_soft (DxfShape *shape, char *dictionary_owner_soft);
 char *dxf_shape_get_material (DxfShape *shape);
+DxfShape *dxf_shape_set_material (DxfShape *shape, char *material);
 
 
 #ifdef __cplusplus
