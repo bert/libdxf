@@ -3103,5 +3103,91 @@
         </tgroup>
       </table>
     </section>
+
+    <section>
+      <title>Special Handling of Date/Time Variables (DXF).</title>
+
+      <para>The CDATE and DATE system variables provide access to the current
+      date and time.</para>
+
+      <para>The TDCREATE, TDINDWG, TDUPDATE, and TDUSRTIMER system variables
+      (and the $TDCREATE, $TDUCREATE, $TDUPDATE, and $TDUUPDATE DXF header
+      variables) provide access to times and dates associated with the current
+      drawing.</para>
+
+      <para>The values are represented as real numbers with special meanings,
+      as described below.</para>
+
+      <para>DATE is the current date and time represented as a Julian date and
+      fraction of a day in a real number.</para>
+
+      <para><emphasis>&lt;Julian date&gt;.&lt;Fraction of
+      day&gt;</emphasis></para>
+
+      <para>For example, on December 31, 1999, at 9:58:35 p.m. GMT, the DATE
+      variable contains</para>
+
+      <para><emphasis>2451544.91568287</emphasis></para>
+
+      <para>The date and time are taken from the computer's clock when the
+      variable is read.</para>
+
+      <para>The time is represented as a fraction of a day, and the times
+      returned by DATE may be truly subtracted to compute differences in
+      time.</para>
+
+      <para>To extract the seconds since midnight from the value returned by
+      DATE, use the AutoLISP expressions:</para>
+
+      <para>(setq s (getvar "DATE"))</para>
+
+      <para>(setq seconds (* 86400.0 (- s (fix s))))</para>
+
+      <para>Note that DATE returns only a true Julian date if the system's
+      clock is set to UTC/Zulu (Greenwich Mean Time).</para>
+
+      <para>TDCREATE and TDUPDATE have the same format as DATE, but their
+      values represent the creation time and last update time of the current
+      drawing.</para>
+
+      <para>TDINDWG and TDUSRTIMER (and the $TDINDWG and $TDUSRTIMER DXF
+      header variables) use a format similar to that of DATE, but their values
+      represent elapsed times, as in</para>
+
+      <para><emphasis>&lt;Number of days&gt;.&lt;Fraction of
+      day&gt;</emphasis></para>
+
+      <para>CDATE is the current date and time in calendar and clock
+      format.</para>
+
+      <para>The value is returned as a real number in the form</para>
+
+      <para><emphasis>YYYYMMDD.HHMMSShsec</emphasis></para>
+
+      <para>where:</para>
+
+      <para>YYYY = year</para>
+
+      <para>MM = month (01-12)</para>
+
+      <para>DD = day (01-31)</para>
+
+      <para>HH = hour (00-23)</para>
+
+      <para>MM = minute (00-59)</para>
+
+      <para>SS = second (00-59)</para>
+
+      <para>hsec = hundredths of a second (00-99)</para>
+
+      <para>For example, if the current date is December 31, 2005, and the
+      time is 9:58:35.75 p.m., CDATE would return the value:</para>
+
+      <para><emphasis>20051231.21583575</emphasis></para>
+
+      <para>Note that CDATE values can be compared for later and earlier
+      values but that subtracting them yields numbers that are not
+      meaningful.</para>
+    </section>
   </chapter>
 </book>
