@@ -3206,5 +3206,95 @@
 
       <para>All fields are required.</para>
     </section>
+
+    <section>
+      <title>CLASSES Section Group Codes (DXF).</title>
+
+      <para>Each entry in the CLASSES section contains the groups described in
+      the following table.</para>
+
+      <para><table align="left">
+          <title>CLASSES section group codes.</title>
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry>Group code</entry>
+
+                <entry>Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>0</entry>
+
+                <entry>Record type (CLASS). Identifies beginning of a CLASS
+                record.</entry>
+              </row>
+
+              <row>
+                <entry>1</entry>
+
+                <entry>Class DXF record name; always unique.</entry>
+              </row>
+
+              <row>
+                <entry>2</entry>
+
+                <entry>C++ class name. Used to bind with software that defines
+                object class behavior; always unique.</entry>
+              </row>
+
+              <row>
+                <entry>3</entry>
+
+                <entry>Application name. Posted in Alert box when a class
+                definition listed in this section is not currently
+                loaded.</entry>
+              </row>
+
+              <row>
+                <entry>90</entry>
+
+                <entry>Proxy capabilities flag. Bit coded value that indicates
+                the capabilities of this object as a proxy. 0 = No operations
+                allowed (0); 1 = Erase allowed (0x1); 2 = Transform allowed
+                (0x2); 4 = Color change allowed (0x4); 8 = Layer change
+                allowed (0x8); 16 = Linetype change allowed (0x10); 32 =
+                Linetype scale change allowed (0x20); 64 = Visibility change
+                allowed (0x40); 128 = Cloning allowed (0x80); 256 = Lineweight
+                change allowed (0x100); 512 = Plot Style Name change allowed
+                (0x200); 895 = All operations except cloning allowed (0x37F);
+                1023 = All operations allowed (0x3FF); 1024 = Disables proxy
+                warning dialog (0x400); 32768 = R13 format proxy (0x8000)
+                .</entry>
+              </row>
+
+              <row>
+                <entry>91</entry>
+
+                <entry>Instance count for a custom class.</entry>
+              </row>
+
+              <row>
+                <entry>280</entry>
+
+                <entry>Was-a-proxy flag. Set to 1 if class was not loaded when
+                this DXF file was created, and 0 otherwise.</entry>
+              </row>
+
+              <row>
+                <entry>281</entry>
+
+                <entry>Is-an-entity flag. Set to 1 if class was derived from
+                the AcDbEntity class and can reside in the BLOCKS or ENTITIES
+                section. If 0, instances may appear only in the OBJECTS
+                section.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+    </section>
   </chapter>
 </book>
