@@ -3594,4 +3594,22 @@
         </table></para>
     </section>
   </chapter>
+
+  <chapter>
+    <title>TABLES Section.</title>
+
+    <section>
+      <title>About the DXF TABLES Section (DXF).</title>
+
+      <para>The group codes described in this chapter are found in
+      DXF<superscript>TM</superscript> files and used by applications.</para>
+
+      <para>The TABLES section contains several tables, each of which can
+      contain a variable number of entries.</para>
+
+      <para>These codes are also used by AutoLISP<superscript>®</superscript>
+      and ObjectARX<superscript>®</superscript> applications in entity
+      definition lists.</para>
+    </section>
+  </chapter>
 </book>
