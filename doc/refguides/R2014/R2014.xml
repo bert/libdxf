@@ -3296,5 +3296,302 @@
           </tgroup>
         </table></para>
     </section>
+
+    <section>
+      <title>Default Class Values (DXF).</title>
+
+      <para>AutoCAD<superscript>®</superscript> registers the classes listed
+      in the following table.</para>
+
+      <para>This may not be a complete list of the classes found in a DXF
+      file.</para>
+
+      <para>It depends on the applications currently in use by AutoCAD.<table
+          align="left">
+          <title>Default class values.</title>
+
+          <tgroup cols="5">
+            <thead>
+              <row>
+                <entry>DXF Record Name Code 1</entry>
+
+                <entry>C++ Class Name Code 2</entry>
+
+                <entry>Code 90</entry>
+
+                <entry>Code 280</entry>
+
+                <entry>Code 281</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>ACDBDICTIONARYWDFLT</entry>
+
+                <entry>AcDbDictionaryWithDefault</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>ACDBPLACEHOLDER</entry>
+
+                <entry>AcDbPlaceHolder</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>ARCALIGNEDTEXT</entry>
+
+                <entry>AcDbArcAlignedText</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>DICTIONARYVAR</entry>
+
+                <entry>AcDbDictionaryVar</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>HATCH</entry>
+
+                <entry>AcDbHatch</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>IDBUFFER</entry>
+
+                <entry>AcDbIdBuffer</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>IMAGE</entry>
+
+                <entry>AcDbRasterImage</entry>
+
+                <entry>127</entry>
+
+                <entry>0</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>IMAGEDEF</entry>
+
+                <entry>AcDbRasterImageDef</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>IMAGEDEF_REACTOR</entry>
+
+                <entry>AcDbRasterImageDefReactor</entry>
+
+                <entry>1</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>LAYER_INDEX</entry>
+
+                <entry>AcDbLayerIndex</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>LAYOUT</entry>
+
+                <entry>AcDbLayout</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>LWPOLYLINE</entry>
+
+                <entry>AcDbPolyline</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>OBJECT_PTR</entry>
+
+                <entry>CAseDLPNTableRecord</entry>
+
+                <entry>1</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>OLE2FRAME</entry>
+
+                <entry>AcDbOle2Frame</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>PLOTSETTINGS</entry>
+
+                <entry>AcDbPlotSettings</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>RASTERVARIABLES</entry>
+
+                <entry>AcDbRasterVariables</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>RTEXT</entry>
+
+                <entry>RText</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>SORTENTSTABLE</entry>
+
+                <entry>AcDbSortentsTable</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>SPATIAL_INDEX</entry>
+
+                <entry>AcDbSpatialIndex</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>SPATIAL_FILTER</entry>
+
+                <entry>AcDbSpatialFilter</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+
+              <row>
+                <entry>WIPEOUT</entry>
+
+                <entry>AcDbWipeout</entry>
+
+                <entry>127</entry>
+
+                <entry>0</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>WIPEOUTVARIBLES</entry>
+
+                <entry>AcDbWipeoutVariables</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+
+                <entry>0</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+    </section>
   </chapter>
 </book>
