@@ -3672,5 +3672,92 @@
       <para>This is the only context in which this exception should
       occur.</para>
     </section>
+
+    <section>
+      <title>Common Symbol Table Group Codes (DXF).</title>
+
+      <para>The following table shows group codes that apply to all symbol
+      tables.</para>
+
+      <para><table>
+          <title>Group codes that apply to all symbol tables.</title>
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry align="left">Group codes</entry>
+
+                <entry align="left">Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>-1</entry>
+
+                <entry>APP: entity name (changes each time a drawing is
+                opened).</entry>
+              </row>
+
+              <row>
+                <entry>0</entry>
+
+                <entry>Object type (TABLE).</entry>
+              </row>
+
+              <row>
+                <entry>2</entry>
+
+                <entry>Table name.</entry>
+              </row>
+
+              <row>
+                <entry>5</entry>
+
+                <entry>Handle.</entry>
+              </row>
+
+              <row>
+                <entry>102</entry>
+
+                <entry>“{ACAD_XDICTIONARY” indicates the start of an extension
+                dictionary group. This group exists only if persistent
+                reactors have been attached to this object (optional).</entry>
+              </row>
+
+              <row>
+                <entry>360</entry>
+
+                <entry>Hard owner ID/handle to owner dictionary
+                (optional).</entry>
+              </row>
+
+              <row>
+                <entry>102</entry>
+
+                <entry>End of group, “}” (optional).</entry>
+              </row>
+
+              <row>
+                <entry>330</entry>
+
+                <entry>Soft-pointer ID/handle to owner object.</entry>
+              </row>
+
+              <row>
+                <entry>100</entry>
+
+                <entry>Subclass marker (AcDbSymbolTable).</entry>
+              </row>
+
+              <row>
+                <entry>70</entry>
+
+                <entry>Maximum number of entries in table.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+    </section>
   </chapter>
 </book>
