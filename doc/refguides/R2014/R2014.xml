@@ -3611,5 +3611,66 @@
       and ObjectARX<superscript>®</superscript> applications in entity
       definition lists.</para>
     </section>
+
+    <section>
+      <title>About Symbol Table Group Codes (DXF).</title>
+
+      <para>The order of the tables may change, but the LTYPE table always
+      precedes the LAYER table.</para>
+
+      <para>Each table is introduced with a 0 group code with the label
+      TABLE.</para>
+
+      <para>This is followed by a 2 group code identifying the particular
+      table (APPID, DIMSTYLE, LAYER, LTYPE, STYLE, UCS, VIEW, VPORT, or
+      BLOCK_RECORD), a 5 group code (a handle), a 100 group code
+      (AcDbSymbolTable subclass marker), and a 70 group code that specifies
+      the maximum number of table entries that may follow.</para>
+
+      <para>Table names are output in uppercase.</para>
+
+      <para>The DIMSTYLE handle is a 105 group code, and not a 5 group
+      code.</para>
+
+      <para>The tables in a drawing can contain deleted items, but these are
+      not written to the DXF file.</para>
+
+      <para>As a result, fewer table entries may follow the table header than
+      are indicated by the 70 group code, so do not use the count in the 70
+      group code as an index to read in the table.</para>
+
+      <para>This group code is provided so that a program that reads DXF files
+      can allocate an array large enough to hold all the table entries that
+      follow.</para>
+
+      <para>Following this header for each table are the table entries.</para>
+
+      <para>Each table entry consists of a 0 group identifying the item type
+      (same as table name, such as LTYPE or LAYER), a 2 group giving the name
+      of the table entry, a 70 group specifying flags relevant to the table
+      entry (defined for each following table), and additional groups that
+      give the value of the table entry.</para>
+
+      <para>The end of each table is indicated by a 0 group with the value
+      ENDTAB.</para>
+
+      <para>Both symbol table records and symbol tables are database
+      objects.</para>
+
+      <para>At a very minimum, with all prevailing usage within
+      AutoCAD<superscript>®</superscript>, this implies that a handle is
+      present, positioned after the 2 group codes for both the symbol table
+      record objects and the symbol table objects.</para>
+
+      <para>The DIMSTYLE table is the only record type in the system with a
+      handle code of 105 because of its earlier usage of group code 5.</para>
+
+      <para>As a rule, programmers should not be concerned about this
+      exception unless it is in the context of the DIMSTYLE table
+      section.</para>
+
+      <para>This is the only context in which this exception should
+      occur.</para>
+    </section>
   </chapter>
 </book>
