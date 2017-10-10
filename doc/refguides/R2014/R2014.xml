@@ -3190,4 +3190,21 @@
       meaningful.</para>
     </section>
   </chapter>
+
+  <chapter>
+    <title>CLASSES Section.</title>
+
+    <section>
+      <title>About the DXF CLASSES Section.</title>
+
+      <para>The CLASSES section in DXF files holds the information for
+      application-defined classes whose instances appear in the BLOCKS,
+      ENTITIES, and OBJECTS sections of the database.</para>
+
+      <para>It is assumed that a class definition is permanently fixed in the
+      class hierarchy.</para>
+
+      <para>All fields are required.</para>
+    </section>
+  </chapter>
 </book>
