@@ -314,9 +314,11 @@ The prefered style for a Doxygen comment for a function or any other entity is:
  *
  * \exception Can be described here.
  *
- * \since To describe in which verion this feature was implemented.
+ * \since To describe in which version this feature was implemented.
  *
- * \deprecated To describe in which verion this feature was deprecated.
+ * \deprecated To describe in which version this feature was deprecated.
+ *
+ * \version Describe compliance with version of DXF.
  *
  * \todo Can be described here.
  *
