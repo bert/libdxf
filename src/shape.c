@@ -2065,4 +2065,42 @@ dxf_shape_set_color_value
 }
 
 
+/*!
+ * \brief Get the \c color_name from a DXF \c SHAPE entity.
+ *
+ * \return \c color_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_shape_get_color_name
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shape->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (shape->color_name));
+}
+
+
 /* EOF */
