@@ -265,6 +265,7 @@ char *dxf_shape_get_material (DxfShape *shape);
 DxfShape *dxf_shape_set_material (DxfShape *shape, char *material);
 char *dxf_shape_get_dictionary_owner_hard (DxfShape *shape);
 DxfShape *dxf_shape_set_dictionary_owner_hard (DxfShape *shape, char *dictionary_owner_hard);
+int16_t dxf_shape_get_lineweight (DxfShape *shape);
 
 
 #ifdef __cplusplus
