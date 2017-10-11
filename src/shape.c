@@ -1886,4 +1886,38 @@ dxf_shape_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c SHAPE entity.
+ *
+ * \return a pointer to \c shape when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfShape *
+dxf_shape_set_lineweight
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
