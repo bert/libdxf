@@ -2031,4 +2031,38 @@ dxf_shape_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a DXF \c SHAPE entity.
+ *
+ * \return a pointer to \c shape when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfShape *
+dxf_shape_set_color_value
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
