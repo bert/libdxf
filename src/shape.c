@@ -2145,4 +2145,35 @@ dxf_shape_set_color_name
 }
 
 
+/*!
+ * \brief Get the \c transparency from a DXF \c SHAPE entity.
+ *
+ * \return \c transparency when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_shape_get_transparency
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape->transparency);
+}
+
+
 /* EOF */
