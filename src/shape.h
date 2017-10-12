@@ -274,6 +274,7 @@ DxfShape *dxf_shape_set_color_value (DxfShape *shape, long color_value);
 char *dxf_shape_get_color_name (DxfShape *shape);
 DxfShape *dxf_shape_set_color_name (DxfShape *shape, char *color_name);
 long dxf_shape_get_transparency (DxfShape *shape);
+DxfShape *dxf_shape_set_transparency (DxfShape *shape, long transparency);
 
 
 #ifdef __cplusplus
