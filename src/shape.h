@@ -292,6 +292,7 @@ DxfShape *dxf_shape_set_rot_angle (DxfShape *shape, double rot_angle);
 double dxf_shape_get_obl_angle (DxfShape *shape);
 DxfShape *dxf_shape_set_obl_angle (DxfShape *shape, double obl_angle);
 double dxf_shape_get_extr_x0 (DxfShape *shape);
+DxfShape *dxf_shape_set_extr_x0 (DxfShape *shape, double extr_x0);
 
 
 #ifdef __cplusplus

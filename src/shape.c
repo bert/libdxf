@@ -2825,4 +2825,40 @@ dxf_shape_get_extr_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the extrusion vector \c extr_x0 of a DXF
+ * \c SHAPE entity.
+ *
+ * \return a pointer to \c shape when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfShape *
+dxf_shape_set_extr_x0
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        double extr_x0
+                /*!< the X-value of the extrusion vector \c extr_x0 of a
+                 * DXF \c SHAPE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->extr_x0 = extr_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
