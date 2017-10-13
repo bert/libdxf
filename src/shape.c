@@ -2490,4 +2490,47 @@ dxf_shape_get_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the insertion point \c z0 of a DXF \c SHAPE
+ * entity.
+ *
+ * \return a pointer to \c shape when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfShape *
+dxf_shape_set_z0
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        double z0
+                /*!< the Z-value of the insertion point \c z0 of a DXF
+                 * \c SHAPE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shape->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
