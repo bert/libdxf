@@ -289,6 +289,7 @@ double dxf_shape_get_rel_x_scale (DxfShape *shape);
 DxfShape *dxf_shape_set_rel_x_scale (DxfShape *shape, double rel_x_scale);
 double dxf_shape_get_rot_angle (DxfShape *shape);
 DxfShape *dxf_shape_set_rot_angle (DxfShape *shape, double rot_angle);
+double dxf_shape_get_obl_angle (DxfShape *shape);
 
 
 #ifdef __cplusplus
