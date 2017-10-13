@@ -2598,4 +2598,35 @@ dxf_shape_set_size
 }
 
 
+/*!
+ * \brief Get the \c rel_x_scale of a DXF \c SHAPE entity.
+ *
+ * \return the \c rel_x_scale.
+ */
+double
+dxf_shape_get_rel_x_scale
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape->rel_x_scale);
+}
+
+
 /* EOF */
