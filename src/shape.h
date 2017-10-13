@@ -280,6 +280,7 @@ DxfShape *dxf_shape_set_p0 (DxfShape *shape, DxfPoint *p0);
 double dxf_shape_get_x0 (DxfShape *shape);
 DxfShape *dxf_shape_set_x0 (DxfShape *shape, double x0);
 double dxf_shape_get_y0 (DxfShape *shape);
+DxfShape *dxf_shape_set_y0 (DxfShape *shape, double y0);
 
 
 #ifdef __cplusplus
