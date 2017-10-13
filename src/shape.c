@@ -2564,4 +2564,38 @@ dxf_shape_get_size
 }
 
 
+/*!
+ * \brief Set the \c size of a DXF \c SHAPE entity.
+ *
+ * \return a pointer to \c shape when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfShape *
+dxf_shape_set_size
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        double size
+                /*!< the \c size of a DXF \c SHAPE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->size = size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */

@@ -284,6 +284,7 @@ DxfShape *dxf_shape_set_y0 (DxfShape *shape, double y0);
 double dxf_shape_get_z0 (DxfShape *shape);
 DxfShape *dxf_shape_set_z0 (DxfShape *shape, double z0);
 double dxf_shape_get_size (DxfShape *shape);
+DxfShape *dxf_shape_set_size (DxfShape *shape, double size);
 
 
 #ifdef __cplusplus
