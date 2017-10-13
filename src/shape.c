@@ -2861,4 +2861,36 @@ dxf_shape_set_extr_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the extrusion vector \c extr_y0 of a DXF
+ * \c SHAPE entity.
+ *
+ * \return the Y-value of the extrusion vector \c extr_y0.
+ */
+double
+dxf_shape_get_extr_y0
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape->extr_y0);
+}
+
+
 /* EOF */
