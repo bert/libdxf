@@ -2210,4 +2210,41 @@ dxf_shape_set_transparency
 }
 
 
+/*!
+ * \brief Get the insertion point \c p0 of a DXF \c SHAPE entity.
+ *
+ * \return the insertion point \c p0.
+ */
+DxfPoint *
+dxf_shape_get_p0
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shape->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape->p0);
+}
+
+
 /* EOF */
