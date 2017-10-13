@@ -278,6 +278,7 @@ DxfShape *dxf_shape_set_transparency (DxfShape *shape, long transparency);
 DxfPoint *dxf_shape_get_p0 (DxfShape *shape);
 DxfShape *dxf_shape_set_p0 (DxfShape *shape, DxfPoint *p0);
 double dxf_shape_get_x0 (DxfShape *shape);
+DxfShape *dxf_shape_set_x0 (DxfShape *shape, double x0);
 
 
 #ifdef __cplusplus
