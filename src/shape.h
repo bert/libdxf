@@ -199,18 +199,6 @@ dxf_shape_struct
         double z0;
                 /*!< Z-value of the insertion point (in WCS).\n
                  * Group code = 30. */
-        double extr_x0;
-                /*!< X-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 210. */
-        double extr_y0;
-                /*!< Y-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 220. */
-        double extr_z0;
-                /*!< Z-value of the extrusion vector.\n
-                 * Defaults to 1.0 if ommitted in the DXF file.\n
-                 * Group code = 230. */
         double size;
                 /*!< Size.\n
                  * Group code = 40. */
@@ -223,6 +211,18 @@ dxf_shape_struct
         double obl_angle;
                 /*!< Oblique angle (optional; default =0.0).\n
                  * Group code = 51. */
+        double extr_x0;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
         struct DxfShape *next;
                 /*!< Pointer to the next DxfShape.\n
                  * \c NULL in the last DxfShape. */
