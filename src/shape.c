@@ -2997,4 +2997,44 @@ dxf_shape_set_extr_z0
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c SHAPE entity from a DXF
+ * \c SHAPE entity.
+ *
+ * \return pointer to the next \c SHAPE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfShape *
+dxf_shape_get_next
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shape->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfShape *) shape->next);
+}
+
+
 /* EOF */
