@@ -605,15 +605,29 @@ dxf_shape_write
         {
                 fprintf (fp->fp, "  6\n%s\n", shape->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (shape->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", shape->material);
+        }
+        if (shape->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", shape->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", shape->lineweight);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (shape->elevation != 0.0))
         {
                 fprintf (fp->fp, " 38\n%f\n", shape->elevation);
         }
-        if (shape->color != DXF_COLOR_BYLAYER)
+        if ((fp->acad_version_number <= AutoCAD_13)
+          && (shape->thickness != 0.0))
         {
-                fprintf (fp->fp, " 62\n%d\n", shape->color);
+                fprintf (fp->fp, " 39\n%f\n", shape->thickness);
         }
         if (shape->linetype_scale != 1.0)
         {
@@ -622,6 +636,36 @@ dxf_shape_write
         if (shape->visibility != 0)
         {
                 fprintf (fp->fp, " 60\n%d\n", shape->visibility);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (shape->graphics_data_size > 0))
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", shape->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", shape->graphics_data_size);
+#endif
+                if (shape->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) shape->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", shape->color_value);
+                fprintf (fp->fp, "430\n%s\n", shape->color_name);
+                fprintf (fp->fp, "440\n%ld\n", shape->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", shape->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", shape->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
