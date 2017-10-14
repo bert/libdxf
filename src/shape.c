@@ -743,11 +743,16 @@ dxf_shape_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (shape->shape_name);
         free (shape->linetype);
         free (shape->layer);
+        dxf_binary_graphics_data_free_chain (shape->binary_graphics_data);
         free (shape->dictionary_owner_soft);
+        free (shape->material);
         free (shape->dictionary_owner_hard);
+        free (shape->plot_style_name);
+        free (shape->color_name);
+        free (shape->shape_name);
+        free (shape->p0);
         free (shape);
         shape = NULL;
 #if DEBUG
