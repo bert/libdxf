@@ -115,7 +115,6 @@ dxf_shape_init
               return (NULL);
         }
         shape->id_code = 0;
-        shape->shape_name = strdup ("");
         shape->linetype = strdup (DXF_DEFAULT_LINETYPE);
         shape->layer = strdup (DXF_DEFAULT_LAYER);
         shape->elevation = 0.0;
@@ -124,18 +123,29 @@ dxf_shape_init
         shape->visibility = DXF_DEFAULT_VISIBILITY;
         shape->color = DXF_COLOR_BYLAYER;
         shape->paperspace = DXF_MODELSPACE;
+        shape->graphics_data_size = 0;
+        shape->shadow_mode = 0;
+        shape->binary_graphics_data = dxf_binary_graphics_data_new ();
+        shape->binary_graphics_data = dxf_binary_graphics_data_init (shape->binary_graphics_data);
         shape->dictionary_owner_soft = strdup ("");
+        shape->material = strdup ("");
         shape->dictionary_owner_hard = strdup ("");
-        shape->x0 = 0.0;
-        shape->y0 = 0.0;
-        shape->z0 = 0.0;
-        shape->extr_x0 = 0.0;
-        shape->extr_y0 = 0.0;
-        shape->extr_z0 = 0.0;
+        shape->lineweight = 0;
+        shape->plot_style_name = strdup ("");
+        shape->color_value = 0;
+        shape->color_name = strdup ("");
+        shape->transparency = 0;
+        shape->shape_name = strdup ("");
+        shape->p0->x0 = 0.0;
+        shape->p0->y0 = 0.0;
+        shape->p0->z0 = 0.0;
         shape->size = 0.0;
         shape->rel_x_scale = 0.0;
         shape->rot_angle = 0.0;
         shape->obl_angle = 0.0;
+        shape->extr_x0 = 0.0;
+        shape->extr_y0 = 0.0;
+        shape->extr_z0 = 0.0;
         shape->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
