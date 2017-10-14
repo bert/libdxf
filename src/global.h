@@ -426,20 +426,28 @@ dxf_char_struct
         /*!< \brief The current modeler format version. */
 
 #define DXF_MODELSPACE 0
-        /*!< \brief This is where our hardware is going to live, default
+        /*!< \brief Model space.
+         *
+         * This is where our hardware is going to live, default
          * value, can be ommitted in dxf output. */
 
 #define DXF_PAPERSPACE 1
-        /*!< \brief This is where your annotation (papersheet templates,
+        /*!< \brief Paper space.
+         *
+         * This is where your annotation (papersheet templates,
          * fab notes and such) should live, has to be included in DXF
          * output for entity to live on paperspace. */
 
 #define DXF_DEFAULT_LAYER "0"
-        /*!< \brief There is <b>always</b> a layer "0" defined, it's
+        /*!< \brief Default layer.
+         *
+         * There is <b>always</b> a layer "0" defined, it's
          * reasonably safe to assume that this is a valid layername. */
 
 #define DXF_DEFAULT_LINETYPE "BYLAYER"
-        /*!< \brief There is <b>always</b> a linetype "BYLAYER" defined,
+        /*!< \brief Default linetype.
+         *
+         * There is <b>always</b> a linetype "BYLAYER" defined,
          * it's reasonably safe to assume that this is a valid linetype. */
 
 #define DXF_DEFAULT_LINETYPE_SCALE 1.0
