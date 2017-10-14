@@ -228,9 +228,7 @@ dxf_seqend_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", seqend->layer);
                 }
-                else if ((fp->acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0)
-                        && (seqend->elevation != 0.0))
+                else if (strcmp (temp_string, "38") == 0)
                 {
                         /* Now follows a string containing the
                          * elevation. */
