@@ -298,6 +298,7 @@ DxfShape *dxf_shape_set_extr_y0 (DxfShape *shape, double extr_y0);
 double dxf_shape_get_extr_z0 (DxfShape *shape);
 DxfShape *dxf_shape_set_extr_z0 (DxfShape *shape, double extr_z0);
 DxfShape *dxf_shape_get_next (DxfShape *shape);
+DxfShape *dxf_shape_set_next (DxfShape *shape, DxfShape *next);
 
 
 #ifdef __cplusplus

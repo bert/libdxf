@@ -3037,4 +3037,43 @@ dxf_shape_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c SHAPE for a DXF \c SHAPE
+ * entity.
+ */
+DxfShape *
+dxf_shape_set_next
+(
+        DxfShape *shape,
+                /*!< a pointer to a DXF \c SHAPE entity. */
+        DxfShape *next
+                /*!< a pointer to the next \c SHAPE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        shape->next = (struct DxfShape *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (shape);
+}
+
+
 /* EOF */
