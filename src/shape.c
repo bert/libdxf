@@ -3076,4 +3076,49 @@ dxf_shape_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c SHAPE entity from a linked list
+ * of DXF \c SHAPE entities.
+ *
+ * \return pointer to the last \c SHAPE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfShape *
+dxf_shape_get_last
+(
+        DxfShape *shape
+                /*!< a pointer to a DXF \c SHAPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shape->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfShape *) shape);
+        }
+        DxfShape *iter = (DxfShape *) shape->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfShape *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfShape *) iter);
+}
+
+
 /* EOF */
