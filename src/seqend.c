@@ -603,8 +603,13 @@ dxf_seqend_free
         }
         free (seqend->linetype);
         free (seqend->layer);
+        dxf_binary_graphics_data_free_chain (seqend->binary_graphics_data);
         free (seqend->dictionary_owner_soft);
+        free (seqend->material);
         free (seqend->dictionary_owner_hard);
+        free (seqend->plot_style_name);
+        free (seqend->color_name);
+        free (seqend->app_name);
         free (seqend);
         seqend = NULL;
 #if DEBUG
