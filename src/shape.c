@@ -752,7 +752,7 @@ dxf_shape_free
         free (shape->plot_style_name);
         free (shape->color_name);
         free (shape->shape_name);
-        free (shape->p0);
+        dxf_point_free (shape->p0);
         free (shape);
         shape = NULL;
 #if DEBUG
