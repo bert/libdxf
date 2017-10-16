@@ -13,6 +13,12 @@
  * A diabolo shaped solid can be formed by "twisting" the \c SOLID form in it's
  * plane, by "swapping" the third and fourth coordinate set.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -57,12 +63,6 @@ extern "C" {
  *
  * If only three points are entered (forming a triangular \c SOLID), the
  * third and fourth points will coincide.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_solid_struct
