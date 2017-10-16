@@ -114,7 +114,6 @@ dxf_seqend_init
                 __FUNCTION__);
               return (NULL);
         }
-        seqend->app_name = strdup ("");
         seqend->id_code = 0;
         seqend->linetype = strdup (DXF_DEFAULT_LINETYPE);
         seqend->layer = strdup (DXF_DEFAULT_LAYER);
