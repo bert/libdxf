@@ -692,15 +692,24 @@ dxf_solid_write
         {
                 fprintf (fp->fp, "  6\n%s\n", solid->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (solid->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", solid->material);
+        }
+        if (solid->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", solid->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", solid->lineweight);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (solid->elevation != 0.0))
         {
                 fprintf (fp->fp, " 38\n%f\n", solid->elevation);
-        }
-        if (solid->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", solid->color);
         }
         if (solid->linetype_scale != 1.0)
         {
@@ -710,22 +719,52 @@ dxf_solid_write
         {
                 fprintf (fp->fp, " 60\n%d\n", solid->visibility);
         }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (solid->graphics_data_size > 0))
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", solid->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", solid->graphics_data_size);
+#endif
+                if (solid->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = solid->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", solid->color_value);
+                fprintf (fp->fp, "430\n%s\n", solid->color_name);
+                fprintf (fp->fp, "440\n%ld\n", solid->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", solid->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", solid->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbTrace\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", solid->x0);
-        fprintf (fp->fp, " 20\n%f\n", solid->y0);
-        fprintf (fp->fp, " 30\n%f\n", solid->z0);
-        fprintf (fp->fp, " 11\n%f\n", solid->x1);
-        fprintf (fp->fp, " 21\n%f\n", solid->y1);
-        fprintf (fp->fp, " 31\n%f\n", solid->z1);
-        fprintf (fp->fp, " 12\n%f\n", solid->x2);
-        fprintf (fp->fp, " 22\n%f\n", solid->y2);
-        fprintf (fp->fp, " 32\n%f\n", solid->z2);
-        fprintf (fp->fp, " 13\n%f\n", solid->x3);
-        fprintf (fp->fp, " 23\n%f\n", solid->y3);
-        fprintf (fp->fp, " 33\n%f\n", solid->z3);
+        fprintf (fp->fp, " 10\n%f\n", solid->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", solid->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", solid->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", solid->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", solid->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", solid->p1->z0);
+        fprintf (fp->fp, " 12\n%f\n", solid->p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", solid->p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", solid->p2->z0);
+        fprintf (fp->fp, " 13\n%f\n", solid->p3->x0);
+        fprintf (fp->fp, " 23\n%f\n", solid->p3->y0);
+        fprintf (fp->fp, " 33\n%f\n", solid->p3->z0);
         if (solid->thickness != 0.0)
         {
                 fprintf (fp->fp, " 39\n%f\n", solid->thickness);
