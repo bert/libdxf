@@ -261,35 +261,12 @@ dxf_solid_struct
 } DxfSolid;
 
 
-DxfSolid *
-dxf_solid_new ();
-DxfSolid *
-dxf_solid_init
-(
-        DxfSolid *solid
-);
-DxfSolid *
-dxf_solid_read
-(
-        DxfFile *fp,
-        DxfSolid *solid
-);
-int
-dxf_solid_write
-(
-        DxfFile *fp,
-        DxfSolid *solid
-);
-int
-dxf_solid_free
-(
-        DxfSolid *solid
-);
-void
-dxf_solid_free_chain
-(
-        DxfSolid *solids
-);
+DxfSolid *dxf_solid_new ();
+DxfSolid *dxf_solid_init (DxfSolid *solid);
+DxfSolid *dxf_solid_read (DxfFile *fp, DxfSolid *solid);
+int dxf_solid_write (DxfFile *fp, DxfSolid *solid);
+int dxf_solid_free (DxfSolid *solid);
+void dxf_solid_free_chain (DxfSolid *solids);
 int dxf_solid_get_id_code (DxfSolid *solid);
 
 
