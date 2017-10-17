@@ -244,6 +244,7 @@ dxf_solid_read
                 solid->p3 = dxf_point_new ();
                 solid->p3 = dxf_point_init (solid->p3);
         }
+        /* Start reading and parsing. */
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
