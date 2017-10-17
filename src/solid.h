@@ -290,6 +290,7 @@ dxf_solid_free_chain
 (
         DxfSolid *solids
 );
+int dxf_solid_get_id_code (DxfSolid *solid);
 
 
 #ifdef __cplusplus
