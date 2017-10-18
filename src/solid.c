@@ -1190,4 +1190,42 @@ dxf_solid_get_thickness
 }
 
 
+/*!
+ * \brief Set the \c thickness for a DXF \c SOLID entity.
+ */
+DxfSolid *
+dxf_solid_set_thickness
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        double thickness
+                /*!< the \c thickness to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->thickness = thickness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */

@@ -276,6 +276,7 @@ DxfSolid *dxf_solid_set_layer (DxfSolid *solid, char *layer);
 double dxf_solid_get_elevation (DxfSolid *solid);
 DxfSolid *dxf_solid_set_elevation (DxfSolid *solid, double elevation);
 double dxf_solid_get_thickness (DxfSolid *solid);
+DxfSolid *dxf_solid_set_thickness (DxfSolid *solid, double thickness);
 
 
 #ifdef __cplusplus
