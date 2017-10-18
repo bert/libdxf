@@ -272,6 +272,7 @@ DxfSolid *dxf_solid_set_id_code (DxfSolid *solid, int id_code);
 char *dxf_solid_get_linetype (DxfSolid *solid);
 DxfSolid *dxf_solid_set_linetype (DxfSolid *solid, char *linetype);
 char *dxf_solid_get_layer (DxfSolid *solid);
+DxfSolid *dxf_solid_set_layer (DxfSolid *solid, char *layer);
 
 
 #ifdef __cplusplus

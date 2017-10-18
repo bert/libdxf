@@ -1053,4 +1053,43 @@ dxf_solid_get_layer
 }
 
 
+/*!
+ * \brief Set the \c layer for a DXF \c SOLID entity.
+ */
+DxfSolid *
+dxf_solid_set_layer
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        char *layer
+                /*!< a pointer to a string containing the \c layer to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */
