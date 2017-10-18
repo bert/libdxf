@@ -1153,4 +1153,41 @@ dxf_solid_set_elevation
 }
 
 
+/*!
+ * \brief Get the \c thickness from a DXF \c SOLID entity.
+ *
+ * \return \c thickness.
+ */
+double
+dxf_solid_get_thickness
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (solid->thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid->thickness);
+}
+
+
 /* EOF */
