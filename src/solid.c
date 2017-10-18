@@ -1092,4 +1092,34 @@ dxf_solid_set_layer
 }
 
 
+/*!
+ * \brief Get the \c elevation from a DXF \c SOLID entity.
+ *
+ * \return \c elevation.
+ */
+double
+dxf_solid_get_elevation
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid->elevation);
+}
+
+
 /* EOF */
