@@ -280,6 +280,7 @@ DxfSolid *dxf_solid_set_thickness (DxfSolid *solid, double thickness);
 double dxf_solid_get_linetype_scale (DxfSolid *solid);
 DxfSolid *dxf_solid_set_linetype_scale (DxfSolid *solid, double linetype_scale);
 int16_t dxf_solid_get_visibility (DxfSolid *solid);
+DxfSolid *dxf_solid_set_visibility (DxfSolid *solid, int16_t visibility);
 
 
 #ifdef __cplusplus
