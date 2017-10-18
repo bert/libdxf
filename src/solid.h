@@ -269,6 +269,7 @@ int dxf_solid_free (DxfSolid *solid);
 void dxf_solid_free_chain (DxfSolid *solids);
 int dxf_solid_get_id_code (DxfSolid *solid);
 DxfSolid *dxf_solid_set_id_code (DxfSolid *solid, int id_code);
+char *dxf_solid_get_linetype (DxfSolid *solid);
 
 
 #ifdef __cplusplus
