@@ -274,6 +274,7 @@ DxfSolid *dxf_solid_set_linetype (DxfSolid *solid, char *linetype);
 char *dxf_solid_get_layer (DxfSolid *solid);
 DxfSolid *dxf_solid_set_layer (DxfSolid *solid, char *layer);
 double dxf_solid_get_elevation (DxfSolid *solid);
+DxfSolid *dxf_solid_set_elevation (DxfSolid *solid, double elevation);
 
 
 #ifdef __cplusplus
