@@ -268,6 +268,7 @@ int dxf_solid_write (DxfFile *fp, DxfSolid *solid);
 int dxf_solid_free (DxfSolid *solid);
 void dxf_solid_free_chain (DxfSolid *solids);
 int dxf_solid_get_id_code (DxfSolid *solid);
+DxfSolid *dxf_solid_set_id_code (DxfSolid *solid, int id_code);
 
 
 #ifdef __cplusplus
