@@ -282,6 +282,7 @@ DxfSolid *dxf_solid_set_linetype_scale (DxfSolid *solid, double linetype_scale);
 int16_t dxf_solid_get_visibility (DxfSolid *solid);
 DxfSolid *dxf_solid_set_visibility (DxfSolid *solid, int16_t visibility);
 int dxf_solid_get_color (DxfSolid *solid);
+DxfSolid *dxf_solid_set_color (DxfSolid *solid, int color);
 
 
 #ifdef __cplusplus
