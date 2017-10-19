@@ -283,6 +283,7 @@ int16_t dxf_solid_get_visibility (DxfSolid *solid);
 DxfSolid *dxf_solid_set_visibility (DxfSolid *solid, int16_t visibility);
 int dxf_solid_get_color (DxfSolid *solid);
 DxfSolid *dxf_solid_set_color (DxfSolid *solid, int color);
+int dxf_solid_get_paperspace (DxfSolid *solid);
 
 
 #ifdef __cplusplus
