@@ -286,6 +286,7 @@ DxfSolid *dxf_solid_set_color (DxfSolid *solid, int color);
 int dxf_solid_get_paperspace (DxfSolid *solid);
 DxfSolid *dxf_solid_set_paperspace (DxfSolid *solid, int paperspace);
 int dxf_solid_get_graphics_data_size (DxfSolid *solid);
+DxfSolid *dxf_solid_set_graphics_data_size (DxfSolid *solid, int graphics_data_size);
 
 
 #ifdef __cplusplus
