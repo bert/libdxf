@@ -1842,4 +1842,44 @@ dxf_solid_get_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
+ * \c SOLID entity.
+ */
+DxfSolid *
+dxf_solid_set_dictionary_owner_soft
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        char *dictionary_owner_soft
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->dictionary_owner_soft = strdup (dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */
