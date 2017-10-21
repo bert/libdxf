@@ -288,6 +288,7 @@ DxfSolid *dxf_solid_set_paperspace (DxfSolid *solid, int paperspace);
 int dxf_solid_get_graphics_data_size (DxfSolid *solid);
 DxfSolid *dxf_solid_set_graphics_data_size (DxfSolid *solid, int graphics_data_size);
 int16_t dxf_solid_get_shadow_mode (DxfSolid *solid);
+DxfSolid *dxf_solid_set_shadow_mode (DxfSolid *solid, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
