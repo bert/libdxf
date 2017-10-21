@@ -293,6 +293,7 @@ DxfBinaryGraphicsData *dxf_solid_get_binary_graphics_data (DxfSolid *solid);
 DxfSolid *dxf_solid_set_binary_graphics_data (DxfSolid *solid, DxfBinaryGraphicsData *data);
 char *dxf_solid_get_dictionary_owner_soft (DxfSolid *solid);
 DxfSolid *dxf_solid_set_dictionary_owner_soft (DxfSolid *solid, char *dictionary_owner_soft);
+char *dxf_solid_get_material (DxfSolid *solid);
 
 
 #ifdef __cplusplus
