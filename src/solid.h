@@ -291,6 +291,7 @@ int16_t dxf_solid_get_shadow_mode (DxfSolid *solid);
 DxfSolid *dxf_solid_set_shadow_mode (DxfSolid *solid, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_solid_get_binary_graphics_data (DxfSolid *solid);
 DxfSolid *dxf_solid_set_binary_graphics_data (DxfSolid *solid, DxfBinaryGraphicsData *data);
+char *dxf_solid_get_dictionary_owner_soft (DxfSolid *solid);
 
 
 #ifdef __cplusplus
