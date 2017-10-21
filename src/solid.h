@@ -296,6 +296,7 @@ DxfSolid *dxf_solid_set_dictionary_owner_soft (DxfSolid *solid, char *dictionary
 char *dxf_solid_get_material (DxfSolid *solid);
 DxfSolid *dxf_solid_set_material (DxfSolid *solid, char *material);
 char *dxf_solid_get_dictionary_owner_hard (DxfSolid *solid);
+DxfSolid *dxf_solid_set_dictionary_owner_hard (DxfSolid *solid, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus
