@@ -4043,5 +4043,468 @@
           </tgroup>
         </table></para>
     </section>
+
+    <section>
+      <title>DIMSTYLE (DXF).</title>
+
+      <para>The following group codes apply to DIMSTYLE symbol table
+      entries.<table>
+          <title>DIMSTYLE group codes.</title>
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry align="left">Group codes</entry>
+
+                <entry align="left">Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>100</entry>
+
+                <entry>Subclass marker (AcDbDimStyleTableRecord).</entry>
+              </row>
+
+              <row>
+                <entry>2</entry>
+
+                <entry>Dimension style name.</entry>
+              </row>
+
+              <row>
+                <entry>70</entry>
+
+                <entry>Standard flag values (bit-coded values): 16 = If set,
+                table entry is externally dependent on an xref; 32 = If both
+                this bit and bit 16 are set, the externally dependent xref has
+                been successfully re- solved; 64 = If set, the table entry was
+                referenced by at least one entity in the drawing the last time
+                the drawing was edited. (This flag is for the benefit of
+                AutoCAD commands. It can be ignored by most programs that read
+                DXF files and need not be set by programs that write DXF
+                files) .</entry>
+              </row>
+
+              <row>
+                <entry>3</entry>
+
+                <entry>DIMPOST.</entry>
+              </row>
+
+              <row>
+                <entry>4</entry>
+
+                <entry>DIMAPOST.</entry>
+              </row>
+
+              <row>
+                <entry>5</entry>
+
+                <entry>DIMBLK (obsolete, now object ID).</entry>
+              </row>
+
+              <row>
+                <entry>6</entry>
+
+                <entry>DIMBLK1 (obsolete, now object ID).</entry>
+              </row>
+
+              <row>
+                <entry>7</entry>
+
+                <entry>DIMBLK2 (obsolete, now object ID).</entry>
+              </row>
+
+              <row>
+                <entry>40</entry>
+
+                <entry>DIMSCALE.</entry>
+              </row>
+
+              <row>
+                <entry>41</entry>
+
+                <entry>DIMASZ.</entry>
+              </row>
+
+              <row>
+                <entry>42</entry>
+
+                <entry>DIMEXO.</entry>
+              </row>
+
+              <row>
+                <entry>43</entry>
+
+                <entry>DIMDLI.</entry>
+              </row>
+
+              <row>
+                <entry>44</entry>
+
+                <entry>DIMEXE.</entry>
+              </row>
+
+              <row>
+                <entry>45</entry>
+
+                <entry>DIMRND.</entry>
+              </row>
+
+              <row>
+                <entry>46</entry>
+
+                <entry>DIMDLE.</entry>
+              </row>
+
+              <row>
+                <entry>47</entry>
+
+                <entry>DIMTP.</entry>
+              </row>
+
+              <row>
+                <entry>48</entry>
+
+                <entry>DIMTM.</entry>
+              </row>
+
+              <row>
+                <entry>140</entry>
+
+                <entry>DIMTXT.</entry>
+              </row>
+
+              <row>
+                <entry>141</entry>
+
+                <entry>DIMCEN.</entry>
+              </row>
+
+              <row>
+                <entry>142</entry>
+
+                <entry>DIMTSZ.</entry>
+              </row>
+
+              <row>
+                <entry>143</entry>
+
+                <entry>DIMALTF.</entry>
+              </row>
+
+              <row>
+                <entry>144</entry>
+
+                <entry>DIMLFAC.</entry>
+              </row>
+
+              <row>
+                <entry>145</entry>
+
+                <entry>DIMTVP.</entry>
+              </row>
+
+              <row>
+                <entry>146</entry>
+
+                <entry>DIMTFAC.</entry>
+              </row>
+
+              <row>
+                <entry>147</entry>
+
+                <entry>DIMGAP.</entry>
+              </row>
+
+              <row>
+                <entry>148</entry>
+
+                <entry>DIMALTRND.</entry>
+              </row>
+
+              <row>
+                <entry>71</entry>
+
+                <entry>DIMTOL.</entry>
+              </row>
+
+              <row>
+                <entry>72</entry>
+
+                <entry>DIMLIM.</entry>
+              </row>
+
+              <row>
+                <entry>73</entry>
+
+                <entry>DIMTIH.</entry>
+              </row>
+
+              <row>
+                <entry>74</entry>
+
+                <entry>DIMTOH.</entry>
+              </row>
+
+              <row>
+                <entry>75</entry>
+
+                <entry>DIMSE1.</entry>
+              </row>
+
+              <row>
+                <entry>76</entry>
+
+                <entry>DIMSE2.</entry>
+              </row>
+
+              <row>
+                <entry>77</entry>
+
+                <entry>DIMTAD.</entry>
+              </row>
+
+              <row>
+                <entry>78</entry>
+
+                <entry>DIMZIN.</entry>
+              </row>
+
+              <row>
+                <entry>79</entry>
+
+                <entry>DIMAZIN.</entry>
+              </row>
+
+              <row>
+                <entry>170</entry>
+
+                <entry>DIMALT.</entry>
+              </row>
+
+              <row>
+                <entry>171</entry>
+
+                <entry>DIMALTD.</entry>
+              </row>
+
+              <row>
+                <entry>172</entry>
+
+                <entry>DIMTOFL.</entry>
+              </row>
+
+              <row>
+                <entry>173</entry>
+
+                <entry>DIMSAH.</entry>
+              </row>
+
+              <row>
+                <entry>174</entry>
+
+                <entry>DIMTIX.</entry>
+              </row>
+
+              <row>
+                <entry>175</entry>
+
+                <entry>DIMSOXD.</entry>
+              </row>
+
+              <row>
+                <entry>176</entry>
+
+                <entry>DIMDLRD.</entry>
+              </row>
+
+              <row>
+                <entry>177</entry>
+
+                <entry>DIMCLRE.</entry>
+              </row>
+
+              <row>
+                <entry>178</entry>
+
+                <entry>DIMCLRT.</entry>
+              </row>
+
+              <row>
+                <entry>179</entry>
+
+                <entry>DIMADEC.</entry>
+              </row>
+
+              <row>
+                <entry>270</entry>
+
+                <entry>DIMUNIT (obsolete, now use DIMLUNIT AND
+                DIMFRAC).</entry>
+              </row>
+
+              <row>
+                <entry>271</entry>
+
+                <entry>DIMDEC.</entry>
+              </row>
+
+              <row>
+                <entry>272</entry>
+
+                <entry>DIMTDEC.</entry>
+              </row>
+
+              <row>
+                <entry>273</entry>
+
+                <entry>DIMALTU.</entry>
+              </row>
+
+              <row>
+                <entry>274</entry>
+
+                <entry>DIMALTTD.</entry>
+              </row>
+
+              <row>
+                <entry>275</entry>
+
+                <entry>DIMAUNIT.</entry>
+              </row>
+
+              <row>
+                <entry>276</entry>
+
+                <entry>DIMFRAC.</entry>
+              </row>
+
+              <row>
+                <entry>277</entry>
+
+                <entry>DIMLUNIT.</entry>
+              </row>
+
+              <row>
+                <entry>278</entry>
+
+                <entry>DIMDSEP.</entry>
+              </row>
+
+              <row>
+                <entry>279</entry>
+
+                <entry>DIMTMOVE.</entry>
+              </row>
+
+              <row>
+                <entry>280</entry>
+
+                <entry>DIMJUST.</entry>
+              </row>
+
+              <row>
+                <entry>281</entry>
+
+                <entry>DIMSD1.</entry>
+              </row>
+
+              <row>
+                <entry>282</entry>
+
+                <entry>DIMSD2.</entry>
+              </row>
+
+              <row>
+                <entry>283</entry>
+
+                <entry>DIMTOLJ.</entry>
+              </row>
+
+              <row>
+                <entry>284</entry>
+
+                <entry>DIMTZIN.</entry>
+              </row>
+
+              <row>
+                <entry>285</entry>
+
+                <entry>DIMALTZ.</entry>
+              </row>
+
+              <row>
+                <entry>286</entry>
+
+                <entry>DIMALTTZ.</entry>
+              </row>
+
+              <row>
+                <entry>287</entry>
+
+                <entry>DIMFIT (obsolete, now use DIMATFIT and
+                DIMTMOVE).</entry>
+              </row>
+
+              <row>
+                <entry>288</entry>
+
+                <entry>DIMUPT.</entry>
+              </row>
+
+              <row>
+                <entry>289</entry>
+
+                <entry>DIMATFIT.</entry>
+              </row>
+
+              <row>
+                <entry>340</entry>
+
+                <entry>DIMTXSTY (handle of referenced STYLE).</entry>
+              </row>
+
+              <row>
+                <entry>341</entry>
+
+                <entry>DIMLDRBLK (handle of referenced BLOCK).</entry>
+              </row>
+
+              <row>
+                <entry>342</entry>
+
+                <entry>DIMBLK (handle of referenced BLOCK).</entry>
+              </row>
+
+              <row>
+                <entry>343</entry>
+
+                <entry>DIMBLK1 (handle of referenced BLOCK).</entry>
+              </row>
+
+              <row>
+                <entry>344</entry>
+
+                <entry>DIMBLK2 (handle of referenced BLOCK).</entry>
+              </row>
+
+              <row>
+                <entry>371</entry>
+
+                <entry>DIMLWD (lineweight enum value).</entry>
+              </row>
+
+              <row>
+                <entry>372</entry>
+
+                <entry>DIMLWE (lineweight enum value).</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+    </section>
   </chapter>
 </book>
