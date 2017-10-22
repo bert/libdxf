@@ -3937,5 +3937,111 @@
         </tgroup>
       </table>
     </section>
+
+    <section>
+      <title>BLOCK_RECORD (DXF).</title>
+
+      <para>The following group codes apply to BLOCK_RECORD symbol table
+      entries.<table>
+          <title>BLOCK_RECORD group codes.</title>
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry align="left">Group codes</entry>
+
+                <entry align="left">Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>100</entry>
+
+                <entry>Subclass marker (AcDbBlockTableRecord).</entry>
+              </row>
+
+              <row>
+                <entry>2</entry>
+
+                <entry>Block name.</entry>
+              </row>
+
+              <row>
+                <entry>340</entry>
+
+                <entry>Hard-pointer ID/handle to associated LAYOUT
+                object.</entry>
+              </row>
+
+              <row>
+                <entry>70</entry>
+
+                <entry>Block insertion units.</entry>
+              </row>
+
+              <row>
+                <entry>280</entry>
+
+                <entry>Block explodability.</entry>
+              </row>
+
+              <row>
+                <entry>281</entry>
+
+                <entry>Block scalability.</entry>
+              </row>
+
+              <row>
+                <entry>310</entry>
+
+                <entry>DXF: Binary data for bitmap preview (optional).</entry>
+              </row>
+
+              <row>
+                <entry>1001</entry>
+
+                <entry>Xdata application name “ACAD” (optional).</entry>
+              </row>
+
+              <row>
+                <entry>1000</entry>
+
+                <entry>Xdata string data “DesignCenter Data”
+                (optional).</entry>
+              </row>
+
+              <row>
+                <entry>1002</entry>
+
+                <entry>Begin xdata “{“ (optional).</entry>
+              </row>
+
+              <row>
+                <entry>1070</entry>
+
+                <entry>Autodesk Design Center version number.</entry>
+              </row>
+
+              <row>
+                <entry>1070</entry>
+
+                <entry>Insert units: 0 = Unitless; 1 = Inches; 2 = Feet; 3 =
+                Miles; 4 = Millimeters; 5 = Centimeters; 6 = Meters; 7 =
+                Kilometers; 8 = Microinches; 9 = Mils; 10 = Yards; 11 =
+                Angstroms; 12 = Nanometers; 13 = Microns; 14 = Decimeters; 15
+                = Decameters; 16 = Hectometers; 17 = Gigameters; 18 =
+                Astronomical units; 19 = Light years; 20 = Parsecs.</entry>
+              </row>
+
+              <row>
+                <entry>1002</entry>
+
+                <entry>End xdata “}“.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+    </section>
   </chapter>
 </book>
