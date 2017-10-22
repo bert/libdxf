@@ -555,7 +555,7 @@ dxf_solid_read
 
 
 /*!
- * \brief Write DXF output to fp for a solid entity.
+ * \brief Write DXF output to fp for a DXF \c SOLID entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
