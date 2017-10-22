@@ -2109,4 +2109,42 @@ dxf_solid_set_lineweight
 }
 
 
+/*!
+ * \brief Get the \c plot_style_name from a DXF \c SOLID entity.
+ *
+ * \return a pointer to \c plot_style_name when sucessful, or \c NULL
+ * when an error occurred.
+ */
+char *
+dxf_solid_get_plot_style_name
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (solid->plot_style_name));
+}
+
+
 /* EOF */
