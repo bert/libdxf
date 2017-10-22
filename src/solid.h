@@ -297,6 +297,7 @@ char *dxf_solid_get_material (DxfSolid *solid);
 DxfSolid *dxf_solid_set_material (DxfSolid *solid, char *material);
 char *dxf_solid_get_dictionary_owner_hard (DxfSolid *solid);
 DxfSolid *dxf_solid_set_dictionary_owner_hard (DxfSolid *solid, char *dictionary_owner_hard);
+int16_t dxf_solid_get_lineweight (DxfSolid *solid);
 
 
 #ifdef __cplusplus
