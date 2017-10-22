@@ -2401,4 +2401,41 @@ dxf_solid_set_transparency
 }
 
 
+/*!
+ * \brief Get the base point \c p0 of a DXF \c SOLID entity.
+ *
+ * \return the base point \c p0.
+ */
+DxfPoint *
+dxf_solid_get_p0
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid->p0);
+}
+
+
 /* EOF */
