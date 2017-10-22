@@ -52,9 +52,11 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfSolid.
+ * \brief Allocate memory for a DXF \c SOLID entity.
  *
  * Fill the memory contents with zeros.
+ *
+ * \return a pointer to the allocated memory.
  */
 DxfSolid *
 dxf_solid_new ()
