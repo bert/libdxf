@@ -305,6 +305,7 @@ long dxf_solid_get_color_value (DxfSolid *solid);
 DxfSolid *dxf_solid_set_color_value (DxfSolid *solid, long color_value);
 char *dxf_solid_get_color_name (DxfSolid *solid);
 DxfSolid *dxf_solid_set_color_name (DxfSolid *solid, char *color_name);
+long dxf_solid_get_transparency (DxfSolid *solid);
 
 
 #ifdef __cplusplus
