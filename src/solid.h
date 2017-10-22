@@ -300,6 +300,7 @@ DxfSolid *dxf_solid_set_dictionary_owner_hard (DxfSolid *solid, char *dictionary
 int16_t dxf_solid_get_lineweight (DxfSolid *solid);
 DxfSolid *dxf_solid_set_lineweight (DxfSolid *solid, int16_t lineweight);
 char *dxf_solid_get_plot_style_name (DxfSolid *solid);
+DxfSolid *dxf_solid_set_plot_style_name (DxfSolid *solid, char *plot_style_name);
 
 
 #ifdef __cplusplus
