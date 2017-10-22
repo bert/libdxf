@@ -2220,4 +2220,38 @@ dxf_solid_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a DXF \c SOLID entity.
+ *
+ * \return a pointer to \c solid when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSolid *
+dxf_solid_set_color_value
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */
