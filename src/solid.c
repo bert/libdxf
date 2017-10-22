@@ -179,8 +179,8 @@ dxf_solid_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
+ * \return a pointer to the DXF \c SOLID entity when done, or \c NULL
+ * when an error occurred while reading from the input file.
  */
 DxfSolid *
 dxf_solid_read
