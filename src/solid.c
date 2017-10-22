@@ -2189,4 +2189,35 @@ dxf_solid_set_plot_style_name
 }
 
 
+/*!
+ * \brief Get the \c color_value from a DXF \c SOLID entity.
+ *
+ * \return \c color_value when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_solid_get_color_value
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid->color_value);
+}
+
+
 /* EOF */
