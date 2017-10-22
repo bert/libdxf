@@ -170,7 +170,7 @@ dxf_solid_init
 
 
 /*!
- * \brief Read data from a DXF file into a \c SOLID entity.
+ * \brief Read data from a DXF file into a DXF \c SOLID entity.
  *
  * The last line read from file contained the string "SOLID". \n
  * Now follows some data for the \c SOLID, to be terminated with a "  0"
