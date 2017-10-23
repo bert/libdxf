@@ -4506,5 +4506,96 @@
           </tgroup>
         </table></para>
     </section>
+
+    <section>
+      <title>LAYER (DXF).</title>
+
+      <para>The following group codes apply to LAYER symbol table
+      entries.<table>
+          <title>LAYER table group codes.</title>
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry align="left">Group codes</entry>
+
+                <entry align="left">Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>100</entry>
+
+                <entry>Subclass marker (AcDbLayerTableRecord).</entry>
+              </row>
+
+              <row>
+                <entry>2</entry>
+
+                <entry>Layer name.</entry>
+              </row>
+
+              <row>
+                <entry>70</entry>
+
+                <entry>Standard flags (bit-coded values): 1 = Layer is frozen;
+                otherwise layer is thawed; 2 = Layer is frozen by default in
+                new viewports; 4 = Layer is locked; 16 = If set, table entry
+                is externally dependent on an xref; 32 = If both this bit and
+                bit 16 are set, the externally dependent xref has been
+                successfully resolved; 64 = If set, the table entry was
+                referenced by at least one entity in the drawing the last time
+                the drawing was edited. (This flag is for the benefit of
+                AutoCAD commands. It can be ignored by most programs that read
+                DXF files and need not be set by programs that write DXF
+                files) .</entry>
+              </row>
+
+              <row>
+                <entry>62</entry>
+
+                <entry>Color number (if negative, layer is Off).</entry>
+              </row>
+
+              <row>
+                <entry>6</entry>
+
+                <entry>Linetype name.</entry>
+              </row>
+
+              <row>
+                <entry>290</entry>
+
+                <entry>Plotting flag. If set to 0, do not plot this
+                layer.</entry>
+              </row>
+
+              <row>
+                <entry>370</entry>
+
+                <entry>Lineweight enum value.</entry>
+              </row>
+
+              <row>
+                <entry>390</entry>
+
+                <entry>Hard-pointer ID/handle of PlotStyleName object.</entry>
+              </row>
+
+              <row>
+                <entry>347</entry>
+
+                <entry>Hard-pointer ID/handle to Material object.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+
+      <para>Xref-dependent layers are output during SAVEAS.</para>
+
+      <para>For these layers, the associated linetype name in the DXF file is
+      always CONTINUOUS.</para>
+    </section>
   </chapter>
 </book>
