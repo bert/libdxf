@@ -2530,7 +2530,7 @@ dxf_solid_set_x0
         DxfSolid *solid,
                 /*!< a pointer to a DXF \c SOLID entity. */
         double x0
-                /*!< the X-value of the center point \c x0 of a DXF
+                /*!< the X-value of the base point \c x0 of a DXF
                  * \c SOLID entity. */
 )
 {
