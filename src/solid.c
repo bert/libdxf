@@ -2560,4 +2560,43 @@ dxf_solid_set_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the base point \c y0 of a DXF \c SOLID
+ * entity.
+ *
+ * \return the Y-value of the base point \c y0.
+ */
+double
+dxf_solid_get_y0
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (solid->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid->p0->y0);
+}
+
+
 /* EOF */
