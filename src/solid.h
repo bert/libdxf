@@ -314,6 +314,7 @@ DxfSolid *dxf_solid_set_x0 (DxfSolid *solid, double x0);
 double dxf_solid_get_y0 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_y0 (DxfSolid *solid, double y0);
 double dxf_solid_get_z0 (DxfSolid *solid);
+DxfSolid *dxf_solid_set_z0 (DxfSolid *solid, double z0);
 
 
 #ifdef __cplusplus
