@@ -320,6 +320,7 @@ DxfSolid *dxf_solid_set_p1 (DxfSolid *solid, DxfPoint *p1);
 double dxf_solid_get_x1 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_x1 (DxfSolid *solid, double x1);
 double dxf_solid_get_y1 (DxfSolid *solid);
+DxfSolid *dxf_solid_set_y1 (DxfSolid *solid, double y1);
 
 
 #ifdef __cplusplus
