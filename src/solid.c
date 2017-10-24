@@ -2761,4 +2761,44 @@ dxf_solid_get_p1
 }
 
 
+/*!
+ * \brief Set the first alignment point \c p1 of a DXF \c SOLID entity.
+ *
+ * \return a pointer to a DXF \c SOLID entity.
+ */
+DxfSolid *
+dxf_solid_set_p1
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        DxfPoint *p1
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->p1 = p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */
