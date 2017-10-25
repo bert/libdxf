@@ -3176,7 +3176,7 @@ dxf_solid_set_x2
         DxfSolid *solid,
                 /*!< a pointer to a DXF \c SOLID entity. */
         double x2
-                /*!< the X-value of the second alignment point \c x1 of
+                /*!< the X-value of the second alignment point \c x2 of
                  * a DXF \c SOLID entity. */
 )
 {
