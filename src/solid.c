@@ -3124,4 +3124,43 @@ dxf_solid_set_p2
 }
 
 
+/*!
+ * \brief Get the X-value of the second alignment point \c x2 of a DXF
+ * \c SOLID entity.
+ *
+ * \return the X-value of the second alignment point \c x2.
+ */
+double
+dxf_solid_get_x2
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (solid->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid->p2->x0);
+}
+
+
 /* EOF */

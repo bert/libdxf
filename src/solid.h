@@ -325,6 +325,7 @@ double dxf_solid_get_z1 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_z1 (DxfSolid *solid, double z1);
 DxfPoint *dxf_solid_get_p2 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_p2 (DxfSolid *solid, DxfPoint *p2);
+double dxf_solid_get_x2 (DxfSolid *solid);
 
 
 #ifdef __cplusplus
