@@ -3245,4 +3245,47 @@ dxf_solid_get_y2
 }
 
 
+/*!
+ * \brief Set the Y-value of the second alignment point \c y2 of a DXF
+ * \c SOLID entity.
+ *
+ * \return a pointer to \c solid when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSolid *
+dxf_solid_set_y2
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        double y2
+                /*!< the Y-value of the second alignment point \c y2 of
+                 * a DXF \c SOLID entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->p2->y0 = y2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */
