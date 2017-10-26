@@ -3486,4 +3486,47 @@ dxf_solid_get_x3
 }
 
 
+/*!
+ * \brief Set the X-value of the third alignment point \c x3 of a DXF
+ * \c SOLID entity.
+ *
+ * \return a pointer to \c solid when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSolid *
+dxf_solid_set_x3
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        double x3
+                /*!< the X-value of the third alignment point \c x3 of
+                 * a DXF \c SOLID entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->p3->x0 = x3;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */
