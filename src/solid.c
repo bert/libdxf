@@ -3611,4 +3611,43 @@ dxf_solid_set_y3
 }
 
 
+/*!
+ * \brief Get the Z-value of the third alignment point \c z3 of a DXF
+ * \c SOLID entity.
+ *
+ * \return the Z-value of the third alignment point \c z3.
+ */
+double
+dxf_solid_get_z3
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (solid->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid->p3->z0);
+}
+
+
 /* EOF */
