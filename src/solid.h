@@ -339,6 +339,7 @@ double dxf_solid_get_y3 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_y3 (DxfSolid *solid, double y3);
 double dxf_solid_get_z3 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_z3 (DxfSolid *solid, double z3);
+double dxf_solid_get_extr_x0 (DxfSolid *solid);
 
 
 #ifdef __cplusplus
