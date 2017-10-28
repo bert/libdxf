@@ -83,8 +83,9 @@ dxf_sortentstable_struct
                  * entries may exist).\n
                  * Implemented as a single linked list.\n
                  * Group code = 331. */
-        int sort_handle[DXF_MAX_PARAM];
+        DxfInt *sort_handle;
                 /*!< Sort handle (zero or more entries may exist).\n
+                 * Implemented as a single linked list.\n
                  * Group code = 5. */
         struct DxfSortentsTable *next;
                 /*!< Pointer to the next DxfSortentsTable.\n

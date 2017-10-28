@@ -95,8 +95,6 @@ dxf_sortentstable_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (sortentstable == NULL)
         {
@@ -117,10 +115,7 @@ dxf_sortentstable_init
         sortentstable->dictionary_owner_hard = strdup ("");
         sortentstable->block_owner = strdup ("");
         sortentstable->entity_owner = dxf_char_init (sortentstable->entity_owner);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                sortentstable->sort_handle[i] = 0;
-        }
+        sortentstable->sort_handle->value = 0;
         sortentstable->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -156,6 +151,7 @@ dxf_sortentstable_read
         int i;
         int j;
         int k;
+        DxfInt *iter_5 = NULL;
         DxfChar *iter_331 = NULL;
 
         /* Do some basic checks. */
@@ -185,6 +181,7 @@ dxf_sortentstable_read
         i = 0;
         j = 0;
         k = 0;
+        iter_5 = (DxfInt *) sortentstable->sort_handle;
         iter_331 = (DxfChar *) sortentstable->entity_owner;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -214,7 +211,9 @@ dxf_sortentstable_read
                         /* Now follows a string containing a Sort handle
                          * (zero or more entries may exist). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &sortentstable->sort_handle[i]);
+                        fscanf (fp->fp, "%x\n", &iter_5->value);
+                        iter_5->next = (struct DxfInt *) dxf_int_init ((DxfInt *) iter_5->next);
+                        iter_5 = (DxfInt *) iter_5->next;
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -310,6 +309,7 @@ dxf_sortentstable_write
 #endif
         char *dxf_entity_name = strdup ("SORTENTSTABLE");
         int i;
+        DxfInt *iter_5 = NULL;
         DxfChar *iter_331 = NULL;
 
         /* Do some basic checks. */
@@ -381,14 +381,14 @@ dxf_sortentstable_write
                         iter_331 = (DxfChar*) iter_331->next;
                 }
         }
-        for (i = 1; i < DXF_MAX_PARAM; i++)
+        if (sortentstable->sort_handle != NULL)
         {
-                /* For the stort_Handle index i has a range from 1 to
-                 * (DXF_MAX_PARAM - 1). */
-                fprintf (fp->fp, "  5\n%x\n", sortentstable->sort_handle[i]);
-                /*! \bug We have to find a way to get an idea how many
-                 * handles contain a valid value, this for-loop will
-                 * lead to inflated DXF files and structures. */
+                iter_5 = (DxfInt*) sortentstable->sort_handle;
+                while (iter_5 != NULL)
+                {
+                        fprintf (fp->fp, "  5\n%x\n", iter_5->value);
+                        iter_5 = (DxfInt*) iter_5->next;
+                }
         }
         /* Clean up. */
         free (dxf_entity_name);
