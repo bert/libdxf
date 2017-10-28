@@ -122,6 +122,11 @@ dxf_sortentstable_free_chain
 (
         DxfSortentsTable *sortentstables
 );
+int
+dxf_sortentstable_get_id_code
+(
+        DxfSortentsTable *sortentstable
+);
 
 
 #ifdef __cplusplus
