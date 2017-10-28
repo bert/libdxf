@@ -69,6 +69,7 @@ DxfChar *dxf_char_init (DxfChar *c);
 int dxf_char_free (DxfChar *c);
 int dxf_char_free_chain (DxfChar *chars);
 DxfInt *dxf_int_new ();
+DxfInt *dxf_int_init (DxfInt *i);
 int dxf_read_is_double (int type);
 int dxf_read_is_int (int type);
 int dxf_read_is_string (int type);
