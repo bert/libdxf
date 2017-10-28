@@ -348,6 +348,7 @@ double dxf_solid_get_extr_y0 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_extr_y0 (DxfSolid *solid, double extr_y0);
 double dxf_solid_get_extr_z0 (DxfSolid *solid);
 DxfSolid *dxf_solid_set_extr_z0 (DxfSolid *solid, double extr_z0);
+DxfSolid *dxf_solid_get_next (DxfSolid *solid);
 
 
 #ifdef __cplusplus
