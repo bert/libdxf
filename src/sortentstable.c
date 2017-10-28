@@ -5,6 +5,15 @@
  *
  * \brief Functions for a DXF sortentstable object (\c SORTENTSTABLE).
  *
+ * If the SORTENTS Regen flag (bit-code value 16) is set, AutoCAD
+ * regenerates entities in ascending handle order.
+ * When the DRAWORDER command is used, a SORTENTSTABLE object is
+ * attached to the *Model_Space or *Paper_Space block's extension
+ * dictionary under the name ACAD_SORTENTS.
+ * The SORTENTSTABLE object related to this dictionary associates a
+ * different handle with each entity, which redefines the order in which
+ * the entities are regenerated.
+ *
  * \since The \c SORTENTSTABLE object was introduced in DXF R14.
  *
  * \version According to DXF R10 (backward compatibility).
