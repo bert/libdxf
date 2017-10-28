@@ -3740,6 +3740,47 @@ dxf_solid_get_extrusion_vector_as_point
 
 
 /*!
+ * \brief Set the extrusion vector from a DXF \c POINT for a DXF
+ * \c SOLID entity.
+ */
+DxfSolid *
+dxf_solid_set_extrusion_vector_from_point
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->extr_x0 = (double) point->x0;
+        solid->extr_y0 = (double) point->y0;
+        solid->extr_z0 = (double) point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
+/*!
  * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
  * \c SOLID entity.
  *
