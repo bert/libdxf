@@ -114,6 +114,7 @@ char *dxf_sortentstable_get_dictionary_owner_soft (DxfSortentsTable *sortentstab
 DxfSortentsTable *dxf_sortentstable_set_dictionary_owner_soft (DxfSortentsTable *sortentstable, char *dictionary_owner_soft);
 char *dxf_sortentstable_get_dictionary_owner_hard (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_dictionary_owner_hard (DxfSortentsTable *sortentstable, char *dictionary_owner_hard);
+char *dxf_sortentstable_get_block_owner (DxfSortentsTable *sortentstable);
 
 
 #ifdef __cplusplus

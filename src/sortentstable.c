@@ -721,4 +721,44 @@ dxf_sortentstable_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the \c block_owner from a DXF 
+ * \c SORTENTSTABLE object.
+ *
+ * \return pointer to the \c block_owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_sortentstable_get_block_owner
+(
+        DxfSortentsTable *sortentstable
+                /*!< a pointer to a DXF \c SORTENTSTABLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sortentstable->block_owner ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (sortentstable->block_owner));
+}
+
+
 /* EOF*/
