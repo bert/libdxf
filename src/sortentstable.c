@@ -801,4 +801,50 @@ dxf_sortentstable_set_block_owner
 }
 
 
+/*!
+ * \brief Get the pointer to the \c entity_owner from a DXF 
+ * \c SORTENTSTABLE object.
+ *
+ * \return pointer to the \c entity_owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+DxfChar *
+dxf_sortentstable_get_entity_owner
+(
+        DxfSortentsTable *sortentstable
+                /*!< a pointer to a DXF \c SORTENTSTABLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sortentstable->entity_owner ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sortentstable->entity_owner->value ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in a member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sortentstable->entity_owner);
+}
+
+
 /* EOF*/
