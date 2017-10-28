@@ -311,6 +311,41 @@ dxf_int_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DxfInt
+ * objects and all their data fields.
+ */
+int
+dxf_int_free_chain
+(
+        DxfInt *ints
+                /*!< a pointer to the single linked list of DxfInt
+                 * objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (ints == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        while (ints != NULL)
+        {
+                struct DxfInt *iter = ints->next;
+                dxf_int_free (ints);
+                ints = (DxfInt *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 int
 dxf_read_is_double (int type)
 {
