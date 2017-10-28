@@ -81,6 +81,7 @@ dxf_sortentstable_struct
         DxfChar *entity_owner;
                 /*!< Soft pointer ID/handle to an entity (zero or more
                  * entries may exist).\n
+                 * Implemented as a single linked list.\n
                  * Group code = 331. */
         int sort_handle[DXF_MAX_PARAM];
                 /*!< Sort handle (zero or more entries may exist).\n
