@@ -4061,4 +4061,43 @@ dxf_solid_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c SOLID for a DXF \c SOLID
+ * entity.
+ */
+DxfSolid *
+dxf_solid_set_next
+(
+        DxfSolid *solid,
+                /*!< a pointer to a DXF \c SOLID entity. */
+        DxfSolid *next
+                /*!< a pointer to the next \c SOLID for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->next = (struct DxfSolid *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */
