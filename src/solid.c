@@ -4100,4 +4100,49 @@ dxf_solid_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c SOLID entity from a linked list
+ * of DXF \c SOLID entities.
+ *
+ * \return pointer to the last \c SOLID entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSolid *
+dxf_solid_get_last
+(
+        DxfSolid *solid
+                /*!< a pointer to a DXF \c SOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfSolid *) solid);
+        }
+        DxfSolid *iter = (DxfSolid *) solid->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSolid *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSolid *) iter);
+}
+
+
 /* EOF */
