@@ -4597,5 +4597,153 @@
       <para>For these layers, the associated linetype name in the DXF file is
       always CONTINUOUS.</para>
     </section>
+
+    <section>
+      <title>LTYPE (DXF).</title>
+
+      <para>The following group codes apply to LTYPE symbol table
+      entries.<table>
+          <title>LTYPE table group codes.</title>
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry align="left">Group codes</entry>
+
+                <entry align="left">Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>100</entry>
+
+                <entry>Subclass marker (AcDbLinetypeTableRecord).</entry>
+              </row>
+
+              <row>
+                <entry>2</entry>
+
+                <entry>Linetype name.</entry>
+              </row>
+
+              <row>
+                <entry>70</entry>
+
+                <entry>Standard flag values (bit-coded values): 16 = If set,
+                table entry is externally dependent on an xref; 32 = If both
+                this bit and bit 16 are set, the externally dependent xref has
+                been successfully re- solved; 64 = If set, the table entry was
+                referenced by at least one entity in the drawing the last time
+                the drawing was edited. (This flag is for the benefit of
+                AutoCAD commands. It can be ignored by most programs that read
+                DXF files and need not be set by programs that write DXF
+                files) .</entry>
+              </row>
+
+              <row>
+                <entry>3</entry>
+
+                <entry>Descriptive text for linetype.</entry>
+              </row>
+
+              <row>
+                <entry>72</entry>
+
+                <entry>Alignment code; value is always 65, the ASCII code for
+                A.</entry>
+              </row>
+
+              <row>
+                <entry>73</entry>
+
+                <entry>The number of linetype elements.</entry>
+              </row>
+
+              <row>
+                <entry>40</entry>
+
+                <entry>Total pattern length.</entry>
+              </row>
+
+              <row>
+                <entry>49</entry>
+
+                <entry>Dash, dot or space length (one entry per
+                element).</entry>
+              </row>
+
+              <row>
+                <entry>74</entry>
+
+                <entry>Complex linetype element type (one per element).
+                Default is 0 (no embedded shape/text). The following codes are
+                bit values: 1 = if set, code 50 specifies an absolute
+                rotation, if not set, code 50 specifies a relative rotation; 2
+                = embedded element is a text string; 4 = embedded element is a
+                shape.</entry>
+              </row>
+
+              <row>
+                <entry>75</entry>
+
+                <entry>Shape number (one per element) if code 74 specifies an
+                embeded shape. If code 74 specifies an embeded text string,
+                this value is set to 0. If code 74 is set to 0, code 75 is
+                omitted.</entry>
+              </row>
+
+              <row>
+                <entry>340</entry>
+
+                <entry>Pointer to STYLE object (one per element if code 74
+                &gt; 0).</entry>
+              </row>
+
+              <row>
+                <entry>46</entry>
+
+                <entry>S = scale value (optional). Multiple entries can
+                exist.</entry>
+              </row>
+
+              <row>
+                <entry>50</entry>
+
+                <entry>R = (relative) or A = (absolute) rotation value in
+                radians of embedded shape or text. One per element if code 74
+                specifies an embeded shape or text string. .</entry>
+              </row>
+
+              <row>
+                <entry>44</entry>
+
+                <entry>X= x offset value (optional). Multiple entries can
+                exist.</entry>
+              </row>
+
+              <row>
+                <entry>45</entry>
+
+                <entry>Y= y offset value (optional). Multiple entries can
+                exist.</entry>
+              </row>
+
+              <row>
+                <entry>9</entry>
+
+                <entry>Text string (one per element if code 74 = 2).</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+
+      <para>The group codes 74, 75, 340, 46, 50, 44, 45, and 9 are not
+      returned by the <emphasis role="bold">tblsearch</emphasis> or <emphasis
+      role="bold">tblnext</emphasis> functions.</para>
+
+      <para>You must use <emphasis role="bold">tblobjname</emphasis> to
+      retrieve these values within an application.</para>
+    </section>
   </chapter>
 </book>
