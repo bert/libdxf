@@ -57,7 +57,7 @@ extern "C" {
  * (\c SORTENTSTABLE).
  */
 typedef struct
-dxf_sortentstable
+dxf_sortentstable_struct
 {
         /* Members common for all DXF objects. */
         int id_code;
