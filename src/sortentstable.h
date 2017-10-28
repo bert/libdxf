@@ -112,6 +112,7 @@ int dxf_sortentstable_get_id_code (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_id_code (DxfSortentsTable *sortentstable, int id_code);
 char *dxf_sortentstable_get_dictionary_owner_soft (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_dictionary_owner_soft (DxfSortentsTable *sortentstable, char *dictionary_owner_soft);
+char *dxf_sortentstable_get_dictionary_owner_hard (DxfSortentsTable *sortentstable);
 
 
 #ifdef __cplusplus
