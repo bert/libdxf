@@ -193,6 +193,41 @@ dxf_char_free_chain
 }
 
 
+/*!
+ * \brief Allocate memory for a \c DxfInt.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfInt *
+dxf_int_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfInt *i = NULL;
+        size_t size;
+
+        size = sizeof (DxfInt);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((i = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfInt struct.\n")),
+                  __FUNCTION__);
+                i = NULL;
+        }
+        else
+        {
+                memset (i, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (i);
+}
+
+
 int
 dxf_read_is_double (int type)
 {
