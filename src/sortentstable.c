@@ -601,4 +601,44 @@ dxf_sortentstable_get_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
+ * \c SORTENTSTABLE object.
+ */
+DxfSortentsTable *
+dxf_sortentstable_set_dictionary_owner_soft
+(
+        DxfSortentsTable *sortentstable,
+                /*!< a pointer to a DXF \c SORTENTSTABLE object. */
+        char *dictionary_owner_soft
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        sortentstable->dictionary_owner_soft = strdup (dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sortentstable);
+}
+
+
 /* EOF*/
