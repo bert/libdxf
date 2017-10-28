@@ -93,40 +93,13 @@ dxf_sortentstable_struct
 } DxfSortentsTable;
 
 
-DxfSortentsTable *
-dxf_sortentstable_new ();
-DxfSortentsTable *
-dxf_sortentstable_init
-(
-        DxfSortentsTable *sortentstable
-);
-DxfSortentsTable *
-dxf_sortentstable_read
-(
-        DxfFile *fp,
-        DxfSortentsTable *sortentstable
-);
-int
-dxf_sortentstable_write
-(
-        DxfFile *fp,
-        DxfSortentsTable *sortentstable
-);
-int
-dxf_sortentstable_free
-(
-        DxfSortentsTable *sortentstable
-);
-void
-dxf_sortentstable_free_chain
-(
-        DxfSortentsTable *sortentstables
-);
-int
-dxf_sortentstable_get_id_code
-(
-        DxfSortentsTable *sortentstable
-);
+DxfSortentsTable *dxf_sortentstable_new ();
+DxfSortentsTable *dxf_sortentstable_init (DxfSortentsTable *sortentstable);
+DxfSortentsTable *dxf_sortentstable_read (DxfFile *fp, DxfSortentsTable *sortentstable);
+int dxf_sortentstable_write (DxfFile *fp, DxfSortentsTable *sortentstable);
+int dxf_sortentstable_free (DxfSortentsTable *sortentstable);
+void dxf_sortentstable_free_chain (DxfSortentsTable *sortentstables);
+int dxf_sortentstable_get_id_code (DxfSortentsTable *sortentstable);
 
 
 #ifdef __cplusplus
