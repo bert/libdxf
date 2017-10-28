@@ -45,6 +45,7 @@
 
 
 #include "global.h"
+#include "util.h"
 
 
 #ifdef __cplusplus
@@ -77,7 +78,7 @@ dxf_sortentstable_struct
                 /*!< Soft pointer ID/handle to owner (currently only the
                  * *MODEL_SPACE or *PAPER_SPACE blocks).\n
                  * Group code = 330. */
-        char *entity_owner[DXF_MAX_PARAM];
+        DxfChar *entity_owner;
                 /*!< Soft pointer ID/handle to an entity (zero or more
                  * entries may exist).\n
                  * Group code = 331. */

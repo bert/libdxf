@@ -116,9 +116,9 @@ dxf_sortentstable_init
         sortentstable->dictionary_owner_soft = strdup ("");
         sortentstable->dictionary_owner_hard = strdup ("");
         sortentstable->block_owner = strdup ("");
+        sortentstable->entity_owner = dxf_char_init (sortentstable->entity_owner);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                sortentstable->entity_owner[i] = strdup ("");
                 sortentstable->sort_handle[i] = 0;
         }
         sortentstable->next = NULL;
@@ -156,6 +156,7 @@ dxf_sortentstable_read
         int i;
         int j;
         int k;
+        DxfChar *iter_331 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -184,6 +185,7 @@ dxf_sortentstable_read
         i = 0;
         j = 0;
         k = 0;
+        iter_331 = (DxfChar *) sortentstable->entity_owner;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -254,9 +256,9 @@ dxf_sortentstable_read
                          * ID/handle to an entity (zero or more entries
                          * may exist). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", sortentstable->entity_owner[k]);
-                        k++;
-                        /*! \todo Check for overrun of array index. */
+                        fscanf (fp->fp, "%s\n", iter_331->value);
+                        iter_331->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter_331->next);
+                        iter_331 = (DxfChar *) iter_331->next;
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
@@ -308,6 +310,7 @@ dxf_sortentstable_write
 #endif
         char *dxf_entity_name = strdup ("SORTENTSTABLE");
         int i;
+        DxfChar *iter_331 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -369,12 +372,14 @@ dxf_sortentstable_write
                 fprintf (fp->fp, "100\nAcDbSortentsTable\n");
         }
         fprintf (fp->fp, "330\n%s\n", sortentstable->block_owner);
-        i = 0;
-        while (strlen (sortentstable->entity_owner[i]) > 0)
+        if (sortentstable->entity_owner != NULL)
         {
-                fprintf (fp->fp, "331\n%s\n", sortentstable->entity_owner[i]);
-                i++;
-                /*! \todo Check for overrun of array index. */
+                iter_331 = (DxfChar*) sortentstable->entity_owner;
+                while ((iter_331 != NULL) && (iter_331->value != NULL))
+                {
+                        fprintf (fp->fp, "331\n%s\n", iter_331->value);
+                        iter_331 = (DxfChar*) iter_331->next;
+                }
         }
         for (i = 1; i < DXF_MAX_PARAM; i++)
         {
@@ -412,8 +417,6 @@ dxf_sortentstable_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (sortentstable == NULL)
         {
@@ -432,10 +435,7 @@ dxf_sortentstable_free
         free (sortentstable->dictionary_owner_soft);
         free (sortentstable->dictionary_owner_hard);
         free (sortentstable->block_owner);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (sortentstable->entity_owner[i]);
-        }
+        dxf_char_free_chain (sortentstable->entity_owner);
         free (sortentstable);
         sortentstable = NULL;
 #if DEBUG
