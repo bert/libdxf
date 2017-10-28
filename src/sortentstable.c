@@ -612,7 +612,7 @@ dxf_sortentstable_set_dictionary_owner_soft
                 /*!< a pointer to a DXF \c SORTENTSTABLE object. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the \c
-                 * dictionary_owner_soft for the entity. */
+                 * dictionary_owner_soft for the object. */
 )
 {
 #if DEBUG
@@ -692,7 +692,7 @@ dxf_sortentstable_set_dictionary_owner_hard
                 /*!< a pointer to a DXF \c SORTENTSTABLE object. */
         char *dictionary_owner_hard
                 /*!< a string containing the pointer to the \c
-                 * dictionary_owner_hard for the entity. */
+                 * dictionary_owner_hard for the object. */
 )
 {
 #if DEBUG
