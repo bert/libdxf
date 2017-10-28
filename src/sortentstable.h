@@ -53,8 +53,8 @@ extern "C" {
 
 
 /*!
- * \brief DXF definition of an AutoCAD rastervariables object
- * (\c RASTERVARIABLES).
+ * \brief DXF definition of an AutoCAD DXF sortentstable object
+ * (\c SORTENTSTABLE).
  */
 typedef struct
 dxf_sortentstable
