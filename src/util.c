@@ -160,14 +160,15 @@ dxf_char_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DxfChar objects and
- * all their data fields.
+ * \brief Free the allocated memory for a single linked list of DxfChar
+ * objects and all their data fields.
  */
 int
 dxf_char_free_chain
 (
         DxfChar *chars
-                /*!< a pointer to the chain of DxfChar objects. */
+                /*!< a pointer to the single linked list of DxfChar
+                 * objects. */
 )
 {
 #ifdef DEBUG
