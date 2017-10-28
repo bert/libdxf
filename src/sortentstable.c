@@ -308,7 +308,6 @@ dxf_sortentstable_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("SORTENTSTABLE");
-        int i;
         DxfInt *iter_5 = NULL;
         DxfChar *iter_331 = NULL;
 
