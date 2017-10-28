@@ -117,6 +117,7 @@ DxfSortentsTable *dxf_sortentstable_set_dictionary_owner_hard (DxfSortentsTable 
 char *dxf_sortentstable_get_block_owner (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_block_owner (DxfSortentsTable *sortentstable, char *block_owner);
 DxfChar *dxf_sortentstable_get_entity_owner (DxfSortentsTable *sortentstable);
+DxfSortentsTable *dxf_sortentstable_set_entity_owner (DxfSortentsTable *sortentstable, DxfChar *entity_owner);
 
 
 #ifdef __cplusplus
