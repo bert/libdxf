@@ -225,6 +225,20 @@ dxf_char_struct
 } DxfChar;
 
 
+/*!
+ * \brief DXF definition of a single linked list of int.
+ */
+typedef struct
+dxf_int_struct
+{
+    int value;
+        /*!< Store the int value here. */
+    struct DxfInt *next;
+        /*!< Pointer to the next DxfInt.\n
+         * \c NULL if the last DxfInt. */
+} DxfInt;
+
+
 /* AutoCAD(TM) versions by name */
 #define AutoCAD_1_0 0
         /*!< \brief AutoCAD Version 1.0. */
