@@ -481,58 +481,17 @@ dxf_table
 } DxfTable;
 
 
-DxfTableCell *
-dxf_table_cell_new ();
-DxfTable *
-dxf_table_new ();
-DxfTableCell *
-dxf_table_cell_init
-(
-        DxfTableCell *cell
-);
-DxfTable *
-dxf_table_init
-(
-        DxfTable *table
-);
-DxfTable *
-dxf_table_read
-(
-        DxfFile *fp,
-        DxfTable *table
-);
-int
-dxf_table_cell_write
-(
-        DxfFile *fp,
-        DxfTableCell *cell
-);
-int
-dxf_table_write
-(
-        DxfFile *fp,
-        DxfTable *table
-);
-int
-dxf_table_cell_free
-(
-        DxfTableCell *cell
-);
-int
-dxf_table_free
-(
-        DxfTable *table
-);
-void
-dxf_table_cell_free_chain
-(
-        DxfTableCell *cells
-);
-void
-dxf_table_free_chain
-(
-        DxfTable *tables
-);
+DxfTableCell *dxf_table_cell_new ();
+DxfTable *dxf_table_new ();
+DxfTableCell *dxf_table_cell_init (DxfTableCell *cell);
+DxfTable *dxf_table_init (DxfTable *table);
+DxfTable *dxf_table_read (DxfFile *fp, DxfTable *table);
+int dxf_table_cell_write (DxfFile *fp, DxfTableCell *cell);
+int dxf_table_write (DxfFile *fp, DxfTable *table);
+int dxf_table_cell_free (DxfTableCell *cell);
+int dxf_table_free (DxfTable *table);
+void dxf_table_cell_free_chain (DxfTableCell *cells);
+void dxf_table_free_chain (DxfTable *tables);
 
 
 #ifdef __cplusplus
