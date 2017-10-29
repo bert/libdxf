@@ -163,35 +163,12 @@ dxf_trace
 } DxfTrace;
 
 
-DxfTrace *
-dxf_trace_new ();
-DxfTrace *
-dxf_trace_init
-(
-        DxfTrace *trace
-);
-DxfTrace *
-dxf_trace_read
-(
-        DxfFile *fp,
-        DxfTrace *trace
-);
-int
-dxf_trace_write
-(
-        DxfFile *fp,
-        DxfTrace *trace
-);
-int
-dxf_trace_free
-(
-        DxfTrace *trace
-);
-void
-dxf_trace_free_chain
-(
-        DxfTrace *traces
-);
+DxfTrace *dxf_trace_new ();
+DxfTrace *dxf_trace_init (DxfTrace *trace);
+DxfTrace *dxf_trace_read (DxfFile *fp, DxfTrace *trace);
+int dxf_trace_write (DxfFile *fp, DxfTrace *trace);
+int dxf_trace_free (DxfTrace *trace);
+void dxf_trace_free_chain (DxfTrace *traces);
 
 
 #ifdef __cplusplus
