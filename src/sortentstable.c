@@ -896,14 +896,14 @@ dxf_sortentstable_set_entity_owner
  * \brief Get the pointer to the value stored in a \c entity_owner from
  * a DXF \c SORTENTSTABLE object.
  *
- * \return pointer to the value in the \c entity_owner.
+ * \return pointer to the \c value in the \c entity_owner.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
 char *
 dxf_sortentstable_get_entity_owner_value
 (
-        DxfSortentsTable *sortentstable
+        DxfChar *entity_owner
                 /*!< a pointer to a DXF \c SORTENTSTABLE object. */
 )
 {
@@ -911,21 +911,14 @@ dxf_sortentstable_get_entity_owner_value
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (sortentstable == NULL)
+        if (entity_owner == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if (sortentstable->entity_owner ==  NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (sortentstable->entity_owner->value ==  NULL)
+        if (entity_owner->value ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found in a member.\n")),
@@ -935,7 +928,7 @@ dxf_sortentstable_get_entity_owner_value
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (sortentstable->entity_owner->value));
+        return (strdup (entity_owner->value));
 }
 
 
