@@ -1,7 +1,10 @@
 /*!
  * \file text.h
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2012 by Paolo Caroni <kenren89@gmail.com>.
  *
  * \brief Definition of a DXF text entity (\c TEXT).
  *
