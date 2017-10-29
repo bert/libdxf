@@ -209,35 +209,12 @@ dxf_vport
 } DxfVPort;
 
 
-DxfVPort *
-dxf_vport_new ();
-DxfVPort *
-dxf_vport_init
-(
-        DxfVPort *vport
-);
-DxfVPort *
-dxf_vport_read
-(
-        DxfFile *fp,
-        DxfVPort *vport
-);
-int
-dxf_vport_write
-(
-        DxfFile *fp,
-        DxfVPort *vport
-);
-int
-dxf_vport_free
-(
-        DxfVPort *vport
-);
-void
-dxf_vport_free_chain
-(
-        DxfVPort *vports
-);
+DxfVPort *dxf_vport_new ();
+DxfVPort *dxf_vport_init (DxfVPort *vport);
+DxfVPort *dxf_vport_read (DxfFile *fp, DxfVPort *vport);
+int dxf_vport_write (DxfFile *fp, DxfVPort *vport);
+int dxf_vport_free (DxfVPort *vport);
+void dxf_vport_free_chain (DxfVPort *vports);
 
 
 #ifdef __cplusplus
