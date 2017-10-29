@@ -128,35 +128,12 @@ dxf_ucs
 } DxfUcs;
 
 
-DxfUcs *
-dxf_ucs_new ();
-DxfUcs *
-dxf_ucs_init
-(
-        DxfUcs *ucs
-);
-DxfUcs *
-dxf_ucs_read
-(
-        DxfFile *fp,
-        DxfUcs *ucs
-);
-int
-dxf_ucs_write
-(
-        DxfFile *fp,
-        DxfUcs *ucs
-);
-int
-dxf_ucs_free
-(
-        DxfUcs *ucs
-);
-void
-dxf_ucs_free_chain
-(
-        DxfUcs *ucss
-);
+DxfUcs *dxf_ucs_new ();
+DxfUcs *dxf_ucs_init (DxfUcs *ucs);
+DxfUcs *dxf_ucs_read (DxfFile *fp, DxfUcs *ucs);
+int dxf_ucs_write (DxfFile *fp, DxfUcs *ucs);
+int dxf_ucs_free (DxfUcs *ucs);
+void dxf_ucs_free_chain (DxfUcs *ucss);
 
 
 #ifdef __cplusplus
