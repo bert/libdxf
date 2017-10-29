@@ -129,35 +129,12 @@ dxf_xline
 } DxfXLine;
 
 
-DxfXLine *
-dxf_xline_new ();
-DxfXLine *
-dxf_xline_init
-(
-        DxfXLine *xline
-);
-DxfXLine *
-dxf_xline_read
-(
-        DxfFile *fp,
-        DxfXLine *xline
-);
-int
-dxf_xline_write
-(
-        DxfFile *fp,
-        DxfXLine *xline
-);
-int
-dxf_xline_free
-(
-        DxfXLine *xline
-);
-void
-dxf_xline_free_chain
-(
-        DxfXLine *xlines
-);
+DxfXLine *dxf_xline_new ();
+DxfXLine *dxf_xline_init (DxfXLine *xline);
+DxfXLine *dxf_xline_read (DxfFile *fp, DxfXLine *xline);
+int dxf_xline_write (DxfFile *fp, DxfXLine *xline);
+int dxf_xline_free (DxfXLine *xline);
+void dxf_xline_free_chain (DxfXLine *xlines);
 
 
 #ifdef __cplusplus
