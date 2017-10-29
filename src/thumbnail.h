@@ -82,30 +82,11 @@ dxf_thumbnail
 } DxfThumbnail;
 
 
-DxfThumbnail *
-dxf_thumbnail_new ();
-DxfThumbnail *
-dxf_thumbnail_init
-(
-        DxfThumbnail *thumbnail
-);
-DxfThumbnail *
-dxf_thumbnail_read
-(
-        DxfFile *fp,
-        DxfThumbnail *thumbnail
-);
-int
-dxf_thumbnail_write
-(
-        DxfFile *fp,
-        DxfThumbnail *thumbnail
-);
-int
-dxf_thumbnail_free
-(
-        DxfThumbnail *thumbnail
-);
+DxfThumbnail *dxf_thumbnail_new ();
+DxfThumbnail *dxf_thumbnail_init (DxfThumbnail *thumbnail);
+DxfThumbnail *dxf_thumbnail_read (DxfFile *fp, DxfThumbnail *thumbnail);
+int dxf_thumbnail_write (DxfFile *fp, DxfThumbnail *thumbnail);
+int dxf_thumbnail_free (DxfThumbnail *thumbnail);
 
 
 #ifdef __cplusplus
