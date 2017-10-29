@@ -128,60 +128,19 @@ dxf_style
                 /*!< Pointer to the next DxfStyle.\n
                  * \c NULL in the last DxfStyle. */
 } DxfStyle;
-DxfStyle *
-dxf_style_new ();
-DxfStyle *
-dxf_style_init
-(
-        DxfStyle *style
-);
-DxfStyle *
-dxf_style_read
-(
-        DxfFile *fp,
-        DxfStyle *style
-);
-int
-dxf_style_write
-(
-        DxfFile *fp,
-        DxfStyle *style
-);
-int
-dxf_style_free
-(
-        DxfStyle *style
-);
-void
-dxf_style_free_chain
-(
-        DxfStyle *styles
-);
-int
-dxf_style_is_shape_file
-(
-        DxfStyle *style
-);
-int
-dxf_style_is_text_vertical
-(
-        DxfStyle *style
-);
-int
-dxf_style_is_xreferenced
-(
-        DxfStyle *style
-);
-int
-dxf_style_is_xresolved
-(
-        DxfStyle *style
-);
-int
-dxf_style_is_referenced
-(
-        DxfStyle *style
-);
+
+
+DxfStyle *dxf_style_new ();
+DxfStyle *dxf_style_init (DxfStyle *style);
+DxfStyle *dxf_style_read (DxfFile *fp, DxfStyle *style);
+int dxf_style_write (DxfFile *fp, DxfStyle *style);
+int dxf_style_free (DxfStyle *style);
+void dxf_style_free_chain (DxfStyle *styles);
+int dxf_style_is_shape_file (DxfStyle *style);
+int dxf_style_is_text_vertical (DxfStyle *style);
+int dxf_style_is_xreferenced (DxfStyle *style);
+int dxf_style_is_xresolved (DxfStyle *style);
+int dxf_style_is_referenced (DxfStyle *style);
 
 
 #ifdef __cplusplus
