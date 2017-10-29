@@ -199,35 +199,12 @@ dxf_vertex_struct
 } DxfVertex;
 
 
-DxfVertex *
-dxf_vertex_new ();
-DxfVertex *
-dxf_vertex_init
-(
-        DxfVertex *vertex
-);
-DxfVertex *
-dxf_vertex_read
-(
-        DxfFile *fp,
-        DxfVertex *vertex
-);
-int
-dxf_vertex_write
-(
-        DxfFile *fp,
-        DxfVertex *vertex
-);
-int
-dxf_vertex_free
-(
-        DxfVertex *vertex
-);
-void
-dxf_vertex_free_chain
-(
-        DxfVertex *vertices
-);
+DxfVertex *dxf_vertex_new ();
+DxfVertex *dxf_vertex_init (DxfVertex *vertex);
+DxfVertex *dxf_vertex_read (DxfFile *fp, DxfVertex *vertex);
+int dxf_vertex_write (DxfFile *fp, DxfVertex *vertex);
+int dxf_vertex_free (DxfVertex *vertex);
+void dxf_vertex_free_chain (DxfVertex *vertices);
 
 
 #ifdef __cplusplus
