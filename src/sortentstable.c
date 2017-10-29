@@ -932,4 +932,53 @@ dxf_sortentstable_get_entity_owner_value
 }
 
 
+/*!
+ * \brief Set the pointer to a \c value in a particular \c entity_owner
+ * for a DXF \c SORTENTSTABLE object.
+ */
+DxfSortentsTable *
+dxf_sortentstable_set_entity_owner_value
+(
+        DxfSortentsTable *sortentstable,
+                /*!< a pointer to a DXF \c SORTENTSTABLE object. */
+        DxfChar *entity_owner,
+                /*!< a pointer to a particular \c entity_owner for the
+                 * object (a single linked list). */
+        char *value
+                /*!< a pointer to a value (string). */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (entity_owner == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (value == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        sortentstable->entity_owner->value = value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sortentstable);
+}
+
+
 /* EOF*/
