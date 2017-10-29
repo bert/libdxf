@@ -157,35 +157,12 @@ dxf_spatial_filter
 } DxfSpatialFilter;
 
 
-DxfSpatialFilter *
-dxf_spatial_filter_new ();
-DxfSpatialFilter *
-dxf_spatial_filter_init
-(
-        DxfSpatialFilter *spatial_filter
-);
-DxfSpatialFilter *
-dxf_spatial_filter_read
-(
-        DxfFile *fp,
-        DxfSpatialFilter *spatial_filter
-);
-int
-dxf_spatial_filter_write
-(
-        DxfFile *fp,
-        DxfSpatialFilter *spatial_filter
-);
-int
-dxf_spatial_filter_free
-(
-        DxfSpatialFilter *spatial_filter
-);
-void
-dxf_spatial_filter_free_chain
-(
-        DxfSpatialFilter *spatial_filters
-);
+DxfSpatialFilter *dxf_spatial_filter_new ();
+DxfSpatialFilter *dxf_spatial_filter_init (DxfSpatialFilter *spatial_filter);
+DxfSpatialFilter *dxf_spatial_filter_read (DxfFile *fp, DxfSpatialFilter *spatial_filter);
+int dxf_spatial_filter_write (DxfFile *fp, DxfSpatialFilter *spatial_filter);
+int dxf_spatial_filter_free (DxfSpatialFilter *spatial_filter);
+void dxf_spatial_filter_free_chain (DxfSpatialFilter *spatial_filters);
 
 
 #ifdef __cplusplus
