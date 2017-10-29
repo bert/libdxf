@@ -289,35 +289,12 @@ dxf_viewport
 } DxfViewport;
 
 
-DxfViewport *
-dxf_viewport_new ();
-DxfViewport *
-dxf_viewport_init
-(
-        DxfViewport *viewport
-);
-DxfViewport *
-dxf_viewport_read
-(
-        DxfFile *fp,
-        DxfViewport *viewport
-);
-int
-dxf_viewport_write
-(
-        DxfFile *fp,
-        DxfViewport *viewport
-);
-int
-dxf_viewport_free
-(
-        DxfViewport *viewport
-);
-void
-dxf_viewport_free_chain
-(
-        DxfViewport *viewports
-);
+DxfViewport *dxf_viewport_new ();
+DxfViewport *dxf_viewport_init (DxfViewport *viewport);
+DxfViewport *dxf_viewport_read (DxfFile *fp, DxfViewport *viewport);
+int dxf_viewport_write (DxfFile *fp, DxfViewport *viewport);
+int dxf_viewport_free (DxfViewport *viewport);
+void dxf_viewport_free_chain (DxfViewport *viewports);
 
 
 #ifdef __cplusplus
