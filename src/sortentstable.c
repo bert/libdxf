@@ -1003,4 +1003,37 @@ dxf_sortentstable_get_entity_owner_length
 }
 
 
+/*!
+ * \brief Set the \c length of a \c value in a particular
+ * \c entity_owner for a DXF \c SORTENTSTABLE object.
+ */
+DxfChar *
+dxf_sortentstable_set_entity_owner_length
+(
+        DxfChar *entity_owner,
+                /*!< a pointer to a particular \c entity_owner for the
+                 * object (a single linked list). */
+        int length
+                /*!< \c length. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (entity_owner == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        entity_owner->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (entity_owner);
+}
+
+
 /* EOF*/
