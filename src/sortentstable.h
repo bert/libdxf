@@ -120,6 +120,7 @@ DxfChar *dxf_sortentstable_get_entity_owner (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_entity_owner (DxfSortentsTable *sortentstable, DxfChar *entity_owner);
 char *dxf_sortentstable_get_entity_owner_value (DxfChar *entity_owner);
 DxfChar *dxf_sortentstable_set_entity_owner_value (DxfChar *entity_owner, char *value);
+int dxf_sortentstable_get_entity_owner_length (DxfChar *entity_owner);
 
 
 #ifdef __cplusplus
