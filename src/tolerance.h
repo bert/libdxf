@@ -147,35 +147,12 @@ dxf_tolerance
 } DxfTolerance;
 
 
-DxfTolerance *
-dxf_tolerance_new ();
-DxfTolerance *
-dxf_tolerance_init
-(
-        DxfTolerance *tolerance
-);
-DxfTolerance *
-dxf_tolerance_read
-(
-        DxfFile *fp,
-        DxfTolerance *tolerance
-);
-int
-dxf_tolerance_write
-(
-        DxfFile *fp,
-        DxfTolerance *tolerance
-);
-int
-dxf_tolerance_free
-(
-        DxfTolerance *tolerance
-);
-void
-dxf_tolerance_free_chain
-(
-        DxfTolerance *tolerances
-);
+DxfTolerance *dxf_tolerance_new ();
+DxfTolerance *dxf_tolerance_init (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_read (DxfFile *fp, DxfTolerance *tolerance);
+int dxf_tolerance_write (DxfFile *fp, DxfTolerance *tolerance);
+int dxf_tolerance_free (DxfTolerance *tolerance);
+void dxf_tolerance_free_chain (DxfTolerance *tolerances);
 
 
 #ifdef __cplusplus
