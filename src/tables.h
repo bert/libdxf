@@ -1,7 +1,7 @@
 /*!
  * \file tables.h
  *
- * \author Copyright (C) 2014 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014, 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for of a DXF tables section (\c TABLES).
  *
