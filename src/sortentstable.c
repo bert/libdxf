@@ -893,8 +893,8 @@ dxf_sortentstable_set_entity_owner
 
 
 /*!
- * \brief Get the pointer to the value stored in a \c entity_owner from
- * a DXF \c SORTENTSTABLE object.
+ * \brief Get the pointer to the \c value stored in a \c entity_owner
+ * from a DXF \c SORTENTSTABLE object.
  *
  * \return pointer to the \c value in the \c entity_owner.
  *
@@ -904,7 +904,8 @@ char *
 dxf_sortentstable_get_entity_owner_value
 (
         DxfChar *entity_owner
-                /*!< a pointer to a DXF \c SORTENTSTABLE object. */
+                /*!< a pointer to a \c entity_owner of a DXF
+                 * \c SORTENTSTABLE object. */
 )
 {
 #if DEBUG
@@ -943,7 +944,7 @@ dxf_sortentstable_set_entity_owner_value
                 /*!< a pointer to a particular \c entity_owner for the
                  * object (a single linked list). */
         char *value
-                /*!< a pointer to a value (string). */
+                /*!< a pointer to a \c value (string). */
 )
 {
 #if DEBUG
@@ -974,7 +975,7 @@ dxf_sortentstable_set_entity_owner_value
 
 /*!
  * \brief Get the \c length of the \c value stored in a \c entity_owner
- * from  * a DXF \c SORTENTSTABLE object.
+ * from a DXF \c SORTENTSTABLE object.
  *
  * \return \c length the \c value in the \c entity_owner.
  */
