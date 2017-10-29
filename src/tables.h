@@ -93,24 +93,10 @@ dxf_tables
 } DxfTables;
 
 
-DxfTables *
-dxf_tables_new ();
-DxfTables *
-dxf_tables_init
-(
-        DxfTables *tables
-);
-int
-dxf_tables_write
-(
-        DxfFile *fp,
-        DxfTables *tables
-);
-int
-dxf_tables_free
-(
-        DxfTables *tables
-);
+DxfTables *dxf_tables_new ();
+DxfTables *dxf_tables_init (DxfTables *tables);
+int dxf_tables_write (DxfFile *fp, DxfTables *tables);
+int dxf_tables_free (DxfTables *tables);
 
 
 #ifdef __cplusplus
