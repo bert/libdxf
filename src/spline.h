@@ -241,277 +241,56 @@ dxf_spline_struct
 } DxfSpline;
 
 
-DxfSpline *
-dxf_spline_new ();
-DxfSpline *
-dxf_spline_init
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_read
-(
-        DxfFile *fp,
-        DxfSpline *spline
-);
-int
-dxf_spline_write
-(
-        DxfFile *fp,
-        DxfSpline *spline
-);
-int
-dxf_spline_free
-(
-        DxfSpline *spline
-);
-void
-dxf_spline_free_chain
-(
-        DxfSpline *splines
-);
-int
-dxf_spline_get_id_code
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_id_code
-(
-        DxfSpline *spline,
-        int id_code
-);
-char *
-dxf_spline_get_linetype
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_linetype
-(
-        DxfSpline *spline,
-        char *linetype
-);
-char *
-dxf_spline_get_layer
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_layer
-(
-        DxfSpline *spline,
-        char *layer
-);
-double
-dxf_spline_get_elevation
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_elevation
-(
-        DxfSpline *spline,
-        double elevation
-);
-double
-dxf_spline_get_thickness
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_thickness
-(
-        DxfSpline *spline,
-        double thickness
-);
-double
-dxf_spline_get_linetype_scale
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_linetype_scale
-(
-        DxfSpline *spline,
-        double linetype_scale
-);
-int16_t
-dxf_spline_get_visibility
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_visibility
-(
-        DxfSpline *spline,
-        int16_t visibility
-);
-int
-dxf_spline_get_color
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_color
-(
-        DxfSpline *spline,
-        int color
-);
-int
-dxf_spline_get_paperspace
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_paperspace
-(
-        DxfSpline *spline,
-        int paperspace
-);
-int
-dxf_spline_get_graphics_data_size
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_graphics_data_size
-(
-        DxfSpline *spline,
-        int graphics_data_size
-);
-int16_t
-dxf_spline_get_shadow_mode
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_shadow_mode
-(
-        DxfSpline *spline,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_spline_get_binary_graphics_data
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_binary_graphics_data
-(
-        DxfSpline *spline,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_spline_get_dictionary_owner_soft
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_dictionary_owner_soft
-(
-        DxfSpline *spline,
-        char *dictionary_owner_soft
-);
-char *
-dxf_spline_get_material
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_material
-(
-        DxfSpline *spline,
-        char *material
-);
-char *
-dxf_spline_get_dictionary_owner_hard
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_dictionary_owner_hard
-(
-        DxfSpline *spline,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_spline_get_lineweight
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_lineweight
-(
-        DxfSpline *spline,
-        int16_t lineweight
-);
-char *
-dxf_spline_get_plot_style_name
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_plot_style_name
-(
-        DxfSpline *spline,
-        char *plot_style_name
-);
-long
-dxf_spline_get_color_value
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_color_value
-(
-        DxfSpline *spline,
-        long color_value
-);
-char *
-dxf_spline_get_color_name
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_color_name
-(
-        DxfSpline *spline,
-        char *color_name
-);
-long
-dxf_spline_get_transparency
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_transparency
-(
-        DxfSpline *spline,
-        long transparency
-);
-DxfPoint *
-dxf_spline_get_p0
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_p0
-(
-        DxfSpline *spline,
-        DxfPoint *p0
-);
-DxfPoint *
-dxf_spline_get_p1
-(
-        DxfSpline *spline
-);
-DxfSpline *
-dxf_spline_set_p1
-(
-        DxfSpline *spline,
-        DxfPoint *p1
-);
+DxfSpline *dxf_spline_new ();
+DxfSpline *dxf_spline_init (DxfSpline *spline);
+DxfSpline *dxf_spline_read (DxfFile *fp, DxfSpline *spline);
+int dxf_spline_write (DxfFile *fp, DxfSpline *spline);
+int dxf_spline_free (DxfSpline *spline);
+void dxf_spline_free_chain (DxfSpline *splines);
+int dxf_spline_get_id_code (DxfSpline *spline);
+DxfSpline *dxf_spline_set_id_code (DxfSpline *spline, int id_code);
+char *dxf_spline_get_linetype (DxfSpline *spline);
+DxfSpline *dxf_spline_set_linetype (DxfSpline *spline, char *linetype);
+char *dxf_spline_get_layer (DxfSpline *spline);
+DxfSpline *dxf_spline_set_layer (DxfSpline *spline, char *layer);
+double dxf_spline_get_elevation (DxfSpline *spline);
+DxfSpline *dxf_spline_set_elevation (DxfSpline *spline, double elevation);
+double dxf_spline_get_thickness (DxfSpline *spline);
+DxfSpline *dxf_spline_set_thickness (DxfSpline *spline, double thickness);
+double dxf_spline_get_linetype_scale (DxfSpline *spline);
+DxfSpline *dxf_spline_set_linetype_scale (DxfSpline *spline, double linetype_scale);
+int16_t dxf_spline_get_visibility (DxfSpline *spline);
+DxfSpline *dxf_spline_set_visibility (DxfSpline *spline, int16_t visibility);
+int dxf_spline_get_color (DxfSpline *spline);
+DxfSpline *dxf_spline_set_color (DxfSpline *spline, int color);
+int dxf_spline_get_paperspace (DxfSpline *spline);
+DxfSpline *dxf_spline_set_paperspace (DxfSpline *spline, int paperspace);
+int dxf_spline_get_graphics_data_size (DxfSpline *spline);
+DxfSpline *dxf_spline_set_graphics_data_size (DxfSpline *spline, int graphics_data_size);
+int16_t dxf_spline_get_shadow_mode (DxfSpline *spline);
+DxfSpline *dxf_spline_set_shadow_mode (DxfSpline *spline, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_spline_get_binary_graphics_data (DxfSpline *spline);
+DxfSpline *dxf_spline_set_binary_graphics_data (DxfSpline *spline, DxfBinaryGraphicsData *data);
+char *dxf_spline_get_dictionary_owner_soft (DxfSpline *spline);
+DxfSpline *dxf_spline_set_dictionary_owner_soft (DxfSpline *spline, char *dictionary_owner_soft);
+char *dxf_spline_get_material (DxfSpline *spline);
+DxfSpline *dxf_spline_set_material (DxfSpline *spline, char *material);
+char *dxf_spline_get_dictionary_owner_hard (DxfSpline *spline);
+DxfSpline *dxf_spline_set_dictionary_owner_hard (DxfSpline *spline, char *dictionary_owner_hard);
+int16_t dxf_spline_get_lineweight (DxfSpline *spline);
+DxfSpline *dxf_spline_set_lineweight (DxfSpline *spline, int16_t lineweight);
+char *dxf_spline_get_plot_style_name (DxfSpline *spline);
+DxfSpline *dxf_spline_set_plot_style_name (DxfSpline *spline, char *plot_style_name);
+long dxf_spline_get_color_value (DxfSpline *spline);
+DxfSpline *dxf_spline_set_color_value (DxfSpline *spline, long color_value);
+char *dxf_spline_get_color_name (DxfSpline *spline);
+DxfSpline *dxf_spline_set_color_name (DxfSpline *spline, char *color_name);
+long dxf_spline_get_transparency (DxfSpline *spline);
+DxfSpline *dxf_spline_set_transparency (DxfSpline *spline, long transparency);
+DxfPoint *dxf_spline_get_p0 (DxfSpline *spline);
+DxfSpline *dxf_spline_set_p0 (DxfSpline *spline, DxfPoint *p0);
+DxfPoint *dxf_spline_get_p1 (DxfSpline *spline);
+DxfSpline *dxf_spline_set_p1 (DxfSpline *spline, DxfPoint *p1);
 
 
 #ifdef __cplusplus
