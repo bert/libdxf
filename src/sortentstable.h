@@ -119,7 +119,7 @@ DxfSortentsTable *dxf_sortentstable_set_block_owner (DxfSortentsTable *sortentst
 DxfChar *dxf_sortentstable_get_entity_owner (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_entity_owner (DxfSortentsTable *sortentstable, DxfChar *entity_owner);
 char *dxf_sortentstable_get_entity_owner_value (DxfChar *entity_owner);
-DxfSortentsTable *dxf_sortentstable_set_entity_owner_value (DxfSortentsTable *sortentstable, DxfChar *entity_owner, char *value);
+DxfChar *dxf_sortentstable_set_entity_owner_value (DxfChar *entity_owner, char *value);
 
 
 #ifdef __cplusplus
