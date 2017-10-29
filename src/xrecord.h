@@ -97,35 +97,12 @@ dxf_xrecord
 } DxfXrecord;
 
 
-DxfXrecord *
-dxf_xrecord_new ();
-DxfXrecord *
-dxf_xrecord_init
-(
-        DxfXrecord *xrecord
-);
-DxfXrecord *
-dxf_xrecord_read
-(
-        DxfFile *fp,
-        DxfXrecord *xrecord
-);
-int
-dxf_xrecord_write
-(
-        DxfFile *fp,
-        DxfXrecord *xrecord
-);
-int
-dxf_xrecord_free
-(
-        DxfXrecord *xrecord
-);
-void
-dxf_xrecord_free_chain
-(
-        DxfXrecord *xrecords
-);
+DxfXrecord *dxf_xrecord_new ();
+DxfXrecord *dxf_xrecord_init (DxfXrecord *xrecord);
+DxfXrecord *dxf_xrecord_read (DxfFile *fp, DxfXrecord *xrecord);
+int dxf_xrecord_write (DxfFile *fp, DxfXrecord *xrecord);
+int dxf_xrecord_free (DxfXrecord *xrecord);
+void dxf_xrecord_free_chain (DxfXrecord *xrecords);
 
 
 #ifdef __cplusplus
