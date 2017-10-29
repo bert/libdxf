@@ -214,35 +214,12 @@ dxf_text
 } DxfText;
 
 
-DxfText *
-dxf_text_new ();
-DxfText *
-dxf_text_init
-(
-        DxfText *text
-);
-DxfText *
-dxf_text_read
-(
-        DxfFile *fp,
-        DxfText *text
-);
-int
-dxf_text_write
-(
-        DxfFile *fp,
-        DxfText *text
-);
-int
-dxf_text_free
-(
-        DxfText *text
-);
-void
-dxf_text_free_chain
-(
-        DxfText *texts
-);
+DxfText *dxf_text_new ();
+DxfText *dxf_text_init (DxfText *text);
+DxfText *dxf_text_read (DxfFile *fp, DxfText *text);
+int dxf_text_write (DxfFile *fp, DxfText *text);
+int dxf_text_free (DxfText *text);
+void dxf_text_free_chain (DxfText *texts);
 
 
 #ifdef __cplusplus
