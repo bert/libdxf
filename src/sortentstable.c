@@ -1078,6 +1078,45 @@ dxf_sortentstable_get_next_entity_owner
 
 
 /*!
+ * \brief Set the pointer to the next \c entity_owner for a
+ * \c entity_owner.
+ */
+DxfChar *
+dxf_sortentstable_set_next_entity_owner
+(
+        DxfChar *entity_owner,
+                /*!< a pointer to a \c entity_owner. */
+        DxfChar *next
+                /*!< a pointer to the next \c entity_owner. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (entity_owner == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        entity_owner->next = (struct DxfChar *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (entity_owner);
+}
+
+
+/*!
  * \brief Get the \c sort_handle from a DXF \c SORTENTSTABLE object.
  *
  * \return \c sort_handle.
