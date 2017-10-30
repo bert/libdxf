@@ -122,6 +122,7 @@ char *dxf_sortentstable_get_entity_owner_value (DxfChar *entity_owner);
 DxfChar *dxf_sortentstable_set_entity_owner_value (DxfChar *entity_owner, char *value);
 int dxf_sortentstable_get_entity_owner_length (DxfChar *entity_owner);
 DxfChar *dxf_sortentstable_set_entity_owner_length (DxfChar *entity_owner, int length);
+DxfChar *dxf_sortentstable_get_next_entity_owner (DxfChar *entity_owner);
 DxfInt *dxf_sortentstable_get_sort_handle (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_sort_handle (DxfSortentsTable *sortentstable, DxfInt *sort_handle);
 int dxf_sortentstable_get_sort_handle_value (DxfInt *sort_handle);
