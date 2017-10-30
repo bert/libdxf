@@ -1215,4 +1215,43 @@ dxf_sortentstable_get_next_sort_handle
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c sort_handle for a
+ * \c sort_handle.
+ */
+DxfInt *
+dxf_sortentstable_set_next_sort_handle
+(
+        DxfInt *sort_handle,
+                /*!< a pointer to a \c sort_handle entity. */
+        DxfInt *next
+                /*!< a pointer to the next \c sort_handle. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sort_handle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        sort_handle->next = (struct DxfInt *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sort_handle);
+}
+
+
 /* EOF*/
