@@ -125,6 +125,7 @@ DxfChar *dxf_sortentstable_set_entity_owner_length (DxfChar *entity_owner, int l
 DxfInt *dxf_sortentstable_get_sort_handle (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_sort_handle (DxfSortentsTable *sortentstable, DxfInt *sort_handle);
 int dxf_sortentstable_get_sort_handle_value (DxfInt *sort_handle);
+DxfInt *dxf_sortentstable_set_sort_handle_value (DxfInt *sort_handle, int value);
 
 
 #ifdef __cplusplus
