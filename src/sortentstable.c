@@ -1333,4 +1333,49 @@ dxf_sortentstable_set_next_sort_handle
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c sort_handle from a linked list
+ * of \c sort_handles.
+ *
+ * \return pointer to the last \c sort_handle.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfInt *
+dxf_sortentstable_get_last_sort_handle
+(
+        DxfInt *sort_handle
+                /*!< a pointer to a \c sort_handle. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sort_handle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sort_handle->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfInt *) sort_handle);
+        }
+        DxfInt *iter = (DxfInt *) sort_handle->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfInt *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInt *) iter);
+}
+
+
 /* EOF*/

@@ -130,6 +130,7 @@ int dxf_sortentstable_get_sort_handle_value (DxfInt *sort_handle);
 DxfInt *dxf_sortentstable_set_sort_handle_value (DxfInt *sort_handle, int value);
 DxfInt *dxf_sortentstable_get_next_sort_handle (DxfInt *sort_handle);
 DxfInt *dxf_sortentstable_set_next_sort_handle (DxfInt *sort_handle, DxfInt *next);
+DxfInt *dxf_sortentstable_get_last_sort_handle (DxfInt *sort_handle);
 
 
 #ifdef __cplusplus
