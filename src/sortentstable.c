@@ -1112,4 +1112,35 @@ dxf_sortentstable_set_sort_handle
 }
 
 
+/*!
+ * \brief Get the \c value from the \c sort_handle member of a DXF
+ * \c SORTENTSTABLE object.
+ *
+ * \return \c value from the \c sort_handle.
+ */
+int
+dxf_sortentstable_get_sort_handle_value
+(
+        DxfInt *sort_handle
+                /*!< a pointer to a \c sort_handle member. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sort_handle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sort_handle->value);
+}
+
+
 /* EOF*/
