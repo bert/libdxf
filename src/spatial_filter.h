@@ -56,7 +56,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_spatial_filter
+dxf_spatial_filter_struct
 {
         /* Members common for all DXF objects. */
         int id_code;
