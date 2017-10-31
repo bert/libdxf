@@ -134,6 +134,7 @@ DxfInt *dxf_sortentstable_set_next_sort_handle (DxfInt *sort_handle, DxfInt *nex
 DxfInt *dxf_sortentstable_get_last_sort_handle (DxfInt *sort_handle);
 DxfSortentsTable *dxf_sortentstable_get_next (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_next (DxfSortentsTable *sortentstable, DxfSortentsTable *next);
+DxfSortentsTable *dxf_sortentstable_get_last (DxfSortentsTable *sortentstable);
 
 
 #ifdef __cplusplus
