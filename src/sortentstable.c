@@ -893,6 +893,51 @@ dxf_sortentstable_set_entity_owner
 
 
 /*!
+ * \brief Get the pointer to the last \c entity_owner from a linked list
+ * of \c entity_owner.
+ *
+ * \return pointer to the last \c entity_owner.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfChar *
+dxf_sortentstable_get_last_entity_owner
+(
+        DxfChar *entity_owner
+                /*!< a pointer to a \c entity_owner. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (entity_owner == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (entity_owner->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfChar *) entity_owner);
+        }
+        DxfChar *iter = (DxfChar *) entity_owner->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfChar *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfChar *) iter);
+}
+
+
+/*!
  * \brief Get the pointer to the \c value stored in a \c entity_owner
  * from a DXF \c SORTENTSTABLE object.
  *
