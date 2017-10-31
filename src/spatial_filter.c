@@ -5,7 +5,13 @@
  *
  * \brief Functions for a DXF spatial_filter object (\c SPATIAL_FILTER).
  *
- * \version The \c SPATIAL_FILTER object was introduced in DXF R14.
+ * \since The \c SPATIAL_FILTER object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a \c DxfSpatialFilter.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfSpatialFilter *
 dxf_spatial_filter_new ()
@@ -84,12 +84,6 @@ dxf_spatial_filter_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfSpatialFilter *
 dxf_spatial_filter_init
@@ -161,12 +155,6 @@ dxf_spatial_filter_init
  * While parsing the DXF file store data in \c spatial_filter. \n
  *
  * \return a pointer to \c spatial_filter.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfSpatialFilter *
 dxf_spatial_filter_read
@@ -421,12 +409,6 @@ dxf_spatial_filter_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_spatial_filter_write
@@ -569,12 +551,6 @@ dxf_spatial_filter_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_spatial_filter_free
@@ -616,12 +592,6 @@ dxf_spatial_filter_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c SPATIAL_FILTER
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_spatial_filter_free_chain
