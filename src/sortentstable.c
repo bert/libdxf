@@ -1423,4 +1423,44 @@ dxf_sortentstable_get_last_sort_handle
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c SORTENTSTABLE object from a DXF
+ * \c ARC SORTENTSTABLE object
+ *
+ * \return pointer to the next \c SORTENTSTABLE object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSortentsTable *
+dxf_sortentstable_get_next
+(
+        DxfSortentsTable *sortentstable
+                /*!< a pointer to a DXF \c SORTENTSTABLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sortentstable->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSortentsTable *) sortentstable->next);
+}
+
+
 /* EOF*/
