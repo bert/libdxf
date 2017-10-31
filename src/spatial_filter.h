@@ -45,6 +45,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -71,6 +72,10 @@ dxf_spatial_filter_struct
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF spatial_filter. */
+        DxfPoint *p0;
+                /*!< The clip boundary definition point (in OCS) (always
+                 * 2 or more) based on an xref scale of 1.\n
+                 * Group codes = 10 and 20. */
         double x0[DXF_MAX_PARAM];
                 /*!< X-value of the clip boundary definition point (in
                  * OCS) (always 2 or more) based on an xref scale of 1.\n
