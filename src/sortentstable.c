@@ -1463,4 +1463,44 @@ dxf_sortentstable_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c SORTENTSTABLE object for a DXF
+ * \c SORTENTSTABLE object.
+ */
+DxfSortentsTable *
+dxf_sortentstable_set_next
+(
+        DxfSortentsTable *sortentstable,
+                /*!< a pointer to a DXF \c SORTENTSTABLE object. */
+        DxfSortentsTable *next
+                /*!< a pointer to the next \c SORTENTSTABLE object for
+                 * the \c SORTENTSTABLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        sortentstable->next = (struct DxfSortentsTable *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sortentstable);
+}
+
+
 /* EOF*/
