@@ -14,7 +14,7 @@ libdxfdoc_DATA = \
 	AUTHORS \
 	BUGS \
 	ChangeLog \
-	CODE_OF_CONDUCT \
+	CODE_OF_CONDUCT.md \
 	CONTRIBUTING \
 	COPYING \
 	INSTALL \
