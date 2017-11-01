@@ -170,6 +170,7 @@ int dxf_spatial_filter_free (DxfSpatialFilter *spatial_filter);
 void dxf_spatial_filter_free_chain (DxfSpatialFilter *spatial_filters);
 int dxf_spatial_filter_get_id_code (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_id_code (DxfSpatialFilter *spatial_filter, int id_code);
+char *dxf_spatial_filter_get_dictionary_owner_soft (DxfSpatialFilter *spatial_filter);
 
 
 #ifdef __cplusplus

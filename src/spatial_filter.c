@@ -696,4 +696,44 @@ dxf_spatial_filter_set_id_code
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
+ * \c SPATIAL_FILTER object.
+ *
+ * \return pointer to the \c dictionary_owner_soft.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_spatial_filter_get_dictionary_owner_soft
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spatial_filter->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (spatial_filter->dictionary_owner_soft));
+}
+
+
 /* EOF*/
