@@ -18,7 +18,7 @@ libdxfdoc_DATA = \
 	CONTRIBUTING \
 	COPYING \
 	INSTALL \
-	ISSUES \
+	ISSUES.md \
 	LICENSE \
 	MANIFEST \
 	NEWS \
