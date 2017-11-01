@@ -169,6 +169,7 @@ int dxf_spatial_filter_write (DxfFile *fp, DxfSpatialFilter *spatial_filter);
 int dxf_spatial_filter_free (DxfSpatialFilter *spatial_filter);
 void dxf_spatial_filter_free_chain (DxfSpatialFilter *spatial_filters);
 int dxf_spatial_filter_get_id_code (DxfSpatialFilter *spatial_filter);
+DxfSpatialFilter *dxf_spatial_filter_set_id_code (DxfSpatialFilter *spatial_filter, int id_code);
 
 
 #ifdef __cplusplus
