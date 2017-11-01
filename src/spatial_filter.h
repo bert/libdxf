@@ -173,6 +173,7 @@ DxfSpatialFilter *dxf_spatial_filter_set_id_code (DxfSpatialFilter *spatial_filt
 char *dxf_spatial_filter_get_dictionary_owner_soft (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_dictionary_owner_soft (DxfSpatialFilter *spatial_filter, char *dictionary_owner_soft);
 char *dxf_spatial_filter_get_dictionary_owner_hard (DxfSpatialFilter *spatial_filter);
+DxfSpatialFilter *dxf_spatial_filter_set_dictionary_owner_hard (DxfSpatialFilter *spatial_filter, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus

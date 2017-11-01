@@ -816,4 +816,44 @@ dxf_spatial_filter_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c SPATIAL_FILTER object.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_set_dictionary_owner_hard
+(
+        DxfSpatialFilter *spatial_filter,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_filter->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
 /* EOF*/
