@@ -856,4 +856,42 @@ dxf_spatial_filter_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the clip boundary definition point \c p0 of a DXF
+ * \c SPATIAL_FILTER object.
+ *
+ * \return the clip boundary definition point \c p0.
+ */
+DxfPoint *
+dxf_spatial_filter_get_p0
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spatial_filter->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter->p0);
+}
+
+
 /* EOF*/
