@@ -66,9 +66,10 @@ dxf_entities_read_table
                 /*!< filepointer to the input file (or device). */
         int line_number,
                 /*!< current line number in the input file (or device). */
-        char *dxf_entities_list, 
+        char *dxf_entities_list,
                 /*!< pointer to a list of entities. */
         int acad_version_number
+                /*!< AutoCAD DXF version number. */
 )
 {
 #if DEBUG
@@ -88,8 +89,10 @@ dxf_entities_read_table
 int
 dxf_entities_write_table
 (
-        char *dxf_entities_list, 
+        char *dxf_entities_list,
+                /*!< pointer to a list of entities. */
         int acad_version_number
+                /*!< AutoCAD DXF version number. */
 )
 {
 #if DEBUG
