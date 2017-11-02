@@ -974,4 +974,47 @@ dxf_spatial_filter_get_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the clip boundary definition point \c x0 of
+ * a DXF \c SPATIAL_FILTER object.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_set_x0
+(
+        DxfSpatialFilter *spatial_filter,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        double x0
+                /*!< the X-value of the clip boundary definition point
+                 * \c x0 of a DXF \c SPATIAL_FILTER object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spatial_filter->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_filter->p0->x0 = x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
 /* EOF*/
