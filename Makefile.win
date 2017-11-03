@@ -2,23 +2,103 @@
 # Makefile created by Dev-C++ 4.9.9.2
 
 CPP  = g++.exe
+
 CC   = gcc.exe
+
 WINDRES = windres.exe
+
 RES  = 
-OBJ  = src/appid.o src/arc.o src/attdef.o src/attrib.o src/block.o src/circle.o src/class.o src/comment.o src/ellipse.o src/endseq.o src/endtab.o src/entity.o src/eof.o src/file.o src/hatch.o src/header.o src/insert.o src/layer.o src/line.o src/ltype.o src/lwpolyline.o src/point.o src/polyline.o src/section.o src/shape.o src/solid.o src/table.o src/text.o src/trace.o src/vertex.o src/thumbnail.o $(RES)
-LINKOBJ  = src/appid.o src/arc.o src/attdef.o src/attrib.o src/block.o src/circle.o src/class.o src/comment.o src/ellipse.o src/endseq.o src/endtab.o src/entity.o src/eof.o src/file.o src/hatch.o src/header.o src/insert.o src/layer.o src/line.o src/ltype.o src/lwpolyline.o src/point.o src/polyline.o src/section.o src/shape.o src/solid.o src/table.o src/text.o src/trace.o src/vertex.o src/thumbnail.o $(RES)
+
+OBJ  = \
+	src/appid.o \
+	src/arc.o \
+	src/attdef.o \
+	src/attrib.o \
+	src/block.o \
+	src/circle.o \
+	src/class.o \
+	src/comment.o \
+	src/ellipse.o \
+	src/endseq.o \
+	src/endtab.o \
+	src/entity.o \
+	src/eof.o \
+	src/file.o \
+	src/hatch.o \
+	src/header.o \
+	src/insert.o \
+	src/layer.o \
+	src/line.o \
+	src/ltype.o \
+	src/lwpolyline.o \
+	src/point.o \
+	src/polyline.o \
+	src/section.o \
+	src/shape.o \
+	src/solid.o \
+	src/table.o \
+	src/text.o \
+	src/trace.o \
+	src/vertex.o \
+	src/thumbnail.o \
+	$(RES)
+
+LINKOBJ  = \
+	src/appid.o \
+	src/arc.o \
+	src/attdef.o \
+	src/attrib.o \
+	src/block.o \
+	src/circle.o \
+	src/class.o \
+	src/comment.o \
+	src/ellipse.o \
+	src/endseq.o \
+	src/endtab.o \
+	src/entity.o \
+	src/eof.o \
+	src/file.o \
+	src/hatch.o \
+	src/header.o \
+	src/insert.o \
+	src/layer.o \
+	src/line.o \
+	src/ltype.o \
+	src/lwpolyline.o \
+	src/point.o \
+	src/polyline.o \
+	src/section.o \
+	src/shape.o \
+	src/solid.o \
+	src/table.o \
+	src/text.o \
+	src/trace.o \
+	src/vertex.o \
+	src/thumbnail.o \
+	$(RES)
+
 LIBS =  -L"C:/Dev-Cpp/lib"  
+
 INCS =  -I"C:/Dev-Cpp/include" 
-CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+
+CXXINCS =  \
+	-I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  \
+	-I"C:/Dev-Cpp/include/c++/3.4.2/backward"  \
+	-I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  \
+	-I"C:/Dev-Cpp/include/c++/3.4.2"  \
+	-I"C:/Dev-Cpp/include" 
+
 BIN  = libdxf.exe
+
 CXXFLAGS = $(CXXINCS)  
+
 CFLAGS = $(INCS)  
+
 RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
 all: all-before libdxf.exe all-after
-
 
 clean: clean-custom
 	${RM} $(OBJ) $(BIN)
