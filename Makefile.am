@@ -12,7 +12,7 @@ libdxfdocdir = ${prefix}/doc
 libdxfdoc_DATA = \
 	ABOUT-NLS \
 	AUTHORS \
-	BUGS \
+	BUGS.md \
 	ChangeLog \
 	CODE_OF_CONDUCT.md \
 	CONTRIBUTING \
