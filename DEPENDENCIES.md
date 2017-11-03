@@ -22,4 +22,3 @@ and any other dependency these packages may require.
 YMMV with lesser version numbers, these are the minimum versions I use to
 develop libdxf with.
 
-/* EOF */
