@@ -5,7 +5,7 @@ repository, requires (at least):
 
 - [automake-1.11](https://www.gnu.org/software/automake/)
 
-- [autoconf-2.65[(https://www.gnu.org/software/autoconf/autoconf.html)
+- [autoconf-2.65](https://www.gnu.org/software/autoconf/autoconf.html)
 
 - [gcc-4.4.5](https://gcc.gnu.org/)
 
