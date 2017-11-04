@@ -30,7 +30,6 @@ branches:
   only:
     - master
     - devel
-    - tests
     - LGPL
 
 notifications:
