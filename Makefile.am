@@ -13,7 +13,6 @@ libdxfdoc_DATA = \
 	ABOUT-NLS \
 	AUTHORS \
 	ChangeLog \
-	CONTRIBUTING \
 	COPYING \
 	INSTALL \
 	LICENSE \
@@ -22,6 +21,7 @@ libdxfdoc_DATA = \
 	doc/AUTHORS.md \
 	doc/BUGS.md \
 	doc/CODE_OF_CONDUCT.md \
+	doc/CONTRIBUTING.md \
 	doc/DEPENDENCIES.md \
 	doc/ISSUES.md \
 	doc/MANIFEST \

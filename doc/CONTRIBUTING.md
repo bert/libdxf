@@ -1,8 +1,7 @@
-Contributing to libDXF
-======================
+# Contributing to libDXF.
 
-How to contribute
------------------
+## How to contribute.
+
 Your patches, issues, ideas and bug reports are essential for getting libDXF
 better and achieving a great library of DXF routines and tools.
 We simply can't access the huge number of platforms and myriad configurations
@@ -13,45 +12,39 @@ There are a few guidelines that we need contributors to follow so that we can
 have a chance of keeping on top of things.
 
 
-Getting Started
----------------
+## Getting Started.
+
 On Github:
-- Make sure you have a GitHub account.
-- Submit a ticket for your issue, assuming one does not already exist.
-- Clearly describe the issue including steps to reproduce when it is a bug.
-- Make sure you mention the earliest version that you know has the issue.
-- Fork the repository on GitHub if you are going to create a patch, and
+* Make sure you have a GitHub account.
+* Submit a ticket for your issue, assuming one does not already exist.
+* Clearly describe the issue including steps to reproduce when it is a bug.
+* Make sure you mention the earliest version that you know has the issue.
+* Fork the repository on GitHub if you are going to create a patch, and
   do a "pull request", this is best done on a separate topic branch.
 
 Or on Launchpad:
-- Make sure you have a Launchpad account.
-- Sign the Code of Conduct.
-- Submit a bug report for your issue, assuming one does not already exist.
-- Clearly describe the issue including steps to reproduce when it is a bug.
-- Make sure you mention the earliest version that you know has the issue.
+* Make sure you have a Launchpad account.
+* Sign the Code of Conduct.
+* Submit a bug report for your issue, assuming one does not already exist.
+* Clearly describe the issue including steps to reproduce when it is a bug.
+* Make sure you mention the earliest version that you know has the issue.
 
 
-Making Changes
---------------
-- Create a topic branch from where you want to base your work, this is usually
-  not the master branch.
+## Making Changes.
 
-  Only target release branches if you are certain your fix must be on that
-  branch.
-
-  To quickly create a topic branch based on master with:
-      git branch fix/master/my_contribution master
-
-  then checkout the new branch with:
-      git checkout fix/master/my_contribution
-
-  or do this combined with:
-      git checkout -b fix/master/my_contribution
-
-- Make commits of logical units.
-- Check for unnecessary whitespace with git diff --check before committing.
-- Make sure your commit messages are in the proper format:
-
+* Create a topic branch from where you want to base your work, this is
+  usually not the master branch.
+* Only target release branches if you are certain your fix must be on
+  that branch.
+* To quickly create a topic branch based on master with:
+    git branch fix/master/my_contribution master
+* then checkout the new branch with:
+    git checkout fix/master/my_contribution
+* or do this combined with:
+    git checkout -b fix/master/my_contribution
+* Make commits of logical units.
+* Check for unnecessary whitespace with git diff --check before committing.
+* Make sure your commit messages are in the proper format:
     (#99999) Make the example in CONTRIBUTING imperative and concrete
 
     Without this patch applied the example commit message in the CONTRIBUTING
@@ -60,30 +53,29 @@ Making Changes
     based on a description rather than an example.  This patch fixes the
     problem by making the example concrete and imperative.
 
-  The first line is a real life imperative statement with a ticket number
+* The first line is a real life imperative statement with a ticket number
   from our issue tracker.
-  The body describes the behavior without the patch,
+* The body describes the behavior without the patch,
   why this is a problem, and how the patch fixes the problem when applied.
+* Make sure you have added the necessary tests for your changes.
+* Run all the tests to assure nothing else was accidentally broken.
 
-- Make sure you have added the necessary tests for your changes.
-- Run all the tests to assure nothing else was accidentally broken.
 
+## Submitting Changes.
 
-Submitting Changes
-------------------
 On Github:
-- Push your changes to a topic branch in your fork of the repository.
-- Submit a pull request to the repository in the libDXF organization.
+* Push your changes to a topic branch in your fork of the repository.
+* Submit a pull request to the repository in the libDXF organization.
 
 Or on Launchpad:
-- Sign the Code of Conduct, if you haven't done that yet.
-- Update your Launchpad bug report to mark that you have submitted code and are
+* Sign the Code of Conduct, if you haven't done that yet.
+* Update your Launchpad bug report to mark that you have submitted code and are
   ready for it to be reviewed.
-- Include a link to the pull request or topic branch in the bug report.
+* Include a link to the pull request or topic branch in the bug report.
 
 
-Cooperative Principle
----------------------
+## Cooperative Principle.
+
 "Make your contribution such as it is required, at the stage at which it occurs,
 by the accepted purpose or direction of the talk exchange in which you are
 engaged." (Grice, H.P. (1989), Studies in the Way of Words, Harvard University
@@ -94,26 +86,26 @@ cooperative principle that deal specifically with communication.
 These apply to computer linguistics and thus source code as well.
 
 Maxim of Quantity: Information
-- Make your contribution as informative as is required for the current
+* Make your contribution as informative as is required for the current
   purposes of the exchange.
-- Do not make your contribution more informative than is required.
+* Do not make your contribution more informative than is required.
 
 Maxim of Quality: Truth
-- Do not say what you believe to be false.
-- Do not say that for which you lack adequate evidence.
+* Do not say what you believe to be false.
+* Do not say that for which you lack adequate evidence.
 
 Maxim of Relation: Relevance
-- Be relevant.
+* Be relevant.
 
 Maxim of Manner: Clarity ("be perspicuous")
-- Avoid obscurity of expression.
-- Avoid ambiguity.
-- Be brief (avoid unnecessary prolixity).
-- Be orderly.
+* Avoid obscurity of expression.
+* Avoid ambiguity.
+* Be brief (avoid unnecessary prolixity).
+* Be orderly.
 
 
-Rationale on Coding Style
--------------------------
+## Rationale on Coding Style.
+
 Here follow some notes to myself, or any other volunteer contributor who
 wants to join the effort.
 The coding style I follow is the Allman style, named after Eric Allman.
@@ -132,11 +124,12 @@ Please understand that I might reformat your contribution to my own likings as
 not to strain my eyes too much.
 
 
-File headers
------------- 
+## File headers.
+
 File headers contain Doxygen style tags for doumentation generated with Doxygen.
 A default header looks similar to the following:
 
+```
 /*!
  * \file default.c
  *
@@ -163,10 +156,9 @@ A default header looks similar to the following:
  * the Free Software Foundation, Inc., \n
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
+```
 
-
-C-header files
---------------
+## C-header files.
 The following is taken from "Libtool", "Shared library support for GNU",
 section 8.1 "Writing C header files", to be found here:
 <http://www.gnu.org/software/libtool/manual/html_node/index.html>.
@@ -174,19 +166,19 @@ section 8.1 "Writing C header files", to be found here:
 Writing portable C header files can be difficult, since they may be read by
 different types of compilers:
 
-1) C++ compilers
+### C++ compilers
 
 C++ compilers require that functions be declared with full prototypes, since
 C++ is more strongly typed than C. C functions and variables also need to be
 declared with the extern "C" directive, so that the names aren’t mangled.
 See C++ libraries, for other issues relevant to using C++ with libtool.
 
-2) ANSI C compilers
+### ANSI C compilers
 
 ANSI C compilers are not as strict as C++ compilers, but functions should be
 prototyped to avoid unnecessary warnings when the header file is #included.
 
-3) non-ANSI C compilers
+### non-ANSI C compilers
 
 Non-ANSI compilers will report errors if functions are prototyped. 
 
@@ -199,6 +191,7 @@ directory.
 
 Here are the relevant portions of that file:
 
+```
     /* BEGIN_C_DECLS should be used at the beginning of your declarations,
        so that C++ compilers don't mangle their names.  Use END_C_DECLS at
        the end of C declarations. */
@@ -223,9 +216,11 @@ Here are the relevant portions of that file:
     #else
     # define PARAMS(protos) ()
     #endif
+```
 
 These macros are used in foo.h as follows:
 
+```
 #ifndef FOO_H
 #define FOO_H 1
 
@@ -240,6 +235,7 @@ int hello PARAMS((void));
 END_C_DECLS
 
 #endif /* !FOO_H */
+```
 
 Note that the #ifndef FOO_H prevents the body of foo.h from being read more than
 once in a given compilation (see the following paragraph "Header guards").
@@ -268,6 +264,7 @@ You may need to cope with some of the following issues:
 
 For a non-glib way choose:
 
+```
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -277,10 +274,10 @@ void foo (int i);
 #ifdef __cplusplus
 }
 #endif
+```
 
+## Header guards.
 
-Header guards
--------------
 All header files should have #define guards to prevent multiple inclusion.
 The format of the symbol name should be <PROJECT>_<PATH>_<FILE>_H_.
 
@@ -289,17 +286,20 @@ source tree.
 For example, the file foo/src/bar/baz.h in project foo should have the following
 guard:
 
+```
 #ifndef FOO_BAR_BAZ_H_
 #define FOO_BAR_BAZ_H_
 
 ...
 
 #endif /* FOO_BAR_BAZ_H_ */
+```
 
+## Doxygen style comments.
 
-Doxygen style comments
-----------------------
 The prefered style for a Doxygen comment for a function or any other entity is:
+
+```
 /*!
  * \brief Brief description.
  *
@@ -324,35 +324,38 @@ The prefered style for a Doxygen comment for a function or any other entity is:
  *
  * The more verbose Doxygen comment is closed with:
  */
- 
+``` 
 
-Comments
---------
+## Comments.
+
+```
 /* Comments should be added at the correct level of identation. */
 
 /* More elaborate comments, which span across the 80 character limit,
  * (described below) should have an asterisk in front on every line of the
  * comment.
  */
+```
 
+## Indentation.
 
-Indentation
------------
 To contribute to this code you need to set emacs (or whatever editor you use) to
 8 indentation steps and {} at the right places (see code).
 No tabs, just plain spaces, except in Makefiles and config stuff where tabs 
 have a meaning.
 
 My ~/.emacs are:
+
+```lisp
 (defun my-c-mode-hook ()
   (turn-on-font-lock)
   (setq c-basic-offset 8))
 
 (add-hook 'c-mode-hook 'my-c-mode-hook)
+```
 
+## Truncation.
 
-Truncation
-----------
 It is prefered for lines to not extend beyond 80 characters long.
 If you continue the line of code at the following line please add 2 spaces to
 the current ident level.
@@ -361,18 +364,21 @@ write a function.
 However, I'm not very strict about this myself.
 Please do truncate a line at a convenient position, for example:
 
+```
         if (((very_elaborate_variable_description_1 > 0)
           || (very_elaborate_variable_description_2 < 0))
           && (very_elaborate_variable_description_3 > 1000))
         {
                 blah;
         }
+```
 
 Improve readability by putting the operator at the start of the new line.
 
 
-Curly Braces
-------------
+## Curly Braces.
+
+```
 if () 
 {
         blah1 ();
@@ -383,9 +389,11 @@ else
         yada1 ();
         yada2 ();
 }
+```
 
 If there is only one statement you don't need the braces.
 
+```
 for () 
 {
         do_whatever1 ();
@@ -403,20 +411,21 @@ switch ()
         default:
                 break;
 }
+```
 
 Switch should always have a default case.
 Note the whitespace before the ().
 
 
-ChangeLog
----------
+## ChangeLog.
+
 A ChangeLog is generated from all commit message entries entered when a blob
 of code is committed with git.
-I generate the ChangeLog prior to a new release.
+Generate the ChangeLog prior to a new release.
 
 
-About git commit messages and blobs
------------------------------------
+## About git commit messages and blobs.
+
 Keep commit messages as clear as possible:
 
 If a file is added or deleted mentioning "new file: blah.c" or 
@@ -426,16 +435,16 @@ Keep blobs as granular as possible, do not commit blobs from different files in
 a single commit. I would rather have five commits if that is what it takes.
 
 
-About git branches and merging
-------------------------------
+## About git branches and merging.
+
 Use the branch and merge functionality of git for every experiment or issue
 [#ticket] to be solved.
 As I'm still learning things about git every day I find this a good practice,
 and I'm going to have to adopt to this myself.
 
 
-Functions
----------
+## Functions.
+
 The prototype should have return type on the same line as function name:
 int some_function (int par1, int par2);
 
@@ -444,14 +453,17 @@ The function implementation should have return type on a separate line
 The function implementation should have the function name in c-comments
 at the closing brace, although I'm not strict with doing this myself (me bad).
 
+```
 int *
 some_function (int par1, int par2)
 {
         /* Implementation */
 } /* some_function */
+```
 
 or 
 
+```
 int *
 some_function
 (
@@ -466,21 +478,24 @@ some_function
 {
         /* Implementation */
 } /* some_function */
+```
 
 In a function there should be a maximum of one empty line in a row.
 Between functions there should be two empty lines.
 
 
-Log messages.
--------------
+## Log messages.
+
 It is prefered to log messages similar like the following example:
-<example>
+```
         g_log ("", G_LOG_LEVEL_WARNING,
                 _("DxfArc with a null pointer found in: %s.\n"),
                 dxf_filename);
-</example>
+```
+
 The following criticality is (and should be) maintained:
 
+```
 /* GLib log levels */
 G_LOG_LEVEL_ERROR             = 1 << 2, /* Always fatal, abort the application. */
 G_LOG_LEVEL_CRITICAL          = 1 << 3, /* Functionality of the operation or
@@ -498,10 +513,10 @@ G_LOG_LEVEL_INFO              = 1 << 6, /* Information usefull for the user. */
 G_LOG_LEVEL_DEBUG             = 1 << 7, /* Information usefull for the developer. */
                                          * Requires the debug variable to be
                                          * set. */
+```
 
+## 0, 0.0, NULL and '\0'.
 
-0, 0.0, NULL and '\0'
----------------------
 Use 0 for integers, 0.0 for reals, NULL for pointers, and '\0' for chars.
 
 Use 0 for integers and 0.0 for reals. This is not controversial.
@@ -515,8 +530,8 @@ equal to sizeof(0).
 Use '\0' for chars. This is the correct type and also makes code more readable.
 
 
-sizeof
-------
+## sizeof().
+
 Prefer sizeof(varname) to sizeof(type).
 
 Use sizeof(varname) when you take the size of a particular variable.
@@ -527,8 +542,9 @@ code that manages an external or internal data format where a variable of an
 appropriate C type is not convenient.
 
 
-End Of File
------------
+## End Of File
+
 The End Of File is denoted with a comment and a blank line such as:
 
 /* EOF */
+
