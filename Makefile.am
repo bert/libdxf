@@ -13,7 +13,6 @@ libdxfdoc_DATA = \
 	ABOUT-NLS \
 	AUTHORS \
 	ChangeLog \
-	CODE_OF_CONDUCT.md \
 	CONTRIBUTING \
 	COPYING \
 	INSTALL \
@@ -22,6 +21,7 @@ libdxfdoc_DATA = \
 	README \
 	doc/AUTHORS.md \
 	doc/BUGS.md \
+	doc/CODE_OF_CONDUCT.md \
 	doc/DEPENDENCIES.md \
 	doc/ISSUES.md \
 	doc/MANIFEST \
