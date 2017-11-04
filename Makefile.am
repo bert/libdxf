@@ -20,11 +20,11 @@ libdxfdoc_DATA = \
 	INSTALL \
 	ISSUES.md \
 	LICENSE \
-	MANIFEST \
 	NEWS \
 	README \
 	TODO \
-	doc/BUGS.md
+	doc/BUGS.md \
+	doc/MANIFEST
 	
 EXTRA_DIST = $(libdxfdoc_DATA)
 
