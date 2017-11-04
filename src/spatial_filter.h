@@ -180,6 +180,7 @@ double dxf_spatial_filter_get_x0 (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_x0 (DxfSpatialFilter *spatial_filter, double x0);
 double dxf_spatial_filter_get_y0 (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_y0 (DxfSpatialFilter *spatial_filter, double y0);
+DxfPoint * dxf_spatial_filter_get_p0_next (DxfPoint *p0);
 
 
 #ifdef __cplusplus
