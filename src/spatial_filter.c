@@ -115,9 +115,18 @@ dxf_spatial_filter_init
         spatial_filter->id_code = 0;
         spatial_filter->dictionary_owner_soft = strdup ("");
         spatial_filter->dictionary_owner_hard = strdup ("");
+        spatial_filter->p0 = dxf_point_new ();
+        spatial_filter->p0 = dxf_point_init (spatial_filter->p0);
+        spatial_filter->p0->x0 = 0.0;
+        spatial_filter->p0->y0 = 0.0;
         spatial_filter->x1 = 0.0;
         spatial_filter->y1 = 0.0;
         spatial_filter->z1 = 0.0;
+        for (i = 0; i < 12; i++)
+        {
+                spatial_filter->inverse_block_transformation[i] = 0.0;
+                spatial_filter->block_transformation[i] = 0.0;
+        }
         spatial_filter->front_clipping_plane_distance = 0.0;
         spatial_filter->back_clipping_plane_distance = 0.0;
         spatial_filter->number_of_points = 0;
@@ -127,16 +136,6 @@ dxf_spatial_filter_init
         spatial_filter->extr_x0 = 0.0;
         spatial_filter->extr_y0 = 0.0;
         spatial_filter->extr_z0 = 0.0;
-        for (i = 0; i < 12; i++)
-        {
-                spatial_filter->inverse_block_transformation[i] = 0.0;
-                spatial_filter->block_transformation[i] = 0.0;
-        }
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                spatial_filter->x0[i] = 0.0;
-                spatial_filter->y0[i] = 0.0;
-        }
         spatial_filter->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
