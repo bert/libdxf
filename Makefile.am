@@ -20,6 +20,7 @@ libdxfdoc_DATA = \
 	LICENSE \
 	NEWS \
 	README \
+	doc/AUTHORS.md \
 	doc/BUGS.md \
 	doc/DEPENDENCIES.md \
 	doc/ISSUES.md \
