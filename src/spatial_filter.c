@@ -978,7 +978,7 @@ dxf_spatial_filter_get_x0
  * \brief Set the X-value of the clip boundary definition point \c x0 of
  * a DXF \c SPATIAL_FILTER object.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
+ * \return a pointer to \c spatial_filter when successful, or \c NULL when an
  * error occurred.
  */
 DxfSpatialFilter *
