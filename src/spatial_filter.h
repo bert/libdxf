@@ -84,6 +84,10 @@ dxf_spatial_filter_struct
                 /*!< Y-value of the clip boundary definition point (in
                  * OCS) (always 2 or more) based on an xref scale of 1.\n
                  * Group code = 20. */
+        DxfPoint *p1;
+                /*!< The origin used to define the local coordinate
+                 * system of the clip boundary.\n
+                 * Group code = 11, 21 and 31. */
         double x1;
                 /*!< X-value of the origin used to define the local
                  * coordinate system of the clip boundary.\n
