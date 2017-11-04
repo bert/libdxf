@@ -119,9 +119,11 @@ dxf_spatial_filter_init
         spatial_filter->p0 = dxf_point_init (spatial_filter->p0);
         spatial_filter->p0->x0 = 0.0;
         spatial_filter->p0->y0 = 0.0;
-        spatial_filter->x1 = 0.0;
-        spatial_filter->y1 = 0.0;
-        spatial_filter->z1 = 0.0;
+        spatial_filter->p1 = dxf_point_new ();
+        spatial_filter->p1 = dxf_point_init (spatial_filter->p1);
+        spatial_filter->p1->x0 = 0.0;
+        spatial_filter->p1->y0 = 0.0;
+        spatial_filter->p1->z0 = 0.0;
         for (i = 0; i < 12; i++)
         {
                 spatial_filter->inverse_block_transformation[i] = 0.0;
