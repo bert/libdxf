@@ -22,9 +22,9 @@ libdxfdoc_DATA = \
 	LICENSE \
 	NEWS \
 	README \
-	TODO \
 	doc/BUGS.md \
-	doc/MANIFEST
+	doc/MANIFEST \
+	doc/TODO
 	
 EXTRA_DIST = $(libdxfdoc_DATA)
 
