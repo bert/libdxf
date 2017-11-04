@@ -1138,4 +1138,47 @@ dxf_spatial_filter_get_p0_next
 }
 
 
+/*!
+ * \brief Set the \c next point for a clip boundary definition point
+ * \c p0 of a DXF \c SPATIAL_FILTER object.
+ *
+ * \return a pointer to \c p0 when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfPoint *
+dxf_spatial_filter_set_p0_next
+(
+        DxfPoint *p0,
+                /*!< a pointer to a DXF \c POINT entity. */
+        DxfPoint *next
+                /*!< the \c next clip boundary definition point for a
+                 * DXF \c SPATIAL_FILTER object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        p0->next = (struct DxfPoint *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (p0);
+}
+
+
 /* EOF*/
