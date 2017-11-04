@@ -1224,4 +1224,45 @@ dxf_spatial_filter_get_p1
 }
 
 
+/*!
+ * \brief Set the origin used to define the local coordinate system of
+ * the clip boundary \c p1 of a DXF \c SPATIAL_FILTER object.
+ *
+ * \return a pointer to a DXF \c SPATIAL_FILTER object.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_set_p1
+(
+        DxfSpatialFilter *spatial_filter,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        DxfPoint *p1
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_filter->p1 = p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
 /* EOF*/
