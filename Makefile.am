@@ -16,12 +16,12 @@ libdxfdoc_DATA = \
 	CODE_OF_CONDUCT.md \
 	CONTRIBUTING \
 	COPYING \
-	DEPENDENCIES.md \
 	INSTALL \
 	LICENSE \
 	NEWS \
 	README \
 	doc/BUGS.md \
+	doc/DEPENDENCIES.md \
 	doc/ISSUES.md \
 	doc/MANIFEST \
 	doc/TODO
