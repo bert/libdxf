@@ -12,7 +12,6 @@ libdxfdocdir = ${prefix}/doc
 libdxfdoc_DATA = \
 	ABOUT-NLS \
 	AUTHORS \
-	BUGS.md \
 	ChangeLog \
 	CODE_OF_CONDUCT.md \
 	CONTRIBUTING \
@@ -24,7 +23,8 @@ libdxfdoc_DATA = \
 	MANIFEST \
 	NEWS \
 	README \
-	TODO
+	TODO \
+	doc/BUGS.md
 	
 EXTRA_DIST = $(libdxfdoc_DATA)
 
