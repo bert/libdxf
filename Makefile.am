@@ -18,11 +18,11 @@ libdxfdoc_DATA = \
 	COPYING \
 	DEPENDENCIES.md \
 	INSTALL \
-	ISSUES.md \
 	LICENSE \
 	NEWS \
 	README \
 	doc/BUGS.md \
+	doc/ISSUES.md \
 	doc/MANIFEST \
 	doc/TODO
 	
