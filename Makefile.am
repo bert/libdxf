@@ -13,19 +13,13 @@ libdxfdoc_DATA = \
 	ABOUT-NLS \
 	AUTHORS \
 	ChangeLog \
+	CODE_OF_CONDUCT \
+	CONTRIBUTING \
 	COPYING \
 	INSTALL \
 	LICENSE \
 	NEWS \
-	README \
-	doc/AUTHORS.md \
-	doc/BUGS.md \
-	doc/CODE_OF_CONDUCT.md \
-	doc/CONTRIBUTING.md \
-	doc/DEPENDENCIES.md \
-	doc/ISSUES.md \
-	doc/MANIFEST \
-	doc/TODO
+	README
 	
 EXTRA_DIST = $(libdxfdoc_DATA)
 
