@@ -1104,6 +1104,8 @@ dxf_spatial_filter_set_y0
  * a DXF \c SPATIAL_FILTER object.
  *
  * \return the \c next clip boundary definition point \c p0.
+ *
+ * \todo This function can be replaced by dxf_point_get_next().
  */
 DxfPoint *
 dxf_spatial_filter_get_p0_next
@@ -1144,6 +1146,8 @@ dxf_spatial_filter_get_p0_next
  *
  * \return a pointer to \c p0 when successful, or \c NULL when an error
  * occurred.
+ *
+ * \todo This function can be replaced by dxf_point_set_next().
  */
 DxfPoint *
 dxf_spatial_filter_set_p0_next
