@@ -1,5 +1,5 @@
-# Project: libdxf
-# Makefile created by Dev-C++ 4.9.9.2
+# file: Makefile.win
+# Copyright (C) 2010, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>
 
 CPP  = g++.exe
 
@@ -10,71 +10,173 @@ WINDRES = windres.exe
 RES  = 
 
 OBJ  = \
+	src/3dface.o \
+	src/3dline.o \
+	src/3dsolid.o \
+	src/acad_proxy_entity.o \
 	src/appid.o \
 	src/arc.o \
 	src/attdef.o \
 	src/attrib.o \
+	src/binary_entity_data.o \
+	src/binary_graphics_data.o \
 	src/block.o \
+	src/block_record.o \
+	src/body.o \
 	src/circle.o \
 	src/class.o \
+	src/color.o \
 	src/comment.o \
+	src/dictionary.o \
+	src/dictionaryvar.o \
+	src/dimension.o \
+	src/dimstyle.o \
+	src/donut.o \
+	src/drawing.o \
 	src/ellipse.o \
+	src/endblk.o \
 	src/endseq.o \
 	src/endtab.o \
+	src/entities.o \
 	src/entity.o \
-	src/eof.o \
 	src/file.o \
+	src/group.o \
 	src/hatch.o \
 	src/header.o \
+	src/helix.o \
+	src/idbuffer.o \
+	src/image.o \
+	src/imagedef.o \
+	src/imagedef_reactor.o \
 	src/insert.o \
 	src/layer.o \
+	src/layer_index.o \
+	src/layer_name.o \
+	src/leader.o \
 	src/line.o \
 	src/ltype.o \
 	src/lwpolyline.o \
+	src/mline.o \
+	src/mlinestyle.o \
+	src/mtext.o \
+	src/object.o \
+	src/object_id.o \
+	src/object_ptr.o \
+	src/ole2frame.o \
+	src/oleframe.o \
 	src/point.o \
 	src/polyline.o \
+	src/proprietary_data.o \
+	src/rastervariable.o \
+	src/ray.o \
+	src/region.o \
 	src/section.o \
 	src/shape.o \
 	src/solid.o \
+	src/sortentstable.o \
+	src/spatial_filter.o \
+	src/spatial_index.o \
+	src/spline.o \
+	src/style.o \
 	src/table.o \
+	src/tables.o \
 	src/text.o \
-	src/trace.o \
-	src/vertex.o \
 	src/thumbnail.o \
+	src/tolerance.o \
+	src/trace.o \
+	src/ucs.o \
+	src/util.o \
+	src/vertex.o \
+	src/view.o \
+	src/viewport.o \
+	src/vport.o \
+	src/xline.o \
+	src/xrecord.o \
 	$(RES)
 
 LINKOBJ  = \
+	src/3dface.o \
+	src/3dline.o \
+	src/3dsolid.o \
+	src/acad_proxy_entity.o \
 	src/appid.o \
 	src/arc.o \
 	src/attdef.o \
 	src/attrib.o \
+	src/binary_entity_data.o \
+	src/binary_graphics_data.o \
 	src/block.o \
+	src/block_record.o \
+	src/body.o \
 	src/circle.o \
 	src/class.o \
+	src/color.o \
 	src/comment.o \
+	src/dictionary.o \
+	src/dictionaryvar.o \
+	src/dimension.o \
+	src/dimstyle.o \
+	src/donut.o \
+	src/drawing.o \
 	src/ellipse.o \
+	src/endblk.o \
 	src/endseq.o \
 	src/endtab.o \
+	src/entities.o \
 	src/entity.o \
-	src/eof.o \
 	src/file.o \
+	src/group.o \
 	src/hatch.o \
 	src/header.o \
+	src/helix.o \
+	src/idbuffer.o \
+	src/image.o \
+	src/imagedef.o \
+	src/imagedef_reactor.o \
 	src/insert.o \
 	src/layer.o \
+	src/layer_index.o \
+	src/layer_name.o \
+	src/leader.o \
 	src/line.o \
 	src/ltype.o \
 	src/lwpolyline.o \
+	src/mline.o \
+	src/mlinestyle.o \
+	src/mtext.o \
+	src/object.o \
+	src/object_id.o \
+	src/object_ptr.o \
+	src/ole2frame.o \
+	src/oleframe.o \
 	src/point.o \
 	src/polyline.o \
+	src/proprietary_data.o \
+	src/rastervariable.o \
+	src/ray.o \
+	src/region.o \
 	src/section.o \
 	src/shape.o \
 	src/solid.o \
+	src/sortentstable.o \
+	src/spatial_filter.o \
+	src/spatial_index.o \
+	src/spline.o \
+	src/style.o \
 	src/table.o \
+	src/tables.o \
 	src/text.o \
-	src/trace.o \
-	src/vertex.o \
 	src/thumbnail.o \
+	src/tolerance.o \
+	src/trace.o \
+	src/ucs.o \
+	src/util.o \
+	src/vertex.o \
+	src/view.o \
+	src/viewport.o \
+	src/vport.o \
+	src/xline.o \
+	src/xrecord.o \
 	$(RES)
 
 LIBS =  -L"C:/Dev-Cpp/lib"  
@@ -106,6 +208,18 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o "libdxf.exe" $(LIBS)
 
+src/3dface.o: src/3dface.c
+	$(CC) -c src/3dface.c -o src/3dface.o $(CFLAGS)
+
+src/3dline.o: src/3dline.c
+	$(CC) -c src/3dline.c -o src/3dline.o $(CFLAGS)
+
+src/3dsolid.o: src/3dsolid.c
+	$(CC) -c src/3dsolid.c -o src/3dsolid.o $(CFLAGS)
+
+src/acad_proxy_entity.o: src/acad_proxy_entity.c
+	$(CC) -c src/acad_proxy_entity.c -o src/acad_proxy_entity.o $(CFLAGS)
+
 src/appid.o: src/appid.c
 	$(CC) -c src/appid.c -o src/appid.o $(CFLAGS)
 
@@ -118,8 +232,20 @@ src/attdef.o: src/attdef.c
 src/attrib.o: src/attrib.c
 	$(CC) -c src/attrib.c -o src/attrib.o $(CFLAGS)
 
+src/binary_entity_data.o: src/binary_entity_data.c
+	$(CC) -c src/binary_entity_data.c -o src/binary_entity_data.o $(CFLAGS)
+
+src/binary_graphics_data.o: src/binary_graphics_data.c
+	$(CC) -c src/binary_graphics_data.c -o src/binary_graphics_data.o $(CFLAGS)
+
 src/block.o: src/block.c
 	$(CC) -c src/block.c -o src/block.o $(CFLAGS)
+
+src/block_record.o: src/block_record.c
+	$(CC) -c src/block_record.c -o src/block_record.o $(CFLAGS)
+
+src/body.o: src/body.c
+	$(CC) -c src/body.c -o src/body.o $(CFLAGS)
 
 src/circle.o: src/circle.c
 	$(CC) -c src/circle.c -o src/circle.o $(CFLAGS)
@@ -127,11 +253,35 @@ src/circle.o: src/circle.c
 src/class.o: src/class.c
 	$(CC) -c src/class.c -o src/class.o $(CFLAGS)
 
+src/color.o: src/color.c
+	$(CC) -c src/color.c -o src/color.o $(CFLAGS)
+
 src/comment.o: src/comment.c
 	$(CC) -c src/comment.c -o src/comment.o $(CFLAGS)
 
+src/dictionary.o: src/dictionary.c
+	$(CC) -c src/dictionary.c -o src/dictionary.o $(CFLAGS)
+
+src/dictionaryvar.o: src/dictionaryvar.c
+	$(CC) -c src/dictionaryvar.c -o src/dictionaryvar.o $(CFLAGS)
+
+src/dimension.o: src/dimension.c
+	$(CC) -c src/dimension.c -o src/dimension.o $(CFLAGS)
+
+src/dimstyle.o: src/dimstyle.c
+	$(CC) -c src/dimstyle.c -o src/dimstyle.o $(CFLAGS)
+
+src/donut.o: src/donut.c
+	$(CC) -c src/donut.c -o src/donut.o $(CFLAGS)
+
+src/drawing.o: src/drawing.c
+	$(CC) -c src/drawing.c -o src/drawing.o $(CFLAGS)
+
 src/ellipse.o: src/ellipse.c
 	$(CC) -c src/ellipse.c -o src/ellipse.o $(CFLAGS)
+
+src/endblk.o: src/endblk.c
+	$(CC) -c src/endblk.c -o src/endblk.o $(CFLAGS)
 
 src/endseq.o: src/endseq.c
 	$(CC) -c src/endseq.c -o src/endseq.o $(CFLAGS)
@@ -139,14 +289,17 @@ src/endseq.o: src/endseq.c
 src/endtab.o: src/endtab.c
 	$(CC) -c src/endtab.c -o src/endtab.o $(CFLAGS)
 
+src/entities.o: src/entities.c
+	$(CC) -c src/entities.c -o src/entities.o $(CFLAGS)
+
 src/entity.o: src/entity.c
 	$(CC) -c src/entity.c -o src/entity.o $(CFLAGS)
 
-src/eof.o: src/eof.c
-	$(CC) -c src/eof.c -o src/eof.o $(CFLAGS)
-
 src/file.o: src/file.c
 	$(CC) -c src/file.c -o src/file.o $(CFLAGS)
+
+src/group.o: src/group.c
+	$(CC) -c src/group.c -o src/group.o $(CFLAGS)
 
 src/hatch.o: src/hatch.c
 	$(CC) -c src/hatch.c -o src/hatch.o $(CFLAGS)
@@ -154,11 +307,35 @@ src/hatch.o: src/hatch.c
 src/header.o: src/header.c
 	$(CC) -c src/header.c -o src/header.o $(CFLAGS)
 
+src/helix.o: src/helix.c
+	$(CC) -c src/helix.c -o src/helix.o $(CFLAGS)
+
+src/idbuffer.o: src/idbuffer.c
+	$(CC) -c src/idbuffer.c -o src/idbuffer.o $(CFLAGS)
+
+src/image.o: src/image.c
+	$(CC) -c src/image.c -o src/image.o $(CFLAGS)
+
+src/imagedef.o: src/imagedef.c
+	$(CC) -c src/imagedef.c -o src/imagedef.o $(CFLAGS)
+
+src/imagedef_reactor.o: src/imagedef_reactor.c
+	$(CC) -c src/imagedef_reactor.c -o src/imagedef_reactor.o $(CFLAGS)
+
 src/insert.o: src/insert.c
 	$(CC) -c src/insert.c -o src/insert.o $(CFLAGS)
 
 src/layer.o: src/layer.c
 	$(CC) -c src/layer.c -o src/layer.o $(CFLAGS)
+
+src/layer_index.o: src/layer_index.c
+	$(CC) -c src/layer_index.c -o src/layer_index.o $(CFLAGS)
+
+src/layer_name.o: src/layer_name.c
+	$(CC) -c src/layer_name.c -o src/layer_name.o $(CFLAGS)
+
+src/leader.o: src/leader.c
+	$(CC) -c src/leader.c -o src/leader.o $(CFLAGS)
 
 src/line.o: src/line.c
 	$(CC) -c src/line.c -o src/line.o $(CFLAGS)
@@ -169,11 +346,47 @@ src/ltype.o: src/ltype.c
 src/lwpolyline.o: src/lwpolyline.c
 	$(CC) -c src/lwpolyline.c -o src/lwpolyline.o $(CFLAGS)
 
+src/mline.o: src/mline.c
+	$(CC) -c src/mline.c -o src/mline.o $(CFLAGS)
+
+src/mlinestyle.o: src/mlinestyle.c
+	$(CC) -c src/mlinestyle.c -o src/mlinestyle.o $(CFLAGS)
+
+src/mtext.o: src/mtext.c
+	$(CC) -c src/mtext.c -o src/mtext.o $(CFLAGS)
+
+src/object.o: src/object.c
+	$(CC) -c src/object.c -o src/object.o $(CFLAGS)
+
+src/object_id.o: src/object_id.c
+	$(CC) -c src/object_id.c -o src/object_id.o $(CFLAGS)
+
+src/object_ptr.o: src/object_ptr.c
+	$(CC) -c src/object_ptr.c -o src/object_ptr.o $(CFLAGS)
+
+src/ole2frame.o: src/ole2frame.c
+	$(CC) -c src/ole2frame.c -o src/ole2frame.o $(CFLAGS)
+
+src/oleframe.o: src/oleframe.c
+	$(CC) -c src/oleframe.c -o src/oleframe.o $(CFLAGS)
+
 src/point.o: src/point.c
 	$(CC) -c src/point.c -o src/point.o $(CFLAGS)
 
 src/polyline.o: src/polyline.c
 	$(CC) -c src/polyline.c -o src/polyline.o $(CFLAGS)
+
+src/proprietary_data.o: src/proprietary_data.c
+	$(CC) -c src/proprietary_data.c -o src/proprietary_data.o $(CFLAGS)
+
+src/rastervariables.o: src/rastervariables.c
+	$(CC) -c src/rastervariables.c -o src/rastervariables.o $(CFLAGS)
+
+src/ray.o: src/ray.c
+	$(CC) -c src/ray.c -o src/ray.o $(CFLAGS)
+
+src/region.o: src/region.c
+	$(CC) -c src/region.c -o src/region.o $(CFLAGS)
 
 src/section.o: src/section.c
 	$(CC) -c src/section.c -o src/section.o $(CFLAGS)
@@ -184,17 +397,60 @@ src/shape.o: src/shape.c
 src/solid.o: src/solid.c
 	$(CC) -c src/solid.c -o src/solid.o $(CFLAGS)
 
+src/sortentstable.o: src/sortentstable.c
+	$(CC) -c src/sortentstable.c -o src/sortentstable.o $(CFLAGS)
+
+src/spatial_filter.o: src/spatial_filter.c
+	$(CC) -c src/spatial_filter.c -o src/spatial_filter.o $(CFLAGS)
+
+src/spatial_index.o: src/spatial_index.c
+	$(CC) -c src/spatial_index.c -o src/spatial_index.o $(CFLAGS)
+
+src/spline.o: src/spline.c
+	$(CC) -c src/spline.c -o src/spline.o $(CFLAGS)
+
+src/style.o: src/style.c
+	$(CC) -c src/style.c -o src/style.o $(CFLAGS)
+
 src/table.o: src/table.c
 	$(CC) -c src/table.c -o src/table.o $(CFLAGS)
+
+src/tables.o: src/tables.c
+	$(CC) -c src/tables.c -o src/tables.o $(CFLAGS)
 
 src/text.o: src/text.c
 	$(CC) -c src/text.c -o src/text.o $(CFLAGS)
 
+src/thumbnail.o: src/thumbnail.c
+	$(CC) -c src/thumbnail.c -o src/thumbnail.o $(CFLAGS)
+
+src/tolerance.o: src/tolerance.c
+	$(CC) -c src/tolerance.c -o src/tolerance.o $(CFLAGS)
+
 src/trace.o: src/trace.c
 	$(CC) -c src/trace.c -o src/trace.o $(CFLAGS)
+
+src/ucs.o: src/ucs.c
+	$(CC) -c src/ucs.c -o src/ucs.o $(CFLAGS)
+
+src/util.o: src/util.c
+	$(CC) -c src/util.c -o src/util.o $(CFLAGS)
 
 src/vertex.o: src/vertex.c
 	$(CC) -c src/vertex.c -o src/vertex.o $(CFLAGS)
 
-src/thumbnail.o: src/thumbnail.c
-	$(CC) -c src/thumbnail.c -o src/thumbnail.o $(CFLAGS)
+src/view.o: src/view.c
+	$(CC) -c src/view.c -o src/view.o $(CFLAGS)
+
+src/viewport.o: src/viewport.c
+	$(CC) -c src/viewport.c -o src/viewport.o $(CFLAGS)
+
+src/vport.o: src/vport.c
+	$(CC) -c src/vport.c -o src/vport.o $(CFLAGS)
+
+src/xline.o: src/xline.c
+	$(CC) -c src/xline.c -o src/xline.o $(CFLAGS)
+
+src/xrecord.o: src/xrecord.c
+	$(CC) -c src/xrecord.c -o src/xrecord.o $(CFLAGS)
+
