@@ -1321,7 +1321,7 @@ dxf_spatial_filter_set_x1
                 /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
         double x1
                 /*!< the X-value of the origin used to define the local
-                 * coordinate system of the clip boundary \c x0 of a DXF
+                 * coordinate system of the clip boundary \c x1 of a DXF
                  * \c SPATIAL_FILTER object. */
 )
 {
