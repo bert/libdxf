@@ -190,6 +190,7 @@ DxfPoint *dxf_spatial_filter_get_p1 (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_p1 (DxfSpatialFilter *spatial_filter, DxfPoint *p1);
 double dxf_spatial_filter_get_x1 (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_x1 (DxfSpatialFilter *spatial_filter, double x1);
+double dxf_spatial_filter_get_y1 (DxfSpatialFilter *spatial_filter);
 
 
 #ifdef __cplusplus
