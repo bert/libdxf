@@ -1613,4 +1613,37 @@ dxf_spatial_filter_set_front_clipping_plane_distance
 }
 
 
+/*!
+ * \brief Get the back clipping plane distance
+ * \c back_clipping_plane_distance of a DXF \c SPATIAL_FILTER object.
+ *
+ * \return the back clipping plane distance
+ * \c fback_clipping_plane_distance.
+ */
+double
+dxf_spatial_filter_get_back_clipping_plane_distance
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter->back_clipping_plane_distance);
+}
+
+
 /* EOF*/

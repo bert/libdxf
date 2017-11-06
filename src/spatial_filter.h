@@ -196,6 +196,7 @@ double dxf_spatial_filter_get_z1 (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_z1 (DxfSpatialFilter *spatial_filter, double z1);
 double dxf_spatial_filter_get_front_clipping_plane_distance (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_front_clipping_plane_distance (DxfSpatialFilter *spatial_filter, double front_clipping_plane_distance);
+double dxf_spatial_filter_get_back_clipping_plane_distance (DxfSpatialFilter *spatial_filter);
 
 
 #ifdef __cplusplus
