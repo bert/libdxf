@@ -1524,6 +1524,26 @@ dxf_spatial_filter_set_z1
 
 
 /*!
+ * \todo Add dxf_spatial_filter_get_inverse_block_transformation().
+ */
+
+
+/*!
+ * \todo Add dxf_spatial_filter_set_inverse_block_transformation().
+ */
+
+
+/*!
+ * \todo Add dxf_spatial_filter_get_block_transformation().
+ */
+
+
+/*!
+ * \todo Add dxf_spatial_filter_set_block_transformation().
+ */
+
+
+/*!
  * \brief Get the front clipping plane distance
  * \c front_clipping_plane_distance of a DXF \c SPATIAL_FILTER object.
  *
