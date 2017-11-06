@@ -1478,4 +1478,49 @@ dxf_spatial_filter_get_z1
 }
 
 
+/*!
+ * \brief Set the Z-value of the origin used to define the local
+ * coordinate system of the clip boundary \c z1 of a DXF
+ * \c SPATIAL_FILTER object.
+ *
+ * \return a pointer to \c spatial_filter when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_set_z1
+(
+        DxfSpatialFilter *spatial_filter,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        double z1
+                /*!< the Z-value of the origin used to define the local
+                 * coordinate system of the clip boundary \c z1 of a DXF
+                 * \c SPATIAL_FILTER object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spatial_filter->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_filter->p1->z0 = z1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
 /* EOF*/
