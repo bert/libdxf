@@ -1800,4 +1800,47 @@ dxf_spatial_filter_get_clip_boundary_display_flag
 }
 
 
+/*!
+ * \brief Set the \c clip_boundary_display_flag for a DXF \c SPATIAL_FILTER object.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_set_clip_boundary_display_flag
+(
+        DxfSpatialFilter *spatial_filter,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        int clip_boundary_display_flag
+                /*!< the \c clip_boundary_display_flag to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (clip_boundary_display_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (clip_boundary_display_flag > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        spatial_filter->clip_boundary_display_flag = clip_boundary_display_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
 /* EOF*/

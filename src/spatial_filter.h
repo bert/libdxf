@@ -201,6 +201,7 @@ DxfSpatialFilter *dxf_spatial_filter_set_back_clipping_plane_distance (DxfSpatia
 int dxf_spatial_filter_get_number_of_points (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_number_of_points (DxfSpatialFilter *spatial_filter, int number_of_points);
 int dxf_spatial_filter_get_clip_boundary_display_flag (DxfSpatialFilter *spatial_filter);
+DxfSpatialFilter *dxf_spatial_filter_set_clip_boundary_display_flag (DxfSpatialFilter *spatial_filter, int clip_boundary_display_flag);
 
 
 #ifdef __cplusplus
