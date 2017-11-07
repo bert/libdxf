@@ -203,6 +203,7 @@ DxfSpatialFilter *dxf_spatial_filter_set_number_of_points (DxfSpatialFilter *spa
 int dxf_spatial_filter_get_clip_boundary_display_flag (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_clip_boundary_display_flag (DxfSpatialFilter *spatial_filter, int clip_boundary_display_flag);
 int dxf_spatial_filter_get_front_clipping_plane_flag (DxfSpatialFilter *spatial_filter);
+DxfSpatialFilter *dxf_spatial_filter_set_front_clipping_plane_flag (DxfSpatialFilter *spatial_filter, int front_clipping_plane_flag);
 
 
 #ifdef __cplusplus

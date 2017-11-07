@@ -1886,4 +1886,49 @@ dxf_spatial_filter_get_front_clipping_plane_flag
 }
 
 
+/*!
+ * \brief Set the \c front_clipping_plane_flag for a DXF
+ * \c SPATIAL_FILTER object.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_set_front_clipping_plane_flag
+(
+        DxfSpatialFilter *spatial_filter,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        int front_clipping_plane_flag
+                /*!< the \c front_clipping_plane_flag to be set for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (front_clipping_plane_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (front_clipping_plane_flag > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        spatial_filter->front_clipping_plane_flag = front_clipping_plane_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
 /* EOF*/
