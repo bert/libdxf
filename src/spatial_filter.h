@@ -208,6 +208,7 @@ int dxf_spatial_filter_get_back_clipping_plane_flag (DxfSpatialFilter *spatial_f
 DxfSpatialFilter *dxf_spatial_filter_set_back_clipping_plane_flag (DxfSpatialFilter *spatial_filter, int back_clipping_plane_flag);
 DxfPoint *dxf_spatial_filter_get_extrusion_vector_as_point (DxfSpatialFilter *spatial_filter);
 double dxf_spatial_filter_get_extr_x0 (DxfSpatialFilter *spatial_filter);
+DxfSpatialFilter *dxf_spatial_filter_set_extr_x0 (DxfSpatialFilter *spatial_filter, double extr_x0);
 
 
 #ifdef __cplusplus
