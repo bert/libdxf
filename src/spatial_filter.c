@@ -2021,4 +2021,50 @@ dxf_spatial_filter_set_back_clipping_plane_flag
 }
 
 
+/*!
+ * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
+ * \c SPATIAL_FILTER object.
+ *
+ * \return a DXF \c POINT containing the extrusion coordinates.
+ *
+ * \warning No other members are copied into the DXF \c POINT.
+ */
+DxfPoint *
+dxf_spatial_filter_get_extrusion_vector_as_point
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        point->x0 = spatial_filter->extr_x0;
+        point->y0 = spatial_filter->extr_y0;
+        point->z0 = spatial_filter->extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* EOF*/
