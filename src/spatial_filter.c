@@ -1801,7 +1801,8 @@ dxf_spatial_filter_get_clip_boundary_display_flag
 
 
 /*!
- * \brief Set the \c clip_boundary_display_flag for a DXF \c SPATIAL_FILTER object.
+ * \brief Set the \c clip_boundary_display_flag for a DXF
+ * \c SPATIAL_FILTER object.
  */
 DxfSpatialFilter *
 dxf_spatial_filter_set_clip_boundary_display_flag
@@ -1809,7 +1810,8 @@ dxf_spatial_filter_set_clip_boundary_display_flag
         DxfSpatialFilter *spatial_filter,
                 /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
         int clip_boundary_display_flag
-                /*!< the \c clip_boundary_display_flag to be set for the object. */
+                /*!< the \c clip_boundary_display_flag to be set for the
+                 * object. */
 )
 {
 #if DEBUG
