@@ -2311,4 +2311,44 @@ dxf_spatial_filter_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c SPATIAL_FILTER object for a DXF
+ * \c SPATIAL_FILTER object.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_set_next
+(
+        DxfSpatialFilter *spatial_filter,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        DxfSpatialFilter *next
+                /*!< a pointer to the next \c SPATIAL_FILTER object for
+                 * the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_filter->next = (struct DxfSpatialFilter *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
 /* EOF*/
