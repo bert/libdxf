@@ -236,7 +236,7 @@ dxf_spatial_filter_read
                          * of the origin used to define the local
                          * coordinate system of the clip boundary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spatial_filter->x1);
+                        fscanf (fp->fp, "%lf\n", &spatial_filter->p1->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
@@ -252,7 +252,7 @@ dxf_spatial_filter_read
                          * of the origin used to define the local
                          * coordinate system of the clip boundary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spatial_filter->y1);
+                        fscanf (fp->fp, "%lf\n", &spatial_filter->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
@@ -260,7 +260,7 @@ dxf_spatial_filter_read
                          * of the origin used to define the local
                          * coordinate system of the clip boundary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spatial_filter->z1);
+                        fscanf (fp->fp, "%lf\n", &spatial_filter->p1->z0);
                 }
                 else if ((strcmp (temp_string, "40") == 0)
                   && (k == 0)
