@@ -2351,4 +2351,49 @@ dxf_spatial_filter_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c SPATIAL_FILTER object from a linked list
+ * of DXF \c SPATIAL_FILTER objects.
+ *
+ * \return pointer to the last \c SPATIAL_FILTER object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_get_last
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spatial_filter->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfSpatialFilter *) spatial_filter);
+        }
+        DxfSpatialFilter *iter = (DxfSpatialFilter *) spatial_filter->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSpatialFilter *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSpatialFilter *) iter);
+}
+
+
 /* EOF*/
