@@ -2203,4 +2203,36 @@ dxf_spatial_filter_set_extr_y0
 }
 
 
+/*!
+ * \brief Get the Z-value of the extrusion vector \c extr_z0 of a DXF
+ * \c SPATIAL_FILTER object.
+ *
+ * \return the Z-value of the extrusion vector \c extr_z0.
+ */
+double
+dxf_spatial_filter_get_extr_z0
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter->extr_z0);
+}
+
+
 /* EOF*/
