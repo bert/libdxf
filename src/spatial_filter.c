@@ -2271,4 +2271,44 @@ dxf_spatial_filter_set_extr_z0
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c SPATIAL_FILTER object from a
+ * DXF \c SPATIAL_FILTER object.
+ *
+ * \return pointer to the next \c SPATIAL_FILTER object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_get_next
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spatial_filter->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSpatialFilter *) spatial_filter->next);
+}
+
+
 /* EOF*/

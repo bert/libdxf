@@ -213,6 +213,7 @@ double dxf_spatial_filter_get_extr_y0 (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_extr_y0 (DxfSpatialFilter *spatial_filter, double extr_y0);
 double dxf_spatial_filter_get_extr_z0 (DxfSpatialFilter *spatial_filter);
 DxfSpatialFilter *dxf_spatial_filter_set_extr_z0 (DxfSpatialFilter *spatial_filter, double extr_z0);
+DxfSpatialFilter *dxf_spatial_filter_get_next (DxfSpatialFilter *spatial_filter);
 
 
 #ifdef __cplusplus
