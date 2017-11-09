@@ -518,6 +518,9 @@ dxf_spatial_filter_write
                 fprintf (fp->fp, "220\n%f\n", spatial_filter->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", spatial_filter->extr_z0);
         }
+        fprintf (fp->fp, " 11\n%f\n", spatial_filter->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", spatial_filter->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", spatial_filter->p1->z0);
         fprintf (fp->fp, " 71\n%d\n", spatial_filter->clip_boundary_display_flag);
         fprintf (fp->fp, " 72\n%d\n", spatial_filter->front_clipping_plane_flag);
         if (spatial_filter->front_clipping_plane_flag)
