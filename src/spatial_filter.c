@@ -173,6 +173,7 @@ dxf_spatial_filter_read
         int i;
         int j;
         int k;
+        DxfPoint *iter_p0 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -201,6 +202,7 @@ dxf_spatial_filter_read
         i = 0;
         j = 0;
         k = 0;
+        iter_p0 = (DxfPoint *) spatial_filter->p0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -227,8 +229,16 @@ dxf_spatial_filter_read
                         /* Now follows a string containing the
                          * X-value of the clip boundary definition point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spatial_filter->x0[i]);
-                        i++;
+                        fscanf (fp->fp, "%lf\n", &iter_p0->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the clip boundary definition point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter_p0->y0);
+                        iter_p0->next = (struct DxfPoint *) dxf_point_init ((DxfPoint *) iter_p0->next);
+                        iter_p0 = (DxfPoint *) iter_p0->next;
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -237,14 +247,6 @@ dxf_spatial_filter_read
                          * coordinate system of the clip boundary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &spatial_filter->p1->x0);
-                }
-                else if (strcmp (temp_string, "20") == 0)
-                {
-                        /* Now follows a string containing the
-                         * Y-value of the clip boundary definition point. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spatial_filter->y0[j]);
-                        j++;
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
