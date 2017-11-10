@@ -5,7 +5,13 @@
  *
  * \brief Header file for a DXF spatial_index object (\c SPATIAL_INDEX).
  *
- * \version The \c SPATIAL_INDEX object was introduced in DXF R14.
+ * \since The \c SPATIAL_INDEX object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -48,12 +54,6 @@ extern "C" {
 
 /*!
  * \brief DXF definition of an AutoCAD spatial_index object (\c SPATIAL_INDEX).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 typedef struct
 dxf_spatial_index_struct

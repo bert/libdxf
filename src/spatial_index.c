@@ -5,7 +5,13 @@
  *
  * \brief Functions for a DXF spatial_index object (\c SPATIAL_INDEX).
  *
- * \version The \c SPATIAL_INDEX object was introduced in DXF R14.
+ * \since The \c SPATIAL_INDEX object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a \c DxfSpatialIndex.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfSpatialIndex *
 dxf_spatial_index_new ()
@@ -84,12 +84,6 @@ dxf_spatial_index_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfSpatialIndex *
 dxf_spatial_index_init
@@ -152,12 +146,6 @@ dxf_spatial_index_init
  * While parsing the DXF file store data in \c spatial_index. \n
  *
  * \return a pointer to \c spatial_index.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfSpatialIndex *
 dxf_spatial_index_read
@@ -288,12 +276,6 @@ dxf_spatial_index_read
  *
  * \warning The SPATIAL_INDEX is always written out empty to a DXF file.\n
  * This object can be ignored.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_spatial_index_write
@@ -388,12 +370,6 @@ dxf_spatial_index_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_spatial_index_free
@@ -435,12 +411,6 @@ dxf_spatial_index_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c SPATIAL_INDEX
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_spatial_index_free_chain
