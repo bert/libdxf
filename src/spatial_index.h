@@ -86,6 +86,7 @@ DxfSpatialIndex *dxf_spatial_index_read (DxfFile *fp, DxfSpatialIndex *spatial_i
 int dxf_spatial_index_write (DxfFile *fp, DxfSpatialIndex *spatial_index);
 int dxf_spatial_index_free (DxfSpatialIndex *spatial_index);
 void dxf_spatial_index_free_chain (DxfSpatialIndex *spatial_indices);
+int dxf_spatial_index_get_id_code (DxfSpatialIndex *spatial_index);
 
 
 #ifdef __cplusplus
