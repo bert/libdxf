@@ -425,6 +425,7 @@ dxf_spatial_filter_write
 #endif
         char *dxf_entity_name = strdup ("SPATIAL_FILTER");
         int i;
+        DxfPoint *iter_p0 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -499,15 +500,15 @@ dxf_spatial_filter_write
                 fprintf (fp->fp, "100\nAcDbSpatialFilter\n");
         }
         fprintf (fp->fp, " 70\n%d\n", spatial_filter->number_of_points);
-        for (i = 0; i < spatial_filter->number_of_points; i++)
+        if (spatial_filter->p0 != NULL)
         {
-                fprintf (fp->fp, " 10\n%f\n", spatial_filter->x0[i]);
-                fprintf (fp->fp, " 20\n%f\n", spatial_filter->y0[i]);
-                /*! \warning We do rely on a correct number of clip
-                 * boundary definition points in the instnce of the
-                 * DxfSpatialFilter struct.\n
-                 * It is possible to run into a part of the array where
-                 * initial values (0.0) are present. */
+                iter_p0 = (DxfPoint*) spatial_filter->p0;
+                while (iter_p0 != NULL)
+                {
+                        fprintf (fp->fp, " 10\n%f\n", iter_p0->x0);
+                        fprintf (fp->fp, " 20\n%f\n", iter_p0->y0);
+                        iter_p0 = (DxfPoint*) iter_p0->next;
+                }
         }
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (spatial_filter->extr_x0 != 0.0)
