@@ -708,4 +708,40 @@ dxf_spatial_index_get_time_stamp
 }
 
 
+/*!
+ * \brief Set the time stamp \c time_stamp of a DXF \c SPATIAL_INDEX
+ * object.
+ *
+ * \return a pointer to \c spatial_index when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSpatialIndex *
+dxf_spatial_index_set_time_stamp
+(
+        DxfSpatialIndex *spatial_index,
+                /*!< a pointer to a DXF \c SPATIAL_FILTER object. */
+        double time_stamp
+                /*!< the time stamp \c time_stamp to be set for a DXF
+                 * \c SPATIAL_INDEX object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_index->time_stamp = time_stamp;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_index);
+}
+
+
 /* EOF*/
