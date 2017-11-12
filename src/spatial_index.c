@@ -676,4 +676,36 @@ dxf_spatial_index_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the time stamp \c time_stamp of a DXF \c SPATIAL_INDEX
+ * object.
+ *
+ * \return the time stamp \c time_stamp.
+ */
+double
+dxf_spatial_index_get_time_stamp
+(
+        DxfSpatialIndex *spatial_index
+                /*!< a pointer to a DXF \c SPATIAL_INDEX object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (spatial_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_index->time_stamp);
+}
+
+
 /* EOF*/

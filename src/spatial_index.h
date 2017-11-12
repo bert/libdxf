@@ -92,6 +92,7 @@ char *dxf_spatial_index_get_dictionary_owner_soft (DxfSpatialIndex *spatial_inde
 DxfSpatialIndex *dxf_spatial_index_set_dictionary_owner_soft (DxfSpatialIndex *spatial_index, char *dictionary_owner_soft);
 char *dxf_spatial_index_get_dictionary_owner_hard (DxfSpatialIndex *spatial_index);
 DxfSpatialIndex *dxf_spatial_index_set_dictionary_owner_hard (DxfSpatialIndex *spatial_index, char *dictionary_owner_hard);
+double dxf_spatial_index_get_time_stamp (DxfSpatialIndex *spatial_index);
 
 
 #ifdef __cplusplus
