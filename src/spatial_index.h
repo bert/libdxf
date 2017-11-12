@@ -94,6 +94,7 @@ char *dxf_spatial_index_get_dictionary_owner_hard (DxfSpatialIndex *spatial_inde
 DxfSpatialIndex *dxf_spatial_index_set_dictionary_owner_hard (DxfSpatialIndex *spatial_index, char *dictionary_owner_hard);
 double dxf_spatial_index_get_time_stamp (DxfSpatialIndex *spatial_index);
 DxfSpatialIndex *dxf_spatial_index_set_time_stamp (DxfSpatialIndex *spatial_index, double time_stamp);
+DxfSpatialIndex *dxf_spatial_index_get_next (DxfSpatialIndex *spatial_index);
 
 
 #ifdef __cplusplus

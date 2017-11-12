@@ -744,4 +744,44 @@ dxf_spatial_index_set_time_stamp
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c SPATIAL_INDEX object from a
+ * DXF \c SPATIAL_INDEX object.
+ *
+ * \return pointer to the next \c SPATIAL_INDEX object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSpatialIndex *
+dxf_spatial_index_get_next
+(
+        DxfSpatialIndex *spatial_index
+                /*!< a pointer to a DXF \c SPATIAL_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spatial_index->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSpatialIndex *) spatial_index->next);
+}
+
+
 /* EOF*/
