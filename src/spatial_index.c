@@ -163,7 +163,6 @@ dxf_spatial_index_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -189,7 +188,6 @@ dxf_spatial_index_read
                 spatial_index = dxf_spatial_index_new ();
                 spatial_index = dxf_spatial_index_init (spatial_index);
         }
-        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -239,7 +237,6 @@ dxf_spatial_index_read
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", spatial_index->dictionary_owner_soft);
-                        i++;
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
