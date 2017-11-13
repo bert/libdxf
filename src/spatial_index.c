@@ -5,6 +5,9 @@
  *
  * \brief Functions for a DXF spatial_index object (\c SPATIAL_INDEX).
  *
+ * The SPATIAL_INDEX is always written out empty to a DXF file.\n
+ * This object can be ignored.
+ *
  * \since The \c SPATIAL_INDEX object was introduced in DXF R14.
  *
  * \version According to DXF R10 (backward compatibility).
