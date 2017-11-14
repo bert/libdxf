@@ -291,6 +291,7 @@ DxfPoint *dxf_spline_get_p0 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_p0 (DxfSpline *spline, DxfPoint *p0);
 double dxf_spline_get_x0 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_x0 (DxfSpline *spline, double x0);
+double dxf_spline_get_y0 (DxfSpline *spline);
 DxfPoint *dxf_spline_get_p1 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_p1 (DxfSpline *spline, DxfPoint *p1);
 
