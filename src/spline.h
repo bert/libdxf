@@ -172,13 +172,13 @@ dxf_spline_struct
                  * Group code = 440. */
         /* Specific members for a DXF spline. */
         DxfPoint *p0;
-                /*! Control point (multiple entries).\n
+                /*!< Control point (multiple entries).\n
                  * Group codes = 10, 20 and 30.*/
         DxfPoint *p1;
-                /*! Fit point (multiple entries).\n
+                /*!< Fit point (multiple entries).\n
                  * Group codes = 11, 21 and 31.*/
         DxfPoint *p2;
-                /*! Start tangent point.\n
+                /*!< Start tangent point.\n
                  * May be omitted (in WCS).\n
                  * Group codes = 12, 22 and 32.*/
         DxfPoint *p3;
