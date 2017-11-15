@@ -3350,4 +3350,45 @@ dxf_spline_get_p2
 }
 
 
+/*!
+ * \brief Set the start tangent point \c p2 for a DXF \c SPLINE entity.
+ *
+ * \return a pointer to \c spline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSpline *
+dxf_spline_set_p2
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        DxfPoint *p2
+                /*!< a start tangent point \c p2 for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->p2 = (DxfPoint *) p2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
 /* EOF */
