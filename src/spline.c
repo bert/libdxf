@@ -3473,4 +3473,43 @@ dxf_spline_set_x2
 }
 
 
+/*!
+ * \brief Get the Y-value \c y2 of the start tangent point \c p2 of a
+ * DXF \c SPLINE entity.
+ *
+ * \return the Y-value \c y2 of the start tangent point \c p2.
+ */
+double
+dxf_spline_get_y2
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline->p2->y0);
+}
+
+
 /* EOF */
