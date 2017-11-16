@@ -308,6 +308,7 @@ DxfSpline *dxf_spline_set_p2 (DxfSpline *spline, DxfPoint *p2);
 double dxf_spline_get_x2 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_x2 (DxfSpline *spline, double x2);
 double dxf_spline_get_y2 (DxfSpline *spline);
+DxfSpline *dxf_spline_set_y2 (DxfSpline *spline, double y2);
 
 
 #ifdef __cplusplus
