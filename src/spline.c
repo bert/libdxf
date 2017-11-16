@@ -3401,7 +3401,7 @@ double
 dxf_spline_get_x2
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
