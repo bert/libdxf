@@ -317,6 +317,7 @@ double dxf_spline_get_x3 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_x3 (DxfSpline *spline, double x3);
 double dxf_spline_get_y3 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_y3 (DxfSpline *spline, double y3);
+double dxf_spline_get_z3 (DxfSpline *spline);
 
 
 #ifdef __cplusplus
