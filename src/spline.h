@@ -188,7 +188,7 @@ dxf_spline_struct
         DxfDouble *knot_value;
                 /*!< Knot value (one entry per knot, multiple entries).\n
                  * Group code = 40. */
-        double weight_value[DXF_MAX_PARAM];
+        DxfDouble *weight_value;
                 /*!< Weight (if not 1); with multiple group pairs, they
                  * are present if all are not 1.\n
                  * Group code = 41. */

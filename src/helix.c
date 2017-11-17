@@ -658,12 +658,14 @@ dxf_helix_write
         for (i = 0; i < helix->spline->number_of_knots; i++)
         {
                 fprintf (fp->fp, " 40\n%f\n", helix->spline->knot_value->value);
+                /*! \todo implement as a single linked list of double. */
         }
         if (helix->spline->number_of_fit_points != 0)
         {
                 for (i = 0; i < helix->spline->number_of_fit_points; i++)
                 {
-                        fprintf (fp->fp, " 41\n%f\n", helix->spline->weight_value[i]);
+                        fprintf (fp->fp, " 41\n%f\n", helix->spline->weight_value->value);
+                        /*! \todo implement as a single linked list of double. */
                 }
         }
         while (helix->spline->p0 != NULL)

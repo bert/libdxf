@@ -288,8 +288,6 @@ dxf_spline_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -327,13 +325,10 @@ dxf_spline_init
         spline->transparency = 0;
         spline->p0 = dxf_point_init (spline->p0);
         spline->p1 = dxf_point_init (spline->p1);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                spline->weight_value[i] = 0.0;
-        }
         spline->p2 = dxf_point_init (spline->p2);
         spline->p3 = dxf_point_init (spline->p3);
         spline->knot_value->value = 0.0;
+        spline->weight_value->value = 0.0;
         spline->extr_x0 = 0.0;
         spline->extr_y0 = 0.0;
         spline->extr_z0 = 0.0;
@@ -377,7 +372,6 @@ dxf_spline_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i_weight_value;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
         DxfPoint *p0 = NULL;
         DxfPoint *p1 = NULL;
@@ -402,7 +396,6 @@ dxf_spline_read
                 spline = dxf_spline_new ();
                 spline = dxf_spline_init (spline);
         }
-        i_weight_value = 0;
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
         p0 = (DxfPoint *) spline->p0;
         p1 = (DxfPoint *) spline->p1;
@@ -568,8 +561,8 @@ dxf_spline_read
                 {
                         /* Now follows a weight value (one entry per knot, multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->weight_value[i_weight_value]);
-                        i_weight_value++;
+                        fscanf (fp->fp, "%lf\n", &spline->weight_value->value);
+                        /*! \todo implement as a single linked list of double. */
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
@@ -946,7 +939,8 @@ dxf_spline_write
         {
         for (i = 0; i < spline->number_of_fit_points; i++)
                 {
-                        fprintf (fp->fp, " 41\n%f\n", spline->weight_value[i]);
+                        fprintf (fp->fp, " 41\n%f\n", spline->weight_value->value);
+                        /*! \todo implement as a single linked list of double. */
                 }
         }
         while (spline->p0 != NULL)
