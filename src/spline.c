@@ -3919,4 +3919,47 @@ dxf_spline_get_z3
 }
 
 
+/*!
+ * \brief Set the Z-value \c z3 of the end tangent point \c p3 of a
+ * DXF \c SPLINE entity.
+ *
+ * \return a pointer to \c spline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSpline *
+dxf_spline_set_z3
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        double z3
+                /*!< the Z-value \c yz of the end tangent point \c p3
+                 * to be set for a DXF \c SPLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->p3->z0 = z3;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
 /* EOF */
