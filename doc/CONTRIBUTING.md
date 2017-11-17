@@ -251,17 +251,6 @@ your own headers.
 Then, you may use them to create header files that are valid for C++, ANSI, and
 non-ANSI compilers.
 
-Do not be naive about writing portable code.
-Following the tips given above will help you miss the most obvious problems, but
-there are definitely other subtle portability issues.
-You may need to cope with some of the following issues:
-
-    Pre-ANSI compilers do not always support the void * generic pointer type,
-    and so need to use char * in its place.
-    The const, inline and signed keywords are not supported by some compilers,
-    especially pre-ANSI compilers.
-    The long double type is not supported by many compilers.
-
 For a non-glib way choose:
 
 ```
@@ -275,6 +264,19 @@ void foo (int i);
 }
 #endif
 ```
+
+## Portability
+
+Do not be naive about writing portable code.
+Following the tips given above will help you miss the most obvious problems, but
+there are definitely other subtle portability issues.
+You may need to cope with some of the following issues:
+
+- Pre-ANSI compilers do not always support the void * generic pointer type,
+  and so need to use char * in its place.
+- The const, inline and signed keywords are not supported by some compilers,
+  especially pre-ANSI compilers.
+- The long double type is not supported by many compilers.
 
 ## Header guards.
 
