@@ -486,34 +486,13 @@ Between functions there should be two empty lines.
 
 ## Log messages.
 
-It is prefered to log messages similar like the following example:
+It is prefered to log error messages similar like the following example:
 ```
-        g_log ("", G_LOG_LEVEL_WARNING,
-                _("DxfArc with a null pointer found in: %s.\n"),
-                dxf_filename);
+  fprintf (stderr,
+    (_("Error in %s () could not allocate memory.\n")),
+     __FUNCTION__);
 ```
 
-The following criticality is (and should be) maintained:
-
-```
-/* GLib log levels */
-G_LOG_LEVEL_ERROR             = 1 << 2, /* Always fatal, abort the application. */
-G_LOG_LEVEL_CRITICAL          = 1 << 3, /* Functionality of the operation or
-                                         * function is no longer guaranteed,
-                                         * unwanted or unexpected behaviour
-                                         * follows. */
-G_LOG_LEVEL_WARNING           = 1 << 4, /* Functionality of the operation or
-                                         * function is still guaranteed.
-                                         * The application will default to a
-                                         * safe and expected behaviour. */
-G_LOG_LEVEL_MESSAGE           = 1 << 5, /* Instructions for the user. */
-G_LOG_LEVEL_INFO              = 1 << 6, /* Information usefull for the user. */
-                                         * Requires the verbose variable to be
-                                         * set. */
-G_LOG_LEVEL_DEBUG             = 1 << 7, /* Information usefull for the developer. */
-                                         * Requires the debug variable to be
-                                         * set. */
-```
 
 ## 0, 0.0, NULL and '\0'.
 
