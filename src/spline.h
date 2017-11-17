@@ -185,7 +185,7 @@ dxf_spline_struct
                 /*!< End tangent point.\n
                  * May be omitted (in WCS).\n
                  * Group codes = 13, 23 and 33. */
-        double knot_value[DXF_MAX_PARAM];
+        DxfDouble *knot_value;
                 /*!< Knot value (one entry per knot, multiple entries).\n
                  * Group code = 40. */
         double weight_value[DXF_MAX_PARAM];

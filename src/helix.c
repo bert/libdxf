@@ -657,7 +657,7 @@ dxf_helix_write
         fprintf (fp->fp, " 33\n%f\n", helix->spline->p3->z0);
         for (i = 0; i < helix->spline->number_of_knots; i++)
         {
-                fprintf (fp->fp, " 40\n%f\n", helix->spline->knot_value[i]);
+                fprintf (fp->fp, " 40\n%f\n", helix->spline->knot_value->value);
         }
         if (helix->spline->number_of_fit_points != 0)
         {

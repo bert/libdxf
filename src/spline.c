@@ -329,11 +329,11 @@ dxf_spline_init
         spline->p1 = dxf_point_init (spline->p1);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                spline->knot_value[i] = 0.0;
                 spline->weight_value[i] = 0.0;
         }
         spline->p2 = dxf_point_init (spline->p2);
         spline->p3 = dxf_point_init (spline->p3);
+        spline->knot_value->value = 0.0;
         spline->extr_x0 = 0.0;
         spline->extr_y0 = 0.0;
         spline->extr_z0 = 0.0;
@@ -377,7 +377,6 @@ dxf_spline_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i_knot_value;
         int i_weight_value;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
         DxfPoint *p0 = NULL;
@@ -403,7 +402,6 @@ dxf_spline_read
                 spline = dxf_spline_new ();
                 spline = dxf_spline_init (spline);
         }
-        i_knot_value = 0;
         i_weight_value = 0;
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
         p0 = (DxfPoint *) spline->p0;
@@ -558,14 +556,13 @@ dxf_spline_read
                         /* Now follows a thickness value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &spline->thickness);
-                        i_knot_value++;
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a knot value (one entry per knot, multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->knot_value[i_knot_value]);
-                        i_knot_value++;
+                        fscanf (fp->fp, "%lf\n", &spline->knot_value->value);
+                        /*! \todo implement as a single linked list of double. */
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
@@ -597,7 +594,6 @@ dxf_spline_read
                         /* Now follows a linetype scale value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &spline->linetype_scale);
-                        i_knot_value++;
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
@@ -943,7 +939,8 @@ dxf_spline_write
         fprintf (fp->fp, " 33\n%f\n", p3->z0);
         for (i = 0; i < spline->number_of_knots; i++)
         {
-                fprintf (fp->fp, " 40\n%f\n", spline->knot_value[i]);
+                fprintf (fp->fp, " 40\n%f\n", spline->knot_value->value);
+                /*! \todo implement as a single linked list of double. */
         }
         if (spline->number_of_fit_points != 0)
         {
