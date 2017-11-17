@@ -226,6 +226,20 @@ dxf_char_struct
 
 
 /*!
+ * \brief DXF definition of a single linked list of double variables.
+ */
+typedef struct
+dxf_double_struct
+{
+    double value;
+        /*!< Store the double value (real) here. */
+    struct DxfDouble *next;
+        /*!< Pointer to the next DxfDouble.\n
+         * \c NULL if the last DxfDouble. */
+} DxfDouble;
+
+
+/*!
  * \brief DXF definition of a single linked list of int.
  */
 typedef struct
