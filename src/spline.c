@@ -1005,12 +1005,18 @@ dxf_spline_free
         }
         free (spline->linetype);
         free (spline->layer);
+        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) spline->binary_graphics_data);
         free (spline->dictionary_owner_soft);
         free (spline->material);
         free (spline->dictionary_owner_hard);
         free (spline->plot_style_name);
         free (spline->color_name);
-        dxf_binary_graphics_data_free_chain (spline->binary_graphics_data);
+        dxf_point_free_chain (spline->p0);
+        dxf_point_free_chain (spline->p1);
+        dxf_point_free (spline->p2);
+        dxf_point_free (spline->p3);
+        dxf_double_free_chain (spline->knot_value);
+        dxf_double_free_chain (spline->weight_value);
         free (spline);
         spline = NULL;
 #if DEBUG
