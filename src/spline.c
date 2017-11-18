@@ -323,9 +323,13 @@ dxf_spline_init
         spline->color_value = 0;
         spline->color_name = strdup ("");
         spline->transparency = 0;
+        spline->p0 = dxf_point_new ();
         spline->p0 = dxf_point_init (spline->p0);
+        spline->p1 = dxf_point_new ();
         spline->p1 = dxf_point_init (spline->p1);
+        spline->p2 = dxf_point_new ();
         spline->p2 = dxf_point_init (spline->p2);
+        spline->p3 = dxf_point_new ();
         spline->p3 = dxf_point_init (spline->p3);
         dxf_double_new (spline->knot_value);
         spline->knot_value = dxf_double_init (spline->knot_value);
