@@ -70,6 +70,7 @@ int dxf_char_free (DxfChar *c);
 int dxf_char_free_chain (DxfChar *chars);
 DxfDouble *dxf_double_new ();
 DxfDouble *dxf_double_init (DxfDouble *d);
+int dxf_double_free (DxfDouble *d);
 DxfInt *dxf_int_new ();
 DxfInt *dxf_int_init (DxfInt *i);
 int dxf_int_free (DxfInt *i);
