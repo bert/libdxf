@@ -3973,4 +3973,35 @@ dxf_spline_set_z3
 }
 
 
+/*!
+ * \brief Get the \c knot_tolerance of a DXF \c SPLINE entity.
+ *
+ * \return the \c knot_tolerance.
+ */
+double
+dxf_spline_get_knot_tolerance
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline->knot_tolerance);
+}
+
+
 /* EOF */
