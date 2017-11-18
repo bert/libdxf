@@ -195,6 +195,41 @@ dxf_char_free_chain
 
 
 /*!
+ * \brief Allocate memory for a \c DxfDouble.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfDouble *
+dxf_double_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfDouble *d = NULL;
+        size_t size;
+
+        size = sizeof (DxfDouble);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((d = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDouble struct.\n")),
+                  __FUNCTION__);
+                d = NULL;
+        }
+        else
+        {
+                memset (d, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (d);
+}
+
+
+/*!
  * \brief Allocate memory for a \c DxfInt.
  *
  * Fill the memory contents with zeros.
