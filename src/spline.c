@@ -381,6 +381,8 @@ dxf_spline_read
         DxfPoint *p1 = NULL;
         DxfPoint *p2 = NULL;
         DxfPoint *p3 = NULL;
+        DxfDouble *kv = NULL; /* knot_value iter. */
+        DxfDouble *wv = NULL; /* weight value iter. */
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -405,6 +407,8 @@ dxf_spline_read
         p1 = (DxfPoint *) spline->p1;
         p2 = (DxfPoint *) spline->p2;
         p3 = (DxfPoint *) spline->p3;
+        kv = (DxfDouble *) spline->knot_value;
+        wv = (DxfDouble *) spline->weight_value;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -558,15 +562,17 @@ dxf_spline_read
                 {
                         /* Now follows a knot value (one entry per knot, multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->knot_value->value);
-                        /*! \todo implement as a single linked list of double. */
+                        fscanf (fp->fp, "%lf\n", &kv->value);
+                        dxf_double_init ((DxfDouble *) kv->next);
+                        kv = (DxfDouble *) kv->next;
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a weight value (one entry per knot, multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->weight_value->value);
-                        /*! \todo implement as a single linked list of double. */
+                        fscanf (fp->fp, "%lf\n", &wv->value);
+                        dxf_double_init ((DxfDouble *) wv->next);
+                        wv = (DxfDouble *) wv->next;
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
