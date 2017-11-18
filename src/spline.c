@@ -4004,4 +4004,39 @@ dxf_spline_get_knot_tolerance
 }
 
 
+/*!
+ * \brief Set the \c knot_tolerance of a DXF \c SPLINE entity.
+ *
+ * \return a pointer to \c spline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSpline *
+dxf_spline_set_knot_tolerance
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        double knot_tolerance
+                /*!< the \c knot_tolerance to be set for a DXF
+                 * \c SPLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->knot_tolerance = knot_tolerance;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
 /* EOF */
