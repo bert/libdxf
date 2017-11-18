@@ -230,6 +230,47 @@ dxf_double_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c DxfDouble
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfDouble *
+dxf_double_init
+(
+        DxfDouble *d
+                /*!< a pointer to the DxfDouble object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (d == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                d = dxf_double_new ();
+        }
+        if (d == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfDouble struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        d->value = 0.0;
+        d->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (d);
+}
+
+
+/*!
  * \brief Allocate memory for a \c DxfInt.
  *
  * Fill the memory contents with zeros.
