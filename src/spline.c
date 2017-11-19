@@ -2757,7 +2757,7 @@ double
 dxf_spline_get_x0
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -2839,7 +2839,7 @@ double
 dxf_spline_get_y0
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -2921,7 +2921,7 @@ double
 dxf_spline_get_z0
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3087,7 +3087,7 @@ double
 dxf_spline_get_x1
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3169,7 +3169,7 @@ double
 dxf_spline_get_y1
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3251,7 +3251,7 @@ double
 dxf_spline_get_z1
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3982,7 +3982,7 @@ double
 dxf_spline_get_knot_tolerance
 (
         DxfSpline *spline
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c SPLINE entity. */
 )
 {
 #ifdef DEBUG
