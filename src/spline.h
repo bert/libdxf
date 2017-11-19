@@ -325,6 +325,7 @@ DxfSpline *dxf_spline_set_knot_tolerance (DxfSpline *spline, double knot_toleran
 double dxf_spline_get_control_point_tolerance (DxfSpline *spline);
 DxfSpline *dxf_spline_set_control_point_tolerance (DxfSpline *spline, double control_point_tolerance);
 double dxf_spline_get_fit_tolerance (DxfSpline *spline);
+DxfSpline *dxf_spline_set_fit_tolerance (DxfSpline *spline, double fit_tolerance);
 
 
 #ifdef __cplusplus
