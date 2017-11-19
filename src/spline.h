@@ -329,6 +329,7 @@ DxfSpline *dxf_spline_set_fit_tolerance (DxfSpline *spline, double fit_tolerance
 int dxf_spline_get_flag (DxfSpline *spline);
 DxfSpline *dxf_spline_set_flag (DxfSpline *spline, int flag);
 int dxf_spline_get_degree (DxfSpline *spline);
+DxfSpline *dxf_spline_set_degree (DxfSpline *spline, int degree);
 
 
 #ifdef __cplusplus
