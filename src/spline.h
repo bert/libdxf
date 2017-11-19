@@ -322,6 +322,7 @@ double dxf_spline_get_z3 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_z3 (DxfSpline *spline, double z3);
 double dxf_spline_get_knot_tolerance (DxfSpline *spline);
 DxfSpline *dxf_spline_set_knot_tolerance (DxfSpline *spline, double knot_tolerance);
+double dxf_spline_get_control_point_tolerance (DxfSpline *spline);
 
 
 #ifdef __cplusplus
