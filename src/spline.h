@@ -335,6 +335,7 @@ DxfSpline *dxf_spline_set_number_of_knots (DxfSpline *spline, int number_of_knot
 int dxf_spline_get_number_of_control_points (DxfSpline *spline);
 DxfSpline *dxf_spline_set_number_of_control_points (DxfSpline *spline, int number_of_control_points);
 int dxf_spline_get_number_of_fit_points (DxfSpline *spline);
+DxfSpline *dxf_spline_set_number_of_fit_points (DxfSpline *spline, int number_of_fit_points);
 
 
 #ifdef __cplusplus

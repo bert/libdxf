@@ -4525,4 +4525,44 @@ dxf_spline_get_number_of_fit_points
 }
 
 
+/*!
+ * \brief Set the \c number_of_fit_points for a DXF \c SPLINE entity.
+ *
+ * \return \c spline when successful or \c NULL when an error occurred.
+ */
+DxfSpline *
+dxf_spline_set_number_of_fit_points
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        int number_of_fit_points
+                /*!< The \c number_of_fit_points to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_fit_points < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        spline->number_of_fit_points = number_of_fit_points;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
 /* EOF */
