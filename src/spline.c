@@ -4372,4 +4372,43 @@ dxf_spline_get_number_of_knots
 }
 
 
+/*!
+ * \brief Set the \c number_of_knots for a DXF \c SPLINE entity.
+ *
+ * \return \c spline when successful or \c NULL when an error occurred.
+ */
+DxfSpline *
+dxf_spline_set_number_of_knots
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        int number_of_knots
+                /*!< The \c number_of_knots to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_knots < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        spline->number_of_knots = number_of_knots;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
 /* EOF */

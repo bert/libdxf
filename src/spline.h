@@ -331,6 +331,7 @@ DxfSpline *dxf_spline_set_flag (DxfSpline *spline, int flag);
 int dxf_spline_get_degree (DxfSpline *spline);
 DxfSpline *dxf_spline_set_degree (DxfSpline *spline, int degree);
 int dxf_spline_get_number_of_knots (DxfSpline *spline);
+DxfSpline *dxf_spline_set_number_of_knots (DxfSpline *spline, int number_of_knots);
 
 
 #ifdef __cplusplus
