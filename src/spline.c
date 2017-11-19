@@ -4414,8 +4414,8 @@ dxf_spline_set_number_of_knots
 /*!
  * \brief Get the \c number_of_control_points from a DXF \c SPLINE.
  *
- * \return \c number_of_control_points when successful, or \c EXIT_FAILURE when
- * an error occurred.
+ * \return \c number_of_control_points when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 int
 dxf_spline_get_number_of_control_points
