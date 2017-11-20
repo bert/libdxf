@@ -4563,4 +4563,50 @@ dxf_spline_set_number_of_fit_points
 }
 
 
+/*!
+ * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
+ * \c SPLINE entity.
+ *
+ * \return a DXF \c POINT containing the extrusion coordinates.
+ *
+ * \warning No other members are copied into the DXF \c POINT.
+ */
+DxfPoint *
+dxf_spline_get_extrusion_vector_as_point
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        point->x0 = spline->extr_x0;
+        point->y0 = spline->extr_y0;
+        point->z0 = spline->extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* EOF */
