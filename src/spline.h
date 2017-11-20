@@ -340,6 +340,7 @@ DxfPoint *dxf_spline_get_extrusion_vector_as_point (DxfSpline *spline);
 double dxf_spline_get_extr_x0 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_extr_x0 (DxfSpline *spline, double extr_x0);
 double dxf_spline_get_extr_y0 (DxfSpline *spline);
+DxfSpline *dxf_spline_set_extr_y0 (DxfSpline *spline, double extr_y0);
 
 
 #ifdef __cplusplus
