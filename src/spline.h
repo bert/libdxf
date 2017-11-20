@@ -338,6 +338,7 @@ int dxf_spline_get_number_of_fit_points (DxfSpline *spline);
 DxfSpline *dxf_spline_set_number_of_fit_points (DxfSpline *spline, int number_of_fit_points);
 DxfPoint *dxf_spline_get_extrusion_vector_as_point (DxfSpline *spline);
 double dxf_spline_get_extr_x0 (DxfSpline *spline);
+DxfSpline *dxf_spline_set_extr_x0 (DxfSpline *spline, double extr_x0);
 
 
 #ifdef __cplusplus
