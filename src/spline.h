@@ -346,6 +346,7 @@ DxfSpline *dxf_spline_set_extr_y0 (DxfSpline *spline, double extr_y0);
 double dxf_spline_get_extr_z0 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_extr_z0 (DxfSpline *spline, double extr_z0);
 DxfSpline *dxf_spline_get_next (DxfSpline *spline);
+DxfSpline *dxf_spline_set_next (DxfSpline *spline, DxfSpline *next);
 
 
 #ifdef __cplusplus

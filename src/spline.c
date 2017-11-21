@@ -4931,4 +4931,43 @@ dxf_spline_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c SPLINE for a DXF \c SPLINE
+ * entity.
+ */
+DxfSpline *
+dxf_spline_set_next
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        DxfSpline *next
+                /*!< a pointer to the next \c SPLINE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->next = (struct DxfSpline *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
 /* EOF */
