@@ -4651,6 +4651,43 @@ dxf_spline_set_extrusion_vector_from_point
 
 
 /*!
+ * \brief Set the extrusion vector for a DXF \c SPLINE entity.
+ */
+DxfSpline *
+dxf_spline_set_extrusion_vector
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        double extr_x0,
+                /*!<  X-value of the extrusion direction. */
+        double extr_y0,
+                /*!<  Y-value of the extrusion direction. */
+        double extr_z0
+                /*!<  Z-value of the extrusion direction. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->extr_x0 = extr_x0;
+        spline->extr_y0 = extr_y0;
+        spline->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
+/*!
  * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
  * \c SPLINE entity.
  *
