@@ -4970,4 +4970,49 @@ dxf_spline_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c SPLINE entity from a linked list
+ * of DXF \c SPLINE entities.
+ *
+ * \return pointer to the last \c SPLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSpline *
+dxf_spline_get_last
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfSpline *) spline);
+        }
+        DxfSpline *iter = (DxfSpline *) spline->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSpline *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSpline *) iter);
+}
+
+
 /* EOF */
