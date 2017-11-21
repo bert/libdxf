@@ -4891,4 +4891,44 @@ dxf_spline_set_extr_z0
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c SPLINE entity from a DXF
+ * \c SPLINE entity.
+ *
+ * \return pointer to the next \c SPLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSpline *
+dxf_spline_get_next
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSpline *) spline->next);
+}
+
+
 /* EOF */
