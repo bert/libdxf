@@ -54,7 +54,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_xline
+dxf_xline_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
