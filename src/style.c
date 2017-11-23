@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF style entity (\c STYLE).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -42,12 +48,6 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfStyle *
 dxf_style_new ()
@@ -85,12 +85,6 @@ dxf_style_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfStyle *
 dxf_style_init
@@ -145,12 +139,6 @@ dxf_style_init
  * While parsing the DXF file store data in \c style. \n
  *
  * \return a pointer to \c style.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfStyle *
 dxf_style_read
@@ -340,12 +328,6 @@ dxf_style_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_style_write
@@ -439,12 +421,6 @@ dxf_style_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_style_free
@@ -487,12 +463,6 @@ dxf_style_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c STYLE
  * symbol table entries and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_style_free_chain
@@ -528,12 +498,6 @@ dxf_style_free_chain
  *
  * \return \c TRUE when a shape file should be loaded,
  * or \c FALSE when not, or (-1) when an error occured.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_style_is_shape_file
@@ -569,12 +533,6 @@ dxf_style_is_shape_file
  * \return \c TRUE when vertical oriented,
  * or \c FALSE when not vertically oriented, or (-1) when an error
  * occured.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_style_is_text_vertical
@@ -610,12 +568,6 @@ dxf_style_is_text_vertical
  * \return \c TRUE when style is externally dependent on an xref,
  * or \c FALSE when style is not externally dependent on an xref,
  * or (-1) when an error occured.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_style_is_xreferenced
@@ -653,12 +605,6 @@ dxf_style_is_xreferenced
  * been successfully resolved,
  * or \c FALSE when style is not externally dependent on a xref and has
  * not been successfully resolved, or (-1) when an error occured.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_style_is_xresolved
@@ -695,12 +641,6 @@ dxf_style_is_xresolved
  * \return \c TRUE when style is internally referenced by an entity,
  * or \c FALSE when style is not internally referenced by an entity,
  * or (-1) when an error occured.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_style_is_referenced
