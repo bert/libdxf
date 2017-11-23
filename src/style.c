@@ -608,6 +608,48 @@ dxf_style_get_style_name
 
 
 /*!
+ * \brief Set the \c style_name for a DXF \c STYLE symbol table entries.
+ *
+ * \return a pointer to \c style when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfStyle *
+dxf_style_set_color_name
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+        char *style_name
+                /*!< a string containing the \c style_name for the
+                 * symbol table entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        style->style_name = strdup (style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,
