@@ -650,6 +650,45 @@ dxf_style_set_color_name
 
 
 /*!
+ * \brief Get the \c primary_font_filename from a DXF \c STYLE symbol
+ * table entries.
+ *
+ * \return \c primary_font_filename when sucessful, or \c NULL when an
+ * error occurred.
+ */
+char *
+dxf_style_get_primary_font_filename
+(
+        DxfStyle *style
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (style->primary_font_filename ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (style->primary_font_filename));
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,
