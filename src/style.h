@@ -138,6 +138,7 @@ int dxf_style_free (DxfStyle *style);
 void dxf_style_free_chain (DxfStyle *styles);
 int dxf_style_get_id_code (DxfStyle *style);
 DxfStyle *dxf_style_set_id_code (DxfStyle *style, int id_code);
+char *dxf_style_get_style_name (DxfStyle *style);
 int dxf_style_is_shape_file (DxfStyle *style);
 int dxf_style_is_text_vertical (DxfStyle *style);
 int dxf_style_is_xreferenced (DxfStyle *style);
