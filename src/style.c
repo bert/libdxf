@@ -771,6 +771,49 @@ dxf_style_get_big_font_filename
 
 
 /*!
+ * \brief Set the \c big_font_filename for a DXF \c STYLE symbol
+ * table entries.
+ *
+ * \return a pointer to \c style when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfStyle *
+dxf_style_set_big_font_filename
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+        char *big_font_filename
+                /*!< a string containing the \c big_font_filename for
+                 * the symbol table entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (big_font_filename == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        style->big_font_filename = strdup (big_font_filename);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,

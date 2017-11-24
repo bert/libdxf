@@ -143,6 +143,7 @@ DxfStyle *dxf_style_set_color_name (DxfStyle *style, char *style_name);
 char *dxf_style_get_primary_font_filename (DxfStyle *style);
 DxfStyle *dxf_style_set_primary_font_filename (DxfStyle *style, char *primary_font_filename);
 char *dxf_style_get_big_font_filename (DxfStyle *style);
+DxfStyle *dxf_style_set_big_font_filename (DxfStyle *style, char *big_font_filename);
 int dxf_style_is_shape_file (DxfStyle *style);
 int dxf_style_is_text_vertical (DxfStyle *style);
 int dxf_style_is_xreferenced (DxfStyle *style);
