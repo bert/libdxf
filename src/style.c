@@ -905,6 +905,37 @@ dxf_style_get_width
 
 
 /*!
+ * \brief Set the \c width for a DXF \c STYLE symbol table entries.
+ */
+DxfStyle *
+dxf_style_set_width
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+        double width
+                /*!< the \c width to be set for the entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        style->width = width;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,
