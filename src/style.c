@@ -966,6 +966,37 @@ dxf_style_get_last_height
 
 
 /*!
+ * \brief Set the \c last_height for a DXF \c STYLE symbol table entries.
+ */
+DxfStyle *
+dxf_style_set_last_height
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+        double last_height
+                /*!< the \c last_height to be set for the entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        style->last_height = last_height;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,

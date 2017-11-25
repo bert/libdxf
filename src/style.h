@@ -149,6 +149,7 @@ DxfStyle *dxf_style_set_height (DxfStyle *style, double height);
 double dxf_style_get_width (DxfStyle *style);
 DxfStyle *dxf_style_set_width (DxfStyle *style, double width);
 double dxf_style_get_last_height (DxfStyle *style);
+DxfStyle *dxf_style_set_last_height (DxfStyle *style, double last_height);
 int dxf_style_is_shape_file (DxfStyle *style);
 int dxf_style_is_text_vertical (DxfStyle *style);
 int dxf_style_is_xreferenced (DxfStyle *style);
