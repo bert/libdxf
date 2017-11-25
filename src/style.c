@@ -1060,6 +1060,49 @@ dxf_style_set_oblique_angle
 
 
 /*!
+ * \brief Get the \c flag from a DXF \c STYLE symbol table entries.
+ *
+ * \return \c flag.
+ */
+int
+dxf_style_get_flag
+(
+        DxfStyle *style
+                /*!< a pointer to a DXF \c STYLE symbol table
+                 * entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (style->flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (style->flag > 127)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style->flag);
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,
