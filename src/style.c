@@ -1103,6 +1103,49 @@ dxf_style_get_flag
 
 
 /*!
+ * \brief Set the \c flag for a DXF \c STYLE symbol table entries.
+ */
+DxfStyle *
+dxf_style_set_flag
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+        int flag
+                /*!< the \c flag to be set for the entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (flag > 127)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        style->flag = flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,

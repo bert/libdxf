@@ -153,6 +153,7 @@ DxfStyle *dxf_style_set_last_height (DxfStyle *style, double last_height);
 double dxf_style_get_oblique_angle (DxfStyle *style);
 DxfStyle *dxf_style_set_oblique_angle (DxfStyle *style, double oblique_angle);
 int dxf_style_get_flag (DxfStyle *style);
+DxfStyle *dxf_style_set_flag (DxfStyle *style, int flag);
 int dxf_style_is_shape_file (DxfStyle *style);
 int dxf_style_is_text_vertical (DxfStyle *style);
 int dxf_style_is_xreferenced (DxfStyle *style);
