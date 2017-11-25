@@ -997,6 +997,37 @@ dxf_style_set_last_height
 
 
 /*!
+ * \brief Get the \c oblique_angle from a DXF \c STYLE symbol table
+ * entries.
+ *
+ * \return \c oblique_angle.
+ */
+double
+dxf_style_get_oblique_angle
+(
+        DxfStyle *style
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style->oblique_angle);
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,
