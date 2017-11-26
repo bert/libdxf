@@ -160,6 +160,7 @@ int dxf_style_is_xreferenced (DxfStyle *style);
 int dxf_style_is_xresolved (DxfStyle *style);
 int dxf_style_is_referenced (DxfStyle *style);
 int dxf_style_get_text_generation_flag (DxfStyle *style);
+DxfStyle *dxf_style_set_text_generation_flag (DxfStyle *style, int text_generation_flag);
 
 
 #ifdef __cplusplus

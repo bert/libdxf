@@ -1366,4 +1366,49 @@ dxf_style_get_text_generation_flag
 }
 
 
+/*!
+ * \brief Set the \c text_generation_flag for a DXF \c STYLE symbol
+ * table entries.
+ */
+DxfStyle *
+dxf_style_set_text_generation_flag
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entries. */
+        int text_generation_flag
+                /*!< the \c text_generation_flag to be set for the
+                 * entries. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text_generation_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (text_generation_flag > 0x111)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        style->text_generation_flag = text_generation_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
 /* EOF*/
