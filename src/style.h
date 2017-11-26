@@ -159,6 +159,7 @@ int dxf_style_is_text_vertical (DxfStyle *style);
 int dxf_style_is_xreferenced (DxfStyle *style);
 int dxf_style_is_xresolved (DxfStyle *style);
 int dxf_style_is_referenced (DxfStyle *style);
+int dxf_style_get_text_generation_flag (DxfStyle *style);
 
 
 #ifdef __cplusplus
