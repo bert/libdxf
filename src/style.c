@@ -1411,4 +1411,38 @@ dxf_style_set_text_generation_flag
 }
 
 
+/*!
+ * \brief Test if a text is backward.
+ *
+ * \return \c TRUE when a text is backward,
+ * or \c FALSE when not, or (-1) when an error occured.
+ */
+int
+dxf_style_is_text_backward
+(
+        DxfStyle *style
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
+        result = DXF_CHECK_BIT (style->flag, 1);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
