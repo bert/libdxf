@@ -1089,7 +1089,7 @@ dxf_style_get_flag
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        if (style->flag > 127)
+        if (style->flag > 0x01111111)
         {
                 fprintf (stderr,
                   (_("Warning in %s () an out of range value was found.\n")),
