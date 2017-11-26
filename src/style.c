@@ -1131,7 +1131,7 @@ dxf_style_set_flag
                   (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
-        if (flag > 127)
+        if (flag > 0x01111111)
         {
                 fprintf (stderr,
                   (_("Warning in %s () an out of range value was passed.\n")),
