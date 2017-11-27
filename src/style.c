@@ -1437,7 +1437,7 @@ dxf_style_is_text_backward
                   __FUNCTION__);
                 return (-1);
         }
-        result = DXF_CHECK_BIT (style->flag, 1);
+        result = DXF_CHECK_BIT (style->text_generation_flag, 1);
 #if DEBUG
         DXF_DEBUG_END
 #endif
