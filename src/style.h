@@ -162,6 +162,7 @@ int dxf_style_is_referenced (DxfStyle *style);
 int dxf_style_get_text_generation_flag (DxfStyle *style);
 DxfStyle *dxf_style_set_text_generation_flag (DxfStyle *style, int text_generation_flag);
 int dxf_style_is_text_backward (DxfStyle *style);
+int dxf_style_is_text_upside_down (DxfStyle *style);
 
 
 #ifdef __cplusplus

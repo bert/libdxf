@@ -1445,4 +1445,38 @@ dxf_style_is_text_backward
 }
 
 
+/*!
+ * \brief Test if a text is upside down.
+ *
+ * \return \c TRUE when a text is upside down,
+ * or \c FALSE when not, or (-1) when an error occured.
+ */
+int
+dxf_style_is_text_upside_down
+(
+        DxfStyle *style
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
+        result = DXF_CHECK_BIT (style->text_generation_flag, 2);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
