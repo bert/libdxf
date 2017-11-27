@@ -1639,4 +1639,44 @@ dxf_style_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c STYLE symbol table entry from a
+ * DXF \c STYLE symbol table entry.
+ *
+ * \return pointer to the next \c STYLE symbol table entry.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfStyle *
+dxf_style_get_next
+(
+        DxfStyle *style
+                /*!< a pointer to a DXF \c STYLE symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (style->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfStyle *) style->next);
+}
+
+
 /* EOF*/
