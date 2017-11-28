@@ -121,6 +121,8 @@ dxf_style_init
         style->oblique_angle = 0.0;
         style->flag = 0;
         style->text_generation_flag = 0;
+        style->dictionary_owner_soft = strdup ("");
+        style->dictionary_owner_hard = strdup ("");
         style->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
