@@ -169,6 +169,7 @@ char *dxf_style_get_dictionary_owner_hard (DxfStyle *style);
 DxfStyle *dxf_style_set_dictionary_owner_hard (DxfStyle *style, char *dictionary_owner_soft);
 DxfStyle *dxf_style_get_next (DxfStyle *style);
 DxfStyle *dxf_style_set_next (DxfStyle *style, DxfStyle *next);
+DxfStyle *dxf_style_get_last (DxfStyle *style);
 
 
 #ifdef __cplusplus
