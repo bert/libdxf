@@ -1649,6 +1649,43 @@ dxf_style_set_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the \c ttf_flags from a DXF \c STYLE symbol table entry.
+ *
+ * \return \c ttf_flags when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int32_t
+dxf_style_get_ttf_flags
+(
+        DxfStyle *style
+                /*!< a pointer to a DXF \c STYLE symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (style->ttf_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style->ttf_flags);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c STYLE symbol table entry from a
  * DXF \c STYLE symbol table entry.
  *
