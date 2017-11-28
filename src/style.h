@@ -124,6 +124,10 @@ dxf_style_struct
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
+        int32_t ttf_flags;
+                /*!< A long value which contains a truetype font’s pitch
+                 * and family, charset, and italic and bold flags.\n
+                 * Group code = 1071. */
         struct DxfStyle *next;
                 /*!< Pointer to the next DxfStyle.\n
                  * \c NULL in the last DxfStyle. */
