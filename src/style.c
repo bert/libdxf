@@ -5,6 +5,13 @@
  *
  * \brief Functions for a DXF style entity (\c STYLE).
  *
+ * A STYLE table item is also used to record shape file LOAD command
+ * requests.
+ *
+ * In this case the first bit (1) is set in the 70 group flags and only
+ * the 3 group (shape file name) is meaningful (all the other groups are
+ * output, however).
+ *
  * \version According to DXF R10.
  * \version According to DXF R11.
  * \version According to DXF R12.
