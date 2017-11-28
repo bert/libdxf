@@ -1679,4 +1679,44 @@ dxf_style_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c STYLE symbol table entry for a
+ * DXF \c STYLE symbol table entry.
+ */
+DxfStyle *
+dxf_style_set_next
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entry. */
+        DxfStyle *next
+                /*!< a pointer to the next \c STYLE symbol table entry
+                 * for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        style->next = (struct DxfStyle *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
 /* EOF*/
