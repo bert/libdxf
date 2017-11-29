@@ -422,6 +422,7 @@ dxf_style_write
         fprintf (fp->fp, " 42\n%f\n", style->last_height);
         fprintf (fp->fp, "  3\n%s\n", style->primary_font_filename);
         fprintf (fp->fp, "  4\n%s\n", style->big_font_filename);
+        fprintf (fp->fp, "1071\n%d\n", style->ttf_flags);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
