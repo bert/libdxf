@@ -468,6 +468,8 @@ dxf_style_free
         free (style->style_name);
         free (style->primary_font_filename);
         free (style->big_font_filename);
+        free (style->dictionary_owner_soft);
+        free (style->dictionary_owner_hard);
         free (style);
         style = NULL;
 #if DEBUG
