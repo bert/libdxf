@@ -8,7 +8,14 @@
  *
  * \brief Header file for of a DXF table entry (\c TABLE).
  *
- * \version The \c TABLE entity was introduced in DXF R2005.
+ * \since The \c TABLE entity was introduced in DXF R2005.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -50,13 +57,6 @@ extern "C" {
 
 /*!
  * \brief DXF definition of a table entity cell.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 typedef struct
 dxf_table_cell
@@ -251,13 +251,6 @@ dxf_table_cell
 
 /*!
  * \brief DXF definition of a table entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 typedef struct
 dxf_table
