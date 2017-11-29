@@ -59,7 +59,7 @@ extern "C" {
  * \version According to DXF R2005.
  */
 typedef struct
-dxf_table_cell
+dxf_table_cell_struct
 {
         char *text_string;
                 /*!< Text string in a cell.\n
