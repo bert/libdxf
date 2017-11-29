@@ -1686,6 +1686,46 @@ dxf_style_get_ttf_flags
 
 
 /*!
+ * \brief Set the \c ttf_flags for a DXF \c STYLE symbol table entry.
+ *
+ * \return a pointer to \c style when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfStyle *
+dxf_style_set_ttf_flags
+(
+        DxfStyle *style,
+                /*!< a pointer to a DXF \c STYLE symbol table entry. */
+        int32_t ttf_flags
+                /*!< the \c ttf_flags to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ttf_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative class_version value was passed.\n")),
+                  __FUNCTION__);
+        }
+        style->ttf_flags = ttf_flags;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (style);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c STYLE symbol table entry from a
  * DXF \c STYLE symbol table entry.
  *
