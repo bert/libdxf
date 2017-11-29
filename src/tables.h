@@ -67,7 +67,7 @@ extern "C" {
  * \brief DXF definition of a tables section.
  */
 typedef struct
-dxf_tables
+dxf_tables_struct
 {
         int max_table_entries;
                 /*!< Maximum number of table entries that may follow.\n
