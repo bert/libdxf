@@ -301,6 +301,12 @@ dxf_style_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
+                else if (strcmp (temp_string, "1071") == 0)
+                {
+                        /* Now follows a string containing true type font flags. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &style->ttf_flags);
+                }
                 else
                 {
                         fprintf (stderr,
