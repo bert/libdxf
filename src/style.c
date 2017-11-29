@@ -130,6 +130,7 @@ dxf_style_init
         style->text_generation_flag = 0;
         style->dictionary_owner_soft = strdup ("");
         style->dictionary_owner_hard = strdup ("");
+        style->ttf_flags = 0;
         style->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
