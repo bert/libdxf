@@ -98,6 +98,7 @@ DxfTables *dxf_tables_init (DxfTables *tables);
 int dxf_tables_write (DxfFile *fp, DxfTables *tables);
 int dxf_tables_free (DxfTables *tables);
 int dxf_tables_get_max_table_entries (DxfTables *tables);
+DxfTables *dxf_tables_set_max_table_entries (DxfTables *tables, int max_table_entries);
 
 
 #ifdef __cplusplus

@@ -240,4 +240,41 @@ dxf_tables_get_max_table_entries
 }
 
 
+/*!
+ * \brief Set the \c max_table_entries for a DXF \c TABLES section.
+ */
+DxfTables *
+dxf_tables_set_max_table_entries
+(
+        DxfTables *tables,
+                /*!< a pointer to a DXF \c TABLES section. */
+        int max_table_entries
+                /*!< the \c max_table_entries to be set for the section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (max_table_entries < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        tables->max_table_entries = max_table_entries;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tables);
+}
+
+
 /* EOF */
