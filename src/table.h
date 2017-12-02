@@ -260,7 +260,7 @@ dxf_table_cell
  * \version According to DXF R2005.
  */
 typedef struct
-dxf_table
+dxf_table_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
