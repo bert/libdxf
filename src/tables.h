@@ -100,6 +100,7 @@ int dxf_tables_free (DxfTables *tables);
 int dxf_tables_get_max_table_entries (DxfTables *tables);
 DxfTables *dxf_tables_set_max_table_entries (DxfTables *tables, int max_table_entries);
 struct DxfAppid *dxf_tables_get_appids (DxfTables *tables);
+DxfTables *dxf_tables_set_appids (DxfTables *tables, struct DxfAppid *appids);
 
 
 #ifdef __cplusplus

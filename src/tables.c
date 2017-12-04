@@ -314,4 +314,42 @@ dxf_tables_get_appids
 }
 
 
+/*!
+ * \brief Set the \c appids for a DXF \c TABLES section.
+ */
+DxfTables *
+dxf_tables_set_appids
+(
+        DxfTables *tables,
+                /*!< a pointer to a DXF \c TABLES section. */
+        struct DxfAppid *appids
+                /*!< the \c appids to be set for the section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (appids == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tables->appids = appids;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tables);
+}
+
+
 /* EOF */
