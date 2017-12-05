@@ -107,6 +107,7 @@ struct DxfDimStyle *dxf_tables_get_dimstyles (DxfTables *tables);
 DxfTables *dxf_tables_set_dimstyles (DxfTables *tables, struct DxfDimStyle *dimstyles);
 struct DxfLayer *dxf_tables_get_layers (DxfTables *tables);
 DxfTables *dxf_tables_set_layers (DxfTables *tables, struct DxfLayer *layers);
+struct DxfLType *dxf_tables_get_ltypes (DxfTables *tables);
 
 
 #ifdef __cplusplus

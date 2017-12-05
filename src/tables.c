@@ -577,4 +577,41 @@ dxf_tables_set_layers
 }
 
 
+/*!
+ * \brief Get the \c ltypes from a DXF \c TABLES section.
+ *
+ * \return \c ltypes.
+ */
+struct DxfLType *
+dxf_tables_get_ltypes
+(
+        DxfTables *tables
+                /*!< a pointer to a DXF \c TABLES section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tables->ltypes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tables->ltypes);
+}
+
+
 /* EOF */
