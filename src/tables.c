@@ -389,4 +389,42 @@ dxf_tables_get_block_records
 }
 
 
+/*!
+ * \brief Set the \c block_records for a DXF \c TABLES section.
+ */
+DxfTables *
+dxf_tables_set_block_records
+(
+        DxfTables *tables,
+                /*!< a pointer to a DXF \c TABLES section. */
+        struct DxfBlockRecord *block_records
+                /*!< the \c block_records to be set for the section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_records == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tables->block_records = block_records;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tables);
+}
+
+
 /* EOF */

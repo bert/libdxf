@@ -102,6 +102,7 @@ DxfTables *dxf_tables_set_max_table_entries (DxfTables *tables, int max_table_en
 struct DxfAppid *dxf_tables_get_appids (DxfTables *tables);
 DxfTables *dxf_tables_set_appids (DxfTables *tables, struct DxfAppid *appids);
 struct DxfBlockRecord *dxf_tables_get_block_records (DxfTables *tables);
+DxfTables *dxf_tables_set_block_records (DxfTables *tables, struct DxfBlockRecord *block_records);
 
 
 #ifdef __cplusplus
