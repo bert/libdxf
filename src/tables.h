@@ -105,6 +105,7 @@ struct DxfBlockRecord *dxf_tables_get_block_records (DxfTables *tables);
 DxfTables *dxf_tables_set_block_records (DxfTables *tables, struct DxfBlockRecord *block_records);
 struct DxfDimStyle *dxf_tables_get_dimstyles (DxfTables *tables);
 DxfTables *dxf_tables_set_dimstyles (DxfTables *tables, struct DxfDimStyle *dimstyles);
+struct DxfLayer *dxf_tables_get_layers (DxfTables *tables);
 
 
 #ifdef __cplusplus
