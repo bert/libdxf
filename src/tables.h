@@ -104,6 +104,7 @@ DxfTables *dxf_tables_set_appids (DxfTables *tables, struct DxfAppid *appids);
 struct DxfBlockRecord *dxf_tables_get_block_records (DxfTables *tables);
 DxfTables *dxf_tables_set_block_records (DxfTables *tables, struct DxfBlockRecord *block_records);
 struct DxfDimStyle *dxf_tables_get_dimstyles (DxfTables *tables);
+DxfTables *dxf_tables_set_dimstyles (DxfTables *tables, struct DxfDimStyle *dimstyles);
 
 
 #ifdef __cplusplus
