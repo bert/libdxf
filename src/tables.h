@@ -111,6 +111,7 @@ struct DxfLType *dxf_tables_get_ltypes (DxfTables *tables);
 DxfTables *dxf_tables_set_ltypes (DxfTables *tables, struct DxfLType *ltypes);
 struct DxfStyle *dxf_tables_get_styles (DxfTables *tables);
 DxfTables *dxf_tables_set_styles (DxfTables *tables, struct DxfStyle *styles);
+struct DxfUcs *dxf_tables_get_ucss (DxfTables *tables);
 
 
 #ifdef __cplusplus
