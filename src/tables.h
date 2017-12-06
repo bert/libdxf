@@ -113,6 +113,7 @@ struct DxfStyle *dxf_tables_get_styles (DxfTables *tables);
 DxfTables *dxf_tables_set_styles (DxfTables *tables, struct DxfStyle *styles);
 struct DxfUcs *dxf_tables_get_ucss (DxfTables *tables);
 DxfTables *dxf_tables_set_ucss (DxfTables *tables, struct DxfUcs *ucss);
+struct DxfView *dxf_tables_get_views (DxfTables *tables);
 
 
 #ifdef __cplusplus
