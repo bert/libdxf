@@ -764,4 +764,42 @@ dxf_tables_get_ucss
 }
 
 
+/*!
+ * \brief Set the \c ucss for a DXF \c TABLES section.
+ */
+DxfTables *
+dxf_tables_set_ucss
+(
+        DxfTables *tables,
+                /*!< a pointer to a DXF \c TABLES section. */
+        struct DxfUcs *ucss
+                /*!< the \c ucss to be set for the section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucss == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tables->ucss = ucss;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tables);
+}
+
+
 /* EOF */
