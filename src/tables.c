@@ -839,4 +839,42 @@ dxf_tables_get_views
 }
 
 
+/*!
+ * \brief Set the \c views for a DXF \c TABLES section.
+ */
+DxfTables *
+dxf_tables_set_views
+(
+        DxfTables *tables,
+                /*!< a pointer to a DXF \c TABLES section. */
+        struct DxfView *views
+                /*!< the \c views to be set for the section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (views == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tables->views = views;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tables);
+}
+
+
 /* EOF */
