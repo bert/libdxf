@@ -107,15 +107,15 @@ dxf_tables_init
                 return (NULL);
         }
         tables->max_table_entries = 0;
-        tables->appids = NULL;
-        tables->block_records = NULL;
-        tables->dimstyles = NULL;
-        tables->layers = NULL;
-        tables->ltypes = NULL;
-        tables->styles = NULL;
-        tables->ucss = NULL;
-        tables->views = NULL;
-        tables->vports = NULL;
+        tables->appids = (DxfAppid *) dxf_appid_init ((DxfAppid *) tables->appids);
+        tables->block_records = (DxfBlockRecord *) dxf_block_record_init ((DxfBlockRecord *) tables->block_records);
+        tables->dimstyles = (DxfDimStyle *) dxf_dimstyle_init ((DxfDimStyle *) tables->dimstyles);
+        tables->layers = (DxfLayer *) dxf_layer_init ((DxfLayer *) tables->layers);
+        tables->ltypes = (DxfLType *) dxf_ltype_init ((DxfLType *) tables->ltypes);
+        tables->styles = (DxfStyle *) dxf_style_init ((DxfStyle *) tables->styles);
+        tables->ucss = (DxfUcs *) dxf_ucs_init ((DxfUcs *) tables->ucss);
+        tables->views = (DxfView *) dxf_view_init ((DxfView *) tables->views);
+        tables->vports = (DxfVPort *) dxf_vport_init ((DxfVPort *) tables->vports);
 #if DEBUG
         DXF_DEBUG_END
 #endif
