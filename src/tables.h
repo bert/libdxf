@@ -56,6 +56,15 @@
 
 
 #include "global.h"
+#include "appid.h"
+#include "block_record.h"
+#include "dimstyle.h"
+#include "layer.h"
+#include "ltype.h"
+#include "style.h"
+#include "ucs.h"
+#include "view.h"
+#include "vport.h"
 
 
 #ifdef __cplusplus
@@ -72,23 +81,23 @@ dxf_tables_struct
         int max_table_entries;
                 /*!< Maximum number of table entries that may follow.\n
                  * Group code = 70. */
-        struct DxfAppid *appids;
+        DxfAppid *appids;
                 /*!< Pointer to the first \c APPID symbol table entry. */
-        struct DxfBlockRecord *block_records;
+        DxfBlockRecord *block_records;
                 /*!< Pointer to the first \c BLOCK_RECORD symbol table entry. */
-        struct DxfDimStyle *dimstyles;
+        DxfDimStyle *dimstyles;
                 /*!< Pointer to the first \c DIMSTYLE symbol table entry. */
-        struct DxfLayer *layers;
+        DxfLayer *layers;
                 /*!< Pointer to the first \c LAYER symbol table entry. */
-        struct DxfLType *ltypes;
+        DxfLType *ltypes;
                 /*!< Pointer to the first \c LTYPE symbol table entry. */
-        struct DxfStyle *styles;
+        DxfStyle *styles;
                 /*!< Pointer to the first \c STYLE symbol table entry. */
-        struct DxfUcs *ucss;
+        DxfUcs *ucss;
                 /*!< Pointer to the first \c UCS symbol table entry. */
-        struct DxfView *views;
+        DxfView *views;
                 /*!< Pointer to the first \c VIEW symbol table entry. */
-        struct DxfVPort *vports;
+        DxfVPort *vports;
                 /*!< Pointer to the first \c VPORT symbol table entry. */
 } DxfTables;
 
@@ -99,24 +108,24 @@ int dxf_tables_write (DxfFile *fp, DxfTables *tables);
 int dxf_tables_free (DxfTables *tables);
 int dxf_tables_get_max_table_entries (DxfTables *tables);
 DxfTables *dxf_tables_set_max_table_entries (DxfTables *tables, int max_table_entries);
-struct DxfAppid *dxf_tables_get_appids (DxfTables *tables);
-DxfTables *dxf_tables_set_appids (DxfTables *tables, struct DxfAppid *appids);
-struct DxfBlockRecord *dxf_tables_get_block_records (DxfTables *tables);
-DxfTables *dxf_tables_set_block_records (DxfTables *tables, struct DxfBlockRecord *block_records);
-struct DxfDimStyle *dxf_tables_get_dimstyles (DxfTables *tables);
-DxfTables *dxf_tables_set_dimstyles (DxfTables *tables, struct DxfDimStyle *dimstyles);
-struct DxfLayer *dxf_tables_get_layers (DxfTables *tables);
-DxfTables *dxf_tables_set_layers (DxfTables *tables, struct DxfLayer *layers);
-struct DxfLType *dxf_tables_get_ltypes (DxfTables *tables);
-DxfTables *dxf_tables_set_ltypes (DxfTables *tables, struct DxfLType *ltypes);
-struct DxfStyle *dxf_tables_get_styles (DxfTables *tables);
-DxfTables *dxf_tables_set_styles (DxfTables *tables, struct DxfStyle *styles);
-struct DxfUcs *dxf_tables_get_ucss (DxfTables *tables);
-DxfTables *dxf_tables_set_ucss (DxfTables *tables, struct DxfUcs *ucss);
-struct DxfView *dxf_tables_get_views (DxfTables *tables);
-DxfTables *dxf_tables_set_views (DxfTables *tables, struct DxfView *views);
-struct DxfVPort *dxf_tables_get_vports (DxfTables *tables);
-DxfTables *dxf_tables_set_vports (DxfTables *tables, struct DxfVPort *vports);
+DxfAppid *dxf_tables_get_appids (DxfTables *tables);
+DxfTables *dxf_tables_set_appids (DxfTables *tables, DxfAppid *appids);
+DxfBlockRecord *dxf_tables_get_block_records (DxfTables *tables);
+DxfTables *dxf_tables_set_block_records (DxfTables *tables, DxfBlockRecord *block_records);
+DxfDimStyle *dxf_tables_get_dimstyles (DxfTables *tables);
+DxfTables *dxf_tables_set_dimstyles (DxfTables *tables, DxfDimStyle *dimstyles);
+DxfLayer *dxf_tables_get_layers (DxfTables *tables);
+DxfTables *dxf_tables_set_layers (DxfTables *tables, DxfLayer *layers);
+DxfLType *dxf_tables_get_ltypes (DxfTables *tables);
+DxfTables *dxf_tables_set_ltypes (DxfTables *tables, DxfLType *ltypes);
+DxfStyle *dxf_tables_get_styles (DxfTables *tables);
+DxfTables *dxf_tables_set_styles (DxfTables *tables, DxfStyle *styles);
+DxfUcs *dxf_tables_get_ucss (DxfTables *tables);
+DxfTables *dxf_tables_set_ucss (DxfTables *tables, DxfUcs *ucss);
+DxfView *dxf_tables_get_views (DxfTables *tables);
+DxfTables *dxf_tables_set_views (DxfTables *tables, DxfView *views);
+DxfVPort *dxf_tables_get_vports (DxfTables *tables);
+DxfTables *dxf_tables_set_vports (DxfTables *tables, DxfVPort *vports);
 
 
 #ifdef __cplusplus

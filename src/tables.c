@@ -282,7 +282,7 @@ dxf_tables_set_max_table_entries
  *
  * \return \c appids.
  */
-struct DxfAppid *
+DxfAppid *
 dxf_tables_get_appids
 (
         DxfTables *tables
@@ -322,7 +322,7 @@ dxf_tables_set_appids
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfAppid *appids
+        DxfAppid *appids
                 /*!< the \c appids to be set for the section. */
 )
 {
@@ -357,7 +357,7 @@ dxf_tables_set_appids
  *
  * \return \c block_records.
  */
-struct DxfBlockRecord *
+DxfBlockRecord *
 dxf_tables_get_block_records
 (
         DxfTables *tables
@@ -397,7 +397,7 @@ dxf_tables_set_block_records
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfBlockRecord *block_records
+        DxfBlockRecord *block_records
                 /*!< the \c block_records to be set for the section. */
 )
 {
@@ -432,7 +432,7 @@ dxf_tables_set_block_records
  *
  * \return \c dimstyles.
  */
-struct DxfDimStyle *
+DxfDimStyle *
 dxf_tables_get_dimstyles
 (
         DxfTables *tables
@@ -472,7 +472,7 @@ dxf_tables_set_dimstyles
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfDimStyle *dimstyles
+        DxfDimStyle *dimstyles
                 /*!< the \c dimstyles to be set for the section. */
 )
 {
@@ -507,7 +507,7 @@ dxf_tables_set_dimstyles
  *
  * \return \c layers.
  */
-struct DxfLayer *
+DxfLayer *
 dxf_tables_get_layers
 (
         DxfTables *tables
@@ -547,7 +547,7 @@ dxf_tables_set_layers
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfLayer *layers
+        DxfLayer *layers
                 /*!< the \c layers to be set for the section. */
 )
 {
@@ -582,7 +582,7 @@ dxf_tables_set_layers
  *
  * \return \c ltypes.
  */
-struct DxfLType *
+DxfLType *
 dxf_tables_get_ltypes
 (
         DxfTables *tables
@@ -622,7 +622,7 @@ dxf_tables_set_ltypes
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfLType *ltypes
+        DxfLType *ltypes
                 /*!< the \c ltypes to be set for the section. */
 )
 {
@@ -657,7 +657,7 @@ dxf_tables_set_ltypes
  *
  * \return \c styles.
  */
-struct DxfStyle *
+DxfStyle *
 dxf_tables_get_styles
 (
         DxfTables *tables
@@ -697,7 +697,7 @@ dxf_tables_set_styles
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfStyle *styles
+        DxfStyle *styles
                 /*!< the \c styles to be set for the section. */
 )
 {
@@ -732,7 +732,7 @@ dxf_tables_set_styles
  *
  * \return \c ucss.
  */
-struct DxfUcs *
+DxfUcs *
 dxf_tables_get_ucss
 (
         DxfTables *tables
@@ -772,7 +772,7 @@ dxf_tables_set_ucss
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfUcs *ucss
+        DxfUcs *ucss
                 /*!< the \c ucss to be set for the section. */
 )
 {
@@ -807,7 +807,7 @@ dxf_tables_set_ucss
  *
  * \return \c views.
  */
-struct DxfView *
+DxfView *
 dxf_tables_get_views
 (
         DxfTables *tables
@@ -847,7 +847,7 @@ dxf_tables_set_views
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfView *views
+        DxfView *views
                 /*!< the \c views to be set for the section. */
 )
 {
@@ -882,7 +882,7 @@ dxf_tables_set_views
  *
  * \return \c vports.
  */
-struct DxfVPort *
+DxfVPort *
 dxf_tables_get_vports
 (
         DxfTables *tables
@@ -922,7 +922,7 @@ dxf_tables_set_vports
 (
         DxfTables *tables,
                 /*!< a pointer to a DXF \c TABLES section. */
-        struct DxfVPort *vports
+        DxfVPort *vports
                 /*!< the \c vports to be set for the section. */
 )
 {
