@@ -8,6 +8,12 @@
  *
  * \brief Definition of a DXF text entity (\c TEXT).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -56,12 +62,6 @@ extern "C" {
  * If the text itself contains a caret character, it is expanded to ^ (caret,
  * space).\n
  * DXFIN performs the complementary conversion.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_text_struct
