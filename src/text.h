@@ -304,6 +304,7 @@ DxfText *dxf_text_read (DxfFile *fp, DxfText *text);
 int dxf_text_write (DxfFile *fp, DxfText *text);
 int dxf_text_free (DxfText *text);
 void dxf_text_free_chain (DxfText *texts);
+int dxf_text_get_id_code (DxfText *text);
 
 
 #ifdef __cplusplus

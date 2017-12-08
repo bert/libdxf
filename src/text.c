@@ -733,4 +733,40 @@ dxf_text_free_chain
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c TEXT entity.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_text_get_id_code
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (text->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text->id_code);
+}
+
+
 /* EOF */
