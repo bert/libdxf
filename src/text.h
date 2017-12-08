@@ -306,6 +306,7 @@ int dxf_text_free (DxfText *text);
 void dxf_text_free_chain (DxfText *texts);
 int dxf_text_get_id_code (DxfText *text);
 DxfText *dxf_text_set_id_code (DxfText *text, int id_code);
+char *dxf_text_get_linetype (DxfText *text);
 
 
 #ifdef __cplusplus
