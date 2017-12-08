@@ -845,4 +845,43 @@ dxf_text_get_linetype
 }
 
 
+/*!
+ * \brief Set the \c linetype for a DXF \c TEXT entity.
+ */
+DxfText *
+dxf_text_set_linetype
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        char *linetype
+                /*!< a pointer to a string containing the \c linetype
+                 * to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        text->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
