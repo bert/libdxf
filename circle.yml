@@ -8,3 +8,7 @@ general:
     ignore: # list of branches to ignore
       - gh-pages
 
+test:
+  override:
+    - echo "test"
+
