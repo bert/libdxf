@@ -5,6 +5,7 @@ general:
       - master
       - devel
       - LGPL
+      - /bert-patch-.*/
     ignore: # list of branches to ignore
       - gh-pages
 
