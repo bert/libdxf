@@ -313,6 +313,7 @@ DxfText *dxf_text_set_layer (DxfText *text, char *layer);
 double dxf_text_get_elevation (DxfText *text);
 DxfText *dxf_text_set_elevation (DxfText *text, double elevation);
 double dxf_text_get_thickness (DxfText *text);
+DxfText *dxf_text_set_thickness (DxfText *text, double thickness);
 
 
 #ifdef __cplusplus
