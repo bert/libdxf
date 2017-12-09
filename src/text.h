@@ -309,6 +309,7 @@ DxfText *dxf_text_set_id_code (DxfText *text, int id_code);
 char *dxf_text_get_linetype (DxfText *text);
 DxfText *dxf_text_set_linetype (DxfText *text, char *linetype);
 char *dxf_text_get_layer (DxfText *text);
+DxfText *dxf_text_set_layer (DxfText *text, char *layer);
 
 
 #ifdef __cplusplus
