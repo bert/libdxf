@@ -1,0 +1,10 @@
+general:
+  build_dir: src
+  branches:
+    only: # list of branches to build
+      - master
+      - devel
+      - LGPL
+    ignore: # list of branches to ignore
+      - gh-pages
+
