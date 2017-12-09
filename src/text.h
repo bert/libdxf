@@ -310,6 +310,7 @@ char *dxf_text_get_linetype (DxfText *text);
 DxfText *dxf_text_set_linetype (DxfText *text, char *linetype);
 char *dxf_text_get_layer (DxfText *text);
 DxfText *dxf_text_set_layer (DxfText *text, char *layer);
+double dxf_text_get_elevation (DxfText *text);
 
 
 #ifdef __cplusplus
