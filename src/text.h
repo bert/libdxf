@@ -323,6 +323,7 @@ DxfText *dxf_text_set_color (DxfText *text, int color);
 int dxf_text_get_paperspace (DxfText *text);
 DxfText *dxf_text_set_paperspace (DxfText *text, int paperspace);
 int dxf_text_get_graphics_data_size (DxfText *text);
+DxfText *dxf_text_set_graphics_data_size (DxfText *text, int graphics_data_size);
 
 
 #ifdef __cplusplus
