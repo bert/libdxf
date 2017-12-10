@@ -315,6 +315,7 @@ DxfText *dxf_text_set_elevation (DxfText *text, double elevation);
 double dxf_text_get_thickness (DxfText *text);
 DxfText *dxf_text_set_thickness (DxfText *text, double thickness);
 double dxf_text_get_linetype_scale (DxfText *text);
+DxfText *dxf_text_set_linetype_scale (DxfText *text, double linetype_scale);
 
 
 #ifdef __cplusplus
