@@ -321,6 +321,7 @@ DxfText *dxf_text_set_visibility (DxfText *text, int16_t visibility);
 int dxf_text_get_color (DxfText *text);
 DxfText *dxf_text_set_color (DxfText *text, int color);
 int dxf_text_get_paperspace (DxfText *text);
+DxfText *dxf_text_set_paperspace (DxfText *text, int paperspace);
 
 
 #ifdef __cplusplus
