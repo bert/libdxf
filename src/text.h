@@ -319,6 +319,7 @@ DxfText *dxf_text_set_linetype_scale (DxfText *text, double linetype_scale);
 int16_t dxf_text_get_visibility (DxfText *text);
 DxfText *dxf_text_set_visibility (DxfText *text, int16_t visibility);
 int dxf_text_get_color (DxfText *text);
+DxfText *dxf_text_set_color (DxfText *text, int color);
 
 
 #ifdef __cplusplus
