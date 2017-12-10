@@ -317,6 +317,7 @@ DxfText *dxf_text_set_thickness (DxfText *text, double thickness);
 double dxf_text_get_linetype_scale (DxfText *text);
 DxfText *dxf_text_set_linetype_scale (DxfText *text, double linetype_scale);
 int16_t dxf_text_get_visibility (DxfText *text);
+DxfText *dxf_text_set_visibility (DxfText *text, int16_t visibility);
 
 
 #ifdef __cplusplus
