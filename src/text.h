@@ -326,6 +326,7 @@ int dxf_text_get_graphics_data_size (DxfText *text);
 DxfText *dxf_text_set_graphics_data_size (DxfText *text, int graphics_data_size);
 int16_t dxf_text_get_shadow_mode (DxfText *text);
 DxfText *dxf_text_set_shadow_mode (DxfText *text, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_text_get_binary_graphics_data (DxfText *text);
 
 
 #ifdef __cplusplus
