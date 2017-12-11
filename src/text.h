@@ -328,6 +328,7 @@ int16_t dxf_text_get_shadow_mode (DxfText *text);
 DxfText *dxf_text_set_shadow_mode (DxfText *text, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_text_get_binary_graphics_data (DxfText *text);
 DxfText *dxf_text_set_binary_graphics_data (DxfText *text, DxfBinaryGraphicsData *data);
+char *dxf_text_get_dictionary_owner_soft (DxfText *text);
 
 
 #ifdef __cplusplus

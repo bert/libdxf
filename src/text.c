@@ -1670,4 +1670,44 @@ dxf_text_set_binary_graphics_data
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
+ * \c TEXT entity.
+ *
+ * \return pointer to the \c dictionary_owner_soft.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_text_get_dictionary_owner_soft
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (text->dictionary_owner_soft));
+}
+
+
 /* EOF */
