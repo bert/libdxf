@@ -324,6 +324,7 @@ int dxf_text_get_paperspace (DxfText *text);
 DxfText *dxf_text_set_paperspace (DxfText *text, int paperspace);
 int dxf_text_get_graphics_data_size (DxfText *text);
 DxfText *dxf_text_set_graphics_data_size (DxfText *text, int graphics_data_size);
+int16_t dxf_text_get_shadow_mode (DxfText *text);
 
 
 #ifdef __cplusplus
