@@ -1943,4 +1943,38 @@ dxf_text_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c TEXT entity.
+ *
+ * \return a pointer to \c text when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfText *
+dxf_text_set_lineweight
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        text->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */

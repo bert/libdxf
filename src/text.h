@@ -335,6 +335,7 @@ DxfText *dxf_text_set_material (DxfText *text, char *material);
 char *dxf_text_get_dictionary_owner_hard (DxfText *text);
 DxfText *dxf_text_set_dictionary_owner_hard (DxfText *text, char *dictionary_owner_hard);
 int16_t dxf_text_get_lineweight (DxfText *text);
+DxfText *dxf_text_set_lineweight (DxfText *text, int16_t lineweight);
 
 
 #ifdef __cplusplus
