@@ -333,6 +333,7 @@ DxfText *dxf_text_set_dictionary_owner_soft (DxfText *text, char *dictionary_own
 char *dxf_text_get_material (DxfText *text);
 DxfText *dxf_text_set_material (DxfText *text, char *material);
 char *dxf_text_get_dictionary_owner_hard (DxfText *text);
+DxfText *dxf_text_set_dictionary_owner_hard (DxfText *text, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus
