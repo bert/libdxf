@@ -1977,4 +1977,42 @@ dxf_text_set_lineweight
 }
 
 
+/*!
+ * \brief Get the \c plot_style_name from a DXF \c TEXT entity.
+ *
+ * \return a pointer to \c plot_style_name when sucessful, or \c NULL
+ * when an error occurred.
+ */
+char *
+dxf_text_get_plot_style_name
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (text->plot_style_name));
+}
+
+
 /* EOF */
