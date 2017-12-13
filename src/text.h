@@ -346,6 +346,7 @@ long dxf_text_get_transparency (DxfText *text);
 DxfText *dxf_text_set_transparency (DxfText *text, long transparency);
 char *dxf_text_get_text_value (DxfText *text);
 DxfText *dxf_text_set_text_value (DxfText *text, char *text_value);
+char *dxf_text_get_text_style (DxfText *text);
 
 
 #ifdef __cplusplus
