@@ -2088,4 +2088,38 @@ dxf_text_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a DXF \c TEXT entity.
+ *
+ * \return a pointer to \c text when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfText *
+dxf_text_set_color_value
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        text->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
