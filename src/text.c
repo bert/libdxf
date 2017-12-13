@@ -2267,4 +2267,42 @@ dxf_text_set_transparency
 }
 
 
+/*!
+ * \brief Get the \c text_value from a DXF \c TEXT entity.
+ *
+ * \return \c text_value when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_text_get_text_value
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text->text_value ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (text->text_value));
+}
+
+
 /* EOF */
