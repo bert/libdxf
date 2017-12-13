@@ -340,6 +340,7 @@ char *dxf_text_get_plot_style_name (DxfText *text);
 DxfText *dxf_text_set_plot_style_name (DxfText *text, char *plot_style_name);
 long dxf_text_get_color_value (DxfText *text);
 DxfText *dxf_text_set_color_value (DxfText *text, long color_value);
+char *dxf_text_get_color_name (DxfText *text);
 
 
 #ifdef __cplusplus
