@@ -351,6 +351,7 @@ DxfText *dxf_text_set_text_style (DxfText *text, char *text_style);
 DxfPoint *dxf_text_get_p0 (DxfText *text);
 DxfText *dxf_text_set_p0 (DxfText *text, DxfPoint *p0);
 double dxf_text_get_x0 (DxfText *text);
+DxfText *dxf_text_set_x0 (DxfText *text, double x0);
 
 
 #ifdef __cplusplus
