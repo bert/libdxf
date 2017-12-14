@@ -2427,4 +2427,41 @@ dxf_text_set_text_style
 }
 
 
+/*!
+ * \brief Get the alignment point \c p0 of a DXF \c TEXT entity.
+ *
+ * \return the alignment point \c p0.
+ */
+DxfPoint *
+dxf_text_get_p0
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text->p0);
+}
+
+
 /* EOF */
