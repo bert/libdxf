@@ -355,6 +355,7 @@ DxfText *dxf_text_set_x0 (DxfText *text, double x0);
 double dxf_text_get_y0 (DxfText *text);
 DxfText *dxf_text_set_y0 (DxfText *text, double y0);
 double dxf_text_get_z0 (DxfText *text);
+DxfText *dxf_text_set_z0 (DxfText *text, double z0);
 
 
 #ifdef __cplusplus
