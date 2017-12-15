@@ -361,6 +361,7 @@ DxfText *dxf_text_set_p1 (DxfText *text, DxfPoint *p1);
 double dxf_text_get_x1 (DxfText *text);
 DxfText *dxf_text_set_x1 (DxfText *text, double x1);
 double dxf_text_get_y1 (DxfText *text);
+DxfText *dxf_text_set_y1 (DxfText *text, double y1);
 
 
 #ifdef __cplusplus
