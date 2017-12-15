@@ -2750,4 +2750,41 @@ dxf_text_set_z0
 }
 
 
+/*!
+ * \brief Get the second alignment point \c p1 of a DXF \c TEXT entity.
+ *
+ * \return the second alignment point \c p1.
+ */
+DxfPoint *
+dxf_text_get_p1
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text->p1);
+}
+
+
 /* EOF */
