@@ -3115,4 +3115,47 @@ dxf_text_get_height
 }
 
 
+/*!
+ * \brief Set the \c height for a DXF \c TEXT entity.
+ */
+DxfText *
+dxf_text_set_height
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        double height
+                /*!< the \c height to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (height < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (height == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
+        text->height = height;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
