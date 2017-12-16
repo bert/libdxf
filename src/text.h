@@ -366,6 +366,7 @@ double dxf_text_get_z1 (DxfText *text);
 DxfText *dxf_text_set_z1 (DxfText *text, double z1);
 double dxf_text_get_height (DxfText *text);
 DxfText *dxf_text_set_height (DxfText *text, double height);
+double dxf_text_get_rel_x_scale (DxfText *text);
 
 
 #ifdef __cplusplus
