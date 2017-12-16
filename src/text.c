@@ -3194,4 +3194,41 @@ dxf_text_get_rel_x_scale
 }
 
 
+/*!
+ * \brief Set the \c rel_x_scale for a DXF \c TEXT entity.
+ */
+DxfText *
+dxf_text_set_rel_x_scale
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        double rel_x_scale
+                /*!< the \c rel_x_scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rel_x_scale == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
+        text->rel_x_scale = rel_x_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
