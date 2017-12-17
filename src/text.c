@@ -3371,4 +3371,46 @@ dxf_text_set_obl_angle
 }
 
 
+/*!
+ * \brief Get the \c text_flags from a DXF \c TEXT entity.
+ *
+ * \return \c text_flags.
+ */
+int
+dxf_text_get_text_flags
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (text->text_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (text->text_flags > 0x1111)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text->text_flags);
+}
+
+
 /* EOF */
