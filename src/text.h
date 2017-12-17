@@ -373,6 +373,7 @@ DxfText *dxf_text_set_rot_angle (DxfText *text, double rot_angle);
 double dxf_text_get_obl_angle (DxfText *text);
 DxfText *dxf_text_set_obl_angle (DxfText *text, double obl_angle);
 int dxf_text_get_text_flags (DxfText *text);
+DxfText *dxf_text_set_text_flags (DxfText *text, int text_flags);
 
 
 #ifdef __cplusplus
