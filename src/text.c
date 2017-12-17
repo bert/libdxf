@@ -3267,4 +3267,41 @@ dxf_text_get_rot_angle
 }
 
 
+/*!
+ * \brief Set the \c rot_angle for a DXF \c TEXT entity.
+ */
+DxfText *
+dxf_text_set_rot_angle
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        double rot_angle
+                /*!< the \c rot_angle to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rot_angle < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        text->rot_angle = rot_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */

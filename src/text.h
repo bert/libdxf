@@ -369,6 +369,7 @@ DxfText *dxf_text_set_height (DxfText *text, double height);
 double dxf_text_get_rel_x_scale (DxfText *text);
 DxfText *dxf_text_set_rel_x_scale (DxfText *text, double rel_x_scale);
 double dxf_text_get_rot_angle (DxfText *text);
+DxfText *dxf_text_set_rot_angle (DxfText *text, double rot_angle);
 
 
 #ifdef __cplusplus
