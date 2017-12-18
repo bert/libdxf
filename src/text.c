@@ -3626,4 +3626,36 @@ dxf_text_set_vert_align
 }
 
 
+/*!
+ * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
+ * \c TEXT entity.
+ *
+ * \return the X-value of the extrusion vector \c extr_x0.
+ */
+double
+dxf_text_get_extr_x0
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text->extr_x0);
+}
+
+
 /* EOF */
