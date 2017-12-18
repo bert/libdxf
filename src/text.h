@@ -380,6 +380,7 @@ int dxf_text_get_vert_align (DxfText *text);
 DxfText *dxf_text_set_vert_align (DxfText *text, int vert_align);
 double dxf_text_get_extr_x0 (DxfText *text);
 DxfText *dxf_text_set_extr_x0 (DxfText *text, double extr_x0);
+double dxf_text_get_extr_y0 (DxfText *text);
 
 
 #ifdef __cplusplus
