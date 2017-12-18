@@ -3456,4 +3456,46 @@ dxf_text_set_text_flags
 }
 
 
+/*!
+ * \brief Get the \c hor_align from a DXF \c TEXT entity.
+ *
+ * \return \c hor_align.
+ */
+int
+dxf_text_get_hor_align
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (text->hor_align < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (text->hor_align > 5)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text->hor_align);
+}
+
+
 /* EOF */
