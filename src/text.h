@@ -375,6 +375,7 @@ DxfText *dxf_text_set_obl_angle (DxfText *text, double obl_angle);
 int dxf_text_get_text_flags (DxfText *text);
 DxfText *dxf_text_set_text_flags (DxfText *text, int text_flags);
 int dxf_text_get_hor_align (DxfText *text);
+DxfText *dxf_text_set_hor_align (DxfText *text, int hor_align);
 
 
 #ifdef __cplusplus
