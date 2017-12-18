@@ -3726,4 +3726,40 @@ dxf_text_get_extr_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the extrusion vector \c extr_y0 of a DXF
+ * \c TEXT entity.
+ *
+ * \return a pointer to \c text when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfText *
+dxf_text_set_extr_y0
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        double extr_y0
+                /*!< the Y-value of the extrusion vector \c extr_y0 of a
+                 * DXF \c TEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        text->extr_y0 = extr_y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
