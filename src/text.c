@@ -3583,4 +3583,47 @@ dxf_text_get_vert_align
 }
 
 
+/*!
+ * \brief Set the \c vert_align for a DXF \c TEXT entity.
+ */
+DxfText *
+dxf_text_set_vert_align
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        int vert_align
+                /*!< the \c vert_align to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vert_align < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (vert_align > 3)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        text->vert_align = vert_align;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */

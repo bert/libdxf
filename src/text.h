@@ -377,6 +377,7 @@ DxfText *dxf_text_set_text_flags (DxfText *text, int text_flags);
 int dxf_text_get_hor_align (DxfText *text);
 DxfText *dxf_text_set_hor_align (DxfText *text, int hor_align);
 int dxf_text_get_vert_align (DxfText *text);
+DxfText *dxf_text_set_vert_align (DxfText *text, int vert_align);
 
 
 #ifdef __cplusplus
