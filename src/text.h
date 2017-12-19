@@ -388,6 +388,7 @@ DxfText *dxf_text_set_extr_z0 (DxfText *text, double extr_z0);
 DxfText *dxf_text_set_extrusion_vector_from_point (DxfText *text, DxfPoint *point);
 DxfText *dxf_text_set_extrusion_vector (DxfText *text, double extr_x0, double extr_y0, double extr_z0);
 DxfText *dxf_text_get_next (DxfText *text);
+DxfText *dxf_text_set_next (DxfText *text, DxfText *next);
 
 
 #ifdef __cplusplus

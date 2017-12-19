@@ -3994,4 +3994,43 @@ dxf_text_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c TEXT for a DXF \c TEXT
+ * entity.
+ */
+DxfText *
+dxf_text_set_next
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        DxfText *next
+                /*!< a pointer to the next \c TEXT for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        text->next = (struct DxfText *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
