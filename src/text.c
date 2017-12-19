@@ -3794,4 +3794,40 @@ dxf_text_get_extr_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the extrusion vector \c extr_z0 of a DXF
+ * \c TEXT entity.
+ *
+ * \return a pointer to \c text when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfText *
+dxf_text_set_extr_z0
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        double extr_z0
+                /*!< the Z-value of the extrusion vector \c extr_z0 of a
+                 * DXF \c TEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        text->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
