@@ -3954,4 +3954,44 @@ dxf_text_set_extrusion_vector
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c TEXT entity from a DXF
+ * \c TEXT entity.
+ *
+ * \return pointer to the next \c TEXT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfText *
+dxf_text_get_next
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfText *) text->next);
+}
+
+
 /* EOF */
