@@ -3627,6 +3627,52 @@ dxf_text_set_vert_align
 
 
 /*!
+ * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
+ * \c TEXT entity.
+ *
+ * \return a DXF \c POINT containing the extrusion coordinates.
+ *
+ * \warning No other members are copied into the DXF \c POINT.
+ */
+DxfPoint *
+dxf_text_get_extrusion_vector_as_point
+(
+        DxfText *text
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        point->x0 = text->extr_x0;
+        point->y0 = text->extr_y0;
+        point->z0 = text->extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
  * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
  * \c TEXT entity.
  *
