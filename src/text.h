@@ -382,6 +382,7 @@ double dxf_text_get_extr_x0 (DxfText *text);
 DxfText *dxf_text_set_extr_x0 (DxfText *text, double extr_x0);
 double dxf_text_get_extr_y0 (DxfText *text);
 DxfText *dxf_text_set_extr_y0 (DxfText *text, double extr_y0);
+double dxf_text_get_extr_z0 (DxfText *text);
 
 
 #ifdef __cplusplus
