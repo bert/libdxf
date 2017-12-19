@@ -3830,4 +3830,45 @@ dxf_text_set_extr_z0
 }
 
 
+/*!
+ * \brief Set the extrusion vector from a DXF \c POINT for a DXF \c TEXT
+ * entity.
+ */
+DxfText *
+dxf_text_set_extrusion_vector_from_point
+(
+        DxfText *text,
+                /*!< a pointer to a DXF \c TEXT entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        text->extr_x0 = (double) point->x0;
+        text->extr_y0 = (double) point->y0;
+        text->extr_z0 = (double) point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (text);
+}
+
+
 /* EOF */
