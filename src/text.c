@@ -762,7 +762,9 @@ dxf_text_write
         }
         if ((text->hor_align != 0) || (text->vert_align != 0))
         {
-                if ((text->x0 == text->x1) && (text->y0 == text->y1) && (text->z0 == text->z1))
+                if ((text->p0->x0 == text->p1->x0)
+                  && (text->p0->y0 == text->p1->y0)
+                  && (text->p0->z0 == text->p1->z0))
                 {
                         fprintf (stderr,
                           (_("Warning in %s () insertion point and alignment point are identical for the %s entity with id-code: %x\n")),
