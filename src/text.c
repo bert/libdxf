@@ -831,12 +831,25 @@ dxf_text_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (text->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
         free (text->linetype);
         free (text->layer);
+        dxf_binary_graphics_data_free_chain (text->binary_graphics_data);
+        free (text->dictionary_owner_soft);
+        free (text->material);
+        free (text->dictionary_owner_hard);
+        free (text->plot_style_name);
+        free (text->color_name);
         free (text->text_value);
         free (text->text_style);
-        free (text->dictionary_owner_soft);
-        free (text->dictionary_owner_hard);
+        dxf_point_free (text->p0);
+        dxf_point_free (text->p1);
         free (text);
         text = NULL;
 #if DEBUG
