@@ -202,39 +202,12 @@ dxf_text_struct
         DxfPoint *p0;
                 /*!< Alignment point.\n
                  * Group codes = 10, 20 and 30. */
-        double x0;
-                /*!< X-value first alignment point.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value first alignment point.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value first alignment point.\n
-                 * Group code = 30. */
         DxfPoint *p1;
                 /*!< Second alignment point.\n
                  * This value is meaningful only if the value of a 72 or
                  * 73 group is nonzero (if the justification is anything
                  * other than baseline/left).\n
                  * Group codes = 11, 21 and 31. */
-        double x1;
-                /*!< X-value second alignment point.\n
-                 * This value is meaningful only if the value of a 72 or
-                 * 73 group is nonzero (if the justification is anything
-                 * other than baseline/left).\n
-                 * Group code = 11. */
-        double y1;
-                /*!< Y-value second alignment point.\n
-                 * This value is meaningful only if the value of a 72 or
-                 * 73 group is nonzero (if the justification is anything
-                 * other than baseline/left).\n
-                 * Group code = 21. */
-        double z1;
-                /*!< Z-value second alignment point.\n
-                 * This value is meaningful only if the value of a 72 or
-                 * 73 group is nonzero (if the justification is anything
-                 * other than baseline/left).\n
-                 * Group code = 31. */
         double height;
                 /*!< Text height.\n
                  * Group code = 40. */
