@@ -256,23 +256,44 @@ dxf_text_read
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
-                         * X-coordinate of the insertion point. */
+                         * X-coordinate of the first alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &text->x0);
+                        fscanf (fp->fp, "%lf\n", &text->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
-                         * Y-coordinate of the insertion point. */
+                         * Y-coordinate of the first alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &text->y0);
+                        fscanf (fp->fp, "%lf\n", &text->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
-                         * Z-coordinate of the insertion point. */
+                         * Z-coordinate of the first alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &text->z0);
+                        fscanf (fp->fp, "%lf\n", &text->p0->z0);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the second alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &text->p1->x0);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the second alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &text->p1->y0);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the second alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &text->p1->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -367,6 +388,13 @@ dxf_text_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &text->vert_align);
                 }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &text->graphics_data_size);
+                }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
@@ -381,6 +409,13 @@ dxf_text_read
                                   (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
+                }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &text->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
@@ -403,6 +438,22 @@ dxf_text_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &text->extr_z0);
                 }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &text->shadow_mode);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", text->binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) text->binary_graphics_data->next);
+                        text->binary_graphics_data = (DxfBinaryGraphicsData *) text->binary_graphics_data->next;
+                }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
@@ -410,12 +461,53 @@ dxf_text_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", text->dictionary_owner_soft);
                 }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", text->material);
+                }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", text->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &text->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", text->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &text->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", text->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &text->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
