@@ -76,7 +76,7 @@ dxf_thumbnail_struct
                 /*!< The number of bytes in the image (and subsequent
                  * binary chunk records).\n
                  * Group code = 90. */
-        char *preview_image_data[DXF_MAX_PARAM];
+        DxfChar *preview_image_data;
                 /*!< Multiple lines (256 characters maximum per line).\n
                  * Group code = 310. */
 } DxfThumbnail;

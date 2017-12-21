@@ -112,8 +112,6 @@ dxf_thumbnail_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (thumbnail == NULL)
         {
@@ -130,10 +128,9 @@ dxf_thumbnail_init
                 return (NULL);
         }
         thumbnail->number_of_bytes = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                thumbnail->preview_image_data[i] = strdup ("");
-        }
+        thumbnail->preview_image_data = NULL;
+        thumbnail->preview_image_data->length = 0;
+        thumbnail->preview_image_data->value = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -165,8 +162,6 @@ dxf_thumbnail_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
-        int preview_data_length = 0;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -192,7 +187,6 @@ dxf_thumbnail_read
                   (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
         }
-        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -219,9 +213,8 @@ dxf_thumbnail_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", thumbnail->preview_image_data[i]);
-                        preview_data_length = preview_data_length + strlen (thumbnail->preview_image_data[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", thumbnail->preview_image_data->value);
+                        /*! \todo preview_image_data needs a proper implementation. */
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -238,13 +231,7 @@ dxf_thumbnail_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (preview_data_length != thumbnail->number_of_bytes)
-        {
-                        fprintf (stderr,
-                          (_("Warning in %s () read %d preview data bytes from %s while %d were expected.\n")),
-                          __FUNCTION__, preview_data_length,
-                          fp->filename, thumbnail->number_of_bytes);
-        }
+        /*! \todo preview_image_data needs a proper checking for data length. */
         /* Clean up. */
         free (temp_string);
 #if DEBUG
@@ -270,7 +257,6 @@ dxf_thumbnail_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("THUMBNAILIMAGE");
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -309,12 +295,8 @@ dxf_thumbnail_write
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp->fp, " 90\n%d\n", thumbnail->number_of_bytes);
-        i = 0;
-        while (strlen (thumbnail->preview_image_data[i]) > 0)
-        {
-                fprintf (fp->fp, "310\n%s\n", thumbnail->preview_image_data[i]);
-                i++;
-        }
+        fprintf (fp->fp, "310\n%s\n", thumbnail->preview_image_data->value);
+        /*! \todo preview_image_data needs a proper implementation. */
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -342,8 +324,6 @@ dxf_thumbnail_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (thumbnail == NULL)
         {
@@ -352,10 +332,9 @@ dxf_thumbnail_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (thumbnail->preview_image_data[i]);
-        }
+        free (thumbnail->preview_image_data->value);
+        free (thumbnail->preview_image_data);
+        /*! \todo preview_image_data needs a proper implementation. */
         free (thumbnail);
         thumbnail = NULL;
 #if DEBUG
