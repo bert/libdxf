@@ -87,6 +87,7 @@ DxfThumbnail *dxf_thumbnail_init (DxfThumbnail *thumbnail);
 DxfThumbnail *dxf_thumbnail_read (DxfFile *fp, DxfThumbnail *thumbnail);
 int dxf_thumbnail_write (DxfFile *fp, DxfThumbnail *thumbnail);
 int dxf_thumbnail_free (DxfThumbnail *thumbnail);
+int dxf_thumbnail_get_number_of_bytes (DxfThumbnail *thumbnail);
 
 
 #ifdef __cplusplus

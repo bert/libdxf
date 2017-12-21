@@ -365,4 +365,40 @@ dxf_thumbnail_free
 }
 
 
+/*!
+ * \brief Get the \c number_of_bytes from a DXF \c THUMBNAILIMAGE object.
+ *
+ * \return \c number_of_bytes.
+ */
+int
+dxf_thumbnail_get_number_of_bytes
+(
+        DxfThumbnail *thumbnail
+                /*!< a pointer to a DXF \c THUMBNAILIMAGE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (thumbnail == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (thumbnail->number_of_bytes < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (thumbnail->number_of_bytes);
+}
+
+
 /* EOF */
