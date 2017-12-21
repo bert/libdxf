@@ -8,6 +8,25 @@
  *
  * \brief Functions for a DXF thumbnail (\c THUMBNAIL).
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2000.
+ * \version According to DXF R2000i.
+ * \version According to DXF R2002.
+ * \version According to DXF R2004.
+ * \version According to DXF R2005.
+ * \version According to DXF R2006.
+ * \version According to DXF R2008.
+ * \version According to DXF R2009.
+ * \version According to DXF R2010.
+ * \version According to DXF R2011.
+ * \version According to DXF R2012.
+ * \version According to DXF R2013.
+ * \version According to DXF R2014.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -45,25 +64,6 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2000.
- * \version According to DXF R2000i.
- * \version According to DXF R2002.
- * \version According to DXF R2004.
- * \version According to DXF R2005.
- * \version According to DXF R2006.
- * \version According to DXF R2008.
- * \version According to DXF R2009.
- * \version According to DXF R2010.
- * \version According to DXF R2011.
- * \version According to DXF R2012.
- * \version According to DXF R2013.
- * \version According to DXF R2014.
  */
 DxfThumbnail *
 dxf_thumbnail_new ()
@@ -101,25 +101,6 @@ dxf_thumbnail_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2000.
- * \version According to DXF R2000i.
- * \version According to DXF R2002.
- * \version According to DXF R2004.
- * \version According to DXF R2005.
- * \version According to DXF R2006.
- * \version According to DXF R2008.
- * \version According to DXF R2009.
- * \version According to DXF R2010.
- * \version According to DXF R2011.
- * \version According to DXF R2012.
- * \version According to DXF R2013.
- * \version According to DXF R2014.
  */
 DxfThumbnail *
 dxf_thumbnail_init
@@ -170,25 +151,6 @@ dxf_thumbnail_init
  * While parsing the DXF file store data in \c thumbnail. \n
  *
  * \return a pointer to \c thumbnail.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2000.
- * \version According to DXF R2000i.
- * \version According to DXF R2002.
- * \version According to DXF R2004.
- * \version According to DXF R2005.
- * \version According to DXF R2006.
- * \version According to DXF R2008.
- * \version According to DXF R2009.
- * \version According to DXF R2010.
- * \version According to DXF R2011.
- * \version According to DXF R2012.
- * \version According to DXF R2013.
- * \version According to DXF R2014.
  */
 DxfThumbnail *
 dxf_thumbnail_read
@@ -294,25 +256,6 @@ dxf_thumbnail_read
 
 /*!
  * \brief Write a thumbnail to a DXF file.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2000.
- * \version According to DXF R2000i.
- * \version According to DXF R2002.
- * \version According to DXF R2004.
- * \version According to DXF R2005.
- * \version According to DXF R2006.
- * \version According to DXF R2008.
- * \version According to DXF R2009.
- * \version According to DXF R2010.
- * \version According to DXF R2011.
- * \version According to DXF R2012.
- * \version According to DXF R2013.
- * \version According to DXF R2014.
  */
 int
 dxf_thumbnail_write
@@ -387,25 +330,6 @@ dxf_thumbnail_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2000.
- * \version According to DXF R2000i.
- * \version According to DXF R2002.
- * \version According to DXF R2004.
- * \version According to DXF R2005.
- * \version According to DXF R2006.
- * \version According to DXF R2008.
- * \version According to DXF R2009.
- * \version According to DXF R2010.
- * \version According to DXF R2011.
- * \version According to DXF R2012.
- * \version According to DXF R2013.
- * \version According to DXF R2014.
  */
 int
 dxf_thumbnail_free
