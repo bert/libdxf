@@ -70,7 +70,7 @@ extern "C" {
  * \version According to DXF R2014.
  */
 typedef struct
-dxf_thumbnail
+dxf_thumbnail_struct
 {
         int number_of_bytes;
                 /*!< group code = 90\n
