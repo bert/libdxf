@@ -401,4 +401,41 @@ dxf_thumbnail_get_number_of_bytes
 }
 
 
+/*!
+ * \brief Set the \c number_of_bytes for a DXF \c THUMBNAILIMAGE object.
+ */
+DxfThumbnail *
+dxf_thumbnail_set_number_of_bytes
+(
+        DxfThumbnail *thumbnail,
+                /*!< a pointer to a DXF \c THUMBNAILIMAGE object. */
+        int number_of_bytes
+                /*!< the \c number_of_bytes to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (thumbnail == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_bytes < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        thumbnail->number_of_bytes = number_of_bytes;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (thumbnail);
+}
+
+
 /* EOF */
