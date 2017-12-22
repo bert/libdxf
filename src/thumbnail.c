@@ -456,4 +456,44 @@ dxf_thumbnail_get_preview_image_data
 }
 
 
+/*!
+ * \brief Set the \c preview_image_data for a DXF \c THUMBNAILIMAGE
+ * object.
+ */
+DxfThumbnail *
+dxf_thumbnail_set_preview_image_data
+(
+        DxfThumbnail *thumbnail,
+                /*!< a pointer to a DXF \c THUMBNAILIMAGE object. */
+        DxfChar *preview_image_data
+                /*!< a pointer to the \c preview_image_data to be set
+                 * for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (thumbnail == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (preview_image_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        thumbnail->preview_image_data = preview_image_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (thumbnail);
+}
+
+
 /* EOF */
