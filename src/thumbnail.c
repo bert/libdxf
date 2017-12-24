@@ -506,29 +506,22 @@ dxf_thumbnail_set_preview_image_data
 char *
 dxf_thumbnail_get_preview_image_data_value
 (
-        DxfThumbnail *thumbnail
-                /*!< a pointer to a DXF \c THUMBNAILIMAGE object. */
+        DxfChar *preview_image_data
+                /*!< a pointer to a DXF \c preview_image_data object. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (thumbnail == NULL)
+        if (preview_image_data ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if (thumbnail->preview_image_data ==  NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (thumbnail->preview_image_data->value ==  NULL)
+        if (preview_image_data->value ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -538,7 +531,7 @@ dxf_thumbnail_get_preview_image_data_value
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (thumbnail->preview_image_data->value);
+        return (preview_image_data->value);
 }
 
 
