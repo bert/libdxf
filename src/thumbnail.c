@@ -607,4 +607,44 @@ dxf_thumbnail_get_preview_image_data_length
 }
 
 
+/*!
+ * \brief Set the \c length of the \c value for a DXF
+ * \c preview_image_data of a DXF \c THUMBNAILIMAGE object.
+ */
+DxfChar *
+dxf_thumbnail_set_preview_image_data_length
+(
+        DxfChar *preview_image_data,
+                /*!< a pointer to a DXF \c preview_image_data. */
+        int length
+                /*!< the \c length of the \c preview_image_data value to
+                 * be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (preview_image_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (length < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        preview_image_data->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (preview_image_data);
+}
+
+
 /* EOF */

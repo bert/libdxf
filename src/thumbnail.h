@@ -94,6 +94,7 @@ DxfThumbnail *dxf_thumbnail_set_preview_image_data (DxfThumbnail *thumbnail, Dxf
 char *dxf_thumbnail_get_preview_image_data_value (DxfChar *preview_image_data);
 DxfChar *dxf_thumbnail_set_preview_image_data_value (DxfChar *preview_image_data, char *value);
 int dxf_thumbnail_get_preview_image_data_length (DxfChar *preview_image_data);
+DxfChar *dxf_thumbnail_set_preview_image_data_length (DxfChar *preview_image_data, int length);
 
 
 #ifdef __cplusplus
