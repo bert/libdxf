@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF tolerance entity (\c TOLERANCE).
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -42,12 +48,6 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfTolerance *
 dxf_tolerance_new ()
@@ -85,12 +85,6 @@ dxf_tolerance_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfTolerance *
 dxf_tolerance_init
@@ -156,12 +150,6 @@ dxf_tolerance_init
  * While parsing the DXF file store data in \c tolerance. \n
  *
  * \return a pointer to \c tolerance, \c NULL if an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfTolerance *
 dxf_tolerance_read
@@ -412,12 +400,6 @@ dxf_tolerance_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_tolerance_write
@@ -582,12 +564,6 @@ dxf_tolerance_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_tolerance_free
@@ -632,12 +608,6 @@ dxf_tolerance_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c TOLERANCE
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_tolerance_free_chain
