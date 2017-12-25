@@ -686,4 +686,44 @@ dxf_thumbnail_get_preview_image_data_next
 }
 
 
+/*!
+ * \brief Set the pointer to the \c next DXF \c preview_image_data
+ * (linked list) for a DXF \c THUMBNAILIMAGE object.
+ */
+DxfChar *
+dxf_thumbnail_set_preview_image_data_next
+(
+        DxfChar *preview_image_data,
+                /*!< a pointer to a DXF \c preview_image_data. */
+        DxfChar *next
+                /*!< a pointer to the the \c next \c preview_image_data
+                 * to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (preview_image_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        preview_image_data->next = (struct DxfChar *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (preview_image_data);
+}
+
+
 /* EOF */
