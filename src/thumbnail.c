@@ -726,4 +726,49 @@ dxf_thumbnail_set_preview_image_data_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c preview_image_data object from a linked list
+ * of DXF \c preview_image_data objects.
+ *
+ * \return pointer to the last \c preview_image_data object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfChar *
+dxf_thumbnail_get_preview_image_data_last
+(
+        DxfChar *preview_image_data
+                /*!< a pointer to a DXF \c preview_image_data object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (preview_image_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (preview_image_data->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfChar *) preview_image_data);
+        }
+        DxfChar *iter = (DxfChar *) preview_image_data->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfChar *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfChar *) iter);
+}
+
+
 /* EOF */
