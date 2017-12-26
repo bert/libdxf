@@ -789,4 +789,41 @@ dxf_tolerance_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a DXF \c TOLERANCE entity.
+ *
+ * \return \c layer when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_tolerance_get_layer
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (tolerance->layer));
+}
+
+
 /* EOF*/
