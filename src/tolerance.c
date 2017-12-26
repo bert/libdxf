@@ -713,4 +713,41 @@ dxf_tolerance_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c linetype from a DXF \c TOLERANCE entity.
+ *
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_tolerance_get_linetype
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (tolerance->linetype));
+}
+
+
 /* EOF*/
