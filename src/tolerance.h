@@ -237,6 +237,7 @@ void dxf_tolerance_free_chain (DxfTolerance *tolerances);
 int dxf_tolerance_get_id_code (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_id_code (DxfTolerance *tolerance, int id_code);
 char *dxf_tolerance_get_linetype (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_linetype (DxfTolerance *tolerance, char *linetype);
 
 
 #ifdef __cplusplus
