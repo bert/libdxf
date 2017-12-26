@@ -826,4 +826,43 @@ dxf_tolerance_get_layer
 }
 
 
+/*!
+ * \brief Set the \c layer for a DXF \c TOLERANCE entity.
+ */
+DxfTolerance *
+dxf_tolerance_set_layer
+(
+        DxfTolerance *tolerance,
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+        char *layer
+                /*!< a pointer to a string containing the \c layer to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tolerance->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance);
+}
+
+
 /* EOF*/

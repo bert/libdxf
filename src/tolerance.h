@@ -239,6 +239,7 @@ DxfTolerance *dxf_tolerance_set_id_code (DxfTolerance *tolerance, int id_code);
 char *dxf_tolerance_get_linetype (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_linetype (DxfTolerance *tolerance, char *linetype);
 char *dxf_tolerance_get_layer (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_layer (DxfTolerance *tolerance, char *layer);
 
 
 #ifdef __cplusplus
