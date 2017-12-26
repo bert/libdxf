@@ -186,6 +186,9 @@ dxf_tolerance_struct
         char *dimstyle_name;
                 /*!< Dimension style name.\n
                  * Group code = 3.  */
+        DxfPoint *p0;
+                /*!< Insertion point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X-value of the insertion point coordinate.\n
                  * Group code = 10. */
@@ -195,6 +198,9 @@ dxf_tolerance_struct
         double z0;
                 /*!< Z-value of the insertion point coordinate.\n
                  * Group code = 30. */
+        DxfPoint *p1;
+                /*!< Direction vector.\n
+                 * Group codes = 11, 21 and 31.*/
         double x1;
                 /*!< X-value of the direction vector.\n
                  * Group code = 11. */
