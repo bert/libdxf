@@ -234,6 +234,7 @@ DxfTolerance *dxf_tolerance_read (DxfFile *fp, DxfTolerance *tolerance);
 int dxf_tolerance_write (DxfFile *fp, DxfTolerance *tolerance);
 int dxf_tolerance_free (DxfTolerance *tolerance);
 void dxf_tolerance_free_chain (DxfTolerance *tolerances);
+int dxf_tolerance_get_id_code (DxfTolerance *tolerance);
 
 
 #ifdef __cplusplus
