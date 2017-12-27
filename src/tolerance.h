@@ -241,6 +241,7 @@ DxfTolerance *dxf_tolerance_set_linetype (DxfTolerance *tolerance, char *linetyp
 char *dxf_tolerance_get_layer (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_layer (DxfTolerance *tolerance, char *layer);
 double dxf_tolerance_get_elevation (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_elevation (DxfTolerance *tolerance, double elevation);
 
 
 #ifdef __cplusplus
