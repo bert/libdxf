@@ -243,6 +243,7 @@ DxfTolerance *dxf_tolerance_set_layer (DxfTolerance *tolerance, char *layer);
 double dxf_tolerance_get_elevation (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_elevation (DxfTolerance *tolerance, double elevation);
 double dxf_tolerance_get_thickness (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_thickness (DxfTolerance *tolerance, double thickness);
 
 
 #ifdef __cplusplus
