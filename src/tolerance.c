@@ -989,9 +989,8 @@ dxf_tolerance_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         tolerance->thickness = thickness;
 #if DEBUG
