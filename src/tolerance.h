@@ -240,6 +240,7 @@ char *dxf_tolerance_get_linetype (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_linetype (DxfTolerance *tolerance, char *linetype);
 char *dxf_tolerance_get_layer (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_layer (DxfTolerance *tolerance, char *layer);
+double dxf_tolerance_get_elevation (DxfTolerance *tolerance);
 
 
 #ifdef __cplusplus
