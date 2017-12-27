@@ -1001,4 +1001,40 @@ dxf_tolerance_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a DXF \c TOLERANCE entity.
+ *
+ * \return \c linetype_scale.
+ */
+double
+dxf_tolerance_get_linetype_scale
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (tolerance->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance->linetype_scale);
+}
+
+
 /* EOF*/
