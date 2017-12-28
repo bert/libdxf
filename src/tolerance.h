@@ -245,6 +245,7 @@ DxfTolerance *dxf_tolerance_set_elevation (DxfTolerance *tolerance, double eleva
 double dxf_tolerance_get_thickness (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_thickness (DxfTolerance *tolerance, double thickness);
 double dxf_tolerance_get_linetype_scale (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_linetype_scale (DxfTolerance *tolerance, double linetype_scale);
 
 
 #ifdef __cplusplus
