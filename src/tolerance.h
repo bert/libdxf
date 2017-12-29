@@ -253,6 +253,7 @@ DxfTolerance *dxf_tolerance_set_color (DxfTolerance *tolerance, int color);
 int dxf_tolerance_get_paperspace (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_paperspace (DxfTolerance *tolerance, int paperspace);
 int dxf_tolerance_get_graphics_data_size (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_graphics_data_size (DxfTolerance *tolerance, int graphics_data_size);
 
 
 #ifdef __cplusplus
