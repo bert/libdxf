@@ -249,6 +249,7 @@ DxfTolerance *dxf_tolerance_set_linetype_scale (DxfTolerance *tolerance, double 
 int16_t dxf_tolerance_get_visibility (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_visibility (DxfTolerance *tolerance, int16_t visibility);
 int dxf_tolerance_get_color (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_color (DxfTolerance *tolerance, int color);
 
 
 #ifdef __cplusplus
