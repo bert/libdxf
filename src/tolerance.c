@@ -1538,4 +1538,44 @@ dxf_tolerance_get_binary_graphics_data
 }
 
 
+/*!
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
+ * \c TOLERANCE entity.
+ */
+DxfTolerance *
+dxf_tolerance_set_binary_graphics_data
+(
+        DxfTolerance *tolerance,
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+        DxfBinaryGraphicsData *data
+                /*!< a string containing the pointer to the
+                 * \c binary_graphics_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tolerance->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance);
+}
+
+
 /* EOF*/
