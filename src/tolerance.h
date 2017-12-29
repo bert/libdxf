@@ -255,6 +255,7 @@ DxfTolerance *dxf_tolerance_set_paperspace (DxfTolerance *tolerance, int papersp
 int dxf_tolerance_get_graphics_data_size (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_graphics_data_size (DxfTolerance *tolerance, int graphics_data_size);
 int16_t dxf_tolerance_get_shadow_mode (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_shadow_mode (DxfTolerance *tolerance, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
