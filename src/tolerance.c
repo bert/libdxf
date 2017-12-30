@@ -1699,4 +1699,47 @@ dxf_tolerance_get_material
 }
 
 
+/*!
+ * \brief Set the pointer to the \c material for a DXF \c TOLERANCE
+ * entity.
+ *
+ * \return a pointer to \c tolerance when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTolerance *
+dxf_tolerance_set_material
+(
+        DxfTolerance *tolerance,
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tolerance->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance);
+}
+
+
 /* EOF*/
