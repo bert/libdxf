@@ -262,6 +262,7 @@ char *dxf_tolerance_get_dictionary_owner_soft (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_dictionary_owner_soft (DxfTolerance *tolerance, char *dictionary_owner_soft);
 char *dxf_tolerance_get_material (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_material (DxfTolerance *tolerance, char *material);
+char *dxf_tolerance_get_dictionary_owner_hard (DxfTolerance *tolerance);
 
 
 #ifdef __cplusplus
