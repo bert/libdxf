@@ -259,6 +259,7 @@ DxfTolerance *dxf_tolerance_set_shadow_mode (DxfTolerance *tolerance, int16_t sh
 DxfBinaryGraphicsData *dxf_tolerance_get_binary_graphics_data (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_binary_graphics_data (DxfTolerance *tolerance, DxfBinaryGraphicsData *data);
 char *dxf_tolerance_get_dictionary_owner_soft (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_dictionary_owner_soft (DxfTolerance *tolerance, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
