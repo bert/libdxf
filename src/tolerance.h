@@ -265,6 +265,7 @@ DxfTolerance *dxf_tolerance_set_material (DxfTolerance *tolerance, char *materia
 char *dxf_tolerance_get_dictionary_owner_hard (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_dictionary_owner_hard (DxfTolerance *tolerance, char *dictionary_owner_hard);
 int16_t dxf_tolerance_get_lineweight (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_lineweight (DxfTolerance *tolerance, int16_t lineweight);
 
 
 #ifdef __cplusplus

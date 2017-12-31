@@ -1853,4 +1853,38 @@ dxf_tolerance_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c TOLERANCE entity.
+ *
+ * \return a pointer to \c tolerance when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTolerance *
+dxf_tolerance_set_lineweight
+(
+        DxfTolerance *tolerance,
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tolerance->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance);
+}
+
+
 /* EOF*/
