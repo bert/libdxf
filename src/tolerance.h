@@ -267,6 +267,7 @@ DxfTolerance *dxf_tolerance_set_dictionary_owner_hard (DxfTolerance *tolerance, 
 int16_t dxf_tolerance_get_lineweight (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_lineweight (DxfTolerance *tolerance, int16_t lineweight);
 char *dxf_tolerance_get_plot_style_name (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_plot_style_name (DxfTolerance *tolerance, char *plot_style_name);
 
 
 #ifdef __cplusplus
