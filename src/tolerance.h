@@ -269,6 +269,7 @@ DxfTolerance *dxf_tolerance_set_lineweight (DxfTolerance *tolerance, int16_t lin
 char *dxf_tolerance_get_plot_style_name (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_plot_style_name (DxfTolerance *tolerance, char *plot_style_name);
 long dxf_tolerance_get_color_value (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_color_value (DxfTolerance *tolerance, long color_value);
 
 
 #ifdef __cplusplus
