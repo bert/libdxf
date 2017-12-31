@@ -1,7 +1,8 @@
 /*!
  * \file tolerance.h
  *
- * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF tolerance entity (\c TOLERANCE).
  *
@@ -272,6 +273,7 @@ long dxf_tolerance_get_color_value (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_color_value (DxfTolerance *tolerance, long color_value);
 char *dxf_tolerance_get_color_name (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_color_name (DxfTolerance *tolerance, char *color_name);
+long dxf_tolerance_get_transparency (DxfTolerance *tolerance);
 
 
 #ifdef __cplusplus

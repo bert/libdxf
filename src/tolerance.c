@@ -1,7 +1,8 @@
 /*!
  * \file tolerance.c
  *
- * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF tolerance entity (\c TOLERANCE).
  *
@@ -2109,6 +2110,37 @@ dxf_tolerance_set_color_name
         DXF_DEBUG_END
 #endif
         return (tolerance);
+}
+
+
+/*!
+ * \brief Get the \c transparency from a DXF \c TOLERANCE entity.
+ *
+ * \return \c transparency when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_tolerance_get_transparency
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance->transparency);
 }
 
 
