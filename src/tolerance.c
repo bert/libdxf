@@ -2178,4 +2178,42 @@ dxf_tolerance_set_transparency
 }
 
 
+/*!
+ * \brief Get the \c dimstyle_name from a DXF \c TOLERANCE entity.
+ *
+ * \return \c dimstyle_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_tolerance_get_dimstyle_name
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->dimstyle_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (tolerance->dimstyle_name));
+}
+
+
 /* EOF*/
