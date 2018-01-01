@@ -276,6 +276,7 @@ DxfTolerance *dxf_tolerance_set_color_name (DxfTolerance *tolerance, char *color
 long dxf_tolerance_get_transparency (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_transparency (DxfTolerance *tolerance, long transparency);
 char *dxf_tolerance_get_dimstyle_name (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_dimstyle_name (DxfTolerance *tolerance, char *dimstyle_name);
 
 
 #ifdef __cplusplus
