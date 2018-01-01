@@ -2258,4 +2258,41 @@ dxf_tolerance_set_dimstyle_name
 }
 
 
+/*!
+ * \brief Get the insertion point \c p0 of a DXF \c TOLERANCE entity.
+ *
+ * \return the center point \c p0.
+ */
+DxfPoint *
+dxf_tolerance_get_p0
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance->p0);
+}
+
+
 /* EOF*/
