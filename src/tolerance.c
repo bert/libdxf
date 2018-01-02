@@ -2387,7 +2387,7 @@ dxf_tolerance_set_x0
         DxfTolerance *tolerance,
                 /*!< a pointer to a DXF \c TOLERANCE entity. */
         double x0
-                /*!< the X-value of the center point \c x0 of a DXF
+                /*!< the X-value of the insertion point \c x0 of a DXF
                  * \c TOLERANCE entity. */
 )
 {
@@ -2469,7 +2469,7 @@ dxf_tolerance_set_y0
         DxfTolerance *tolerance,
                 /*!< a pointer to a DXF \c TOLERANCE entity. */
         double y0
-                /*!< the Y-value of the center point \c y0 of a DXF
+                /*!< the Y-value of the insertion point \c y0 of a DXF
                  * \c TOLERANCE entity. */
 )
 {
