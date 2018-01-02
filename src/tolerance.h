@@ -280,6 +280,7 @@ DxfTolerance *dxf_tolerance_set_dimstyle_name (DxfTolerance *tolerance, char *di
 DxfPoint *dxf_tolerance_get_p0 (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_p0 (DxfTolerance *tolerance, DxfPoint *p0);
 double dxf_tolerance_get_x0 (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_x0 (DxfTolerance *tolerance, double x0);
 
 
 #ifdef __cplusplus

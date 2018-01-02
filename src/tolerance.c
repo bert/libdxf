@@ -2374,4 +2374,47 @@ dxf_tolerance_get_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the insertion point \c x0 of a DXF
+ * \c TOLERANCE entity.
+ *
+ * \return a pointer to \c tolerance when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTolerance *
+dxf_tolerance_set_x0
+(
+        DxfTolerance *tolerance,
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+        double x0
+                /*!< the X-value of the center point \c x0 of a DXF
+                 * \c TOLERANCE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tolerance->p0->x0 = x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance);
+}
+
+
 /* EOF*/
