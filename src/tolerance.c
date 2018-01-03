@@ -2779,4 +2779,47 @@ dxf_tolerance_get_y1
 }
 
 
+/*!
+ * \brief Set the Y-value of the direction vector \c y1 of a DXF
+ * \c TOLERANCE entity.
+ *
+ * \return a pointer to \c tolerance when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTolerance *
+dxf_tolerance_set_y1
+(
+        DxfTolerance *tolerance,
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+        double y1
+                /*!< the Y-value of the direction vector \c y1 of a DXF
+                 * \c TOLERANCE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tolerance->p1->y0 = y1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance);
+}
+
+
 /* EOF*/

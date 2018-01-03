@@ -290,6 +290,7 @@ DxfTolerance *dxf_tolerance_set_p1 (DxfTolerance *tolerance, DxfPoint *p1);
 double dxf_tolerance_get_x1 (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_x1 (DxfTolerance *tolerance, double x1);
 double dxf_tolerance_get_y1 (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_y1 (DxfTolerance *tolerance, double y1);
 
 
 #ifdef __cplusplus
