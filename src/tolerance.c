@@ -3018,4 +3018,36 @@ dxf_tolerance_set_extr_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the extrusion vector \c extr_y0 of a DXF
+ * \c TOLERANCE entity.
+ *
+ * \return the Y-value of the extrusion vector \c extr_y0.
+ */
+double
+dxf_tolerance_get_extr_y0
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance->extr_y0);
+}
+
+
 /* EOF*/
