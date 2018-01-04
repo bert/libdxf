@@ -298,6 +298,7 @@ double dxf_tolerance_get_extr_x0 (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_extr_x0 (DxfTolerance *tolerance, double extr_x0);
 double dxf_tolerance_get_extr_y0 (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_extr_y0 (DxfTolerance *tolerance, double extr_y0);
+double dxf_tolerance_get_extr_z0 (DxfTolerance *tolerance);
 
 
 #ifdef __cplusplus
