@@ -297,6 +297,7 @@ DxfPoint *dxf_tolerance_get_extrusion_vector_as_point (DxfTolerance *tolerance);
 double dxf_tolerance_get_extr_x0 (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_extr_x0 (DxfTolerance *tolerance, double extr_x0);
 double dxf_tolerance_get_extr_y0 (DxfTolerance *tolerance);
+DxfTolerance *dxf_tolerance_set_extr_y0 (DxfTolerance *tolerance, double extr_y0);
 
 
 #ifdef __cplusplus
