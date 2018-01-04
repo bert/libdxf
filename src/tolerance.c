@@ -3232,4 +3232,44 @@ dxf_tolerance_set_extrusion_vector
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c TOLERANCE entity from a DXF
+ * \c TOLERANCE entity.
+ *
+ * \return pointer to the next \c TOLERANCE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfTolerance *
+dxf_tolerance_get_next
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c TOLERANCE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfTolerance *) tolerance->next);
+}
+
+
 /* EOF*/
