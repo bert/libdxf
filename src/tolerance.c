@@ -593,15 +593,24 @@ dxf_tolerance_write
         {
                 fprintf (fp->fp, "  6\n%s\n", tolerance->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (tolerance->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", tolerance->material);
+        }
+        if (tolerance->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", tolerance->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", tolerance->lineweight);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (tolerance->elevation != 0.0))
         {
                 fprintf (fp->fp, " 38\n%f\n", tolerance->elevation);
-        }
-        if (tolerance->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", tolerance->color);
         }
         if (tolerance->linetype_scale != 1.0)
         {
@@ -610,6 +619,36 @@ dxf_tolerance_write
         if (tolerance->visibility != 0)
         {
                 fprintf (fp->fp, " 60\n%d\n", tolerance->visibility);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (tolerance->graphics_data_size > 0))
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", tolerance->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", tolerance->graphics_data_size);
+#endif
+                if (tolerance->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = tolerance->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", tolerance->color_value);
+                fprintf (fp->fp, "430\n%s\n", tolerance->color_name);
+                fprintf (fp->fp, "440\n%ld\n", tolerance->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", tolerance->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", tolerance->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -620,9 +659,9 @@ dxf_tolerance_write
                 fprintf (fp->fp, " 39\n%f\n", tolerance->thickness);
         }
         fprintf (fp->fp, "  3\n%s\n", tolerance->dimstyle_name);
-        fprintf (fp->fp, " 10\n%f\n", tolerance->x0);
-        fprintf (fp->fp, " 20\n%f\n", tolerance->y0);
-        fprintf (fp->fp, " 30\n%f\n", tolerance->z0);
+        fprintf (fp->fp, " 10\n%f\n", tolerance->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", tolerance->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", tolerance->p0->z0);
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (tolerance->extr_x0 != 0.0)
                 && (tolerance->extr_y0 != 0.0)
@@ -632,9 +671,9 @@ dxf_tolerance_write
                 fprintf (fp->fp, "220\n%f\n", tolerance->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", tolerance->extr_z0);
         }
-        fprintf (fp->fp, " 11\n%f\n", tolerance->x1);
-        fprintf (fp->fp, " 21\n%f\n", tolerance->y1);
-        fprintf (fp->fp, " 31\n%f\n", tolerance->z1);
+        fprintf (fp->fp, " 11\n%f\n", tolerance->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", tolerance->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", tolerance->p1->z0);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
