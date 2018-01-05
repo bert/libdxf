@@ -3311,4 +3311,49 @@ dxf_tolerance_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c TOLERANCE entity from a linked list
+ * of DXF \c TOLERANCE entities.
+ *
+ * \return pointer to the last \c TOLERANCE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfTolerance *
+dxf_tolerance_get_last
+(
+        DxfTolerance *tolerance
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (tolerance->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfTolerance *) tolerance);
+        }
+        DxfTolerance *iter = (DxfTolerance *) tolerance->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfTolerance *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfTolerance *) iter);
+}
+
+
 /* EOF*/
