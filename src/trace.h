@@ -1,7 +1,7 @@
 /*!
  * \file trace.h
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF trace entity (\c TRACE).
@@ -55,7 +55,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_trace
+dxf_trace_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
