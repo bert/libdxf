@@ -238,84 +238,84 @@ dxf_trace_read
                         /* Now follows a string containing the
                          * X-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->x0);
+                        fscanf (fp->fp, "%lf\n", &trace->p0->x0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->x1);
+                        fscanf (fp->fp, "%lf\n", &trace->p1->x0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->x2);
+                        fscanf (fp->fp, "%lf\n", &trace->p2->x0);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->x3);
+                        fscanf (fp->fp, "%lf\n", &trace->p3->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->y0);
+                        fscanf (fp->fp, "%lf\n", &trace->p0->y0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->y1);
+                        fscanf (fp->fp, "%lf\n", &trace->p1->y0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->y2);
+                        fscanf (fp->fp, "%lf\n", &trace->p2->y0);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->y3);
+                        fscanf (fp->fp, "%lf\n", &trace->p3->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->z0);
+                        fscanf (fp->fp, "%lf\n", &trace->p0->z0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->z1);
+                        fscanf (fp->fp, "%lf\n", &trace->p1->z0);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->z2);
+                        fscanf (fp->fp, "%lf\n", &trace->p2->z0);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the alignment point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &trace->z3);
+                        fscanf (fp->fp, "%lf\n", &trace->p3->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
