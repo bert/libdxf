@@ -187,51 +187,15 @@ dxf_trace_struct
         DxfPoint *p0;
                 /*!< Base point.\n
                  * Group codes = 10, 20 and 30. */
-        double x0;
-                /*!< group code = 10\n
-                 * base point. */
-        double y0;
-                /*!< group code = 20\n
-                 * base point. */
-        double z0;
-                /*!< group code = 30\n
-                 * base point. */
         DxfPoint *p1;
                 /*!< Alignment point.\n
                  * Group codes = 11, 21 and 31. */
-        double x1;
-                /*!< group code = 11\n
-                 * alignment point. */
-        double y1;
-                /*!< group code = 21\n
-                 * alignment point. */
-        double z1;
-                /*!< group code = 31\n
-                 * alignment point. */
         DxfPoint *p2;
                 /*!< Alignment point.\n
                  * Group codes = 12, 22 and 32. */
-        double x2;
-                /*!< group code = 12\n
-                 * alignment point. */
-        double y2;
-                /*!< group code = 22\n
-                 * alignment point. */
-        double z2;
-                /*!< group code = 32\n
-                 * alignment point. */
         DxfPoint *p3;
                 /*!< Alignment point.\n
                  * Group codes = 13, 23 and 33. */
-        double x3;
-                /*!< group code = 13\n
-                 * alignment point. */
-        double y3;
-                /*!< group code = 23\n
-                 * alignment point. */
-        double z3;
-                /*!< group code = 33\n
-                 * alignment point. */
         double extr_x0;
                 /*!< X-value of the extrusion vector.\n
                  * Defaults to 0.0 if omitted in the DXF file.\n
