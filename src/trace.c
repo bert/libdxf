@@ -746,8 +746,16 @@ dxf_trace_free
         }
         free (trace->linetype);
         free (trace->layer);
+        dxf_binary_graphics_data_free_chain (trace->binary_graphics_data);
         free (trace->dictionary_owner_soft);
+        free (trace->material);
         free (trace->dictionary_owner_hard);
+        free (trace->plot_style_name);
+        free (trace->color_name);
+        dxf_point_free (trace->p0);
+        dxf_point_free (trace->p1);
+        dxf_point_free (trace->p2);
+        dxf_point_free (trace->p3);
         free (trace);
         trace = NULL;
 #if DEBUG
