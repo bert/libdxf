@@ -1054,4 +1054,35 @@ dxf_trace_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c TRACE entity.
+ */
+DxfTrace *
+dxf_trace_set_elevation
+(
+        DxfTrace *trace,
+                /*!< a pointer to a DXF \c TRACE entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        trace->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace);
+}
+
+
 /* EOF */

@@ -227,6 +227,7 @@ DxfTrace *dxf_trace_set_linetype (DxfTrace *trace, char *linetype);
 char *dxf_trace_get_layer (DxfTrace *trace);
 DxfTrace *dxf_trace_set_layer (DxfTrace *trace, char *layer);
 double dxf_trace_get_elevation (DxfTrace *trace);
+DxfTrace *dxf_trace_set_elevation (DxfTrace *trace, double elevation);
 
 
 #ifdef __cplusplus
