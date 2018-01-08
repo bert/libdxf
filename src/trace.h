@@ -225,6 +225,7 @@ DxfTrace *dxf_trace_set_id_code (DxfTrace *trace, int id_code);
 char *dxf_trace_get_linetype (DxfTrace *trace);
 DxfTrace *dxf_trace_set_linetype (DxfTrace *trace, char *linetype);
 char *dxf_trace_get_layer (DxfTrace *trace);
+DxfTrace *dxf_trace_set_layer (DxfTrace *trace, char *layer);
 
 
 #ifdef __cplusplus
