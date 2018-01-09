@@ -229,6 +229,7 @@ DxfTrace *dxf_trace_set_layer (DxfTrace *trace, char *layer);
 double dxf_trace_get_elevation (DxfTrace *trace);
 DxfTrace *dxf_trace_set_elevation (DxfTrace *trace, double elevation);
 double dxf_trace_get_thickness (DxfTrace *trace);
+DxfTrace *dxf_trace_set_thickness (DxfTrace *trace, double thickness);
 
 
 #ifdef __cplusplus
