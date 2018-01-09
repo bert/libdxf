@@ -231,6 +231,7 @@ DxfTrace *dxf_trace_set_elevation (DxfTrace *trace, double elevation);
 double dxf_trace_get_thickness (DxfTrace *trace);
 DxfTrace *dxf_trace_set_thickness (DxfTrace *trace, double thickness);
 double dxf_trace_get_linetype_scale (DxfTrace *trace);
+DxfTrace *dxf_trace_set_linetype_scale (DxfTrace *trace, double linetype_scale);
 
 
 #ifdef __cplusplus
