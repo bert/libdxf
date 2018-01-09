@@ -232,6 +232,7 @@ double dxf_trace_get_thickness (DxfTrace *trace);
 DxfTrace *dxf_trace_set_thickness (DxfTrace *trace, double thickness);
 double dxf_trace_get_linetype_scale (DxfTrace *trace);
 DxfTrace *dxf_trace_set_linetype_scale (DxfTrace *trace, double linetype_scale);
+int16_t dxf_trace_get_visibility (DxfTrace *trace);
 
 
 #ifdef __cplusplus
