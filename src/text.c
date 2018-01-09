@@ -1263,7 +1263,7 @@ double
 dxf_text_get_linetype_scale
 (
         DxfText *text
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c TEXT entity. */
 )
 {
 #if DEBUG
