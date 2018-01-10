@@ -234,6 +234,7 @@ double dxf_trace_get_linetype_scale (DxfTrace *trace);
 DxfTrace *dxf_trace_set_linetype_scale (DxfTrace *trace, double linetype_scale);
 int16_t dxf_trace_get_visibility (DxfTrace *trace);
 DxfTrace *dxf_trace_set_visibility (DxfTrace *trace, int16_t visibility);
+int dxf_trace_get_color (DxfTrace *trace);
 
 
 #ifdef __cplusplus
