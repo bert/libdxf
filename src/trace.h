@@ -237,6 +237,7 @@ DxfTrace *dxf_trace_set_visibility (DxfTrace *trace, int16_t visibility);
 int dxf_trace_get_color (DxfTrace *trace);
 DxfTrace *dxf_trace_set_color (DxfTrace *trace, int color);
 int dxf_trace_get_paperspace (DxfTrace *trace);
+DxfTrace *dxf_trace_set_paperspace (DxfTrace *trace, int paperspace);
 
 
 #ifdef __cplusplus
