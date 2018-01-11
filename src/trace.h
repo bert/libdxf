@@ -240,6 +240,7 @@ int dxf_trace_get_paperspace (DxfTrace *trace);
 DxfTrace *dxf_trace_set_paperspace (DxfTrace *trace, int paperspace);
 int dxf_trace_get_graphics_data_size (DxfTrace *trace);
 DxfTrace *dxf_trace_set_graphics_data_size (DxfTrace *trace, int graphics_data_size);
+int16_t dxf_trace_get_shadow_mode (DxfTrace *trace);
 
 
 #ifdef __cplusplus
