@@ -244,6 +244,7 @@ int16_t dxf_trace_get_shadow_mode (DxfTrace *trace);
 DxfTrace *dxf_trace_set_shadow_mode (DxfTrace *trace, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_trace_get_binary_graphics_data (DxfTrace *trace);
 DxfTrace *dxf_trace_set_binary_graphics_data (DxfTrace *trace, DxfBinaryGraphicsData *data);
+char *dxf_trace_get_dictionary_owner_soft (DxfTrace *trace);
 
 
 #ifdef __cplusplus
