@@ -3,8 +3,6 @@ language: c
 os:
   - linux
 
-group: deprecated-2017Q4
-
 compiler:
   - gcc
   - clang
