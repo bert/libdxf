@@ -242,6 +242,7 @@ int dxf_trace_get_graphics_data_size (DxfTrace *trace);
 DxfTrace *dxf_trace_set_graphics_data_size (DxfTrace *trace, int graphics_data_size);
 int16_t dxf_trace_get_shadow_mode (DxfTrace *trace);
 DxfTrace *dxf_trace_set_shadow_mode (DxfTrace *trace, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_trace_get_binary_graphics_data (DxfTrace *trace);
 
 
 #ifdef __cplusplus
