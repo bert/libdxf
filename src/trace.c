@@ -1814,4 +1814,44 @@ dxf_trace_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the \c material from a DXF \c TRACE entity.
+ *
+ * \return a pointer to \c material when successful, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_trace_get_material
+(
+        DxfTrace *trace
+                /*!< a pointer to a DXF \c TRACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (trace->material ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (trace->material));
+}
+
+
 /* EOF */

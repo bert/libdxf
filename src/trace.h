@@ -246,6 +246,7 @@ DxfBinaryGraphicsData *dxf_trace_get_binary_graphics_data (DxfTrace *trace);
 DxfTrace *dxf_trace_set_binary_graphics_data (DxfTrace *trace, DxfBinaryGraphicsData *data);
 char *dxf_trace_get_dictionary_owner_soft (DxfTrace *trace);
 DxfTrace *dxf_trace_set_dictionary_owner_soft (DxfTrace *trace, char *dictionary_owner_soft);
+char *dxf_trace_get_material (DxfTrace *trace);
 
 
 #ifdef __cplusplus
