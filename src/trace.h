@@ -251,6 +251,7 @@ DxfTrace *dxf_trace_set_material (DxfTrace *trace, char *material);
 char *dxf_trace_get_dictionary_owner_hard (DxfTrace *trace);
 DxfTrace *dxf_trace_set_dictionary_owner_hard (DxfTrace *trace, char *dictionary_owner_hard);
 int16_t dxf_trace_get_lineweight (DxfTrace *trace);
+DxfTrace *dxf_trace_set_lineweight (DxfTrace *trace, int16_t lineweight);
 
 
 #ifdef __cplusplus

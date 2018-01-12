@@ -2007,4 +2007,38 @@ dxf_trace_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c TRACE entity.
+ *
+ * \return a pointer to \c trace when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTrace *
+dxf_trace_set_lineweight
+(
+        DxfTrace *trace,
+                /*!< a pointer to a DXF \c TRACE entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        trace->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace);
+}
+
+
 /* EOF */
