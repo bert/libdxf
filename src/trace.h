@@ -252,6 +252,7 @@ char *dxf_trace_get_dictionary_owner_hard (DxfTrace *trace);
 DxfTrace *dxf_trace_set_dictionary_owner_hard (DxfTrace *trace, char *dictionary_owner_hard);
 int16_t dxf_trace_get_lineweight (DxfTrace *trace);
 DxfTrace *dxf_trace_set_lineweight (DxfTrace *trace, int16_t lineweight);
+char *dxf_trace_get_plot_style_name (DxfTrace *trace);
 
 
 #ifdef __cplusplus
