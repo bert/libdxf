@@ -256,6 +256,7 @@ char *dxf_trace_get_plot_style_name (DxfTrace *trace);
 DxfTrace *dxf_trace_set_plot_style_name (DxfTrace *trace, char *plot_style_name);
 long dxf_trace_get_color_value (DxfTrace *trace);
 DxfTrace *dxf_trace_set_color_value (DxfTrace *trace, long color_value);
+char *dxf_trace_get_color_name (DxfTrace *trace);
 
 
 #ifdef __cplusplus
