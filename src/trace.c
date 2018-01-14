@@ -2447,4 +2447,47 @@ dxf_trace_get_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the base point \c x0 of a DXF \c TRACE
+ * entity.
+ *
+ * \return a pointer to \c trace when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTrace *
+dxf_trace_set_x0
+(
+        DxfTrace *trace,
+                /*!< a pointer to a DXF \c TRACE entity. */
+        double x0
+                /*!< the X-value of the base point \c x0 of a DXF
+                 * \c TRACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (trace->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        trace->p0->x0 = x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace);
+}
+
+
 /* EOF */
