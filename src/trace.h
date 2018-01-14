@@ -261,6 +261,7 @@ DxfTrace *dxf_trace_set_color_name (DxfTrace *trace, char *color_name);
 long dxf_trace_get_transparency (DxfTrace *trace);
 DxfTrace *dxf_trace_set_transparency (DxfTrace *trace, long transparency);
 DxfPoint *dxf_trace_get_p0 (DxfTrace *trace);
+DxfTrace *dxf_trace_set_p0 (DxfTrace *trace, DxfPoint *p0);
 
 
 #ifdef __cplusplus
