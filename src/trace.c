@@ -2331,4 +2331,41 @@ dxf_trace_set_transparency
 }
 
 
+/*!
+ * \brief Get the base point \c p0 of a DXF \c TRACE entity.
+ *
+ * \return the base point \c p0.
+ */
+DxfPoint *
+dxf_trace_get_p0
+(
+        DxfTrace *trace
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (trace->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace->p0);
+}
+
+
 /* EOF */
