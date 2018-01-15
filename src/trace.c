@@ -2731,4 +2731,43 @@ dxf_trace_set_p1
 }
 
 
+/*!
+ * \brief Get the X-value of the alignment point \c x1 of a DXF \c TRACE
+ * entity.
+ *
+ * \return the X-value of the alignment point \c x1.
+ */
+double
+dxf_trace_get_x1
+(
+        DxfTrace *trace
+                /*!< a pointer to a DXF \c TRACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (trace->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace->p1->x0);
+}
+
+
 /* EOF */
