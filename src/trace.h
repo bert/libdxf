@@ -274,6 +274,7 @@ double dxf_trace_get_x1 (DxfTrace *trace);
 DxfTrace *dxf_trace_set_x1 (DxfTrace *trace, double x1);
 double dxf_trace_get_y1 (DxfTrace *trace);
 DxfTrace *dxf_trace_set_y1 (DxfTrace *trace, double y1);
+double dxf_trace_get_z1 (DxfTrace *trace);
 
 
 #ifdef __cplusplus
