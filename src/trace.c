@@ -2977,4 +2977,41 @@ dxf_trace_set_z1
 }
 
 
+/*!
+ * \brief Get the alignment point \c p2 of a DXF \c TRACE entity.
+ *
+ * \return the alignment point \c p2.
+ */
+DxfPoint *
+dxf_trace_get_p2
+(
+        DxfTrace *trace
+                /*!< a pointer to a DXF \c TRACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (trace->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace->p2);
+}
+
+
 /* EOF */
