@@ -278,6 +278,7 @@ double dxf_trace_get_z1 (DxfTrace *trace);
 DxfTrace *dxf_trace_set_z1 (DxfTrace *trace, double z1);
 DxfPoint *dxf_trace_get_p2 (DxfTrace *trace);
 DxfTrace *dxf_trace_set_p2 (DxfTrace *trace, DxfPoint *p2);
+double dxf_trace_get_x2 (DxfTrace *trace);
 
 
 #ifdef __cplusplus
