@@ -3580,4 +3580,47 @@ dxf_trace_get_z3
 }
 
 
+/*!
+ * \brief Set the Z-value of the alignment point \c z3 of a DXF \c TRACE
+ * entity.
+ *
+ * \return a pointer to \c trace when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTrace *
+dxf_trace_set_z3
+(
+        DxfTrace *trace,
+                /*!< a pointer to a DXF \c TRACE entity. */
+        double z3
+                /*!< the Z-value of the alignment point \c z3 of a DXF
+                 * \c TRACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (trace->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        trace->p3->z0 = z3;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace);
+}
+
+
 /* EOF */
