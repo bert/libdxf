@@ -296,6 +296,7 @@ DxfPoint *dxf_trace_get_extrusion_vector_as_point (DxfTrace *trace);
 DxfTrace *dxf_trace_set_extrusion_vector_from_point (DxfTrace *trace, DxfPoint *point);
 DxfTrace *dxf_trace_set_extrusion_vector (DxfTrace *trace, double extr_x0, double extr_y0, double extr_z0);
 double dxf_trace_get_extr_x0 (DxfTrace *trace);
+DxfTrace *dxf_trace_set_extr_x0 (DxfTrace *trace, double extr_x0);
 
 
 #ifdef __cplusplus
