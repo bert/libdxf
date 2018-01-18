@@ -3847,4 +3847,40 @@ dxf_trace_get_extr_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the extrusion vector \c extr_y0 of a DXF
+ * \c TRACE entity.
+ *
+ * \return a pointer to \c trace when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTrace *
+dxf_trace_set_extr_y0
+(
+        DxfTrace *trace,
+                /*!< a pointer to a DXF \c TRACE entity. */
+        double extr_y0
+                /*!< the Y-value of the extrusion vector \c extr_y0 of a
+                 * DXF \c TRACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        trace->extr_y0 = extr_y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace);
+}
+
+
 /* EOF */
