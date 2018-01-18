@@ -293,6 +293,8 @@ DxfTrace *dxf_trace_set_y3 (DxfTrace *trace, double y3);
 double dxf_trace_get_z3 (DxfTrace *trace);
 DxfTrace *dxf_trace_set_z3 (DxfTrace *trace, double z3);
 DxfPoint *dxf_trace_get_extrusion_vector_as_point (DxfTrace *trace);
+DxfTrace *dxf_trace_set_extrusion_vector_from_point (DxfTrace *trace, DxfPoint *point);
+DxfTrace *dxf_trace_set_extrusion_vector (DxfTrace *trace, double extr_x0, double extr_y0, double extr_z0);
 
 
 #ifdef __cplusplus
