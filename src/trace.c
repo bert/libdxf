@@ -3915,4 +3915,40 @@ dxf_trace_get_extr_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the extrusion vector \c extr_z0 of a DXF
+ * \c TRACE entity.
+ *
+ * \return a pointer to \c trace when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTrace *
+dxf_trace_set_extr_z0
+(
+        DxfTrace *trace,
+                /*!< a pointer to a DXF \c TRACE entity. */
+        double extr_z0
+                /*!< the Z-value of the extrusion vector \c extr_z0 of a
+                 * DXF \c TRACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        trace->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (trace);
+}
+
+
 /* EOF */
