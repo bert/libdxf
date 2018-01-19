@@ -56,7 +56,7 @@ extern "C" {
  * (\c UCS).
  */
 typedef struct
-dxf_ucs
+dxf_ucs_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
