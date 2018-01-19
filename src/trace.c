@@ -3951,4 +3951,44 @@ dxf_trace_set_extr_z0
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c TRACE entity from a DXF
+ * \c TRACE entity.
+ *
+ * \return pointer to the next \c TRACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfTrace *
+dxf_trace_get_next
+(
+        DxfTrace *trace
+                /*!< a pointer to a DXF \c TRACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (trace->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfTrace *) trace->next);
+}
+
+
 /* EOF */
