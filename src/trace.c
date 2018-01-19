@@ -4030,4 +4030,49 @@ dxf_trace_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c TRACE entity from a linked list
+ * of DXF \c TRACE entities.
+ *
+ * \return pointer to the last \c TRACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfTrace *
+dxf_trace_get_last
+(
+        DxfTrace *trace
+                /*!< a pointer to a DXF \c TRACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (trace->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfTrace *) trace);
+        }
+        DxfTrace *iter = (DxfTrace *) trace->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfTrace *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfTrace *) iter);
+}
+
+
 /* EOF */

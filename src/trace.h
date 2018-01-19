@@ -303,6 +303,7 @@ double dxf_trace_get_extr_z0 (DxfTrace *trace);
 DxfTrace *dxf_trace_set_extr_z0 (DxfTrace *trace, double extr_z0);
 DxfTrace *dxf_trace_get_next (DxfTrace *trace);
 DxfTrace *dxf_trace_set_next (DxfTrace *trace, DxfTrace *next);
+DxfTrace *dxf_trace_get_last (DxfTrace *trace);
 
 
 #ifdef __cplusplus
