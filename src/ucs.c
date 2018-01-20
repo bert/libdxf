@@ -592,4 +592,41 @@ dxf_ucs_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c UCS_name from a DXF \c UCS symbol table entry.
+ *
+ * \return \c UCS_name when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_ucs_get_UCS_name
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucs->UCS_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ucs->UCS_name));
+}
+
+
 /* EOF */
