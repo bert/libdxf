@@ -44,6 +44,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -65,6 +66,9 @@ dxf_ucs_struct
                  * Group code = 5. */
         char *UCS_name;
                 /*!< group code = 2. */
+        DxfPoint *origin;
+                /*!< Base point coordinate.\n
+                 * Group codes = 10, 20 and 30.*/
         double x_origin;
                 /*!< X-value of the base point coordinate.\n
                  * Group code = 10. */
@@ -74,6 +78,9 @@ dxf_ucs_struct
         double z_origin;
                 /*!< Z-value of the base point coordinate.\n
                  * Group code = 30. */
+        DxfPoint *X_dir;
+                /*!< Reference point for the X-axis direction.\n
+                 * Group codes = 11, 21 and 31.*/
         double x_X_dir;
                 /*!< X-value of the reference point for the X-axis
                  * direction.\n
@@ -86,6 +93,9 @@ dxf_ucs_struct
                 /*!< Z-value of the reference point for the X-axis
                  * direction.\n
                  * Group code = 31. */
+        DxfPoint *Y_dir;
+                /*!< Reference point for the Y-axis direction.\n
+                 * Group codes = 12, 22 and 32.*/
         double x_Y_dir;
                 /*!< X-value of the reference point for the Y-axis
                  * direction.\n
@@ -98,6 +108,26 @@ dxf_ucs_struct
                 /*!< Z-value of the reference point for the Y-axis
                  * direction.\n
                  * Group code = 32. */
+        DxfPoint *orthographic_type_origin;
+                /*!< Origin for this orthographic type relative to this
+                 * UCS.\n
+                 * Each 71 / 13,23,33 pair defines the UCS origin for a
+                 * particular orthographic type relative to this UCS.\n
+                 * For example, if the following pair is present, then
+                 * invoking the UCS/LEFT command when UCSBASE is set to
+                 * this UCS will cause the new UCS origin to become
+                 * (1,2,3).\n
+                 * <pre>
+                 *   71:   5
+                 *   13:   1.0
+                 *   23:   2.0
+                 *   33:   3.0
+                 * </pre>
+                 * If this pair were not present, then invoking the
+                 * UCS/LEFT command would cause the new UCS origin to be
+                 * set to this UCS's origin point.
+                 * Group codes = 13, 23 and 33.\n
+                 * \since Introduced in version R2000.\n */
         int flag;
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
@@ -114,10 +144,42 @@ dxf_ucs_struct
                  * last time the drawing was edited.</li>
                  * </ol>
                  * Group code = 70. */
+        int orthographic_type;
+                /*!< Orthographic type (optional);\n
+                 * Always appears in pairs with the 13, 23, 33 codes):\n
+                 * <ol>
+                 * <li value = "1"> Top;</li>
+                 * <li value = "2"> Bottom;</li>
+                 * <li value = "3"> Front;</li>
+                 * <li value = "4"> Back;</li>
+                 * <li value = "5"> Left;</li>
+                 * <li value = "6"> Right.</li>
+                 * </ol>
+                 * Group code = 71.\n
+                 * \since Introduced in version R2000.\n */
+        int spare;
+                /*!< Always 0.
+                 * Group code = 79.\n
+                 * \since Introduced in version R2000.\n */
+        double elevation;
+                /*!< Elevation.\n
+                 * Group code = 146.\n
+                 * \since Introduced in version R2000.\n */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary
                  * (optional).\n
                  * Group code = 330. */
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle to owner object.\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R2000.\n */
+        char *base_UCS;
+                /*!< ID/handle of base UCS if this is an orthographic.\n
+                 * This code is not present if the 79 code is 0.\n
+                 * If this code is not present and 79 code is non-zero,
+                 * then base UCS is assumed to be WORLD.\n
+                 * Group code = 346.\n
+                 * \since Introduced in version R2000.\n */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary
                  * (optional).\n
