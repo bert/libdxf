@@ -553,4 +553,43 @@ dxf_ucs_get_id_code
 }
 
 
+/*!
+ * \brief Set the \c id_code for a DXF \c UCS symbol table entry.
+ */
+DxfUcs *
+dxf_ucs_set_id_code
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        int id_code
+                /*!< the \c id_code to be set for the entry.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        ucs->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
