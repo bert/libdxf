@@ -196,6 +196,7 @@ DxfUcs *dxf_ucs_read (DxfFile *fp, DxfUcs *ucs);
 int dxf_ucs_write (DxfFile *fp, DxfUcs *ucs);
 int dxf_ucs_free (DxfUcs *ucs);
 void dxf_ucs_free_chain (DxfUcs *ucss);
+int dxf_ucs_get_id_code (DxfUcs *ucs);
 
 
 #ifdef __cplusplus
