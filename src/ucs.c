@@ -629,4 +629,43 @@ dxf_ucs_get_UCS_name
 }
 
 
+/*!
+ * \brief Set the \c UCS_name for a DXF \c UCS symbol table entry.
+ */
+DxfUcs *
+dxf_ucs_set_UCS_name
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        char *UCS_name
+                /*!< a pointer to a string containing the \c UCS_name
+                 * to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (UCS_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ucs->UCS_name = strdup (UCS_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
