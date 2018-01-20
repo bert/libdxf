@@ -668,4 +668,42 @@ dxf_ucs_set_UCS_name
 }
 
 
+/*!
+ * \brief Get the base point \c origin of a DXF \c UCS symbol table
+ * entry.
+ *
+ * \return the base point \c origin.
+ */
+DxfPoint *
+dxf_ucs_get_origin
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucs->origin == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs->origin);
+}
+
+
 /* EOF */

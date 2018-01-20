@@ -200,6 +200,7 @@ int dxf_ucs_get_id_code (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_id_code (DxfUcs *ucs, int id_code);
 char *dxf_ucs_get_UCS_name (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_UCS_name (DxfUcs *ucs, char *UCS_name);
+DxfPoint *dxf_ucs_get_origin (DxfUcs *ucs);
 
 
 #ifdef __cplusplus
