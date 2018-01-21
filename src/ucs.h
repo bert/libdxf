@@ -202,6 +202,7 @@ char *dxf_ucs_get_UCS_name (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_UCS_name (DxfUcs *ucs, char *UCS_name);
 DxfPoint *dxf_ucs_get_origin (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_origin (DxfUcs *ucs, DxfPoint *origin);
+double dxf_ucs_get_origin_x (DxfUcs *ucs);
 
 
 #ifdef __cplusplus
