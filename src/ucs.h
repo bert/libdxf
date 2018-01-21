@@ -206,6 +206,7 @@ double dxf_ucs_get_origin_x (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_origin_x (DxfUcs *ucs, double x);
 double dxf_ucs_get_origin_y (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_origin_y (DxfUcs *ucs, double y);
+double dxf_ucs_get_origin_z (DxfUcs *ucs);
 
 
 #ifdef __cplusplus
