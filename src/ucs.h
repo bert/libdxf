@@ -213,6 +213,7 @@ DxfUcs *dxf_ucs_set_X_dir (DxfUcs *ucs, DxfPoint *X_dir);
 double dxf_ucs_get_X_dir_x (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_X_dir_x (DxfUcs *ucs, double x);
 double dxf_ucs_get_X_dir_y (DxfUcs *ucs);
+DxfUcs *dxf_ucs_set_X_dir_y (DxfUcs *ucs, double y);
 
 
 #ifdef __cplusplus
