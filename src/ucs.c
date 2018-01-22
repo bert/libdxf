@@ -1112,4 +1112,48 @@ dxf_ucs_get_X_dir_x
 }
 
 
+/*!
+ * \brief Set the X-value of the reference point for the X-axis
+ * direction \c X_dir of a DXF \c UCS symbol table entry.
+ *
+ * \return a pointer to \c ucs when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfUcs *
+dxf_ucs_set_X_dir_x
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        double x
+                /*!< the X-value of the reference point for the X-axis
+                 * direction \c X_dir of a DXF \c UCS symbol table
+                 * entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucs->X_dir == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ucs->X_dir->x0 = x;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
