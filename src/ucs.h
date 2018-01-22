@@ -209,6 +209,7 @@ DxfUcs *dxf_ucs_set_origin_y (DxfUcs *ucs, double y);
 double dxf_ucs_get_origin_z (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_origin_z (DxfUcs *ucs, double z);
 DxfPoint *dxf_ucs_get_X_dir (DxfUcs *ucs);
+DxfUcs *dxf_ucs_set_X_dir (DxfUcs *ucs, DxfPoint *X_dir);
 
 
 #ifdef __cplusplus
