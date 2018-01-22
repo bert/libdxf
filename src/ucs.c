@@ -1032,8 +1032,8 @@ dxf_ucs_get_X_dir
 
 
 /*!
- * \brief Set the base point \c X_dir of a DXF \c UCS symbol table
- * entry.
+ * \brief Set the reference point for the X-axis direction \c X_dir of a
+ * DXF \c UCS symbol table entry.
  *
  * \return a pointer to a DXF \c UCS symbol table entry.
  */
