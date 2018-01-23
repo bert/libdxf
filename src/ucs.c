@@ -1324,4 +1324,42 @@ dxf_ucs_set_X_dir_z
 }
 
 
+/*!
+ * \brief Get the reference point for the Y-axis direction \c Y_dir of a
+ * DXF \c UCS symbol table entry.
+ *
+ * \return the reference point for the Y-axis direction \c Y_dir.
+ */
+DxfPoint *
+dxf_ucs_get_Y_dir
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucs->Y_dir == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs->Y_dir);
+}
+
+
 /* EOF */
