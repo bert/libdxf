@@ -223,6 +223,7 @@ DxfUcs *dxf_ucs_set_Y_dir_x (DxfUcs *ucs, double x);
 double dxf_ucs_get_Y_dir_y (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_Y_dir_y (DxfUcs *ucs, double y);
 double dxf_ucs_get_Y_dir_z (DxfUcs *ucs);
+DxfUcs *dxf_ucs_set_Y_dir_z (DxfUcs *ucs, double z);
 
 
 #ifdef __cplusplus
