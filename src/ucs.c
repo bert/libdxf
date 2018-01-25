@@ -1655,4 +1655,84 @@ dxf_ucs_set_Y_dir_z
 }
 
 
+/*!
+ * \brief Get the origin for this orthographic type relative to this
+ * UCS \c orthographic_type_origin of a DXF \c UCS symbol table entry.
+ *
+ * \return the Origin for this orthographic type relative to this UCS
+ * \c orthographic_type_origin.
+ */
+DxfPoint *
+dxf_ucs_get_orthographic_type_origin
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucs->orthographic_type_origin == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs->orthographic_type_origin);
+}
+
+
+/*!
+ * \brief Set the origin for this orthographic type relative to this
+ * UCS \c orthographic_type_origin of a DXF \c UCS symbol table entry.
+ *
+ * \return a pointer to a DXF \c UCS symbol table entry.
+ */
+DxfUcs *
+dxf_ucs_set_orthographic_type_origin
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        DxfPoint *orthographic_type_origin
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (orthographic_type_origin == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ucs->orthographic_type_origin = orthographic_type_origin;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
