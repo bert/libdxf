@@ -1778,7 +1778,8 @@ dxf_ucs_get_orthographic_type_origin_x
 
 /*!
  * \brief Set the X-value of the origin for this orthographic type
- * relative to this UCS \c orthographic_type_origin of a DXF \c UCS symbol table entry.
+ * relative to this UCS \c orthographic_type_origin of a DXF \c UCS
+ * symbol table entry.
  *
  * \return a pointer to \c ucs when successful, or \c NULL when an
  * error occurred.
