@@ -2023,4 +2023,35 @@ dxf_ucs_get_spare
 }
 
 
+/*!
+ * \brief Set the \c spare for a DXF \c UCS symbol table entry.
+ */
+DxfUcs *
+dxf_ucs_set_spare
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        int spare
+                /*!< the \c spare to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ucs->spare = spare;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
