@@ -231,6 +231,7 @@ DxfUcs *dxf_ucs_set_orthographic_type_origin_x (DxfUcs *ucs, double x);
 double dxf_ucs_get_orthographic_type_origin_y (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_orthographic_type_origin_y (DxfUcs *ucs, double y);
 double dxf_ucs_get_orthographic_type_origin_z (DxfUcs *ucs);
+DxfUcs *dxf_ucs_set_orthographic_type_origin_z (DxfUcs *ucs, double z);
 
 
 #ifdef __cplusplus
