@@ -1820,4 +1820,45 @@ dxf_ucs_set_orthographic_type_origin_x
 }
 
 
+/*!
+ * \brief Get the Y-value of the origin for this orthographic type
+ * relative to this UCS \c orthographic_type_origin of a DXF
+ * \c UCS symbol table entry.
+ *
+ * \return the Y-value of the origin for this orthographic type relative
+ * to this UCS \c orthographic_type_origin.
+ */
+double
+dxf_ucs_get_orthographic_type_origin_y
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ucs->orthographic_type_origin == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs->orthographic_type_origin->y0);
+}
+
+
 /* EOF */
