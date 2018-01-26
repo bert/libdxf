@@ -1993,4 +1993,34 @@ dxf_ucs_set_orthographic_type_origin_z
 }
 
 
+/*!
+ * \brief Get the \c spare from a DXF \c UCS symbol table entry.
+ *
+ * \return \c spare.
+ */
+int
+dxf_ucs_get_spare
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs->spare);
+}
+
+
 /* EOF */
