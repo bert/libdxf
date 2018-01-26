@@ -1741,7 +1741,7 @@ dxf_ucs_set_orthographic_type_origin
  * \c UCS symbol table entry.
  *
  * \return the X-value of the origin for this orthographic type relative
- * to this UCS  \c orthographic_type_origin.
+ * to this UCS \c orthographic_type_origin.
  */
 double
 dxf_ucs_get_orthographic_type_origin_x
