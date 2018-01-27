@@ -235,6 +235,7 @@ DxfUcs *dxf_ucs_set_orthographic_type_origin_z (DxfUcs *ucs, double z);
 int dxf_ucs_get_spare (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_spare (DxfUcs *ucs, int spare);
 double dxf_ucs_get_elevation (DxfUcs *ucs);
+DxfUcs *dxf_ucs_set_elevation (DxfUcs *ucs, double elevation);
 
 
 #ifdef __cplusplus

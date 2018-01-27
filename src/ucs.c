@@ -2084,4 +2084,35 @@ dxf_ucs_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c UCS symbol table entry.
+ */
+DxfUcs *
+dxf_ucs_set_elevation
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        double elevation
+                /*!< the \c elevation to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ucs->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
