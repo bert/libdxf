@@ -240,6 +240,7 @@ char *dxf_ucs_get_dictionary_owner_soft (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_dictionary_owner_soft (DxfUcs *ucs, char *dictionary_owner_soft);
 char *dxf_ucs_get_object_owner_soft (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_object_owner_soft (DxfUcs *ucs, char *object_owner_soft);
+char *dxf_ucs_get_base_UCS (DxfUcs *ucs);
 
 
 #ifdef __cplusplus
