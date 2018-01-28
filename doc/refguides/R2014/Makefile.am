@@ -1,3 +1,6 @@
+EXTRA_DIST = \
+	R2014.xml
+
 .DEFAULT_GOAL : all
 
 all: xmlto
