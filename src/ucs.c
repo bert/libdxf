@@ -2315,4 +2315,44 @@ dxf_ucs_get_base_UCS
 }
 
 
+/*!
+ * \brief Set the pointer to the \c base_UCS for a DXF \c UCS symbol
+ * table entry.
+ */
+DxfUcs *
+dxf_ucs_set_object_base_UCS
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        char *base_UCS
+                /*!< a string containing the pointer to the \c
+                 * base_UCS for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (base_UCS == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ucs->base_UCS = strdup (base_UCS);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
