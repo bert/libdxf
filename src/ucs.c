@@ -2355,4 +2355,44 @@ dxf_ucs_set_object_base_UCS
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
+ * \c UCS symbol table entry.
+ *
+ * \return pointer to the \c dictionary_owner_hard.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_ucs_get_dictionary_owner_hard
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucs->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ucs->dictionary_owner_hard));
+}
+
+
 /* EOF */
