@@ -1,6 +1,7 @@
 # Makefile.am for autogenerating Doxygen developer documentation.
 
 EXTRA_DIST = \
+	create_libdxf_dox.sh \
 	libDXF.dox \
 	libDXF-64.png \
 	libDXF-96.png \
