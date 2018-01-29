@@ -246,6 +246,7 @@ char *dxf_ucs_get_dictionary_owner_hard (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_dictionary_owner_hard (DxfUcs *ucs, char *dictionary_owner_hard);
 DxfUcs *dxf_ucs_get_next (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_next (DxfUcs *ucs, DxfUcs *next);
+DxfUcs *dxf_ucs_get_last (DxfUcs *ucs);
 
 
 #ifdef __cplusplus

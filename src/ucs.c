@@ -2515,4 +2515,49 @@ dxf_ucs_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c UCS symbol table entry from a linked list
+ * of DXF \c UCS symbol table entries.
+ *
+ * \return pointer to the last \c UCS symbol table entry.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfUcs *
+dxf_ucs_get_last
+(
+        DxfUcs *ucs
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ucs->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfUcs *) ucs);
+        }
+        DxfUcs *iter = (DxfUcs *) ucs->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfUcs *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfUcs *) iter);
+}
+
+
 /* EOF */
