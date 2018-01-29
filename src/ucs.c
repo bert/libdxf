@@ -173,6 +173,7 @@ dxf_ucs_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -192,6 +193,7 @@ dxf_ucs_read
                 ucs = dxf_ucs_new ();
                 ucs = dxf_ucs_init (ucs);
         }
+        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -225,21 +227,21 @@ dxf_ucs_read
                         /* Now follows a string containing the
                          * X-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->x_origin);
+                        fscanf (fp->fp, "%lf\n", &ucs->origin->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->y_origin);
+                        fscanf (fp->fp, "%lf\n", &ucs->origin->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->z_origin);
+                        fscanf (fp->fp, "%lf\n", &ucs->origin->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -247,7 +249,7 @@ dxf_ucs_read
                          * X-coordinate of the reference point for the
                          * X-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->x_X_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->X_dir->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
@@ -255,7 +257,7 @@ dxf_ucs_read
                          * Y-coordinate of the reference point for the
                          * X-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->y_X_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->X_dir->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
@@ -263,7 +265,7 @@ dxf_ucs_read
                          * Z-coordinate of the reference point for the
                          * X-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->z_X_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->X_dir->z0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
@@ -271,7 +273,7 @@ dxf_ucs_read
                          * X-coordinate of the reference point for the
                          * Y-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->x_Y_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->Y_dir->x0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
@@ -279,7 +281,7 @@ dxf_ucs_read
                          * Y-coordinate of the reference point for the
                          * Y-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->y_Y_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->Y_dir->y0);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
@@ -287,7 +289,31 @@ dxf_ucs_read
                          * Z-coordinate of the reference point for the
                          * Y-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ucs->z_Y_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->Y_dir->z0);
+                }
+                else if (strcmp (temp_string, "13") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the Origin for this
+                         * orthographic type relative to this UCS. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &ucs->orthographic_type_origin->x0);
+                }
+                else if (strcmp (temp_string, "23") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the Origin for this
+                         * orthographic type relative to this UCS. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &ucs->orthographic_type_origin->y0);
+                }
+                else if (strcmp (temp_string, "33") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the Origin for this
+                         * orthographic type relative to this UCS. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &ucs->orthographic_type_origin->z0);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
@@ -295,6 +321,33 @@ dxf_ucs_read
                          * standard flag value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &ucs->flag);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the
+                         * standard flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &ucs->orthographic_type);
+                        if ((ucs->orthographic_type < 1)
+                          || (ucs->orthographic_type > 6))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad orthographic_type value in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "79") == 0)
+                {
+                        /* Now follows a string containing the
+                         * standard flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &ucs->spare);
+                        if (ucs->spare != 0)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad spare value in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -311,12 +364,33 @@ dxf_ucs_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
-                else if (strcmp (temp_string, "330") == 0)
+                else if (strcmp (temp_string, "146") == 0)
+                {
+                        /* Now follows a string containing the
+                         * elevation of this UCS. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &ucs->elevation);
+                }
+                else if ((i < 1) && (strcmp (temp_string, "330") == 0))
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", ucs->dictionary_owner_soft);
+                        i++;
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to object owner. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", ucs->object_owner_soft);
+                }
+                else if (strcmp (temp_string, "346") == 0)
+                {
+                        /* Now follows a string containing a base UCS. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", ucs->base_UCS);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
