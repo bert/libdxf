@@ -2475,4 +2475,44 @@ dxf_ucs_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c UCS symbol table entry for a
+ * DXF \c UCS symbol table entry.
+ */
+DxfUcs *
+dxf_ucs_set_next
+(
+        DxfUcs *ucs,
+                /*!< a pointer to a DXF \c UCS symbol table entry. */
+        DxfUcs *next
+                /*!< a pointer to the next \c UCS symbol table entry for
+                 * the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ucs->next = (struct DxfUcs *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ucs);
+}
+
+
 /* EOF */
