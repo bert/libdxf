@@ -69,45 +69,12 @@ dxf_ucs_struct
         DxfPoint *origin;
                 /*!< Base point coordinate.\n
                  * Group codes = 10, 20 and 30.*/
-        double x_origin;
-                /*!< X-value of the base point coordinate.\n
-                 * Group code = 10. */
-        double y_origin;
-                /*!< Y-value of the base point coordinate.\n
-                 * Group code = 20. */
-        double z_origin;
-                /*!< Z-value of the base point coordinate.\n
-                 * Group code = 30. */
         DxfPoint *X_dir;
                 /*!< Reference point for the X-axis direction.\n
                  * Group codes = 11, 21 and 31.*/
-        double x_X_dir;
-                /*!< X-value of the reference point for the X-axis
-                 * direction.\n
-                 * Group code = 11. */
-        double y_X_dir;
-                /*!< Y-value of the reference point for the X-axis
-                 * direction.\n
-                 * Group code = 21. */
-        double z_X_dir;
-                /*!< Z-value of the reference point for the X-axis
-                 * direction.\n
-                 * Group code = 31. */
         DxfPoint *Y_dir;
                 /*!< Reference point for the Y-axis direction.\n
                  * Group codes = 12, 22 and 32.*/
-        double x_Y_dir;
-                /*!< X-value of the reference point for the Y-axis
-                 * direction.\n
-                 * Group code = 12. */
-        double y_Y_dir;
-                /*!< Y-value of the reference point for the Y-axis
-                 * direction.\n
-                 * Group code = 22. */
-        double z_Y_dir;
-                /*!< Z-value of the reference point for the Y-axis
-                 * direction.\n
-                 * Group code = 32. */
         DxfPoint *orthographic_type_origin;
                 /*!< Origin for this orthographic type relative to this
                  * UCS.\n
