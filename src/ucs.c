@@ -524,7 +524,7 @@ dxf_ucs_write
         fprintf (fp->fp, "146\n%f\n", ucs->elevation);
         if (ucs->spare != 0)
         {
-                if (strcmp (ucs->base_UCS, "") != 0)
+                if (strcmp (ucs->base_UCS, "") == 0)
                 {
                         fprintf (fp->fp, "346\nWORLD\n");
                 }
