@@ -135,7 +135,7 @@ dxf_ucs_init
         ucs->orthographic_type_origin->z0 = 0.0;
         ucs->flag = 0;
         ucs->orthographic_type = 0;
-        ucs->spare = 0;
+        ucs->other_base_UCS = 0;
         ucs->elevation = 0.0;
         ucs->dictionary_owner_soft = strdup ("");
         ucs->object_owner_soft = strdup ("");
@@ -338,11 +338,11 @@ dxf_ucs_read
                 }
                 else if (strcmp (temp_string, "79") == 0)
                 {
-                        /* Now follows a string containing the
-                         * standard flag value. */
+                        /* Now follows a string containing the other base
+                         * UCS flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &ucs->spare);
-                        if (ucs->spare != 0)
+                        fscanf (fp->fp, "%d\n", &ucs->other_base_UCS);
+                        if (ucs->other_base_UCS != 0)
                         {
                                 fprintf (stderr,
                                   (_("Warning in %s () found a bad spare value in: %s in line: %d.\n")),
@@ -520,9 +520,9 @@ dxf_ucs_write
         fprintf (fp->fp, " 12\n%f\n", ucs->Y_dir->x0);
         fprintf (fp->fp, " 22\n%f\n", ucs->Y_dir->y0);
         fprintf (fp->fp, " 32\n%f\n", ucs->Y_dir->z0);
-        fprintf (fp->fp, " 79\n%d\n", ucs->spare);
+        fprintf (fp->fp, " 79\n%d\n", ucs->other_base_UCS);
         fprintf (fp->fp, "146\n%f\n", ucs->elevation);
-        if (ucs->spare != 0)
+        if (ucs->other_base_UCS != 0)
         {
                 if (strcmp (ucs->base_UCS, "") == 0)
                 {
@@ -2108,12 +2108,13 @@ dxf_ucs_set_orthographic_type_origin_z
 
 
 /*!
- * \brief Get the \c spare from a DXF \c UCS symbol table entry.
+ * \brief Get the \c other_base_UCS flag value from a DXF \c UCS symbol
+ * table entry.
  *
- * \return \c spare.
+ * \return \c other_base_UCS flag value.
  */
 int
-dxf_ucs_get_spare
+dxf_ucs_get_other_base_UCS
 (
         DxfUcs *ucs
                 /*!< a pointer to a DXF \c UCS symbol table entry. */
@@ -2133,20 +2134,22 @@ dxf_ucs_get_spare
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (ucs->spare);
+        return (ucs->other_base_UCS);
 }
 
 
 /*!
- * \brief Set the \c spare for a DXF \c UCS symbol table entry.
+ * \brief Set the \c other_base_UCS flag value for a DXF \c UCS symbol
+ * table entry.
  */
 DxfUcs *
-dxf_ucs_set_spare
+dxf_ucs_set_other_base_UCS
 (
         DxfUcs *ucs,
                 /*!< a pointer to a DXF \c UCS symbol table entry. */
-        int spare
-                /*!< the \c spare to be set for the entry. */
+        int other_base_UCS
+                /*!< the \c other_base_UCS flag value to be set for the
+                 * entry. */
 )
 {
 #if DEBUG
@@ -2160,7 +2163,7 @@ dxf_ucs_set_spare
                   __FUNCTION__);
                 return (NULL);
         }
-        ucs->spare = spare;
+        ucs->other_base_UCS = other_base_UCS;
 #if DEBUG
         DXF_DEBUG_END
 #endif

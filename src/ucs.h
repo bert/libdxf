@@ -124,7 +124,7 @@ dxf_ucs_struct
                  * </ol>
                  * Group code = 71.\n
                  * \since Introduced in version R2000.\n */
-        int spare;
+        int other_base_UCS;
                 /*!< Always 0.
                  * Group code = 79.\n
                  * \since Introduced in version R2000.\n */
@@ -199,8 +199,8 @@ double dxf_ucs_get_orthographic_type_origin_y (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_orthographic_type_origin_y (DxfUcs *ucs, double y);
 double dxf_ucs_get_orthographic_type_origin_z (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_orthographic_type_origin_z (DxfUcs *ucs, double z);
-int dxf_ucs_get_spare (DxfUcs *ucs);
-DxfUcs *dxf_ucs_set_spare (DxfUcs *ucs, int spare);
+int dxf_ucs_get_other_base_UCS (DxfUcs *ucs);
+DxfUcs *dxf_ucs_set_other_base_UCS (DxfUcs *ucs, int other_base_UCS);
 double dxf_ucs_get_elevation (DxfUcs *ucs);
 DxfUcs *dxf_ucs_set_elevation (DxfUcs *ucs, double elevation);
 char *dxf_ucs_get_dictionary_owner_soft (DxfUcs *ucs);
