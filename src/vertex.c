@@ -1,7 +1,7 @@
 /*!
  * \file vertex.c
  *
- * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2017
+ * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
@@ -685,6 +685,42 @@ dxf_vertex_free_chain
 #if DEBUG
         DXF_DEBUG_END
 #endif
+}
+
+
+/*!
+ * \brief Get the \c id_code from a DXF \c VERTEX entity.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_vertex_get_id_code
+(
+        DxfVertex *vertex
+                /*!< a pointer to a DXF \c VERTEX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vertex->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex->id_code);
 }
 
 

@@ -1,8 +1,8 @@
 /*!
  * \file vertex.h
  *
- * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
+ * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF vertex entity (\c VERTEX).
  *
@@ -205,6 +205,7 @@ DxfVertex *dxf_vertex_read (DxfFile *fp, DxfVertex *vertex);
 int dxf_vertex_write (DxfFile *fp, DxfVertex *vertex);
 int dxf_vertex_free (DxfVertex *vertex);
 void dxf_vertex_free_chain (DxfVertex *vertices);
+int dxf_vertex_get_id_code (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
