@@ -511,15 +511,39 @@ dxf_ucs_write
         }
         fprintf (fp->fp, "  2\n%s\n", ucs->UCS_name);
         fprintf (fp->fp, " 70\n%d\n", ucs->flag);
-        fprintf (fp->fp, " 10\n%f\n", ucs->x_origin);
-        fprintf (fp->fp, " 20\n%f\n", ucs->y_origin);
-        fprintf (fp->fp, " 30\n%f\n", ucs->z_origin);
-        fprintf (fp->fp, " 11\n%f\n", ucs->x_X_dir);
-        fprintf (fp->fp, " 21\n%f\n", ucs->y_X_dir);
-        fprintf (fp->fp, " 31\n%f\n", ucs->z_X_dir);
-        fprintf (fp->fp, " 12\n%f\n", ucs->x_Y_dir);
-        fprintf (fp->fp, " 22\n%f\n", ucs->y_Y_dir);
-        fprintf (fp->fp, " 32\n%f\n", ucs->z_Y_dir);
+        fprintf (fp->fp, " 10\n%f\n", ucs->origin->x0);
+        fprintf (fp->fp, " 20\n%f\n", ucs->origin->y0);
+        fprintf (fp->fp, " 30\n%f\n", ucs->origin->z0);
+        fprintf (fp->fp, " 11\n%f\n", ucs->X_dir->x0);
+        fprintf (fp->fp, " 21\n%f\n", ucs->X_dir->y0);
+        fprintf (fp->fp, " 31\n%f\n", ucs->X_dir->z0);
+        fprintf (fp->fp, " 12\n%f\n", ucs->Y_dir->x0);
+        fprintf (fp->fp, " 22\n%f\n", ucs->Y_dir->y0);
+        fprintf (fp->fp, " 32\n%f\n", ucs->Y_dir->z0);
+        fprintf (fp->fp, " 79\n%d\n", ucs->spare);
+        fprintf (fp->fp, "146\n%f\n", ucs->elevation);
+        if (ucs->spare != 0)
+        {
+                if (strcmp (ucs->base_UCS, "") != 0)
+                {
+                        fprintf (fp->fp, "346\nWORLD\n");
+                }
+                else
+                {
+                        fprintf (fp->fp, "346\n%s\n", ucs->base_UCS);
+                }
+        }
+        else
+        {
+                /* If 0 do nothing. */
+        }
+        if (ucs->orthographic_type > 0)
+        {
+                fprintf (fp->fp, " 71\n%d\n", ucs->orthographic_type);
+                fprintf (fp->fp, " 13\n%f\n", ucs->orthographic_type_origin->x0);
+                fprintf (fp->fp, " 23\n%f\n", ucs->orthographic_type_origin->y0);
+                fprintf (fp->fp, " 33\n%f\n", ucs->orthographic_type_origin->z0);
+        }
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
