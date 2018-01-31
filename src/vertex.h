@@ -207,6 +207,7 @@ int dxf_vertex_free (DxfVertex *vertex);
 void dxf_vertex_free_chain (DxfVertex *vertices);
 int dxf_vertex_get_id_code (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_id_code (DxfVertex *vertex, int id_code);
+char *dxf_vertex_get_linetype (DxfVertex *vertex);
 
 
 #ifdef __cplusplus

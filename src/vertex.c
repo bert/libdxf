@@ -763,4 +763,41 @@ dxf_vertex_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c linetype from a DXF \c VERTEX entity.
+ *
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_vertex_get_linetype
+(
+        DxfVertex *vertex
+                /*!< a pointer to a DXF \c VERTEX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vertex->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (vertex->linetype));
+}
+
+
 /* EOF */
