@@ -209,6 +209,7 @@ int dxf_vertex_get_id_code (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_id_code (DxfVertex *vertex, int id_code);
 char *dxf_vertex_get_linetype (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_linetype (DxfVertex *vertex, char *linetype);
+char *dxf_vertex_get_layer (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
