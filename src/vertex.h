@@ -206,6 +206,7 @@ int dxf_vertex_write (DxfFile *fp, DxfVertex *vertex);
 int dxf_vertex_free (DxfVertex *vertex);
 void dxf_vertex_free_chain (DxfVertex *vertices);
 int dxf_vertex_get_id_code (DxfVertex *vertex);
+DxfVertex *dxf_vertex_set_id_code (DxfVertex *vertex, int id_code);
 
 
 #ifdef __cplusplus
