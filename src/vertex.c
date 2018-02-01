@@ -976,4 +976,41 @@ dxf_vertex_set_elevation
 }
 
 
+/*!
+ * \brief Get the \c thickness from a DXF \c VERTEX entity.
+ *
+ * \return \c thickness.
+ */
+double
+dxf_vertex_get_thickness
+(
+        DxfVertex *vertex
+                /*!< a pointer to a DXF \c VERTEX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vertex->thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex->thickness);
+}
+
+
 /* EOF */
