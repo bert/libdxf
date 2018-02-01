@@ -217,6 +217,7 @@ double dxf_vertex_get_thickness (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_thickness (DxfVertex *vertex, double thickness);
 double dxf_vertex_get_linetype_scale (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_linetype_scale (DxfVertex *vertex, double linetype_scale);
+int16_t dxf_vertex_get_visibility (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
