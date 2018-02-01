@@ -214,6 +214,7 @@ DxfVertex *dxf_vertex_set_layer (DxfVertex *vertex, char *layer);
 double dxf_vertex_get_elevation (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_elevation (DxfVertex *vertex, double elevation);
 double dxf_vertex_get_thickness (DxfVertex *vertex);
+DxfVertex *dxf_vertex_set_thickness (DxfVertex *vertex, double thickness);
 
 
 #ifdef __cplusplus
