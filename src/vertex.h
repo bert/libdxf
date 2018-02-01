@@ -211,6 +211,7 @@ char *dxf_vertex_get_linetype (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_linetype (DxfVertex *vertex, char *linetype);
 char *dxf_vertex_get_layer (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_layer (DxfVertex *vertex, char *layer);
+double dxf_vertex_get_elevation (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
