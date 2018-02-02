@@ -221,6 +221,7 @@ int16_t dxf_vertex_get_visibility (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_visibility (DxfVertex *vertex, int16_t visibility);
 int dxf_vertex_get_color (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_color (DxfVertex *vertex, int color);
+int dxf_vertex_get_paperspace (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
