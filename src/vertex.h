@@ -6,6 +6,12 @@
  *
  * \brief Header file for a DXF vertex entity (\c VERTEX).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -68,12 +74,6 @@ extern "C" {
  * The first zero \c VERTEX marks the end of the vertices of the face.\n
  * Since the 71 through 74 groups are optional fields with default values of
  * zero, they are present in DXF only if nonzero.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_vertex_struct
