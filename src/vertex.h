@@ -301,6 +301,7 @@ int dxf_vertex_get_color (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_color (DxfVertex *vertex, int color);
 int dxf_vertex_get_paperspace (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_paperspace (DxfVertex *vertex, int paperspace);
+int dxf_vertex_get_graphics_data_size (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
