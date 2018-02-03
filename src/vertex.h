@@ -304,6 +304,7 @@ DxfVertex *dxf_vertex_set_paperspace (DxfVertex *vertex, int paperspace);
 int dxf_vertex_get_graphics_data_size (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_graphics_data_size (DxfVertex *vertex, int graphics_data_size);
 int16_t dxf_vertex_get_shadow_mode (DxfVertex *vertex);
+DxfVertex *dxf_vertex_set_shadow_mode (DxfVertex *vertex, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
