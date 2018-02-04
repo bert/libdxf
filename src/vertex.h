@@ -311,6 +311,7 @@ char *dxf_vertex_get_dictionary_owner_soft (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_dictionary_owner_soft (DxfVertex *vertex, char *dictionary_owner_soft);
 char *dxf_vertex_get_material (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_material (DxfVertex *vertex, char *material);
+char *dxf_vertex_get_dictionary_owner_hard (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
