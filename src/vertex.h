@@ -309,6 +309,7 @@ DxfBinaryGraphicsData *dxf_vertex_get_binary_graphics_data (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_binary_graphics_data (DxfVertex *vertex, DxfBinaryGraphicsData *data);
 char *dxf_vertex_get_dictionary_owner_soft (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_dictionary_owner_soft (DxfVertex *vertex, char *dictionary_owner_soft);
+char *dxf_vertex_get_material (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
