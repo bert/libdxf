@@ -583,7 +583,7 @@ dxf_vertex_write
 
 /*!
  * \brief Free the allocated memory for a \c VERTEX entity and all it's
- * data fields.\n
+ * data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
