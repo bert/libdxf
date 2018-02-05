@@ -1876,4 +1876,38 @@ dxf_vertex_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c VERTEX entity.
+ *
+ * \return a pointer to \c vertex when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfVertex *
+dxf_vertex_set_lineweight
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
