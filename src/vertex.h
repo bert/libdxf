@@ -316,6 +316,7 @@ DxfVertex *dxf_vertex_set_dictionary_owner_hard (DxfVertex *vertex, char *dictio
 int16_t dxf_vertex_get_lineweight (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_lineweight (DxfVertex *vertex, int16_t lineweight);
 char *dxf_vertex_get_plot_style_name (DxfVertex *vertex);
+DxfVertex *dxf_vertex_set_plot_style_name (DxfVertex *vertex, char *plot_style_name);
 
 
 #ifdef __cplusplus

@@ -1948,4 +1948,46 @@ dxf_vertex_get_plot_style_name
 }
 
 
+/*!
+ * \brief Set the \c plot_style_name for a DXF \c VERTEX entity.
+ *
+ * \return a pointer to \c vertex when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfVertex *
+dxf_vertex_set_plot_style_name
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        char *plot_style_name
+                /*!< a string containing the \c plot_style_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->plot_style_name = strdup (plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
