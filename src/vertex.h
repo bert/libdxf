@@ -322,6 +322,7 @@ DxfVertex *dxf_vertex_set_color_value (DxfVertex *vertex, long color_value);
 char *dxf_vertex_get_color_name (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_color_name (DxfVertex *vertex, char *color_name);
 long dxf_vertex_get_transparency (DxfVertex *vertex);
+DxfVertex *dxf_vertex_set_transparency (DxfVertex *vertex, long transparency);
 
 
 #ifdef __cplusplus
