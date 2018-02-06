@@ -319,6 +319,7 @@ char *dxf_vertex_get_plot_style_name (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_plot_style_name (DxfVertex *vertex, char *plot_style_name);
 long dxf_vertex_get_color_value (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_color_value (DxfVertex *vertex, long color_value);
+char *dxf_vertex_get_color_name (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
