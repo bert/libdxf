@@ -2201,7 +2201,7 @@ dxf_vertex_set_transparency
 
 
 /*!
- * \brief Get the laction point \c p0 of a DXF \c VERTEX entity.
+ * \brief Get the location point \c p0 of a DXF \c VERTEX entity.
  *
  * \return the location point \c p0.
  */
