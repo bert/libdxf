@@ -327,6 +327,7 @@ DxfPoint *dxf_vertex_get_p0 (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_p0 (DxfVertex *vertex, DxfPoint *p0);
 double dxf_vertex_get_x0 (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_x0 (DxfVertex *vertex, double x0);
+double dxf_vertex_get_y0 (DxfVertex *vertex);
 
 
 #ifdef __cplusplus

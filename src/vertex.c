@@ -2359,4 +2359,43 @@ dxf_vertex_set_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the location point \c y0 of a DXF \c VERTEX
+ * entity.
+ *
+ * \return the Y-value of the location point \c y0.
+ */
+double
+dxf_vertex_get_y0
+(
+        DxfVertex *vertex
+                /*!< a pointer to a DXF \c VERTEX entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vertex->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex->p0->y0);
+}
+
+
 /* EOF */
