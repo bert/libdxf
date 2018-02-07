@@ -2316,4 +2316,47 @@ dxf_vertex_get_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the location point \c x0 of a DXF \c VERTEX
+ * entity.
+ *
+ * \return a pointer to \c vertex when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfVertex *
+dxf_vertex_set_x0
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        double x0
+                /*!< the X-value of the location point \c x0 of a DXF
+                 * \c VERTEX entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vertex->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->p0->x0 = x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
