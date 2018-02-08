@@ -2553,4 +2553,35 @@ dxf_vertex_get_start_width
 }
 
 
+/*!
+ * \brief Set the \c start_width for a DXF \c VERTEX entity.
+ */
+DxfVertex *
+dxf_vertex_set_start_width
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        double start_width
+                /*!< the \c start_width to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->start_width = start_width;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
