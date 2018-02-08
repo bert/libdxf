@@ -2614,4 +2614,35 @@ dxf_vertex_get_end_width
 }
 
 
+/*!
+ * \brief Set the \c end_width for a DXF \c VERTEX entity.
+ */
+DxfVertex *
+dxf_vertex_set_end_width
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        double end_width
+                /*!< the \c end_width to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->end_width = end_width;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
