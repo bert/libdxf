@@ -333,6 +333,7 @@ double dxf_vertex_get_z0 (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_z0 (DxfVertex *vertex, double z0);
 double dxf_vertex_get_start_width (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_start_width (DxfVertex *vertex, double start_width);
+double dxf_vertex_get_end_width (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
