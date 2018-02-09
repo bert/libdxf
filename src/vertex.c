@@ -2737,4 +2737,36 @@ dxf_vertex_get_curve_fit_tangent_direction
 }
 
 
+/*!
+ * \brief Set the \c curve_fit_tangent_direction for a DXF \c VERTEX entity.
+ */
+DxfVertex *
+dxf_vertex_set_curve_fit_tangent_direction
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        double curve_fit_tangent_direction
+                /*!< the \c curve_fit_tangent_direction to be set for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->curve_fit_tangent_direction = curve_fit_tangent_direction;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
