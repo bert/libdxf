@@ -341,6 +341,7 @@ double dxf_vertex_get_curve_fit_tangent_direction (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_curve_fit_tangent_direction (DxfVertex *vertex, double curve_fit_tangent_direction);
 int dxf_vertex_get_flag (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_flag (DxfVertex *vertex, int flag);
+int dxf_vertex_get_polyface_mesh_vertex_index_1 (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
