@@ -336,6 +336,7 @@ DxfVertex *dxf_vertex_set_start_width (DxfVertex *vertex, double start_width);
 double dxf_vertex_get_end_width (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_end_width (DxfVertex *vertex, double end_width);
 double dxf_vertex_get_bulge (DxfVertex *vertex);
+DxfVertex *dxf_vertex_set_bulge (DxfVertex *vertex, double bulge);
 
 
 #ifdef __cplusplus
