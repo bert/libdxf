@@ -337,6 +337,7 @@ double dxf_vertex_get_end_width (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_end_width (DxfVertex *vertex, double end_width);
 double dxf_vertex_get_bulge (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_bulge (DxfVertex *vertex, double bulge);
+double dxf_vertex_get_curve_fit_tangent_direction (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
