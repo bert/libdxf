@@ -3119,4 +3119,43 @@ dxf_vertex_get_polyface_mesh_vertex_index_4
 }
 
 
+/*!
+ * \brief Set the \c polyface_mesh_vertex_index_4 for a DXF \c VERTEX
+ * entity.
+ */
+DxfVertex *
+dxf_vertex_set_polyface_mesh_vertex_index_4
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        int polyface_mesh_vertex_index_4
+                /*!< the \c polyface_mesh_vertex_index_4 to be set for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyface_mesh_vertex_index_4 < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        vertex->polyface_mesh_vertex_index_4 = polyface_mesh_vertex_index_4;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
