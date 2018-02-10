@@ -347,6 +347,7 @@ int dxf_vertex_get_polyface_mesh_vertex_index_2 (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_polyface_mesh_vertex_index_2 (DxfVertex *vertex, int polyface_mesh_vertex_index_2);
 int dxf_vertex_get_polyface_mesh_vertex_index_3 (DxfVertex *vertex);
 DxfVertex *dxf_vertex_set_polyface_mesh_vertex_index_3 (DxfVertex *vertex, int polyface_mesh_vertex_index_3);
+int dxf_vertex_get_polyface_mesh_vertex_index_4 (DxfVertex *vertex);
 
 
 #ifdef __cplusplus
