@@ -3198,4 +3198,43 @@ dxf_vertex_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c VERTEX for a DXF \c VERTEX
+ * entity.
+ */
+DxfVertex *
+dxf_vertex_set_next
+(
+        DxfVertex *vertex,
+                /*!< a pointer to a DXF \c VERTEX entity. */
+        DxfVertex *next
+                /*!< a pointer to the next \c VERTEX for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->next = (struct DxfVertex *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
 /* EOF */
