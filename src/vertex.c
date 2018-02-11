@@ -3237,4 +3237,49 @@ dxf_vertex_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c VERTEX entity from a linked list
+ * of DXF \c VERTEX entities.
+ *
+ * \return pointer to the last \c VERTEX entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfVertex *
+dxf_vertex_get_last
+(
+        DxfVertex *vertex
+                /*!< a pointer to a DXF \c VERTEX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vertex->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfVertex *) vertex);
+        }
+        DxfVertex *iter = (DxfVertex *) vertex->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfVertex *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfVertex *) iter);
+}
+
+
 /* EOF */
