@@ -235,21 +235,21 @@ dxf_vertex_read
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vertex->x0);
+                        fscanf (fp->fp, "%lf\n", &vertex->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vertex->y0);
+                        fscanf (fp->fp, "%lf\n", &vertex->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vertex->z0);
+                        fscanf (fp->fp, "%lf\n", &vertex->p0->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -358,6 +358,13 @@ dxf_vertex_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &vertex->polyface_mesh_vertex_index_4);
                 }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &vertex->graphics_data_size);
+                }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
@@ -375,6 +382,29 @@ dxf_vertex_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &vertex->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &vertex->shadow_mode);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", vertex->binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) vertex->binary_graphics_data->next);
+                        vertex->binary_graphics_data = (DxfBinaryGraphicsData *) vertex->binary_graphics_data->next;
+                }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
@@ -382,12 +412,53 @@ dxf_vertex_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", vertex->dictionary_owner_soft);
                 }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", vertex->material);
+                }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", vertex->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &vertex->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", vertex->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &vertex->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", vertex->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &vertex->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
