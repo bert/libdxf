@@ -1,10 +1,16 @@
 /*!
  * \file view.h
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF view symbol table entry (\c VIEW).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -49,12 +55,6 @@ extern "C" {
  *
  * See chapter 2 of the "AutoLISP Programmer's Reference" for
  * information on DCS, the Display Coordinate System.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_view
