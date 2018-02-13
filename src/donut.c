@@ -260,9 +260,9 @@ dxf_donut_write
         vertex_1->id_code = id_code;
         vertex_1->layer = dxf_donut_get_layer (donut);
         vertex_1->linetype = dxf_donut_get_linetype (donut);
-        vertex_1->x0 = dxf_donut_get_x0 (donut) - (0.25 * (dxf_donut_get_outside_diameter (donut) + dxf_donut_get_inside_diameter (donut)));
-        vertex_1->y0 = dxf_donut_get_y0 (donut);
-        vertex_1->z0 = dxf_donut_get_z0 (donut);
+        vertex_1->p0->x0 = dxf_donut_get_x0 (donut) - (0.25 * (dxf_donut_get_outside_diameter (donut) + dxf_donut_get_inside_diameter (donut)));
+        vertex_1->p0->y0 = dxf_donut_get_y0 (donut);
+        vertex_1->p0->z0 = dxf_donut_get_z0 (donut);
         vertex_1->thickness = dxf_donut_get_thickness (donut);
         vertex_1->start_width = 0.5 * start_width;
         vertex_1->end_width = 0.5 * end_width;
@@ -281,9 +281,9 @@ dxf_donut_write
         vertex_2->id_code = id_code;
         vertex_2->layer = dxf_donut_get_layer (donut);
         vertex_2->linetype = dxf_donut_get_linetype (donut);
-        vertex_2->x0 = dxf_donut_get_x0 (donut) + (0.25 * (dxf_donut_get_outside_diameter (donut) + dxf_donut_get_inside_diameter (donut)));
-        vertex_2->y0 = dxf_donut_get_y0 (donut);
-        vertex_2->z0 = dxf_donut_get_z0 (donut);
+        vertex_2->p0->x0 = dxf_donut_get_x0 (donut) + (0.25 * (dxf_donut_get_outside_diameter (donut) + dxf_donut_get_inside_diameter (donut)));
+        vertex_2->p0->y0 = dxf_donut_get_y0 (donut);
+        vertex_2->p0->z0 = dxf_donut_get_z0 (donut);
         vertex_2->thickness = dxf_donut_get_thickness (donut);
         vertex_2->start_width = 0.5 * start_width;
         vertex_2->end_width = 0.5 * end_width;
