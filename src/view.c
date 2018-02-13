@@ -567,4 +567,40 @@ dxf_view_free_chain
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c VIEW symbol table entry.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_view_get_id_code
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (view->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->id_code);
+}
+
+
 /* EOF */

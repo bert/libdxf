@@ -153,6 +153,7 @@ DxfView *dxf_view_read (DxfFile *fp, DxfView *view);
 int dxf_view_write (DxfFile *fp, DxfView *view);
 int dxf_view_free (DxfView *view);
 void dxf_view_free_chain (DxfView *views);
+int dxf_view_get_id_code (DxfView *view);
 
 
 #ifdef __cplusplus
