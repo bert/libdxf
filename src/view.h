@@ -43,6 +43,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -67,12 +68,18 @@ dxf_view_struct
         char *view_name;
                 /*!< Name of view.\n
                  * Group code = 2. */
+        DxfPoint *view_center;
+                /*!< View center point, in Display Coordinate System.\n
+                 * Group codes = 10 and 20.*/
         double x_view;
                 /*!< View center point, in Display Coordinate System.\n
                  * Group code = 10. */
         double y_view;
                 /*!< View center point, in Display Coordinate System.\n
                  * Group code = 20. */
+        DxfPoint *view_direction;
+                /*!< View direction from target, in World Coordinate
+                 * Group codes = 11, 21 and 31.*/
         double x_direction;
                 /*!< View direction from target, in World Coordinate
                  * System.\n
@@ -85,6 +92,9 @@ dxf_view_struct
                 /*!< View direction from target, in World Coordinate
                  * System.\n
                  * Group code = 31. */
+        DxfPoint *view_target;
+                /*!< Target point, in WCS.\n
+                 * Group codes = 12, 22 and 32.*/
         double x_target;
                 /*!< Target point, in WCS.\n
                  * Group code = 12. */
