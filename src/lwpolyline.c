@@ -578,8 +578,8 @@ dxf_lwpolyline_write
         iter = (DxfVertex *) lwpolyline->vertices;
         while (iter != NULL)
         {
-                fprintf (fp->fp, " 10\n%f\n", iter->x0);
-                fprintf (fp->fp, " 20\n%f\n", iter->y0);
+                fprintf (fp->fp, " 10\n%f\n", iter->p0->x0);
+                fprintf (fp->fp, " 20\n%f\n", iter->p0->y0);
                 if ((iter->start_width != lwpolyline->constant_width)
                   || (iter->end_width != lwpolyline->constant_width))
                 {
