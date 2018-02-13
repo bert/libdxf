@@ -57,7 +57,7 @@ extern "C" {
  * information on DCS, the Display Coordinate System.
  */
 typedef struct
-dxf_view
+dxf_view_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
