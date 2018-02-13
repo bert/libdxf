@@ -618,14 +618,24 @@ dxf_vertex_write
                 fprintf (fp->fp, " 39\n%f\n", vertex->thickness);
         }
         fprintf (fp->fp, "100\nAcDbVertex\n");
-        /*! \todo We use a \c 3dPolylineVertex for now,
-         * it could have been a \c 2dVertex as well, in that case use:\n
-        fprintf (fp->fp, "100\nAcDb2dVertex\n");
-         */
+        if ((DXF_CHECK_BIT (vertex->flag, 0))
+          || (DXF_CHECK_BIT (vertex->flag, 1))
+          || (DXF_CHECK_BIT (vertex->flag, 2))
+          || (DXF_CHECK_BIT (vertex->flag, 3))
+          || (DXF_CHECK_BIT (vertex->flag, 4)))
+        {
+                fprintf (fp->fp, "100\nAcDb2dVertex\n");
+        }
+        if ((DXF_CHECK_BIT (vertex->flag, 5))
+          || (DXF_CHECK_BIT (vertex->flag, 6))
+          || (DXF_CHECK_BIT (vertex->flag, 7)))
+        {
+                fprintf (fp->fp, "100\nAcDb3dPolylineVertex\n");
+        }
         fprintf (fp->fp, "100\nAcDb3dPolylineVertex\n");
-        fprintf (fp->fp, " 10\n%f\n", vertex->x0);
-        fprintf (fp->fp, " 20\n%f\n", vertex->y0);
-        fprintf (fp->fp, " 30\n%f\n", vertex->z0);
+        fprintf (fp->fp, " 10\n%f\n", vertex->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", vertex->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", vertex->p0->z0);
         if (vertex->start_width != 0.0)
         {
                 fprintf (fp->fp, " 40\n%f\n", vertex->start_width);
@@ -659,6 +669,7 @@ dxf_vertex_write
         {
                 fprintf (fp->fp, " 74\n%d\n", vertex->polyface_mesh_vertex_index_4);
         }
+        fprintf (fp->fp, " 91\n%d\n", vertex->vertex_identifier);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
