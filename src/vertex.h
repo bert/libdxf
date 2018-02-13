@@ -208,15 +208,6 @@ dxf_vertex_struct
         DxfPoint *p0;
                 /*!< Location point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< X value of the location point.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y value of the location point.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z value of the location point.\n
-                 * Group code = 30. */
         double start_width;
                 /*!< Starting width (optional, defaults to 0.0).\n
                  * Group code = 40. */
