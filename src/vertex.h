@@ -271,6 +271,10 @@ dxf_vertex_struct
                  * Optional.\n
                  * Present only if nonzero.\n
                  * Group code = 74. */
+        int vertex_identifier;
+                /*!< Vertex identifier.\n
+                 * Group code = 91. */
+
         struct DxfVertex *next;
                 /*!< Pointer to the next DxfVertex.\n
                  * \c NULL in the last DxfVertex. */
