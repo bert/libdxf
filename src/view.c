@@ -679,4 +679,43 @@ dxf_view_get_view_name
 }
 
 
+/*!
+ * \brief Set the \c view_name for a DXF \c VIEW symbol table entry.
+ */
+DxfView *
+dxf_view_set_view_name
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        char *view_name
+                /*!< a pointer to a string containing the \c view_name
+                 * to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        view->view_name = strdup (view_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */
