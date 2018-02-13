@@ -235,14 +235,14 @@ dxf_lwpolyline_read
                         /* Now follows a string containing the
                         * X-coordinate of a vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &iter->x0);
+                        fscanf (fp->fp, "%lf\n", &iter->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                         * Y-coordinate of a vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &iter->y0);
+                        fscanf (fp->fp, "%lf\n", &iter->p0->y0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
