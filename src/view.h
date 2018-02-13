@@ -155,6 +155,7 @@ int dxf_view_free (DxfView *view);
 void dxf_view_free_chain (DxfView *views);
 int dxf_view_get_id_code (DxfView *view);
 DxfView *dxf_view_set_id_code (DxfView *view, int id_code);
+char *dxf_view_get_view_name (DxfView *view);
 
 
 #ifdef __cplusplus
