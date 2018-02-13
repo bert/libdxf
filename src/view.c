@@ -603,4 +603,43 @@ dxf_view_get_id_code
 }
 
 
+/*!
+ * \brief Set the \c id_code for a DXF \c VIEW symbol table entry.
+ */
+DxfView *
+dxf_view_set_id_code
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        int id_code
+                /*!< the \c id_code to be set for the entry.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        view->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */
