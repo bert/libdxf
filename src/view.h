@@ -169,6 +169,7 @@ char *dxf_view_get_view_name (DxfView *view);
 DxfView *dxf_view_set_view_name (DxfView *view, char *view_name);
 DxfPoint *dxf_view_get_view_center (DxfView *view);
 DxfView *dxf_view_set_view_center (DxfView *view, DxfPoint *view_center);
+double dxf_view_get_view_center_x0 (DxfView *view);
 
 
 #ifdef __cplusplus
