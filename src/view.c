@@ -756,4 +756,45 @@ dxf_view_get_view_center
 }
 
 
+/*!
+ * \brief Set the view center point \c view_center of a DXF \c VIEW
+ * symbol table entry.
+ *
+ * \return a pointer to a DXF \c VIEW symbol table entry.
+ */
+DxfView *
+dxf_view_set_view_center
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        DxfPoint *view_center
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view_center == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        view->view_center = view_center;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */
