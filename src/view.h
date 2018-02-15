@@ -92,7 +92,7 @@ dxf_view_struct
                 /*!< View direction from target, in World Coordinate
                  * System.\n
                  * Group code = 31. */
-        DxfPoint *view_target;
+        DxfPoint *p2;
                 /*!< Target point, in WCS.\n
                  * Group codes = 12, 22 and 32.*/
         double x_target;
