@@ -77,7 +77,7 @@ dxf_view_struct
         double y_view;
                 /*!< View center point, in Display Coordinate System.\n
                  * Group code = 20. */
-        DxfPoint *view_direction;
+        DxfPoint *p1;
                 /*!< View direction from target, in World Coordinate
                  * Group codes = 11, 21 and 31.*/
         double x_direction;
