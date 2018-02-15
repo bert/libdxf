@@ -171,6 +171,7 @@ DxfPoint *dxf_view_get_p0 (DxfView *view);
 DxfView *dxf_view_set_p0 (DxfView *view, DxfPoint *p0);
 double dxf_view_get_x0 (DxfView *view);
 DxfView *dxf_view_set_x0 (DxfView *view, double x0);
+double dxf_view_get_y0 (DxfView *view);
 
 
 #ifdef __cplusplus
