@@ -68,7 +68,7 @@ dxf_view_struct
         char *view_name;
                 /*!< Name of view.\n
                  * Group code = 2. */
-        DxfPoint *view_center;
+        DxfPoint *p0;
                 /*!< View center point, in Display Coordinate System.\n
                  * Group codes = 10 and 20.*/
         double x_view;
@@ -167,10 +167,10 @@ int dxf_view_get_id_code (DxfView *view);
 DxfView *dxf_view_set_id_code (DxfView *view, int id_code);
 char *dxf_view_get_view_name (DxfView *view);
 DxfView *dxf_view_set_view_name (DxfView *view, char *view_name);
-DxfPoint *dxf_view_get_view_center (DxfView *view);
-DxfView *dxf_view_set_view_center (DxfView *view, DxfPoint *view_center);
-double dxf_view_get_view_center_x0 (DxfView *view);
-DxfView *dxf_view_set_view_center_x0 (DxfView *view, double view_center_x0);
+DxfPoint *dxf_view_get_p0 (DxfView *view);
+DxfView *dxf_view_set_p0 (DxfView *view, DxfPoint *p0);
+double dxf_view_get_x0 (DxfView *view);
+DxfView *dxf_view_set_x0 (DxfView *view, double x0);
 
 
 #ifdef __cplusplus

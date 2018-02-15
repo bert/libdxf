@@ -719,13 +719,13 @@ dxf_view_set_view_name
 
 
 /*!
- * \brief Get the view center point \c view_center of a DXF \c VIEW
+ * \brief Get the view center point \c p0 of a DXF \c VIEW
  * symbol table entry.
  *
- * \return the view center point \c view_center.
+ * \return the view center point \c p0.
  */
 DxfPoint *
-dxf_view_get_view_center
+dxf_view_get_p0
 (
         DxfView *view
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
@@ -742,7 +742,7 @@ dxf_view_get_view_center
                   __FUNCTION__);
                 return (NULL);
         }
-        if (view->view_center == NULL)
+        if (view->p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -752,22 +752,22 @@ dxf_view_get_view_center
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (view->view_center);
+        return (view->p0);
 }
 
 
 /*!
- * \brief Set the view center point \c view_center of a DXF \c VIEW
+ * \brief Set the view center point \c p0 of a DXF \c VIEW
  * symbol table entry.
  *
  * \return a pointer to a DXF \c VIEW symbol table entry.
  */
 DxfView *
-dxf_view_set_view_center
+dxf_view_set_p0
 (
         DxfView *view,
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
-        DxfPoint *view_center
+        DxfPoint *p0
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -782,14 +782,14 @@ dxf_view_set_view_center
                   __FUNCTION__);
                 return (NULL);
         }
-        if (view_center == NULL)
+        if (p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        view->view_center = view_center;
+        view->p0 = p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -798,13 +798,13 @@ dxf_view_set_view_center
 
 
 /*!
- * \brief Get the X-value of the view center point \c view_center_x0 of
- * a DXF \c VIEW symbol table entry.
+ * \brief Get the X-value of the view center point \c x0 of a DXF
+ * \c VIEW symbol table entry.
  *
- * \return the X-value of the view center point \c view_center_x0.
+ * \return the X-value of the view center point \c x0.
  */
 double
-dxf_view_get_view_center_x0
+dxf_view_get_x0
 (
         DxfView *view
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
@@ -822,7 +822,7 @@ dxf_view_get_view_center_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (view->view_center == NULL)
+        if (view->p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -832,7 +832,7 @@ dxf_view_get_view_center_x0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (view->view_center->x0);
+        return (view->p0->x0);
 }
 
 
@@ -844,14 +844,13 @@ dxf_view_get_view_center_x0
  * error occurred.
  */
 DxfView *
-dxf_view_set_view_center_x0
+dxf_view_set_x0
 (
         DxfView *view,
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
-        double view_center_x0
-                /*!< the X-value of the view center point
-                 * \c view_center_x0 of a DXF \c VIEW symbol table
-                 * entry. */
+        double x0
+                /*!< the X-value of the view center point \c x0 of a DXF
+                 * \c VIEW symbol table entry. */
 )
 {
 #ifdef DEBUG
@@ -865,14 +864,14 @@ dxf_view_set_view_center_x0
                   __FUNCTION__);
                 return (NULL);
         }
-        if (view->view_center == NULL)
+        if (view->p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        view->view_center->x0 = view_center_x0;
+        view->p0->x0 = x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
