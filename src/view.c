@@ -961,4 +961,42 @@ dxf_view_set_y0
 }
 
 
+/*!
+ * \brief Get the view direction from target \c p1 of a DXF \c VIEW
+ * symbol table entry.
+ *
+ * \return the view direction from target \c p1.
+ */
+DxfPoint *
+dxf_view_get_p1
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->p1);
+}
+
+
 /* EOF */
