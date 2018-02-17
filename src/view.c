@@ -837,8 +837,8 @@ dxf_view_get_x0
 
 
 /*!
- * \brief Set the X-value of the view center point \c view_center_x0 of
- * a DXF \c VIEW symbol table entry.
+ * \brief Set the X-value of the view center point \c x0 of a DXF
+ * \c VIEW symbol table entry.
  *
  * \return a pointer to \c view when successful, or \c NULL when an
  * error occurred.
