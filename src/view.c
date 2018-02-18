@@ -1081,8 +1081,7 @@ dxf_view_get_x1
 
 /*!
  * \brief Set the X-value of the view direction from target
- * \c x1 of
- * a DXF \c VIEW symbol table entry.
+ * \c x1 of a DXF \c VIEW symbol table entry.
  *
  * \return a pointer to \c view when successful, or \c NULL when an
  * error occurred.
