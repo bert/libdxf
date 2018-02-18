@@ -1162,4 +1162,47 @@ dxf_view_get_y1
 }
 
 
+/*!
+ * \brief Set the Y-value of the view direction from target
+ * \c y1 of a DXF \c VIEW symbol table entry.
+ *
+ * \return a pointer to \c view when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfView *
+dxf_view_set_y1
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        double y1
+                /*!< the Y-value of the view direction from target
+                 * \c y1 of a DXF \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        view->p1->y0 = y1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */
