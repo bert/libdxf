@@ -1404,4 +1404,47 @@ dxf_view_get_x2
 }
 
 
+/*!
+ * \brief Set the X-value of the view target point \c x2 of a DXF
+ * \c VIEW symbol table entry.
+ *
+ * \return a pointer to \c view when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfView *
+dxf_view_set_x2
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        double x2
+                /*!< the X-value of the view target point \c x2 of a DXF
+                 * \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        view->p2->x0 = x2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */
