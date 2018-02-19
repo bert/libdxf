@@ -1204,4 +1204,43 @@ dxf_view_set_y1
 }
 
 
+/*!
+ * \brief Get the Z-value of the view direction from target \c z1 of a
+ * DXF \c VIEW symbol table entry.
+ *
+ * \return the Z-value of the view direction from target \c z1.
+ */
+double
+dxf_view_get_z1
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (view->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->p1->z0);
+}
+
+
 /* EOF */
