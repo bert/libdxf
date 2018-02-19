@@ -1325,7 +1325,7 @@ dxf_view_get_p2
 
 
 /*!
- * \brief Set the view direction from target \c p2 of a DXF \c VIEW
+ * \brief Set the view target point \c p2 of a DXF \c VIEW
  * symbol table entry.
  *
  * \return a pointer to a DXF \c VIEW symbol table entry.
