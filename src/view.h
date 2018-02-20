@@ -187,6 +187,7 @@ double dxf_view_get_x2 (DxfView *view);
 DxfView *dxf_view_set_x2 (DxfView *view, double x2);
 double dxf_view_get_y2 (DxfView *view);
 DxfView *dxf_view_set_y2 (DxfView *view, double y2);
+double dxf_view_get_z2 (DxfView *view);
 
 
 #ifdef __cplusplus
