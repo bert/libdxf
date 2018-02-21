@@ -192,6 +192,7 @@ DxfView *dxf_view_set_z2 (DxfView *view, double z2);
 double dxf_view_get_view_height (DxfView *view);
 DxfView *dxf_view_set_view_height (DxfView *view, double view_height);
 double dxf_view_get_view_width (DxfView *view);
+DxfView *dxf_view_set_view_width (DxfView *view, double view_width);
 
 
 #ifdef __cplusplus
