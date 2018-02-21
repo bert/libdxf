@@ -1809,4 +1809,36 @@ dxf_view_set_lens_length
 }
 
 
+/*!
+ * \brief Get the \c front_plane_offset of a DXF \c VIEW symbol table
+ * entry.
+ *
+ * \return \c front_plane_offset.
+ */
+double
+dxf_view_get_front_plane_offset
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->front_plane_offset);
+}
+
+
 /* EOF */
