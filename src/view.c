@@ -1841,4 +1841,40 @@ dxf_view_get_front_plane_offset
 }
 
 
+/*!
+ * \brief Set the \c front_plane_offset of a DXF \c VIEW symbol table
+ * entry.
+ *
+ * \return a pointer to \c view when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfView *
+dxf_view_set_front_plane_offset
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        double front_plane_offset
+                /*!< the \c front_plane_offset of a DXF \c VIEW symbol
+                 * table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        view->front_plane_offset = front_plane_offset;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */

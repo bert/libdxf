@@ -196,6 +196,7 @@ DxfView *dxf_view_set_view_width (DxfView *view, double view_width);
 double dxf_view_get_lens_length (DxfView *view);
 DxfView *dxf_view_set_lens_length (DxfView *view, double lens_length);
 double dxf_view_get_front_plane_offset (DxfView *view);
+DxfView *dxf_view_set_front_plane_offset (DxfView *view, double front_plane_offset);
 
 
 #ifdef __cplusplus
