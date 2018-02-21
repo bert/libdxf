@@ -193,6 +193,7 @@ double dxf_view_get_view_height (DxfView *view);
 DxfView *dxf_view_set_view_height (DxfView *view, double view_height);
 double dxf_view_get_view_width (DxfView *view);
 DxfView *dxf_view_set_view_width (DxfView *view, double view_width);
+double dxf_view_get_lens_length (DxfView *view);
 
 
 #ifdef __cplusplus
