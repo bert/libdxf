@@ -1877,4 +1877,36 @@ dxf_view_set_front_plane_offset
 }
 
 
+/*!
+ * \brief Get the \c back_plane_offset of a DXF \c VIEW symbol table
+ * entry.
+ *
+ * \return \c back_plane_offset.
+ */
+double
+dxf_view_get_back_plane_offset
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->back_plane_offset);
+}
+
+
 /* EOF */
