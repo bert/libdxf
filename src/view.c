@@ -1677,4 +1677,35 @@ dxf_view_set_view_height
 }
 
 
+/*!
+ * \brief Get the \c view_width of a DXF \c VIEW symbol table entry.
+ *
+ * \return \c view_width.
+ */
+double
+dxf_view_get_view_width
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->view_width);
+}
+
+
 /* EOF */
