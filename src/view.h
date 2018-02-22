@@ -202,6 +202,7 @@ DxfView *dxf_view_set_back_plane_offset (DxfView *view, double back_plane_offset
 double dxf_view_get_view_twist_angle (DxfView *view);
 DxfView *dxf_view_set_view_twist_angle (DxfView *view, double view_twist_angle);
 int dxf_view_get_flag (DxfView *view);
+DxfView *dxf_view_set_flag (DxfView *view, int flag);
 
 
 #ifdef __cplusplus
