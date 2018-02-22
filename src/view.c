@@ -2086,4 +2086,40 @@ dxf_view_set_flag
 }
 
 
+/*!
+ * \brief Get the \c view_mode from a DXF \c VIEW symbol table entry.
+ *
+ * \return \c view_mode.
+ */
+int
+dxf_view_get_view_mode
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (view->view_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->view_mode);
+}
+
+
 /* EOF */
