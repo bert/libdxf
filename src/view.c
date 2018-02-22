@@ -1945,4 +1945,36 @@ dxf_view_set_back_plane_offset
 }
 
 
+/*!
+ * \brief Get the \c view_twist_angle of a DXF \c VIEW symbol table
+ * entry.
+ *
+ * \return \c view_twist_angle.
+ */
+double
+dxf_view_get_view_twist_angle
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view->view_twist_angle);
+}
+
+
 /* EOF */
