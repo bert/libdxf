@@ -2159,4 +2159,44 @@ dxf_view_set_view_mode
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
+ * \c VIEW symbol table entry.
+ *
+ * \return pointer to the \c dictionary_owner_soft.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_view_get_dictionary_owner_soft
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (view->dictionary_owner_soft));
+}
+
+
 /* EOF */
