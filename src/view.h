@@ -206,6 +206,7 @@ DxfView *dxf_view_set_flag (DxfView *view, int flag);
 int dxf_view_get_view_mode (DxfView *view);
 DxfView *dxf_view_set_view_mode (DxfView *view, int view_mode);
 char *dxf_view_get_dictionary_owner_soft (DxfView *view);
+DxfView *dxf_view_set_dictionary_owner_soft (DxfView *view, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
