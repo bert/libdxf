@@ -2122,4 +2122,41 @@ dxf_view_get_view_mode
 }
 
 
+/*!
+ * \brief Set the \c view_mode for a DXF \c VIEW symbol table entry.
+ */
+DxfView *
+dxf_view_set_view_mode
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        int view_mode
+                /*!< the \c view_mode to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        view->view_mode = view_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */
