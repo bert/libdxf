@@ -2359,4 +2359,43 @@ dxf_view_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c VIEW for a DXF \c VIEW symbol
+ * table entry.
+ */
+DxfView *
+dxf_view_set_next
+(
+        DxfView *view,
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+        DxfView *next
+                /*!< a pointer to the next \c VIEW for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        view->next = (struct DxfView *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (view);
+}
+
+
 /* EOF */
