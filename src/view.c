@@ -2398,4 +2398,49 @@ dxf_view_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c VIEW symbol table entry from a
+ * linked list of DXF \c VIEW symbol table entries.
+ *
+ * \return pointer to the last \c VIEW symbol table entry.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfView *
+dxf_view_get_last
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfView *) view);
+        }
+        DxfView *iter = (DxfView *) view->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfView *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfView *) iter);
+}
+
+
 /* EOF */

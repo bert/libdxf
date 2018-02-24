@@ -211,6 +211,7 @@ char *dxf_view_get_dictionary_owner_hard (DxfView *view);
 DxfView *dxf_view_set_dictionary_owner_hard (DxfView *view, char *dictionary_owner_hard);
 DxfView *dxf_view_get_next (DxfView *view);
 DxfView *dxf_view_set_next (DxfView *view, DxfView *next);
+DxfView *dxf_view_get_last (DxfView *view);
 
 
 #ifdef __cplusplus
