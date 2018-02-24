@@ -209,6 +209,7 @@ char *dxf_view_get_dictionary_owner_soft (DxfView *view);
 DxfView *dxf_view_set_dictionary_owner_soft (DxfView *view, char *dictionary_owner_soft);
 char *dxf_view_get_dictionary_owner_hard (DxfView *view);
 DxfView *dxf_view_set_dictionary_owner_hard (DxfView *view, char *dictionary_owner_hard);
+DxfView *dxf_view_get_next (DxfView *view);
 
 
 #ifdef __cplusplus

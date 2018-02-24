@@ -2319,4 +2319,44 @@ dxf_view_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c VIEW symbol table entry from a
+ * DXF \c VIEW symbol table entry.
+ *
+ * \return pointer to the next \c VIEW symbol table entry.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfView *
+dxf_view_get_next
+(
+        DxfView *view
+                /*!< a pointer to a DXF \c VIEW symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (view->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfView *) view->next);
+}
+
+
 /* EOF */
