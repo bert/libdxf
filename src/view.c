@@ -221,14 +221,14 @@ dxf_view_read
                         /* Now follows a string containing the
                          * X-coordinate of the View center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->x_view);
+                        fscanf (fp->fp, "%lf\n", &view->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the View center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->y_view);
+                        fscanf (fp->fp, "%lf\n", &view->p0->y0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -236,7 +236,7 @@ dxf_view_read
                          * X-coordinate of the View direction from
                          * target. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->x_direction);
+                        fscanf (fp->fp, "%lf\n", &view->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
@@ -244,7 +244,7 @@ dxf_view_read
                          * Y-coordinate of the View direction from
                          * target. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->y_direction);
+                        fscanf (fp->fp, "%lf\n", &view->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
@@ -252,28 +252,28 @@ dxf_view_read
                          * Z-coordinate of the View direction from
                          * target. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->z_direction);
+                        fscanf (fp->fp, "%lf\n", &view->p1->z0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the Target point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->x_target);
+                        fscanf (fp->fp, "%lf\n", &view->p2->x0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the Target point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->y_target);
+                        fscanf (fp->fp, "%lf\n", &view->p2->y0);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the Target point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->z_target);
+                        fscanf (fp->fp, "%lf\n", &view->p2->z0);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
