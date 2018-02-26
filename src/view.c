@@ -112,7 +112,7 @@ dxf_view_init
                 return (NULL);
         }
         view->id_code = 0;
-        view->view_name = strdup ("");
+        view->name = strdup ("");
         view->p0 = dxf_point_new ();
         view->p0 = dxf_point_init (view->p0);
         view->p0->x0 = 0.0;
@@ -127,14 +127,14 @@ dxf_view_init
         view->p2->x0 = 0.0;
         view->p2->y0 = 0.0;
         view->p2->z0 = 0.0;
-        view->view_height = 0.0;
-        view->view_width = 0.0;
+        view->height = 0.0;
+        view->width = 0.0;
         view->lens_length = 0.0;
         view->front_plane_offset = 0.0;
         view->back_plane_offset = 0.0;
-        view->view_twist_angle = 0.0;
+        view->twist_angle = 0.0;
         view->flag = 0;
-        view->view_mode = 0;
+        view->mode = 0;
         view->dictionary_owner_soft = strdup ("");
         view->dictionary_owner_hard = strdup ("");
         view->next = NULL;
@@ -214,7 +214,7 @@ dxf_view_read
                         /* Now follows a string containing a view
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", view->view_name);
+                        fscanf (fp->fp, "%s\n", view->name);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -280,14 +280,14 @@ dxf_view_read
                         /* Now follows a string containing the view
                          * height. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->view_height);
+                        fscanf (fp->fp, "%lf\n", &view->height);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the view
                          * width. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->view_width);
+                        fscanf (fp->fp, "%lf\n", &view->width);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
@@ -315,7 +315,7 @@ dxf_view_read
                         /* Now follows a string containing the view
                          * twist angle. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &view->view_twist_angle);
+                        fscanf (fp->fp, "%lf\n", &view->twist_angle);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
@@ -329,7 +329,7 @@ dxf_view_read
                         /* Now follows a string containing the view mode
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &view->view_mode);
+                        fscanf (fp->fp, "%d\n", &view->mode);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -422,8 +422,8 @@ dxf_view_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((view->view_name == NULL)
-          || (strcmp (view->view_name, "") == 0))
+        if ((view->name == NULL)
+          || (strcmp (view->name, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty UCS name string for the %s entity with id-code: %x\n")),
@@ -470,12 +470,12 @@ dxf_view_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbViewTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", view->view_name);
-        fprintf (fp->fp, " 40\n%f\n", view->view_height);
+        fprintf (fp->fp, "  2\n%s\n", view->name);
+        fprintf (fp->fp, " 40\n%f\n", view->height);
         fprintf (fp->fp, " 70\n%d\n", view->flag);
         fprintf (fp->fp, " 10\n%f\n", view->p0->x0);
         fprintf (fp->fp, " 20\n%f\n", view->p0->y0);
-        fprintf (fp->fp, " 41\n%f\n", view->view_width);
+        fprintf (fp->fp, " 41\n%f\n", view->width);
         fprintf (fp->fp, " 11\n%f\n", view->p1->x0);
         fprintf (fp->fp, " 21\n%f\n", view->p1->y0);
         fprintf (fp->fp, " 31\n%f\n", view->p1->z0);
@@ -485,8 +485,8 @@ dxf_view_write
         fprintf (fp->fp, " 42\n%f\n", view->lens_length);
         fprintf (fp->fp, " 43\n%f\n", view->front_plane_offset);
         fprintf (fp->fp, " 44\n%f\n", view->back_plane_offset);
-        fprintf (fp->fp, " 50\n%f\n", view->view_twist_angle);
-        fprintf (fp->fp, " 71\n%d\n", view->view_mode);
+        fprintf (fp->fp, " 50\n%f\n", view->twist_angle);
+        fprintf (fp->fp, " 71\n%d\n", view->mode);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -528,7 +528,7 @@ dxf_view_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (view->view_name);
+        free (view->name);
         free (view->dictionary_owner_soft);
         free (view->dictionary_owner_hard);
         free (view);
@@ -649,12 +649,12 @@ dxf_view_set_id_code
 
 
 /*!
- * \brief Get the \c view_name from a DXF \c VIEW symbol table entry.
+ * \brief Get the \c name from a DXF \c VIEW symbol table entry.
  *
- * \return \c view_name when sucessful, \c NULL when an error occurred.
+ * \return \c name when sucessful, \c NULL when an error occurred.
  */
 char *
-dxf_view_get_view_name
+dxf_view_get_name
 (
         DxfView *view
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
@@ -671,7 +671,7 @@ dxf_view_get_view_name
                   __FUNCTION__);
                 return (NULL);
         }
-        if (view->view_name ==  NULL)
+        if (view->name ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -681,20 +681,20 @@ dxf_view_get_view_name
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (view->view_name));
+        return (strdup (view->name));
 }
 
 
 /*!
- * \brief Set the \c view_name for a DXF \c VIEW symbol table entry.
+ * \brief Set the \c name for a DXF \c VIEW symbol table entry.
  */
 DxfView *
-dxf_view_set_view_name
+dxf_view_set_name
 (
         DxfView *view,
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
-        char *view_name
-                /*!< a pointer to a string containing the \c view_name
+        char *name
+                /*!< a pointer to a string containing the \c name
                  * to be set for the entry. */
 )
 {
@@ -709,14 +709,14 @@ dxf_view_set_view_name
                   __FUNCTION__);
                 return (NULL);
         }
-        if (view_name == NULL)
+        if (name == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        view->view_name = strdup (view_name);
+        view->name = strdup (name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1618,12 +1618,12 @@ dxf_view_set_z2
 
 
 /*!
- * \brief Get the \c view_height of a DXF \c VIEW symbol table entry.
+ * \brief Get the \c height of a DXF \c VIEW symbol table entry.
  *
- * \return \c view_height.
+ * \return \c height.
  */
 double
-dxf_view_get_view_height
+dxf_view_get_height
 (
         DxfView *view
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
@@ -1644,23 +1644,23 @@ dxf_view_get_view_height
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (view->view_height);
+        return (view->height);
 }
 
 
 /*!
- * \brief Set the \c view_height of a DXF \c VIEW symbol table entry.
+ * \brief Set the \c height of a DXF \c VIEW symbol table entry.
  *
  * \return a pointer to \c view when successful, or \c NULL when an
  * error occurred.
  */
 DxfView *
-dxf_view_set_view_height
+dxf_view_set_height
 (
         DxfView *view,
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
-        double view_height
-                /*!< the \c view_height of a DXF \c VIEW symbol table
+        double height
+                /*!< the \c height of a DXF \c VIEW symbol table
                  * entry. */
 )
 {
@@ -1675,7 +1675,7 @@ dxf_view_set_view_height
                   __FUNCTION__);
                 return (NULL);
         }
-        view->view_height = view_height;
+        view->height = height;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1684,12 +1684,12 @@ dxf_view_set_view_height
 
 
 /*!
- * \brief Get the \c view_width of a DXF \c VIEW symbol table entry.
+ * \brief Get the \c width of a DXF \c VIEW symbol table entry.
  *
- * \return \c view_width.
+ * \return \c width.
  */
 double
-dxf_view_get_view_width
+dxf_view_get_width
 (
         DxfView *view
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
@@ -1710,23 +1710,23 @@ dxf_view_get_view_width
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (view->view_width);
+        return (view->width);
 }
 
 
 /*!
- * \brief Set the \c view_width of a DXF \c VIEW symbol table entry.
+ * \brief Set the \c width of a DXF \c VIEW symbol table entry.
  *
  * \return a pointer to \c view when successful, or \c NULL when an
  * error occurred.
  */
 DxfView *
-dxf_view_set_view_width
+dxf_view_set_width
 (
         DxfView *view,
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
-        double view_width
-                /*!< the \c view_width of a DXF \c VIEW symbol table
+        double width
+                /*!< the \c width of a DXF \c VIEW symbol table
                  * entry. */
 )
 {
@@ -1741,7 +1741,7 @@ dxf_view_set_view_width
                   __FUNCTION__);
                 return (NULL);
         }
-        view->view_width = view_width;
+        view->width = width;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1952,13 +1952,13 @@ dxf_view_set_back_plane_offset
 
 
 /*!
- * \brief Get the \c view_twist_angle of a DXF \c VIEW symbol table
+ * \brief Get the \c twist_angle of a DXF \c VIEW symbol table
  * entry.
  *
- * \return \c view_twist_angle.
+ * \return \c twist_angle.
  */
 double
-dxf_view_get_view_twist_angle
+dxf_view_get_twist_angle
 (
         DxfView *view
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
@@ -1979,24 +1979,24 @@ dxf_view_get_view_twist_angle
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (view->view_twist_angle);
+        return (view->twist_angle);
 }
 
 
 /*!
- * \brief Set the \c view_twist_angle of a DXF \c VIEW symbol table
+ * \brief Set the \c twist_angle of a DXF \c VIEW symbol table
  * entry.
  *
  * \return a pointer to \c view when successful, or \c NULL when an
  * error occurred.
  */
 DxfView *
-dxf_view_set_view_twist_angle
+dxf_view_set_twist_angle
 (
         DxfView *view,
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
-        double view_twist_angle
-                /*!< the \c view_twist_angle of a DXF \c VIEW symbol
+        double twist_angle
+                /*!< the \c twist_angle of a DXF \c VIEW symbol
                  * table entry. */
 )
 {
@@ -2011,7 +2011,7 @@ dxf_view_set_view_twist_angle
                   __FUNCTION__);
                 return (NULL);
         }
-        view->view_twist_angle = view_twist_angle;
+        view->twist_angle = twist_angle;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2093,12 +2093,12 @@ dxf_view_set_flag
 
 
 /*!
- * \brief Get the \c view_mode from a DXF \c VIEW symbol table entry.
+ * \brief Get the \c mode from a DXF \c VIEW symbol table entry.
  *
- * \return \c view_mode.
+ * \return \c mode.
  */
 int
-dxf_view_get_view_mode
+dxf_view_get_mode
 (
         DxfView *view
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
@@ -2115,7 +2115,7 @@ dxf_view_get_view_mode
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (view->view_mode < 0)
+        if (view->mode < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
@@ -2124,20 +2124,20 @@ dxf_view_get_view_mode
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (view->view_mode);
+        return (view->mode);
 }
 
 
 /*!
- * \brief Set the \c view_mode for a DXF \c VIEW symbol table entry.
+ * \brief Set the \c mode for a DXF \c VIEW symbol table entry.
  */
 DxfView *
-dxf_view_set_view_mode
+dxf_view_set_mode
 (
         DxfView *view,
                 /*!< a pointer to a DXF \c VIEW symbol table entry. */
-        int view_mode
-                /*!< the \c view_mode to be set for the entry. */
+        int mode
+                /*!< the \c mode to be set for the entry. */
 )
 {
 #if DEBUG
@@ -2151,13 +2151,13 @@ dxf_view_set_view_mode
                   __FUNCTION__);
                 return (NULL);
         }
-        if (view_mode < 0)
+        if (mode < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
-        view->view_mode = view_mode;
+        view->mode = mode;
 #if DEBUG
         DXF_DEBUG_END
 #endif

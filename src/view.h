@@ -65,7 +65,7 @@ dxf_view_struct
                  * This is to be an unique (sequential) number in the DXF
                  * file.\n
                  * Group code = 5. */
-        char *view_name;
+        char *name;
                 /*!< Name of view.\n
                  * Group code = 2. */
         DxfPoint *p0;
@@ -77,10 +77,10 @@ dxf_view_struct
         DxfPoint *p2;
                 /*!< Target point, in WCS.\n
                  * Group codes = 12, 22 and 32.*/
-        double view_height;
+        double height;
                 /*!< View height in DCS.\n
                  * Group code = 40. */
-        double view_width;
+        double width;
                 /*!< View width in DCS.\n
                  * Group code = 41. */
         double lens_length;
@@ -92,7 +92,7 @@ dxf_view_struct
         double back_plane_offset;
                 /*!< Back clipping plane - offset from target point.\n
                  * Group code = 44. */
-        double view_twist_angle;
+        double twist_angle;
                 /*!< Twist angle.\n
                  * Group code = 50. */
         int flag;
@@ -113,7 +113,7 @@ dxf_view_struct
                  * it can be ignored by most programs that read DXF files,
                  * and need not be set by programs that write DXF files.\n
                  * Group code = 70. */
-        int view_mode;
+        int mode;
                 /*!< View mode (see \c VIEWMODE system variable).\n
                  * Group code = 71. */
         char *dictionary_owner_soft;
@@ -138,8 +138,8 @@ int dxf_view_free (DxfView *view);
 void dxf_view_free_chain (DxfView *views);
 int dxf_view_get_id_code (DxfView *view);
 DxfView *dxf_view_set_id_code (DxfView *view, int id_code);
-char *dxf_view_get_view_name (DxfView *view);
-DxfView *dxf_view_set_view_name (DxfView *view, char *view_name);
+char *dxf_view_get_name (DxfView *view);
+DxfView *dxf_view_set_name (DxfView *view, char *view_name);
 DxfPoint *dxf_view_get_p0 (DxfView *view);
 DxfView *dxf_view_set_p0 (DxfView *view, DxfPoint *p0);
 double dxf_view_get_x0 (DxfView *view);
@@ -162,22 +162,22 @@ double dxf_view_get_y2 (DxfView *view);
 DxfView *dxf_view_set_y2 (DxfView *view, double y2);
 double dxf_view_get_z2 (DxfView *view);
 DxfView *dxf_view_set_z2 (DxfView *view, double z2);
-double dxf_view_get_view_height (DxfView *view);
-DxfView *dxf_view_set_view_height (DxfView *view, double view_height);
-double dxf_view_get_view_width (DxfView *view);
-DxfView *dxf_view_set_view_width (DxfView *view, double view_width);
+double dxf_view_get_height (DxfView *view);
+DxfView *dxf_view_set_height (DxfView *view, double view_height);
+double dxf_view_get_width (DxfView *view);
+DxfView *dxf_view_set_width (DxfView *view, double view_width);
 double dxf_view_get_lens_length (DxfView *view);
 DxfView *dxf_view_set_lens_length (DxfView *view, double lens_length);
 double dxf_view_get_front_plane_offset (DxfView *view);
 DxfView *dxf_view_set_front_plane_offset (DxfView *view, double front_plane_offset);
 double dxf_view_get_back_plane_offset (DxfView *view);
 DxfView *dxf_view_set_back_plane_offset (DxfView *view, double back_plane_offset);
-double dxf_view_get_view_twist_angle (DxfView *view);
-DxfView *dxf_view_set_view_twist_angle (DxfView *view, double view_twist_angle);
+double dxf_view_get_twist_angle (DxfView *view);
+DxfView *dxf_view_set_twist_angle (DxfView *view, double view_twist_angle);
 int dxf_view_get_flag (DxfView *view);
 DxfView *dxf_view_set_flag (DxfView *view, int flag);
-int dxf_view_get_view_mode (DxfView *view);
-DxfView *dxf_view_set_view_mode (DxfView *view, int view_mode);
+int dxf_view_get_mode (DxfView *view);
+DxfView *dxf_view_set_mode (DxfView *view, int view_mode);
 char *dxf_view_get_dictionary_owner_soft (DxfView *view);
 DxfView *dxf_view_set_dictionary_owner_soft (DxfView *view, char *dictionary_owner_soft);
 char *dxf_view_get_dictionary_owner_hard (DxfView *view);
