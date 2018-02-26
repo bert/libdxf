@@ -61,7 +61,7 @@ extern "C" {
  * group code can appear multiple times, and so order is important.
  */
 typedef struct
-dxf_viewport
+dxf_viewport_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
