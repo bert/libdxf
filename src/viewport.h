@@ -1,10 +1,16 @@
 /*!
  * \file viewport.h
  *
- * \author Copyright (C) 2010, 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2010, 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF viewport entity (\c VIEWPORT).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -53,12 +59,6 @@ extern "C" {
  *
  * \warning In contrast to normal entity data, the same extended entity
  * group code can appear multiple times, and so order is important.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_viewport
