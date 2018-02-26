@@ -71,39 +71,12 @@ dxf_view_struct
         DxfPoint *p0;
                 /*!< View center point, in Display Coordinate System.\n
                  * Group codes = 10 and 20.*/
-        double x_view;
-                /*!< View center point, in Display Coordinate System.\n
-                 * Group code = 10. */
-        double y_view;
-                /*!< View center point, in Display Coordinate System.\n
-                 * Group code = 20. */
         DxfPoint *p1;
                 /*!< View direction from target, in World Coordinate
                  * Group codes = 11, 21 and 31.*/
-        double x_direction;
-                /*!< View direction from target, in World Coordinate
-                 * System.\n
-                 * Group code = 11. */
-        double y_direction;
-                /*!< View direction from target, in World Coordinate
-                 * System.\n
-                 * Group code = 21. */
-        double z_direction;
-                /*!< View direction from target, in World Coordinate
-                 * System.\n
-                 * Group code = 31. */
         DxfPoint *p2;
                 /*!< Target point, in WCS.\n
                  * Group codes = 12, 22 and 32.*/
-        double x_target;
-                /*!< Target point, in WCS.\n
-                 * Group code = 12. */
-        double y_target;
-                /*!< Target point, in WCS.\n
-                 * Group code = 22. */
-        double z_target;
-                /*!< Target point, in WCS.\n
-                 * Group code = 32. */
         double view_height;
                 /*!< View height in DCS.\n
                  * Group code = 40. */
