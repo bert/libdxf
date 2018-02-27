@@ -248,6 +248,9 @@ dxf_viewport_struct
                  * For Releases 11, 12, 13 and 14, this field will
                  * always be the integer 16.\n
                  * Group code = 1070. */
+        DxfPoint *target;
+                /*!< View target point.\n
+                 * Group codes = 1010, 1020 and 1030. */
         double x_target;
                 /*!< View target point X-value.\n
                  * Group code = 1010. */
@@ -257,6 +260,9 @@ dxf_viewport_struct
         double z_target;
                 /*!< View target point Z-value.\n
                  * Group code = 1030. */
+        DxfPoint *direction;
+                /*!< View direction from target point.\n
+                 * Group codes = 1010, 1020 and 1030. */
         double x_direction;
                 /*!< View direction from target point X-value.\n
                  * Group code = 1010. */
@@ -271,6 +277,9 @@ dxf_viewport_struct
                  * Group code = 1040. */
         double view_height;
                 /*!< View height.\n
+                 * Group code = 1040. */
+        DxfPoint *center;
+                /*!< View center point.\n
                  * Group code = 1040. */
         double x_center;
                 /*!< View center point X-value.\n
@@ -313,11 +322,17 @@ dxf_viewport_struct
         double snap_rotation_angle;
                 /*!< Snap angle.\n
                  * Group code = 1040. */
+        DxfPoint *snap_base;
+                /*!< Snap base point UCS.\n
+                 * Group code = 1040. */
         double x_snap_base;
                 /*!< Snap base point UCS X-coordinate.\n
                  * Group code = 1040. */
         double y_snap_base;
                 /*!< Snap base point UCS Y-coordinate.\n
+                 * Group code = 1040. */
+        DxfPoint *snap_spacing;
+                /*!< Snap spacing.\n
                  * Group code = 1040. */
         double x_snap_spacing;
                 /*!< Snap X spacing.\n
