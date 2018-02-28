@@ -94,8 +94,6 @@ dxf_viewport_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (viewport == NULL)
         {
@@ -168,10 +166,7 @@ dxf_viewport_init
          * reasonable number of layers during compile time, and
          * (re-allocating) shrinking when the actual number of layers is
          * known during run time. */
-        for (i = 0; i < DXF_MAX_LAYERS; i++)
-        {
-                viewport->frozen_layers[i] = strdup ("");
-        }
+        viewport->frozen_layers = NULL;
         viewport->frozen_layer_list_end = strdup ("}"); /* Always "}". */
         viewport->window_descriptor_end = strdup ("}"); /* Always "}". */
         viewport->dictionary_owner_soft = strdup ("");
@@ -905,18 +900,16 @@ dxf_viewport_read
                                  * names and bail out when a group code
                                  * with a value of "1002" is encountered
                                  * or DXF_MAX_LAYERS is reached.*/
-                                int j = 0;
+                                /*! \todo Do a proper implementation of reading frozen layers.*/
                                 do
                                 {
                                         (fp->line_number)++;
-                                        fscanf (fp->fp, "%s\n", viewport->frozen_layers[j]);
-                                        j++;
+                                        fscanf (fp->fp, "%s\n", viewport->frozen_layers->value);
                                         /* Now follows a string containing a group code. */
                                         (fp->line_number)++;
                                         fscanf (fp->fp, "%s\n", temp_string);
                                 }
-                                while ((strcmp (temp_string, "1003") == 0)
-                                        || (j < DXF_MAX_LAYERS));
+                                while ((strcmp (temp_string, "1003") == 0));
                         }
                         else
                         {
@@ -1175,13 +1168,11 @@ dxf_viewport_write
         fprintf (fp->fp, "1070\n%d\n", viewport->plot_flag);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN);
         /* Start a loop writing all frozen layer names. */
-        int j = 0;
-        while ((!viewport->frozen_layers[j]) /* Do not allow NULL pointers. */
-                || (strcmp (viewport->frozen_layers[j], "") == 1) /* Do not allow empty strings. */
-                || (j < DXF_MAX_LAYERS)) /* Do not overrun the array size. */
+        /*! \todo Do a proper implementation of writing frozen layers. */
+        while ((!viewport->frozen_layers->value) /* Do not allow NULL pointers. */
+                || (strcmp (viewport->frozen_layers->value, "") == 1)) /* Do not allow empty strings. */
         {
-                fprintf (fp->fp, "1003\n%s\n", viewport->frozen_layers[j]);
-                j++;
+                fprintf (fp->fp, "1003\n%s\n", viewport->frozen_layers->value);
         }
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_END);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_END);
@@ -1212,8 +1203,6 @@ dxf_viewport_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (viewport == NULL)
         {
@@ -1235,13 +1224,7 @@ dxf_viewport_free
         free (viewport->viewport_data);
         free (viewport->window_descriptor_begin);
         free (viewport->frozen_layer_list_begin);
-        for (i = 0; i < DXF_MAX_LAYERS; i++)
-        {
-                if (strcmp (viewport->frozen_layers[i], "") != 0)
-                {
-                        free (viewport->frozen_layers[i]);
-                }
-        }
+        dxf_char_free_chain (viewport->frozen_layers);
         free (viewport->frozen_layer_list_end);
         free (viewport->window_descriptor_end);
         free (viewport);

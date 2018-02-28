@@ -46,6 +46,7 @@
 #include "global.h"
 #include "point.h"
 #include "binary_graphics_data.h"
+#include "util.h"
 
 
 #ifdef __cplusplus
@@ -353,7 +354,7 @@ dxf_viewport_struct
                 /*!< Begin frozen layer list (possibly empty).\n
                  * This field will always be the string "{".\n
                  * Group code = 1002. */
-        char *frozen_layers[DXF_MAX_LAYERS];
+        DxfChar *frozen_layers;
                 /*!< The names of layers frozen in this viewport.\n
                  * This list may include Xref-dependent layers.\n
                  * Any number of 1003 groups may appear here.\n
