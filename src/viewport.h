@@ -389,6 +389,7 @@ DxfViewport *dxf_viewport_read (DxfFile *fp, DxfViewport *viewport);
 int dxf_viewport_write (DxfFile *fp, DxfViewport *viewport);
 int dxf_viewport_free (DxfViewport *viewport);
 void dxf_viewport_free_chain (DxfViewport *viewports);
+int dxf_viewport_get_id_code (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
