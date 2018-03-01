@@ -393,6 +393,7 @@ int dxf_viewport_get_id_code (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_id_code (DxfViewport *viewport, int id_code);
 char *dxf_viewport_get_linetype (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_linetype (DxfViewport *viewport, char *linetype);
+char *dxf_viewport_get_layer (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
