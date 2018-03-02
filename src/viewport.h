@@ -403,6 +403,7 @@ double dxf_viewport_get_linetype_scale (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_linetype_scale (DxfViewport *viewport, double linetype_scale);
 int16_t dxf_viewport_get_visibility (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_visibility (DxfViewport *viewport, int16_t visibility);
+int dxf_viewport_get_color (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
