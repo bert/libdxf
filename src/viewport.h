@@ -395,6 +395,7 @@ char *dxf_viewport_get_linetype (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_linetype (DxfViewport *viewport, char *linetype);
 char *dxf_viewport_get_layer (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_layer (DxfViewport *viewport, char *layer);
+double dxf_viewport_get_elevation (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
