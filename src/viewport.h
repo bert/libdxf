@@ -406,6 +406,7 @@ DxfViewport *dxf_viewport_set_visibility (DxfViewport *viewport, int16_t visibil
 int dxf_viewport_get_color (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_color (DxfViewport *viewport, int color);
 int dxf_viewport_get_paperspace (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_paperspace (DxfViewport *viewport, int paperspace);
 
 
 #ifdef __cplusplus
