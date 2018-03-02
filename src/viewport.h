@@ -398,6 +398,7 @@ DxfViewport *dxf_viewport_set_layer (DxfViewport *viewport, char *layer);
 double dxf_viewport_get_elevation (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_elevation (DxfViewport *viewport, double elevation);
 double dxf_viewport_get_thickness (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_thickness (DxfViewport *viewport, double thickness);
 
 
 #ifdef __cplusplus
