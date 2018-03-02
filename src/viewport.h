@@ -410,6 +410,7 @@ DxfViewport *dxf_viewport_set_paperspace (DxfViewport *viewport, int paperspace)
 int dxf_viewport_get_graphics_data_size (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_graphics_data_size (DxfViewport *viewport, int graphics_data_size);
 int16_t dxf_viewport_get_shadow_mode (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_shadow_mode (DxfViewport *viewport, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
