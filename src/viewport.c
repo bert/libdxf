@@ -1632,4 +1632,41 @@ dxf_viewport_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a DXF \c VIEWPORT entity.
+ *
+ * \return \c linetype_scale.
+ */
+double
+dxf_viewport_get_linetype_scale
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (viewport->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->linetype_scale);
+}
+
+
 /* EOF */

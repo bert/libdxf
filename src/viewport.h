@@ -399,6 +399,7 @@ double dxf_viewport_get_elevation (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_elevation (DxfViewport *viewport, double elevation);
 double dxf_viewport_get_thickness (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_thickness (DxfViewport *viewport, double thickness);
+double dxf_viewport_get_linetype_scale (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
