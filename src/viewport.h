@@ -416,6 +416,7 @@ DxfViewport *dxf_viewport_set_binary_graphics_data (DxfViewport *viewport, DxfBi
 char *dxf_viewport_get_dictionary_owner_soft (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_dictionary_owner_soft (DxfViewport *viewport, char *dictionary_owner_soft);
 char *dxf_viewport_get_material (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_material (DxfViewport *viewport, char *material);
 
 
 #ifdef __cplusplus
