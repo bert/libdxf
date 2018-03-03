@@ -414,6 +414,7 @@ DxfViewport *dxf_viewport_set_shadow_mode (DxfViewport *viewport, int16_t shadow
 DxfBinaryGraphicsData *dxf_viewport_get_binary_graphics_data (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_binary_graphics_data (DxfViewport *viewport, DxfBinaryGraphicsData *data);
 char *dxf_viewport_get_dictionary_owner_soft (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_dictionary_owner_soft (DxfViewport *viewport, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
