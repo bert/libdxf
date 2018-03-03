@@ -412,6 +412,7 @@ DxfViewport *dxf_viewport_set_graphics_data_size (DxfViewport *viewport, int gra
 int16_t dxf_viewport_get_shadow_mode (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_shadow_mode (DxfViewport *viewport, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_viewport_get_binary_graphics_data (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_binary_graphics_data (DxfViewport *viewport, DxfBinaryGraphicsData *data);
 
 
 #ifdef __cplusplus
