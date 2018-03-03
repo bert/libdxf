@@ -2302,4 +2302,45 @@ dxf_viewport_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the \c material from a DXF \c VIEWPORT
+ * entity.
+ *
+ * \return a pointer to \c material when successful, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_viewport_get_material
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->material ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (viewport->material));
+}
+
+
 /* EOF */
