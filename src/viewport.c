@@ -2386,4 +2386,44 @@ dxf_viewport_set_material
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
+ * \c VIEWPORT entity.
+ *
+ * \return pointer to the \c dictionary_owner_hard.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_viewport_get_dictionary_owner_hard
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (viewport->dictionary_owner_hard));
+}
+
+
 /* EOF */
