@@ -418,6 +418,7 @@ DxfViewport *dxf_viewport_set_dictionary_owner_soft (DxfViewport *viewport, char
 char *dxf_viewport_get_material (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_material (DxfViewport *viewport, char *material);
 char *dxf_viewport_get_dictionary_owner_hard (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_dictionary_owner_hard (DxfViewport *viewport, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus
