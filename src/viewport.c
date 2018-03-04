@@ -2642,4 +2642,38 @@ dxf_viewport_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a DXF \c VIEWPORT entity.
+ *
+ * \return a pointer to \c viewport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfViewport *
+dxf_viewport_set_color_value
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */

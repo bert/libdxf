@@ -424,6 +424,7 @@ DxfViewport *dxf_viewport_set_lineweight (DxfViewport *viewport, int16_t linewei
 char *dxf_viewport_get_plot_style_name (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_plot_style_name (DxfViewport *viewport, char *plot_style_name);
 long dxf_viewport_get_color_value (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_color_value (DxfViewport *viewport, long color_value);
 
 
 #ifdef __cplusplus
