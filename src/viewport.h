@@ -421,6 +421,7 @@ char *dxf_viewport_get_dictionary_owner_hard (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_dictionary_owner_hard (DxfViewport *viewport, char *dictionary_owner_hard);
 int16_t dxf_viewport_get_lineweight (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_lineweight (DxfViewport *viewport, int16_t lineweight);
+char *dxf_viewport_get_plot_style_name (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
