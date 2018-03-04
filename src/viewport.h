@@ -426,6 +426,7 @@ DxfViewport *dxf_viewport_set_plot_style_name (DxfViewport *viewport, char *plot
 long dxf_viewport_get_color_value (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_color_value (DxfViewport *viewport, long color_value);
 char *dxf_viewport_get_color_name (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_color_name (DxfViewport *viewport, char *color_name);
 
 
 #ifdef __cplusplus
