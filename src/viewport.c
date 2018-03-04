@@ -2676,4 +2676,42 @@ dxf_viewport_set_color_value
 }
 
 
+/*!
+ * \brief Get the \c color_name from a DXF \c VIEWPORT entity.
+ *
+ * \return \c color_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_viewport_get_color_name
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (viewport->color_name));
+}
+
+
 /* EOF */
