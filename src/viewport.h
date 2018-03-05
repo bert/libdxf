@@ -430,6 +430,7 @@ DxfViewport *dxf_viewport_set_color_name (DxfViewport *viewport, char *color_nam
 long dxf_viewport_get_transparency (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_transparency (DxfViewport *viewport, long transparency);
 DxfPoint *dxf_viewport_get_p0 (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_p0 (DxfViewport *viewport, DxfPoint *p0);
 
 
 #ifdef __cplusplus
