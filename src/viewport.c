@@ -3102,4 +3102,47 @@ dxf_viewport_get_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the center point \c z0 of a DXF \c VIEWPORT
+ * entity.
+ *
+ * \return a pointer to \c viewport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfViewport *
+dxf_viewport_set_z0
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        double z0
+                /*!< the Z-value of the center point \c z0 of a DXF
+                 * \c VIEWPORT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
