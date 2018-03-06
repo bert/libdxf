@@ -434,6 +434,7 @@ DxfViewport *dxf_viewport_set_p0 (DxfViewport *viewport, DxfPoint *p0);
 double dxf_viewport_get_x0 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x0 (DxfViewport *viewport, double x0);
 double dxf_viewport_get_y0 (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_y0 (DxfViewport *viewport, double y0);
 
 
 #ifdef __cplusplus
