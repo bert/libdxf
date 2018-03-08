@@ -3632,6 +3632,37 @@ dxf_viewport_set_window_descriptor_begin
 
 
 /*!
+ * \brief Get the \c extended_entity_data_version from a DXF \c VIEWPORT
+ * entity.
+ *
+ * \return \c extended_entity_data_version.
+ */
+int
+dxf_viewport_get_extended_entity_data_version
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->extended_entity_data_version);
+}
+
+
+/*!
  * \brief Get the \c perspective_lens_length from a DXF \c VIEWPORT
  * entity.
  *

@@ -451,6 +451,7 @@ char *dxf_viewport_get_viewport_data (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_viewport_data (DxfViewport *viewport, char *viewport_data);
 char *dxf_viewport_get_window_descriptor_begin (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_window_descriptor_begin (DxfViewport *viewport, char *window_descriptor_begin);
+int dxf_viewport_get_extended_entity_data_version (DxfViewport *viewport);
 double dxf_viewport_get_perspective_lens_length (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_perspective_lens_length (DxfViewport *viewport, double perspective_lens_length);
 
