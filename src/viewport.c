@@ -3508,6 +3508,48 @@ dxf_viewport_get_viewport_data
 
 
 /*!
+ * \brief Set the \c viewport_data for a DXF \c VIEWPORT entity.
+ *
+ * \return a pointer to \c viewport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfViewport *
+dxf_viewport_set_viewport_data
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        char *viewport_data
+                /*!< a string containing the \c viewport_data for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->viewport_data = strdup (viewport_data);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
+/*!
  * \brief Get the \c perspective_lens_length from a DXF \c VIEWPORT
  * entity.
  *
