@@ -3663,6 +3663,38 @@ dxf_viewport_get_extended_entity_data_version
 
 
 /*!
+ * \brief Set the \c extended_entity_data_version for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_extended_entity_data_version
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        int extended_entity_data_version
+                /*!< the \c extended_entity_data_version to be set for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->extended_entity_data_version = extended_entity_data_version;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
+/*!
  * \brief Get the \c perspective_lens_length from a DXF \c VIEWPORT
  * entity.
  *
