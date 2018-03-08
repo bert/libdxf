@@ -3390,6 +3390,44 @@ dxf_viewport_set_id
 
 
 /*!
+ * \brief Get the \c app_name from a DXF \c VIEWPORT entity.
+ *
+ * \return \c app_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_viewport_get_app_name
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->app_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (viewport->app_name));
+}
+
+
+/*!
  * \brief Get the \c perspective_lens_length from a DXF \c VIEWPORT
  * entity.
  *

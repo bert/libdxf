@@ -445,6 +445,7 @@ int dxf_viewport_get_status (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_status (DxfViewport *viewport, int status);
 int dxf_viewport_get_id (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_id (DxfViewport *viewport, int id);
+char *dxf_viewport_get_app_name (DxfViewport *viewport);
 double dxf_viewport_get_perspective_lens_length (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_perspective_lens_length (DxfViewport *viewport, double perspective_lens_length);
 
