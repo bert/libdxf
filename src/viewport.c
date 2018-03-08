@@ -3329,6 +3329,36 @@ dxf_viewport_set_status
 
 
 /*!
+ * \brief Get the \c id from a DXF \c VIEWPORT entity.
+ *
+ * \return \c id.
+ */
+int
+dxf_viewport_get_id
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->id);
+}
+
+
+/*!
  * \brief Get the \c perspective_lens_length from a DXF \c VIEWPORT
  * entity.
  *
