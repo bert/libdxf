@@ -112,9 +112,9 @@ dxf_viewport_init
         viewport->id_code = 0;
         viewport->linetype = strdup (DXF_DEFAULT_LINETYPE);
         viewport->layer = strdup (DXF_DEFAULT_LAYER);
-        viewport->x0 = 0.0;
-        viewport->y0 = 0.0;
-        viewport->z0 = 0.0;
+        viewport->p0->x0 = 0.0;
+        viewport->p0->y0 = 0.0;
+        viewport->p0->z0 = 0.0;
         viewport->elevation = 0.0;
         viewport->thickness = 0.0;
         viewport->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
