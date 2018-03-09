@@ -1126,9 +1126,9 @@ dxf_viewport_write
         {
                 fprintf (fp->fp, " 39\n%f\n", viewport->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", viewport->x0);
-        fprintf (fp->fp, " 20\n%f\n", viewport->y0);
-        fprintf (fp->fp, " 30\n%f\n", viewport->z0);
+        fprintf (fp->fp, " 10\n%f\n", viewport->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", viewport->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", viewport->p0->z0);
         fprintf (fp->fp, " 40\n%f\n", viewport->width);
         fprintf (fp->fp, " 41\n%f\n", viewport->height);
         fprintf (fp->fp, " 68\n%d\n", viewport->status);
