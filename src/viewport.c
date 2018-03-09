@@ -3732,6 +3732,46 @@ dxf_viewport_get_target
 
 
 /*!
+ * \brief Set the target point \c target of a DXF \c VIEWPORT entity.
+ *
+ * \return a pointer to a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_target
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        DxfPoint *target
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (target == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->target = target;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
+/*!
  * \brief Get the \c perspective_lens_length from a DXF \c VIEWPORT
  * entity.
  *
