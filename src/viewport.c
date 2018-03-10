@@ -3694,12 +3694,12 @@ dxf_viewport_set_extended_entity_data_version
 
 
 /*!
- * \brief Get the target point \c target of a DXF \c VIEWPORT entity.
+ * \brief Get the target point \c p1 of a DXF \c VIEWPORT entity.
  *
- * \return the target point \c target.
+ * \return the target point \c p1.
  */
 DxfPoint *
-dxf_viewport_get_target
+dxf_viewport_get_p1
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -3716,7 +3716,7 @@ dxf_viewport_get_target
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->target == NULL)
+        if (viewport->p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -3726,21 +3726,21 @@ dxf_viewport_get_target
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->target);
+        return (viewport->p1);
 }
 
 
 /*!
- * \brief Set the target point \c target of a DXF \c VIEWPORT entity.
+ * \brief Set the target point \c p1 of a DXF \c VIEWPORT entity.
  *
  * \return a pointer to a DXF \c VIEWPORT entity.
  */
 DxfViewport *
-dxf_viewport_set_target
+dxf_viewport_set_p1
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        DxfPoint *target
+        DxfPoint *p1
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -3755,14 +3755,14 @@ dxf_viewport_set_target
                   __FUNCTION__);
                 return (NULL);
         }
-        if (target == NULL)
+        if (p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->target = target;
+        viewport->p1 = p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif

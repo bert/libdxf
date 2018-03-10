@@ -237,7 +237,7 @@ dxf_viewport_struct
                  * For Releases 11, 12, 13 and 14, this field will
                  * always be the integer 16.\n
                  * Group code = 1070. */
-        DxfPoint *target;
+        DxfPoint *p1;
                 /*!< View target point.\n
                  * Group codes = 1010, 1020 and 1030. */
         double x_target;
@@ -441,8 +441,8 @@ char *dxf_viewport_get_window_descriptor_begin (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_window_descriptor_begin (DxfViewport *viewport, char *window_descriptor_begin);
 int dxf_viewport_get_extended_entity_data_version (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_extended_entity_data_version (DxfViewport *viewport, int extended_entity_data_version);
-DxfPoint *dxf_viewport_get_target (DxfViewport *viewport);
-DxfViewport *dxf_viewport_set_target (DxfViewport *viewport, DxfPoint *target);
+DxfPoint *dxf_viewport_get_p1 (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_p1 (DxfViewport *viewport, DxfPoint *target);
 double dxf_viewport_get_perspective_lens_length (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_perspective_lens_length (DxfViewport *viewport, double perspective_lens_length);
 
