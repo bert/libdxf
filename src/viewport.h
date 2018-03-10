@@ -443,6 +443,7 @@ int dxf_viewport_get_extended_entity_data_version (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_extended_entity_data_version (DxfViewport *viewport, int extended_entity_data_version);
 DxfPoint *dxf_viewport_get_p1 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_p1 (DxfViewport *viewport, DxfPoint *target);
+double dxf_viewport_get_x1 (DxfViewport *viewport);
 double dxf_viewport_get_perspective_lens_length (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_perspective_lens_length (DxfViewport *viewport, double perspective_lens_length);
 
