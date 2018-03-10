@@ -194,18 +194,6 @@ dxf_viewport_struct
         DxfPoint *p0;
                 /*!< Center point of entity in paperspace coordinates.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< X-value of the center point of entity in paper
-                 * space coordinates.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of the center point of entity in paper
-                 * space coordinates.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of the center point of entity in paper
-                 * space coordinates.\n
-                 * Group code = 30. */
         double width;
                 /*!< Width of the viewport in paper space units.\n
                  * Group code = 40. */
