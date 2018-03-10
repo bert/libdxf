@@ -279,8 +279,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->p0->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0)
-                        && (viewport->z0 = 0.0))
+                        && (strcmp (temp_string, "38") == 0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -288,7 +287,7 @@ dxf_viewport_read
                          * Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->z0);
+                        fscanf (fp->fp, "%lf\n", &viewport->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
