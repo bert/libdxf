@@ -129,9 +129,11 @@ dxf_viewport_init
         viewport->viewport_data = strdup ("MVIEW"); /* Always "MVIEW". */
         viewport->window_descriptor_begin = strdup ("{"); /* Always "{". */
         viewport->extended_entity_data_version = 16;
-        viewport->x_target = 0.0;
-        viewport->y_target = 0.0;
-        viewport->z_target = 0.0;
+        viewport->p1 = dxf_point_new ();
+        viewport->p1 = dxf_point_init (viewport->p1);
+        viewport->p1->x0 = 0.0;
+        viewport->p1->y0 = 0.0;
+        viewport->p1->z0 = 0.0;
         viewport->x_direction = 0.0;
         viewport->y_direction = 0.0;
         viewport->z_direction = 0.0;
