@@ -240,15 +240,6 @@ dxf_viewport_struct
         DxfPoint *p1;
                 /*!< View target point.\n
                  * Group codes = 1010, 1020 and 1030. */
-        double x_target;
-                /*!< View target point X-value.\n
-                 * Group code = 1010. */
-        double y_target;
-                /*!< View target point Y-value.\n
-                 * Group code = 1020. */
-        double z_target;
-                /*!< View target point Z-value.\n
-                 * Group code = 1030. */
         DxfPoint *direction;
                 /*!< View direction from target point.\n
                  * Group codes = 1010, 1020 and 1030. */
