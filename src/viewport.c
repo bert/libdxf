@@ -1140,9 +1140,9 @@ dxf_viewport_write
         fprintf (fp->fp, "1000\n%s\n", DXF_VIEWPORT_DATA);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_BEGIN);
         fprintf (fp->fp, "1070\n%d\n", viewport->extended_entity_data_version);
-        fprintf (fp->fp, "1010\n%f\n", viewport->x_target);
-        fprintf (fp->fp, "1020\n%f\n", viewport->y_target);
-        fprintf (fp->fp, "1030\n%f\n", viewport->z_target);
+        fprintf (fp->fp, "1010\n%f\n", viewport->p1->x0);
+        fprintf (fp->fp, "1020\n%f\n", viewport->p1->y0);
+        fprintf (fp->fp, "1030\n%f\n", viewport->p1->z0);
         fprintf (fp->fp, "1010\n%f\n", viewport->x_direction);
         fprintf (fp->fp, "1020\n%f\n", viewport->y_direction);
         fprintf (fp->fp, "1030\n%f\n", viewport->z_direction);
