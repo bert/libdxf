@@ -112,6 +112,8 @@ dxf_viewport_init
         viewport->id_code = 0;
         viewport->linetype = strdup (DXF_DEFAULT_LINETYPE);
         viewport->layer = strdup (DXF_DEFAULT_LAYER);
+        viewport->p0 = dxf_point_new ();
+        viewport->p0 = dxf_point_init (viewport->p0);
         viewport->p0->x0 = 0.0;
         viewport->p0->y0 = 0.0;
         viewport->p0->z0 = 0.0;
