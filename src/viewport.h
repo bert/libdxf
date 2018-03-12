@@ -431,6 +431,7 @@ double dxf_viewport_get_y1 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_y1 (DxfViewport *viewport, double y1);
 double dxf_viewport_get_z1 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_z1 (DxfViewport *viewport, double z1);
+DxfPoint *dxf_viewport_get_p2 (DxfViewport *viewport);
 double dxf_viewport_get_perspective_lens_length (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_perspective_lens_length (DxfViewport *viewport, double perspective_lens_length);
 
