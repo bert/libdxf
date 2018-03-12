@@ -136,9 +136,11 @@ dxf_viewport_init
         viewport->p1->x0 = 0.0;
         viewport->p1->y0 = 0.0;
         viewport->p1->z0 = 0.0;
-        viewport->x_direction = 0.0;
-        viewport->y_direction = 0.0;
-        viewport->z_direction = 0.0;
+        viewport->p2 = dxf_point_new ();
+        viewport->p2 = dxf_point_init (viewport->p2);
+        viewport->p2->x0 = 0.0;
+        viewport->p2->y0 = 0.0;
+        viewport->p2->z0 = 0.0;
         viewport->view_twist_angle = 0.0;
         viewport->view_height = 0.0;
         viewport->x_center = 0.0;
