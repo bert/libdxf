@@ -505,7 +505,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing the X-direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->x_direction);
+                        fscanf (fp->fp, "%lf\n", &viewport->p2->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -520,7 +520,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing the Y-direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->y_direction);
+                        fscanf (fp->fp, "%lf\n", &viewport->p2->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -535,7 +535,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing the Z-direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->z_direction);
+                        fscanf (fp->fp, "%lf\n", &viewport->p2->z0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
