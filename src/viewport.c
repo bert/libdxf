@@ -1152,8 +1152,8 @@ dxf_viewport_write
         fprintf (fp->fp, "1030\n%f\n", viewport->p2->z0);
         fprintf (fp->fp, "1040\n%f\n", viewport->view_twist_angle);
         fprintf (fp->fp, "1040\n%f\n", viewport->view_height);
-        fprintf (fp->fp, "1040\n%f\n", viewport->x_center);
-        fprintf (fp->fp, "1040\n%f\n", viewport->y_center);
+        fprintf (fp->fp, "1040\n%f\n", viewport->p3->x0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->p3->y0);
         fprintf (fp->fp, "1040\n%f\n", viewport->perspective_lens_length);
         fprintf (fp->fp, "1040\n%f\n", viewport->front_plane_offset);
         fprintf (fp->fp, "1040\n%f\n", viewport->back_plane_offset);
