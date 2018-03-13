@@ -585,7 +585,7 @@ dxf_viewport_read
                         /* Now follows a string containing the
                          * X-coordinate of the view center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->x_center);
+                        fscanf (fp->fp, "%lf\n", &viewport->p3->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -601,7 +601,7 @@ dxf_viewport_read
                         /* Now follows a string containing the
                          * Y-coordinate of the view center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->y_center);
+                        fscanf (fp->fp, "%lf\n", &viewport->p3->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
