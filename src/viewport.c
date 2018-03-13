@@ -143,8 +143,10 @@ dxf_viewport_init
         viewport->p2->z0 = 0.0;
         viewport->view_twist_angle = 0.0;
         viewport->view_height = 0.0;
-        viewport->x_center = 0.0;
-        viewport->y_center = 0.0;
+        viewport->p3 = dxf_point_new ();
+        viewport->p3 = dxf_point_init (viewport->p3);
+        viewport->p3->x0 = 0.0;
+        viewport->p3->y0 = 0.0;
         viewport->perspective_lens_length = 0.0;
         viewport->front_plane_offset = 0.0;
         viewport->back_plane_offset = 0.0;
