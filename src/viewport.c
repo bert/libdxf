@@ -4154,7 +4154,7 @@ dxf_viewport_set_x2
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
         double x2
                 /*!< the X-value of the direction from target point
-                 * \c x1 of a DXF \c VIEWPORT entity. */
+                 * \c x2 of a DXF \c VIEWPORT entity. */
 )
 {
 #ifdef DEBUG
@@ -4236,7 +4236,7 @@ dxf_viewport_set_y2
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
         double y2
                 /*!< the Y-value of the direction from target point
-                 * \c y1 of a DXF \c VIEWPORT entity. */
+                 * \c y2 of a DXF \c VIEWPORT entity. */
 )
 {
 #ifdef DEBUG
