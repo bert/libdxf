@@ -249,7 +249,7 @@ dxf_viewport_struct
         double view_height;
                 /*!< View height.\n
                  * Group code = 1040. */
-        DxfPoint *center;
+        DxfPoint *p3;
                 /*!< View center point.\n
                  * Group code = 1040. */
         double x_center;
