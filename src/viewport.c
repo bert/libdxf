@@ -4380,6 +4380,37 @@ dxf_viewport_get_view_twist_angle
 
 
 /*!
+ * \brief Set the \c view_twist_angle for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_view_twist_angle
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        double view_twist_angle
+                /*!< the \c view_twist_angle to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->view_twist_angle = view_twist_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
+/*!
  * \brief Get the \c perspective_lens_length from a DXF \c VIEWPORT
  * entity.
  *
