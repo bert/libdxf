@@ -442,6 +442,7 @@ DxfViewport *dxf_viewport_set_z2 (DxfViewport *viewport, double z2);
 double dxf_viewport_get_view_twist_angle (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_view_twist_angle (DxfViewport *viewport, double view_twist_angle);
 double dxf_viewport_get_view_height (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_view_height (DxfViewport *viewport, double view_height);
 double dxf_viewport_get_perspective_lens_length (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_perspective_lens_length (DxfViewport *viewport, double perspective_lens_length);
 
