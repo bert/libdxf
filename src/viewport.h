@@ -445,6 +445,7 @@ double dxf_viewport_get_y3 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_y3 (DxfViewport *viewport, double y3);
 double dxf_viewport_get_perspective_lens_length (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_perspective_lens_length (DxfViewport *viewport, double perspective_lens_length);
+double dxf_viewport_get_front_plane_offset (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
