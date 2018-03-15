@@ -4808,4 +4808,35 @@ dxf_viewport_get_front_plane_offset
 }
 
 
+/*!
+ * \brief Set the \c front_plane_offset for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_front_plane_offset
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        double front_plane_offset
+                /*!< the \c front_plane_offset to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->front_plane_offset = front_plane_offset;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
