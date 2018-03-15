@@ -252,12 +252,6 @@ dxf_viewport_struct
         DxfPoint *p3;
                 /*!< View center point.\n
                  * Group code = 1040. */
-        double x_center;
-                /*!< View center point X-value.\n
-                 * Group code = 1040. */
-        double y_center;
-                /*!< View center point Y-value.\n
-                 * Group code = 1040. */
         double perspective_lens_length;
                 /*!< group code = 1040. */
         double front_plane_offset;
