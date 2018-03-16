@@ -4839,4 +4839,34 @@ dxf_viewport_set_front_plane_offset
 }
 
 
+/*!
+ * \brief Get the \c back_plane_offset from a DXF \c VIEWPORT entity.
+ *
+ * \return \c back_plane_offset.
+ */
+double
+dxf_viewport_get_back_plane_offset
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->back_plane_offset);
+}
+
+
 /* EOF */
