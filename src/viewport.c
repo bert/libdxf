@@ -4930,4 +4930,35 @@ dxf_viewport_get_view_mode
 }
 
 
+/*!
+ * \brief Set the \c view_mode for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_view_mode
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        int view_mode
+                /*!< the \c view_mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->view_mode = view_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
