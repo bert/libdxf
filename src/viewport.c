@@ -4900,4 +4900,34 @@ dxf_viewport_set_back_plane_offset
 }
 
 
+/*!
+ * \brief Get the \c view_mode from a DXF \c VIEWPORT entity.
+ *
+ * \return \c view_mode.
+ */
+int
+dxf_viewport_get_view_mode
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->view_mode);
+}
+
+
 /* EOF */

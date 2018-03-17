@@ -449,6 +449,7 @@ double dxf_viewport_get_front_plane_offset (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_front_plane_offset (DxfViewport *viewport, double front_plane_offset);
 double dxf_viewport_get_back_plane_offset (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_back_plane_offset (DxfViewport *viewport, double back_plane_offset);
+int dxf_viewport_get_view_mode (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
