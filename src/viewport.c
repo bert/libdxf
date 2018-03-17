@@ -5235,4 +5235,35 @@ dxf_viewport_get_grid_on
 }
 
 
+/*!
+ * \brief Set the \c grid_on for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_grid_on
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        int grid_on
+                /*!< the \c grid_on to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->grid_on = grid_on;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */

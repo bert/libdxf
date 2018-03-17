@@ -460,6 +460,7 @@ DxfViewport *dxf_viewport_set_UCSICON_setting (DxfViewport *viewport, int UCSICO
 int dxf_viewport_get_snap_on (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_snap_on (DxfViewport *viewport, int snap_on);
 int dxf_viewport_get_grid_on (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_grid_on (DxfViewport *viewport, int grid_on);
 
 
 #ifdef __cplusplus
