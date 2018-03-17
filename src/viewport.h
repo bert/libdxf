@@ -455,6 +455,7 @@ int dxf_viewport_get_circle_zoom_percent (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_circle_zoom_percent (DxfViewport *viewport, int circle_zoom_percent);
 int dxf_viewport_get_fast_zoom_setting (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_fast_zoom_setting (DxfViewport *viewport, int fast_zoom_setting);
+int dxf_viewport_get_UCSICON_setting (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
