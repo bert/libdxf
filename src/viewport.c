@@ -5174,4 +5174,35 @@ dxf_viewport_get_snap_on
 }
 
 
+/*!
+ * \brief Set the \c snap_on for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_snap_on
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        int snap_on
+                /*!< the \c snap_on to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->snap_on = snap_on;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
