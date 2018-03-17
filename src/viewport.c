@@ -4991,4 +4991,35 @@ dxf_viewport_get_circle_zoom_percent
 }
 
 
+/*!
+ * \brief Set the \c circle_zoom_percent for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_circle_zoom_percent
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        int circle_zoom_percent
+                /*!< the \c circle_zoom_percent to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->circle_zoom_percent = circle_zoom_percent;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */

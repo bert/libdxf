@@ -452,6 +452,7 @@ DxfViewport *dxf_viewport_set_back_plane_offset (DxfViewport *viewport, double b
 int dxf_viewport_get_view_mode (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_view_mode (DxfViewport *viewport, int view_mode);
 int dxf_viewport_get_circle_zoom_percent (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_circle_zoom_percent (DxfViewport *viewport, int circle_zoom_percent);
 
 
 #ifdef __cplusplus
