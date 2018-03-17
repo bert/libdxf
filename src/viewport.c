@@ -5022,4 +5022,34 @@ dxf_viewport_set_circle_zoom_percent
 }
 
 
+/*!
+ * \brief Get the \c fast_zoom_setting from a DXF \c VIEWPORT entity.
+ *
+ * \return \c fast_zoom_setting.
+ */
+int
+dxf_viewport_get_fast_zoom_setting
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->fast_zoom_setting);
+}
+
+
 /* EOF */
