@@ -5205,4 +5205,34 @@ dxf_viewport_set_snap_on
 }
 
 
+/*!
+ * \brief Get the \c grid_on from a DXF \c VIEWPORT entity.
+ *
+ * \return \c grid_on.
+ */
+int
+dxf_viewport_get_grid_on
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->grid_on);
+}
+
+
 /* EOF */
