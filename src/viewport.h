@@ -457,6 +457,7 @@ int dxf_viewport_get_fast_zoom_setting (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_fast_zoom_setting (DxfViewport *viewport, int fast_zoom_setting);
 int dxf_viewport_get_UCSICON_setting (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_UCSICON_setting (DxfViewport *viewport, int UCSICON_setting);
+int dxf_viewport_get_snap_on (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
