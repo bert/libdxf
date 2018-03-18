@@ -287,7 +287,7 @@ dxf_viewport_struct
         double snap_rotation_angle;
                 /*!< Snap angle.\n
                  * Group code = 1040. */
-        DxfPoint *snap_base;
+        DxfPoint *p4;
                 /*!< Snap base point UCS.\n
                  * Group code = 1040. */
         double x_snap_base;
