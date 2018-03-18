@@ -463,6 +463,7 @@ int dxf_viewport_get_grid_on (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_grid_on (DxfViewport *viewport, int grid_on);
 int dxf_viewport_get_snap_style (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_snap_style (DxfViewport *viewport, int snap_style);
+int dxf_viewport_get_snap_isopair (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
