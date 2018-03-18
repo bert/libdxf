@@ -5418,4 +5418,35 @@ dxf_viewport_get_snap_rotation_angle
 }
 
 
+/*!
+ * \brief Set the \c snap_rotation_angle for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_snap_rotation_angle
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        double snap_rotation_angle
+                /*!< the \c snap_rotation_angle to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->snap_rotation_angle = snap_rotation_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
