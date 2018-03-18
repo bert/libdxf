@@ -5449,4 +5449,41 @@ dxf_viewport_set_snap_rotation_angle
 }
 
 
+/*!
+ * \brief Get the snap base point \c p4 of a DXF \c VIEWPORT entity.
+ *
+ * \return the snap base point \c p4.
+ */
+DxfPoint *
+dxf_viewport_get_p4
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->p4 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->p4);
+}
+
+
 /* EOF */
