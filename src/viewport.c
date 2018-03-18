@@ -5357,4 +5357,35 @@ dxf_viewport_get_snap_isopair
 }
 
 
+/*!
+ * \brief Set the \c snap_isopair for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_snap_isopair
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        int snap_isopair
+                /*!< the \c snap_isopair to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->snap_isopair = snap_isopair;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
