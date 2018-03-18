@@ -465,6 +465,7 @@ int dxf_viewport_get_snap_style (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_snap_style (DxfViewport *viewport, int snap_style);
 int dxf_viewport_get_snap_isopair (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_snap_isopair (DxfViewport *viewport, int snap_isopair);
+double dxf_viewport_get_snap_rotation_angle (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
