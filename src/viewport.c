@@ -5486,4 +5486,45 @@ dxf_viewport_get_p4
 }
 
 
+/*!
+ * \brief Set the snap base point \c p4 of a DXF \c VIEWPORT
+ * entity.
+ *
+ * \return a pointer to a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_p4
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        DxfPoint *p4
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p4 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->p4 = p4;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */

@@ -468,6 +468,7 @@ DxfViewport *dxf_viewport_set_snap_isopair (DxfViewport *viewport, int snap_isop
 double dxf_viewport_get_snap_rotation_angle (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_snap_rotation_angle (DxfViewport *viewport, double snap_rotation_angle);
 DxfPoint *dxf_viewport_get_p4 (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_p4 (DxfViewport *viewport, DxfPoint *p4);
 
 
 #ifdef __cplusplus
