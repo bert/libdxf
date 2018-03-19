@@ -4510,7 +4510,7 @@ dxf_viewport_get_p3
 
 
 /*!
- * \brief Set the view center point \c p2 of a DXF \c VIEWPORT
+ * \brief Set the view center point \c p3 of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to a DXF \c VIEWPORT entity.
