@@ -290,6 +290,9 @@ dxf_viewport_struct
         DxfPoint *p4;
                 /*!< Snap base point UCS.\n
                  * Group code = 1040. */
+        DxfPoint *p5;
+                /*!< Snap spacing.\n
+                 * Group code = 1040. */
         DxfPoint *snap_spacing;
                 /*!< Snap spacing.\n
                  * Group code = 1040. */
