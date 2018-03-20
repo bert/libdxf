@@ -159,8 +159,10 @@ dxf_viewport_init
         viewport->snap_style = 0;
         viewport->snap_isopair = 0;
         viewport->snap_rotation_angle = 0.0;
-        viewport->x_snap_base = 0.0;
-        viewport->y_snap_base = 0.0;
+        viewport->p4 = dxf_point_new ();
+        viewport->p4 = dxf_point_init (viewport->p4);
+        viewport->p4->x0 = 0.0;
+        viewport->p4->y0 = 0.0;
         viewport->x_snap_spacing = 0.0;
         viewport->y_snap_spacing = 0.0;
         viewport->x_grid_spacing = 0.0;
