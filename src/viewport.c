@@ -1168,8 +1168,8 @@ dxf_viewport_write
         fprintf (fp->fp, "1070\n%d\n", viewport->snap_style);
         fprintf (fp->fp, "1070\n%d\n", viewport->snap_isopair);
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_rotation_angle);
-        fprintf (fp->fp, "1040\n%f\n", viewport->x_snap_base);
-        fprintf (fp->fp, "1040\n%f\n", viewport->y_snap_base);
+        fprintf (fp->fp, "1040\n%f\n", viewport->p4->x0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->p4->y0);
         fprintf (fp->fp, "1040\n%f\n", viewport->x_snap_spacing);
         fprintf (fp->fp, "1040\n%f\n", viewport->y_snap_spacing);
         fprintf (fp->fp, "1040\n%f\n", viewport->x_grid_spacing);
