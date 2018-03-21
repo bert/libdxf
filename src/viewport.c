@@ -5696,7 +5696,7 @@ dxf_viewport_set_y4
 
 
 /*!
- * \brief Get the snap spcing \c p5 of a DXF \c VIEWPORT entity.
+ * \brief Get the snap spacing \c p5 of a DXF \c VIEWPORT entity.
  *
  * \return the snap spacing \c p5.
  */
