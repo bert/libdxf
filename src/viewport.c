@@ -844,7 +844,7 @@ dxf_viewport_read
                         /* Now follows a string containing the X snap
                          * spacing. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->x_snap_spacing);
+                        fscanf (fp->fp, "%lf\n", &viewport->p5->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -860,7 +860,7 @@ dxf_viewport_read
                         /* Now follows a string containing the Y snap
                          * spacing. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->y_snap_spacing);
+                        fscanf (fp->fp, "%lf\n", &viewport->p5->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
