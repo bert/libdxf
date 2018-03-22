@@ -5855,4 +5855,43 @@ dxf_viewport_set_x5
 }
 
 
+/*!
+ * \brief Get the Y-value of the snap spacing \c y5 of a DXF
+ * \c VIEWPORT entity.
+ *
+ * \return the Y-value of the snap spacing \c y5.
+ */
+double
+dxf_viewport_get_y5
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (viewport->p5 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->p5->y0);
+}
+
+
 /* EOF */
