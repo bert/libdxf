@@ -1178,8 +1178,8 @@ dxf_viewport_write
         fprintf (fp->fp, "1040\n%f\n", viewport->p4->y0);
         fprintf (fp->fp, "1040\n%f\n", viewport->p5->x0);
         fprintf (fp->fp, "1040\n%f\n", viewport->p5->y0);
-        fprintf (fp->fp, "1040\n%f\n", viewport->x_grid_spacing);
-        fprintf (fp->fp, "1040\n%f\n", viewport->y_grid_spacing);
+        fprintf (fp->fp, "1040\n%f\n", viewport->p6->x0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->p6->y0);
         fprintf (fp->fp, "1070\n%d\n", viewport->plot_flag);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN);
         /* Start a loop writing all frozen layer names. */
