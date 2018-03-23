@@ -167,6 +167,10 @@ dxf_viewport_init
         viewport->p5 = dxf_point_init (viewport->p5);
         viewport->p5->x0 = 0.0;
         viewport->p5->y0 = 0.0;
+        viewport->p6 = dxf_point_new ();
+        viewport->p6 = dxf_point_init (viewport->p6);
+        viewport->p6->x0 = 0.0;
+        viewport->p6->y0 = 0.0;
         viewport->x_grid_spacing = 0.0;
         viewport->y_grid_spacing = 0.0;
         viewport->plot_flag = 0;
