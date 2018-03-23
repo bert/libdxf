@@ -293,15 +293,6 @@ dxf_viewport_struct
         DxfPoint *p5;
                 /*!< Snap spacing.\n
                  * Group code = 1040. */
-        DxfPoint *snap_spacing;
-                /*!< Snap spacing.\n
-                 * Group code = 1040. */
-        double x_snap_spacing;
-                /*!< Snap X spacing.\n
-                 * Group code = 1040. */
-        double y_snap_spacing;
-                /*!< Snap Y spacing.\n
-                 * Group code = 1040. */
         double x_grid_spacing;
                 /*!< Grid X spacing.\n
                  * Group code = 1040. */
