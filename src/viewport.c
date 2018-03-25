@@ -6058,4 +6058,47 @@ dxf_viewport_get_x6
 }
 
 
+/*!
+ * \brief Set the X-value of the grid spacing \c x6 of a
+ * DXF \c VIEWPORT entity.
+ *
+ * \return a pointer to \c viewport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfViewport *
+dxf_viewport_set_x6
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        double x6
+                /*!< the X-value of the grid spacing \c x6 of a DXF
+                 * \c VIEWPORT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->p6 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->p6->x0 = x6;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
