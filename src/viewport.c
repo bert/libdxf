@@ -6101,4 +6101,43 @@ dxf_viewport_set_x6
 }
 
 
+/*!
+ * \brief Get the Y-value of the grid spacing \c y6 of a DXF
+ * \c VIEWPORT entity.
+ *
+ * \return the Y-value of the grid spacing \c y6.
+ */
+double
+dxf_viewport_get_y6
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (viewport->p6 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->p6->y0);
+}
+
+
 /* EOF */
