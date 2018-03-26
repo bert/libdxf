@@ -6281,4 +6281,44 @@ dxf_viewport_get_frozen_layer_list_begin
 }
 
 
+/*!
+ * \brief Set the \c frozen_layer_list_begin for a DXF \c VIEWPORT
+ * entity.
+ */
+DxfViewport *
+dxf_viewport_set_frozen_layer_list_begin
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        char *frozen_layer_list_begin
+                /*!< a pointer to a string containing the
+                 * \c frozen_layer_list_begin to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (frozen_layer_list_begin == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->frozen_layer_list_begin = strdup (frozen_layer_list_begin);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */
