@@ -472,6 +472,7 @@ double dxf_viewport_get_y6 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_y6 (DxfViewport *viewport, double y6);
 int dxf_viewport_get_plot_flag (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_plot_flag (DxfViewport *viewport, int plot_flag);
+char *dxf_viewport_get_frozen_layer_list_begin (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
