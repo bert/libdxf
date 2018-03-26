@@ -6211,4 +6211,35 @@ dxf_viewport_get_plot_flag
 }
 
 
+/*!
+ * \brief Set the \c plot_flag for a DXF \c VIEWPORT entity.
+ */
+DxfViewport *
+dxf_viewport_set_plot_flag
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        int plot_flag
+                /*!< the \c plot_flag to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->plot_flag = plot_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */

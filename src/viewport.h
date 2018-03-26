@@ -471,6 +471,7 @@ DxfViewport *dxf_viewport_set_x6 (DxfViewport *viewport, double x6);
 double dxf_viewport_get_y6 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_y6 (DxfViewport *viewport, double y6);
 int dxf_viewport_get_plot_flag (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_plot_flag (DxfViewport *viewport, int plot_flag);
 
 
 #ifdef __cplusplus
