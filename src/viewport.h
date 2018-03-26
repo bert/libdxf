@@ -296,12 +296,6 @@ dxf_viewport_struct
         DxfPoint *p6;
                 /*!< Grid spacing.\n
                  * Group code = 1040. */
-        double x_grid_spacing;
-                /*!< Grid X spacing.\n
-                 * Group code = 1040. */
-        double y_grid_spacing;
-                /*!< Grid Y spacing.\n
-                 * Group code = 1040. */
         int plot_flag;
                 /*!< Hidden in plot flag.\n
                  * Group code = 1070. */

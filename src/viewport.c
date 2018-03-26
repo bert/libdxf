@@ -171,8 +171,6 @@ dxf_viewport_init
         viewport->p6 = dxf_point_init (viewport->p6);
         viewport->p6->x0 = 0.0;
         viewport->p6->y0 = 0.0;
-        viewport->x_grid_spacing = 0.0;
-        viewport->y_grid_spacing = 0.0;
         viewport->plot_flag = 0;
         viewport->frozen_layer_list_begin = strdup ("{"); /* Always "{". */
         /*! \todo Implement the number of layers in a more efficient way.
