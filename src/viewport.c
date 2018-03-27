@@ -6321,4 +6321,42 @@ dxf_viewport_set_frozen_layer_list_begin
 }
 
 
+/*!
+ * \brief Get the \c frozen_layers from a DXF \c VIEWPORT entity.
+ *
+ * \return \c frozen_layers when sucessful, \c NULL when an
+ * error occurred.
+ */
+DxfChar *
+dxf_viewport_get_frozen_layers
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->frozen_layers ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport->frozen_layers);
+}
+
+
 /* EOF */
