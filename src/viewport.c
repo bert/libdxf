@@ -6556,4 +6556,44 @@ dxf_viewport_set_window_descriptor_end
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c VIEWPORT entity from a DXF
+ * \c VIEWPORT entity.
+ *
+ * \return pointer to the next \c VIEWPORT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfViewport *
+dxf_viewport_get_next
+(
+        DxfViewport *viewport
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfViewport *) viewport->next);
+}
+
+
 /* EOF */
