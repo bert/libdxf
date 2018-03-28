@@ -6596,4 +6596,43 @@ dxf_viewport_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c VIEWPORT for a DXF \c VIEWPORT
+ * entity.
+ */
+DxfViewport *
+dxf_viewport_set_next
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        DxfViewport *next
+                /*!< a pointer to the next \c VIEWPORT for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->next = (struct DxfViewport *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */

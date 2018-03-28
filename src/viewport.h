@@ -481,6 +481,7 @@ DxfViewport *dxf_viewport_set_frozen_layer_list_end (DxfViewport *viewport, char
 char *dxf_viewport_get_window_descriptor_end (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_window_descriptor_end (DxfViewport *viewport, char *window_descriptor_end);
 DxfViewport *dxf_viewport_get_next (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_next (DxfViewport *viewport, DxfViewport *next);
 
 
 #ifdef __cplusplus
