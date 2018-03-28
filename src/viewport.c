@@ -173,14 +173,11 @@ dxf_viewport_init
         viewport->p6->y0 = 0.0;
         viewport->plot_flag = 0;
         viewport->frozen_layer_list_begin = strdup ("{"); /* Always "{". */
-        /*! \todo Implement the number of layers in a more efficient way.
-         * A lot of memory is consumed by reserving for DXF_MAX_LAYERS
-         * instead of the actual existing number of layers.
-         * Maybe this can be solved by dynamically allocating a
-         * reasonable number of layers during compile time, and
-         * (re-allocating) shrinking when the actual number of layers is
-         * known during run time. */
-        viewport->frozen_layers = NULL;
+        viewport->frozen_layers = dxf_char_new ();
+        viewport->frozen_layers = dxf_char_init (viewport->frozen_layers);
+        viewport->frozen_layers->value = strdup ("");
+        viewport->frozen_layers->length = 0;
+        viewport->frozen_layers->next = NULL;
         viewport->frozen_layer_list_end = strdup ("}"); /* Always "}". */
         viewport->window_descriptor_end = strdup ("}"); /* Always "}". */
         viewport->dictionary_owner_soft = strdup ("");
