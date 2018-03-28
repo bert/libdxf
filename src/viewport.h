@@ -482,6 +482,7 @@ char *dxf_viewport_get_window_descriptor_end (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_window_descriptor_end (DxfViewport *viewport, char *window_descriptor_end);
 DxfViewport *dxf_viewport_get_next (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_next (DxfViewport *viewport, DxfViewport *next);
+DxfViewport *dxf_viewport_get_last (DxfViewport *viewport);
 
 
 #ifdef __cplusplus
