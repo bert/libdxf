@@ -6516,4 +6516,44 @@ dxf_viewport_get_window_descriptor_end
 }
 
 
+/*!
+ * \brief Set the \c window_descriptor_end for a DXF \c VIEWPORT
+ * entity.
+ */
+DxfViewport *
+dxf_viewport_set_window_descriptor_end
+(
+        DxfViewport *viewport,
+                /*!< a pointer to a DXF \c VIEWPORT entity. */
+        char *window_descriptor_end
+                /*!< a pointer to a string containing the
+                 * \c window_descriptor_end to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (window_descriptor_end == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        viewport->window_descriptor_end = strdup (window_descriptor_end);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (viewport);
+}
+
+
 /* EOF */

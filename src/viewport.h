@@ -479,6 +479,7 @@ DxfViewport *dxf_viewport_set_frozen_layers (DxfViewport *viewport, DxfChar *fro
 char *dxf_viewport_get_frozen_layer_list_end (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_frozen_layer_list_end (DxfViewport *viewport, char *frozen_layer_list_end);
 char *dxf_viewport_get_window_descriptor_end (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_window_descriptor_end (DxfViewport *viewport, char *window_descriptor_end);
 
 
 #ifdef __cplusplus
