@@ -215,6 +215,7 @@ dxf_viewport_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfChar *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -908,18 +909,27 @@ dxf_viewport_read
                         {
                                 /* Start a loop reading all frozen layer
                                  * names and bail out when a group code
-                                 * with a value of "1002" is encountered
-                                 * or DXF_MAX_LAYERS is reached.*/
+                                 * with a value of "1002" is encountered.*/
                                 /*! \todo Do a proper implementation of reading frozen layers.*/
+                                iter = viewport->frozen_layers;
                                 do
                                 {
                                         (fp->line_number)++;
-                                        fscanf (fp->fp, "%s\n", viewport->frozen_layers->value);
+                                        fscanf (fp->fp, "%s\n", iter->value);
                                         /* Now follows a string containing a group code. */
                                         (fp->line_number)++;
                                         fscanf (fp->fp, "%s\n", temp_string);
+                                        iter->next = (DxfChar *) dxf_char_new ();
+                                        iter->next = (DxfChar *) dxf_char_init ((DxfChar *) iter->next);
+                                        iter = (DxfChar *) iter->next;
                                 }
                                 while ((strcmp (temp_string, "1003") == 0));
+                                /* We have initialised the next DxfChar
+                                 * and then left the loop.
+                                 * The next DxfChar contains no valid
+                                 * value, so we have to clean up. */
+                                dxf_char_free ((DxfChar *) iter->next);
+                                iter->next = NULL;
                         }
                         else
                         {
