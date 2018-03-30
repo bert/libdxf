@@ -1037,6 +1037,7 @@ dxf_viewport_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("VIEWPORT");
+        DxfChar *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -1188,11 +1189,16 @@ dxf_viewport_write
         fprintf (fp->fp, "1070\n%d\n", viewport->plot_flag);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN);
         /* Start a loop writing all frozen layer names. */
-        /*! \todo Do a proper implementation of writing frozen layers. */
-        while ((!viewport->frozen_layers->value) /* Do not allow NULL pointers. */
-                || (strcmp (viewport->frozen_layers->value, "") == 1)) /* Do not allow empty strings. */
+        iter = viewport->frozen_layers;
+        while ((!iter->value) /* Do not allow NULL pointers. */
+          || (strcmp (iter->value, "") == 1)) /* Do not allow empty strings. */
         {
-                fprintf (fp->fp, "1003\n%s\n", viewport->frozen_layers->value);
+                fprintf (fp->fp, "1003\n%s\n", iter->value);
+                iter = (DxfChar *) iter->next;
+                if (iter->next == NULL)
+                {
+                        break;
+                }
         }
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_END);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_END);
