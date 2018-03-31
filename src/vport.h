@@ -217,6 +217,7 @@ int dxf_vport_free (DxfVPort *vport);
 void dxf_vport_free_chain (DxfVPort *vports);
 int dxf_vport_get_id_code (DxfVPort *vport);
 DxfVPort *dxf_vport_set_id_code (DxfVPort *vport, int id_code);
+char *dxf_vport_get_viewport_name (DxfVPort *vport);
 
 
 #ifdef __cplusplus
