@@ -46,7 +46,7 @@ extern "C" {
 
 
 /*!
- * \brief DXF definition of an AutoCAD viewport entity.
+ * \brief DXF definition of an AutoCAD vport symbol table entry.
  *
  * The VPORT table is unique in that it may contain several entries with the
  * same name (indicating a multiple-viewport configuration).\n
@@ -64,7 +64,7 @@ typedef struct
 dxf_vport_struct
 {
         int id_code;
-                /*!< Identification number for the entity.\n
+                /*!< Identification number for the symbol table entry.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file.\n
                  * Group code = 5. */
