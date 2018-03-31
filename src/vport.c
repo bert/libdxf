@@ -878,4 +878,43 @@ dxf_vport_get_viewport_name
 }
 
 
+/*!
+ * \brief Set the \c viewport_name for a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_viewport_name
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        char *viewport_name
+                /*!< a pointer to a string containing the
+                 * \c viewport_name to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (viewport_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->viewport_name = strdup (viewport_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
