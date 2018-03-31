@@ -1,7 +1,7 @@
 /*!
  * \file vport.c
  *
- * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017, 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF Viewport symbol table entry (\c VPORT).
  *
@@ -763,6 +763,42 @@ dxf_vport_free_chain
 #if DEBUG
         DXF_DEBUG_END
 #endif
+}
+
+
+/*!
+ * \brief Get the \c id_code from a DXF \c VPORT symbol table entry.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_vport_get_id_code
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vport->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->id_code);
 }
 
 

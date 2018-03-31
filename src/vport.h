@@ -1,7 +1,7 @@
 /*!
  * \file vport.h
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF Viewport symbol table entry (\c VPORT).
@@ -215,6 +215,7 @@ DxfVPort *dxf_vport_read (DxfFile *fp, DxfVPort *vport);
 int dxf_vport_write (DxfFile *fp, DxfVPort *vport);
 int dxf_vport_free (DxfVPort *vport);
 void dxf_vport_free_chain (DxfVPort *vports);
+int dxf_vport_get_id_code (DxfVPort *vport);
 
 
 #ifdef __cplusplus
