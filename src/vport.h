@@ -38,6 +38,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -70,6 +71,9 @@ dxf_vport_struct
                  * Group code = 5. */
         char *viewport_name;
                 /*!< Group code = 2. */
+        DxfPoint *min;
+                /*!< The lower-left corner of viewport.\n
+                 * Group codes = 10 and 20.*/
         double x_min;
                 /*!< X value of the lower-left corner of viewport.\n
                  * Group code = 10. */
