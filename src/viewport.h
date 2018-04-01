@@ -191,7 +191,7 @@ dxf_viewport_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF viewport. */
-        DxfPoint *p0;
+        DxfPoint *center;
                 /*!< Center point of entity in paperspace coordinates.\n
                  * Group codes = 10, 20 and 30.*/
         double width;
@@ -378,8 +378,8 @@ char *dxf_viewport_get_color_name (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_color_name (DxfViewport *viewport, char *color_name);
 long dxf_viewport_get_transparency (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_transparency (DxfViewport *viewport, long transparency);
-DxfPoint *dxf_viewport_get_p0 (DxfViewport *viewport);
-DxfViewport *dxf_viewport_set_p0 (DxfViewport *viewport, DxfPoint *p0);
+DxfPoint *dxf_viewport_get_center (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_center (DxfViewport *viewport, DxfPoint *center);
 double dxf_viewport_get_x0 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x0 (DxfViewport *viewport, double x0);
 double dxf_viewport_get_y0 (DxfViewport *viewport);

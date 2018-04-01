@@ -112,11 +112,11 @@ dxf_viewport_init
         viewport->id_code = 0;
         viewport->linetype = strdup (DXF_DEFAULT_LINETYPE);
         viewport->layer = strdup (DXF_DEFAULT_LAYER);
-        viewport->p0 = dxf_point_new ();
-        viewport->p0 = dxf_point_init (viewport->p0);
-        viewport->p0->x0 = 0.0;
-        viewport->p0->y0 = 0.0;
-        viewport->p0->z0 = 0.0;
+        viewport->center = dxf_point_new ();
+        viewport->center = dxf_point_init (viewport->center);
+        viewport->center->x0 = 0.0;
+        viewport->center->y0 = 0.0;
+        viewport->center->z0 = 0.0;
         viewport->elevation = 0.0;
         viewport->thickness = 0.0;
         viewport->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
@@ -274,21 +274,21 @@ dxf_viewport_read
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p0->x0);
+                        fscanf (fp->fp, "%lf\n", &viewport->center->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p0->y0);
+                        fscanf (fp->fp, "%lf\n", &viewport->center->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p0->z0);
+                        fscanf (fp->fp, "%lf\n", &viewport->center->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0))
@@ -1147,9 +1147,9 @@ dxf_viewport_write
         {
                 fprintf (fp->fp, " 39\n%f\n", viewport->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", viewport->p0->x0);
-        fprintf (fp->fp, " 20\n%f\n", viewport->p0->y0);
-        fprintf (fp->fp, " 30\n%f\n", viewport->p0->z0);
+        fprintf (fp->fp, " 10\n%f\n", viewport->center->x0);
+        fprintf (fp->fp, " 20\n%f\n", viewport->center->y0);
+        fprintf (fp->fp, " 30\n%f\n", viewport->center->z0);
         fprintf (fp->fp, " 40\n%f\n", viewport->width);
         fprintf (fp->fp, " 41\n%f\n", viewport->height);
         fprintf (fp->fp, " 68\n%d\n", viewport->status);
@@ -2848,13 +2848,13 @@ dxf_viewport_set_transparency
 
 
 /*!
- * \brief Get the center point \c p0 of a DXF \c VIEWPORT entity in
+ * \brief Get the center point \c center of a DXF \c VIEWPORT entity in
  * paperspace coordinates.
  *
- * \return the center point \c p0.
+ * \return the center point \c center.
  */
 DxfPoint *
-dxf_viewport_get_p0
+dxf_viewport_get_center
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -2871,7 +2871,7 @@ dxf_viewport_get_p0
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p0 == NULL)
+        if (viewport->center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -2881,21 +2881,21 @@ dxf_viewport_get_p0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p0);
+        return (viewport->center);
 }
 
 
 /*!
- * \brief Set the center point \c p0 of a DXF \c VIEWPORT entity.
+ * \brief Set the center point \c center of a DXF \c VIEWPORT entity.
  *
  * \return a pointer to a DXF \c VIEWPORT entity.
  */
 DxfViewport *
-dxf_viewport_set_p0
+dxf_viewport_set_center
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        DxfPoint *p0
+        DxfPoint *center
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -2910,14 +2910,14 @@ dxf_viewport_set_p0
                   __FUNCTION__);
                 return (NULL);
         }
-        if (p0 == NULL)
+        if (center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p0 = p0;
+        viewport->center = center;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2950,7 +2950,7 @@ dxf_viewport_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p0 == NULL)
+        if (viewport->center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -2960,7 +2960,7 @@ dxf_viewport_get_x0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p0->x0);
+        return (viewport->center->x0);
 }
 
 
@@ -2992,14 +2992,14 @@ dxf_viewport_set_x0
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p0 == NULL)
+        if (viewport->center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p0->x0 = x0;
+        viewport->center->x0 = x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3032,7 +3032,7 @@ dxf_viewport_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p0 == NULL)
+        if (viewport->center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -3042,7 +3042,7 @@ dxf_viewport_get_y0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p0->y0);
+        return (viewport->center->y0);
 }
 
 
@@ -3074,14 +3074,14 @@ dxf_viewport_set_y0
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p0 == NULL)
+        if (viewport->center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p0->y0 = y0;
+        viewport->center->y0 = y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3114,7 +3114,7 @@ dxf_viewport_get_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p0 == NULL)
+        if (viewport->center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -3124,7 +3124,7 @@ dxf_viewport_get_z0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p0->z0);
+        return (viewport->center->z0);
 }
 
 
@@ -3156,14 +3156,14 @@ dxf_viewport_set_z0
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p0 == NULL)
+        if (viewport->center == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p0->z0 = z0;
+        viewport->center->z0 = z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
