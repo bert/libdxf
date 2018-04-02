@@ -163,10 +163,10 @@ dxf_viewport_init
         viewport->snap_base = dxf_point_init (viewport->snap_base);
         viewport->snap_base->x0 = 0.0;
         viewport->snap_base->y0 = 0.0;
-        viewport->p5 = dxf_point_new ();
-        viewport->p5 = dxf_point_init (viewport->p5);
-        viewport->p5->x0 = 0.0;
-        viewport->p5->y0 = 0.0;
+        viewport->snap_spacing = dxf_point_new ();
+        viewport->snap_spacing = dxf_point_init (viewport->snap_spacing);
+        viewport->snap_spacing->x0 = 0.0;
+        viewport->snap_spacing->y0 = 0.0;
         viewport->p6 = dxf_point_new ();
         viewport->p6 = dxf_point_init (viewport->p6);
         viewport->p6->x0 = 0.0;
@@ -844,7 +844,7 @@ dxf_viewport_read
                         /* Now follows a string containing the X snap
                          * spacing. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p5->x0);
+                        fscanf (fp->fp, "%lf\n", &viewport->snap_spacing->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -860,7 +860,7 @@ dxf_viewport_read
                         /* Now follows a string containing the Y snap
                          * spacing. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p5->y0);
+                        fscanf (fp->fp, "%lf\n", &viewport->snap_spacing->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -1182,8 +1182,8 @@ dxf_viewport_write
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_rotation_angle);
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_base->x0);
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_base->y0);
-        fprintf (fp->fp, "1040\n%f\n", viewport->p5->x0);
-        fprintf (fp->fp, "1040\n%f\n", viewport->p5->y0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->snap_spacing->x0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->snap_spacing->y0);
         fprintf (fp->fp, "1040\n%f\n", viewport->p6->x0);
         fprintf (fp->fp, "1040\n%f\n", viewport->p6->y0);
         fprintf (fp->fp, "1070\n%d\n", viewport->plot_flag);
@@ -5711,12 +5711,12 @@ dxf_viewport_set_y4
 
 
 /*!
- * \brief Get the snap spacing \c p5 of a DXF \c VIEWPORT entity.
+ * \brief Get the snap spacing \c snap_spacing of a DXF \c VIEWPORT entity.
  *
- * \return the snap spacing \c p5.
+ * \return the snap spacing \c snap_spacing.
  */
 DxfPoint *
-dxf_viewport_get_p5
+dxf_viewport_get_snap_spacing
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -5733,7 +5733,7 @@ dxf_viewport_get_p5
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p5 == NULL)
+        if (viewport->snap_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -5743,22 +5743,22 @@ dxf_viewport_get_p5
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p5);
+        return (viewport->snap_spacing);
 }
 
 
 /*!
- * \brief Set the snap spacing \c p5 of a DXF \c VIEWPORT
+ * \brief Set the snap spacing \c snap_spacing of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to a DXF \c VIEWPORT entity.
  */
 DxfViewport *
-dxf_viewport_set_p5
+dxf_viewport_set_snap_spacing
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        DxfPoint *p5
+        DxfPoint *snap_spacing
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -5773,14 +5773,14 @@ dxf_viewport_set_p5
                   __FUNCTION__);
                 return (NULL);
         }
-        if (p5 == NULL)
+        if (snap_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p5 = p5;
+        viewport->snap_spacing = snap_spacing;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -5813,7 +5813,7 @@ dxf_viewport_get_x5
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p5 == NULL)
+        if (viewport->snap_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -5823,7 +5823,7 @@ dxf_viewport_get_x5
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p5->x0);
+        return (viewport->snap_spacing->x0);
 }
 
 
@@ -5855,14 +5855,14 @@ dxf_viewport_set_x5
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p5 == NULL)
+        if (viewport->snap_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p5->x0 = x5;
+        viewport->snap_spacing->x0 = x5;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -5895,7 +5895,7 @@ dxf_viewport_get_y5
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p5 == NULL)
+        if (viewport->snap_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -5905,7 +5905,7 @@ dxf_viewport_get_y5
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p5->y0);
+        return (viewport->snap_spacing->y0);
 }
 
 
@@ -5937,14 +5937,14 @@ dxf_viewport_set_y5
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p5 == NULL)
+        if (viewport->snap_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p5->y0 = y5;
+        viewport->snap_spacing->y0 = y5;
 #if DEBUG
         DXF_DEBUG_END
 #endif

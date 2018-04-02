@@ -290,7 +290,7 @@ dxf_viewport_struct
         DxfPoint *snap_base;
                 /*!< Snap base point UCS.\n
                  * Group code = 1040. */
-        DxfPoint *p5;
+        DxfPoint *snap_spacing;
                 /*!< Snap spacing.\n
                  * Group code = 1040. */
         DxfPoint *p6;
@@ -458,8 +458,8 @@ double dxf_viewport_get_x4 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x4 (DxfViewport *viewport, double x4);
 double dxf_viewport_get_y4 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_y4 (DxfViewport *viewport, double y4);
-DxfPoint *dxf_viewport_get_p5 (DxfViewport *viewport);
-DxfViewport *dxf_viewport_set_p5 (DxfViewport *viewport, DxfPoint *p5);
+DxfPoint *dxf_viewport_get_snap_spacing (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_snap_spacing (DxfViewport *viewport, DxfPoint *snap_spacing);
 double dxf_viewport_get_x5 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x5 (DxfViewport *viewport, double x5);
 double dxf_viewport_get_y5 (DxfViewport *viewport);
