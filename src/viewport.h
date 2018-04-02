@@ -240,7 +240,7 @@ dxf_viewport_struct
         DxfPoint *target;
                 /*!< View target point.\n
                  * Group codes = 1010, 1020 and 1030. */
-        DxfPoint *p2;
+        DxfPoint *direction;
                 /*!< View direction from target point.\n
                  * Group codes = 1010, 1020 and 1030. */
         double view_twist_angle;
@@ -410,8 +410,8 @@ double dxf_viewport_get_y1 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_y1 (DxfViewport *viewport, double y1);
 double dxf_viewport_get_z1 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_z1 (DxfViewport *viewport, double z1);
-DxfPoint *dxf_viewport_get_p2 (DxfViewport *viewport);
-DxfViewport *dxf_viewport_set_p2 (DxfViewport *viewport, DxfPoint *p2);
+DxfPoint *dxf_viewport_get_direction (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_direction (DxfViewport *viewport, DxfPoint *direction);
 double dxf_viewport_get_x2 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x2 (DxfViewport *viewport, double x2);
 double dxf_viewport_get_y2 (DxfViewport *viewport);

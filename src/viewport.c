@@ -136,11 +136,11 @@ dxf_viewport_init
         viewport->target->x0 = 0.0;
         viewport->target->y0 = 0.0;
         viewport->target->z0 = 0.0;
-        viewport->p2 = dxf_point_new ();
-        viewport->p2 = dxf_point_init (viewport->p2);
-        viewport->p2->x0 = 0.0;
-        viewport->p2->y0 = 0.0;
-        viewport->p2->z0 = 0.0;
+        viewport->direction = dxf_point_new ();
+        viewport->direction = dxf_point_init (viewport->direction);
+        viewport->direction->x0 = 0.0;
+        viewport->direction->y0 = 0.0;
+        viewport->direction->z0 = 0.0;
         viewport->view_twist_angle = 0.0;
         viewport->view_height = 0.0;
         viewport->p3 = dxf_point_new ();
@@ -511,7 +511,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing the X-direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p2->x0);
+                        fscanf (fp->fp, "%lf\n", &viewport->direction->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -526,7 +526,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing the Y-direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p2->y0);
+                        fscanf (fp->fp, "%lf\n", &viewport->direction->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -541,7 +541,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing the Z-direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p2->z0);
+                        fscanf (fp->fp, "%lf\n", &viewport->direction->z0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -1161,9 +1161,9 @@ dxf_viewport_write
         fprintf (fp->fp, "1010\n%f\n", viewport->target->x0);
         fprintf (fp->fp, "1020\n%f\n", viewport->target->y0);
         fprintf (fp->fp, "1030\n%f\n", viewport->target->z0);
-        fprintf (fp->fp, "1010\n%f\n", viewport->p2->x0);
-        fprintf (fp->fp, "1020\n%f\n", viewport->p2->y0);
-        fprintf (fp->fp, "1030\n%f\n", viewport->p2->z0);
+        fprintf (fp->fp, "1010\n%f\n", viewport->direction->x0);
+        fprintf (fp->fp, "1020\n%f\n", viewport->direction->y0);
+        fprintf (fp->fp, "1030\n%f\n", viewport->direction->z0);
         fprintf (fp->fp, "1040\n%f\n", viewport->view_twist_angle);
         fprintf (fp->fp, "1040\n%f\n", viewport->view_height);
         fprintf (fp->fp, "1040\n%f\n", viewport->p3->x0);
@@ -4044,13 +4044,13 @@ dxf_viewport_set_z1
 
 
 /*!
- * \brief Get the direction from target point \c p2 of a DXF \c VIEWPORT
+ * \brief Get the direction from target point \c direction of a DXF \c VIEWPORT
  * entity.
  *
- * \return the direction from target point \c p2.
+ * \return the direction from target point \c direction.
  */
 DxfPoint *
-dxf_viewport_get_p2
+dxf_viewport_get_direction
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -4067,7 +4067,7 @@ dxf_viewport_get_p2
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p2 == NULL)
+        if (viewport->direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -4077,22 +4077,22 @@ dxf_viewport_get_p2
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p2);
+        return (viewport->direction);
 }
 
 
 /*!
- * \brief Set the direction from target point \c p2 of a DXF \c VIEWPORT
+ * \brief Set the direction from target point \c direction of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to a DXF \c VIEWPORT entity.
  */
 DxfViewport *
-dxf_viewport_set_p2
+dxf_viewport_set_direction
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        DxfPoint *p2
+        DxfPoint *direction
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -4107,14 +4107,14 @@ dxf_viewport_set_p2
                   __FUNCTION__);
                 return (NULL);
         }
-        if (p2 == NULL)
+        if (direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p2 = p2;
+        viewport->direction = direction;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -4147,7 +4147,7 @@ dxf_viewport_get_x2
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p2 == NULL)
+        if (viewport->direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -4157,7 +4157,7 @@ dxf_viewport_get_x2
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p2->x0);
+        return (viewport->direction->x0);
 }
 
 
@@ -4189,14 +4189,14 @@ dxf_viewport_set_x2
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p2 == NULL)
+        if (viewport->direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p2->x0 = x2;
+        viewport->direction->x0 = x2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -4229,7 +4229,7 @@ dxf_viewport_get_y2
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p2 == NULL)
+        if (viewport->direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -4239,7 +4239,7 @@ dxf_viewport_get_y2
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p2->y0);
+        return (viewport->direction->y0);
 }
 
 
@@ -4271,14 +4271,14 @@ dxf_viewport_set_y2
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p2 == NULL)
+        if (viewport->direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p2->y0 = y2;
+        viewport->direction->y0 = y2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -4311,7 +4311,7 @@ dxf_viewport_get_z2
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p2 == NULL)
+        if (viewport->direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -4321,7 +4321,7 @@ dxf_viewport_get_z2
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p2->z0);
+        return (viewport->direction->z0);
 }
 
 
@@ -4353,14 +4353,14 @@ dxf_viewport_set_z2
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p2 == NULL)
+        if (viewport->direction == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p2->z0 = z2;
+        viewport->direction->z0 = z2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
