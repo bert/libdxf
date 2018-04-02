@@ -249,7 +249,7 @@ dxf_viewport_struct
         double view_height;
                 /*!< View height.\n
                  * Group code = 1040. */
-        DxfPoint *p3;
+        DxfPoint *view_center;
                 /*!< View center point.\n
                  * Group code = 1040. */
         double perspective_lens_length;
@@ -422,8 +422,8 @@ double dxf_viewport_get_view_twist_angle (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_view_twist_angle (DxfViewport *viewport, double view_twist_angle);
 double dxf_viewport_get_view_height (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_view_height (DxfViewport *viewport, double view_height);
-DxfPoint *dxf_viewport_get_p3 (DxfViewport *viewport);
-DxfViewport *dxf_viewport_set_p3 (DxfViewport *viewport, DxfPoint *p3);
+DxfPoint *dxf_viewport_get_view_center (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_view_center (DxfViewport *viewport, DxfPoint *view_center);
 double dxf_viewport_get_x3 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x3 (DxfViewport *viewport, double x3);
 double dxf_viewport_get_y3 (DxfViewport *viewport);
