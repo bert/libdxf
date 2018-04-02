@@ -159,10 +159,10 @@ dxf_viewport_init
         viewport->snap_style = 0;
         viewport->snap_isopair = 0;
         viewport->snap_rotation_angle = 0.0;
-        viewport->p4 = dxf_point_new ();
-        viewport->p4 = dxf_point_init (viewport->p4);
-        viewport->p4->x0 = 0.0;
-        viewport->p4->y0 = 0.0;
+        viewport->snap_base = dxf_point_new ();
+        viewport->snap_base = dxf_point_init (viewport->snap_base);
+        viewport->snap_base->x0 = 0.0;
+        viewport->snap_base->y0 = 0.0;
         viewport->p5 = dxf_point_new ();
         viewport->p5 = dxf_point_init (viewport->p5);
         viewport->p5->x0 = 0.0;
@@ -812,7 +812,7 @@ dxf_viewport_read
                         /* Now follows a string containing the X snap
                          * base. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p4->x0);
+                        fscanf (fp->fp, "%lf\n", &viewport->snap_base->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -828,7 +828,7 @@ dxf_viewport_read
                         /* Now follows a string containing the Y snap
                          * base. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &viewport->p4->y0);
+                        fscanf (fp->fp, "%lf\n", &viewport->snap_base->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
@@ -1180,8 +1180,8 @@ dxf_viewport_write
         fprintf (fp->fp, "1070\n%d\n", viewport->snap_style);
         fprintf (fp->fp, "1070\n%d\n", viewport->snap_isopair);
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_rotation_angle);
-        fprintf (fp->fp, "1040\n%f\n", viewport->p4->x0);
-        fprintf (fp->fp, "1040\n%f\n", viewport->p4->y0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->snap_base->x0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->snap_base->y0);
         fprintf (fp->fp, "1040\n%f\n", viewport->p5->x0);
         fprintf (fp->fp, "1040\n%f\n", viewport->p5->y0);
         fprintf (fp->fp, "1040\n%f\n", viewport->p6->x0);
@@ -5469,12 +5469,12 @@ dxf_viewport_set_snap_rotation_angle
 
 
 /*!
- * \brief Get the snap base point \c p4 of a DXF \c VIEWPORT entity.
+ * \brief Get the snap base point \c snap_base of a DXF \c VIEWPORT entity.
  *
- * \return the snap base point \c p4.
+ * \return the snap base point \c snap_base.
  */
 DxfPoint *
-dxf_viewport_get_p4
+dxf_viewport_get_snap_base
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -5491,7 +5491,7 @@ dxf_viewport_get_p4
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p4 == NULL)
+        if (viewport->snap_base == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -5501,22 +5501,22 @@ dxf_viewport_get_p4
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p4);
+        return (viewport->snap_base);
 }
 
 
 /*!
- * \brief Set the snap base point \c p4 of a DXF \c VIEWPORT
+ * \brief Set the snap base point \c snap_base of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to a DXF \c VIEWPORT entity.
  */
 DxfViewport *
-dxf_viewport_set_p4
+dxf_viewport_set_snap_base
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        DxfPoint *p4
+        DxfPoint *snap_base
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -5531,14 +5531,14 @@ dxf_viewport_set_p4
                   __FUNCTION__);
                 return (NULL);
         }
-        if (p4 == NULL)
+        if (snap_base == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p4 = p4;
+        viewport->snap_base = snap_base;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -5571,7 +5571,7 @@ dxf_viewport_get_x4
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p4 == NULL)
+        if (viewport->snap_base == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -5581,7 +5581,7 @@ dxf_viewport_get_x4
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p4->x0);
+        return (viewport->snap_base->x0);
 }
 
 
@@ -5613,14 +5613,14 @@ dxf_viewport_set_x4
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p4 == NULL)
+        if (viewport->snap_base == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p4->x0 = x4;
+        viewport->snap_base->x0 = x4;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -5653,7 +5653,7 @@ dxf_viewport_get_y4
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p4 == NULL)
+        if (viewport->snap_base == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -5663,7 +5663,7 @@ dxf_viewport_get_y4
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p4->y0);
+        return (viewport->snap_base->y0);
 }
 
 
@@ -5695,14 +5695,14 @@ dxf_viewport_set_y4
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p4 == NULL)
+        if (viewport->snap_base == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p4->y0 = y4;
+        viewport->snap_base->y0 = y4;
 #if DEBUG
         DXF_DEBUG_END
 #endif

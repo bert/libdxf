@@ -287,7 +287,7 @@ dxf_viewport_struct
         double snap_rotation_angle;
                 /*!< Snap angle.\n
                  * Group code = 1040. */
-        DxfPoint *p4;
+        DxfPoint *snap_base;
                 /*!< Snap base point UCS.\n
                  * Group code = 1040. */
         DxfPoint *p5;
@@ -452,8 +452,8 @@ int dxf_viewport_get_snap_isopair (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_snap_isopair (DxfViewport *viewport, int snap_isopair);
 double dxf_viewport_get_snap_rotation_angle (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_snap_rotation_angle (DxfViewport *viewport, double snap_rotation_angle);
-DxfPoint *dxf_viewport_get_p4 (DxfViewport *viewport);
-DxfViewport *dxf_viewport_set_p4 (DxfViewport *viewport, DxfPoint *p4);
+DxfPoint *dxf_viewport_get_snap_base (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_snap_base (DxfViewport *viewport, DxfPoint *snap_base);
 double dxf_viewport_get_x4 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x4 (DxfViewport *viewport, double x4);
 double dxf_viewport_get_y4 (DxfViewport *viewport);
