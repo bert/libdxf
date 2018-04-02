@@ -167,10 +167,10 @@ dxf_viewport_init
         viewport->snap_spacing = dxf_point_init (viewport->snap_spacing);
         viewport->snap_spacing->x0 = 0.0;
         viewport->snap_spacing->y0 = 0.0;
-        viewport->p6 = dxf_point_new ();
-        viewport->p6 = dxf_point_init (viewport->p6);
-        viewport->p6->x0 = 0.0;
-        viewport->p6->y0 = 0.0;
+        viewport->grid_spacing = dxf_point_new ();
+        viewport->grid_spacing = dxf_point_init (viewport->grid_spacing);
+        viewport->grid_spacing->x0 = 0.0;
+        viewport->grid_spacing->y0 = 0.0;
         viewport->plot_flag = 0;
         viewport->frozen_layer_list_begin = strdup ("{"); /* Always "{". */
         viewport->frozen_layers = dxf_char_new ();
@@ -1184,8 +1184,8 @@ dxf_viewport_write
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_base->y0);
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_spacing->x0);
         fprintf (fp->fp, "1040\n%f\n", viewport->snap_spacing->y0);
-        fprintf (fp->fp, "1040\n%f\n", viewport->p6->x0);
-        fprintf (fp->fp, "1040\n%f\n", viewport->p6->y0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->grid_spacing->x0);
+        fprintf (fp->fp, "1040\n%f\n", viewport->grid_spacing->y0);
         fprintf (fp->fp, "1070\n%d\n", viewport->plot_flag);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN);
         /* Start a loop writing all frozen layer names. */
@@ -5953,12 +5953,12 @@ dxf_viewport_set_y5
 
 
 /*!
- * \brief Get the grid spacing \c p6 of a DXF \c VIEWPORT entity.
+ * \brief Get the grid spacing \c grid_spacing of a DXF \c VIEWPORT entity.
  *
- * \return the grid spacing \c p6.
+ * \return the grid spacing \c grid_spacing.
  */
 DxfPoint *
-dxf_viewport_get_p6
+dxf_viewport_get_grid_spacing
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -5975,7 +5975,7 @@ dxf_viewport_get_p6
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p6 == NULL)
+        if (viewport->grid_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -5985,22 +5985,22 @@ dxf_viewport_get_p6
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p6);
+        return (viewport->grid_spacing);
 }
 
 
 /*!
- * \brief Set the grid spacing \c p6 of a DXF \c VIEWPORT
+ * \brief Set the grid spacing \c grid_spacing of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to a DXF \c VIEWPORT entity.
  */
 DxfViewport *
-dxf_viewport_set_p6
+dxf_viewport_set_grid_spacing
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        DxfPoint *p6
+        DxfPoint *grid_spacing
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -6015,14 +6015,14 @@ dxf_viewport_set_p6
                   __FUNCTION__);
                 return (NULL);
         }
-        if (p6 == NULL)
+        if (grid_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p6 = p6;
+        viewport->grid_spacing = grid_spacing;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -6055,7 +6055,7 @@ dxf_viewport_get_x6
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p6 == NULL)
+        if (viewport->grid_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -6065,7 +6065,7 @@ dxf_viewport_get_x6
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p6->x0);
+        return (viewport->grid_spacing->x0);
 }
 
 
@@ -6097,14 +6097,14 @@ dxf_viewport_set_x6
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p6 == NULL)
+        if (viewport->grid_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p6->x0 = x6;
+        viewport->grid_spacing->x0 = x6;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -6137,7 +6137,7 @@ dxf_viewport_get_y6
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (viewport->p6 == NULL)
+        if (viewport->grid_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -6147,7 +6147,7 @@ dxf_viewport_get_y6
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (viewport->p6->y0);
+        return (viewport->grid_spacing->y0);
 }
 
 
@@ -6179,14 +6179,14 @@ dxf_viewport_set_y6
                   __FUNCTION__);
                 return (NULL);
         }
-        if (viewport->p6 == NULL)
+        if (viewport->grid_spacing == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->p6->y0 = y6;
+        viewport->grid_spacing->y0 = y6;
 #if DEBUG
         DXF_DEBUG_END
 #endif

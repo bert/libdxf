@@ -293,7 +293,7 @@ dxf_viewport_struct
         DxfPoint *snap_spacing;
                 /*!< Snap spacing.\n
                  * Group code = 1040. */
-        DxfPoint *p6;
+        DxfPoint *grid_spacing;
                 /*!< Grid spacing.\n
                  * Group code = 1040. */
         int plot_flag;
@@ -464,8 +464,8 @@ double dxf_viewport_get_x5 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x5 (DxfViewport *viewport, double x5);
 double dxf_viewport_get_y5 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_y5 (DxfViewport *viewport, double y5);
-DxfPoint *dxf_viewport_get_p6 (DxfViewport *viewport);
-DxfViewport *dxf_viewport_set_p6 (DxfViewport *viewport, DxfPoint *p6);
+DxfPoint *dxf_viewport_get_grid_spacing (DxfViewport *viewport);
+DxfViewport *dxf_viewport_set_grid_spacing (DxfViewport *viewport, DxfPoint *grid_spacing);
 double dxf_viewport_get_x6 (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_x6 (DxfViewport *viewport, double x6);
 double dxf_viewport_get_y6 (DxfViewport *viewport);
