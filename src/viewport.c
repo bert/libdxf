@@ -3008,13 +3008,13 @@ dxf_viewport_set_center_x
 
 
 /*!
- * \brief Get the Y-value of the center point \c y0 of a DXF \c VIEWPORT
+ * \brief Get the Y-value of the center point \c center_y of a DXF \c VIEWPORT
  * entity.
  *
- * \return the Y-value of the center point \c y0.
+ * \return the Y-value of the center point \c center_y.
  */
 double
-dxf_viewport_get_y0
+dxf_viewport_get_center_y
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -3047,19 +3047,19 @@ dxf_viewport_get_y0
 
 
 /*!
- * \brief Set the Y-value of the center point \c y0 of a DXF \c VIEWPORT
+ * \brief Set the Y-value of the center point \c center_y of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_y0
+dxf_viewport_set_center_y
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double y0
-                /*!< the Y-value of the center point \c y0 of a DXF
+        double center_y
+                /*!< the Y-value of the center point \c center_y of a DXF
                  * \c VIEWPORT entity. */
 )
 {
@@ -3081,7 +3081,7 @@ dxf_viewport_set_y0
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->center->y0 = y0;
+        viewport->center->y0 = center_y;
 #if DEBUG
         DXF_DEBUG_END
 #endif
