@@ -4205,13 +4205,13 @@ dxf_viewport_set_direction_x
 
 
 /*!
- * \brief Get the Y-value of the direction from target point \c y2 of a
+ * \brief Get the Y-value of the direction from target point \c direction_y of a
  * DXF \c VIEWPORT entity.
  *
- * \return the Y-value of the direction from target point \c y2.
+ * \return the Y-value of the direction from target point \c direction_y.
  */
 double
-dxf_viewport_get_y2
+dxf_viewport_get_direction_y
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -4244,20 +4244,20 @@ dxf_viewport_get_y2
 
 
 /*!
- * \brief Set the Y-value of the direction from target point \c y2 of a
+ * \brief Set the Y-value of the direction from target point \c direction_y of a
  * DXF \c VIEWPORT entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_y2
+dxf_viewport_set_direction_y
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double y2
+        double direction_y
                 /*!< the Y-value of the direction from target point
-                 * \c y2 of a DXF \c VIEWPORT entity. */
+                 * \c direction_y of a DXF \c VIEWPORT entity. */
 )
 {
 #ifdef DEBUG
@@ -4278,7 +4278,7 @@ dxf_viewport_set_y2
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->direction->y0 = y2;
+        viewport->direction->y0 = direction_y;
 #if DEBUG
         DXF_DEBUG_END
 #endif
