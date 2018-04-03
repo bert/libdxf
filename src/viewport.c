@@ -3798,13 +3798,13 @@ dxf_viewport_set_target
 
 
 /*!
- * \brief Get the X-value of the target point \c x1 of a DXF \c VIEWPORT
+ * \brief Get the X-value of the target point \c target_x of a DXF \c VIEWPORT
  * entity.
  *
- * \return the X-value of the target point \c x1.
+ * \return the X-value of the target point \c target_x.
  */
 double
-dxf_viewport_get_x1
+dxf_viewport_get_target_x
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -3837,19 +3837,19 @@ dxf_viewport_get_x1
 
 
 /*!
- * \brief Set the X-value of the target point \c x1 of a DXF \c VIEWPORT
+ * \brief Set the X-value of the target point \c target_x of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_x1
+dxf_viewport_set_target_x
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double x1
-                /*!< the X-value of the target point \c x1 of a DXF
+        double target_x
+                /*!< the X-value of the target point \c target_x of a DXF
                  * \c VIEWPORT entity. */
 )
 {
@@ -3871,7 +3871,7 @@ dxf_viewport_set_x1
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->target->x0 = x1;
+        viewport->target->x0 = target_x;
 #if DEBUG
         DXF_DEBUG_END
 #endif
