@@ -3090,13 +3090,13 @@ dxf_viewport_set_center_y
 
 
 /*!
- * \brief Get the Z-value of the center point \c z0 of a DXF \c VIEWPORT
+ * \brief Get the Z-value of the center point \c center_z of a DXF \c VIEWPORT
  * entity.
  *
- * \return the Z-value of the center point \c z0.
+ * \return the Z-value of the center point \c center_z.
  */
 double
-dxf_viewport_get_z0
+dxf_viewport_get_center_z
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -3129,19 +3129,19 @@ dxf_viewport_get_z0
 
 
 /*!
- * \brief Set the Z-value of the center point \c z0 of a DXF \c VIEWPORT
+ * \brief Set the Z-value of the center point \c center_z of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_z0
+dxf_viewport_set_center_z
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double z0
-                /*!< the Z-value of the center point \c z0 of a DXF
+        double center_z
+                /*!< the Z-value of the center point \c center_z of a DXF
                  * \c VIEWPORT entity. */
 )
 {
@@ -3163,7 +3163,7 @@ dxf_viewport_set_z0
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->center->z0 = z0;
+        viewport->center->z0 = center_z;
 #if DEBUG
         DXF_DEBUG_END
 #endif
