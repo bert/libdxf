@@ -3962,13 +3962,13 @@ dxf_viewport_set_target_y
 
 
 /*!
- * \brief Get the Z-value of the target point \c z1 of a DXF \c VIEWPORT
+ * \brief Get the Z-value of the target point \c target_z of a DXF \c VIEWPORT
  * entity.
  *
- * \return the Z-value of the target point \c z1.
+ * \return the Z-value of the target point \c target_z.
  */
 double
-dxf_viewport_get_z1
+dxf_viewport_get_target_z
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -4001,19 +4001,19 @@ dxf_viewport_get_z1
 
 
 /*!
- * \brief Set the Z-value of the target point \c z1 of a DXF \c VIEWPORT
+ * \brief Set the Z-value of the target point \c target_z of a DXF \c VIEWPORT
  * entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_z1
+dxf_viewport_set_target_z
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double z1
-                /*!< the Z-value of the target point \c z1 of a DXF
+        double target_z
+                /*!< the Z-value of the target point \c target_z of a DXF
                  * \c VIEWPORT entity. */
 )
 {
@@ -4035,7 +4035,7 @@ dxf_viewport_set_z1
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->target->z0 = z1;
+        viewport->target->z0 = target_z;
 #if DEBUG
         DXF_DEBUG_END
 #endif
