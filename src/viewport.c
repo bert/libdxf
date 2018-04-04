@@ -6031,13 +6031,13 @@ dxf_viewport_set_grid_spacing
 
 
 /*!
- * \brief Get the X-value of the grid spacing \c x6 of a DXF
+ * \brief Get the X-value of the grid spacing \c grid_spacing_x of a DXF
  * \c VIEWPORT entity.
  *
- * \return the X-value of the grid spacing \c x6.
+ * \return the X-value of the grid spacing \c grid_spacing_x.
  */
 double
-dxf_viewport_get_x6
+dxf_viewport_get_grid_spacing_x
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -6070,19 +6070,19 @@ dxf_viewport_get_x6
 
 
 /*!
- * \brief Set the X-value of the grid spacing \c x6 of a
+ * \brief Set the X-value of the grid spacing \c grid_spacing_x of a
  * DXF \c VIEWPORT entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_x6
+dxf_viewport_set_grid_spacing_x
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double x6
-                /*!< the X-value of the grid spacing \c x6 of a DXF
+        double grid_spacing_x
+                /*!< the X-value of the grid spacing \c grid_spacing_x of a DXF
                  * \c VIEWPORT entity. */
 )
 {
@@ -6104,7 +6104,7 @@ dxf_viewport_set_x6
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->grid_spacing->x0 = x6;
+        viewport->grid_spacing->x0 = grid_spacing_x;
 #if DEBUG
         DXF_DEBUG_END
 #endif
