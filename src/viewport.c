@@ -5789,13 +5789,13 @@ dxf_viewport_set_snap_spacing
 
 
 /*!
- * \brief Get the X-value of the snap spacing \c x5 of a DXF
+ * \brief Get the X-value of the snap spacing \c snap_spacing_x of a DXF
  * \c VIEWPORT entity.
  *
- * \return the X-value of the snap spacing \c x5.
+ * \return the X-value of the snap spacing \c snap_spacing_x.
  */
 double
-dxf_viewport_get_x5
+dxf_viewport_get_snap_spacing_x
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -5828,19 +5828,19 @@ dxf_viewport_get_x5
 
 
 /*!
- * \brief Set the X-value of the snap spacing \c x5 of a
+ * \brief Set the X-value of the snap spacing \c snap_spacing_x of a
  * DXF \c VIEWPORT entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_x5
+dxf_viewport_set_snap_spacing_x
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double x5
-                /*!< the X-value of the snap spacing \c x5 of a DXF
+        double snap_spacing_x
+                /*!< the X-value of the snap spacing \c snap_spacing_x of a DXF
                  * \c VIEWPORT entity. */
 )
 {
@@ -5862,7 +5862,7 @@ dxf_viewport_set_x5
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->snap_spacing->x0 = x5;
+        viewport->snap_spacing->x0 = snap_spacing_x;
 #if DEBUG
         DXF_DEBUG_END
 #endif
