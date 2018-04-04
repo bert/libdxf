@@ -5629,13 +5629,13 @@ dxf_viewport_set_snap_base_x
 
 
 /*!
- * \brief Get the Y-value of the snap base point \c y4 of a DXF
+ * \brief Get the Y-value of the snap base point \c snap_base_y of a DXF
  * \c VIEWPORT entity.
  *
- * \return the Y-value of the snap base point \c y4.
+ * \return the Y-value of the snap base point \c snap_base_y.
  */
 double
-dxf_viewport_get_y4
+dxf_viewport_get_snap_base_y
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -5668,19 +5668,19 @@ dxf_viewport_get_y4
 
 
 /*!
- * \brief Set the Y-value of the snap base point \c y4 of a
+ * \brief Set the Y-value of the snap base point \c snap_base_y of a
  * DXF \c VIEWPORT entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_y4
+dxf_viewport_set_snap_base_y
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double y4
-                /*!< the Y-value of the snap base point \c y4 of a DXF
+        double snap_base_y
+                /*!< the Y-value of the snap base point \c snap_base_y of a DXF
                  * \c VIEWPORT entity. */
 )
 {
@@ -5702,7 +5702,7 @@ dxf_viewport_set_y4
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->snap_base->y0 = y4;
+        viewport->snap_base->y0 = snap_base_y;
 #if DEBUG
         DXF_DEBUG_END
 #endif
