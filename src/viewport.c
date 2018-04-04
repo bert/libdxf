@@ -4287,13 +4287,13 @@ dxf_viewport_set_direction_y
 
 
 /*!
- * \brief Get the Z-value of the direction from target point \c z2 of a
+ * \brief Get the Z-value of the direction from target point \c direction_z of a
  * DXF \c VIEWPORT entity.
  *
- * \return the Z-value of the direction from target point \c z2.
+ * \return the Z-value of the direction from target point \c direction_z.
  */
 double
-dxf_viewport_get_z2
+dxf_viewport_get_direction_z
 (
         DxfViewport *viewport
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
@@ -4326,20 +4326,20 @@ dxf_viewport_get_z2
 
 
 /*!
- * \brief Set the Z-value of the direction from target point \c z2 of a
+ * \brief Set the Z-value of the direction from target point \c direction_z of a
  * DXF \c VIEWPORT entity.
  *
  * \return a pointer to \c viewport when successful, or \c NULL when an
  * error occurred.
  */
 DxfViewport *
-dxf_viewport_set_z2
+dxf_viewport_set_direction_z
 (
         DxfViewport *viewport,
                 /*!< a pointer to a DXF \c VIEWPORT entity. */
-        double z2
+        double direction_z
                 /*!< the Z-value of the direction from target point
-                 * \c z2 of a DXF \c VIEWPORT entity. */
+                 * \c direction_z of a DXF \c VIEWPORT entity. */
 )
 {
 #ifdef DEBUG
@@ -4360,7 +4360,7 @@ dxf_viewport_set_z2
                   __FUNCTION__);
                 return (NULL);
         }
-        viewport->direction->z0 = z2;
+        viewport->direction->z0 = direction_z;
 #if DEBUG
         DXF_DEBUG_END
 #endif
