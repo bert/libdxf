@@ -917,4 +917,42 @@ dxf_vport_set_viewport_name
 }
 
 
+/*!
+ * \brief Get the lower-left corner of viewport \c min of a DXF \c VPORT
+ * symbol table entry.
+ *
+ * \return the lower-left corner of viewport \c min.
+ */
+DxfPoint *
+dxf_vport_get_min
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vport->min == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->min);
+}
+
+
 /* EOF*/

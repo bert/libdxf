@@ -223,6 +223,7 @@ int dxf_vport_get_id_code (DxfVPort *vport);
 DxfVPort *dxf_vport_set_id_code (DxfVPort *vport, int id_code);
 char *dxf_vport_get_viewport_name (DxfVPort *vport);
 DxfVPort *dxf_vport_set_viewport_name (DxfVPort *vport, char *viewport_name);
+DxfPoint *dxf_vport_get_min (DxfVPort *vport);
 
 
 #ifdef __cplusplus
