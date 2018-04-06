@@ -6,6 +6,12 @@
  *
  * \brief Header file for a DXF Viewport symbol table entry (\c VPORT).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -54,12 +60,6 @@ extern "C" {
  * The entries corresponding to the active viewport configuration all have
  * the name *ACTIVE.\n
  * The first such entry describes the current viewport.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_vport_struct

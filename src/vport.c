@@ -11,6 +11,12 @@
  * have the name *ACTIVE.\n
  * The first such entry describes the current viewport.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -45,12 +51,6 @@
  * \brief Allocate memory for a DXF \c VPORT entity.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfVPort *
 dxf_vport_new ()
@@ -88,12 +88,6 @@ dxf_vport_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfVPort *
 dxf_vport_init
@@ -179,12 +173,6 @@ dxf_vport_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfVPort *
 dxf_vport_read
@@ -542,12 +530,6 @@ dxf_vport_read
 /*!
  * \brief Write DXF output to a file for a DXF \c VPORT symbol table
  * entry.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_vport_write
@@ -682,12 +664,6 @@ dxf_vport_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_vport_free
@@ -730,12 +706,6 @@ dxf_vport_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c VPORT
  * symbol table and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_vport_free_chain
