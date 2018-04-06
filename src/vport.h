@@ -80,6 +80,9 @@ dxf_vport_struct
         double y_min;
                 /*!< Y value of the lower-left corner of viewport.\n
                  * Group code = 20. */
+        DxfPoint *max;
+                /*!< The upper-right corner of viewport.\n
+                 * Group codes = 11 and 21.*/
         double x_max;
                 /*!< X value of the upper-right corner.\n
                  * Group code = 11. */
