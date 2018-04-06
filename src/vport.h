@@ -226,6 +226,7 @@ DxfVPort *dxf_vport_set_viewport_name (DxfVPort *vport, char *viewport_name);
 DxfPoint *dxf_vport_get_min (DxfVPort *vport);
 DxfVPort *dxf_vport_set_min (DxfVPort *vport, DxfPoint *min);
 double dxf_vport_get_min_x (DxfVPort *vport);
+DxfVPort *dxf_vport_set_min_x (DxfVPort *vport, double min_x);
 
 
 #ifdef __cplusplus
