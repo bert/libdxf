@@ -237,6 +237,7 @@ DxfVPort *dxf_vport_set_max (DxfVPort *vport, DxfPoint *max);
 double dxf_vport_get_max_x (DxfVPort *vport);
 DxfVPort *dxf_vport_set_max_x (DxfVPort *vport, double max_x);
 double dxf_vport_get_max_y (DxfVPort *vport);
+DxfVPort *dxf_vport_set_max_y (DxfVPort *vport, double max_y);
 
 
 #ifdef __cplusplus
