@@ -116,10 +116,14 @@ dxf_vport_init
         }
         vport->id_code = 0;
         vport->viewport_name = strdup ("");
-        vport->x_min = 0.0;
-        vport->y_min = 0.0;
-        vport->x_max = 0.0;
-        vport->y_max = 0.0;
+        vport->min = dxf_point_new ();
+        vport->min = dxf_point_init (vport->min);
+        vport->min->x0 = 0.0;
+        vport->min->y0 = 0.0;
+        vport->max = dxf_point_new ();
+        vport->max = dxf_point_init (vport->max);
+        vport->max->x0 = 0.0;
+        vport->max->y0 = 0.0;
         vport->x_center = 0.0;
         vport->y_center = 0.0;
         vport->x_snap_base = 0.0;
