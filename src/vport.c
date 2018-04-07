@@ -243,28 +243,28 @@ dxf_vport_read
                         /* Now follows a string containing the
                          * X value of the lower-left corner of viewport. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->x_min);
+                        fscanf (fp->fp, "%lf\n", &vport->min->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y value of the lower-left corner of viewport. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->y_min);
+                        fscanf (fp->fp, "%lf\n", &vport->min->y0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X value of the upper-right corner of viewport. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->x_max);
+                        fscanf (fp->fp, "%lf\n", &vport->max->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y value of the upper-right corner of viewport. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->y_max);
+                        fscanf (fp->fp, "%lf\n", &vport->max->y0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
