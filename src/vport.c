@@ -618,10 +618,10 @@ dxf_vport_write
         }
         fprintf (fp->fp, "  2\n%s\n", vport->viewport_name);
         fprintf (fp->fp, " 70\n%d\n", vport->standard_flag);
-        fprintf (fp->fp, " 10\n%f\n", vport->x_min);
-        fprintf (fp->fp, " 20\n%f\n", vport->y_min);
-        fprintf (fp->fp, " 11\n%f\n", vport->x_max);
-        fprintf (fp->fp, " 21\n%f\n", vport->y_max);
+        fprintf (fp->fp, " 10\n%f\n", vport->min->x0);
+        fprintf (fp->fp, " 20\n%f\n", vport->min->y0);
+        fprintf (fp->fp, " 11\n%f\n", vport->max->x0);
+        fprintf (fp->fp, " 21\n%f\n", vport->max->y0);
         fprintf (fp->fp, " 12\n%f\n", vport->x_center);
         fprintf (fp->fp, " 22\n%f\n", vport->y_center);
         fprintf (fp->fp, " 13\n%f\n", vport->x_snap_base);
