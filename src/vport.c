@@ -1415,4 +1415,45 @@ dxf_vport_get_center
 }
 
 
+/*!
+ * \brief Set the view center point, in World Coordinate System
+ * \c center of a DXF \c VPORT symbol table entry.
+ *
+ * \return a pointer to a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_center
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        DxfPoint *center
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (center == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->center = center;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
