@@ -77,6 +77,9 @@ dxf_vport_struct
         DxfPoint *max;
                 /*!< The upper-right corner of viewport.\n
                  * Group codes = 11 and 21.*/
+        DxfPoint *center;
+                /*!< The view center point, in World Coordinate System.\n
+                 * Group code = 12 and 22. */
         double x_center;
                 /*!< X value of the view center point, in World
                  * Coordinate System.\n
@@ -226,6 +229,7 @@ double dxf_vport_get_max_x (DxfVPort *vport);
 DxfVPort *dxf_vport_set_max_x (DxfVPort *vport, double max_x);
 double dxf_vport_get_max_y (DxfVPort *vport);
 DxfVPort *dxf_vport_set_max_y (DxfVPort *vport, double max_y);
+DxfPoint *dxf_vport_get_center (DxfVPort *vport);
 
 
 #ifdef __cplusplus

@@ -1377,4 +1377,42 @@ dxf_vport_set_max_y
 }
 
 
+/*!
+ * \brief Get the view center point, in World Coordinate System
+ * \c center of a DXF \c VPORT symbol table entry.
+ *
+ * \return the view center point, in World Coordinate System \c center.
+ */
+DxfPoint *
+dxf_vport_get_center
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vport->center == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->center);
+}
+
+
 /* EOF*/
