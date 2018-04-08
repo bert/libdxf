@@ -74,21 +74,9 @@ dxf_vport_struct
         DxfPoint *min;
                 /*!< The lower-left corner of viewport.\n
                  * Group codes = 10 and 20.*/
-        double x_min;
-                /*!< X value of the lower-left corner of viewport.\n
-                 * Group code = 10. */
-        double y_min;
-                /*!< Y value of the lower-left corner of viewport.\n
-                 * Group code = 20. */
         DxfPoint *max;
                 /*!< The upper-right corner of viewport.\n
                  * Group codes = 11 and 21.*/
-        double x_max;
-                /*!< X value of the upper-right corner.\n
-                 * Group code = 11. */
-        double y_max;
-                /*!< Y value of the upper-right corner.\n
-                 * Group code = 21. */
         double x_center;
                 /*!< X value of the view center point, in World
                  * Coordinate System.\n
