@@ -80,14 +80,6 @@ dxf_vport_struct
         DxfPoint *center;
                 /*!< The view center point, in World Coordinate System.\n
                  * Group code = 12 and 22. */
-        double x_center;
-                /*!< X value of the view center point, in World
-                 * Coordinate System.\n
-                 * Group code = 12. */
-        double y_center;
-                /*!< Y value of the view center point, in World
-                 * Coordinate System.\n
-                 * Group code = 22. */
         double x_snap_base;
                 /*!< X value of the snap base point.\n
                  * Group code = 13. */
