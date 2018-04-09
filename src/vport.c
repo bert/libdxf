@@ -124,8 +124,10 @@ dxf_vport_init
         vport->max = dxf_point_init (vport->max);
         vport->max->x0 = 0.0;
         vport->max->y0 = 0.0;
-        vport->x_center = 0.0;
-        vport->y_center = 0.0;
+        vport->center = dxf_point_new ();
+        vport->center = dxf_point_init (vport->center);
+        vport->center->x0 = 0.0;
+        vport->center->y0 = 0.0;
         vport->x_snap_base = 0.0;
         vport->y_snap_base = 0.0;
         vport->x_snap_spacing = 0.0;
