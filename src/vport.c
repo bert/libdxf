@@ -273,14 +273,14 @@ dxf_vport_read
                         /* Now follows a string containing the
                          * X value of the view center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->x_center);
+                        fscanf (fp->fp, "%lf\n", &vport->center->x0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y value of the view center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->y_center);
+                        fscanf (fp->fp, "%lf\n", &vport->center->y0);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
