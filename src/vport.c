@@ -228,6 +228,14 @@ dxf_vport_read
                 vport->max = dxf_point_new ();
                 vport->max = dxf_point_init (vport->max);
         }
+        if (vport->center == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                vport->center = dxf_point_new ();
+                vport->center = dxf_point_init (vport->center);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
