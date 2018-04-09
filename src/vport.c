@@ -624,8 +624,8 @@ dxf_vport_write
         fprintf (fp->fp, " 20\n%f\n", vport->min->y0);
         fprintf (fp->fp, " 11\n%f\n", vport->max->x0);
         fprintf (fp->fp, " 21\n%f\n", vport->max->y0);
-        fprintf (fp->fp, " 12\n%f\n", vport->x_center);
-        fprintf (fp->fp, " 22\n%f\n", vport->y_center);
+        fprintf (fp->fp, " 12\n%f\n", vport->center->y0);
+        fprintf (fp->fp, " 22\n%f\n", vport->center->y0);
         fprintf (fp->fp, " 13\n%f\n", vport->x_snap_base);
         fprintf (fp->fp, " 23\n%f\n", vport->y_snap_base);
         fprintf (fp->fp, " 14\n%f\n", vport->x_snap_spacing);
