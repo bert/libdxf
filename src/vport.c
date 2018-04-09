@@ -212,6 +212,14 @@ dxf_vport_read
                 vport = dxf_vport_new ();
                 vport = dxf_vport_init (vport);
         }
+        if (vport->min == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                vport->min = dxf_point_new ();
+                vport->min = dxf_point_init (vport->min);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
