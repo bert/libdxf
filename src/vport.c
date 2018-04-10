@@ -768,6 +768,10 @@ dxf_vport_free
                 return (EXIT_FAILURE);
         }
         free (vport->viewport_name);
+        dxf_point_free (vport->min);
+        dxf_point_free (vport->max);
+        dxf_point_free (vport->center);
+        dxf_point_free (vport->snap_base);
         free (vport->dictionary_owner_soft);
         free (vport->dictionary_owner_hard);
         free (vport);
