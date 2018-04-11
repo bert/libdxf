@@ -83,12 +83,6 @@ dxf_vport_struct
         DxfPoint *snap_base;
                 /*!< The snap base point.\n
                  * Group code = 13 and 23. */
-        double x_snap_base;
-                /*!< X value of the snap base point.\n
-                 * Group code = 13. */
-        double y_snap_base;
-                /*!< Y value of the snap base point.\n
-                 * Group code = 23. */
         double x_snap_spacing;
                 /*!< X value of snap spacing X and Y.\n
                  * Group code = 14. */
