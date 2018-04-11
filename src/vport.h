@@ -230,6 +230,7 @@ double dxf_vport_get_center_x (DxfVPort *vport);
 DxfVPort *dxf_vport_set_center_x (DxfVPort *vport, double center_x);
 double dxf_vport_get_center_y (DxfVPort *vport);
 DxfVPort *dxf_vport_set_center_y (DxfVPort *vport, double center_y);
+DxfPoint *dxf_vport_get_snap_base (DxfVPort *vport);
 
 
 #ifdef __cplusplus

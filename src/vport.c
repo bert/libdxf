@@ -1700,4 +1700,42 @@ dxf_vport_set_center_y
 }
 
 
+/*!
+ * \brief Get the snap base point of viewport \c snap_base of a DXF
+ * \c VPORT symbol table entry.
+ *
+ * \return the snap base point of viewport \c snap_base.
+ */
+DxfPoint *
+dxf_vport_get_snap_base
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vport->snap_base == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->snap_base);
+}
+
+
 /* EOF*/
