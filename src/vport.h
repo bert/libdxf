@@ -235,6 +235,7 @@ DxfVPort *dxf_vport_set_snap_base (DxfVPort *vport, DxfPoint *snap_base);
 double dxf_vport_get_snap_base_x (DxfVPort *vport);
 DxfVPort *dxf_vport_set_snap_base_x (DxfVPort *vport, double snap_base_x);
 double dxf_vport_get_snap_base_y (DxfVPort *vport);
+DxfVPort *dxf_vport_set_snap_base_y (DxfVPort *vport, double snap_base_y);
 
 
 #ifdef __cplusplus
