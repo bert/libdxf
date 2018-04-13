@@ -791,6 +791,7 @@ dxf_vport_free
         dxf_point_free (vport->max);
         dxf_point_free (vport->center);
         dxf_point_free (vport->snap_base);
+        dxf_point_free (vport->snap_spacing);
         free (vport->dictionary_owner_soft);
         free (vport->dictionary_owner_hard);
         free (vport);
