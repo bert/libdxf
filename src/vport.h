@@ -237,6 +237,7 @@ DxfPoint *dxf_vport_get_snap_spacing (DxfVPort *vport);
 DxfVPort *dxf_vport_set_snap_spacing (DxfVPort *vport, DxfPoint *snap_spacing);
 double dxf_vport_get_snap_spacing_x (DxfVPort *vport);
 DxfVPort *dxf_vport_set_snap_spacing_x (DxfVPort *vport, double snap_spacing_x);
+double dxf_vport_get_snap_spacing_y (DxfVPort *vport);
 
 
 #ifdef __cplusplus
