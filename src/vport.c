@@ -663,6 +663,15 @@ dxf_vport_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (vport->snap_spacing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (vport->id_code != -1)
@@ -708,8 +717,8 @@ dxf_vport_write
         fprintf (fp->fp, " 22\n%f\n", vport->center->y0);
         fprintf (fp->fp, " 13\n%f\n", vport->snap_base->x0);
         fprintf (fp->fp, " 23\n%f\n", vport->snap_base->y0);
-        fprintf (fp->fp, " 14\n%f\n", vport->x_snap_spacing);
-        fprintf (fp->fp, " 24\n%f\n", vport->y_snap_spacing);
+        fprintf (fp->fp, " 14\n%f\n", vport->snap_spacing->x0);
+        fprintf (fp->fp, " 24\n%f\n", vport->snap_spacing->y0);
         fprintf (fp->fp, " 15\n%f\n", vport->x_grid_spacing);
         fprintf (fp->fp, " 25\n%f\n", vport->y_grid_spacing);
         fprintf (fp->fp, " 16\n%f\n", vport->x_direction);
