@@ -248,6 +248,14 @@ dxf_vport_read
                 vport->snap_base = dxf_point_new ();
                 vport->snap_base = dxf_point_init (vport->snap_base);
         }
+        if (vport->snap_spacing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                vport->snap_spacing = dxf_point_new ();
+                vport->snap_spacing = dxf_point_init (vport->snap_spacing);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -337,14 +345,14 @@ dxf_vport_read
                         /* Now follows a string containing the
                          * X value of snap spacing X and Y. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->x_snap_spacing);
+                        fscanf (fp->fp, "%lf\n", &vport->snap_spacing->x0);
                 }
                 else if (strcmp (temp_string, "24") == 0)
                 {
                         /* Now follows a string containing the
                          * Y value of snap spacing X and Y. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->y_snap_spacing);
+                        fscanf (fp->fp, "%lf\n", &vport->snap_spacing->y0);
                 }
                 else if (strcmp (temp_string, "15") == 0)
                 {
