@@ -86,12 +86,6 @@ dxf_vport_struct
         DxfPoint *snap_spacing;
                 /*!< The snap spacing.\n
                  * Group code = 14 and 24. */
-        double x_snap_spacing;
-                /*!< X value of snap spacing X and Y.\n
-                 * Group code = 14. */
-        double y_snap_spacing;
-                /*!< Y value of snap spacing X and Y.\n
-                 * Group code = 24. */
         double x_grid_spacing;
                 /*!< X value of grid spacing X and Y.\n
                  * Group code = 15. */
