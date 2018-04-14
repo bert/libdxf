@@ -79,13 +79,13 @@ dxf_vport_struct
                  * Group codes = 11 and 21.*/
         DxfPoint *center;
                 /*!< The view center point, in World Coordinate System.\n
-                 * Group code = 12 and 22. */
+                 * Group codes = 12 and 22. */
         DxfPoint *snap_base;
                 /*!< The snap base point.\n
-                 * Group code = 13 and 23. */
+                 * Group codes = 13 and 23. */
         DxfPoint *snap_spacing;
                 /*!< The snap spacing.\n
-                 * Group code = 14 and 24. */
+                 * Group codes = 14 and 24. */
         double x_grid_spacing;
                 /*!< X value of grid spacing X and Y.\n
                  * Group code = 15. */
