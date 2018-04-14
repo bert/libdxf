@@ -2244,4 +2244,45 @@ dxf_vport_get_grid_spacing
 }
 
 
+/*!
+ * \brief Set the grid spacing \c grid_spacing of a DXF \c VPORT symbol
+ * table entry.
+ *
+ * \return a pointer to a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_grid_spacing
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        DxfPoint *grid_spacing
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (grid_spacing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->grid_spacing = grid_spacing;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
