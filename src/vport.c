@@ -258,6 +258,14 @@ dxf_vport_read
                 vport->snap_spacing = dxf_point_new ();
                 vport->snap_spacing = dxf_point_init (vport->snap_spacing);
         }
+        if (vport->grid_spacing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                vport->grid_spacing = dxf_point_new ();
+                vport->grid_spacing = dxf_point_init (vport->grid_spacing);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -361,14 +369,14 @@ dxf_vport_read
                         /* Now follows a string containing the
                          * X value of grid spacing X and Y. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->x_grid_spacing);
+                        fscanf (fp->fp, "%lf\n", &vport->grid_spacing->x0);
                 }
                 else if (strcmp (temp_string, "25") == 0)
                 {
                         /* Now follows a string containing the
                          * Y value of grid spacing X and Y. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->y_grid_spacing);
+                        fscanf (fp->fp, "%lf\n", &vport->grid_spacing->y0);
                 }
                 else if (strcmp (temp_string, "16") == 0)
                 {
