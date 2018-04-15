@@ -136,8 +136,10 @@ dxf_vport_init
         vport->snap_spacing = dxf_point_init (vport->snap_spacing);
         vport->snap_spacing->x0 = 0.0;
         vport->snap_spacing->y0 = 0.0;
-        vport->x_grid_spacing = 0.0;
-        vport->y_grid_spacing = 0.0;
+        vport->grid_spacing = dxf_point_new ();
+        vport->grid_spacing = dxf_point_init (vport->grid_spacing);
+        vport->grid_spacing->x0 = 0.0;
+        vport->grid_spacing->y0 = 0.0;
         vport->x_direction = 0.0;
         vport->y_direction = 0.0;
         vport->z_direction = 0.0;
