@@ -89,6 +89,9 @@ dxf_vport_struct
         DxfPoint *grid_spacing;
                 /*!< The grid spacing.\n
                  * Group codes = 15 and 25. */
+        DxfPoint *direction;
+                /*!< The view direction from target point.\n
+                 * Group codes = 16 and 26. */
         double x_direction;
                 /*!< X value of the view direction from target point.\n
                  * Group code = 16. */
