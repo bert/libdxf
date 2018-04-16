@@ -239,6 +239,7 @@ double dxf_vport_get_grid_spacing_x (DxfVPort *vport);
 DxfVPort *dxf_vport_set_grid_spacing_x (DxfVPort *vport, double grid_spacing_x);
 double dxf_vport_get_grid_spacing_y (DxfVPort *vport);
 DxfVPort *dxf_vport_set_grid_spacing_y (DxfVPort *vport, double grid_spacing_y);
+DxfPoint *dxf_vport_get_direction (DxfVPort *vport);
 
 
 #ifdef __cplusplus
