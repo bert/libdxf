@@ -2670,4 +2670,47 @@ dxf_vport_get_direction_y
 }
 
 
+/*!
+ * \brief Set the Y-value of the view direction from target point
+ * \c direction_y of a DXF \c VPORT symbol table entry.
+ *
+ * \return a pointer to \c vport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfVPort *
+dxf_vport_set_direction_y
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        double direction_y
+                /*!< the Y-value of the view direction from target point
+                 * \c direction_y of a DXF \c VPORT symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vport->direction == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->direction->y0 = direction_y;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
