@@ -92,15 +92,6 @@ dxf_vport_struct
         DxfPoint *direction;
                 /*!< The view direction from target point.\n
                  * Group codes = 16, 26 and 36. */
-        double x_direction;
-                /*!< X value of the view direction from target point.\n
-                 * Group code = 16. */
-        double y_direction;
-                /*!< Y value of the view direction from target point.\n
-                 * Group code = 26. */
-        double z_direction;
-                /*!< Z value of the view direction from target point.\n
-                 * Group code = 36. */
         double x_target;
                 /*!< X value of the view target point.\n
                  * Group code = 17. */
