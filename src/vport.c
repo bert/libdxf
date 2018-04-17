@@ -140,9 +140,11 @@ dxf_vport_init
         vport->grid_spacing = dxf_point_init (vport->grid_spacing);
         vport->grid_spacing->x0 = 0.0;
         vport->grid_spacing->y0 = 0.0;
-        vport->x_direction = 0.0;
-        vport->y_direction = 0.0;
-        vport->z_direction = 0.0;
+        vport->direction = dxf_point_new ();
+        vport->direction = dxf_point_init (vport->direction);
+        vport->direction->x0 = 0.0;
+        vport->direction->y0 = 0.0;
+        vport->direction->z0 = 0.0;
         vport->x_target = 0.0;
         vport->y_target = 0.0;
         vport->z_target = 0.0;
