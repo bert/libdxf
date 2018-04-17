@@ -2713,4 +2713,44 @@ dxf_vport_set_direction_y
 }
 
 
+/*!
+ * \brief Get the Z-value of the view direction from target point
+ * \c direction_z of a DXF \c VPORT symbol table entry.
+ *
+ * \return the Z-value of the view direction from target point
+ * \c direction_z.
+ */
+double
+dxf_vport_get_direction_z
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vport->direction == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->direction->z0);
+}
+
+
 /* EOF*/
