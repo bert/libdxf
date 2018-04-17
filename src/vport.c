@@ -268,6 +268,14 @@ dxf_vport_read
                 vport->grid_spacing = dxf_point_new ();
                 vport->grid_spacing = dxf_point_init (vport->grid_spacing);
         }
+        if (vport->direction == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                vport->direction = dxf_point_new ();
+                vport->direction = dxf_point_init (vport->direction);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -385,21 +393,21 @@ dxf_vport_read
                         /* Now follows a string containing the
                          * X value of the view direction from target point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->x_direction);
+                        fscanf (fp->fp, "%lf\n", &vport->direction->x0);
                 }
                 else if (strcmp (temp_string, "26") == 0)
                 {
                         /* Now follows a string containing the
                          * Y value of the view direction from target point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->y_direction);
+                        fscanf (fp->fp, "%lf\n", &vport->direction->y0);
                 }
                 else if (strcmp (temp_string, "36") == 0)
                 {
                         /* Now follows a string containing the
                          * Z value of the view direction from target point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &vport->z_direction);
+                        fscanf (fp->fp, "%lf\n", &vport->direction->z0);
                 }
                 else if (strcmp (temp_string, "17") == 0)
                 {
