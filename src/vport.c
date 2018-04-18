@@ -145,9 +145,11 @@ dxf_vport_init
         vport->direction->x0 = 0.0;
         vport->direction->y0 = 0.0;
         vport->direction->z0 = 0.0;
-        vport->x_target = 0.0;
-        vport->y_target = 0.0;
-        vport->z_target = 0.0;
+        vport->target = dxf_point_new ();
+        vport->target = dxf_point_init (vport->target);
+        vport->target->x0 = 0.0;
+        vport->target->y0 = 0.0;
+        vport->target->z0 = 0.0;
         vport->view_height = 0.0;
         vport->viewport_aspect_ratio = 0.0;
         vport->lens_length = 0.0;
