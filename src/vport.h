@@ -95,15 +95,6 @@ dxf_vport_struct
         DxfPoint *target;
                 /*!< The view target point.\n
                  * Group codes = 17, 27 and 37. */
-        double x_target;
-                /*!< X value of the view target point.\n
-                 * Group code = 17. */
-        double y_target;
-                /*!< Y value of the view target point.\n
-                 * Group code = 27. */
-        double z_target;
-                /*!< Z value of the view target point.\n
-                 * Group code = 37. */
         double view_height;
                 /*!< View height.\n
                  * Group code = 40. */
