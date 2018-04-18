@@ -247,6 +247,7 @@ double dxf_vport_get_target_x (DxfVPort *vport);
 DxfVPort *dxf_vport_set_target_x (DxfVPort *vport, double target_x);
 double dxf_vport_get_target_y (DxfVPort *vport);
 DxfVPort *dxf_vport_set_target_y (DxfVPort *vport, double target_y);
+double dxf_vport_get_target_z (DxfVPort *vport);
 
 
 #ifdef __cplusplus
