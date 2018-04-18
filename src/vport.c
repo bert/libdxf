@@ -720,6 +720,15 @@ dxf_vport_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (vport->target == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (vport->id_code != -1)
@@ -772,9 +781,9 @@ dxf_vport_write
         fprintf (fp->fp, " 16\n%f\n", vport->direction->x0);
         fprintf (fp->fp, " 26\n%f\n", vport->direction->y0);
         fprintf (fp->fp, " 36\n%f\n", vport->direction->z0);
-        fprintf (fp->fp, " 17\n%f\n", vport->x_target);
-        fprintf (fp->fp, " 27\n%f\n", vport->y_target);
-        fprintf (fp->fp, " 37\n%f\n", vport->z_target);
+        fprintf (fp->fp, " 17\n%f\n", vport->target->x0);
+        fprintf (fp->fp, " 27\n%f\n", vport->target->y0);
+        fprintf (fp->fp, " 37\n%f\n", vport->target->z0);
         fprintf (fp->fp, " 40\n%f\n", vport->view_height);
         fprintf (fp->fp, " 41\n%f\n", vport->viewport_aspect_ratio);
         fprintf (fp->fp, " 42\n%f\n", vport->lens_length);
