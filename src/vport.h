@@ -241,6 +241,7 @@ double dxf_vport_get_direction_y (DxfVPort *vport);
 DxfVPort *dxf_vport_set_direction_y (DxfVPort *vport, double direction_y);
 double dxf_vport_get_direction_z (DxfVPort *vport);
 DxfVPort *dxf_vport_set_direction_z (DxfVPort *vport, double direction_z);
+DxfPoint *dxf_vport_get_target (DxfVPort *vport);
 
 
 #ifdef __cplusplus
