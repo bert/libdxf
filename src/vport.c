@@ -3330,4 +3330,40 @@ dxf_vport_get_lens_length
 }
 
 
+/*!
+ * \brief Set the lens length \c lens_length of a DXF \c VPORT symbol
+ * table entry.
+ *
+ * \return a pointer to \c vport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfVPort *
+dxf_vport_set_lens_length
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        double viewport_aspect_ratio
+                /*!< the lens length \c lens_length of a DXF \c VPORT
+                 * symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->viewport_aspect_ratio = viewport_aspect_ratio;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
