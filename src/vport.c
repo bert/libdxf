@@ -3262,4 +3262,40 @@ dxf_vport_get_viewport_aspect_ratio
 }
 
 
+/*!
+ * \brief Set the viewport aspect ratio \c viewport_aspect_ratio of a
+ * DXF \c VPORT symbol table entry.
+ *
+ * \return a pointer to \c vport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfVPort *
+dxf_vport_set_viewport_aspect_ratio
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        double viewport_aspect_ratio
+                /*!< the viewport aspect ratio \c viewport_aspect_ratio
+                 * of a DXF \c VPORT symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->viewport_aspect_ratio = viewport_aspect_ratio;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
