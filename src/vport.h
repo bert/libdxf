@@ -244,6 +244,7 @@ double dxf_vport_get_view_height (DxfVPort *vport);
 DxfVPort *dxf_vport_set_view_height (DxfVPort *vport, double view_height);
 double dxf_vport_get_viewport_aspect_ratio (DxfVPort *vport);
 DxfVPort *dxf_vport_set_viewport_aspect_ratio (DxfVPort *vport, double viewport_aspect_ratio);
+double dxf_vport_get_lens_length (DxfVPort *vport);
 
 
 #ifdef __cplusplus
