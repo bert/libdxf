@@ -253,6 +253,7 @@ DxfVPort *dxf_vport_set_back_plane_offset (DxfVPort *vport, double back_plane_of
 double dxf_vport_get_snap_rotation_angle (DxfVPort *vport);
 DxfVPort *dxf_vport_set_snap_rotation_angle (DxfVPort *vport, double snap_rotation_angle);
 double dxf_vport_get_view_twist_angle (DxfVPort *vport);
+DxfVPort *dxf_vport_set_view_twist_angle (DxfVPort *vport, double view_twist_angle);
 
 
 #ifdef __cplusplus
