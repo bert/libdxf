@@ -3342,7 +3342,7 @@ dxf_vport_set_lens_length
 (
         DxfVPort *vport,
                 /*!< a pointer to a DXF \c VPORT symbol table entry. */
-        double viewport_aspect_ratio
+        double lens_length
                 /*!< the lens length \c lens_length of a DXF \c VPORT
                  * symbol table entry. */
 )
@@ -3358,7 +3358,7 @@ dxf_vport_set_lens_length
                   __FUNCTION__);
                 return (NULL);
         }
-        vport->viewport_aspect_ratio = viewport_aspect_ratio;
+        vport->lens_length = lens_length;
 #if DEBUG
         DXF_DEBUG_END
 #endif
