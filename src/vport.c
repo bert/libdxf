@@ -3534,4 +3534,40 @@ dxf_vport_get_snap_rotation_angle
 }
 
 
+/*!
+ * \brief Set the snap rotation angle \c snap_rotation_angle of a DXF
+ * \c VPORT symbol table entry.
+ *
+ * \return a pointer to \c vport when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfVPort *
+dxf_vport_set_snap_rotation_angle
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        double snap_rotation_angle
+                /*!< the snap rotation angle \c snap_rotation_angle of a
+                 * DXF \c VPORT symbol table entry. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->snap_rotation_angle = snap_rotation_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
