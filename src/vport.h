@@ -247,6 +247,7 @@ DxfVPort *dxf_vport_set_viewport_aspect_ratio (DxfVPort *vport, double viewport_
 double dxf_vport_get_lens_length (DxfVPort *vport);
 DxfVPort *dxf_vport_set_lens_length (DxfVPort *vport, double viewport_aspect_ratio);
 double dxf_vport_get_front_plane_offset (DxfVPort *vport);
+DxfVPort *dxf_vport_set_front_plane_offset (DxfVPort *vport, double front_plane_offset);
 
 
 #ifdef __cplusplus
