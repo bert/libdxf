@@ -541,7 +541,7 @@ dxf_int_struct
         /*!< \brief The symbol table entry is referenced by at least one
          * entity in the drawing the last time the drawing was edited. */
 
-#define DXF_VPORT_MAX_STANDARD_FLAG 0x1111111
+#define DXF_VPORT_STANDARD_FLAG_MAX_VALUE 0x1111111
         /*!< \brief The maximum value for the standard flag in the VPORT
          * symbol table entry. */
 
