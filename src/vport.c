@@ -3760,4 +3760,46 @@ dxf_vport_set_id
 }
 
 
+/*!
+ * \brief Get the \c standard_flag from a DXF \c VPORT symbol table entry.
+ *
+ * \return \c standard_flag.
+ */
+int
+dxf_vport_get_standard_flag
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vport->standard_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (vport->standard_flag > 0x1111111)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->standard_flag);
+}
+
+
 /* EOF*/
