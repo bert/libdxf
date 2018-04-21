@@ -3802,4 +3802,47 @@ dxf_vport_get_standard_flag
 }
 
 
+/*!
+ * \brief Set the \c standard_flag for a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_standard_flag
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int standard_flag
+                /*!< the \c standard_flag to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (standard_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (standard_flag > 0x1111111)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        vport->standard_flag = standard_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/

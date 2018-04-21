@@ -259,6 +259,7 @@ DxfVPort *dxf_vport_set_status_field (DxfVPort *vport, int status_field);
 int dxf_vport_get_id (DxfVPort *vport);
 DxfVPort *dxf_vport_set_id (DxfVPort *vport, int id);
 int dxf_vport_get_standard_flag (DxfVPort *vport);
+DxfVPort *dxf_vport_set_standard_flag (DxfVPort *vport, int standard_flag);
 
 
 #ifdef __cplusplus
