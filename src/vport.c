@@ -3668,4 +3668,35 @@ dxf_vport_get_status_field
 }
 
 
+/*!
+ * \brief Set the \c status_field for a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_status_field
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int status_field
+                /*!< the \c status_field to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->status_field = status_field;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/

@@ -255,6 +255,7 @@ DxfVPort *dxf_vport_set_snap_rotation_angle (DxfVPort *vport, double snap_rotati
 double dxf_vport_get_view_twist_angle (DxfVPort *vport);
 DxfVPort *dxf_vport_set_view_twist_angle (DxfVPort *vport, double view_twist_angle);
 int dxf_vport_get_status_field (DxfVPort *vport);
+DxfVPort *dxf_vport_set_status_field (DxfVPort *vport, int status_field);
 
 
 #ifdef __cplusplus
