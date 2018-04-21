@@ -3638,4 +3638,34 @@ dxf_vport_set_view_twist_angle
 }
 
 
+/*!
+ * \brief Get the \c status_field from a DXF \c VPORT symbol table entry.
+ *
+ * \return \c status_field.
+ */
+int
+dxf_vport_get_status_field
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->status_field);
+}
+
+
 /* EOF*/
