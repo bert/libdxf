@@ -3789,7 +3789,7 @@ dxf_vport_get_standard_flag
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        if (vport->standard_flag > 0x1111111)
+        if (vport->standard_flag > DXF_VPORT_MAX_STANDARD_FLAG)
         {
                 fprintf (stderr,
                   (_("Warning in %s () an out of range value was found.\n")),
@@ -3831,7 +3831,7 @@ dxf_vport_set_standard_flag
                   (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
-        if (standard_flag > 0x1111111)
+        if (standard_flag > DXF_VPORT_MAX_STANDARD_FLAG)
         {
                 fprintf (stderr,
                   (_("Warning in %s () an out of range value was passed.\n")),
