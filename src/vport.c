@@ -3729,4 +3729,35 @@ dxf_vport_get_id
 }
 
 
+/*!
+ * \brief Set the \c id for a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_id
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int id
+                /*!< the \c id to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->id = id;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/

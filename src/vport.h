@@ -257,6 +257,7 @@ DxfVPort *dxf_vport_set_view_twist_angle (DxfVPort *vport, double view_twist_ang
 int dxf_vport_get_status_field (DxfVPort *vport);
 DxfVPort *dxf_vport_set_status_field (DxfVPort *vport, int status_field);
 int dxf_vport_get_id (DxfVPort *vport);
+DxfVPort *dxf_vport_set_id (DxfVPort *vport, int id);
 
 
 #ifdef __cplusplus
