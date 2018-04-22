@@ -3993,4 +3993,41 @@ dxf_vport_set_circle_zoom_percent
 }
 
 
+/*!
+ * \brief Get the \c fast_zoom_setting from a DXF \c VPORT symbol table
+ * entry.
+ *
+ * \return \c fast_zoom_setting.
+ */
+int
+dxf_vport_get_fast_zoom_setting
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vport->fast_zoom_setting < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->fast_zoom_setting);
+}
+
+
 /* EOF*/
