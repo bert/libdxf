@@ -3955,4 +3955,42 @@ dxf_vport_get_circle_zoom_percent
 }
 
 
+/*!
+ * \brief Set the \c circle_zoom_percent for a DXF \c VPORT symbol table
+ * entry.
+ */
+DxfVPort *
+dxf_vport_set_circle_zoom_percent
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int circle_zoom_percent
+                /*!< the \c circle_zoom_percent to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (circle_zoom_percent < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        vport->circle_zoom_percent = circle_zoom_percent;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
