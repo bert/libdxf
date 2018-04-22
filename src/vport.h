@@ -265,6 +265,7 @@ DxfVPort *dxf_vport_set_view_mode (DxfVPort *vport, int view_mode);
 int dxf_vport_get_circle_zoom_percent (DxfVPort *vport);
 DxfVPort *dxf_vport_set_circle_zoom_percent (DxfVPort *vport, int circle_zoom_percent);
 int dxf_vport_get_fast_zoom_setting (DxfVPort *vport);
+DxfVPort *dxf_vport_set_fast_zoom_setting (DxfVPort *vport, int fast_zoom_setting);
 
 
 #ifdef __cplusplus
