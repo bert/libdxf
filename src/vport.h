@@ -262,6 +262,7 @@ int dxf_vport_get_standard_flag (DxfVPort *vport);
 DxfVPort *dxf_vport_set_standard_flag (DxfVPort *vport, int standard_flag);
 int dxf_vport_get_view_mode (DxfVPort *vport);
 DxfVPort *dxf_vport_set_view_mode (DxfVPort *vport, int view_mode);
+int dxf_vport_get_circle_zoom_percent (DxfVPort *vport);
 
 
 #ifdef __cplusplus
