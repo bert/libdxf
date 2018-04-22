@@ -4105,4 +4105,42 @@ dxf_vport_get_UCSICON_setting
 }
 
 
+/*!
+ * \brief Set the \c UCSICON_setting for a DXF \c VPORT symbol table
+ * entry.
+ */
+DxfVPort *
+dxf_vport_set_UCSICON_setting
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int UCSICON_setting
+                /*!< the \c UCSICON_setting to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (UCSICON_setting < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        vport->UCSICON_setting = UCSICON_setting;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
