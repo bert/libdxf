@@ -269,6 +269,7 @@ DxfVPort *dxf_vport_set_fast_zoom_setting (DxfVPort *vport, int fast_zoom_settin
 int dxf_vport_get_UCSICON_setting (DxfVPort *vport);
 DxfVPort *dxf_vport_set_UCSICON_setting (DxfVPort *vport, int UCSICON_setting);
 int dxf_vport_get_snap_on (DxfVPort *vport);
+DxfVPort *dxf_vport_set_snap_on (DxfVPort *vport, int snap_on);
 
 
 #ifdef __cplusplus

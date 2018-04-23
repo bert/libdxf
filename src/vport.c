@@ -4180,4 +4180,41 @@ dxf_vport_get_snap_on
 }
 
 
+/*!
+ * \brief Set the \c snap_on for a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_snap_on
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int snap_on
+                /*!< the \c snap_on to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (snap_on < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        vport->snap_on = snap_on;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
