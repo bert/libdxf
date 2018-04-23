@@ -4144,8 +4144,7 @@ dxf_vport_set_UCSICON_setting
 
 
 /*!
- * \brief Get the \c snap_on from a DXF \c VPORT symbol table
- * entry.
+ * \brief Get the \c snap_on from a DXF \c VPORT symbol table entry.
  *
  * \return \c snap_on.
  */
