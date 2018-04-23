@@ -4252,4 +4252,41 @@ dxf_vport_get_grid_on
 }
 
 
+/*!
+ * \brief Set the \c grid_on for a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_grid_on
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int grid_on
+                /*!< the \c grid_on to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (grid_on < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        vport->grid_on = grid_on;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
