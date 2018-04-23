@@ -4325,4 +4325,41 @@ dxf_vport_get_snap_style
 }
 
 
+/*!
+ * \brief Set the \c snap_style for a DXF \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_snap_style
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        int snap_style
+                /*!< the \c snap_style to be set for the entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (snap_style < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        vport->snap_style = snap_style;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
