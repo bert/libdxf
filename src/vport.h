@@ -276,6 +276,7 @@ int dxf_vport_get_snap_style (DxfVPort *vport);
 DxfVPort *dxf_vport_set_snap_style (DxfVPort *vport, int snap_style);
 int dxf_vport_get_snap_isopair (DxfVPort *vport);
 DxfVPort *dxf_vport_set_snap_isopair (DxfVPort *vport, int snap_isopair);
+char *dxf_vport_get_dictionary_owner_soft (DxfVPort *vport);
 
 
 #ifdef __cplusplus
