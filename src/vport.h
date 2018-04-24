@@ -274,6 +274,7 @@ int dxf_vport_get_grid_on (DxfVPort *vport);
 DxfVPort *dxf_vport_set_grid_on (DxfVPort *vport, int grid_on);
 int dxf_vport_get_snap_style (DxfVPort *vport);
 DxfVPort *dxf_vport_set_snap_style (DxfVPort *vport, int snap_style);
+int dxf_vport_get_snap_isopair (DxfVPort *vport);
 
 
 #ifdef __cplusplus

@@ -4362,4 +4362,40 @@ dxf_vport_set_snap_style
 }
 
 
+/*!
+ * \brief Get the \c snap_isopair from a DXF \c VPORT symbol table entry.
+ *
+ * \return \c snap_isopair.
+ */
+int
+dxf_vport_get_snap_isopair
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vport->snap_isopair < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport->snap_isopair);
+}
+
+
 /* EOF*/
