@@ -4555,4 +4555,44 @@ dxf_vport_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c VPORT symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_dictionary_owner_hard
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/

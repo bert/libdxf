@@ -279,6 +279,7 @@ DxfVPort *dxf_vport_set_snap_isopair (DxfVPort *vport, int snap_isopair);
 char *dxf_vport_get_dictionary_owner_soft (DxfVPort *vport);
 DxfVPort *dxf_vport_set_dictionary_owner_soft (DxfVPort *vport, char *dictionary_owner_soft);
 char *dxf_vport_get_dictionary_owner_hard (DxfVPort *vport);
+DxfVPort *dxf_vport_set_dictionary_owner_hard (DxfVPort *vport, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus
