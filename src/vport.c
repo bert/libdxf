@@ -4635,4 +4635,44 @@ dxf_vport_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c VPORT for a DXF \c VPORT
+ * symbol table entry.
+ */
+DxfVPort *
+dxf_vport_set_next
+(
+        DxfVPort *vport,
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+        DxfVPort *next
+                /*!< a pointer to the next \c VPORT for the symbol table
+                 * entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vport->next = (struct DxfVPort *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vport);
+}
+
+
 /* EOF*/
