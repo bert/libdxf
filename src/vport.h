@@ -282,6 +282,7 @@ char *dxf_vport_get_dictionary_owner_hard (DxfVPort *vport);
 DxfVPort *dxf_vport_set_dictionary_owner_hard (DxfVPort *vport, char *dictionary_owner_hard);
 DxfVPort *dxf_vport_get_next (DxfVPort *vport);
 DxfVPort *dxf_vport_set_next (DxfVPort *vport, DxfVPort *next);
+DxfVPort *dxf_vport_get_last (DxfVPort *vport);
 
 
 #ifdef __cplusplus

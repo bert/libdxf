@@ -4675,4 +4675,49 @@ dxf_vport_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c VPORT symbol table entry from a
+ * linked list of DXF \c VPORT symbol table entries.
+ *
+ * \return pointer to the last \c VPORT symbol table entry.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfVPort *
+dxf_vport_get_last
+(
+        DxfVPort *vport
+                /*!< a pointer to a DXF \c VPORT symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vport->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfVPort *) vport);
+        }
+        DxfVPort *iter = (DxfVPort *) vport->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfVPort *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfVPort *) iter);
+}
+
+
 /* EOF*/
