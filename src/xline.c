@@ -945,4 +945,41 @@ dxf_xline_set_thickness
 }
 
 
+/*!
+ * \brief Get the linetype scale from a DXF \c XLINE entity.
+ *
+ * \return \c linetype_scale.
+ */
+double
+dxf_xline_get_linetype_scale
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (xline->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline->linetype_scale);
+}
+
+
 /* EOF */
