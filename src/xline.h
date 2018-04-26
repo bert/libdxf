@@ -147,6 +147,7 @@ DxfXLine *dxf_xline_set_elevation (DxfXLine *xline, double elevation);
 double dxf_xline_get_thickness (DxfXLine *xline);
 DxfXLine *dxf_xline_set_thickness (DxfXLine *xline, double thickness);
 double dxf_xline_get_linetype_scale (DxfXLine *xline);
+DxfXLine *dxf_xline_set_linetype_scale (DxfXLine *xline, double linetype_scale);
 
 
 #ifdef __cplusplus
