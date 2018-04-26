@@ -143,6 +143,7 @@ DxfXLine *dxf_xline_set_linetype (DxfXLine *xline, char *linetype);
 char *dxf_xline_get_layer (DxfXLine *xline);
 DxfXLine *dxf_xline_set_layer (DxfXLine *xline, char *layer);
 double dxf_xline_get_elevation (DxfXLine *xline);
+DxfXLine *dxf_xline_set_elevation (DxfXLine *xline, double elevation);
 
 
 #ifdef __cplusplus

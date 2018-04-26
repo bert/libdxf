@@ -839,4 +839,35 @@ dxf_xline_get_elevation
 }
 
 
+/*!
+ * \brief Set the elevation for a DXF \c XLINE entity.
+ */
+DxfXLine *
+dxf_xline_set_elevation
+(
+        DxfXLine *xline,
+                /*!< a pointer to a DXF \c XLINE entity. */
+        double elevation
+                /*!< the elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xline->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
 /* EOF */
