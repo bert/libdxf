@@ -138,6 +138,7 @@ int dxf_xline_free (DxfXLine *xline);
 void dxf_xline_free_chain (DxfXLine *xlines);
 int dxf_xline_get_id_code (DxfXLine *xline);
 DxfXLine *dxf_xline_set_id_code (DxfXLine *xline, int id_code);
+char *dxf_xline_get_linetype (DxfXLine *xline);
 
 
 #ifdef __cplusplus
