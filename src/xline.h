@@ -144,6 +144,7 @@ char *dxf_xline_get_layer (DxfXLine *xline);
 DxfXLine *dxf_xline_set_layer (DxfXLine *xline, char *layer);
 double dxf_xline_get_elevation (DxfXLine *xline);
 DxfXLine *dxf_xline_set_elevation (DxfXLine *xline, double elevation);
+double dxf_xline_get_thickness (DxfXLine *xline);
 
 
 #ifdef __cplusplus
