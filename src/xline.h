@@ -141,6 +141,7 @@ DxfXLine *dxf_xline_set_id_code (DxfXLine *xline, int id_code);
 char *dxf_xline_get_linetype (DxfXLine *xline);
 DxfXLine *dxf_xline_set_linetype (DxfXLine *xline, char *linetype);
 char *dxf_xline_get_layer (DxfXLine *xline);
+DxfXLine *dxf_xline_set_layer (DxfXLine *xline, char *layer);
 
 
 #ifdef __cplusplus
