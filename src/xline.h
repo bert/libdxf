@@ -152,6 +152,7 @@ int16_t dxf_xline_get_visibility (DxfXLine *xline);
 DxfXLine *dxf_xline_set_visibility (DxfXLine *xline, int16_t visibility);
 int dxf_xline_get_color (DxfXLine *xline);
 DxfXLine *dxf_xline_set_color (DxfXLine *xline, int color);
+int dxf_xline_get_paperspace (DxfXLine *xline);
 
 
 #ifdef __cplusplus

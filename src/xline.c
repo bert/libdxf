@@ -1184,4 +1184,46 @@ dxf_xline_set_color
 }
 
 
+/*!
+ * \brief Get the \c paperspace flag value from a DXF \c XLINE entity.
+ *
+ * \return \c paperspace flag value.
+ */
+int
+dxf_xline_get_paperspace
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (xline->paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (xline->paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline->paperspace);
+}
+
+
 /* EOF */
