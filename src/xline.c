@@ -1020,4 +1020,48 @@ dxf_xline_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the \c visibility from a DXF \c XLINE entity.
+ *
+ * \return \c visibility.
+ */
+int16_t
+dxf_xline_get_visibility
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (xline->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (xline->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline->visibility);
+}
+
+
 /* EOF */
