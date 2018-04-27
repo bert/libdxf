@@ -1109,4 +1109,40 @@ dxf_xline_set_visibility
 }
 
 
+/*!
+ * \brief Get the \c color from a DXF \c XLINE entity.
+ *
+ * \return \c color.
+ */
+int
+dxf_xline_get_color
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (xline->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline->color);
+}
+
+
 /* EOF */

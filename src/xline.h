@@ -150,6 +150,7 @@ double dxf_xline_get_linetype_scale (DxfXLine *xline);
 DxfXLine *dxf_xline_set_linetype_scale (DxfXLine *xline, double linetype_scale);
 int16_t dxf_xline_get_visibility (DxfXLine *xline);
 DxfXLine *dxf_xline_set_visibility (DxfXLine *xline, int16_t visibility);
+int dxf_xline_get_color (DxfXLine *xline);
 
 
 #ifdef __cplusplus
