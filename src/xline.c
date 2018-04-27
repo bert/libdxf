@@ -1226,4 +1226,50 @@ dxf_xline_get_paperspace
 }
 
 
+/*!
+ * \brief Set the \c paperspace flag for a DXF \c XLINE entity.
+ */
+DxfXLine *
+dxf_xline_set_paperspace
+(
+        DxfXLine *xline,
+                /*!< a pointer to a DXF \c XLINE entity. */
+        int paperspace
+                /*!< the \c paperspace flag value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xline->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
 /* EOF */
