@@ -149,6 +149,7 @@ DxfXLine *dxf_xline_set_thickness (DxfXLine *xline, double thickness);
 double dxf_xline_get_linetype_scale (DxfXLine *xline);
 DxfXLine *dxf_xline_set_linetype_scale (DxfXLine *xline, double linetype_scale);
 int16_t dxf_xline_get_visibility (DxfXLine *xline);
+DxfXLine *dxf_xline_set_visibility (DxfXLine *xline, int16_t visibility);
 
 
 #ifdef __cplusplus
