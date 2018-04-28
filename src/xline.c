@@ -1410,4 +1410,52 @@ dxf_xline_get_shadow_mode
 }
 
 
+/*!
+ * \brief Set the \c shadow_mode for a DXF \c XLINE entity.
+ *
+ * \return a pointer to \c xline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfXLine *
+dxf_xline_set_shadow_mode
+(
+        DxfXLine *xline,
+                /*!< a pointer to a DXF \c XLINE entity. */
+        int16_t shadow_mode
+                /*!< the shadow mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xline->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
 /* EOF */

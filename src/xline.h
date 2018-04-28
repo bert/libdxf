@@ -234,6 +234,7 @@ DxfXLine *dxf_xline_set_paperspace (DxfXLine *xline, int paperspace);
 int dxf_xline_get_graphics_data_size (DxfXLine *xline);
 DxfXLine *dxf_xline_set_graphics_data_size (DxfXLine *xline, int graphics_data_size);
 int16_t dxf_xline_get_shadow_mode (DxfXLine *xline);
+DxfXLine *dxf_xline_set_shadow_mode (DxfXLine *xline, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
