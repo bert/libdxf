@@ -236,6 +236,7 @@ DxfXLine *dxf_xline_set_graphics_data_size (DxfXLine *xline, int graphics_data_s
 int16_t dxf_xline_get_shadow_mode (DxfXLine *xline);
 DxfXLine *dxf_xline_set_shadow_mode (DxfXLine *xline, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_xline_get_binary_graphics_data (DxfXLine *xline);
+DxfXLine *dxf_xline_set_binary_graphics_data (DxfXLine *xline, DxfBinaryGraphicsData *data);
 
 
 #ifdef __cplusplus
