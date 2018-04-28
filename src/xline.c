@@ -1538,4 +1538,44 @@ dxf_xline_set_binary_graphics_data
 }
 
 
+/*!
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \c XLINE entity.
+ *
+ * \return soft pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_xline_get_dictionary_owner_soft
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xline->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (xline->dictionary_owner_soft));
+}
+
+
 /* EOF */
