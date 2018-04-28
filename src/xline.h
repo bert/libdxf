@@ -232,6 +232,7 @@ DxfXLine *dxf_xline_set_color (DxfXLine *xline, int color);
 int dxf_xline_get_paperspace (DxfXLine *xline);
 DxfXLine *dxf_xline_set_paperspace (DxfXLine *xline, int paperspace);
 int dxf_xline_get_graphics_data_size (DxfXLine *xline);
+DxfXLine *dxf_xline_set_graphics_data_size (DxfXLine *xline, int graphics_data_size);
 
 
 #ifdef __cplusplus

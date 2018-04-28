@@ -1316,4 +1316,53 @@ dxf_xline_get_graphics_data_size
 }
 
 
+/*!
+ * \brief Set the \c graphics_data_size value for a DXF \c XLINE
+ * entity.
+ *
+ * \return a pointer to \c xline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfXLine *
+dxf_xline_set_graphics_data_size
+(
+        DxfXLine *xline,
+                /*!< a pointer to a DXF \c XLINE entity. */
+        int graphics_data_size
+                /*!< the \c graphics_data_size value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was passed.\n")),
+                  __FUNCTION__);
+        }
+        xline->graphics_data_size = graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
 /* EOF */
