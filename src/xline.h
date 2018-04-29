@@ -239,6 +239,7 @@ DxfBinaryGraphicsData *dxf_xline_get_binary_graphics_data (DxfXLine *xline);
 DxfXLine *dxf_xline_set_binary_graphics_data (DxfXLine *xline, DxfBinaryGraphicsData *data);
 char *dxf_xline_get_dictionary_owner_soft (DxfXLine *xline);
 DxfXLine *dxf_xline_set_dictionary_owner_soft (DxfXLine *xline, char *dictionary_owner_soft);
+char *dxf_xline_get_material (DxfXLine *xline);
 
 
 #ifdef __cplusplus
