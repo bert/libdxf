@@ -244,6 +244,7 @@ DxfXLine *dxf_xline_set_material (DxfXLine *xline, char *material);
 char *dxf_xline_get_dictionary_owner_hard (DxfXLine *xline);
 DxfXLine *dxf_xline_set_dictionary_owner_hard (DxfXLine *xline, char *dictionary_owner_hard);
 int16_t dxf_xline_get_lineweight (DxfXLine *xline);
+DxfXLine *dxf_xline_set_lineweight (DxfXLine *xline, int16_t lineweight);
 
 
 #ifdef __cplusplus
