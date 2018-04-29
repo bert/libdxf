@@ -246,6 +246,7 @@ DxfXLine *dxf_xline_set_dictionary_owner_hard (DxfXLine *xline, char *dictionary
 int16_t dxf_xline_get_lineweight (DxfXLine *xline);
 DxfXLine *dxf_xline_set_lineweight (DxfXLine *xline, int16_t lineweight);
 char *dxf_xline_get_plot_style_name (DxfXLine *xline);
+DxfXLine *dxf_xline_set_plot_style_name (DxfXLine *xline, char *plot_style_name);
 
 
 #ifdef __cplusplus
