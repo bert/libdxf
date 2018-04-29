@@ -242,6 +242,7 @@ DxfXLine *dxf_xline_set_dictionary_owner_soft (DxfXLine *xline, char *dictionary
 char *dxf_xline_get_material (DxfXLine *xline);
 DxfXLine *dxf_xline_set_material (DxfXLine *xline, char *material);
 char *dxf_xline_get_dictionary_owner_hard (DxfXLine *xline);
+DxfXLine *dxf_xline_set_dictionary_owner_hard (DxfXLine *xline, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus
