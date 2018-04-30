@@ -1958,4 +1958,38 @@ dxf_xline_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a DXF \c XLINE entity.
+ *
+ * \return a pointer to \c xline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfXLine *
+dxf_xline_set_color_value
+(
+        DxfXLine *xline,
+                /*!< a pointer to a DXF \c XLINE entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xline->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
 /* EOF */
