@@ -249,6 +249,7 @@ char *dxf_xline_get_plot_style_name (DxfXLine *xline);
 DxfXLine *dxf_xline_set_plot_style_name (DxfXLine *xline, char *plot_style_name);
 long dxf_xline_get_color_value (DxfXLine *xline);
 DxfXLine *dxf_xline_set_color_value (DxfXLine *xline, long color_value);
+char *dxf_xline_get_color_name (DxfXLine *xline);
 
 
 #ifdef __cplusplus
