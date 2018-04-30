@@ -45,6 +45,7 @@
 
 #include "global.h"
 #include "binary_graphics_data.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -183,6 +184,9 @@ dxf_xline_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF line. */
+        DxfPoint *p0;
+                /*!< Start point for the line.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X-value of the start point coordinate.\n
                  * Group code = 10. */
@@ -192,6 +196,9 @@ dxf_xline_struct
         double z0;
                 /*!< Z-value of the start point coordinate.\n
                  * Group code = 30. */
+        DxfPoint *p1;
+                /*!< End point for the line.\n
+                 * Group codes = 11, 21 and 31.*/
         double x1;
                 /*!< X-value of the end point coordinate.\n
                  * Group code = 11. */
