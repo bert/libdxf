@@ -252,6 +252,7 @@ DxfXLine *dxf_xline_set_color_value (DxfXLine *xline, long color_value);
 char *dxf_xline_get_color_name (DxfXLine *xline);
 DxfXLine *dxf_xline_set_color_name (DxfXLine *xline, char *color_name);
 long dxf_xline_get_transparency (DxfXLine *xline);
+DxfXLine *dxf_xline_set_transparency (DxfXLine *xline, long transparency);
 
 
 #ifdef __cplusplus
