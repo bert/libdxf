@@ -507,9 +507,33 @@ dxf_xline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((xline->x0 == xline->x1)
-                && (xline->y0 == xline->y1)
-                && (xline->z0 == xline->z1))
+        if (xline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (xline->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (xline->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () entity contains no binary graphics data.\n")),
+                  __FUNCTION__);
+        }
+        if ((xline->p0->x0 == xline->p1->x0)
+                && (xline->p0->y0 == xline->p1->y0)
+                && (xline->p0->z0 == xline->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
@@ -572,15 +596,24 @@ dxf_xline_write
         {
                 fprintf (fp->fp, "  6\n%s\n", xline->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (xline->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", xline->material);
+        }
+        if (xline->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", xline->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", xline->lineweight);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (xline->elevation != 0.0))
         {
                 fprintf (fp->fp, " 38\n%f\n", xline->elevation);
-        }
-        if (xline->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", xline->color);
         }
         if (xline->linetype_scale != 1.0)
         {
@@ -590,6 +623,37 @@ dxf_xline_write
         {
                 fprintf (fp->fp, " 60\n%d\n", xline->visibility);
         }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (xline->binary_graphics_data)
+          && (xline->graphics_data_size > 0))
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", xline->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", xline->graphics_data_size);
+#endif
+                if (xline->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = xline->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", xline->color_value);
+                fprintf (fp->fp, "430\n%s\n", xline->color_name);
+                fprintf (fp->fp, "440\n%ld\n", xline->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", xline->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", xline->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbXline\n");
@@ -598,12 +662,12 @@ dxf_xline_write
         {
                 fprintf (fp->fp, " 39\n%f\n", xline->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", xline->x0);
-        fprintf (fp->fp, " 20\n%f\n", xline->y0);
-        fprintf (fp->fp, " 30\n%f\n", xline->z0);
-        fprintf (fp->fp, " 11\n%f\n", xline->x1);
-        fprintf (fp->fp, " 21\n%f\n", xline->y1);
-        fprintf (fp->fp, " 31\n%f\n", xline->z1);
+        fprintf (fp->fp, " 10\n%f\n", xline->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", xline->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", xline->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", xline->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", xline->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", xline->p1->z0);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
