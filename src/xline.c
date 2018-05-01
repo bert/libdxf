@@ -2316,4 +2316,41 @@ dxf_xline_set_transparency
 }
 
 
+/*!
+ * \brief Get the start point \c p0 of a DXF \c XLINE entity.
+ *
+ * \return the start point \c p0.
+ */
+DxfPoint *
+dxf_xline_get_p0
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPoint *) xline->p0);
+}
+
+
 /* EOF */
