@@ -263,6 +263,7 @@ DxfXLine *dxf_xline_set_transparency (DxfXLine *xline, long transparency);
 DxfPoint *dxf_xline_get_p0 (DxfXLine *xline);
 DxfXLine *dxf_xline_set_p0 (DxfXLine *xline, DxfPoint *p0);
 double dxf_xline_get_x0 (DxfXLine *xline);
+DxfXLine *dxf_xline_set_x0 (DxfXLine *xline, double x0);
 
 
 #ifdef __cplusplus
