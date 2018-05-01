@@ -712,8 +712,14 @@ dxf_xline_free
         }
         free (xline->linetype);
         free (xline->layer);
+        dxf_binary_graphics_data_free_chain (xline->binary_graphics_data);
         free (xline->dictionary_owner_soft);
+        free (xline->material);
         free (xline->dictionary_owner_hard);
+        free (xline->plot_style_name);
+        free (xline->color_name);
+        dxf_point_free (xline->p0);
+        dxf_point_free (xline->p1);
         free (xline);
         xline = NULL;
 #if DEBUG
