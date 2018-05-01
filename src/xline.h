@@ -264,6 +264,7 @@ DxfPoint *dxf_xline_get_p0 (DxfXLine *xline);
 DxfXLine *dxf_xline_set_p0 (DxfXLine *xline, DxfPoint *p0);
 double dxf_xline_get_x0 (DxfXLine *xline);
 DxfXLine *dxf_xline_set_x0 (DxfXLine *xline, double x0);
+double dxf_xline_get_y0 (DxfXLine *xline);
 
 
 #ifdef __cplusplus
