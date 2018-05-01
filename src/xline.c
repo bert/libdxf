@@ -193,6 +193,30 @@ dxf_xline_read
                 xline = dxf_xline_new ();
                 xline = dxf_xline_init (xline);
         }
+        if (xline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                xline->p0 = dxf_point_new ();
+                xline->p0 = dxf_point_init (xline->p0);
+        }
+        if (xline->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                xline->p1 = dxf_point_new ();
+                xline->p1 = dxf_point_init (xline->p1);
+        }
+        if (xline->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                xline->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+                xline->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) xline->binary_graphics_data);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -232,42 +256,42 @@ dxf_xline_read
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &xline->x0);
+                        fscanf (fp->fp, "%lf\n", &xline->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &xline->y0);
+                        fscanf (fp->fp, "%lf\n", &xline->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &xline->z0);
+                        fscanf (fp->fp, "%lf\n", &xline->p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &xline->x1);
+                        fscanf (fp->fp, "%lf\n", &xline->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &xline->y1);
+                        fscanf (fp->fp, "%lf\n", &xline->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &xline->z1);
+                        fscanf (fp->fp, "%lf\n", &xline->p1->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0))
@@ -312,6 +336,13 @@ dxf_xline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &xline->paperspace);
                 }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &xline->graphics_data_size);
+                }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
@@ -327,6 +358,29 @@ dxf_xline_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &xline->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &xline->shadow_mode);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", xline->binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) xline->binary_graphics_data->next);
+                        xline->binary_graphics_data = (DxfBinaryGraphicsData *) xline->binary_graphics_data->next;
+                }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
@@ -334,12 +388,53 @@ dxf_xline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", xline->dictionary_owner_soft);
                 }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", xline->material);
+                }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", xline->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &xline->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", xline->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &xline->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", xline->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &xline->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
