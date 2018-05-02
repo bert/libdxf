@@ -2514,4 +2514,47 @@ dxf_xline_get_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the start point \c y0 of a DXF \c XLINE
+ * entity.
+ *
+ * \return a pointer to \c xline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfXLine *
+dxf_xline_set_y0
+(
+        DxfXLine *xline,
+                /*!< a pointer to a DXF \c XLINE entity. */
+        double y0
+                /*!< the Y-value of the start point \c y0 of a DXF
+                 * \c xline entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xline->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
 /* EOF */
