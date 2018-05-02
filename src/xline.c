@@ -2557,4 +2557,43 @@ dxf_xline_set_y0
 }
 
 
+/*!
+ * \brief Get the Z-value of the start point \c z0 of a DXF \c XLINE
+ * entity.
+ *
+ * \return the Z-value of the start point \c z0.
+ */
+double
+dxf_xline_get_z0
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (xline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline->p0->z0);
+}
+
+
 /* EOF */
