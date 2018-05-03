@@ -2639,4 +2639,41 @@ dxf_xline_set_z0
 }
 
 
+/*!
+ * \brief Get the end point \c p1 of a DXF \c XLINE entity.
+ *
+ * \return the end point \c p1.
+ */
+DxfPoint *
+dxf_xline_get_p1
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xline->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline->p1);
+}
+
+
 /* EOF */
