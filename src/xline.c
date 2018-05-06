@@ -2962,4 +2962,44 @@ dxf_xline_set_z1
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c XLINE entity from a DXF 
+ * \c XLINE entity.
+ *
+ * \return pointer to the next \c XLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfXLine *
+dxf_xline_get_next
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfXLine *) xline->next);
+}
+
+
 /* EOF */
