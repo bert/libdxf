@@ -187,27 +187,9 @@ dxf_xline_struct
         DxfPoint *p0;
                 /*!< Start point for the line.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< X-value of the start point coordinate.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of the start point coordinate.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of the start point coordinate.\n
-                 * Group code = 30. */
         DxfPoint *p1;
                 /*!< End point for the line.\n
                  * Group codes = 11, 21 and 31.*/
-        double x1;
-                /*!< X-value of the end point coordinate.\n
-                 * Group code = 11. */
-        double y1;
-                /*!< Y-value of the end point coordinate.\n
-                 * Group code = 21. */
-        double z1;
-                /*!< Z-value of the end point coordinate.\n
-                 * Group code = 31. */
         struct DxfXLine *next;
                 /*!< pointer to the next DxfXLine.\n
                  * \c NULL in the last DxfXLine. */
