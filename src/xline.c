@@ -3041,4 +3041,49 @@ dxf_xline_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c XLINE entity from a linked list
+ * of DXF \c XLINE entities.
+ *
+ * \return pointer to the last \c XLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfXLine *
+dxf_xline_get_last
+(
+        DxfXLine *xline
+                /*!< a pointer to a DXF \c XLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfXLine *) xline);
+        }
+        DxfXLine *iter = (DxfXLine *) xline->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfXLine *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfXLine *) iter);
+}
+
+
 /* EOF */
