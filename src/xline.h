@@ -277,6 +277,7 @@ DxfXLine *dxf_xline_set_y1 (DxfXLine *xline, double y1);
 double dxf_xline_get_z1 (DxfXLine *xline);
 DxfXLine *dxf_xline_set_z1 (DxfXLine *xline, double z1);
 DxfXLine *dxf_xline_get_next (DxfXLine *xline);
+DxfXLine *dxf_xline_set_next (DxfXLine *xline, DxfXLine *next);
 
 
 #ifdef __cplusplus

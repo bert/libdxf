@@ -3002,4 +3002,43 @@ dxf_xline_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c XLINE for a DXF \c XLINE
+ * entity.
+ */
+DxfXLine *
+dxf_xline_set_next
+(
+        DxfXLine *xline,
+                /*!< a pointer to a DXF \c XLINE entity. */
+        DxfXLine *next
+                /*!< a pointer to the next \c XLINE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xline->next = (struct DxfXLine *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
 /* EOF */
