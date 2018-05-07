@@ -106,6 +106,7 @@ int dxf_xrecord_free (DxfXrecord *xrecord);
 void dxf_xrecord_free_chain (DxfXrecord *xrecords);
 int dxf_xrecord_get_id_code (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_id_code (DxfXrecord *xrecord, int id_code);
+char *dxf_xrecord_get_dictionary_owner_soft (DxfXrecord *xrecord);
 
 
 #ifdef __cplusplus
