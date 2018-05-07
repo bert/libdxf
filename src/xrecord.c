@@ -803,4 +803,42 @@ dxf_xrecord_get_group_code
 }
 
 
+/*!
+ * \brief Set the \c group_code for a DXF \c XRECORD object.
+ */
+DxfXrecord *
+dxf_xrecord_set_group_code
+(
+        DxfXrecord *xrecord,
+                /*!< a pointer to a DXF \c XRECORD object. */
+        int group_code
+                /*!< \c group_code for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (group_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xrecord->group_code = group_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xrecord);
+}
+
+
 /* EOF*/
