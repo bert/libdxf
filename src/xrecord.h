@@ -108,6 +108,7 @@ int dxf_xrecord_get_id_code (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_id_code (DxfXrecord *xrecord, int id_code);
 char *dxf_xrecord_get_dictionary_owner_soft (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_dictionary_owner_soft (DxfXrecord *xrecord, char *dictionary_owner_soft);
+char *dxf_xrecord_get_dictionary_owner_hard (DxfXrecord *xrecord);
 
 
 #ifdef __cplusplus
