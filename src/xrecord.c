@@ -871,4 +871,35 @@ dxf_xrecord_get_I8
 }
 
 
+/*!
+ * \brief Set the \c I8 value for a DXF \c XRECORD object.
+ */
+DxfXrecord *
+dxf_xrecord_set_I8
+(
+        DxfXrecord *xrecord,
+                /*!< a pointer to a DXF \c XRECORD object. */
+        int8_t I8
+                /*!< \c I8 value for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xrecord->I8 = I8;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xrecord);
+}
+
+
 /* EOF*/
