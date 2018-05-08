@@ -112,6 +112,7 @@ char *dxf_xrecord_get_dictionary_owner_hard (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_dictionary_owner_hard (DxfXrecord *xrecord, char *dictionary_owner_hard);
 int dxf_xrecord_get_group_code (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_group_code (DxfXrecord *xrecord, int group_code);
+int8_t dxf_xrecord_get_I8 (DxfXrecord *xrecord);
 
 
 #ifdef __cplusplus
