@@ -932,4 +932,35 @@ dxf_xrecord_get_I16
 }
 
 
+/*!
+ * \brief Set the \c I16 value for a DXF \c XRECORD object.
+ */
+DxfXrecord *
+dxf_xrecord_set_I16
+(
+        DxfXrecord *xrecord,
+                /*!< a pointer to a DXF \c XRECORD object. */
+        int16_t I16
+                /*!< \c I16 value for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xrecord->I16 = I16;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xrecord);
+}
+
+
 /* EOF*/
