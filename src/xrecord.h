@@ -114,6 +114,7 @@ int dxf_xrecord_get_group_code (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_group_code (DxfXrecord *xrecord, int group_code);
 int8_t dxf_xrecord_get_I8 (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_I8 (DxfXrecord *xrecord, int8_t I8);
+int16_t dxf_xrecord_get_I16 (DxfXrecord *xrecord);
 
 
 #ifdef __cplusplus
