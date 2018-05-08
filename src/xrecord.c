@@ -844,7 +844,7 @@ dxf_xrecord_set_group_code
 /*!
  * \brief Get the \c I8 value from a DXF \c XRECORD object.
  *
- * \return \c I*.
+ * \return \c I8.
  */
 int8_t
 dxf_xrecord_get_I8
