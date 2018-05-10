@@ -993,4 +993,35 @@ dxf_xrecord_get_I32
 }
 
 
+/*!
+ * \brief Set the \c I32 value for a DXF \c XRECORD object.
+ */
+DxfXrecord *
+dxf_xrecord_set_I32
+(
+        DxfXrecord *xrecord,
+                /*!< a pointer to a DXF \c XRECORD object. */
+        int32_t I32
+                /*!< \c I32 value for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xrecord->I32 = I32;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xrecord);
+}
+
+
 /* EOF*/
