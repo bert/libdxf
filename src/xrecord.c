@@ -1054,4 +1054,35 @@ dxf_xrecord_get_D
 }
 
 
+/*!
+ * \brief Set the \c D value for a DXF \c XRECORD object.
+ */
+DxfXrecord *
+dxf_xrecord_set_D
+(
+        DxfXrecord *xrecord,
+                /*!< a pointer to a DXF \c XRECORD object. */
+        double D
+                /*!< \c D value for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xrecord->D = D;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xrecord);
+}
+
+
 /* EOF*/
