@@ -118,6 +118,7 @@ int16_t dxf_xrecord_get_I16 (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_I16 (DxfXrecord *xrecord, int16_t I16);
 int32_t dxf_xrecord_get_I32 (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_I32 (DxfXrecord *xrecord, int32_t I32);
+double dxf_xrecord_get_D (DxfXrecord *xrecord);
 
 
 #ifdef __cplusplus
