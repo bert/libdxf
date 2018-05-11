@@ -122,6 +122,7 @@ double dxf_xrecord_get_D (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_D (DxfXrecord *xrecord, double D);
 float dxf_xrecord_get_F (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_F (DxfXrecord *xrecord, float F);
+char *dxf_xrecord_get_S (DxfXrecord *xrecord);
 
 
 #ifdef __cplusplus

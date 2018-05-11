@@ -1146,4 +1146,43 @@ dxf_xrecord_set_F
 }
 
 
+/*!
+ * \brief Get the \c S value from a DXF \c XRECORD object.
+ *
+ * \return \c S value.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_xrecord_get_S
+(
+        DxfXrecord *xrecord
+                /*!< a pointer to a DXF \c XRECORD object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xrecord->S ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (xrecord->S));
+}
+
+
 /* EOF*/
