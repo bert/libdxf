@@ -165,7 +165,7 @@ dxf_xrecord_read
         if (fp->acad_version_number < AutoCAD_14)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  (_("Warning in %s () illegal DXF version for this object.\n")),
                   __FUNCTION__);
         }
         if (xrecord == NULL)
@@ -354,7 +354,7 @@ dxf_xrecord_write
         if (fp->acad_version_number < AutoCAD_14)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  (_("Warning in %s () illegal DXF version for this %s object with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, xrecord->id_code);
         }
         /* Start writing output. */
