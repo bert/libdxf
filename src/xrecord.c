@@ -1263,4 +1263,43 @@ dxf_xrecord_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c XRECORD for a DXF \c XRECORD
+ * object.
+ */
+DxfXrecord *
+dxf_xrecord_set_next
+(
+        DxfXrecord *xrecord,
+                /*!< a pointer to a DXF \c XRECORD object. */
+        DxfXrecord *next
+                /*!< a pointer to the next \c XRECORD for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xrecord->next = (struct DxfXrecord *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xrecord);
+}
+
+
 /* EOF*/
