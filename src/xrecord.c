@@ -1223,4 +1223,44 @@ dxf_xrecord_set_S
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c XRECORD entity from a DXF 
+ * \c XRECORD entity.
+ *
+ * \return pointer to the next \c XRECORD entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfXrecord *
+dxf_xrecord_get_next
+(
+        DxfXrecord *xrecord
+                /*!< a pointer to a DXF \c XRECORD entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xrecord->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfXrecord *) xrecord->next);
+}
+
+
 /* EOF*/
