@@ -126,6 +126,7 @@ char *dxf_xrecord_get_S (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_S (DxfXrecord *xrecord, char *S);
 DxfXrecord *dxf_xrecord_get_next (DxfXrecord *xrecord);
 DxfXrecord *dxf_xrecord_set_next (DxfXrecord *xrecord, DxfXrecord *next);
+DxfXrecord *dxf_xrecord_get_last (DxfXrecord *xrecord);
 
 
 #ifdef __cplusplus
