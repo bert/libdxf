@@ -1224,10 +1224,10 @@ dxf_xrecord_set_S
 
 
 /*!
- * \brief Get the pointer to the next \c XRECORD entity from a DXF 
- * \c XRECORD entity.
+ * \brief Get the pointer to the next \c XRECORD object from a DXF 
+ * \c XRECORD object.
  *
- * \return pointer to the next \c XRECORD entity.
+ * \return pointer to the next \c XRECORD object.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -1235,7 +1235,7 @@ DxfXrecord *
 dxf_xrecord_get_next
 (
         DxfXrecord *xrecord
-                /*!< a pointer to a DXF \c XRECORD entity. */
+                /*!< a pointer to a DXF \c XRECORD object. */
 )
 {
 #if DEBUG
