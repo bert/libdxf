@@ -490,6 +490,7 @@ dxf_xrecord_free
         }
         free (xrecord->dictionary_owner_soft);
         free (xrecord->dictionary_owner_hard);
+        free (xrecord->S);
         free (xrecord);
         xrecord = NULL;
 #if DEBUG
