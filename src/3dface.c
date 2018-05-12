@@ -1262,16 +1262,14 @@ dxf_3dface_get_visibility
         if (face->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (face->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1309,16 +1307,14 @@ dxf_3dface_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face->visibility = visibility;
 #if DEBUG
@@ -1475,16 +1471,14 @@ dxf_3dface_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face->paperspace = paperspace;
 #if DEBUG
@@ -1613,16 +1607,14 @@ dxf_3dface_get_shadow_mode
         if (face->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (face->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1660,16 +1652,14 @@ dxf_3dface_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face->shadow_mode = shadow_mode;
 #if DEBUG
@@ -3928,9 +3918,8 @@ dxf_3dface_create_from_points
         if ((inheritance < 0) || (inheritance > 4))
         {
                 fprintf (stderr,
-                  (_("Error in %s () an illegal inherit value was passed.\n")),
+                  (_("Warning in %s () an illegal inherit value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face = dxf_3dface_init (face);
         if (face == NULL)
