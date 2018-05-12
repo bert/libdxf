@@ -114,11 +114,13 @@ dxf_xrecord_init
         xrecord->id_code = 0;
         xrecord->dictionary_owner_soft = strdup ("");
         xrecord->dictionary_owner_hard = strdup ("");
+        xrecord->group_code = 0;
         xrecord->I8 = 0;
         xrecord->I16 = 0;
         xrecord->I32 = 0;
         xrecord->D = 0.0;
         xrecord->F = 0.0;
+        xrecord->S = strdup ("");
         xrecord->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
