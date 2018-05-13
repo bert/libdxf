@@ -118,32 +118,31 @@ dxf_3dsolid_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_3dsolid_set_id_code (solid, 0);
-        dxf_3dsolid_set_linetype (solid, strdup (DXF_DEFAULT_LINETYPE));
-        dxf_3dsolid_set_layer (solid, strdup (DXF_DEFAULT_LAYER));
-        dxf_3dsolid_set_elevation (solid, 0.0);
-        dxf_3dsolid_set_thickness (solid, 0.0);
-        dxf_3dsolid_set_linetype_scale (solid, DXF_DEFAULT_LINETYPE_SCALE);
-        dxf_3dsolid_set_visibility (solid, DXF_DEFAULT_VISIBILITY);
-        dxf_3dsolid_set_color (solid, DXF_COLOR_BYLAYER);
-        dxf_3dsolid_set_paperspace (solid, DXF_MODELSPACE);
-        dxf_3dsolid_set_graphics_data_size (solid, 0);
-        dxf_3dsolid_set_shadow_mode (solid, 0);
-        dxf_3dsolid_set_binary_graphics_data (solid, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
-        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_3dsolid_get_binary_graphics_data (solid));
-        dxf_3dsolid_set_dictionary_owner_soft (solid, strdup (""));
-        dxf_3dsolid_set_material (solid, strdup (""));
-        dxf_3dsolid_set_dictionary_owner_hard (solid, strdup (""));
-        dxf_3dsolid_set_lineweight (solid, 0);
-        dxf_3dsolid_set_plot_style_name (solid, strdup (""));
-        dxf_3dsolid_set_color_value (solid, 0);
-        dxf_3dsolid_set_color_name (solid, strdup (""));
-        dxf_3dsolid_set_transparency (solid, 0);
-        dxf_3dsolid_set_proprietary_data (solid, (DxfProprietaryData *) dxf_proprietary_data_init (solid->proprietary_data));
-        dxf_3dsolid_set_additional_proprietary_data (solid, (DxfProprietaryData *) dxf_proprietary_data_init (solid->additional_proprietary_data));
-        dxf_3dsolid_set_modeler_format_version_number (solid, 1);
-        dxf_3dsolid_set_history (solid, strdup (""));
-        dxf_3dsolid_set_next (solid, NULL);
+        solid->id_code = 0;
+        solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        solid->layer = strdup (DXF_DEFAULT_LAYER);
+        solid->elevation = 0.0;
+        solid->thickness = 0.0;
+        solid->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        solid->visibility = DXF_DEFAULT_VISIBILITY;
+        solid->color = DXF_COLOR_BYLAYER;
+        solid->paperspace = DXF_MODELSPACE;
+        solid->graphics_data_size = 0;
+        solid->shadow_mode = 0;
+        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (solid->binary_graphics_data);
+        solid->dictionary_owner_soft = strdup ("");
+        solid->material = strdup ("");
+        solid->dictionary_owner_hard = strdup ("");
+        solid->lineweight = 0;
+        solid->plot_style_name = strdup ("");
+        solid->color_value = 0;
+        solid->color_name = strdup ("");
+        solid->transparency = 0;
+        solid->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (solid->proprietary_data);
+        solid->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (solid->additional_proprietary_data);
+        solid->modeler_format_version_number = 1;
+        solid->history = strdup ("");
+        solid->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
