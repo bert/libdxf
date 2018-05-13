@@ -542,32 +542,31 @@ dxf_3dface_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((strcmp (dxf_3dface_get_layer (face), "") == 0)
-          || (dxf_3dface_get_layer (face) == NULL))
+        if ((strcmp (face->layer, "") == 0) || (face->layer == NULL))
         {
                 fprintf (stderr,
                   (_("Warning in %s () invalid layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_3dface_get_id_code (face));
+                  __FUNCTION__, dxf_entity_name, face->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_3dface_set_layer (face, strdup (DXF_DEFAULT_LAYER));
+                face->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_3dface_get_linetype (face) == NULL)
+        if (face->linetype == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () invalid linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_3dface_get_id_code (face));
+                  __FUNCTION__, dxf_entity_name, face->id_code);
                 fprintf (stderr,
                   (_("\t%s linetype is set to %s\n")),
                   dxf_entity_name, DXF_DEFAULT_LINETYPE);
-                dxf_3dface_set_linetype (face, strdup (DXF_DEFAULT_LINETYPE));
+                face->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_3dface_get_id_code (face) != -1)
+        if (face->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_3dface_get_id_code (face));
+                fprintf (fp->fp, "  5\n%x\n", face->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -579,74 +578,73 @@ dxf_3dface_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_3dface_get_dictionary_owner_soft (face), "") != 0)
+        if ((strcmp (face->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_3dface_get_dictionary_owner_soft (face));
+                fprintf (fp->fp, "330\n%s\n", face->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_3dface_get_dictionary_owner_hard (face), "") != 0)
+        if ((strcmp (face->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_3dface_get_dictionary_owner_hard (face));
+                fprintf (fp->fp, "360\n%s\n", face->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_3dface_get_paperspace (face) == DXF_PAPERSPACE)
+        if (face->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_3dface_get_layer (face));
-        if (strcmp (dxf_3dface_get_linetype (face), DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", face->layer);
+        if (strcmp (face->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_3dface_get_linetype (face));
+                fprintf (fp->fp, "  6\n%s\n", face->linetype);
         }
         if ((fp->acad_version_number >= AutoCAD_2008)
-          && (strcmp (dxf_3dface_get_material (face), "") != 0))
+          && (strcmp (face->material, "") != 0))
         {
-                fprintf (fp->fp, "347\n%s\n", dxf_3dface_get_material (face));
+                fprintf (fp->fp, "347\n%s\n", face->material);
         }
-        if (dxf_3dface_get_color (face) != DXF_COLOR_BYLAYER)
+        if (face->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_3dface_get_color (face));
+                fprintf (fp->fp, " 62\n%d\n", face->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", dxf_3dface_get_lineweight (face));
+                fprintf (fp->fp, "370\n%d\n", face->lineweight);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_3dface_get_elevation (face) != 0.0))
+          && (face->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_3dface_get_elevation (face));
+                fprintf (fp->fp, " 38\n%f\n", face->elevation);
         }
         if ((fp->acad_version_number <= AutoCAD_13)
-          && (dxf_3dface_get_thickness (face) != 0.0))
+          && (face->thickness != 0.0))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_3dface_get_thickness (face));
+                fprintf (fp->fp, " 39\n%f\n", face->thickness);
         }
-        if (dxf_3dface_get_linetype_scale (face) != 1.0)
+        if (face->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_3dface_get_linetype_scale (face));
+                fprintf (fp->fp, " 48\n%f\n", face->linetype_scale);
         }
-        if (dxf_3dface_get_visibility (face) != 0)
+        if (face->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_3dface_get_visibility (face));
+                fprintf (fp->fp, " 60\n%d\n", face->visibility);
         }
-        if ((fp->acad_version_number >= AutoCAD_2000)
-          && (dxf_3dface_get_graphics_data_size (face) > 0))
+        if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", dxf_3dface_get_graphics_data_size (face));
+                fprintf (fp->fp, "160\n%d\n", face->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", dxf_3dface_get_graphics_data_size (face));
+                fprintf (fp->fp, " 92\n%d\n", face->graphics_data_size);
 #endif
-                if (dxf_3dface_get_binary_graphics_data (face) != NULL)
+                if (face->binary_graphics_data != NULL)
                 {
                         DxfBinaryGraphicsData *iter;
                         iter = dxf_3dface_get_binary_graphics_data (face);
@@ -659,32 +657,32 @@ dxf_3dface_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", dxf_3dface_get_color_value (face));
-                fprintf (fp->fp, "430\n%s\n", dxf_3dface_get_color_name (face));
-                fprintf (fp->fp, "440\n%ld\n", dxf_3dface_get_transparency (face));
+                fprintf (fp->fp, "420\n%ld\n", face->color_value);
+                fprintf (fp->fp, "430\n%s\n", face->color_name);
+                fprintf (fp->fp, "440\n%ld\n", face->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
-                fprintf (fp->fp, "390\n%s\n", dxf_3dface_get_plot_style_name (face));
-                fprintf (fp->fp, "284\n%d\n", dxf_3dface_get_shadow_mode (face));
+                fprintf (fp->fp, "390\n%s\n", face->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", face->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbFace\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", dxf_3dface_get_x0 (face));
-        fprintf (fp->fp, " 20\n%f\n", dxf_3dface_get_y0 (face));
-        fprintf (fp->fp, " 30\n%f\n", dxf_3dface_get_z0 (face));
-        fprintf (fp->fp, " 11\n%f\n", dxf_3dface_get_x1 (face));
-        fprintf (fp->fp, " 21\n%f\n", dxf_3dface_get_y1 (face));
-        fprintf (fp->fp, " 31\n%f\n", dxf_3dface_get_z1 (face));
-        fprintf (fp->fp, " 12\n%f\n", dxf_3dface_get_x2 (face));
-        fprintf (fp->fp, " 22\n%f\n", dxf_3dface_get_y2 (face));
-        fprintf (fp->fp, " 32\n%f\n", dxf_3dface_get_z2 (face));
-        fprintf (fp->fp, " 13\n%f\n", dxf_3dface_get_x3 (face));
-        fprintf (fp->fp, " 23\n%f\n", dxf_3dface_get_y3 (face));
-        fprintf (fp->fp, " 33\n%f\n", dxf_3dface_get_z3 (face));
-        fprintf (fp->fp, " 70\n%d\n", dxf_3dface_get_flag (face));
+        fprintf (fp->fp, " 10\n%f\n", face->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", face->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", face->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", face->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", face->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", face->p1->z0);
+        fprintf (fp->fp, " 12\n%f\n", face->p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", face->p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", face->p2->z0);
+        fprintf (fp->fp, " 13\n%f\n", face->p3->x0);
+        fprintf (fp->fp, " 23\n%f\n", face->p3->y0);
+        fprintf (fp->fp, " 33\n%f\n", face->p3->z0);
+        fprintf (fp->fp, " 70\n%d\n", face->flag);
         /* Clean up. */
         free (dxf_entity_name);
 #ifdef DEBUG
