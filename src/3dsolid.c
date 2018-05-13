@@ -505,34 +505,34 @@ dxf_3dsolid_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_3dsolid_get_id_code (solid));
+                  __FUNCTION__, dxf_entity_name, solid->id_code);
         }
-        if (strcmp (dxf_3dsolid_get_linetype (solid), "") == 0)
+        if (strcmp (solid->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_3dsolid_get_id_code (solid));
+                  __FUNCTION__, dxf_entity_name, solid->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_3dsolid_set_linetype (solid, strdup (DXF_DEFAULT_LINETYPE));
+                solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_3dsolid_get_layer (solid), "") == 0)
+        if (strcmp (solid->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_3dsolid_get_id_code (solid));
+                  __FUNCTION__, dxf_entity_name, solid->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_3dsolid_set_layer (solid, (strdup (DXF_DEFAULT_LAYER)));
+                solid->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         i = 1;
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_3dsolid_get_id_code (solid) != -1)
+        if (solid->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_3dsolid_get_id_code (solid));
+                fprintf (fp->fp, "  5\n%x\n", solid->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -544,88 +544,87 @@ dxf_3dsolid_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_3dsolid_get_dictionary_owner_soft (solid), "") != 0)
+        if ((strcmp (solid->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_3dsolid_get_dictionary_owner_soft (solid));
+                fprintf (fp->fp, "330\n%s\n", solid->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_3dsolid_get_dictionary_owner_hard (solid), "") != 0)
+        if ((strcmp (solid->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_3dsolid_get_dictionary_owner_hard (solid));
+                fprintf (fp->fp, "360\n%s\n", solid->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_3dsolid_get_paperspace (solid) == DXF_PAPERSPACE)
+        if (solid->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_3dsolid_get_layer (solid));
-        if (strcmp (dxf_3dsolid_get_linetype (solid), DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", solid->layer);
+        if (strcmp (solid->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_3dsolid_get_linetype (solid));
+                fprintf (fp->fp, "  6\n%s\n", solid->linetype);
         }
         if ((fp->acad_version_number >= AutoCAD_2008)
-          && (strcmp (dxf_3dsolid_get_material (solid), "") != 0))
+          && (strcmp (solid->material, "") != 0))
         {
-                fprintf (fp->fp, "347\n%s\n", dxf_3dsolid_get_material (solid));
+                fprintf (fp->fp, "347\n%s\n", solid->material);
         }
-        if (dxf_3dsolid_get_color (solid) != DXF_COLOR_BYLAYER)
+        if (solid->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_3dsolid_get_color (solid));
+                fprintf (fp->fp, " 62\n%d\n", solid->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", dxf_3dsolid_get_lineweight (solid));
+                fprintf (fp->fp, "370\n%d\n", solid->lineweight);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_3dsolid_get_elevation (solid) != 0.0))
+          && (solid->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_3dsolid_get_elevation (solid));
+                fprintf (fp->fp, " 38\n%f\n", solid->elevation);
         }
-        if (dxf_3dsolid_get_thickness (solid) != 0.0)
+        if (solid->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_3dsolid_get_thickness (solid));
+                fprintf (fp->fp, " 39\n%f\n", solid->thickness);
         }
-        if (dxf_3dsolid_get_linetype_scale (solid) != 1.0)
+        if (solid->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_3dsolid_get_linetype_scale (solid));
+                fprintf (fp->fp, " 48\n%f\n", solid->linetype_scale);
         }
-        if (dxf_3dsolid_get_visibility (solid) != 0)
+        if (solid->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_3dsolid_get_visibility (solid));
+                fprintf (fp->fp, " 60\n%d\n", solid->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", dxf_3dsolid_get_graphics_data_size (solid));
+                fprintf (fp->fp, "160\n%d\n", solid->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", dxf_3dsolid_get_graphics_data_size (solid));
+                fprintf (fp->fp, " 92\n%d\n", solid->graphics_data_size);
 #endif
-                DxfBinaryGraphicsData *bgd_iter = (DxfBinaryGraphicsData *) dxf_3dsolid_get_binary_graphics_data (solid);
-                while (dxf_binary_graphics_data_get_data_line (bgd_iter) != NULL)
+                while (solid->binary_graphics_data != NULL)
                 {
-                        fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (bgd_iter));
-                        bgd_iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (bgd_iter);
+                        fprintf (fp->fp, "310\n%s\n", solid->binary_graphics_data->data_line);
+                        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (solid->binary_graphics_data);
                 }
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", dxf_3dsolid_get_color_value (solid));
-                fprintf (fp->fp, "430\n%s\n", dxf_3dsolid_get_color_name (solid));
-                fprintf (fp->fp, "440\n%ld\n", dxf_3dsolid_get_transparency (solid));
+                fprintf (fp->fp, "420\n%ld\n", solid->color_value);
+                fprintf (fp->fp, "430\n%s\n", solid->color_name);
+                fprintf (fp->fp, "440\n%ld\n", solid->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
-                fprintf (fp->fp, "390\n%s\n", dxf_3dsolid_get_plot_style_name (solid));
-                fprintf (fp->fp, "284\n%d\n", dxf_3dsolid_get_shadow_mode (solid));
+                fprintf (fp->fp, "390\n%s\n", solid->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", solid->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -637,28 +636,28 @@ dxf_3dsolid_write
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_3dsolid_get_modeler_format_version_number (solid));
+                fprintf (fp->fp, " 70\n%d\n", solid->modeler_format_version_number);
         }
-        iter = (DxfProprietaryData *) dxf_3dsolid_get_proprietary_data (solid);
-        additional_iter = (DxfProprietaryData *) dxf_3dsolid_get_additional_proprietary_data (solid);
+        iter = (DxfProprietaryData *) solid->proprietary_data;
+        additional_iter = (DxfProprietaryData *) solid->additional_proprietary_data;
         while ((iter != NULL) || (additional_iter != NULL))
         {
                 if (iter->order == i)
                 {
-                        fprintf (fp->fp, "  1\n%s\n", dxf_proprietary_data_get_line (iter));
-                        iter = (DxfProprietaryData *) dxf_proprietary_data_get_next (iter);
+                        fprintf (fp->fp, "  1\n%s\n", iter->line);
+                        iter = (DxfProprietaryData *) iter->next;
                         i++;
                 }
                 if (additional_iter->order == i)
                 {
-                        fprintf (fp->fp, "  3\n%s\n", dxf_proprietary_data_get_line (additional_iter));
-                        additional_iter = (DxfProprietaryData *) dxf_proprietary_data_get_next (additional_iter);
+                        fprintf (fp->fp, "  3\n%s\n", additional_iter->line);
+                        additional_iter = (DxfProprietaryData *) additional_iter->next;
                         i++;
                 }
         }
         if (fp->acad_version_number >= AutoCAD_2008)
         {
-                fprintf (fp->fp, "350\n%s\n", dxf_3dsolid_get_history (solid));
+                fprintf (fp->fp, "350\n%s\n", solid->history);
         }
         /* Clean up. */
         free (dxf_entity_name);
