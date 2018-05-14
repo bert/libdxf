@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF acad_proxy_entity entity
@@ -125,37 +125,35 @@ dxf_acad_proxy_entity_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_acad_proxy_entity_set_id_code (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_linetype (acad_proxy_entity, strdup (DXF_DEFAULT_LINETYPE));
-        dxf_acad_proxy_entity_set_layer (acad_proxy_entity, strdup (DXF_DEFAULT_LAYER));
-        dxf_acad_proxy_entity_set_elevation (acad_proxy_entity, 0.0);
-        dxf_acad_proxy_entity_set_thickness (acad_proxy_entity, 0.0);
-        dxf_acad_proxy_entity_set_linetype_scale (acad_proxy_entity, DXF_DEFAULT_LINETYPE_SCALE);
-        dxf_acad_proxy_entity_set_visibility (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_color (acad_proxy_entity, DXF_COLOR_BYLAYER);
-        dxf_acad_proxy_entity_set_paperspace (acad_proxy_entity, DXF_PAPERSPACE);
-        dxf_acad_proxy_entity_set_shadow_mode (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_dictionary_owner_soft (acad_proxy_entity, strdup (""));
-        dxf_acad_proxy_entity_set_material (acad_proxy_entity, strdup (""));
-        dxf_acad_proxy_entity_set_dictionary_owner_hard (acad_proxy_entity, strdup (""));
-        dxf_acad_proxy_entity_set_lineweight (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_plot_style_name (acad_proxy_entity, strdup (""));
-        dxf_acad_proxy_entity_set_color_value (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_color_name (acad_proxy_entity, strdup (""));
-        dxf_acad_proxy_entity_set_transparency (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_original_custom_object_data_format (acad_proxy_entity, 1);
-        dxf_acad_proxy_entity_set_proxy_entity_class_id (acad_proxy_entity, DXF_DEFAULT_PROXY_ENTITY_ID);
-        dxf_acad_proxy_entity_set_application_entity_class_id (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_graphics_data_size (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_entity_data_size (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_object_drawing_format (acad_proxy_entity, 0);
-        dxf_acad_proxy_entity_set_binary_graphics_data (acad_proxy_entity, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
-        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity));
-        dxf_acad_proxy_entity_set_binary_entity_data (acad_proxy_entity, (DxfBinaryEntityData *) dxf_binary_entity_data_new ());
-        dxf_binary_entity_data_init (dxf_acad_proxy_entity_get_binary_entity_data (acad_proxy_entity));
-        dxf_acad_proxy_entity_set_object_id (acad_proxy_entity, (DxfObjectId *) dxf_object_id_new ());
-        dxf_object_id_set_data (dxf_acad_proxy_entity_get_object_id (acad_proxy_entity), strdup (""));
-        dxf_acad_proxy_entity_set_next (acad_proxy_entity, NULL);
+        acad_proxy_entity->id_code = 0;
+        acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
+        acad_proxy_entity->elevation = 0.0;
+        acad_proxy_entity->thickness = 0.0;
+        acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        acad_proxy_entity->visibility = 0;
+        acad_proxy_entity->color = DXF_COLOR_BYLAYER;
+        acad_proxy_entity->paperspace = DXF_PAPERSPACE;
+        acad_proxy_entity->shadow_mode = 0;
+        acad_proxy_entity->dictionary_owner_soft = strdup ("");
+        acad_proxy_entity->material = strdup ("");
+        acad_proxy_entity->dictionary_owner_hard = strdup ("");
+        acad_proxy_entity->lineweight = 0;
+        acad_proxy_entity->plot_style_name = strdup ("");
+        acad_proxy_entity->color_value = 0;
+        acad_proxy_entity->color_name = strdup ("");
+        acad_proxy_entity->transparency = 0;
+        acad_proxy_entity->original_custom_object_data_format = 1;
+        acad_proxy_entity->proxy_entity_class_id = DXF_DEFAULT_PROXY_ENTITY_ID;
+        acad_proxy_entity->application_entity_class_id = 0;
+        acad_proxy_entity->graphics_data_size = 0;
+        acad_proxy_entity->entity_data_size = 0;
+        acad_proxy_entity->object_drawing_format = 0;
+        acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (acad_proxy_entity->binary_graphics_data);
+        acad_proxy_entity->binary_entity_data = (DxfBinaryEntityData *) dxf_binary_entity_data_init (acad_proxy_entity->binary_entity_data);
+/*! \todo Do a proper init for acad_proxy_entity->object_id. */
+        acad_proxy_entity->object_id = NULL;
+        acad_proxy_entity->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
