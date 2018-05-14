@@ -505,6 +505,7 @@ dxf_acad_proxy_entity_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = NULL;
+        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -575,9 +576,9 @@ dxf_acad_proxy_entity_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_acad_proxy_entity_get_id_code (acad_proxy_entity) != -1)
+        if (acad_proxy_entity->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_acad_proxy_entity_get_id_code (acad_proxy_entity));
+                fprintf (fp->fp, "  5\n%x\n", acad_proxy_entity->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -589,69 +590,69 @@ dxf_acad_proxy_entity_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_acad_proxy_entity_get_dictionary_owner_soft (acad_proxy_entity), "") != 0)
+        if ((strcmp (acad_proxy_entity->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_acad_proxy_entity_get_dictionary_owner_soft (acad_proxy_entity));
+                fprintf (fp->fp, "330\n%s\n", acad_proxy_entity->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_acad_proxy_entity_get_dictionary_owner_hard (acad_proxy_entity), "") != 0)
+        if ((strcmp (acad_proxy_entity->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_acad_proxy_entity_get_dictionary_owner_hard (acad_proxy_entity));
+                fprintf (fp->fp, "360\n%s\n", acad_proxy_entity->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_acad_proxy_entity_get_paperspace (acad_proxy_entity) == DXF_PAPERSPACE)
+        if (acad_proxy_entity->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_acad_proxy_entity_get_layer (acad_proxy_entity));
-        if (strcmp (dxf_acad_proxy_entity_get_linetype (acad_proxy_entity), DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", acad_proxy_entity->layer);
+        if (strcmp (acad_proxy_entity->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_acad_proxy_entity_get_linetype (acad_proxy_entity));
+                fprintf (fp->fp, "  6\n%s\n", acad_proxy_entity->linetype);
         }
         if ((fp->acad_version_number >= AutoCAD_2008)
-          && (strcmp (dxf_acad_proxy_entity_get_material (acad_proxy_entity), "") != 0))
+          && (strcmp (acad_proxy_entity->material, "") != 0))
         {
-                fprintf (fp->fp, "347\n%s\n", dxf_acad_proxy_entity_get_material (acad_proxy_entity));
+                fprintf (fp->fp, "347\n%s\n", acad_proxy_entity->material);
         }
-        if (dxf_acad_proxy_entity_get_color (acad_proxy_entity) != DXF_COLOR_BYLAYER)
+        if (acad_proxy_entity->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_acad_proxy_entity_get_color (acad_proxy_entity));
+                fprintf (fp->fp, " 62\n%d\n", acad_proxy_entity->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", dxf_acad_proxy_entity_get_lineweight (acad_proxy_entity));
+                fprintf (fp->fp, "370\n%d\n", acad_proxy_entity->lineweight);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_acad_proxy_entity_get_elevation (acad_proxy_entity) != 0.0))
+          && (acad_proxy_entity->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_acad_proxy_entity_get_elevation (acad_proxy_entity));
+                fprintf (fp->fp, " 38\n%f\n", acad_proxy_entity->elevation);
         }
         if ((fp->acad_version_number <= AutoCAD_13)
-          && (dxf_acad_proxy_entity_get_thickness (acad_proxy_entity) != 0.0))
+          && (acad_proxy_entity->thickness != 0.0))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_acad_proxy_entity_get_thickness (acad_proxy_entity));
+                fprintf (fp->fp, " 39\n%f\n", acad_proxy_entity->thickness);
         }
-        fprintf (fp->fp, " 48\n%f\n", dxf_acad_proxy_entity_get_linetype_scale (acad_proxy_entity));
-        fprintf (fp->fp, " 60\n%d\n", dxf_acad_proxy_entity_get_visibility (acad_proxy_entity));
+        fprintf (fp->fp, " 48\n%f\n", acad_proxy_entity->linetype_scale);
+        fprintf (fp->fp, " 60\n%d\n", acad_proxy_entity->visibility);
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", dxf_acad_proxy_entity_get_color_value (acad_proxy_entity));
-                fprintf (fp->fp, "430\n%s\n", dxf_acad_proxy_entity_get_color_name (acad_proxy_entity));
-                fprintf (fp->fp, "440\n%ld\n", dxf_acad_proxy_entity_get_transparency (acad_proxy_entity));
+                fprintf (fp->fp, "420\n%ld\n", acad_proxy_entity->color_value);
+                fprintf (fp->fp, "430\n%s\n", acad_proxy_entity->color_name);
+                fprintf (fp->fp, "440\n%ld\n", acad_proxy_entity->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
-                fprintf (fp->fp, "390\n%s\n", dxf_acad_proxy_entity_get_plot_style_name (acad_proxy_entity));
-                fprintf (fp->fp, "284\n%d\n", dxf_acad_proxy_entity_get_shadow_mode (acad_proxy_entity));
+                fprintf (fp->fp, "390\n%s\n", acad_proxy_entity->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", acad_proxy_entity->shadow_mode);
         }
         if (fp->acad_version_number == AutoCAD_13)
         {
@@ -663,30 +664,27 @@ dxf_acad_proxy_entity_write
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_acad_proxy_entity_get_original_custom_object_data_format (acad_proxy_entity));
+                fprintf (fp->fp, " 70\n%d\n", acad_proxy_entity->original_custom_object_data_format);
         }
-        fprintf (fp->fp, " 90\n%d\n", dxf_acad_proxy_entity_get_proxy_entity_class_id (acad_proxy_entity));
-        fprintf (fp->fp, " 91\n%d\n", dxf_acad_proxy_entity_get_application_entity_class_id (acad_proxy_entity));
+        fprintf (fp->fp, " 90\n%d\n", acad_proxy_entity->proxy_entity_class_id);
+        fprintf (fp->fp, " 91\n%d\n", acad_proxy_entity->application_entity_class_id);
         if (fp->acad_version_number >= AutoCAD_14)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", dxf_acad_proxy_entity_get_graphics_data_size (acad_proxy_entity));
+                fprintf (fp->fp, "160\n%d\n", acad_proxy_entity->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", dxf_acad_proxy_entity_get_graphics_data_size (acad_proxy_entity));
+                fprintf (fp->fp, " 92\n%d\n", acad_proxy_entity->graphics_data_size);
 #endif
-                if (dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity) != NULL)
+                while (acad_proxy_entity->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity);
-                        while (iter != NULL)
-                        {
-                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
-                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
-                        }
+                        fprintf (fp->fp, "310\n%s\n", acad_proxy_entity->binary_graphics_data->data_line);
+                        acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (acad_proxy_entity->binary_graphics_data);
                 }
         }
-        fprintf (fp->fp, " 93\n%d\n", dxf_acad_proxy_entity_get_entity_data_size (acad_proxy_entity));
-        if (dxf_object_id_get_data (dxf_acad_proxy_entity_get_object_id (acad_proxy_entity)) != NULL)
+        fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
+        i = 0;
+        while (!acad_proxy_entity->object_id)
+/*! \todo Fix while test. */
         {
                 DxfObjectId *object_id_iter;
                 object_id_iter = dxf_acad_proxy_entity_get_object_id (acad_proxy_entity);
@@ -701,11 +699,11 @@ dxf_acad_proxy_entity_write
         fprintf (fp->fp, " 94\n  0\n");
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 95\n%ld\n", dxf_acad_proxy_entity_get_object_drawing_format (acad_proxy_entity));
+                fprintf (fp->fp, " 95\n%ld\n", acad_proxy_entity->object_drawing_format);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_acad_proxy_entity_get_original_custom_object_data_format (acad_proxy_entity));
+                fprintf (fp->fp, " 70\n%d\n", acad_proxy_entity->original_custom_object_data_format);
         }
         /* Clean up. */
         free (dxf_entity_name);
