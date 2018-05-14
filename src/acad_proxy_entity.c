@@ -683,18 +683,10 @@ dxf_acad_proxy_entity_write
         }
         fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
         i = 0;
-        while (!acad_proxy_entity->object_id)
-/*! \todo Fix while test. */
+        while (strlen (acad_proxy_entity->object_id->data) > 0)
         {
-                DxfObjectId *object_id_iter;
-                object_id_iter = dxf_acad_proxy_entity_get_object_id (acad_proxy_entity);
-                        while (object_id_iter != NULL)
-                        {
-                                fprintf (fp->fp, "%d\n%s\n",
-                                        dxf_object_id_get_group_code (dxf_acad_proxy_entity_get_object_id (acad_proxy_entity)),
-                                        dxf_object_id_get_data (dxf_acad_proxy_entity_get_object_id (acad_proxy_entity)));
-                                object_id_iter = (DxfObjectId *) dxf_object_id_get_next (object_id_iter);
-                        }
+                fprintf (fp->fp, "330\n%s\n", acad_proxy_entity->object_id->data);
+                i++;
         }
         fprintf (fp->fp, " 94\n  0\n");
         if (fp->acad_version_number >= AutoCAD_2000)
