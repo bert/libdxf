@@ -751,10 +751,7 @@ dxf_acad_proxy_entity_free
         free (acad_proxy_entity->plot_style_name);
         free (acad_proxy_entity->color_name);
         dxf_binary_graphics_data_free_chain (acad_proxy_entity->binary_graphics_data);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (acad_proxy_entity->object_id);
-        }
+        dxf_object_id_free_chain (acad_proxy_entity->object_id);
         free (acad_proxy_entity);
         acad_proxy_entity = NULL;
 #if DEBUG
