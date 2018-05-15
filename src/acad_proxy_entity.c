@@ -819,9 +819,8 @@ dxf_acad_proxy_entity_get_id_code
         if (acad_proxy_entity->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -858,9 +857,8 @@ dxf_acad_proxy_entity_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id_code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->id_code = id_code;
 #if DEBUG
@@ -1110,7 +1108,7 @@ dxf_acad_proxy_entity_get_thickness
         if (acad_proxy_entity->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the thickness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1149,7 +1147,7 @@ dxf_acad_proxy_entity_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative thickness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         acad_proxy_entity->thickness = thickness;
@@ -1186,9 +1184,8 @@ dxf_acad_proxy_entity_get_linetype_scale
         if (acad_proxy_entity->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1223,9 +1220,8 @@ dxf_acad_proxy_entity_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->linetype_scale = linetype_scale;
 #if DEBUG
@@ -1261,16 +1257,14 @@ dxf_acad_proxy_entity_get_visibility
         if (acad_proxy_entity->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (acad_proxy_entity->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1305,16 +1299,14 @@ dxf_acad_proxy_entity_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->visibility = visibility;
 #if DEBUG
@@ -1350,7 +1342,7 @@ dxf_acad_proxy_entity_get_color
         if (acad_proxy_entity->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1386,7 +1378,7 @@ dxf_acad_proxy_entity_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("\teffectively turning this entity it's visibility off.\n")));
@@ -1426,13 +1418,13 @@ dxf_acad_proxy_entity_get_paperspace
         if (acad_proxy_entity->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (acad_proxy_entity->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1468,16 +1460,14 @@ dxf_acad_proxy_entity_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->paperspace = paperspace;
 #if DEBUG
@@ -1514,16 +1504,14 @@ dxf_acad_proxy_entity_get_shadow_mode
         if (acad_proxy_entity->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (acad_proxy_entity->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1561,16 +1549,14 @@ dxf_acad_proxy_entity_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->shadow_mode = shadow_mode;
 #if DEBUG
@@ -1609,7 +1595,7 @@ dxf_acad_proxy_entity_get_dictionary_owner_soft
         if (acad_proxy_entity->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1689,7 +1675,7 @@ dxf_acad_proxy_entity_get_material
         if (acad_proxy_entity->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1772,7 +1758,7 @@ dxf_acad_proxy_entity_get_dictionary_owner_hard
         if (acad_proxy_entity->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1916,7 +1902,7 @@ dxf_acad_proxy_entity_get_plot_style_name
         if (acad_proxy_entity->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2061,7 +2047,7 @@ dxf_acad_proxy_entity_get_color_name
         if (acad_proxy_entity->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2206,13 +2192,13 @@ dxf_acad_proxy_entity_get_original_custom_object_data_format
         if (acad_proxy_entity->original_custom_object_data_format < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the original_custom_object_data_format member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (acad_proxy_entity->original_custom_object_data_format > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the original_custom_object_data_format member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -2249,16 +2235,14 @@ dxf_acad_proxy_entity_set_original_custom_object_data_format
         if (original_custom_object_data_format < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative original custom object data format value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (original_custom_object_data_format > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range original custom object data format value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->original_custom_object_data_format = original_custom_object_data_format;
 #if DEBUG
@@ -2295,7 +2279,7 @@ dxf_acad_proxy_entity_get_proxy_entity_class_id
         if (acad_proxy_entity->proxy_entity_class_id != 498)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an invalid value was found in the proxy_entity_class_id member.\n")),
+                  (_("Warning in %s () an invalid value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -2333,9 +2317,8 @@ dxf_acad_proxy_entity_set_proxy_entity_class_id
         if (proxy_entity_class_id != 498)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->proxy_entity_class_id = proxy_entity_class_id;
 #if DEBUG
@@ -2372,7 +2355,7 @@ dxf_acad_proxy_entity_get_application_entity_class_id
         if (acad_proxy_entity->application_entity_class_id < 500)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an invalid value was found in the proxy_entity_class_id member.\n")),
+                  (_("Warning in %s () an invalid value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -2410,9 +2393,8 @@ dxf_acad_proxy_entity_set_application_entity_class_id
         if (application_entity_class_id < 500)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->application_entity_class_id = application_entity_class_id;
 #if DEBUG
@@ -2449,9 +2431,8 @@ dxf_acad_proxy_entity_get_graphics_data_size
         if (acad_proxy_entity->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid graphics data size value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2488,9 +2469,8 @@ dxf_acad_proxy_entity_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid graphics data size value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->graphics_data_size = graphics_data_size;
 #if DEBUG
@@ -2527,9 +2507,8 @@ dxf_acad_proxy_entity_get_entity_data_size
         if (acad_proxy_entity->entity_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid entity data size value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2566,9 +2545,8 @@ dxf_acad_proxy_entity_set_entity_data_size
         if (entity_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid graphics data size value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         acad_proxy_entity->entity_data_size = entity_data_size;
 #if DEBUG
@@ -2605,9 +2583,8 @@ dxf_acad_proxy_entity_get_object_drawing_format
         if (acad_proxy_entity->object_drawing_format < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid object drawing format value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2678,7 +2655,7 @@ dxf_acad_proxy_entity_get_binary_graphics_data
         if (acad_proxy_entity->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2758,7 +2735,7 @@ dxf_acad_proxy_entity_get_binary_entity_data
         if (acad_proxy_entity->binary_entity_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_entity_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2838,7 +2815,7 @@ dxf_acad_proxy_entity_get_object_id
         if (acad_proxy_entity->object_id ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the object_id member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2918,7 +2895,7 @@ dxf_acad_proxy_entity_get_next
         if (acad_proxy_entity->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2996,9 +2973,6 @@ dxf_acad_proxy_entity_get_last
         }
         if (acad_proxy_entity->next == NULL)
         {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
                 return ((DxfAcadProxyEntity *) acad_proxy_entity);
         }
         DxfAcadProxyEntity *iter = (DxfAcadProxyEntity *) acad_proxy_entity->next;
