@@ -728,8 +728,6 @@ dxf_acad_proxy_entity_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         if (acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
