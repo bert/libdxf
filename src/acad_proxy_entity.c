@@ -538,7 +538,7 @@ dxf_acad_proxy_entity_write
                           __FUNCTION__);
                         fprintf (stderr,
                           (_("\t entity %s with ID code %d is omitted from output.\n")),
-                          dxf_entity_name, dxf_acad_proxy_entity_get_id_code (acad_proxy_entity));
+                          dxf_entity_name, acad_proxy_entity->id_code);
                         return (EXIT_FAILURE);
                 }
                 else
@@ -556,26 +556,26 @@ dxf_acad_proxy_entity_write
         {
                 dxf_entity_name = strdup ("ACAD_PROXY_ENTITY");
         }
-        if ((strcmp (dxf_acad_proxy_entity_get_layer (acad_proxy_entity), "") == 0)
-          || (dxf_acad_proxy_entity_get_layer (acad_proxy_entity) == NULL))
+        if ((strcmp (acad_proxy_entity->layer, "") == 0)
+          || (acad_proxy_entity->layer == NULL))
         {
                 fprintf (stderr,
                   (_("Warning in %s () invalid layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_acad_proxy_entity_get_id_code (acad_proxy_entity));
+                  __FUNCTION__, dxf_entity_name, acad_proxy_entity->id_code);
                 fprintf (stderr,
                   (_("    %s entity is relocated to layer 0\n")),
                   dxf_entity_name);
-                dxf_acad_proxy_entity_set_layer (acad_proxy_entity, DXF_DEFAULT_LAYER);
+                acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_acad_proxy_entity_get_linetype (acad_proxy_entity) == NULL)
+        if (acad_proxy_entity->linetype == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () invalid linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_acad_proxy_entity_get_id_code (acad_proxy_entity));
+                  __FUNCTION__, dxf_entity_name, acad_proxy_entity->id_code);
                 fprintf (stderr,
                   (_("\t%s linetype is set to %s\n")),
                   dxf_entity_name, DXF_DEFAULT_LINETYPE);
-                dxf_acad_proxy_entity_set_linetype (acad_proxy_entity, DXF_DEFAULT_LINETYPE);
+                acad_proxy_entity->linetype = strdup(DXF_DEFAULT_LINETYPE);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -685,6 +685,7 @@ dxf_acad_proxy_entity_write
                 }
         }
         fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
+        /*! \todo Write object_id to file in a proper way. */
         i = 0;
         while (strlen (acad_proxy_entity->object_id->data) > 0)
         {
