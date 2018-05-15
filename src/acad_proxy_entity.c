@@ -151,8 +151,11 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->object_drawing_format = 0;
         acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (acad_proxy_entity->binary_graphics_data);
         acad_proxy_entity->binary_entity_data = (DxfBinaryEntityData *) dxf_binary_entity_data_init (acad_proxy_entity->binary_entity_data);
-/*! \todo Do a proper init for acad_proxy_entity->object_id. */
-        acad_proxy_entity->object_id = NULL;
+        acad_proxy_entity->object_id = dxf_object_id_new ();
+        acad_proxy_entity->object_id = dxf_object_id_init (acad_proxy_entity->object_id);
+        acad_proxy_entity->object_id->group_code = 0;
+        acad_proxy_entity->object_id->data = strdup ("");
+        acad_proxy_entity->object_id->length = 0;
         acad_proxy_entity->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
