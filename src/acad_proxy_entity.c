@@ -342,7 +342,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the entity
                          * data size value (bits). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->graphics_data_size);
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->entity_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2000)
                   && (strcmp (temp_string, "95") == 0))
