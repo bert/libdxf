@@ -508,7 +508,7 @@ dxf_acad_proxy_entity_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = NULL;
-        int i;
+        DxfObjectId *iter330 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -685,12 +685,11 @@ dxf_acad_proxy_entity_write
                 }
         }
         fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
-        /*! \todo Write object_id to file in a proper way. */
-        i = 0;
-        while (strlen (acad_proxy_entity->object_id->data) > 0)
+        iter330 = (DxfObjectId *) acad_proxy_entity->object_id;
+        while (iter330)
         {
-                fprintf (fp->fp, "330\n%s\n", acad_proxy_entity->object_id->data);
-                i++;
+                fprintf (fp->fp, "330\n%s\n", iter330->data);
+                iter330 = (DxfObjectId *) iter330->next;
         }
         fprintf (fp->fp, " 94\n  0\n");
         if (fp->acad_version_number >= AutoCAD_2000)
