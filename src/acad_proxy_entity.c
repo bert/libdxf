@@ -508,6 +508,7 @@ dxf_acad_proxy_entity_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
         DxfObjectId *iter330 = NULL;
 
         /* Do some basic checks. */
@@ -678,10 +679,14 @@ dxf_acad_proxy_entity_write
 #else
                 fprintf (fp->fp, " 92\n%d\n", acad_proxy_entity->graphics_data_size);
 #endif
-                while (acad_proxy_entity->binary_graphics_data != NULL)
+                if (acad_proxy_entity->binary_graphics_data != NULL)
                 {
-                        fprintf (fp->fp, "310\n%s\n", acad_proxy_entity->binary_graphics_data->data_line);
-                        acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (acad_proxy_entity->binary_graphics_data);
+                        iter310 = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data;
+                        while (iter310 != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter310->data_line);
+                                iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        }
                 }
         }
         fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
