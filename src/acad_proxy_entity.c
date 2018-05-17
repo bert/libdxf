@@ -508,7 +508,8 @@ dxf_acad_proxy_entity_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryGraphicsData *iter310a = NULL;
+        DxfBinaryEntityData *iter310b = NULL;
         DxfObjectId *iter330 = NULL;
 
         /* Do some basic checks. */
@@ -681,11 +682,20 @@ dxf_acad_proxy_entity_write
 #endif
                 if (acad_proxy_entity->binary_graphics_data != NULL)
                 {
-                        iter310 = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data;
-                        while (iter310 != NULL)
+                        iter310a = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data;
+                        while (iter310a != NULL)
                         {
-                                fprintf (fp->fp, "310\n%s\n", iter310->data_line);
-                                iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                                fprintf (fp->fp, "310\n%s\n", iter310a->data_line);
+                                iter310a = (DxfBinaryGraphicsData *) iter310a->next;
+                        }
+                }
+                if (acad_proxy_entity->binary_entity_data != NULL)
+                {
+                        iter310b = (DxfBinaryEntityData *) acad_proxy_entity->binary_entity_data;
+                        while (iter310b != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter310b->data_line);
+                                iter310b = (DxfBinaryEntityData *) iter310b->next;
                         }
                 }
         }
