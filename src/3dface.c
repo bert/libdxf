@@ -647,11 +647,11 @@ dxf_3dface_write
                 if (face->binary_graphics_data != NULL)
                 {
                         DxfBinaryGraphicsData *iter;
-                        iter = dxf_3dface_get_binary_graphics_data (face);
+                        iter = (DxfBinaryGraphicsData *) face->binary_graphics_data;
                         while (iter != NULL)
                         {
-                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
-                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
                         }
                 }
         }
