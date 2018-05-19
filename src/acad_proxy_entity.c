@@ -189,6 +189,7 @@ dxf_acad_proxy_entity_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
         int i; /* flags whether group code 330, 340, 350 or 360 has been
                 * parsed for a first time. */
 
@@ -216,6 +217,7 @@ dxf_acad_proxy_entity_read
                 acad_proxy_entity = dxf_acad_proxy_entity_new ();
                 acad_proxy_entity = dxf_acad_proxy_entity_init (acad_proxy_entity);
         }
+        iter310 = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data;
         i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -380,9 +382,9 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->binary_graphics_data->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data->next);
-                        acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data->next;
+                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
+                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
