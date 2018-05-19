@@ -186,6 +186,7 @@ dxf_3dface_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -205,6 +206,7 @@ dxf_3dface_read
                 face = dxf_3dface_new ();
                 face = dxf_3dface_init (face);
         }
+        iter310 = (DxfBinaryGraphicsData *) face->binary_graphics_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -412,9 +414,9 @@ dxf_3dface_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", face->binary_graphics_data->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) face->binary_graphics_data->next);
-                        face->binary_graphics_data = (DxfBinaryGraphicsData *) face->binary_graphics_data->next;
+                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
+                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
