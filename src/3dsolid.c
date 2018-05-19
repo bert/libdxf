@@ -174,6 +174,7 @@ dxf_3dsolid_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
         int i;
 
         /* Do some basic checks. */
@@ -200,6 +201,7 @@ dxf_3dsolid_read
                 solid = dxf_3dsolid_new ();
                 solid = dxf_3dsolid_init (solid);
         }
+        iter310 = (DxfBinaryGraphicsData *) solid->binary_graphics_data;
         i = 1;
         solid->proprietary_data->order = 0;
         solid->additional_proprietary_data->order = 0;
@@ -360,9 +362,9 @@ dxf_3dsolid_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->binary_graphics_data->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) solid->binary_graphics_data->next);
-                        solid->binary_graphics_data = (DxfBinaryGraphicsData *) solid->binary_graphics_data->next;
+                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
+                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
