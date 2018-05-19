@@ -630,14 +630,14 @@ dxf_3dline_write
 #else
                 fprintf (fp->fp, " 92\n%d\n", line->graphics_data_size);
 #endif
-                while (line->binary_graphics_data != NULL)
+                if (line->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = dxf_3dline_get_binary_graphics_data (line);
-                        while (iter != NULL)
+                        DxfBinaryGraphicsData *iter310;
+                        iter310 = (DxfBinaryGraphicsData *) line->binary_graphics_data;
+                        while (iter310 != NULL)
                         {
-                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
-                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                                fprintf (fp->fp, "310\n%s\n", iter310->data_line);
+                                iter310 = (DxfBinaryGraphicsData *) iter310->next;
                         }
                 }
         }
