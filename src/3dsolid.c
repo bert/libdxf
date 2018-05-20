@@ -610,10 +610,15 @@ dxf_3dsolid_write
 #else
                 fprintf (fp->fp, " 92\n%d\n", solid->graphics_data_size);
 #endif
-                while (solid->binary_graphics_data != NULL)
+                if (solid->binary_graphics_data != NULL)
                 {
-                        fprintf (fp->fp, "310\n%s\n", solid->binary_graphics_data->data_line);
-                        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (solid->binary_graphics_data);
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) solid->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
                 }
         }
         if (fp->acad_version_number >= AutoCAD_2004)
@@ -639,22 +644,31 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, " 70\n%d\n", solid->modeler_format_version_number);
         }
-        iter = (DxfProprietaryData *) solid->proprietary_data;
-        additional_iter = (DxfProprietaryData *) solid->additional_proprietary_data;
-        while ((iter != NULL) || (additional_iter != NULL))
+        if ((solid->proprietary_data != NULL) || (solid->additional_proprietary_data != NULL))
         {
-                if (iter->order == i)
+                iter = (DxfProprietaryData *) solid->proprietary_data;
+                additional_iter = (DxfProprietaryData *) solid->additional_proprietary_data;
+                while ((iter != NULL) || (additional_iter != NULL))
                 {
-                        fprintf (fp->fp, "  1\n%s\n", iter->line);
-                        iter = (DxfProprietaryData *) iter->next;
-                        i++;
+                        if (iter->order == i)
+                        {
+                                fprintf (fp->fp, "  1\n%s\n", iter->line);
+                                iter = (DxfProprietaryData *) iter->next;
+                                i++;
+                        }
+                        if (additional_iter->order == i)
+                        {
+                                fprintf (fp->fp, "  3\n%s\n", additional_iter->line);
+                                additional_iter = (DxfProprietaryData *) additional_iter->next;
+                                i++;
+                        }
                 }
-                if (additional_iter->order == i)
-                {
-                        fprintf (fp->fp, "  3\n%s\n", additional_iter->line);
-                        additional_iter = (DxfProprietaryData *) additional_iter->next;
-                        i++;
-                }
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () no proprietary data found in the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, solid->id_code);
         }
         if (fp->acad_version_number >= AutoCAD_2008)
         {
