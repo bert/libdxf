@@ -558,6 +558,11 @@ dxf_arc_write
         {
                 fprintf (fp->fp, "  6\n%s\n", arc->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (arc->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", arc->material);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (arc->elevation != 0.0))
@@ -568,6 +573,10 @@ dxf_arc_write
         {
                 fprintf (fp->fp, " 62\n%d\n", arc->color);
         }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", arc->lineweight);
+        }
         if (arc->linetype_scale != 1.0)
         {
                 fprintf (fp->fp, " 48\n%f\n", arc->linetype_scale);
@@ -575,6 +584,35 @@ dxf_arc_write
         if (arc->visibility != 0)
         {
                 fprintf (fp->fp, " 60\n%d\n", arc->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", arc->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", arc->graphics_data_size);
+#endif
+                if (arc->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) arc->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", arc->color_value);
+                fprintf (fp->fp, "430\n%s\n", arc->color_name);
+                fprintf (fp->fp, "440\n%ld\n", arc->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", arc->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", arc->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
