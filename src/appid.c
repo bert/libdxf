@@ -1,7 +1,7 @@
 /*!
  * \file appid.c
  *
- * \author Copyright (C) 2009, 2011, 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2009, 2011, 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>
@@ -292,12 +292,12 @@ dxf_appid_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((dxf_appid_get_application_name (appid) == NULL)
-          || (strcmp (dxf_appid_get_application_name (appid), "") == 0))
+        if ((appid->application_name == NULL)
+          || (strcmp (appid->application_name, "") == 0))
         {
                 fprintf (stderr,
-                  (_("Error in %s empty string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_appid_get_id_code (appid));
+                  (_("Error in %s empty block name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, appid->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -313,9 +313,9 @@ dxf_appid_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_appid_get_id_code (appid) != -1)
+        if (appid->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_appid_get_id_code (appid));
+                fprintf (fp->fp, "  5\n%x\n", appid->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -327,18 +327,18 @@ dxf_appid_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_appid_get_dictionary_owner_soft (appid), "") != 0)
+        if ((strcmp (appid->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_appid_get_dictionary_owner_soft (appid));
+                fprintf (fp->fp, "330\n%s\n", appid->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_appid_get_dictionary_owner_hard (appid), "") != 0)
+        if ((strcmp (appid->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_appid_get_dictionary_owner_hard (appid));
+                fprintf (fp->fp, "360\n%s\n", appid->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
@@ -346,8 +346,8 @@ dxf_appid_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_appid_get_application_name (appid));
-        fprintf (fp->fp, " 70\n%d\n", dxf_appid_get_flag (appid));
+        fprintf (fp->fp, "  2\n%s\n", appid->application_name);
+        fprintf (fp->fp, " 70\n%d\n", appid->flag);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
