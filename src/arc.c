@@ -1045,9 +1045,8 @@ dxf_arc_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         arc->thickness = thickness;
 #if DEBUG
@@ -1083,9 +1082,8 @@ dxf_arc_get_linetype_scale
         if (arc->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1120,9 +1118,8 @@ dxf_arc_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         arc->linetype_scale = linetype_scale;
 #if DEBUG
@@ -1158,16 +1155,14 @@ dxf_arc_get_visibility
         if (arc->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (arc->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1202,16 +1197,14 @@ dxf_arc_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         arc->visibility = visibility;
 #if DEBUG
@@ -1363,16 +1356,14 @@ dxf_arc_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         arc->paperspace = paperspace;
 #if DEBUG
@@ -1455,9 +1446,8 @@ dxf_arc_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (graphics_data_size == 0)
         {
@@ -1500,16 +1490,14 @@ dxf_arc_get_shadow_mode
         if (arc->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (arc->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1547,16 +1535,14 @@ dxf_arc_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         arc->shadow_mode = shadow_mode;
 #if DEBUG
@@ -2592,16 +2578,14 @@ dxf_arc_get_radius
         if (arc->radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (arc->radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was found.\n")),
+                  (_("Warning in %s () a value of zero was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2636,16 +2620,14 @@ dxf_arc_set_radius
         if (radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was passed.\n")),
+                  (_("Warning in %s () a value of zero was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         arc->radius = radius;
 #if DEBUG
@@ -2804,16 +2786,14 @@ dxf_arc_get_length
         if (arc->radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a radius of 0.0 was found.\n")),
+                  (_("Warning in %s () a value of zero was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (arc->radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a radius smaller than 0.0 was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
