@@ -659,6 +659,18 @@ dxf_appid_set_flag
                   __FUNCTION__);
                 return (NULL);
         }
+        if (flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (flag > 0x111111)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
         appid->flag = flag;
 #if DEBUG
         DXF_DEBUG_END
