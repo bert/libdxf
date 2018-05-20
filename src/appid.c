@@ -532,6 +532,13 @@ dxf_appid_get_application_name
                   __FUNCTION__);
                 return (NULL);
         }
+        if (appid->application_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
