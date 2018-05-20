@@ -494,6 +494,12 @@ dxf_appid_set_id_code
                   __FUNCTION__);
                 return (NULL);
         }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
         appid->id_code = id_code;
 #if DEBUG
         DXF_DEBUG_END
