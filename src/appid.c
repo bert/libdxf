@@ -456,6 +456,12 @@ dxf_appid_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (appid->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
