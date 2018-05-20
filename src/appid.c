@@ -617,6 +617,18 @@ dxf_appid_get_flag
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (appid->flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (appid->flag > 0x111111)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
