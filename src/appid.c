@@ -582,7 +582,7 @@ dxf_appid_set_application_name
         if (name == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () the string name contained a NULL pointer.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
