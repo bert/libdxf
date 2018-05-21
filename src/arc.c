@@ -843,6 +843,9 @@ dxf_arc_get_id_code
 
 /*!
  * \brief Set the \c id_code for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_id_code
@@ -883,7 +886,7 @@ dxf_arc_set_id_code
 /*!
  * \brief Get the \c linetype from a DXF \c ARC entity.
  *
- * \return \c linetype when sucessful, \c NULL when an error occurred.
+ * \return \c linetype when successful, \c NULL when an error occurred.
  */
 char *
 dxf_arc_get_linetype
@@ -919,6 +922,9 @@ dxf_arc_get_linetype
 
 /*!
  * \brief Set the \c linetype for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_linetype
@@ -959,7 +965,7 @@ dxf_arc_set_linetype
 /*!
  * \brief Get the \c layer from a DXF \c ARC entity.
  *
- * \return \c layer when sucessful, \c NULL when an error occurred.
+ * \return \c layer when successful, \c NULL when an error occurred.
  */
 char *
 dxf_arc_get_layer
@@ -995,6 +1001,9 @@ dxf_arc_get_layer
 
 /*!
  * \brief Set the \c layer for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_layer
@@ -1064,6 +1073,9 @@ dxf_arc_get_elevation
 
 /*!
  * \brief Set the \c elevation for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_elevation
@@ -1132,6 +1144,9 @@ dxf_arc_get_thickness
 
 /*!
  * \brief Set the \c thickness for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_thickness
@@ -1205,6 +1220,9 @@ dxf_arc_get_linetype_scale
 
 /*!
  * \brief Set the \c linetype_scale for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_linetype_scale
@@ -1284,6 +1302,9 @@ dxf_arc_get_visibility
 
 /*!
  * \brief Set the \c visibility for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_visibility
@@ -1363,6 +1384,9 @@ dxf_arc_get_color
 
 /*!
  * \brief Set the \c color for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_color
@@ -1442,6 +1466,9 @@ dxf_arc_get_paperspace
 
 /*!
  * \brief Set the \c paperspace flag for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_paperspace
@@ -1530,8 +1557,8 @@ dxf_arc_get_graphics_data_size
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_graphics_data_size
@@ -1620,8 +1647,8 @@ dxf_arc_get_shadow_mode
 /*!
  * \brief Set the \c shadow_mode for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_shadow_mode
@@ -1706,6 +1733,9 @@ dxf_arc_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_binary_graphics_data
@@ -1786,6 +1816,9 @@ dxf_arc_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_dictionary_owner_soft
@@ -1866,8 +1899,8 @@ dxf_arc_get_material
 /*!
  * \brief Set the pointer to the \c material for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_material
@@ -1948,6 +1981,9 @@ dxf_arc_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_dictionary_owner_hard
@@ -2019,8 +2055,8 @@ dxf_arc_get_lineweight
 /*!
  * \brief Set the \c lineweight for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_lineweight
@@ -2053,7 +2089,7 @@ dxf_arc_set_lineweight
 /*!
  * \brief Get the \c plot_style_name from a DXF \c ARC entity.
  *
- * \return a pointer to \c plot_style_name when sucessful, or \c NULL
+ * \return a pointer to \c plot_style_name when successful, or \c NULL
  * when an error occurred.
  */
 char *
@@ -2091,8 +2127,8 @@ dxf_arc_get_plot_style_name
 /*!
  * \brief Set the \c plot_style_name for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_plot_style_name
@@ -2164,8 +2200,8 @@ dxf_arc_get_color_value
 /*!
  * \brief Set the \c color_value for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_color_value
@@ -2198,7 +2234,7 @@ dxf_arc_set_color_value
 /*!
  * \brief Get the \c color_name from a DXF \c ARC entity.
  *
- * \return \c color_name when sucessful, or \c NULL when an error
+ * \return \c color_name when successful, or \c NULL when an error
  * occurred.
  */
 char *
@@ -2236,8 +2272,8 @@ dxf_arc_get_color_name
 /*!
  * \brief Set the \c color_name for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_color_name
@@ -2309,8 +2345,8 @@ dxf_arc_get_transparency
 /*!
  * \brief Set the \c transparency for a DXF \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_transparency
@@ -2380,7 +2416,8 @@ dxf_arc_get_p0
 /*!
  * \brief Set the center point \c p0 of a DXF \c ARC entity.
  *
- * \return a pointer to a DXF \c ARC entity.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_p0
@@ -2460,8 +2497,8 @@ dxf_arc_get_x0
  * \brief Set the X-value of the center point \c x0 of a DXF \c ARC
  * entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_x0
@@ -2542,8 +2579,8 @@ dxf_arc_get_y0
  * \brief Set the Y-value of the center point \c y0 of a DXF \c ARC
  * entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_y0
@@ -2624,8 +2661,8 @@ dxf_arc_get_z0
  * \brief Set the Z-value of the center point \c z0 of a DXF \c ARC
  * entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_z0
@@ -2707,6 +2744,9 @@ dxf_arc_get_radius
 
 /*!
  * \brief Set the \c radius for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_radius
@@ -2780,6 +2820,9 @@ dxf_arc_get_start_angle
 
 /*!
  * \brief Set the \c start_angle for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_start_angle
@@ -2841,6 +2884,9 @@ dxf_arc_get_end_angle
 
 /*!
  * \brief Set the \c end_angle for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_end_angle
@@ -2995,8 +3041,8 @@ dxf_arc_get_extr_x0
  * \brief Set the X-value of the extrusion vector \c extr_x0 of a DXF
  * \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_extr_x0
@@ -3063,8 +3109,8 @@ dxf_arc_get_extr_y0
  * \brief Set the Y-value of the extrusion vector \c extr_y0 of a DXF
  * \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_extr_y0
@@ -3131,8 +3177,8 @@ dxf_arc_get_extr_z0
  * \brief Set the Z-value of the extrusion vector \c extr_z0 of a DXF
  * \c ARC entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_extr_z0
@@ -3206,6 +3252,9 @@ dxf_arc_set_extrusion_vector_from_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_extrusion_vector
@@ -3284,6 +3333,9 @@ dxf_arc_get_next
 /*!
  * \brief Set the pointer to the next \c ARC for a DXF \c ARC
  * entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an error
+ * occurred.
  */
 DxfArc *
 dxf_arc_set_next
