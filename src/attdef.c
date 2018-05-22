@@ -487,13 +487,13 @@ dxf_attdef_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_attdef_get_linetype (attdef), "") == 0)
+        if (strcmp (attdef->linetype, "") == 0)
         {
-                dxf_attdef_set_linetype (attdef, strdup (DXF_DEFAULT_LINETYPE));
+                attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_attdef_get_layer (attdef), "") == 0)
+        if (strcmp (attdef->layer, "") == 0)
         {
-                dxf_attdef_set_layer (attdef, strdup (DXF_DEFAULT_LAYER));
+                attdef->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Clean up. */
         free (temp_string);
