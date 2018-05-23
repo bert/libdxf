@@ -862,9 +862,8 @@ dxf_attdef_get_id_code
         if (attdef->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -901,9 +900,8 @@ dxf_attdef_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->id_code = id_code;
 #if DEBUG
@@ -1150,9 +1148,8 @@ dxf_attdef_get_thickness
         if (attdef->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1187,9 +1184,8 @@ dxf_attdef_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->thickness = thickness;
 #if DEBUG
@@ -1225,9 +1221,8 @@ dxf_attdef_get_linetype_scale
         if (attdef->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1262,9 +1257,8 @@ dxf_attdef_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->linetype_scale = linetype_scale;
 #if DEBUG
@@ -1300,16 +1294,14 @@ dxf_attdef_get_visibility
         if (attdef->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (attdef->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1344,16 +1336,14 @@ dxf_attdef_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->visibility = visibility;
 #if DEBUG
@@ -1504,16 +1494,14 @@ dxf_attdef_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->paperspace = paperspace;
 #if DEBUG
@@ -1598,9 +1586,8 @@ dxf_attdef_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (graphics_data_size == 0)
         {
@@ -1643,16 +1630,14 @@ dxf_attdef_get_shadow_mode
         if (attdef->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (attdef->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1690,16 +1675,14 @@ dxf_attdef_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->shadow_mode = shadow_mode;
 #if DEBUG
@@ -3372,9 +3355,8 @@ dxf_attdef_get_height
         if (attdef->height < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -3409,9 +3391,8 @@ dxf_attdef_set_height
         if (height < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->height = height;
 #if DEBUG
@@ -3447,9 +3428,8 @@ dxf_attdef_get_rel_x_scale
         if (attdef->height < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -3641,16 +3621,14 @@ dxf_attdef_get_attr_flags
         if (attdef->attr_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (attdef->attr_flags > 8)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -3685,16 +3663,14 @@ dxf_attdef_set_attr_flags
         if (attr_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (attr_flags > 8)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->attr_flags = attr_flags;
 #if DEBUG
@@ -3855,16 +3831,14 @@ dxf_attdef_get_text_flags
         if (attdef->text_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (attdef->text_flags > 4)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -3899,16 +3873,14 @@ dxf_attdef_set_text_flags
         if (text_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (text_flags > 4)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->text_flags = text_flags;
 #if DEBUG
@@ -3944,16 +3916,14 @@ dxf_attdef_get_hor_align
         if (attdef->hor_align < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (attdef->hor_align > 5)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was found.\n")),
+                  (_("Warning in %s () an invalid value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -3988,16 +3958,14 @@ dxf_attdef_set_hor_align
         if (hor_align < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (hor_align > 5)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->hor_align = hor_align;
 #if DEBUG
@@ -4035,9 +4003,8 @@ dxf_attdef_get_field_length
         if (attdef->field_length < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -4074,9 +4041,8 @@ dxf_attdef_set_field_length
         if (field_length < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->field_length = field_length;
 #if DEBUG
@@ -4119,9 +4085,8 @@ dxf_attdef_get_vert_align
         if (attdef->vert_align > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -4156,16 +4121,14 @@ dxf_attdef_set_vert_align
         if (vert_align < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (vert_align > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         attdef->vert_align = vert_align;
 #if DEBUG
