@@ -783,12 +783,18 @@ dxf_attdef_free
         }
         free (attdef->linetype);
         free (attdef->layer);
+        dxf_binary_graphics_data_free_chain (attdef->binary_graphics_data);
+        free (attdef->dictionary_owner_soft);
+        free (attdef->material);
+        free (attdef->dictionary_owner_hard);
+        free (attdef->plot_style_name);
+        free (attdef->color_name);
         free (attdef->default_value);
         free (attdef->tag_value);
         free (attdef->prompt_value);
         free (attdef->text_style);
-        free (attdef->dictionary_owner_soft);
-        free (attdef->dictionary_owner_hard);
+        dxf_point_free_chain (attdef->p0);
+        dxf_point_free_chain (attdef->p1);
         free (attdef);
         attdef = NULL;
 #if DEBUG
