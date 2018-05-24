@@ -534,79 +534,79 @@ dxf_attrib_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_attrib_get_default_value (attrib), "") == 0)
+        if (strcmp (attrib->default_value, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () default value string is empty for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                  __FUNCTION__, dxf_entity_name, attrib->id_code);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_attrib_get_tag_value (attrib), "") == 0)
+        if (strcmp (attrib->tag_value, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () tag value string is empty for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                  __FUNCTION__, dxf_entity_name, attrib->id_code);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_attrib_get_text_style (attrib), "") == 0)
+        if (strcmp (attrib->text_style, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () text style string is empty for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                  __FUNCTION__, dxf_entity_name, attrib->id_code);
                 fprintf (stderr,
                   (_("\tdefault text style STANDARD applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_attrib_set_text_style (attrib, strdup (DXF_DEFAULT_TEXTSTYLE));
+                attrib->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
-        if (strcmp (dxf_attrib_get_linetype (attrib), "") == 0)
+        if (strcmp (attrib->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                  __FUNCTION__, dxf_entity_name, attrib->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_attrib_set_linetype (attrib, strdup (DXF_DEFAULT_LINETYPE));
+                attrib->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_attrib_get_layer (attrib), "") == 0)
+        if (strcmp (attrib->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                  __FUNCTION__, dxf_entity_name, attrib->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to the default layer.\n")),
                   dxf_entity_name);
-                dxf_attrib_set_layer (attrib, strdup (DXF_DEFAULT_LAYER));
+                attrib->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_attrib_get_height (attrib) == 0.0)
+        if (attrib->height == 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () height has a value of 0.0 for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                  __FUNCTION__, dxf_entity_name, attrib->id_code);
                 fprintf (stderr,
                   (_("\tdefault height of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_attrib_set_height (attrib, 1.0);
+                attrib->height = 1.0;
         }
-        if (dxf_attrib_get_rel_x_scale (attrib) == 0.0)
+        if (attrib->rel_x_scale == 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                  __FUNCTION__, dxf_entity_name, attrib->id_code);
                 fprintf (stderr,
                   (_("\tdefault relative X-scale of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_attrib_set_rel_x_scale (attrib, 1.0);
+                attrib->rel_x_scale = 1.0;
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_attrib_get_id_code (attrib) != -1)
+        if (attrib->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_attrib_get_id_code (attrib));
+                fprintf (fp->fp, "  5\n%x\n", attrib->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -618,44 +618,44 @@ dxf_attrib_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_attrib_get_dictionary_owner_soft (attrib), "") != 0)
+        if ((strcmp (attrib->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_attrib_get_dictionary_owner_soft (attrib));
+                fprintf (fp->fp, "330\n%s\n", attrib->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_attrib_get_dictionary_owner_hard (attrib), "") != 0)
+        if ((strcmp (attrib->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_attrib_get_dictionary_owner_hard (attrib));
+                fprintf (fp->fp, "360\n%s\n", attrib->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_attrib_get_paperspace (attrib) == DXF_PAPERSPACE)
+        if (attrib->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_attrib_get_layer (attrib));
-        if (strcmp (dxf_attrib_get_linetype (attrib), DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", attrib->layer);
+        if (strcmp (attrib->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_attrib_get_linetype (attrib));
+                fprintf (fp->fp, "  6\n%s\n", attrib->linetype);
         }
-        if (dxf_attrib_get_color (attrib) != DXF_COLOR_BYLAYER)
+        if (attrib->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_attrib_get_color (attrib));
+                fprintf (fp->fp, " 62\n%d\n", attrib->color);
         }
-        if (dxf_attrib_get_linetype_scale (attrib) != 1.0)
+        if (attrib->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_attrib_get_linetype_scale (attrib));
+                fprintf (fp->fp, " 48\n%f\n", attrib->linetype_scale);
         }
-        if (dxf_attrib_get_visibility (attrib) != 0)
+        if (attrib->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_attrib_get_visibility (attrib));
+                fprintf (fp->fp, " 60\n%d\n", attrib->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -663,87 +663,87 @@ dxf_attrib_write
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_attrib_get_elevation (attrib) != 0.0))
+          && (attrib->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_attrib_get_elevation (attrib));
+                fprintf (fp->fp, " 38\n%f\n", attrib->elevation);
         }
-        if (dxf_attrib_get_thickness (attrib) != 0.0)
+        if (attrib->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_attrib_get_thickness (attrib));
+                fprintf (fp->fp, " 39\n%f\n", attrib->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", dxf_attrib_get_x0 (attrib));
-        fprintf (fp->fp, " 20\n%f\n", dxf_attrib_get_y0 (attrib));
-        fprintf (fp->fp, " 30\n%f\n", dxf_attrib_get_z0 (attrib));
-        fprintf (fp->fp, " 40\n%f\n", dxf_attrib_get_height (attrib));
-        fprintf (fp->fp, "  1\n%s\n", dxf_attrib_get_default_value (attrib));
+        fprintf (fp->fp, " 10\n%f\n", attrib->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", attrib->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", attrib->p0->z0);
+        fprintf (fp->fp, " 40\n%f\n", attrib->height);
+        fprintf (fp->fp, "  1\n%s\n", attrib->default_value);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbAttribute\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_attrib_get_tag_value (attrib));
-        fprintf (fp->fp, " 70\n%d\n", dxf_attrib_get_attr_flags (attrib));
-        if (dxf_attrib_get_field_length (attrib) != 0)
+        fprintf (fp->fp, "  2\n%s\n", attrib->tag_value);
+        fprintf (fp->fp, " 70\n%d\n", attrib->attr_flags);
+        if (attrib->field_length != 0)
         {
-                fprintf (fp->fp, " 73\n%d\n", dxf_attrib_get_field_length (attrib));
+                fprintf (fp->fp, " 73\n%d\n", attrib->field_length);
         }
-        if (dxf_attrib_get_rot_angle (attrib) != 0.0)
+        if (attrib->rot_angle != 0.0)
         {
-                fprintf (fp->fp, " 50\n%f\n", dxf_attrib_get_rot_angle (attrib));
+                fprintf (fp->fp, " 50\n%f\n", attrib->rot_angle);
         }
-        if (dxf_attrib_get_rel_x_scale (attrib)!= 1.0)
+        if (attrib->rel_x_scale != 1.0)
         {
-                fprintf (fp->fp, " 41\n%f\n", dxf_attrib_get_rel_x_scale (attrib));
+                fprintf (fp->fp, " 41\n%f\n", attrib->rel_x_scale);
         }
-        if (dxf_attrib_get_obl_angle (attrib) != 0.0)
+        if (attrib->obl_angle != 0.0)
         {
-                fprintf (fp->fp, " 51\n%f\n", dxf_attrib_get_obl_angle (attrib));
+                fprintf (fp->fp, " 51\n%f\n", attrib->obl_angle);
         }
-        if (strcmp (dxf_attrib_get_text_style (attrib), "STANDARD") != 0)
+        if (strcmp (attrib->text_style, "STANDARD") != 0)
         {
-                fprintf (fp->fp, "  7\n%s\n", dxf_attrib_get_text_style (attrib));
+                fprintf (fp->fp, "  7\n%s\n", attrib->text_style);
         }
-        if (dxf_attrib_get_text_flags (attrib) != 0)
+        if (attrib->text_flags != 0)
         {
-                fprintf (fp->fp, " 71\n%d\n", dxf_attrib_get_text_flags (attrib));
+                fprintf (fp->fp, " 71\n%d\n", attrib->text_flags);
         }
-        if (dxf_attrib_get_hor_align (attrib) != 0)
+        if (attrib->hor_align != 0)
         {
-                fprintf (fp->fp, " 72\n%d\n", dxf_attrib_get_hor_align (attrib));
+                fprintf (fp->fp, " 72\n%d\n", attrib->hor_align);
         }
-        if (dxf_attrib_get_vert_align (attrib) != 0)
+        if (attrib->vert_align != 0)
         {
-                fprintf (fp->fp, " 74\n%d\n", dxf_attrib_get_vert_align (attrib));
+                fprintf (fp->fp, " 74\n%d\n", attrib->vert_align);
         }
-        if ((dxf_attrib_get_hor_align (attrib) != 0) || (dxf_attrib_get_vert_align (attrib) != 0))
+        if ((attrib->hor_align != 0) || (attrib->vert_align != 0))
         {
-                if ((dxf_attrib_get_x0 (attrib) == dxf_attrib_get_x1 (attrib))
-                        && (dxf_attrib_get_y0 (attrib) == dxf_attrib_get_y0 (attrib))
-                        && (dxf_attrib_get_z0 (attrib) == dxf_attrib_get_z0 (attrib)))
+                if ((attrib->p0->x0 == attrib->p1->x0)
+                        && (attrib->p0->y0 == attrib->p1->y0)
+                        && (attrib->p0->z0 == attrib->p1->z0))
                 {
                         fprintf (stderr,
                           (_("Warning in %s () insertion point and alignment point are identical for the %s entity with id-code: %x.\n")),
-                          __FUNCTION__, dxf_entity_name, dxf_attrib_get_id_code (attrib));
+                          __FUNCTION__, dxf_entity_name, attrib->id_code);
                         fprintf (stderr,
                           (_("    default justification applied to %s entity\n")),
                           dxf_entity_name);
-                        dxf_attrib_set_hor_align (attrib, 0);
-                        dxf_attrib_set_vert_align (attrib, 0);
+                        attrib->hor_align = 0;
+                        attrib->vert_align = 0;
                 }
                 else
                 {
-                        fprintf (fp->fp, " 11\n%f\n", dxf_attrib_get_x1 (attrib));
-                        fprintf (fp->fp, " 21\n%f\n", dxf_attrib_get_y1 (attrib));
-                        fprintf (fp->fp, " 31\n%f\n", dxf_attrib_get_z1 (attrib));
+                        fprintf (fp->fp, " 11\n%f\n", attrib->p1->x0);
+                        fprintf (fp->fp, " 21\n%f\n", attrib->p1->y0);
+                        fprintf (fp->fp, " 31\n%f\n", attrib->p1->z0);
                 }
         }
         if ((fp->acad_version_number >= AutoCAD_12)
-                && (dxf_attrib_get_extr_x0 (attrib) != 0.0)
-                && (dxf_attrib_get_extr_y0 (attrib) != 0.0)
-                && (dxf_attrib_get_extr_z0 (attrib) != 1.0))
+                && (attrib->extr_x0 != 0.0)
+                && (attrib->extr_y0 != 0.0)
+                && (attrib->extr_z0 != 1.0))
         {
-                fprintf (fp->fp, "210\n%f\n", dxf_attrib_get_extr_x0 (attrib));
-                fprintf (fp->fp, "220\n%f\n", dxf_attrib_get_extr_y0 (attrib));
-                fprintf (fp->fp, "230\n%f\n", dxf_attrib_get_extr_z0 (attrib));
+                fprintf (fp->fp, "210\n%f\n", attrib->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", attrib->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", attrib->extr_z0);
         }
         /* Clean up. */
         free (dxf_entity_name);
