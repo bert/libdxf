@@ -211,7 +211,7 @@ dxf_attdef_read
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
                         return (NULL);
-        }
+                }
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
