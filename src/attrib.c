@@ -904,15 +904,15 @@ dxf_attrib_free
         }
         free (attrib->linetype);
         free (attrib->layer);
-        free (attrib->default_value);
-        free (attrib->tag_value);
-        free (attrib->text_style);
         dxf_binary_graphics_data_free_chain (attrib->binary_graphics_data);
         free (attrib->dictionary_owner_soft);
         free (attrib->material);
         free (attrib->dictionary_owner_hard);
         free (attrib->plot_style_name);
         free (attrib->color_name);
+        free (attrib->default_value);
+        free (attrib->tag_value);
+        free (attrib->text_style);
         dxf_point_free (attrib->p0);
         dxf_point_free (attrib->p1);
         free (attrib);
