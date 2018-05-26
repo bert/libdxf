@@ -3572,6 +3572,12 @@ dxf_attdef_set_rel_x_scale
                   __FUNCTION__);
                 return (NULL);
         }
+        if (rel_x_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
         attdef->rel_x_scale = rel_x_scale;
 #if DEBUG
         DXF_DEBUG_END
