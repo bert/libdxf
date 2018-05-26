@@ -103,8 +103,8 @@ dxf_binary_entity_data_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_binary_entity_data_set_data_line (data, strdup (""));
-        dxf_binary_entity_data_set_next (data, NULL);
+        data->data_line = strdup ("");
+        data->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
