@@ -62,7 +62,7 @@ dxf_attrib_new ()
         if ((attrib = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfAttrib struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 attrib = NULL;
         }
@@ -105,7 +105,7 @@ dxf_attrib_init
         if (attrib == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfAttrib struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
