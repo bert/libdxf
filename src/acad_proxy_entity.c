@@ -78,7 +78,7 @@ dxf_acad_proxy_entity_new ()
         if ((acad_proxy_entity = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 acad_proxy_entity = NULL;
         }
@@ -121,7 +121,7 @@ dxf_acad_proxy_entity_init
         if (acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
