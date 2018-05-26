@@ -3536,7 +3536,7 @@ dxf_attdef_get_rel_x_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (attdef->height < 0.0)
+        if (attdef->rel_x_scale < 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
