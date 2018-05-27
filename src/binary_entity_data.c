@@ -104,6 +104,7 @@ dxf_binary_entity_data_init
                 return (NULL);
         }
         data->data_line = strdup ("");
+        data->length = 0;
         data->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
