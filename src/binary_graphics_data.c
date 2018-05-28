@@ -1,7 +1,8 @@
 /*!
  * \file binary_graphics_data.c
  *
- * \author Copyright (C) 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF binary graphics data object.
  *
@@ -55,7 +56,7 @@ dxf_binary_graphics_data_new ()
         if ((data = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfBinaryGraphicsData struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 data = NULL;
         }
@@ -98,7 +99,7 @@ dxf_binary_graphics_data_init
         if (data == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfBinaryGraphicsData struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
