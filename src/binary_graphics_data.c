@@ -103,9 +103,9 @@ dxf_binary_graphics_data_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_binary_graphics_data_set_data_line (data, strdup (""));
-        dxf_binary_graphics_data_set_length (data, 0);
-        dxf_binary_graphics_data_set_next (data, NULL);
+        data->data_line = strdup ("");
+        data->length = 0;
+        data->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
