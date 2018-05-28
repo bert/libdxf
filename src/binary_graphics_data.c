@@ -251,7 +251,7 @@ dxf_binary_graphics_data_get_data_line
         if (data->data_line ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the data_line member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -326,9 +326,8 @@ dxf_binary_graphics_data_get_length
         if (data->length < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the length member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -366,9 +365,8 @@ dxf_binary_graphics_data_set_length
         if (length < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative length value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         data->length = length;
 #if DEBUG
