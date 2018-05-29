@@ -1412,7 +1412,7 @@ dxf_block_set_z0
 
 
 /*!
- * \brief Get the block type from a DXF \c BLOCK entity.
+ * \brief Get the \c block_type from a DXF \c BLOCK entity.
  *
  * \return block type.
  */
@@ -1448,7 +1448,7 @@ dxf_block_get_block_type
 
 
 /*!
- * \brief Set the blcok type for a DXF \c BLOCK entity.
+ * \brief Set the \c block_type for a DXF \c BLOCK entity.
  */
 DxfBlock *
 dxf_block_set_block_type
