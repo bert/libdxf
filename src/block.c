@@ -388,11 +388,11 @@ dxf_block_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block_get_block_name (block) == NULL)
+        if (block->block_name == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty block name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block_get_id_code (block));
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -400,11 +400,11 @@ dxf_block_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block_get_endblk (block) == NULL)
+        if (block->endblk == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () NULL pointer to endblk was passed or the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block_get_id_code (block));
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -412,14 +412,14 @@ dxf_block_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (((dxf_block_get_xref_name (block) == NULL)
-          || (strcmp (dxf_block_get_xref_name (block) , "") == 0))
-          && ((dxf_block_get_block_type (block) != 4)
-          || (dxf_block_get_block_type (block) != 32)))
+        if (((block->xref_name == NULL)
+          || (strcmp (block->xref_name, "") == 0))
+          && ((block->block_type != 4)
+          || (block->block_type != 32)))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty xref path name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block_get_id_code (block));
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -427,36 +427,36 @@ dxf_block_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block_get_description (block) == NULL)
+        if (block->description == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () NULL pointer to description string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block_get_id_code (block));
-                dxf_block_set_description (block, strdup (""));
+                  __FUNCTION__, dxf_entity_name, block->id_code);
+                block->description = strdup ("");
         }
-        if (strcmp (dxf_block_get_layer (block), "") == 0)
+        if (strcmp (block->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block_get_id_code (block));
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0.\n")),
                   dxf_entity_name);
-                dxf_block_set_layer (block, strdup (DXF_DEFAULT_LAYER));
+                block->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_block_get_dictionary_owner_soft (block) == NULL)
+        if (block->dictionary_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () NULL pointer to soft owner object string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block_get_id_code (block));
-                dxf_block_set_dictionary_owner_soft (block, strdup (""));
+                  __FUNCTION__, dxf_entity_name, block->id_code);
+                block->dictionary_owner_soft = strdup ("");
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if ((fp->acad_version_number >= AutoCAD_13)
-          && (dxf_block_get_id_code (block) != -1))
+          && (block->id_code != -1))
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_block_get_id_code (block));
+                fprintf (fp->fp, "  5\n%x\n", block->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -468,41 +468,41 @@ dxf_block_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_block_get_dictionary_owner_soft (block), "") != 0)
+        if ((strcmp (block->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
-                fprintf (fp->fp, "330\n%s\n", dxf_block_get_dictionary_owner_soft (block));
+                fprintf (fp->fp, "330\n%s\n", block->dictionary_owner_soft);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_block_get_layer (block));
+        fprintf (fp->fp, "  8\n%s\n", block->layer);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbBlockBegin\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_block_get_block_name (block));
-        fprintf (fp->fp, " 70\n%d\n", dxf_block_get_block_type (block));
-        fprintf (fp->fp, " 10\n%f\n", dxf_block_get_x0 (block));
-        fprintf (fp->fp, " 20\n%f\n", dxf_block_get_y0 (block));
-        fprintf (fp->fp, " 30\n%f\n", dxf_block_get_z0 (block));
+        fprintf (fp->fp, "  2\n%s\n", block->block_name);
+        fprintf (fp->fp, " 70\n%d\n", block->block_type);
+        fprintf (fp->fp, " 10\n%f\n", block->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", block->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", block->p0->z0);
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, "  3\n%s\n", dxf_block_get_block_name (block));
+                fprintf (fp->fp, "  3\n%s\n", block->block_name);
         }
         if ((fp->acad_version_number >= AutoCAD_13)
-        && ((dxf_block_get_block_type (block) && 4)
-        || (dxf_block_get_block_type (block) && 32)))
+        && ((block->block_type && 4)
+        || (block->block_type && 32)))
         {
-                fprintf (fp->fp, "  1\n%s\n", dxf_block_get_xref_name (block));
+                fprintf (fp->fp, "  1\n%s\n", block->xref_name);
         }
         if ((fp->acad_version_number >= AutoCAD_2000)
-        && (strcmp (dxf_block_get_description (block), "") != 0))
+        && (strcmp (block->description, "") != 0))
         {
-                fprintf (fp->fp, "  4\n%s\n", dxf_block_get_description (block));
+                fprintf (fp->fp, "  4\n%s\n", block->description);
         }
-        endblk = (DxfEndblk *) dxf_block_get_endblk (block);
+        endblk = (DxfEndblk *) block->endblk;
         dxf_endblk_write (fp, endblk);
         /* Clean up. */
         free (dxf_entity_name);
