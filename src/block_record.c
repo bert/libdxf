@@ -1,7 +1,8 @@
 /*!
  * \file block_record.c
  *
- * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF block record symbol table entry
  * (\c BLOCK_RECORD).
@@ -64,7 +65,7 @@ dxf_block_record_new ()
         if ((block_record = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfBlockRecord struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 block_record = NULL;
         }
@@ -107,7 +108,7 @@ dxf_block_record_init
         if (block_record == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfBlockRecord struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
