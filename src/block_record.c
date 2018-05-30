@@ -287,12 +287,12 @@ dxf_block_record_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((dxf_block_record_get_block_name (block_record) == NULL)
-          || (strcmp (dxf_block_record_get_block_name (block_record), "") == 0))
+        if ((block_record->block_name == NULL)
+          || (strcmp (block_record->block_name, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s empty block name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block_record_get_id_code (block_record));
+                  __FUNCTION__, dxf_entity_name, block_record->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -302,9 +302,9 @@ dxf_block_record_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_block_record_get_id_code (block_record) != -1)
+        if (block_record->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_block_record_get_id_code (block_record));
+                fprintf (fp->fp, "  5\n%x\n", block_record->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -316,18 +316,18 @@ dxf_block_record_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_block_record_get_dictionary_owner_soft (block_record), "") != 0)
+        if ((strcmp (block_record->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_block_record_get_dictionary_owner_soft (block_record));
+                fprintf (fp->fp, "330\n%s\n", block_record->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_block_record_get_dictionary_owner_hard (block_record), "") != 0)
+        if ((strcmp (block_record->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_block_record_get_dictionary_owner_hard (block_record));
+                fprintf (fp->fp, "360\n%s\n", block_record->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
@@ -335,8 +335,8 @@ dxf_block_record_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_block_record_get_block_name (block_record));
-        fprintf (fp->fp, " 70\n%d\n", dxf_block_record_get_flag (block_record));
+        fprintf (fp->fp, "  2\n%s\n", block_record->block_name);
+        fprintf (fp->fp, " 70\n%d\n", block_record->flag);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
