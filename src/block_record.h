@@ -1,7 +1,8 @@
 /*!
  * \file block_record.h
  *
- * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF block record symbol table entry
  * (\c BLOCK_RECORD).
@@ -46,6 +47,7 @@
 
 
 #include "global.h"
+#include "binary_graphics_data.h"
 
 
 #ifdef __cplusplus
@@ -87,14 +89,70 @@ dxf_block_record_struct
                  * last time the drawing was edited.</li>
                  * </ol>
                  * Group code = 70. */
+        int insertion_units;
+                 /*!< Block insertion units.\n
+                  * Group code = 70. */
+        int explodability;
+                 /*!< Block explodability.\n
+                  * Group code = 280. */
+        int scalability;
+                 /*!< Block scalability.\n
+                  * Group code = 281. */
+        DxfBinaryGraphicsData *binary_graphics_data;
+                /*!< Binary data for bitmap preview (optional).\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310.\n
+                 * \since Introduced in version R2000. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary
                  * (optional).\n
                  * Group code = 330. */
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle to owner object (optional).\n
+                 * Group code = 330. */
+        char *associated_layout_hard;
+                /*!< Hard-pointer ID/handle to associated LAYOUT object.\n
+                 * Group code = 334. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary
                  * (optional).\n
                  * Group code = 360. */
+        char *xdata_string_data;
+                /*!< Xdata string data “DesignCenter Data” (optional).\n
+                 * Group code = 1000. */
+        char *xdata_application_name;
+                /*!< Xdata application name “ACAD” (optional).\n
+                 * Group code = 1001. */
+        int design_center_version_number;
+                /*!< Autodesk Design Center version number.\n
+                 * Group code = 1070.*/
+        int insert_units;
+                /*!< Insert units:\n
+                 * <ol>
+                 *   <li value = "0" Unitless;</li>
+                 *   <li value = "1" Inches;</li>
+                 *   <li value = "2" Feet;</li>
+                 *   <li value = "3" Miles;</li>
+                 *   <li value = "4" Millimeters;</li>
+                 *   <li value = "5" Centimeters;</li>
+                 *   <li value = "6" Meters;</li>
+                 *   <li value = "7" Kilometers;</li>
+                 *   <li value = "8" Microinches;</li>
+                 *   <li value = "9" Mils;</li>
+                 *   <li value = "10" Yards;</li>
+                 *   <li value = "11" Angstroms;</li>
+                 *   <li value = "12" Nanometers;</li>
+                 *   <li value = "13" Microns;</li>
+                 *   <li value = "14" Decimeters;</li>
+                 *   <li value = "15" Decameters;</li>
+                 *   <li value = "16" Hectometers;</li>
+                 *   <li value = "17" Gigameters;</li>
+                 *   <li value = "18" Astronomical units;</li>
+                 *   <li value = "19" Light years;</li>
+                 *   <li value = "20" Parsecs.</li>
+                 * </ol>
+                 * Group code = 1070.*/
         struct DxfBlockRecord *next;
                 /*!< Pointer to the next DxfAppid.\n
                  * \c NULL in the last DxfAppid. */
