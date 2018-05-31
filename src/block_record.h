@@ -113,7 +113,7 @@ dxf_block_record_struct
                  * Group code = 330. */
         char *associated_layout_hard;
                 /*!< Hard-pointer ID/handle to associated LAYOUT object.\n
-                 * Group code = 334. */
+                 * Group code = 340. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary
                  * (optional).\n
