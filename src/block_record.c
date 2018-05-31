@@ -115,8 +115,18 @@ dxf_block_record_init
         block_record->id_code = 0;
         block_record->block_name = strdup ("");
         block_record->flag = 0;
+        block_record->insert_units = 0;
+        block_record->explodability = 0;
+        block_record->scalability = 0;
+        block_record->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        block_record->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (block_record->binary_graphics_data);
         block_record->dictionary_owner_soft = strdup ("");
+        block_record->object_owner_soft = strdup ("");
         block_record->dictionary_owner_hard = strdup ("");
+        block_record->xdata_string_data = strdup ("DesignCenter Data");
+        block_record->xdata_application_name = strdup ("ACAD");
+        block_record->design_center_version_number = 0;
+        block_record->insert_units = 0;
         block_record->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
