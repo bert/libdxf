@@ -160,6 +160,7 @@ dxf_block_record_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -179,6 +180,7 @@ dxf_block_record_read
                 block_record = dxf_block_record_new ();
                 block_record = dxf_block_record_init (block_record);
         }
+        iter310 = (DxfBinaryGraphicsData *) block_record->binary_graphics_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -214,12 +216,42 @@ dxf_block_record_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &block_record->flag);
                 }
+                else if (strcmp (temp_string, "280") == 0)
+                {
+                        /* Now follows a string containing the block
+                         * explodability value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &block_record->explodability);
+                }
+                else if (strcmp (temp_string, "281") == 0)
+                {
+                        /* Now follows a string containing the block
+                         * scalability value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &block_record->scalability);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
+                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", block_record->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "340") == 0)
+                {
+                        /* Now follows a string containing Hard-pointer
+                         * ID/handle to associated LAYOUT object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", block_record->associated_layout_hard);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
@@ -234,6 +266,32 @@ dxf_block_record_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else if (strcmp (temp_string, "1000") == 0)
+                {
+                        /* Now follows a string containing the Xdata
+                         * string data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", block_record->xdata_string_data);
+                        if (strcmp (block_record->xdata_string_data, "DesignCenter Data") != 0)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () unfamiliar string found while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "1001") == 0)
+                {
+                        /* Now follows a string containing the Xdata
+                         * application name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", block_record->xdata_application_name);
+                        if (strcmp (block_record->xdata_application_name, "ACAD") != 0)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () unfamiliar string found while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
                 }
                 else
                 {
