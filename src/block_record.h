@@ -176,6 +176,7 @@ int dxf_block_record_is_xresolved (DxfBlockRecord *block_record);
 int dxf_block_record_is_referenced (DxfBlockRecord *block_record);
 int dxf_block_record_get_insertion_units (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_insertion_units (DxfBlockRecord *block_record, int insertion_units);
+int dxf_block_record_get_explodability (DxfBlockRecord *block_record);
 char *dxf_block_record_get_dictionary_owner_soft (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_dictionary_owner_soft (DxfBlockRecord *block_record, char *dictionary_owner_soft);
 char *dxf_block_record_get_dictionary_owner_hard (DxfBlockRecord *block_record);
