@@ -845,7 +845,7 @@ dxf_block_record_is_referenced
  * \return \c insertion_units value.
  */
 int
-dxf_block_record_insertion_units
+dxf_block_record_get_insertion_units
 (
         DxfBlockRecord *block_record
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
