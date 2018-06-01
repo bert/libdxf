@@ -839,6 +839,50 @@ dxf_block_record_is_referenced
 
 
 /*!
+ * \brief Get the \c insertion_units value from a DXF \c BLOCK_RECORD
+ * symbol table entry.
+ *
+ * \return \c insertion_units value.
+ */
+int
+dxf_block_record_insertion_units
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (block_record->insertion_units < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (block_record->insertion_units > 20)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record->insertion_units);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c BLOCK_RECORD symbol table entry.
  *
