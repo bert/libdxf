@@ -1065,6 +1065,51 @@ dxf_block_record_get_scalability
 
 
 /*!
+ * \brief Set the \c scalability value for a DXF \c BLOCK_RECORD
+ * symbol table entry.
+ */
+DxfBlockRecord *
+dxf_block_record_set_scalability
+(
+        DxfBlockRecord *block_record,
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+        int scalability
+                /*!< Block scalability. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (scalability < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (scalability > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        block_record->scalability = scalability;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c BLOCK_RECORD symbol table entry.
  *

@@ -179,6 +179,7 @@ DxfBlockRecord *dxf_block_record_set_insertion_units (DxfBlockRecord *block_reco
 int dxf_block_record_get_explodability (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_explodability (DxfBlockRecord *block_record, int explodability);
 int dxf_block_record_get_scalability (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_scalability (DxfBlockRecord *block_record, int scalability);
 char *dxf_block_record_get_dictionary_owner_soft (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_dictionary_owner_soft (DxfBlockRecord *block_record, char *dictionary_owner_soft);
 char *dxf_block_record_get_dictionary_owner_hard (DxfBlockRecord *block_record);
