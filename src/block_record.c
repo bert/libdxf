@@ -516,9 +516,8 @@ dxf_block_record_get_id_code
         if (block_record->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found in the id-code member.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -556,9 +555,8 @@ dxf_block_record_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative id-code value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         block_record->id_code = id_code;
 #if DEBUG
@@ -596,7 +594,7 @@ dxf_block_record_get_block_name
         if (block_record->block_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the block_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -676,16 +674,14 @@ dxf_block_record_get_flag
         if (block_record->flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the flag member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (block_record->flag > 64)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the flag member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -724,16 +720,14 @@ dxf_block_record_set_flag
         if (flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative flag value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (flag > 64)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range flag value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         block_record->flag = flag;
 #if DEBUG
@@ -874,7 +868,7 @@ dxf_block_record_get_dictionary_owner_soft
         if (block_record->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -956,7 +950,7 @@ dxf_block_record_get_dictionary_owner_hard
         if (block_record->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
