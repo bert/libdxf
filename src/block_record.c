@@ -1356,6 +1356,47 @@ dxf_block_record_set_object_owner_soft
 
 
 /*!
+ * \brief Get the hard pointer to the associated layout object from a
+ * DXF \c BLOCK_RECORD symbol table entry.
+ *
+ * \return hard pointer to the associated layout object.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_block_record_get_associated_layout_hard
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_record->associated_layout_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (block_record->associated_layout_hard));
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c BLOCK_RECORD symbol table entry.
  *
