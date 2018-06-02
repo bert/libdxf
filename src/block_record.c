@@ -1274,6 +1274,47 @@ dxf_block_record_set_dictionary_owner_soft
 
 
 /*!
+ * \brief Get the soft pointer to the object owner from a DXF 
+ * \c BLOCK_RECORD symbol table entry.
+ *
+ * \return soft pointer to the object owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_block_record_get_object_owner_soft
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_record->object_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (block_record->object_owner_soft));
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c BLOCK_RECORD symbol table entry.
  *
