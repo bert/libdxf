@@ -1520,6 +1520,47 @@ dxf_block_record_get_xdata_string_data
 
 
 /*!
+ * \brief Set the pointer to the \c xdata_string_data for a DXF
+ * \c BLOCK_RECORD symbol table entry.
+ */
+DxfBlockRecord *
+dxf_block_record_set_xdata_string_data
+(
+        DxfBlockRecord *block_record,
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+        char *xdata_string_data
+                /*!< a string containing the pointer to the
+                 * \c xdata_string_data for the symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xdata_string_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block_record->xdata_string_data = strdup (xdata_string_data);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c BLOCK_RECORD symbol table entry
  * from a DXF \c BLOCK_RECORD symbol table entry.
  *
