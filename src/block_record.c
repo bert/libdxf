@@ -1602,6 +1602,47 @@ dxf_block_record_get_xdata_application_name
 
 
 /*!
+ * \brief Set the pointer to the \c xdata_application_name for a DXF
+ * \c BLOCK_RECORD symbol table entry.
+ */
+DxfBlockRecord *
+dxf_block_record_set_xdata_application_name
+(
+        DxfBlockRecord *block_record,
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+        char *xdata_application_name
+                /*!< a string containing the pointer to the
+                 * \c xdata_application_name for the symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (xdata_application_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block_record->xdata_application_name = strdup (xdata_application_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c BLOCK_RECORD symbol table entry
  * from a DXF \c BLOCK_RECORD symbol table entry.
  *
