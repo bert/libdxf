@@ -1479,6 +1479,47 @@ dxf_block_record_set_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the \c xdata_string_data value from a DXF 
+ * \c BLOCK_RECORD symbol table entry.
+ *
+ * \return hard pointer to the \c xdata_string_data value.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_block_record_get_xdata_string_data
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_record->xdata_string_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (block_record->xdata_string_data));
+}
+
+
+/*!
  * \brief Get the pointer to the next \c BLOCK_RECORD symbol table entry
  * from a DXF \c BLOCK_RECORD symbol table entry.
  *
