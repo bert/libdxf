@@ -1479,10 +1479,10 @@ dxf_block_record_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the \c xdata_string_data value from a DXF 
+ * \brief Get the \c xdata_string_data string from a DXF 
  * \c BLOCK_RECORD symbol table entry.
  *
- * \return hard pointer to the \c xdata_string_data value.
+ * \return \c xdata_string_data string.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
