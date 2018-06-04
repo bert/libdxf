@@ -193,6 +193,7 @@ char *dxf_block_record_get_xdata_string_data (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_xdata_string_data (DxfBlockRecord *block_record, char *xdata_string_data);
 char *dxf_block_record_get_xdata_application_name (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_xdata_application_name (DxfBlockRecord *block_record, char *xdata_application_name);
+int dxf_block_record_get_design_center_version_number (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_get_next (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_next (DxfBlockRecord *block_record, DxfBlockRecord *next);
 DxfBlockRecord *dxf_block_record_get_last (DxfBlockRecord *block_record);

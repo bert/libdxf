@@ -1643,6 +1643,44 @@ dxf_block_record_set_xdata_application_name
 
 
 /*!
+ * \brief Get the \c design_center_version_number from a DXF
+ * \c BLOCK_RECORD symbol table entry.
+ *
+ * \return \c design_center_version_number.
+ */
+int
+dxf_block_record_get_design_center_version_number
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (block_record->design_center_version_number < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record->design_center_version_number);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c BLOCK_RECORD symbol table entry
  * from a DXF \c BLOCK_RECORD symbol table entry.
  *
