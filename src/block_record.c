@@ -1681,6 +1681,46 @@ dxf_block_record_get_design_center_version_number
 
 
 /*!
+ * \brief Set the \c design_center_version_number for a DXF
+ * \c BLOCK_RECORD symbol table entry.
+ */
+DxfBlockRecord *
+dxf_block_record_set_design_center_version_number
+(
+        DxfBlockRecord *block_record,
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+        int design_center_version_number
+                /*!< The \c design_center_version_number for the DXF
+                 * \c BLOCK_RECORD symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (design_center_version_number < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        block_record->design_center_version_number = design_center_version_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c BLOCK_RECORD symbol table entry
  * from a DXF \c BLOCK_RECORD symbol table entry.
  *
