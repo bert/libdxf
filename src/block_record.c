@@ -516,7 +516,7 @@ dxf_block_record_get_id_code
         if (block_record->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -555,7 +555,7 @@ dxf_block_record_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         block_record->id_code = id_code;
