@@ -1765,6 +1765,52 @@ dxf_block_record_get_insert_units
 
 
 /*!
+ * \brief Set the \c insert_units for a DXF \c BLOCK_RECORD symbol table
+ * entry.
+ */
+DxfBlockRecord *
+dxf_block_record_set_insert_units
+(
+        DxfBlockRecord *block_record,
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+        int insert_units
+                /*!< The \c insert_units for the DXF \c BLOCK_RECORD
+                 * symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (insert_units < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (insert_units > 20)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an invalid value was passed.\n")),
+                  __FUNCTION__);
+        }
+        block_record->insert_units = insert_units;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c BLOCK_RECORD symbol table entry
  * from a DXF \c BLOCK_RECORD symbol table entry.
  *
