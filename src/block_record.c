@@ -398,6 +398,11 @@ dxf_block_record_write
                 fprintf (fp->fp, "360\n%s\n", block_record->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
+        if ((strcmp (block_record->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "330\n%s\n", block_record->object_owner_soft);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
@@ -405,6 +410,40 @@ dxf_block_record_write
         }
         fprintf (fp->fp, "  2\n%s\n", block_record->block_name);
         fprintf (fp->fp, " 70\n%d\n", block_record->flag);
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+                fprintf (fp->fp, "340\n%s\n", block_record->associated_layout_hard);
+        }
+        if (fp->acad_version_number >= AutoCAD_2007)
+        {
+                fprintf (fp->fp, "280\n%d\n", block_record->explodability);
+                fprintf (fp->fp, "281\n%d\n", block_record->scalability);
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+                if (block_record->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) block_record->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+                if (block_record->xdata_application_name != NULL)
+                {
+                        fprintf (fp->fp, "1001\n%s\n", block_record->xdata_application_name);
+                }
+                if (block_record->xdata_string_data != NULL)
+                {
+                        fprintf (fp->fp, "1000\n%s\n", block_record->xdata_string_data);
+                        fprintf (fp->fp, "1002\n{\n");
+                        fprintf (fp->fp, "1070\n%d\n", block_record->design_center_version_number);
+                        fprintf (fp->fp, "1070\n%d\n", block_record->insert_units);
+                        fprintf (fp->fp, "1002\n}\n");
+                }
+        }
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
