@@ -1,7 +1,7 @@
 /*!
  * \file body.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF body entity (\c BODY).
@@ -111,31 +111,32 @@ dxf_body_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_body_set_id_code (body, 0);
-        dxf_body_set_linetype (body, strdup (DXF_DEFAULT_LINETYPE));
-        dxf_body_set_layer (body, strdup (DXF_DEFAULT_LAYER));
-        dxf_body_set_elevation (body, 0.0);
-        dxf_body_set_thickness (body, 0.0);
-        dxf_body_set_linetype_scale (body, DXF_DEFAULT_LINETYPE_SCALE);
-        dxf_body_set_visibility (body, DXF_DEFAULT_VISIBILITY);
-        dxf_body_set_color (body, DXF_COLOR_BYLAYER);
-        dxf_body_set_paperspace (body, DXF_MODELSPACE);
-        dxf_body_set_graphics_data_size (body, 0);
-        dxf_body_set_shadow_mode (body, 0);
-        dxf_body_set_binary_graphics_data (body, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (body->binary_graphics_data));
-        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_body_get_binary_graphics_data (body));
-        dxf_body_set_dictionary_owner_soft (body, strdup (""));
-        dxf_body_set_material (body, strdup (""));
-        dxf_body_set_dictionary_owner_hard (body, strdup (""));
-        dxf_body_set_lineweight (body, 0);
-        dxf_body_set_plot_style_name (body, strdup (""));
-        dxf_body_set_color_value (body, 0);
-        dxf_body_set_color_name (body, strdup (""));
-        dxf_body_set_transparency (body, 0);
-        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->proprietary_data));
-        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->additional_proprietary_data));
-        dxf_body_set_modeler_format_version_number (body, 1);
-        dxf_body_set_next (body, NULL);
+        body->id_code = 0;
+        body->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        body->layer = strdup (DXF_DEFAULT_LAYER);
+        body->elevation = 0.0;
+        body->thickness = 0.0;
+        body->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        body->visibility = DXF_DEFAULT_VISIBILITY;
+        body->color = DXF_COLOR_BYLAYER;
+        body->paperspace = DXF_MODELSPACE;
+        body->graphics_data_size = 0;
+        body->shadow_mode = 0;
+        body->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        body->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (body->binary_graphics_data);
+        body->dictionary_owner_soft = strdup ("");
+        body->material = strdup ("");
+        body->dictionary_owner_hard = strdup ("");
+        body->plot_style_name = strdup ("");
+        body->color_value = 0;
+        body->color_name = strdup ("");
+        body->transparency = 0;
+        body->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_new ();
+        body->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (body->proprietary_data);
+        body->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_new ();
+        body->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (body->additional_proprietary_data);
+        body->modeler_format_version_number = 1;
+        body->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
