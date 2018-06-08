@@ -135,9 +135,9 @@ dxf_circle_init
         dxf_circle_set_p0 (circle, dxf_point_new ());
         dxf_point_init ((DxfPoint *) dxf_circle_get_p0 (circle));
         dxf_circle_set_radius (circle, 0.0);
-        dxf_circle_set_extr_x0 (circle, 0.0);
-        dxf_circle_set_extr_y0 (circle, 0.0);
-        dxf_circle_set_extr_z0 (circle, 0.0);
+        circle->extr_x0 = 0.0;
+        circle->extr_y0 = 0.0;
+        circle->extr_z0 = 0.0;
         dxf_circle_set_next (circle, NULL);
 #if DEBUG
         DXF_DEBUG_END
