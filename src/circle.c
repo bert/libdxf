@@ -1,7 +1,7 @@
 /*!
  * \file circle.c
  *
- * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
@@ -111,34 +111,37 @@ dxf_circle_init
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_circle_set_id_code (circle, 0);
-        dxf_circle_set_linetype (circle, strdup (DXF_DEFAULT_LINETYPE));
-        dxf_circle_set_layer (circle, strdup (DXF_DEFAULT_LAYER));
-        dxf_circle_set_elevation (circle, 0.0);
-        dxf_circle_set_thickness (circle, 0.0);
-        dxf_circle_set_linetype_scale (circle, DXF_DEFAULT_LINETYPE_SCALE);
-        dxf_circle_set_visibility (circle, DXF_DEFAULT_VISIBILITY);
-        dxf_circle_set_color (circle, DXF_COLOR_BYLAYER);
-        dxf_circle_set_paperspace (circle, DXF_MODELSPACE);
-        dxf_circle_set_graphics_data_size (circle, 0);
-        dxf_circle_set_shadow_mode (circle, 0);
-        dxf_circle_set_binary_graphics_data (circle, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
-        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_circle_get_binary_graphics_data (circle));
-        dxf_circle_set_dictionary_owner_soft (circle, strdup (""));
-        dxf_circle_set_material (circle, strdup (""));
-        dxf_circle_set_dictionary_owner_hard (circle, strdup (""));
-        dxf_circle_set_lineweight (circle, 0);
-        dxf_circle_set_plot_style_name (circle, strdup (""));
-        dxf_circle_set_color_value (circle, 0);
-        dxf_circle_set_color_name (circle, strdup (""));
-        dxf_circle_set_transparency (circle, 0);
-        dxf_circle_set_p0 (circle, dxf_point_new ());
-        dxf_point_init ((DxfPoint *) dxf_circle_get_p0 (circle));
-        dxf_circle_set_radius (circle, 0.0);
+        circle->id_code = 0;
+        circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        circle->layer = strdup (DXF_DEFAULT_LAYER);
+        circle->elevation = 0.0;
+        circle->thickness = 0.0;
+        circle->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        circle->visibility = DXF_DEFAULT_VISIBILITY;
+        circle->color = DXF_COLOR_BYLAYER;
+        circle->paperspace = DXF_MODELSPACE;
+        circle->graphics_data_size = 0;
+        circle->shadow_mode = 0;
+        circle->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        circle->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (circle->binary_graphics_data);
+        circle->dictionary_owner_soft = strdup ("");
+        circle->material = strdup ("");
+        circle->dictionary_owner_hard = strdup ("");
+        circle->lineweight = 0;
+        circle->plot_style_name = strdup ("");
+        circle->color_value = 0;
+        circle->color_name = strdup ("");
+        circle->transparency = 0;
+        circle->p0 = dxf_point_new ();
+        circle->p0 = dxf_point_init (circle->p0);
+        circle->p0->x0 = 0.0;
+        circle->p0->y0 = 0.0;
+        circle->p0->z0 = 0.0;
+        circle->radius = 0.0;
         circle->extr_x0 = 0.0;
         circle->extr_y0 = 0.0;
         circle->extr_z0 = 0.0;
-        dxf_circle_set_next (circle, NULL);
+        circle->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
