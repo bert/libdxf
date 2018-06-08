@@ -560,10 +560,14 @@ dxf_body_free
         }
         free (body->linetype);
         free (body->layer);
+        dxf_binary_graphics_data_free_chain (body->binary_graphics_data);
+        free (body->dictionary_owner_soft);
+        free (body->material);
+        free (body->dictionary_owner_hard);
+        free (body->plot_style_name);
+        free (body->color_name);
         dxf_proprietary_data_free_chain (body->proprietary_data);
         dxf_proprietary_data_free_chain (body->additional_proprietary_data);
-        free (body->dictionary_owner_soft);
-        free (body->dictionary_owner_hard);
         free (body);
         body = NULL;
 #if DEBUG
