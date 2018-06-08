@@ -360,13 +360,13 @@ dxf_circle_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_circle_get_linetype (circle), "") == 0)
+        if (strcmp (circle->linetype, "") == 0)
         {
-                dxf_circle_set_linetype (circle, strdup (DXF_DEFAULT_LINETYPE));
+                circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_circle_get_layer (circle), "") == 0)
+        if (strcmp (circle->layer, "") == 0)
         {
-                dxf_circle_set_layer (circle, strdup (DXF_DEFAULT_LAYER));
+                circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Clean up. */
         free (temp_string);
