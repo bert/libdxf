@@ -416,40 +416,40 @@ dxf_circle_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_circle_get_radius (circle) == 0.0)
+        if (circle->radius == 0.0)
         {
                 fprintf (stderr,
                   (_("Error in %s () radius value equals 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_circle_get_id_code (circle));
+                  __FUNCTION__, dxf_entity_name, circle->id_code);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_circle_get_linetype (circle), "") == 0)
+        if (strcmp (circle->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_circle_get_id_code (circle));
+                  __FUNCTION__, dxf_entity_name, circle->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_circle_set_linetype (circle, strdup (DXF_DEFAULT_LINETYPE));
+                circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_circle_get_layer (circle), "") == 0)
+        if (strcmp (circle->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_circle_get_id_code (circle));
+                  __FUNCTION__, dxf_entity_name, circle->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name );
-                dxf_circle_set_layer (circle, strdup (DXF_DEFAULT_LAYER));
+                circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_circle_get_id_code (circle) != -1)
+        if (circle->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_circle_get_id_code (circle));
+                fprintf (fp->fp, "  5\n%x\n", circle->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -461,44 +461,44 @@ dxf_circle_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_circle_get_dictionary_owner_soft (circle), "") != 0)
+        if ((strcmp (circle->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_circle_get_dictionary_owner_soft (circle));
+                fprintf (fp->fp, "330\n%s\n", circle->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_circle_get_dictionary_owner_hard (circle), "") != 0)
+        if ((strcmp (circle->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_circle_get_dictionary_owner_hard (circle));
+                fprintf (fp->fp, "360\n%s\n", circle->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_circle_get_paperspace (circle) == DXF_PAPERSPACE)
+        if (circle->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_circle_get_layer (circle));
-        if (strcmp (dxf_circle_get_linetype (circle), DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", circle->layer);
+        if (strcmp (circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_circle_get_linetype (circle));
+                fprintf (fp->fp, "  6\n%s\n", circle->linetype);
         }
-        if (dxf_circle_get_color (circle) != DXF_COLOR_BYLAYER)
+        if (circle->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_circle_get_color (circle));
+                fprintf (fp->fp, " 62\n%d\n", circle->color);
         }
-        if (dxf_circle_get_linetype_scale (circle) != 1.0)
+        if (circle->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_circle_get_linetype_scale (circle));
+                fprintf (fp->fp, " 48\n%f\n", circle->linetype_scale);
         }
-        if (dxf_circle_get_visibility (circle) != 0)
+        if (circle->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_circle_get_visibility (circle));
+                fprintf (fp->fp, " 60\n%d\n", circle->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -506,18 +506,18 @@ dxf_circle_write
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_circle_get_elevation (circle) != 0.0))
+          && (circle->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_circle_get_elevation (circle));
+                fprintf (fp->fp, " 38\n%f\n", circle->elevation);
         }
-        if (dxf_circle_get_thickness (circle) != 0.0)
+        if (circle->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_circle_get_thickness (circle));
+                fprintf (fp->fp, " 39\n%f\n", circle->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", dxf_circle_get_x0 (circle));
-        fprintf (fp->fp, " 20\n%f\n", dxf_circle_get_y0 (circle));
-        fprintf (fp->fp, " 30\n%f\n", dxf_circle_get_z0 (circle));
-        fprintf (fp->fp, " 40\n%f\n", dxf_circle_get_radius (circle));
+        fprintf (fp->fp, " 10\n%f\n", circle->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", circle->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", circle->p0->z0);
+        fprintf (fp->fp, " 40\n%f\n", circle->radius);
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (circle->extr_x0 != 0.0)
                 && (circle->extr_y0 != 0.0)
