@@ -64,7 +64,7 @@ dxf_circle_new ()
         if ((circle = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfCircle struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 circle = NULL;
         }
@@ -107,7 +107,7 @@ dxf_circle_init
         if (circle == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfCircle struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
