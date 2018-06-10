@@ -416,15 +416,6 @@ dxf_circle_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (circle->radius == 0.0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () radius value equals 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, circle->id_code);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
         if (strcmp (circle->linetype, "") == 0)
         {
                 fprintf (stderr,
@@ -444,6 +435,12 @@ dxf_circle_write
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name );
                 circle->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (circle->radius == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () radius value equals 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, circle->id_code);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
