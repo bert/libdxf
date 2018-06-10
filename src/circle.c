@@ -125,6 +125,7 @@ dxf_circle_init
         circle->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
         circle->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (circle->binary_graphics_data);
         circle->dictionary_owner_soft = strdup ("");
+        circle->object_owner_soft = strdup ("");
         circle->material = strdup ("");
         circle->dictionary_owner_hard = strdup ("");
         circle->lineweight = 0;
