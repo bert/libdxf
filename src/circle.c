@@ -472,6 +472,11 @@ dxf_circle_write
                 fprintf (fp->fp, "360\n%s\n", circle->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
+        if ((strcmp (circle->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", circle->object_owner_soft);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
@@ -485,9 +490,18 @@ dxf_circle_write
         {
                 fprintf (fp->fp, "  6\n%s\n", circle->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (circle->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", circle->material);
+        }
         if (circle->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", circle->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", circle->lineweight);
         }
         if (circle->linetype_scale != 1.0)
         {
@@ -496,6 +510,35 @@ dxf_circle_write
         if (circle->visibility != 0)
         {
                 fprintf (fp->fp, " 60\n%d\n", circle->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", circle->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", circle->graphics_data_size);
+#endif
+                if (circle->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) circle->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", circle->color_value);
+                fprintf (fp->fp, "430\n%s\n", circle->color_name);
+                fprintf (fp->fp, "440\n%ld\n", circle->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", circle->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", circle->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
