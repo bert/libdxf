@@ -639,9 +639,8 @@ dxf_circle_get_id_code
         if (circle->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -678,9 +677,8 @@ dxf_circle_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->id_code = id_code;
 #if DEBUG
@@ -716,7 +714,7 @@ dxf_circle_get_linetype
         if (circle->linetype ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -791,7 +789,7 @@ dxf_circle_get_layer
         if (circle->layer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -927,9 +925,8 @@ dxf_circle_get_thickness
         if (circle->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the thickness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -964,9 +961,8 @@ dxf_circle_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative thickness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->thickness = thickness;
 #if DEBUG
@@ -1002,9 +998,8 @@ dxf_circle_get_linetype_scale
         if (circle->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1039,9 +1034,8 @@ dxf_circle_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->linetype_scale = linetype_scale;
 #if DEBUG
@@ -1077,16 +1071,14 @@ dxf_circle_get_visibility
         if (circle->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (circle->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1121,16 +1113,14 @@ dxf_circle_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->visibility = visibility;
 #if DEBUG
@@ -1166,7 +1156,7 @@ dxf_circle_get_color
         if (circle->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1202,7 +1192,7 @@ dxf_circle_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("\teffectively turning this entity it's visibility off.\n")));
@@ -1241,13 +1231,13 @@ dxf_circle_get_paperspace
         if (circle->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (circle->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1283,16 +1273,14 @@ dxf_circle_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->paperspace = paperspace;
 #if DEBUG
@@ -1330,13 +1318,13 @@ dxf_circle_get_graphics_data_size
         if (circle->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (circle->graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1376,16 +1364,14 @@ dxf_circle_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a zero value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->graphics_data_size = graphics_data_size;
 #if DEBUG
@@ -1422,16 +1408,14 @@ dxf_circle_get_shadow_mode
         if (circle->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (circle->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1469,16 +1453,14 @@ dxf_circle_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->shadow_mode = shadow_mode;
 #if DEBUG
@@ -1600,7 +1582,7 @@ dxf_circle_get_dictionary_owner_soft
         if (circle->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1681,7 +1663,7 @@ dxf_circle_get_material
         if (circle->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1763,7 +1745,7 @@ dxf_circle_get_dictionary_owner_hard
         if (circle->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1906,7 +1888,7 @@ dxf_circle_get_plot_style_name
         if (circle->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2051,7 +2033,7 @@ dxf_circle_get_color_name
         if (circle->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2195,7 +2177,7 @@ dxf_circle_get_p0
         if (circle->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2274,7 +2256,7 @@ dxf_circle_get_x0
         if (circle->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2316,7 +2298,7 @@ dxf_circle_set_x0
         if (circle->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2356,7 +2338,7 @@ dxf_circle_get_y0
         if (circle->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2398,7 +2380,7 @@ dxf_circle_set_y0
         if (circle->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2438,7 +2420,7 @@ dxf_circle_get_z0
         if (circle->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2480,7 +2462,7 @@ dxf_circle_set_z0
         if (circle->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2518,16 +2500,14 @@ dxf_circle_get_radius
         if (circle->radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the radius member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (circle->radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was found in the radius member.\n")),
+                  (_("Warning in %s () a value of zero was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2562,16 +2542,14 @@ dxf_circle_set_radius
         if (radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative radius value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was passed.\n")),
+                  (_("Warning in %s () a value of zero was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         circle->radius = radius;
 #if DEBUG
@@ -2613,7 +2591,7 @@ dxf_circle_get_extrusion_vector_as_point
         if (point == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -2851,6 +2829,8 @@ dxf_circle_set_extr_z0
  * \brief Get the \c area from a DXF \c CIRCLE entity.
  *
  * \return \c area.
+ *
+ * \note a negative radius (!) will give a positive area.
  */
 double
 dxf_circle_get_area
@@ -2873,16 +2853,14 @@ dxf_circle_get_area
         if (circle->radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the radius member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (circle->radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was found in the radius member.\n")),
+                  (_("Warning in %s () a value of zero was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2895,6 +2873,8 @@ dxf_circle_get_area
  * \brief Get the \c circumference from a DXF \c CIRCLE entity.
  *
  * \return \c circumference.
+ *
+ * \note the absolute value radius is used for the calculation.
  */
 double
 dxf_circle_get_circumference
@@ -2917,21 +2897,19 @@ dxf_circle_get_circumference
         if (circle->radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the radius member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (circle->radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was found in the radius member.\n")),
+                  (_("Warning in %s () a value of zero was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (2 * M_PI * circle->radius);
+        return (2 * M_PI * fabs (circle->radius));
 }
 
 
@@ -2971,16 +2949,14 @@ dxf_circle_test_point_in_circle
         if (circle->radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the radius member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (circle->radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was found in the radius member.\n")),
+                  (_("Warning in %s () a value of zero was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         dx = circle->p0->x0 - point->x0;
         dy = circle->p0->y0 - point->y0;
@@ -3030,7 +3006,7 @@ dxf_circle_get_next
         if (circle->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3109,7 +3085,7 @@ dxf_circle_get_last
         if (circle->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfCircle *) circle);
         }
