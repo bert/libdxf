@@ -1,7 +1,7 @@
 /*!
  * \file 3dface.h
  *
- * \author Copyright (C) 2010, 2012, 2013, 2014, 2015 2016, 2017
+ * \author Copyright (C) 2010, 2012, 2013, 2014, 2015 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
@@ -248,6 +248,7 @@ DxfBinaryGraphicsData *dxf_3dface_get_binary_graphics_data (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_binary_graphics_data (Dxf3dface *face, DxfBinaryGraphicsData *data);
 char *dxf_3dface_get_dictionary_owner_soft (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_dictionary_owner_soft (Dxf3dface *face, char *dictionary_owner_soft);
+char *dxf_3dface_get_object_owner_soft (Dxf3dface *face);
 char *dxf_3dface_get_material (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_material (Dxf3dface *face, char *material);
 char *dxf_3dface_get_dictionary_owner_hard (Dxf3dface *face);
