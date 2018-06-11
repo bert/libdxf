@@ -1889,6 +1889,46 @@ dxf_3dface_get_object_owner_soft
 
 
 /*!
+ * \brief Set the pointer to the \c object_owner_soft for a DXF
+ * \c 3DFACE entity.
+ */
+Dxf3dface *
+dxf_3dface_set_object_owner_soft
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        char *object_owner_soft
+                /*!< a string containing the pointer to the
+                 * \c object_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->object_owner_soft = strdup (object_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
+/*!
  * \brief Get the pointer to the \c material from a DXF \c 3DFACE entity.
  *
  * \return a pointer to \c material when successful, or \c NULL when an
