@@ -126,6 +126,7 @@ dxf_3dface_init
         face->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
         face->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (face->binary_graphics_data);
         face->dictionary_owner_soft = strdup ("");
+        face->object_owner_soft = strdup ("");
         face->material = strdup ("");
         face->dictionary_owner_hard = strdup ("");
         face->lineweight = 0;
