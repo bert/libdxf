@@ -188,6 +188,7 @@ dxf_3dface_read
 #endif
         char *temp_string = NULL;
         DxfBinaryGraphicsData *iter310 = NULL;
+        int iter330;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -208,6 +209,7 @@ dxf_3dface_read
                 face = dxf_3dface_init (face);
         }
         iter310 = (DxfBinaryGraphicsData *) face->binary_graphics_data;
+        iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -421,10 +423,21 @@ dxf_3dface_read
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
-                        /* Now follows a string containing Soft-pointer
-                         * ID/handle to owner dictionary. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", face->dictionary_owner_soft);
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", face->dictionary_owner_soft);
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", face->object_owner_soft);
+                        }
+                        iter330++;
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
