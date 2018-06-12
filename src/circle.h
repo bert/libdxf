@@ -247,6 +247,7 @@ DxfBinaryGraphicsData *dxf_circle_get_binary_graphics_data (DxfCircle *circle);
 DxfCircle *dxf_circle_set_binary_graphics_data (DxfCircle *circle, DxfBinaryGraphicsData *data);
 char *dxf_circle_get_dictionary_owner_soft (DxfCircle *circle);
 DxfCircle *dxf_circle_set_dictionary_owner_soft (DxfCircle *circle, char *dictionary_owner_soft);
+char *dxf_circle_get_object_owner_soft (DxfCircle *circle);
 char *dxf_circle_get_material (DxfCircle *circle);
 DxfCircle *dxf_circle_set_material (DxfCircle *circle, char *material);
 char *dxf_circle_get_dictionary_owner_hard (DxfCircle *circle);
