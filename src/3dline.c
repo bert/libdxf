@@ -129,6 +129,7 @@ dxf_3dline_init
         line->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
         line->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (line->binary_graphics_data);
         line->dictionary_owner_soft = strdup ("");
+        line->object_owner_soft = strdup ("");
         line->material = strdup ("");
         line->dictionary_owner_hard = strdup ("");
         line->lineweight = 0;
