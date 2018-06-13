@@ -740,6 +740,7 @@ dxf_3dline_free
         free (line->layer);
         dxf_binary_graphics_data_free_chain (line->binary_graphics_data);
         free (line->dictionary_owner_soft);
+        free (line->object_owner_soft);
         free (line->material);
         free (line->dictionary_owner_hard);
         free (line->plot_style_name);
