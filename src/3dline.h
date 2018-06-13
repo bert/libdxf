@@ -248,6 +248,7 @@ DxfBinaryGraphicsData *dxf_3dline_get_binary_graphics_data (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_binary_graphics_data (Dxf3dline *line, DxfBinaryGraphicsData *data);
 char *dxf_3dline_get_dictionary_owner_soft (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_dictionary_owner_soft (Dxf3dline *line, char *dictionary_owner_soft);
+char *dxf_3dline_get_object_owner_soft (Dxf3dline *line);
 char *dxf_3dline_get_material (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_material (Dxf3dline *line, char *material);
 char *dxf_3dline_get_dictionary_owner_hard (Dxf3dline *line);
