@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.h
  *
- * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D solid entity (\c 3DSOLID).
@@ -139,6 +139,10 @@ dxf_3dsolid_struct
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330.\n
                  * \since Introduced in version R14. */
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle  to owner BLOCK_RECORD object.\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R2000. */
         char *material;
                 /*!< Hard-pointer ID/handle to material object (present if
                  * not BYLAYER).\n
