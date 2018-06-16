@@ -245,6 +245,7 @@ Dxf3dsolid *dxf_3dsolid_set_binary_graphics_data (Dxf3dsolid *solid, DxfBinaryGr
 char *dxf_3dsolid_get_dictionary_owner_soft (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_dictionary_owner_soft (Dxf3dsolid *solid, char *dictionary_owner_soft);
 char *dxf_3dsolid_get_object_owner_soft (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_object_owner_soft (Dxf3dsolid *solid, char *object_owner_soft);
 char *dxf_3dsolid_get_material (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_material (Dxf3dsolid *solid, char *material);
 char *dxf_3dsolid_get_dictionary_owner_hard (Dxf3dsolid *solid);
