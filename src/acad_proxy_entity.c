@@ -136,6 +136,7 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->paperspace = DXF_PAPERSPACE;
         acad_proxy_entity->shadow_mode = 0;
         acad_proxy_entity->dictionary_owner_soft = strdup ("");
+        acad_proxy_entity->object_owner_soft = strdup ("");
         acad_proxy_entity->material = strdup ("");
         acad_proxy_entity->dictionary_owner_hard = strdup ("");
         acad_proxy_entity->lineweight = 0;
