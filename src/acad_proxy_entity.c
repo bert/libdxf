@@ -191,6 +191,7 @@ dxf_acad_proxy_entity_read
 #endif
         char *temp_string = NULL;
         DxfBinaryGraphicsData *iter310 = NULL;
+        int iter330;
         int i; /* flags whether group code 330, 340, 350 or 360 has been
                 * parsed for a first time. */
 
@@ -219,6 +220,7 @@ dxf_acad_proxy_entity_read
                 acad_proxy_entity = dxf_acad_proxy_entity_init (acad_proxy_entity);
         }
         iter310 = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data;
+        iter330 = 0;
         i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -389,11 +391,21 @@ dxf_acad_proxy_entity_read
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
-                        /* Now follows a string containing Soft-pointer
-                         * ID/handle to owner dictionary. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->dictionary_owner_soft);
-                        i++;
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", acad_proxy_entity->dictionary_owner_soft);
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", acad_proxy_entity->object_owner_soft);
+                        }
+                        iter330++;
                 }
                 else if ((strcmp (temp_string, "330") == 0)
                   || (strcmp (temp_string, "340") == 0)
