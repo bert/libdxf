@@ -1682,6 +1682,46 @@ dxf_acad_proxy_entity_set_dictionary_owner_soft
 
 
 /*!
+ * \brief Get the soft pointer to the object owner from a DXF 
+ * \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return soft pointer to the object owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_acad_proxy_entity_get_object_owner_soft
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (acad_proxy_entity->object_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (acad_proxy_entity->object_owner_soft));
+}
+
+
+/*!
  * \brief Get the pointer to the \c material from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return a pointer to \c material when successful, or \c NULL when an
