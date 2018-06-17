@@ -779,6 +779,7 @@ dxf_acad_proxy_entity_free
         free (acad_proxy_entity->linetype);
         free (acad_proxy_entity->layer);
         free (acad_proxy_entity->dictionary_owner_soft);
+        free (acad_proxy_entity->object_owner_soft);
         free (acad_proxy_entity->material);
         free (acad_proxy_entity->dictionary_owner_hard);
         free (acad_proxy_entity->plot_style_name);
