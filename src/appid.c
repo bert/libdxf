@@ -355,6 +355,11 @@ dxf_appid_write
                 fprintf (fp->fp, "360\n%s\n", appid->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
+        if ((strcmp (appid->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", appid->object_owner_soft);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
