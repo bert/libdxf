@@ -9,7 +9,7 @@
  * \brief Functions for a DXF application identity symbol table entry
  * (\c APPID).
  *
- * \version The \c APPID table was introduced in DXF R12.
+ * \since The \c APPID table was introduced in DXF R12.
  *
  * A DXF \c APPID entity contains data concerning the application registered
  * with the drawing involved.\n
