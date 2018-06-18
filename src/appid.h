@@ -130,6 +130,7 @@ int dxf_appid_is_referenced (DxfAppid *appid);
 int dxf_appid_is_no_save_xdata (DxfAppid *appid);
 char *dxf_appid_get_dictionary_owner_soft (DxfAppid *appid);
 DxfAppid *dxf_appid_set_dictionary_owner_soft (DxfAppid *appid, char *dictionary_owner_soft);
+char *dxf_appid_get_object_owner_soft (DxfAppid *appid);
 char *dxf_appid_get_dictionary_owner_hard (DxfAppid *appid);
 DxfAppid *dxf_appid_set_dictionary_owner_hard (DxfAppid *appid, char *dictionary_owner_hard);
 DxfAppid *dxf_appid_get_next (DxfAppid *appid);
