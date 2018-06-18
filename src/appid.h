@@ -1,8 +1,8 @@
 /*!
  * \file appid.h
  *
- * \author Copyright (C) 2008, 20019, 2011, 2012, 2014, 2015, 2016, 2017
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009, 2011, 2012, 2014, 2015, 2016, 2017,
+ * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF application identity symbol table entry
  * (\c APPID).
@@ -98,6 +98,10 @@ dxf_appid_struct
                 /*!< Soft-pointer ID/handle to owner dictionary
                  * (optional).\n
                  * Group code = 330. */
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle  to owner BLOCK_RECORD object.\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R2000. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary
                  * (optional).\n
