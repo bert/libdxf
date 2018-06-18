@@ -7,13 +7,19 @@
  * \brief Header file for a DXF application identity symbol table entry
  * (\c APPID).
  *
- * \version The \c APPID table was introduced in DXF R12.
+ * \since The \c APPID table was introduced in DXF R12.
  *
  * A DXF \c APPID entity contains data concerning the application registered
  * with the drawing involved.\n
  * It is a table entry in the \c TABLES section of the DXF file.
  * These table entries maintain a set of names for all applications
  * registered with a drawing.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -60,12 +66,6 @@ extern "C" {
  *
  * This table entry contains a name for an application
  * registered with a drawing.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_appid_struct
