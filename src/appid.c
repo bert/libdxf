@@ -870,13 +870,13 @@ dxf_appid_get_dictionary_owner_soft
 
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
- * \c APPID entity.
+ * \c APPID symbol table entry.
  */
 DxfAppid *
 dxf_appid_set_dictionary_owner_soft
 (
         DxfAppid *appid,
-                /*!< a pointer to a DXF \c APPID entity. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
                  * dictionary_owner_soft for the entity. */
