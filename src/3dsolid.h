@@ -6,7 +6,7 @@
  *
  * \brief Header file for a DXF 3D solid entity (\c 3DSOLID).
  *
- * \version The \c 3DSOLID entity was introduced in DXF R13.
+ * \since The \c 3DSOLID entity was introduced in DXF R13.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
