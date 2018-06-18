@@ -165,6 +165,7 @@ dxf_appid_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        int iter330;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -184,6 +185,7 @@ dxf_appid_read
                 appid = dxf_appid_new ();
                 appid = dxf_appid_init (appid);
         }
+        iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -221,10 +223,21 @@ dxf_appid_read
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
-                        /* Now follows a string containing Soft-pointer
-                         * ID/handle to owner dictionary. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", appid->dictionary_owner_soft);
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", appid->dictionary_owner_soft);
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", appid->object_owner_soft);
+                        }
+                        iter330++;
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
