@@ -6,7 +6,7 @@
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
- * \version The \c 3DSOLID entity was introduced in DXF R13.
+ * \since The \c 3DSOLID entity was introduced in DXF R13.
  *
  * \warning dxf_3dsolid_new(), dxf_3dsolid_init(), dxf_3dsolid_read()
  * and dxf_3dsolid_free() are backward compatible with versions
