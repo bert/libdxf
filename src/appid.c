@@ -409,6 +409,7 @@ dxf_appid_free
         }
         free (appid->application_name);
         free (appid->dictionary_owner_soft);
+        free (appid->object_owner_soft);
         free (appid->dictionary_owner_hard);
         free (appid);
         appid = NULL;
