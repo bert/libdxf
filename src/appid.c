@@ -130,6 +130,7 @@ dxf_appid_init
         appid->application_name = strdup ("");
         appid->flag = 0;
         appid->dictionary_owner_soft = strdup ("");
+        appid->object_owner_soft = strdup ("");
         appid->dictionary_owner_hard = strdup ("");
         appid->next = NULL;
 #if DEBUG
