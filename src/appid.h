@@ -9,8 +9,8 @@
  *
  * \since The \c APPID table was introduced in DXF R12.
  *
- * A DXF \c APPID entity contains data concerning the application registered
- * with the drawing involved.\n
+ * A DXF \c APPID symbol table entry contains data concerning the
+ * application registered with the drawing involved.\n
  * It is a table entry in the \c TABLES section of the DXF file.
  * These table entries maintain a set of names for all applications
  * registered with a drawing.
@@ -71,7 +71,7 @@ typedef struct
 dxf_appid_struct
 {
         int id_code;
-                /*!< Identification number for the entity.\n
+                /*!< Identification number for the entry.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file.\n
                  * Group code = 5. */
