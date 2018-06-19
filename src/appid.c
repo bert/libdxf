@@ -11,8 +11,8 @@
  *
  * \since The \c APPID table was introduced in DXF R12.
  *
- * A DXF \c APPID entity contains data concerning the application registered
- * with the drawing involved.\n
+ * A DXF \c APPID symbol table entry contains data concerning the
+ * application registered with the drawing involved.\n
  * It is a table entry in the \c TABLES section of the DXF file.\n
  * These table entries maintain a set of names for all applications
  * registered with a drawing.
@@ -498,7 +498,7 @@ dxf_appid_set_id_code
         DxfAppid *appid,
                 /*!< a pointer to a DXF \c APPID symbol table entry. */
         int id_code
-                /*!< Identification number for the entity.\n
+                /*!< Identification number for the symbol table entry.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
 )
@@ -879,7 +879,7 @@ dxf_appid_set_dictionary_owner_soft
                 /*!< a pointer to a DXF \c APPID symbol table entry. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                 * dictionary_owner_soft for the symbol table entry. */
 )
 {
 #if DEBUG
@@ -1030,16 +1030,16 @@ dxf_appid_get_dictionary_owner_hard
 
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
- * \c APPID entity.
+ * \c APPID symbol table entry.
  */
 DxfAppid *
 dxf_appid_set_dictionary_owner_hard
 (
         DxfAppid *appid,
-                /*!< a pointer to a DXF \c APPID entity. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
         char *dictionary_owner_hard
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_hard for the entity. */
+                 * dictionary_owner_hard for the symbol table entry. */
 )
 {
 #if DEBUG
@@ -1069,10 +1069,10 @@ dxf_appid_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the pointer to the next \c APPID entity from a DXF 
- * \c APPID entity.
+ * \brief Get the pointer to the next \c APPID symbol table entry from a DXF 
+ * \c APPID symbol table entry.
  *
- * \return pointer to the next \c APPID entity.
+ * \return pointer to the next \c APPID symbol table entry.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -1080,7 +1080,7 @@ DxfAppid *
 dxf_appid_get_next
 (
         DxfAppid *appid
-                /*!< a pointer to a DXF \c APPID entity. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -1110,15 +1110,16 @@ dxf_appid_get_next
 
 /*!
  * \brief Set the pointer to the next \c APPID for a DXF \c APPID
- * entity.
+ * symbol table entry.
  */
 DxfAppid *
 dxf_appid_set_next
 (
         DxfAppid *appid,
-                /*!< a pointer to a DXF \c APPID entity. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
         DxfAppid *next
-                /*!< a pointer to the next \c APPID for the entity. */
+                /*!< a pointer to the next \c APPID for the symbol table
+                 * entry. */
 )
 {
 #if DEBUG
@@ -1148,10 +1149,10 @@ dxf_appid_set_next
 
 
 /*!
- * \brief Get the pointer to the last \c APPID entity from a linked
- * list of DXF \c APPID entities.
+ * \brief Get the pointer to the last \c APPID symbol table entry from
+ * a linked list of DXF \c APPID symbol table entries.
  *
- * \return pointer to the last \c APPID entity.
+ * \return pointer to the last \c APPID symbol table entry.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -1159,7 +1160,7 @@ DxfAppid *
 dxf_appid_get_last
 (
         DxfAppid *appid
-                /*!< a pointer to a DXF \c APPID entity. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
