@@ -778,6 +778,7 @@ dxf_arc_free
         free (arc->linetype);
         free (arc->layer);
         free (arc->dictionary_owner_soft);
+        free (arc->object_owner_soft);
         free (arc->material);
         free (arc->dictionary_owner_hard);
         free (arc->plot_style_name);
