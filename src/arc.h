@@ -250,6 +250,7 @@ DxfBinaryGraphicsData *dxf_arc_get_binary_graphics_data (DxfArc *arc);
 DxfArc *dxf_arc_set_binary_graphics_data (DxfArc *arc, DxfBinaryGraphicsData *data);
 char *dxf_arc_get_dictionary_owner_soft (DxfArc *arc);
 DxfArc *dxf_arc_set_dictionary_owner_soft (DxfArc *arc, char *dictionary_owner_soft);
+char *dxf_arc_get_object_owner_soft (DxfArc *arc);
 char *dxf_arc_get_material (DxfArc *arc);
 DxfArc *dxf_arc_set_material (DxfArc *arc, char *material);
 char *dxf_arc_get_dictionary_owner_hard (DxfArc *arc);
