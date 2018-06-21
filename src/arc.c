@@ -534,8 +534,8 @@ dxf_arc_write
         }
         if (arc->start_angle > 360.0)
         {
-                fprintf (stderr, "Error in dxf_arc_write () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                fprintf (stderr, "Error in %s () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
+                        __FUNCTION__, dxf_entity_name, arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
@@ -544,8 +544,8 @@ dxf_arc_write
         }
         if (arc->start_angle < 0.0)
         {
-                fprintf (stderr, "Error in dxf_arc_write () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                fprintf (stderr, "Error in %s () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
+                        __FUNCTION__, dxf_entity_name, arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
@@ -554,8 +554,8 @@ dxf_arc_write
         }
         if (arc->end_angle > 360.0)
         {
-                fprintf (stderr, "Error in dxf_arc_write () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                fprintf (stderr, "Error in %s () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
+                        __FUNCTION__, dxf_entity_name, arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
@@ -564,8 +564,8 @@ dxf_arc_write
         }
         if (arc->end_angle < 0.0)
         {
-                fprintf (stderr, "Error in dxf_arc_write () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                fprintf (stderr, "Error in %s () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
+                        __FUNCTION__, dxf_entity_name, arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
@@ -574,8 +574,8 @@ dxf_arc_write
         }
         if (arc->radius == 0.0)
         {
-                fprintf (stderr, "Error in dxf_arc_write () radius value equals 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                fprintf (stderr, "Error in %s () radius value equals 0.0 for the %s entity with id-code: %x.\n",
+                        __FUNCTION__, dxf_entity_name, arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
