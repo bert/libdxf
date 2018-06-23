@@ -122,6 +122,7 @@ dxf_attdef_init
         attdef->binary_graphics_data = dxf_binary_graphics_data_new ();
         attdef->binary_graphics_data = dxf_binary_graphics_data_new (attdef->binary_graphics_data);
         attdef->dictionary_owner_soft = strdup ("");
+        attdef->object_owner_soft = strdup ("");
         attdef->material = strdup ("");
         attdef->dictionary_owner_hard = strdup ("");
         attdef->lineweight = 0.0;
