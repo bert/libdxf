@@ -915,6 +915,7 @@ dxf_attdef_free
         free (attdef->layer);
         dxf_binary_graphics_data_free_chain (attdef->binary_graphics_data);
         free (attdef->dictionary_owner_soft);
+        free (attdef->object_owner_soft);
         free (attdef->material);
         free (attdef->dictionary_owner_hard);
         free (attdef->plot_style_name);
