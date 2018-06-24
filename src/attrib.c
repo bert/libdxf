@@ -925,6 +925,7 @@ dxf_attrib_free
         free (attrib->layer);
         dxf_binary_graphics_data_free_chain (attrib->binary_graphics_data);
         free (attrib->dictionary_owner_soft);
+        free (attrib->object_owner_soft);
         free (attrib->material);
         free (attrib->dictionary_owner_hard);
         free (attrib->plot_style_name);
