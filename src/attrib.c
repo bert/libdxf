@@ -124,6 +124,7 @@ dxf_attrib_init
         attrib->binary_graphics_data = dxf_binary_graphics_data_new ();
         attrib->binary_graphics_data = dxf_binary_graphics_data_new (attrib->binary_graphics_data);
         attrib->dictionary_owner_soft = strdup("");
+        attrib->object_owner_soft = strdup("");
         attrib->material = strdup("");
         attrib->dictionary_owner_hard = strdup("");
         attrib->lineweight = 0;
