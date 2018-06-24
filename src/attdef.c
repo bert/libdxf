@@ -2024,6 +2024,46 @@ dxf_attdef_get_object_owner_soft
 
 
 /*!
+ * \brief Set the pointer to the \c object_owner_soft for a DXF
+ * \c ATTDEF entity.
+ */
+DxfAttdef *
+dxf_attdef_set_object_owner_soft
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        char *object_owner_soft
+                /*!< a string containing the pointer to the
+                 * \c object_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->object_owner_soft = strdup (object_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
+/*!
  * \brief Get the pointer to the \c material from a DXF \c ATTDEF entity.
  *
  * \return a pointer to \c material when successful, or \c NULL when an
