@@ -325,6 +325,7 @@ DxfBinaryGraphicsData *dxf_attdef_get_binary_graphics_data (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_binary_graphics_data (DxfAttdef *attdef, DxfBinaryGraphicsData *data);
 char *dxf_attdef_get_dictionary_owner_soft (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_dictionary_owner_soft (DxfAttdef *attdef, char *dictionary_owner_soft);
+char *dxf_attdef_get_object_owner_soft (DxfAttdef *attdef);
 char *dxf_attdef_get_material (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_material (DxfAttdef *attdef, char *material);
 char *dxf_attdef_get_dictionary_owner_hard (DxfAttdef *attdef);
