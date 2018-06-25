@@ -1667,6 +1667,46 @@ dxf_body_set_dictionary_owner_soft
 
 
 /*!
+ * \brief Get the soft pointer to the object owner from a DXF 
+ * \c BODY entity.
+ *
+ * \return soft pointer to the object owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_body_get_object_owner_soft
+(
+        DxfBody *body
+                /*!< a pointer to a DXF \c BODY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (body->object_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (body->object_owner_soft));
+}
+
+
+/*!
  * \brief Get the pointer to the \c material from a DXF \c BODY
  * entity.
  *
