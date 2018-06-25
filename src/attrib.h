@@ -324,6 +324,7 @@ DxfAttrib *dxf_attrib_set_binary_graphics_data (DxfAttrib *attrib, DxfBinaryGrap
 char *dxf_attrib_get_dictionary_owner_soft (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_dictionary_owner_soft (DxfAttrib *attrib, char *dictionary_owner_soft);
 char *dxf_attrib_get_object_owner_soft (DxfAttrib *attrib);
+DxfAttrib *dxf_attrib_set_object_owner_soft (DxfAttrib *attrib, char *object_owner_soft);
 char *dxf_attrib_get_material (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_material (DxfAttrib *attrib, char *material);
 char *dxf_attrib_get_dictionary_owner_hard (DxfAttrib *attrib);
