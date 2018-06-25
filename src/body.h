@@ -241,6 +241,7 @@ DxfBody *dxf_body_set_binary_graphics_data (DxfBody *body, DxfBinaryGraphicsData
 char *dxf_body_get_dictionary_owner_soft (DxfBody *body);
 DxfBody *dxf_body_set_dictionary_owner_soft (DxfBody *body, char *dictionary_owner_soft);
 char *dxf_body_get_object_owner_soft (DxfBody *body);
+DxfBody *dxf_body_set_object_owner_soft (DxfBody *body, char *object_owner_soft);
 char *dxf_body_get_material (DxfBody *body);
 DxfBody *dxf_body_set_material (DxfBody *body, char *material);
 char *dxf_body_get_dictionary_owner_hard (DxfBody *body);
