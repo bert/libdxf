@@ -125,6 +125,7 @@ dxf_body_init
         body->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
         body->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (body->binary_graphics_data);
         body->dictionary_owner_soft = strdup ("");
+        body->object_owner_soft = strdup ("");
         body->material = strdup ("");
         body->dictionary_owner_hard = strdup ("");
         body->plot_style_name = strdup ("");
