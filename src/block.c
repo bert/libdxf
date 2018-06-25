@@ -127,7 +127,7 @@ dxf_block_init
         block->extr_x0 = 0.0;
         block->extr_y0 = 0.0;
         block->extr_z0 = 0.0;
-        block->dictionary_owner_soft = strdup ("");
+        block->object_owner_soft = strdup ("");
         block->endblk = (struct DxfEndblk *) dxf_endblk_new ();
         block->next = NULL;
 #if DEBUG
@@ -302,7 +302,7 @@ dxf_block_read
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        fscanf (fp->fp, "%s\n", block->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", block->object_owner_soft);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -444,12 +444,12 @@ dxf_block_write
                   dxf_entity_name);
                 block->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (block->dictionary_owner_soft == NULL)
+        if (block->object_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () NULL pointer to soft owner object string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, block->id_code);
-                block->dictionary_owner_soft = strdup ("");
+                block->object_owner_soft = strdup ("");
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -468,10 +468,10 @@ dxf_block_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (block->dictionary_owner_soft, "") != 0)
+        if ((strcmp (block->object_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
-                fprintf (fp->fp, "330\n%s\n", block->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", block->object_owner_soft);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -584,7 +584,7 @@ dxf_block_free
         free (block->block_name_additional);
         free (block->description);
         free (block->layer);
-        free (block->dictionary_owner_soft);
+        free (block->object_owner_soft);
         free (block);
         block = NULL;
 #if DEBUG
@@ -1959,15 +1959,15 @@ dxf_block_set_extrusion_vector
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \brief Get the soft pointer to the object owner from a DXF 
  * \c BLOCK entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return soft pointer to the object owner.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
 char *
-dxf_block_get_dictionary_owner_soft
+dxf_block_get_object_owner_soft
 (
         DxfBlock *block
                 /*!< a pointer to a DXF \c BLOCK entity. */
@@ -1984,7 +1984,7 @@ dxf_block_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        if (block->dictionary_owner_soft ==  NULL)
+        if (block->object_owner_soft ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -1994,22 +1994,22 @@ dxf_block_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (block->dictionary_owner_soft));
+        return (strdup (block->object_owner_soft));
 }
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \brief Set the pointer to the object_owner_soft for a DXF
  * \c BLOCK entity.
  */
 DxfBlock *
-dxf_block_set_dictionary_owner_soft
+dxf_block_set_object_owner_soft
 (
         DxfBlock *block,
                 /*!< a pointer to a DXF \c BLOCK entity. */
-        char *dictionary_owner_soft
+        char *object_owner_soft
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                 * object_owner_soft for the entity. */
 )
 {
 #if DEBUG
@@ -2023,14 +2023,14 @@ dxf_block_set_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dictionary_owner_soft == NULL)
+        if (object_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        block->dictionary_owner_soft = strdup (dictionary_owner_soft);
+        block->object_owner_soft = strdup (object_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif

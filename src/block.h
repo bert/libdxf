@@ -1,8 +1,8 @@
 /*!
  * \file block.h
  *
- * \author Copyright (C) 2008, 2009, 2010, 2012, 2014, 2015, 2016, 2017
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009, 2010, 2012, 2014, 2015, 2016, 2017,
+ * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -130,9 +130,8 @@ dxf_block_struct
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if omitted in the DXF file.\n
                  * Group code = 230. */
-        char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary
-                 * (optional).\n
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle to owner object.\n
                  * Group code = 330. */
         struct DxfEndblk *endblk;
                 /*!< pointer to the end of block marker. */
@@ -187,8 +186,8 @@ double dxf_block_get_extr_z0 (DxfBlock *block);
 DxfBlock *dxf_block_set_extr_z0 (DxfBlock *block, double extr_z0);
 DxfPoint *dxf_block_get_extrusion_vector_as_point (DxfBlock *block);
 DxfBlock *dxf_block_set_extrusion_vector (DxfBlock *block, double extr_x0, double extr_y0, double extr_z0);
-char *dxf_block_get_dictionary_owner_soft (DxfBlock *block);
-DxfBlock *dxf_block_set_dictionary_owner_soft (DxfBlock *block, char *dictionary_owner_soft);
+char *dxf_block_get_object_owner_soft (DxfBlock *block);
+DxfBlock *dxf_block_set_object_owner_soft (DxfBlock *block, char *object_owner_soft);
 struct DxfEndblk *dxf_block_get_endblk (DxfBlock *block);
 DxfBlock *dxf_block_set_endblk (DxfBlock *block, struct DxfEndblk *endblk);
 DxfBlock *dxf_block_get_next (DxfBlock *block);
