@@ -581,6 +581,7 @@ dxf_body_free
         free (body->layer);
         dxf_binary_graphics_data_free_chain (body->binary_graphics_data);
         free (body->dictionary_owner_soft);
+        free (body->object_owner_soft);
         free (body->material);
         free (body->dictionary_owner_hard);
         free (body->plot_style_name);
