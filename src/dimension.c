@@ -1,7 +1,7 @@
 /*!
  * \file dimension.c
  *
- * \author Copyright (C) 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension entity (\c DIMENSION).
@@ -114,55 +114,57 @@ dxf_dimension_init
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_dimension_set_id_code (dimension, 0);
-        dxf_dimension_set_linetype (dimension, strdup (DXF_DEFAULT_LINETYPE));
-        dxf_dimension_set_layer (dimension, strdup (DXF_DEFAULT_LAYER));
-        dxf_dimension_set_elevation (dimension, 0.0);
-        dxf_dimension_set_thickness (dimension, 0.0);
-        dxf_dimension_set_linetype_scale (dimension, DXF_DEFAULT_LINETYPE_SCALE);
-        dxf_dimension_set_visibility (dimension, DXF_DEFAULT_VISIBILITY);
-        dxf_dimension_set_color (dimension, DXF_COLOR_BYLAYER);
-        dxf_dimension_set_paperspace (dimension, DXF_PAPERSPACE);
-        dxf_dimension_set_dictionary_owner_soft (dimension, strdup (""));
-        dxf_dimension_set_dictionary_owner_hard (dimension, strdup (""));
-        dxf_dimension_set_dim_text (dimension, strdup (""));
-        dxf_dimension_set_dimblock_name (dimension, strdup (""));
-        dxf_dimension_set_dimstyle_name (dimension, strdup (""));
-        dxf_dimension_set_x0 (dimension, 0.0);
-        dxf_dimension_set_y0 (dimension, 0.0);
-        dxf_dimension_set_z0 (dimension, 0.0);
-        dxf_dimension_set_x1 (dimension, 0.0);
-        dxf_dimension_set_y1 (dimension, 0.0);
-        dxf_dimension_set_z1 (dimension, 0.0);
-        dxf_dimension_set_x2 (dimension, 0.0);
-        dxf_dimension_set_y2 (dimension, 0.0);
-        dxf_dimension_set_z2 (dimension, 0.0);
-        dxf_dimension_set_x3 (dimension, 0.0);
-        dxf_dimension_set_y3 (dimension, 0.0);
-        dxf_dimension_set_z3 (dimension, 0.0);
-        dxf_dimension_set_x4 (dimension, 0.0);
-        dxf_dimension_set_y4 (dimension, 0.0);
-        dxf_dimension_set_z4 (dimension, 0.0);
-        dxf_dimension_set_x5 (dimension, 0.0);
-        dxf_dimension_set_y5 (dimension, 0.0);
-        dxf_dimension_set_z5 (dimension, 0.0);
-        dxf_dimension_set_x6 (dimension, 0.0);
-        dxf_dimension_set_y6 (dimension, 0.0);
-        dxf_dimension_set_z6 (dimension, 0.0);
-        dxf_dimension_set_leader_length (dimension, 0.0);
-        dxf_dimension_set_text_line_spacing_factor (dimension, 0.0);
-        dxf_dimension_set_actual_measurement (dimension, 0.0);
-        dxf_dimension_set_angle (dimension, 0.0);
-        dxf_dimension_set_hor_dir (dimension, 0.0);
-        dxf_dimension_set_obl_angle (dimension, 0.0);
-        dxf_dimension_set_text_angle (dimension, 0.0);
-        dxf_dimension_set_flag (dimension, 0);
-        dxf_dimension_set_attachment_point (dimension, 0);
-        dxf_dimension_set_text_line_spacing (dimension, 0);
-        dxf_dimension_set_extr_x0 (dimension, 0.0);
-        dxf_dimension_set_extr_y0 (dimension, 0.0);
-        dxf_dimension_set_extr_z0 (dimension, 0.0);
-        dxf_dimension_set_next (dimension, NULL);
+        dimension->id_code = 0;
+        dimension->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dimension->layer = strdup (DXF_DEFAULT_LAYER);
+        dimension->elevation = 0.0;
+        dimension->thickness = 0.0;
+        dimension->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dimension->visibility = DXF_DEFAULT_VISIBILITY;
+        dimension->color = DXF_COLOR_BYLAYER;
+        dimension->paperspace = DXF_PAPERSPACE;
+        dimension->dictionary_owner_soft = strdup ("");
+        dimension->object_owner_soft = strdup ("");
+        dimension->material = strdup ("");
+        dimension->dictionary_owner_hard = strdup ("");
+        dimension->dim_text = strdup ("");
+        dimension->dimblock_name = strdup ("");
+        dimension->dimstyle_name = strdup ("");
+        dimension->p0->x0 = 0.0;
+        dimension->p0->y0 = 0.0;
+        dimension->p0->z0 = 0.0;
+        dimension->p1->x0 = 0.0;
+        dimension->p1->y0 = 0.0;
+        dimension->p1->z0 = 0.0;
+        dimension->p2->x0 = 0.0;
+        dimension->p2->y0 = 0.0;
+        dimension->p2->z0 = 0.0;
+        dimension->p3->x0 = 0.0;
+        dimension->p3->y0 = 0.0;
+        dimension->p3->z0 = 0.0;
+        dimension->p4->x0 = 0.0;
+        dimension->p4->y0 = 0.0;
+        dimension->p4->z0 = 0.0;
+        dimension->p5->x0 = 0.0;
+        dimension->p5->y0 = 0.0;
+        dimension->p5->z0 = 0.0;
+        dimension->p6->x0 = 0.0;
+        dimension->p6->y0 = 0.0;
+        dimension->p6->z0 = 0.0;
+        dimension->leader_length = 0.0;
+        dimension->text_line_spacing_factor = 0.0;
+        dimension->actual_measurement = 0.0;
+        dimension->angle = 0.0;
+        dimension->hor_dir = 0.0;
+        dimension->obl_angle = 0.0;
+        dimension->text_angle = 0.0;
+        dimension->flag = 0;
+        dimension->attachment_point = 0;
+        dimension->text_line_spacing = 0;
+        dimension->extr_x0 = 0.0;
+        dimension->extr_y0 = 0.0;
+        dimension->extr_z0 = 0.0;
+        dimension->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
