@@ -944,11 +944,16 @@ dxf_dimension_free
         }
         free (dimension->linetype);
         free (dimension->layer);
+        dxf_binary_graphics_data_free_chain (dimension->binary_graphics_data);
         free (dimension->dim_text);
         free (dimension->dimblock_name);
         free (dimension->dimstyle_name);
         free (dimension->dictionary_owner_soft);
+        free (dimension->object_owner_soft);
+        free (dimension->material);
         free (dimension->dictionary_owner_hard);
+        free (dimension->plot_style_name);
+        free (dimension->color_name);
         free (dimension);
         dimension = NULL;
 #if DEBUG
