@@ -371,6 +371,7 @@ DxfBinaryGraphicsData *dxf_dimension_get_binary_graphics_data (DxfDimension *dim
 DxfDimension *dxf_dimension_set_binary_graphics_data (DxfDimension *dimension, DxfBinaryGraphicsData *data);
 char *dxf_dimension_get_dictionary_owner_soft (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_dictionary_owner_soft (DxfDimension *dimension, char *dictionary_owner_soft);
+char *dxf_dimension_get_object_owner_soft (DxfDimension *dimension);
 char *dxf_dimension_get_material (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_material (DxfDimension *dimension, char *material);
 char *dxf_dimension_get_dictionary_owner_hard (DxfDimension *dimension);
