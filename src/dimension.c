@@ -812,6 +812,11 @@ dxf_dimension_write
                 fprintf (fp->fp, "360\n%s\n", dimension->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
+        if ((strcmp (dimension->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", dimension->object_owner_soft);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
@@ -825,9 +830,18 @@ dxf_dimension_write
         {
                 fprintf (fp->fp, "  6\n%s\n", dimension->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (dimension->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", dimension->material);
+        }
         if (dimension->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dimension->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", dimension->lineweight);
         }
         if (dimension->linetype_scale != 1.0)
         {
@@ -837,11 +851,44 @@ dxf_dimension_write
         {
                 fprintf (fp->fp, " 60\n%d\n", dimension->visibility);
         }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", dimension->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", dimension->graphics_data_size);
+#endif
+                if (dimension->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) dimension->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", dimension->color_value);
+                fprintf (fp->fp, "430\n%s\n", dimension->color_name);
+                fprintf (fp->fp, "440\n%ld\n", dimension->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", dimension->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", dimension->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbDimension\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dimension->dimblock_name);
+        if (fp->acad_version_number >= AutoCAD_2010)
+        {
+                fprintf (fp->fp, "280\n%d\n", dimension->version_number);
+        }
         fprintf (fp->fp, " 10\n%f\n", dimension->p0->x0);
         fprintf (fp->fp, " 20\n%f\n", dimension->p0->y0);
         fprintf (fp->fp, " 30\n%f\n", dimension->p0->z0);
