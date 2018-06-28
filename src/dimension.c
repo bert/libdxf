@@ -632,6 +632,13 @@ dxf_dimension_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dimension->extr_z0);
                 }
+                else if (strcmp (temp_string, "280") == 0)
+                {
+                        /* Now follows a string containing the version
+                         * number value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dimension->version_number);
+                }
                 else if (strcmp (temp_string, "284") == 0)
                 {
                         /* Now follows a string containing the shadow
