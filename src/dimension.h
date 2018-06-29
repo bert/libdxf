@@ -477,6 +477,7 @@ double dxf_dimension_get_extr_z0 (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_extr_z0 (DxfDimension *dimension, double extr_z0);
 DxfPoint *dxf_dimension_get_extrusion_vector_as_point (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_extrusion_vector (DxfDimension *dimension, double extr_x0, double extr_y0, double extr_z0);
+int16_t dxf_dimension_get_version_number (DxfDimension *dimension);
 DxfDimension *dxf_dimension_get_next (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_next (DxfDimension *dimension, DxfDimension *next);
 DxfDimension *dxf_dimension_get_last (DxfDimension *dimension);

@@ -6351,6 +6351,43 @@ dxf_dimension_set_extrusion_vector
 
 
 /*!
+ * \brief Get the \c version_number from a DXF \c DIMENSION entity.
+ *
+ * \return \c version_number when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_dimension_get_version_number
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dimension->version_number != 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an invalid value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->version_number);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c DIMENSION entity from a DXF 
  * \c DIMENSION entity.
  *
