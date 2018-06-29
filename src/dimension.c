@@ -6388,6 +6388,46 @@ dxf_dimension_get_version_number
 
 
 /*!
+ * \brief Set the \c version_number for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDimension *
+dxf_dimension_set_version_number
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        int16_t version_number
+                /*!< the version_number to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (version_number != 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an invalid value was passed.\n")),
+                  __FUNCTION__);
+        }
+        dimension->version_number = version_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c DIMENSION entity from a DXF 
  * \c DIMENSION entity.
  *
