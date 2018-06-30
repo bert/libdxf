@@ -1,7 +1,7 @@
 /*!
  * \file dimstyle.h
  *
- * \author Copyright (C) 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF dimension style table (\c DIMSTYLE).
@@ -315,6 +315,10 @@ dxf_dimstyle_struct
                  * the dimension line location.</li>
                  * </ol>
                  * Group code = 288. */
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle  to owner BLOCK_RECORD object.\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R2000. */
         char *dimtxsty;
                 /*!< Dimension text style.\n
                  * Group code = 340. */
