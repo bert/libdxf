@@ -66,7 +66,7 @@ dxf_dimension_new ()
         if ((dimension = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDimension struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 dimension = NULL;
         }
@@ -110,7 +110,7 @@ dxf_dimension_init
         if (dimension == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfDimension struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -1266,7 +1266,7 @@ dxf_dimension_get_linetype
         if (dimension->linetype ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1344,7 +1344,7 @@ dxf_dimension_get_layer
         if (dimension->layer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1486,9 +1486,8 @@ dxf_dimension_get_thickness
         if (dimension->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the thickness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1526,9 +1525,8 @@ dxf_dimension_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative thickness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->thickness = thickness;
 #if DEBUG
@@ -1564,9 +1562,8 @@ dxf_dimension_get_linetype_scale
         if (dimension->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1604,9 +1601,8 @@ dxf_dimension_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->linetype_scale = linetype_scale;
 #if DEBUG
@@ -1642,16 +1638,14 @@ dxf_dimension_get_visibility
         if (dimension->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (dimension->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1689,16 +1683,14 @@ dxf_dimension_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->visibility = visibility;
 #if DEBUG
@@ -1734,7 +1726,7 @@ dxf_dimension_get_color
         if (dimension->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1773,7 +1765,7 @@ dxf_dimension_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("\teffectively turning this entity it's visibility off.\n")));
@@ -1813,13 +1805,13 @@ dxf_dimension_get_paperspace
         if (dimension->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (dimension->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1858,16 +1850,14 @@ dxf_dimension_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->paperspace = paperspace;
 #if DEBUG
@@ -1905,13 +1895,13 @@ dxf_dimension_get_graphics_data_size
         if (dimension->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (dimension->graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1951,14 +1941,13 @@ dxf_dimension_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a zero value was passed.\n")),
                   __FUNCTION__);
         }
         dimension->graphics_data_size = graphics_data_size;
@@ -1996,16 +1985,14 @@ dxf_dimension_get_shadow_mode
         if (dimension->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (dimension->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2043,16 +2030,14 @@ dxf_dimension_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->shadow_mode = shadow_mode;
 #if DEBUG
@@ -2092,7 +2077,7 @@ dxf_dimension_get_binary_graphics_data
         if (dimension->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2176,7 +2161,7 @@ dxf_dimension_get_dictionary_owner_soft
         if (dimension->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2339,7 +2324,7 @@ dxf_dimension_get_material
         if (dimension->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2423,7 +2408,7 @@ dxf_dimension_get_dictionary_owner_hard
         if (dimension->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2569,7 +2554,7 @@ dxf_dimension_get_plot_style_name
         if (dimension->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2714,7 +2699,7 @@ dxf_dimension_get_color_name
         if (dimension->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2859,7 +2844,7 @@ dxf_dimension_get_dim_text
         if (dimension->dim_text ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dim_text member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2938,7 +2923,7 @@ dxf_dimension_get_dimblock_name
         if (dimension->dimblock_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dimblock_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3017,7 +3002,7 @@ dxf_dimension_get_dimstyle_name
         if (dimension->dimstyle_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dimstyle_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -5828,9 +5813,8 @@ dxf_dimension_get_flag
         if (dimension->flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the flag member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (DXF_ERROR);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -5868,9 +5852,8 @@ dxf_dimension_set_flag
         if (flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the passed flag.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->flag = flag;
 #if DEBUG
@@ -5905,16 +5888,14 @@ dxf_dimension_get_attachment_point
         if (dimension->attachment_point < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the attachment_point member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-              return (DXF_ERROR);
         }
         if (dimension->attachment_point > 9)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the attachment_point member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-              return (DXF_ERROR);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -5952,16 +5933,14 @@ dxf_dimension_set_attachment_point
         if (attachment_point < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed in the attachment_point.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (attachment_point > 9)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed in the attachment_point.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->attachment_point = attachment_point;
 #if DEBUG
@@ -5996,16 +5975,14 @@ dxf_dimension_get_text_line_spacing
         if (dimension->text_line_spacing < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the text_line_spacing member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-              return (DXF_ERROR);
         }
         if (dimension->text_line_spacing > 2)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the text_line_spacing member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-              return (DXF_ERROR);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -6043,16 +6020,14 @@ dxf_dimension_set_text_line_spacing
         if (text_line_spacing < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed in the text_line_spacing.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (text_line_spacing > 2)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed in the text_line_spacing.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimension->text_line_spacing = text_line_spacing;
 #if DEBUG
@@ -6296,7 +6271,7 @@ dxf_dimension_get_extrusion_vector_as_point
         if (point == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -6540,7 +6515,7 @@ dxf_dimension_get_last
         if (dimension->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfDimension *) dimension);
         }
