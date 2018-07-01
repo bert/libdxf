@@ -1,7 +1,7 @@
 /*!
  * \file dimstyle.c
  *
- * \author Copyright (C) 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension style table (\c DIMSTYLE).
@@ -65,7 +65,7 @@ dxf_dimstyle_new ()
         if ((dimstyle = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDimStyle struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 dimstyle = NULL;
         }
@@ -109,7 +109,7 @@ dxf_dimstyle_init
         if (dimstyle == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfDimStyle struct.\n")),
+                (_("Error in %s () could not allocate memory struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
