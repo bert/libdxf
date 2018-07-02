@@ -1166,6 +1166,13 @@ dxf_dimstyle_get_dimapost
                   __FUNCTION__);
                 return (NULL);
         }
+        if (dimstyle->dimapost == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
