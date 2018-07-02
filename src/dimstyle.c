@@ -1484,7 +1484,7 @@ dxf_dimstyle_set_dimblk2
         if (dimblk2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () the string contained a NULL pointer.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
