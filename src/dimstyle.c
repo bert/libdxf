@@ -1524,9 +1524,8 @@ dxf_dimstyle_get_dimscale
         if (dimstyle->dimscale == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was found in the dimscale member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
