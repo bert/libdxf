@@ -1432,6 +1432,13 @@ dxf_dimstyle_get_dimblk2
                   __FUNCTION__);
                 return (NULL);
         }
+        if (dimstyle->dimblk2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
