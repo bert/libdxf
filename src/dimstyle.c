@@ -1641,9 +1641,8 @@ dxf_dimstyle_set_dimasz
         if (dimasz == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was passed.\n")),
+                  (_("Warning in %s () a zero value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         dimstyle->dimasz = dimasz;
 #if DEBUG
