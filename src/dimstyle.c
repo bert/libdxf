@@ -1602,9 +1602,8 @@ dxf_dimstyle_get_dimasz
         if (dimstyle->dimasz == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was found in the dimasz member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
