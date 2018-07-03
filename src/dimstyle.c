@@ -1563,7 +1563,7 @@ dxf_dimstyle_set_dimscale
         if (dimscale == 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a value of zero was passed.\n")),
+                  (_("Warning in %s () a zero value was passed.\n")),
                   __FUNCTION__);
         }
         dimstyle->dimscale = dimscale;
