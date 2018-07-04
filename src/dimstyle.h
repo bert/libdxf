@@ -315,6 +315,10 @@ dxf_dimstyle_struct
                  * the dimension line location.</li>
                  * </ol>
                  * Group code = 288. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R14. */
         char *object_owner_soft;
                 /*!< Soft-pointer ID/handle  to owner BLOCK_RECORD object.\n
                  * Group code = 330.\n
@@ -322,6 +326,10 @@ dxf_dimstyle_struct
         char *dimtxsty;
                 /*!< Dimension text style.\n
                  * Group code = 340. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360.\n
+                 * \since Introduced in version R14. */
         struct DxfDimStyle *next;
                 /*!< Pointer to the next DxfDimStyle.\n
                  * \c NULL in the last DxfDimStyle. */
