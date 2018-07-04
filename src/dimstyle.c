@@ -5223,6 +5223,46 @@ dxf_dimstyle_get_object_owner_soft
 
 
 /*!
+ * \brief Set the pointer to the \c object_owner_soft for a DXF
+ * \c DIMSTYLE symbol table.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_object_owner_soft
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+        char *object_owner_soft
+                /*!< a string containing the pointer to the
+                 * \c object_owner_soft for the symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->object_owner_soft = strdup (object_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
+/*!
  * \brief Get the dimension text style value (\c dimtxsty) from a DXF
  * dimension style symbol table (\c DIMSTYLE).
  *
