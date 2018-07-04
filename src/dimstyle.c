@@ -915,12 +915,12 @@ dxf_dimstyle_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_dimstyle_get_dimstyle_name (dimstyle));
-        free (dxf_dimstyle_get_dimpost (dimstyle));
-        free (dxf_dimstyle_get_dimapost (dimstyle));
-        free (dxf_dimstyle_get_dimblk (dimstyle));
-        free (dxf_dimstyle_get_dimblk1 (dimstyle));
-        free (dxf_dimstyle_get_dimblk2 (dimstyle));
+        free (dimstyle->dimstyle_name);
+        free (dimstyle->dimpost);
+        free (dimstyle->dimapost);
+        free (dimstyle->dimblk);
+        free (dimstyle->dimblk1);
+        free (dimstyle->dimblk2);
         free (dimstyle);
         dimstyle = NULL;
 #if DEBUG
