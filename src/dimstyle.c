@@ -202,7 +202,7 @@ dxf_dimstyle_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_dimstyle_get_dimstyle_name (dimstyle), "") == 0)
+        if (strcmp (dimstyle->dimstyle_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () dimstyle_name value is empty for the %s entity.\n")),
@@ -214,7 +214,7 @@ dxf_dimstyle_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (!dxf_dimstyle_get_dimstyle_name (dimstyle))
+        if (!dimstyle->dimstyle_name)
         {
                 fprintf (stderr,
                   (_("Error in %s () dimstyle_name value is NULL for the %s entity.\n")),
@@ -232,25 +232,25 @@ dxf_dimstyle_write
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dimstyle->id_code);
         }
-        if (!dxf_dimstyle_get_dimpost (dimstyle))
+        if (!dimstyle->dimpost)
         {
-                dxf_dimstyle_set_dimpost (dimstyle, strdup (""));
+                dimstyle->dimpost = strdup ("");
         }
-        if (!dxf_dimstyle_get_dimapost (dimstyle))
+        if (!dimstyle->dimapost)
         {
-                dxf_dimstyle_set_dimapost (dimstyle, strdup (""));
+                dimstyle->dimapost = strdup ("");
         }
-        if (!dxf_dimstyle_get_dimblk (dimstyle))
+        if (!dimstyle->dimblk)
         {
-                dxf_dimstyle_set_dimblk (dimstyle, strdup (""));
+                dimstyle->dimblk = strdup ("");
         }
-        if (!dxf_dimstyle_get_dimblk1 (dimstyle))
+        if (!dimstyle->dimblk1)
         {
-                dxf_dimstyle_set_dimblk1 (dimstyle, strdup (""));
+                dimstyle->dimblk1 = strdup ("");
         }
-        if (!dxf_dimstyle_get_dimblk2 (dimstyle))
+        if (!dimstyle->dimblk2)
         {
-                dxf_dimstyle_set_dimblk2 (dimstyle, strdup (""));
+                dimstyle->dimblk2 = strdup ("");
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
