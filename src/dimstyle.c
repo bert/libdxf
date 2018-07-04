@@ -154,7 +154,9 @@ dxf_dimstyle_init
         dimstyle->dimclrd = DXF_COLOR_BYLAYER;
         dimstyle->dimclre = DXF_COLOR_BYLAYER;
         dimstyle->dimclrt = DXF_COLOR_BYLAYER;
+        dimstyle->dictionary_owner_soft = strdup ("");
         dimstyle->object_owner_soft = strdup ("");
+        dimstyle->dictionary_owner_hard = strdup ("");
         dimstyle->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
