@@ -402,6 +402,7 @@ dxf_dimstyle_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        int iter330;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -421,6 +422,7 @@ dxf_dimstyle_read
                 dimstyle = dxf_dimstyle_new ();
                 dimstyle = dxf_dimstyle_init (dimstyle);
         }
+        iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -887,12 +889,37 @@ dxf_dimstyle_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dimstyle->dimupt);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", dimstyle->dictionary_owner_soft);
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", dimstyle->object_owner_soft);
+                        }
+                        iter330++;
+                }
                 else if (strcmp (temp_string, "340") == 0)
                 {
                         /* Now follows a string containing dimension
                          * text style. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dimstyle->dimtxsty);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dimstyle->dictionary_owner_hard);
                 }
         }
         /* Handle omitted members and/or illegal values. */
