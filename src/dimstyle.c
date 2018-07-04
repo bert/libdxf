@@ -980,6 +980,9 @@ dxf_dimstyle_free
         free (dimstyle->dimblk);
         free (dimstyle->dimblk1);
         free (dimstyle->dimblk2);
+        free (dimstyle->dictionary_owner_soft);
+        free (dimstyle->object_owner_soft);
+        free (dimstyle->dictionary_owner_hard);
         free (dimstyle);
         dimstyle = NULL;
 #if DEBUG
