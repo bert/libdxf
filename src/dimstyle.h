@@ -448,6 +448,7 @@ int dxf_dimstyle_get_dimfit (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimfit (DxfDimStyle *dimstyle, int dimfit);
 int dxf_dimstyle_get_dimupt (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimupt (DxfDimStyle *dimstyle, int dimupt);
+char *dxf_dimstyle_get_object_owner_soft (DxfDimStyle *dimstyle);
 char *dxf_dimstyle_get_dimtxsty (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimtxsty (DxfDimStyle *dimstyle, char *dimtxsty);
 DxfDimStyle *dxf_dimstyle_get_next (DxfDimStyle *dimstyle);
