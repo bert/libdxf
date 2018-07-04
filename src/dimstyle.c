@@ -254,9 +254,9 @@ dxf_dimstyle_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_dimstyle_get_id_code (dimstyle) != -1)
+        if (dimstyle->id_code != -1)
         {
-                fprintf (fp->fp, "105\n%x\n", dxf_dimstyle_get_id_code (dimstyle));
+                fprintf (fp->fp, "105\n%x\n", dimstyle->id_code);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -266,75 +266,75 @@ dxf_dimstyle_write
         {
                 fprintf (fp->fp, "100\nAcDbDimStyleTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_dimstyle_get_dimstyle_name (dimstyle));
-        fprintf (fp->fp, " 70\n%d\n", dxf_dimstyle_get_flag (dimstyle));
-        fprintf (fp->fp, "  3\n%s\n", dxf_dimstyle_get_dimpost (dimstyle));
-        fprintf (fp->fp, "  4\n%s\n", dxf_dimstyle_get_dimapost (dimstyle));
+        fprintf (fp->fp, "  2\n%s\n", dimstyle->dimstyle_name);
+        fprintf (fp->fp, " 70\n%d\n", dimstyle->flag);
+        fprintf (fp->fp, "  3\n%s\n", dimstyle->dimpost);
+        fprintf (fp->fp, "  4\n%s\n", dimstyle->dimapost);
         if (fp->acad_version_number < AutoCAD_2000)
         {
-                fprintf (fp->fp, "  5\n%s\n", dxf_dimstyle_get_dimblk (dimstyle));
+                fprintf (fp->fp, "  5\n%s\n", dimstyle->dimblk);
         }
         if (fp->acad_version_number < AutoCAD_2000)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_dimstyle_get_dimblk1 (dimstyle));
+                fprintf (fp->fp, "  6\n%s\n", dimstyle->dimblk1);
         }
         if (fp->acad_version_number < AutoCAD_2000)
         {
-                fprintf (fp->fp, "  7\n%s\n", dxf_dimstyle_get_dimblk2 (dimstyle));
+                fprintf (fp->fp, "  7\n%s\n", dimstyle->dimblk2);
         }
-        fprintf (fp->fp, " 40\n%f\n", dxf_dimstyle_get_dimscale (dimstyle));
-        fprintf (fp->fp, " 41\n%f\n", dxf_dimstyle_get_dimasz (dimstyle));
-        fprintf (fp->fp, " 42\n%f\n", dxf_dimstyle_get_dimexo (dimstyle));
-        fprintf (fp->fp, " 43\n%f\n", dxf_dimstyle_get_dimdli (dimstyle));
-        fprintf (fp->fp, " 44\n%f\n", dxf_dimstyle_get_dimexe (dimstyle));
-        fprintf (fp->fp, " 45\n%f\n", dxf_dimstyle_get_dimrnd (dimstyle));
-        fprintf (fp->fp, " 46\n%f\n", dxf_dimstyle_get_dimdle (dimstyle));
-        fprintf (fp->fp, " 47\n%f\n", dxf_dimstyle_get_dimtp (dimstyle));
-        fprintf (fp->fp, " 48\n%f\n", dxf_dimstyle_get_dimtm (dimstyle));
-        fprintf (fp->fp, "140\n%f\n", dxf_dimstyle_get_dimtxt (dimstyle));
-        fprintf (fp->fp, "141\n%f\n", dxf_dimstyle_get_dimcen (dimstyle));
-        fprintf (fp->fp, "142\n%f\n", dxf_dimstyle_get_dimtsz (dimstyle));
-        fprintf (fp->fp, "143\n%f\n", dxf_dimstyle_get_dimaltf (dimstyle));
-        fprintf (fp->fp, "144\n%f\n", dxf_dimstyle_get_dimlfac (dimstyle));
-        fprintf (fp->fp, "145\n%f\n", dxf_dimstyle_get_dimtvp (dimstyle));
-        fprintf (fp->fp, "146\n%f\n", dxf_dimstyle_get_dimtfac (dimstyle));
-        fprintf (fp->fp, "147\n%f\n", dxf_dimstyle_get_dimgap (dimstyle));
-        fprintf (fp->fp, " 71\n%d\n", dxf_dimstyle_get_dimtol (dimstyle));
-        fprintf (fp->fp, " 72\n%d\n", dxf_dimstyle_get_dimlim (dimstyle));
-        fprintf (fp->fp, " 73\n%d\n", dxf_dimstyle_get_dimtih (dimstyle));
-        fprintf (fp->fp, " 74\n%d\n", dxf_dimstyle_get_dimtoh (dimstyle));
-        fprintf (fp->fp, " 75\n%d\n", dxf_dimstyle_get_dimse1 (dimstyle));
-        fprintf (fp->fp, " 76\n%d\n", dxf_dimstyle_get_dimse2 (dimstyle));
-        fprintf (fp->fp, " 77\n%d\n", dxf_dimstyle_get_dimtad (dimstyle));
-        fprintf (fp->fp, " 78\n%d\n", dxf_dimstyle_get_dimzin (dimstyle));
-        fprintf (fp->fp, "170\n%d\n", dxf_dimstyle_get_dimalt (dimstyle));
-        fprintf (fp->fp, "171\n%d\n", dxf_dimstyle_get_dimaltd (dimstyle));
-        fprintf (fp->fp, "172\n%d\n", dxf_dimstyle_get_dimtofl (dimstyle));
-        fprintf (fp->fp, "173\n%d\n", dxf_dimstyle_get_dimsah (dimstyle));
-        fprintf (fp->fp, "174\n%d\n", dxf_dimstyle_get_dimtix (dimstyle));
-        fprintf (fp->fp, "175\n%d\n", dxf_dimstyle_get_dimsoxd (dimstyle));
-        fprintf (fp->fp, "176\n%d\n", dxf_dimstyle_get_dimclrd (dimstyle));
-        fprintf (fp->fp, "177\n%d\n", dxf_dimstyle_get_dimclre (dimstyle));
-        fprintf (fp->fp, "178\n%d\n", dxf_dimstyle_get_dimclrt (dimstyle));
+        fprintf (fp->fp, " 40\n%f\n", dimstyle->dimscale);
+        fprintf (fp->fp, " 41\n%f\n", dimstyle->dimasz);
+        fprintf (fp->fp, " 42\n%f\n", dimstyle->dimexo);
+        fprintf (fp->fp, " 43\n%f\n", dimstyle->dimdli);
+        fprintf (fp->fp, " 44\n%f\n", dimstyle->dimexe);
+        fprintf (fp->fp, " 45\n%f\n", dimstyle->dimrnd);
+        fprintf (fp->fp, " 46\n%f\n", dimstyle->dimdle);
+        fprintf (fp->fp, " 47\n%f\n", dimstyle->dimtp);
+        fprintf (fp->fp, " 48\n%f\n", dimstyle->dimtm);
+        fprintf (fp->fp, "140\n%f\n", dimstyle->dimtxt);
+        fprintf (fp->fp, "141\n%f\n", dimstyle->dimcen);
+        fprintf (fp->fp, "142\n%f\n", dimstyle->dimtsz);
+        fprintf (fp->fp, "143\n%f\n", dimstyle->dimaltf);
+        fprintf (fp->fp, "144\n%f\n", dimstyle->dimlfac);
+        fprintf (fp->fp, "145\n%f\n", dimstyle->dimtvp);
+        fprintf (fp->fp, "146\n%f\n", dimstyle->dimtfac);
+        fprintf (fp->fp, "147\n%f\n", dimstyle->dimgap);
+        fprintf (fp->fp, " 71\n%d\n", dimstyle->dimtol);
+        fprintf (fp->fp, " 72\n%d\n", dimstyle->dimlim);
+        fprintf (fp->fp, " 73\n%d\n", dimstyle->dimtih);
+        fprintf (fp->fp, " 74\n%d\n", dimstyle->dimtoh);
+        fprintf (fp->fp, " 75\n%d\n", dimstyle->dimse1);
+        fprintf (fp->fp, " 76\n%d\n", dimstyle->dimse2);
+        fprintf (fp->fp, " 77\n%d\n", dimstyle->dimtad);
+        fprintf (fp->fp, " 78\n%d\n", dimstyle->dimzin);
+        fprintf (fp->fp, "170\n%d\n", dimstyle->dimalt);
+        fprintf (fp->fp, "171\n%d\n", dimstyle->dimaltd);
+        fprintf (fp->fp, "172\n%d\n", dimstyle->dimtofl);
+        fprintf (fp->fp, "173\n%d\n", dimstyle->dimsah);
+        fprintf (fp->fp, "174\n%d\n", dimstyle->dimtix);
+        fprintf (fp->fp, "175\n%d\n", dimstyle->dimsoxd);
+        fprintf (fp->fp, "176\n%d\n", dimstyle->dimclrd);
+        fprintf (fp->fp, "177\n%d\n", dimstyle->dimclre);
+        fprintf (fp->fp, "178\n%d\n", dimstyle->dimclrt);
         if ((fp->acad_version_number >= AutoCAD_13)
           && (fp->acad_version_number < AutoCAD_2000))
         {
-                fprintf (fp->fp, "270\n%d\n", dxf_dimstyle_get_dimunit (dimstyle));
-                fprintf (fp->fp, "271\n%d\n", dxf_dimstyle_get_dimdec (dimstyle));
-                fprintf (fp->fp, "272\n%d\n", dxf_dimstyle_get_dimtdec (dimstyle));
-                fprintf (fp->fp, "273\n%d\n", dxf_dimstyle_get_dimaltu (dimstyle));
-                fprintf (fp->fp, "274\n%d\n", dxf_dimstyle_get_dimalttd (dimstyle));
-                fprintf (fp->fp, "340\n%s\n", dxf_dimstyle_get_dimtxsty (dimstyle));
-                fprintf (fp->fp, "275\n%d\n", dxf_dimstyle_get_dimaunit (dimstyle));
-                fprintf (fp->fp, "280\n%d\n", dxf_dimstyle_get_dimjust (dimstyle));
-                fprintf (fp->fp, "281\n%d\n", dxf_dimstyle_get_dimsd1 (dimstyle));
-                fprintf (fp->fp, "282\n%d\n", dxf_dimstyle_get_dimsd2 (dimstyle));
-                fprintf (fp->fp, "283\n%d\n", dxf_dimstyle_get_dimtolj (dimstyle));
-                fprintf (fp->fp, "284\n%d\n", dxf_dimstyle_get_dimtzin (dimstyle));
-                fprintf (fp->fp, "285\n%d\n", dxf_dimstyle_get_dimaltz (dimstyle));
-                fprintf (fp->fp, "286\n%d\n", dxf_dimstyle_get_dimalttz (dimstyle));
-                fprintf (fp->fp, "287\n%d\n", dxf_dimstyle_get_dimfit (dimstyle));
-                fprintf (fp->fp, "288\n%d\n", dxf_dimstyle_get_dimupt (dimstyle));
+                fprintf (fp->fp, "270\n%d\n", dimstyle->dimunit);
+                fprintf (fp->fp, "271\n%d\n", dimstyle->dimdec);
+                fprintf (fp->fp, "272\n%d\n", dimstyle->dimtdec);
+                fprintf (fp->fp, "273\n%d\n", dimstyle->dimaltu);
+                fprintf (fp->fp, "274\n%d\n", dimstyle->dimalttd);
+                fprintf (fp->fp, "340\n%s\n", dimstyle->dimtxsty);
+                fprintf (fp->fp, "275\n%d\n", dimstyle->dimaunit);
+                fprintf (fp->fp, "280\n%d\n", dimstyle->dimjust);
+                fprintf (fp->fp, "281\n%d\n", dimstyle->dimsd1);
+                fprintf (fp->fp, "282\n%d\n", dimstyle->dimsd2);
+                fprintf (fp->fp, "283\n%d\n", dimstyle->dimtolj);
+                fprintf (fp->fp, "284\n%d\n", dimstyle->dimtzin);
+                fprintf (fp->fp, "285\n%d\n", dimstyle->dimaltz);
+                fprintf (fp->fp, "286\n%d\n", dimstyle->dimalttz);
+                fprintf (fp->fp, "287\n%d\n", dimstyle->dimfit);
+                fprintf (fp->fp, "288\n%d\n", dimstyle->dimupt);
                 fprintf (fp->fp, "  0\nENDTAB\n");
         }
         /* Clean up. */
