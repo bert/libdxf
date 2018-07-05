@@ -1599,6 +1599,9 @@ dxf_dimstyle_get_dimscale
 /*!
  * \brief Set the overall dimensioning scale factor value (\c dimscale)
  * for a DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimscale
@@ -1677,6 +1680,9 @@ dxf_dimstyle_get_dimasz
 /*!
  * \brief Set the dimensioning arrow size value (\c dimasz) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimasz
@@ -1749,6 +1755,9 @@ dxf_dimstyle_get_dimexo
 /*!
  * \brief Set the extension line offset value (\c dimexo) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimexo
@@ -1815,6 +1824,9 @@ dxf_dimstyle_get_dimdli
 /*!
  * \brief Set the dimension line increment value (\c dimdli) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimdli
@@ -1881,6 +1893,9 @@ dxf_dimstyle_get_dimexe
 /*!
  * \brief Set the extension line extension value (\c dimexe) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimexe
@@ -1947,6 +1962,9 @@ dxf_dimstyle_get_dimrnd
 /*!
  * \brief Set the rounding value for dimension distances (\c dimrnd)
  * for a DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimrnd
@@ -2013,6 +2031,9 @@ dxf_dimstyle_get_dimdle
 /*!
  * \brief Set the dimension line extension value (\c dimdle) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimdle
@@ -2079,6 +2100,9 @@ dxf_dimstyle_get_dimtp
 /*!
  * \brief Set the plus tolerance value (\c dimtp) for a DXF dimension
  * style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtp
@@ -2145,6 +2169,9 @@ dxf_dimstyle_get_dimtm
 /*!
  * \brief Set the minus tolerance value (\c dimtm) for a DXF dimension
  * style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtm
@@ -2215,6 +2242,9 @@ dxf_dimstyle_get_flag
 /*!
  * \brief Set the flag value (\c flag) for this DXF dimension style
  * symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_flag
@@ -2284,6 +2314,9 @@ dxf_dimstyle_get_dimtol
 /*!
  * \brief Set the dimension tolerances value (\c dimtol) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtol
@@ -2350,6 +2383,9 @@ dxf_dimstyle_get_dimlim
 /*!
  * \brief Set the dimension limits value (\c dimlim) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimlim
@@ -2416,6 +2452,9 @@ dxf_dimstyle_get_dimtih
 /*!
  * \brief Set the text inside horizontal value (\c dimtih) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtih
@@ -2482,6 +2521,9 @@ dxf_dimstyle_get_dimtoh
 /*!
  * \brief Set the text outside horizontal value (\c dimtoh) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtoh
@@ -2548,6 +2590,9 @@ dxf_dimstyle_get_dimse1
 /*!
  * \brief Set the first extension line suppressed value (\c dimse1) for
  * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimse1
@@ -2614,6 +2659,9 @@ dxf_dimstyle_get_dimse2
 /*!
  * \brief Set the second extension line suppressed value (\c dimse2) for
  * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimse2
@@ -2680,6 +2728,9 @@ dxf_dimstyle_get_dimtad
 /*!
  * \brief Set the text above dimension line value (\c dimtad) for
  * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtad
@@ -2747,6 +2798,9 @@ dxf_dimstyle_get_dimzin
 /*!
  * \brief Set the zero suppression for "feet & inch" dimensions value
  * (\c dimzin) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimzin
@@ -2812,6 +2866,9 @@ dxf_dimstyle_get_id_code
 /*!
  * \brief Set the ID code for this DXF dimenstion style symbol table
  * (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_id_code
@@ -2879,6 +2936,9 @@ dxf_dimstyle_get_dimtxt
 /*!
  * \brief Set the dimensioning text height value (\c dimtxt) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtxt
@@ -2945,6 +3005,9 @@ dxf_dimstyle_get_dimcen
 /*!
  * \brief Set the size of center mark/lines value (\c dimcen) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimcen
@@ -3011,6 +3074,9 @@ dxf_dimstyle_get_dimtsz
 /*!
  * \brief Set the dimensioning tick size value (\c dimtsz) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtsz
@@ -3077,6 +3143,9 @@ dxf_dimstyle_get_dimaltf
 /*!
  * \brief Set the alternate unit scale factor value (\c dimaltf) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimaltf
@@ -3143,6 +3212,9 @@ dxf_dimstyle_get_dimlfac
 /*!
  * \brief Set the linear measurements scale factor value (\c dimlfac)
  * for a DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimlfac
@@ -3209,6 +3281,10 @@ dxf_dimstyle_get_dimtvp
 /*!
  * \brief Set the text vertical position value (\c dimtvp) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
+
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtvp
@@ -3275,6 +3351,9 @@ dxf_dimstyle_get_dimtfac
 /*!
  * \brief Set the dimension tolerance display scale factor value
  * (\c dimtfac) for a DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtfac
@@ -3341,6 +3420,9 @@ dxf_dimstyle_get_dimgap
 /*!
  * \brief Set the dimension line gap value (\c dimgap) for a DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimgap
@@ -3407,6 +3489,9 @@ dxf_dimstyle_get_dimalt
 /*!
  * \brief Set the alternate unit dimensioning value (\c dimalt) for this
  * DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimalt
@@ -3473,6 +3558,9 @@ dxf_dimstyle_get_dimaltd
 /*!
  * \brief Set the alternate unit decimal places value (\c dimaltd) for
  * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimaltd
@@ -3540,6 +3628,9 @@ dxf_dimstyle_get_dimtofl
 /*!
  * \brief Set the text outside extensions, force line extensions value
  * (\c dimtofl) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtofl
@@ -3606,6 +3697,9 @@ dxf_dimstyle_get_dimsah
 /*!
  * \brief Set the use separate arrow blocks value (\c dimsah) for this
  * DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimsah
@@ -3672,6 +3766,9 @@ dxf_dimstyle_get_dimtix
 /*!
  * \brief Set the force text inside extensions value (\c dimtix) for
  * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtix
@@ -3739,6 +3836,9 @@ dxf_dimstyle_get_dimsoxd
 /*!
  * \brief Set the suppress outside-extensions dimension lines value
  * (\c dimsoxd) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimsoxd
@@ -3805,6 +3905,9 @@ dxf_dimstyle_get_dimclrd
 /*!
  * \brief Set the dimension line color value (\c dimclrd) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimclrd
@@ -3871,6 +3974,9 @@ dxf_dimstyle_get_dimclre
 /*!
  * \brief Set the dimension extension line color value (\c dimclre) for
  * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimclre
@@ -3937,6 +4043,9 @@ dxf_dimstyle_get_dimclrt
 /*!
  * \brief Set the dimension text color value (\c dimclrt) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimclrt
@@ -4015,6 +4124,9 @@ dxf_dimstyle_get_dimunit
 /*!
  * \brief Set the dimension units format value (\c dimunit) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimunit
@@ -4096,6 +4208,9 @@ dxf_dimstyle_get_dimdec
  * \brief Set the number of decimal places for the tolerance values of a
  * primary units dimension value (\c dimdec) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimdec
@@ -4166,6 +4281,9 @@ dxf_dimstyle_get_dimtdec
  * \brief Set the number of decimal places to display the tolerance
  * values (\c dimtdec) for this DXF dimension style symbol table
  * (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtdec
@@ -4233,6 +4351,9 @@ dxf_dimstyle_get_dimaltu
 /*!
  * \brief Set the units format for alternate units value (\c dimaltu)
  * for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimaltu
@@ -4302,6 +4423,9 @@ dxf_dimstyle_get_dimalttd
  * \brief Set the number of decimal places for tolerance values of an
  * alternate units dimension value (\c dimalttd) for this DXF dimension
  * style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimalttd
@@ -4382,6 +4506,9 @@ dxf_dimstyle_get_dimaunit
 /*!
  * \brief Set the angle format for angular dimensions value
  * (\c dimaunit) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimaunit
@@ -4472,6 +4599,9 @@ dxf_dimstyle_get_dimjust
 /*!
  * \brief Set the horizontal dimension text position value (\c dimjust)
  * for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimjust
@@ -4562,6 +4692,9 @@ dxf_dimstyle_get_dimsd1
 /*!
  * \brief Set the suppression of first extension line value (\c dimsd1)
  * for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimsd1
@@ -4653,6 +4786,9 @@ dxf_dimstyle_get_dimsd2
 /*!
  * \brief Set the suppression of the second extension line value
  * (\c dimsd2) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimsd2
@@ -4743,6 +4879,9 @@ dxf_dimstyle_get_dimtolj
 /*!
  * \brief Set the vertical justification for tolerance value
  * (\c dimtolj) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtolj
@@ -4833,6 +4972,9 @@ dxf_dimstyle_get_dimtzin
 /*!
  * \brief Set the suppression of zeros for tolerance value
  * (\c dimtzin) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtzin
@@ -4926,6 +5068,9 @@ dxf_dimstyle_get_dimaltz
  * \brief Set the toggle suppression of zeros for alternate unit
  * dimension value (\c dimaltz) for this DXF dimension style symbol
  * table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimaltz
@@ -5020,6 +5165,9 @@ dxf_dimstyle_get_dimalttz
  * \brief Set the toggle suppression of zeros for tolerance units
  * value (\c dimalttz) for this DXF dimension style symbol table
  * (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimalttz
@@ -5110,6 +5258,9 @@ dxf_dimstyle_get_dimfit
 /*!
  * \brief Set the placement of text and arrowheads value (\c dimfit) for
  * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimfit
@@ -5201,6 +5352,9 @@ dxf_dimstyle_get_dimupt
 /*!
  * \brief Set the cursor functionality for user positioned text value
  * (\c dimupt) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimupt
@@ -5287,6 +5441,9 @@ dxf_dimstyle_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c DIMSTYLE symbol table entry.
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dictionary_owner_soft
@@ -5367,6 +5524,9 @@ dxf_dimstyle_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c DIMSTYLE symbol table.
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_object_owner_soft
@@ -5529,6 +5689,9 @@ dxf_dimstyle_get_dimtxsty
 /*!
  * \brief Set the dimension text style value (\c dimtxsty) for this DXF
  * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_dimtxsty
@@ -5611,6 +5774,9 @@ dxf_dimstyle_get_next
 /*!
  * \brief Set the pointer to the next \c DIMSTYLE for a DXF \c DIMSTYLE
  * dimension style symbol table.
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDimStyle *
 dxf_dimstyle_set_next
