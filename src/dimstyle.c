@@ -5245,6 +5245,46 @@ dxf_dimstyle_set_dimupt
 
 
 /*!
+ * \brief Get the soft pointer to the \c dictionary_owner_soft from a
+ * DXF \c DIMSTYLE symbol table entry.
+ *
+ * \return a pointer to the \c dictionary_owner_soft.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_dimstyle_get_dictionary_owner_soft
+(
+        DxfDimStyle *dimstyle
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimstyle->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (dimstyle->dictionary_owner_soft));
+}
+
+
+/*!
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c DIMSTYLE symbol table.
  *
