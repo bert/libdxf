@@ -109,7 +109,7 @@ dxf_dimstyle_init
         if (dimstyle == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
