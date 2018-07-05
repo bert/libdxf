@@ -5445,6 +5445,49 @@ dxf_dimstyle_get_dictionary_owner_hard
 
 
 /*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c DIMSTYLE symbol table entry.
+ *
+ * \return a pointer to \c dimstyle when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dictionary_owner_hard
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table entry. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
+/*!
  * \brief Get the dimension text style value (\c dimtxsty) from a DXF
  * dimension style symbol table (\c DIMSTYLE).
  *
