@@ -460,6 +460,7 @@ char *dxf_dimstyle_get_dictionary_owner_soft (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dictionary_owner_soft (DxfDimStyle *dimstyle, char *dictionary_owner_soft);
 char *dxf_dimstyle_get_object_owner_soft (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_object_owner_soft (DxfDimStyle *dimstyle, char *object_owner_soft);
+char *dxf_dimstyle_get_dictionary_owner_hard (DxfDimStyle *dimstyle);
 char *dxf_dimstyle_get_dimtxsty (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimtxsty (DxfDimStyle *dimstyle, char *dimtxsty);
 DxfDimStyle *dxf_dimstyle_get_next (DxfDimStyle *dimstyle);
