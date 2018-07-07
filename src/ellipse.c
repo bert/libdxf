@@ -567,11 +567,20 @@ dxf_ellipse_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (ellipse->ratio == 0.0)
+        if (ellipse->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, ellipse->id_code);
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (ellipse->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
@@ -595,6 +604,12 @@ dxf_ellipse_write
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (ellipse->ratio == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, ellipse->id_code);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -625,6 +640,11 @@ dxf_ellipse_write
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
                 fprintf (fp->fp, "360\n%s\n", ellipse->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (ellipse->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", ellipse->object_owner_soft);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -662,16 +682,45 @@ dxf_ellipse_write
         {
                 fprintf (fp->fp, " 60\n%d\n", ellipse->visibility);
         }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", ellipse->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", ellipse->graphics_data_size);
+#endif
+                if (ellipse->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) ellipse->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", ellipse->color_value);
+                fprintf (fp->fp, "430\n%s\n", ellipse->color_name);
+                fprintf (fp->fp, "440\n%ld\n", ellipse->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", ellipse->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", ellipse->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEllipse\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", ellipse->x0);
-        fprintf (fp->fp, " 20\n%f\n", ellipse->y0);
-        fprintf (fp->fp, " 30\n%f\n", ellipse->z0);
-        fprintf (fp->fp, " 11\n%f\n", ellipse->x1);
-        fprintf (fp->fp, " 21\n%f\n", ellipse->y1);
-        fprintf (fp->fp, " 31\n%f\n", ellipse->z1);
+        fprintf (fp->fp, " 10\n%f\n", ellipse->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", ellipse->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", ellipse->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", ellipse->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", ellipse->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", ellipse->p1->z0);
         fprintf (fp->fp, " 210\n%f\n", ellipse->extr_x0);
         fprintf (fp->fp, " 220\n%f\n", ellipse->extr_y0);
         fprintf (fp->fp, " 230\n%f\n", ellipse->extr_z0);
