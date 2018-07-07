@@ -771,8 +771,15 @@ dxf_ellipse_free
         }
         free (ellipse->linetype);
         free (ellipse->layer);
+        dxf_binary_graphics_data_free_chain (ellipse->binary_graphics_data);
         free (ellipse->dictionary_owner_soft);
+        free (ellipse->object_owner_soft);
+        free (ellipse->material);
         free (ellipse->dictionary_owner_hard);
+        free (ellipse->plot_style_name);
+        free (ellipse->color_name);
+        dxf_point_free_chain (ellipse->p0);
+        dxf_point_free_chain (ellipse->p1);
         free (ellipse);
         ellipse = NULL;
 #if DEBUG
