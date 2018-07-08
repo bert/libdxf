@@ -1183,13 +1183,14 @@ dxf_ellipse_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c ELLIPSE entity.
  *
- * \return linetype scale.
+ * \return \c linetype_scale if successful, \c EXIT_FAILURE when an
+ * error occcured.
  */
 double
 dxf_ellipse_get_linetype_scale
 (
         DxfEllipse *ellipse
-                /*!< a pointer to a DXF \c ARC entity. */
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
 )
 {
 #if DEBUG
