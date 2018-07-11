@@ -3192,6 +3192,18 @@ dxf_ellipse_get_end_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (ellipse->end_angle < -360.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (ellipse->end_angle > 360.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
