@@ -3490,7 +3490,7 @@ dxf_ellipse_get_extrusion_vector_as_point
         if (point == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
