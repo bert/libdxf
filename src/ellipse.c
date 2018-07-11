@@ -3064,6 +3064,18 @@ dxf_ellipse_set_ratio
                   __FUNCTION__);
                 return (NULL);
         }
+        if (ratio < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (ratio == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
         ellipse->ratio = ratio;
 #if DEBUG
         DXF_DEBUG_END
