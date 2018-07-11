@@ -3110,13 +3110,13 @@ dxf_ellipse_get_start_angle
         if (ellipse->start_angle < -360.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative out of range value was passed.\n")),
+                  (_("Warning in %s () a negative out of range value was found.\n")),
                   __FUNCTION__);
         }
         if (ellipse->start_angle > 360.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
