@@ -111,9 +111,9 @@ dxf_endblk_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_endblk_set_id_code (endblk, 0);
-        dxf_endblk_set_layer (endblk, strdup (DXF_DEFAULT_LAYER));
-        dxf_endblk_set_dictionary_owner_soft (endblk, strdup (""));
+        endblk->id_code = 0;
+        endblk->layer = strdup (DXF_DEFAULT_LAYER);
+        endblk->dictionary_owner_soft = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
