@@ -64,7 +64,7 @@ dxf_endblk_new ()
         if ((endblk = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfEndblk struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 endblk = NULL;
         }
