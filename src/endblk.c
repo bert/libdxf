@@ -6,6 +6,12 @@
  *
  * \brief Functions for a DXF end of block marker entity (\c ENDBLK).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -42,12 +48,6 @@
  * Fill the memory contents with zeros.
  *
  * \return Pointer to the memory occupied by the \c DxfEndblk.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEndblk *
 dxf_endblk_new ()
@@ -85,12 +85,6 @@ dxf_endblk_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEndblk *
 dxf_endblk_init
@@ -137,12 +131,6 @@ dxf_endblk_init
  * While parsing the DXF file store data in \c endblk. \n
  *
  * \return a pointer to \c endblk.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  *
  * \todo After reading information from the \c BLOCK entity up until the
  * closing Group code 0, the pointer to the following \c ENDBLK entity
@@ -243,12 +231,6 @@ dxf_endblk_read
  * (a DXF \c ENDBLK entity).
  *
  * Appears only in \c BLOCKS section.\n
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_endblk_write
@@ -312,12 +294,6 @@ dxf_endblk_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_endblk_free
@@ -352,12 +328,6 @@ dxf_endblk_free
  * \brief Get the ID code from a DxfEndblk (a DXF \c ENDBLK entity).
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_endblk_get_id_code
@@ -396,12 +366,6 @@ dxf_endblk_get_id_code
 
 /*!
  * \brief Set the ID code for a DxfEndblk (a DXF \c ENDBLK entity).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEndblk *
 dxf_endblk_set_id_code
@@ -444,12 +408,6 @@ dxf_endblk_set_id_code
  * \brief Get the layer from a DxfEndblk (a DXF \c ENDBLK entity).
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_endblk_get_layer
@@ -488,12 +446,6 @@ dxf_endblk_get_layer
 
 /*!
  * \brief Set the layer for a DxfEndblk (a DXF \c ENDBLK entity).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEndblk *
 dxf_endblk_set_layer
@@ -537,12 +489,6 @@ dxf_endblk_set_layer
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_endblk_get_dictionary_owner_soft
@@ -582,12 +528,6 @@ dxf_endblk_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DxfEndblk
  * (a DXF \c ENDBLK entity).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEndblk *
 dxf_endblk_set_dictionary_owner_soft

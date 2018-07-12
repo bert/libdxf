@@ -6,6 +6,12 @@
  *
  * \brief Header file for a DXF end of block marker entity (\c ENDBLK).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -65,12 +71,6 @@ extern "C" {
  * External References are written in the DXF file as any Block Definition,
  * except they also include a text string (group code 1) of the path and
  * filename of the External Reference.\n
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_endblk_struct
