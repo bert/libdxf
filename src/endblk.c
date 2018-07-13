@@ -352,9 +352,8 @@ dxf_endblk_get_id_code
         if (endblk->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         result = endblk->id_code;
 #if DEBUG
