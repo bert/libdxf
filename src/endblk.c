@@ -263,7 +263,7 @@ dxf_endblk_write
         fprintf (fp->fp, "  0\nENDBLK\n");
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_endblk_get_id_code (endblk));
+                fprintf (fp->fp, "  5\n%x\n", endblk->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -278,7 +278,7 @@ dxf_endblk_write
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "  8\n%s\n", dxf_endblk_get_layer (endblk));
+                fprintf (fp->fp, "  8\n%s\n", endblk->layer);
                 fprintf (fp->fp, "100\nAcDbBlockEnd\n");
         }
 #if DEBUG
