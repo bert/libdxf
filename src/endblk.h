@@ -84,8 +84,8 @@ dxf_endblk_struct
                 /*!< Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
-        char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle to owner object
                  * (optional).\n
                  * Group code = 330. */
 } DxfEndblk;
@@ -100,8 +100,8 @@ int dxf_endblk_get_id_code (DxfEndblk *endblk);
 DxfEndblk *dxf_endblk_set_id_code (DxfEndblk *endblk, int id_code);
 char *dxf_endblk_get_layer (DxfEndblk *endblk);
 DxfEndblk *dxf_endblk_set_layer (DxfEndblk *endblk, char *layer);
-char *dxf_endblk_get_dictionary_owner_soft (DxfEndblk *endblk);
-DxfEndblk *dxf_endblk_set_dictionary_owner_soft (DxfEndblk *endblk, char *dictionary_owner_soft);
+char *dxf_endblk_get_object_owner_soft (DxfEndblk *endblk);
+DxfEndblk *dxf_endblk_set_object_owner_soft (DxfEndblk *endblk, char *object_owner_soft);
 
 
 #ifdef __cplusplus

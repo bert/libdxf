@@ -113,7 +113,7 @@ dxf_endblk_init
         }
         endblk->id_code = 0;
         endblk->layer = strdup (DXF_DEFAULT_LAYER);
-        endblk->dictionary_owner_soft = strdup ("");
+        endblk->object_owner_soft = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -197,7 +197,7 @@ dxf_endblk_read
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        fscanf (fp->fp, "%s\n", endblk->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", endblk->object_owner_soft);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -314,7 +314,7 @@ dxf_endblk_free
                 return (EXIT_FAILURE);
         }
         free (dxf_endblk_get_layer (endblk));
-        free (dxf_endblk_get_dictionary_owner_soft (endblk));
+        free (dxf_endblk_get_object_owner_soft (endblk));
         free (endblk);
         endblk = NULL;
 #if DEBUG
@@ -481,15 +481,15 @@ dxf_endblk_set_layer
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DxfEndblk
+ * \brief Get the soft pointer to the object owner from a DxfEndblk
  * (a DXF \c ENDBLK entity).
  *
- * \return soft pointer to the dictionary owner.
+ * \return soft pointer to the object owner.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
 char *
-dxf_endblk_get_dictionary_owner_soft
+dxf_endblk_get_object_owner_soft
 (
         DxfEndblk *endblk
                 /*!< a pointer to a DxfEndblk (a DXF \c ENDBLK entity). */
@@ -508,14 +508,14 @@ dxf_endblk_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        if (endblk->dictionary_owner_soft ==  NULL)
+        if (endblk->object_owner_soft ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (endblk->dictionary_owner_soft);
+        result = strdup (endblk->object_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -524,17 +524,17 @@ dxf_endblk_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DxfEndblk
+ * \brief Set the pointer to the object_owner_soft for a DxfEndblk
  * (a DXF \c ENDBLK entity).
  */
 DxfEndblk *
-dxf_endblk_set_dictionary_owner_soft
+dxf_endblk_set_object_owner_soft
 (
         DxfEndblk *endblk,
                 /*!< a pointer to a DxfEndblk (a DXF \c ENDBLK entity). */
-        char *dictionary_owner_soft
+        char *object_owner_soft
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                 * \c object_owner_soft for the entity. */
 )
 {
 #if DEBUG
@@ -548,14 +548,14 @@ dxf_endblk_set_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dictionary_owner_soft == NULL)
+        if (object_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        endblk->dictionary_owner_soft = strdup (dictionary_owner_soft);
+        endblk->object_owner_soft = strdup (object_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
