@@ -318,8 +318,8 @@ dxf_endblk_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_endblk_get_layer (endblk));
-        free (dxf_endblk_get_object_owner_soft (endblk));
+        free (endblk->layer);
+        free (endblk->object_owner_soft);
         free (endblk);
         endblk = NULL;
 #if DEBUG
