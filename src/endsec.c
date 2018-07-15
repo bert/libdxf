@@ -63,7 +63,7 @@ dxf_endsec_write
         if (fp == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
