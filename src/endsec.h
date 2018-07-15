@@ -44,11 +44,7 @@ extern "C" {
 #endif
 
 
-int
-dxf_endsec_write
-(
-        DxfFile *fp
-);
+int dxf_endsec_write (DxfFile *fp);
 
 
 #ifdef __cplusplus
