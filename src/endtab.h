@@ -50,11 +50,7 @@ extern "C" {
 #endif
 
 
-int
-dxf_endtab_write
-(
-        DxfFile *fp
-);
+int dxf_endtab_write (DxfFile *fp);
 
 
 #ifdef __cplusplus
