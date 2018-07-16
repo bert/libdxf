@@ -1,7 +1,8 @@
 /*!
  * \file endtab.c
  *
- * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014, 2015, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF end of table marker (\c ENDTAB).
  *
