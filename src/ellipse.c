@@ -1883,6 +1883,46 @@ dxf_ellipse_get_object_owner_soft
 
 
 /*!
+ * \brief Set the pointer to the \c object_owner_soft for a DXF
+ * \c ELLIPSE entity.
+ */
+DxfEllipse *
+dxf_ellipse_set_object_owner_soft
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        char *object_owner_soft
+                /*!< a string containing the pointer to the
+                 * \c object_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->object_owner_soft = strdup (object_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
+/*!
  * \brief Get the pointer to the \c material from a DXF \c ELLIPSE entity.
  *
  * \return a pointer to \c material when successful, or \c NULL when an

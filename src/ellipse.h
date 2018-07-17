@@ -276,6 +276,7 @@ DxfEllipse *dxf_ellipse_set_binary_graphics_data (DxfEllipse *ellipse, DxfBinary
 char *dxf_ellipse_get_dictionary_owner_soft (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_dictionary_owner_soft (DxfEllipse *ellipse, char *dictionary_owner_soft);
 char *dxf_ellipse_get_object_owner_soft (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_object_owner_soft (DxfEllipse *ellipse, char *object_owner_soft);
 char *dxf_ellipse_get_material (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_material (DxfEllipse *ellipse, char *material);
 char *dxf_ellipse_get_dictionary_owner_hard (DxfEllipse *ellipse);
