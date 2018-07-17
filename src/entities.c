@@ -1,7 +1,8 @@
 /*!
  * \file entities.c
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012, 2014, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF entities section (/c ENTITIES).
  *
