@@ -110,7 +110,7 @@ dxf_ellipse_init
         if (ellipse == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfEllipse struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
