@@ -1,7 +1,10 @@
 /*!
  * \file file.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
+ * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
  * \brief Functions for the handling of DXF files.
  *

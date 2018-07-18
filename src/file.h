@@ -1,7 +1,10 @@
 /*!
  * \file file.h
  *
- * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2010, 2012, 2014, 2016, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
+ * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
  * \brief Header for the handling of DXF files.
  *
