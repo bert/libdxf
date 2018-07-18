@@ -97,11 +97,7 @@ dxf_entity_type
 } DxfEntityType;
 
 
-int
-dxf_entity_skip
-(
-        char *dxf_entity_name
-);
+int dxf_entity_skip (char *dxf_entity_name);
 
 
 #ifdef __cplusplus
