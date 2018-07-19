@@ -489,9 +489,8 @@ dxf_group_get_id_code
         if (group->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         result = group->id_code;
 #if DEBUG
