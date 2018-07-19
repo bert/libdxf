@@ -57,7 +57,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD group object (\c GROUP).
  */
 typedef struct
-dxf_group
+dxf_group_struct
 {
         /* Members common for all DXF group objects. */
         int id_code;
