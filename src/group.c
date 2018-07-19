@@ -63,7 +63,7 @@ dxf_group_new ()
         if ((group = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfGroup struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 group = NULL;
         }
