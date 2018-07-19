@@ -67,10 +67,16 @@ dxf_group
                  * Group code = 5. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
-                 * Group code = 330. */
+                 * Group code = 330.\n
+                 * \since Introduced in version R14. */
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle  to owner BLOCK_RECORD object.\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R2000. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
+                 * Group code = 360.\n
+                 * \since Introduced in version R14. */
         /* Specific members for a DXF group. */
         int unnamed_flag;
                 /*!< "Unnamed" flag.\n
