@@ -115,6 +115,7 @@ int dxf_group_get_id_code (DxfGroup *group);
 DxfGroup *dxf_group_set_id_code (DxfGroup *group, int id_code);
 char *dxf_group_get_dictionary_owner_soft (DxfGroup *group);
 DxfGroup *dxf_group_set_dictionary_owner_soft (DxfGroup *group, char *dictionary_owner_soft);
+char *dxf_group_get_object_owner_soft (DxfGroup *group);
 char *dxf_group_get_dictionary_owner_hard (DxfGroup *group);
 DxfGroup *dxf_group_set_dictionary_owner_hard (DxfGroup *group, char *dictionary_owner_hard);
 int dxf_group_get_unnamed_flag (DxfGroup *group);
