@@ -856,7 +856,7 @@ dxf_group_set_unnamed_flag
         if (unnamed_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative unnamed flag value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         group->unnamed_flag = unnamed_flag;
