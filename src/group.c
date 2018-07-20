@@ -813,13 +813,13 @@ dxf_group_get_unnamed_flag
         if (group->unnamed_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the unnamed_flag member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (group->unnamed_flag > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the unnamed_flag member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
         result = group->unnamed_flag;
