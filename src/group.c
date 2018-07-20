@@ -895,13 +895,13 @@ dxf_group_get_selectability_flag
         if (group->selectability_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the selectability_flag member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (group->selectability_flag > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the selectability_flag member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
         result = group->selectability_flag;
