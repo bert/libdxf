@@ -938,13 +938,13 @@ dxf_group_set_selectability_flag
         if (selectability_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative selectability flag value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         if (selectability_flag > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range selectability flag value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
         }
         group->selectability_flag = selectability_flag;
