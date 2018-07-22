@@ -876,8 +876,6 @@ dxf_group_get_selectability_flag
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (group == NULL)
         {
@@ -898,11 +896,10 @@ dxf_group_get_selectability_flag
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
-        result = group->selectability_flag;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (group->selectability_flag);
 }
 
 
