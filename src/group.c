@@ -476,8 +476,6 @@ dxf_group_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (group == NULL)
         {
@@ -492,11 +490,10 @@ dxf_group_get_id_code
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        result = group->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (group->id_code);
 }
 
 
