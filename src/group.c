@@ -797,8 +797,6 @@ dxf_group_get_unnamed_flag
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (group == NULL)
         {
@@ -819,11 +817,10 @@ dxf_group_get_unnamed_flag
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
-        result = group->unnamed_flag;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (group->unnamed_flag);
 }
 
 
