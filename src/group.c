@@ -1116,8 +1116,6 @@ dxf_group_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfGroup *result;
-
         /* Do some basic checks. */
         if (group == NULL)
         {
@@ -1133,11 +1131,10 @@ dxf_group_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfGroup *) group->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfGroup *) group->next);
 }
 
 
