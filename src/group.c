@@ -970,8 +970,6 @@ dxf_group_get_description
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (group == NULL)
         {
@@ -983,15 +981,14 @@ dxf_group_get_description
         if (group->description ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the description member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (group->description);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (group->description));
 }
 
 
