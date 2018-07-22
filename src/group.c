@@ -1037,8 +1037,6 @@ dxf_group_get_handle_entity_in_group
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (group == NULL)
         {
@@ -1050,15 +1048,14 @@ dxf_group_get_handle_entity_in_group
         if (group->handle_entity_in_group ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the handle_entity_in_group member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (group->handle_entity_in_group);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (group->handle_entity_in_group));
 }
 
 
