@@ -674,6 +674,7 @@ DxfBinaryGraphicsData *dxf_hatch_get_binary_graphics_data (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_binary_graphics_data (DxfHatch *hatch, DxfBinaryGraphicsData *data);
 char *dxf_hatch_get_dictionary_owner_soft (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_dictionary_owner_soft (DxfHatch *hatch, char *dictionary_owner_soft);
+char *dxf_hatch_get_object_owner_soft (DxfHatch *hatch);
 char *dxf_hatch_get_dictionary_owner_hard (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_dictionary_owner_hard (DxfHatch *hatch, char *dictionary_owner_hard);
 char *dxf_hatch_get_pattern_name (DxfHatch *hatch);
