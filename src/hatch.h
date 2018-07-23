@@ -676,6 +676,7 @@ char *dxf_hatch_get_dictionary_owner_soft (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_dictionary_owner_soft (DxfHatch *hatch, char *dictionary_owner_soft);
 char *dxf_hatch_get_object_owner_soft (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_object_owner_soft (DxfHatch *hatch, char *object_owner_soft);
+char *dxf_hatch_get_material (DxfHatch *hatch);
 char *dxf_hatch_get_dictionary_owner_hard (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_dictionary_owner_hard (DxfHatch *hatch, char *dictionary_owner_hard);
 char *dxf_hatch_get_pattern_name (DxfHatch *hatch);

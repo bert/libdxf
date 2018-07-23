@@ -1478,6 +1478,46 @@ dxf_hatch_set_object_owner_soft
 
 
 /*!
+ * \brief Get the pointer to the \c material from a DXF \c HATCH entity.
+ *
+ * \return a pointer to \c material when successful, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_hatch_get_material
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (hatch->material ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (hatch->material));
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c HATCH entity.
  *
