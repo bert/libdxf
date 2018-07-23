@@ -1306,7 +1306,7 @@ dxf_hatch_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        hatch->binary_graphics_data = (struct DxfBinaryGraphicsData *) data;
+        hatch->binary_graphics_data = (DxfBinaryGraphicsData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
