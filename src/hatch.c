@@ -1438,6 +1438,46 @@ dxf_hatch_get_object_owner_soft
 
 
 /*!
+ * \brief Set the pointer to the \c object_owner_soft for a DXF
+ * \c HATCH entity.
+ */
+DxfHatch *
+dxf_hatch_set_object_owner_soft
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH entity. */
+        char *object_owner_soft
+                /*!< a string containing the pointer to the
+                 * \c object_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->object_owner_soft = strdup (object_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c HATCH entity.
  *
