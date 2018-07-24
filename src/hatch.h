@@ -681,6 +681,7 @@ DxfHatch *dxf_hatch_set_material (DxfHatch *hatch, char *material);
 char *dxf_hatch_get_dictionary_owner_hard (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_dictionary_owner_hard (DxfHatch *hatch, char *dictionary_owner_hard);
 int16_t dxf_hatch_get_lineweight (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_lineweight (DxfHatch *hatch, int16_t lineweight);
 char *dxf_hatch_get_pattern_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_pattern_name (DxfHatch *hatch, char *pattern_name);
 double dxf_hatch_get_x0 (DxfHatch *hatch);

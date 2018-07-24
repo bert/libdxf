@@ -1674,6 +1674,40 @@ dxf_hatch_get_lineweight
 
 
 /*!
+ * \brief Set the \c lineweight for a DXF \c HATCH entity.
+ *
+ * \return a pointer to \c hatch when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfHatch *
+dxf_hatch_set_lineweight
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
+/*!
  * \brief Get the pattern name from a DXF \c HATCH entity.
  *
  * \return pattern name when sucessful, \c NULL when an error occurred.
