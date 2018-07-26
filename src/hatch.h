@@ -688,6 +688,7 @@ long dxf_hatch_get_color_value (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_color_value (DxfHatch *hatch, long color_value);
 char *dxf_hatch_get_color_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_color_name (DxfHatch *hatch, char *color_name);
+long dxf_hatch_get_transparency (DxfHatch *hatch);
 char *dxf_hatch_get_pattern_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_pattern_name (DxfHatch *hatch, char *pattern_name);
 double dxf_hatch_get_x0 (DxfHatch *hatch);
