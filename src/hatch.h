@@ -684,6 +684,7 @@ int16_t dxf_hatch_get_lineweight (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_lineweight (DxfHatch *hatch, int16_t lineweight);
 char *dxf_hatch_get_plot_style_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_plot_style_name (DxfHatch *hatch, char *plot_style_name);
+long dxf_hatch_get_color_value (DxfHatch *hatch);
 char *dxf_hatch_get_pattern_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_pattern_name (DxfHatch *hatch, char *pattern_name);
 double dxf_hatch_get_x0 (DxfHatch *hatch);
