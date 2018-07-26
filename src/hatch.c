@@ -1819,6 +1819,40 @@ dxf_hatch_get_color_value
 
 
 /*!
+ * \brief Set the \c color_value for a DXF \c HATCH entity.
+ *
+ * \return a pointer to \c hatch when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfHatch *
+dxf_hatch_set_color_value
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
+/*!
  * \brief Get the pattern name from a DXF \c HATCH entity.
  *
  * \return pattern name when sucessful, \c NULL when an error occurred.
