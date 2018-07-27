@@ -385,16 +385,19 @@ dxf_hatch_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (hatch->pattern_name);
         free (hatch->linetype);
         free (hatch->layer);
-        free (hatch->def_lines);
-        free (hatch->paths);
-        free (hatch->seed_points);
         dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) hatch->binary_graphics_data);
-        dxf_hatch_pattern_free_chain ((DxfHatchPattern *) hatch->patterns);
         free (hatch->dictionary_owner_soft);
+        free (hatch->material);
         free (hatch->dictionary_owner_hard);
+        free (hatch->plot_style_name);
+        free (hatch->color_name);
+        free (hatch->pattern_name);
+        dxf_hatch_boundary_path_free_chain ((DxfHatchBoundaryPath *) hatch->paths);
+        dxf_hatch_pattern_free_chain ((DxfHatchPattern *) hatch->patterns);
+        dxf_hatch_pattern_def_line_free_chain ((DxfHatchPatternDefLine *) hatch->def_lines);
+        dxf_hatch_pattern_seedpoint_free_chain ((DxfHatchPatternSeedPoint *) hatch->seed_points);
         free (hatch);
         hatch = NULL;
 #if DEBUG
