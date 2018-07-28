@@ -134,9 +134,11 @@ dxf_hatch_init
         hatch->color_name = strdup ("");
         hatch->transparency = 0;
         hatch->pattern_name = strdup ("");
-        hatch->x0 = 0.0;
-        hatch->y0 = 0.0;
-        hatch->z0 = 0.0;
+        hatch->p0 = dxf_point_new ();
+        hatch->p0 = dxf_point_init (hatch->p0);
+        hatch->p0->x0 = 0.0;
+        hatch->p0->y0 = 0.0;
+        hatch->p0->z0 = 0.0;
         hatch->pattern_scale = 1.0;
         hatch->pixel_size = 1.0;
         hatch->pattern_angle = 0.0;
