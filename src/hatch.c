@@ -179,7 +179,6 @@ dxf_hatch_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("HATCH");
-        DxfBinaryGraphicsData *data = NULL;
         DxfHatchPatternDefLine *line = NULL;
         DxfHatchPatternSeedPoint *point = NULL;
 
