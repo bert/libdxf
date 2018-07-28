@@ -212,6 +212,15 @@ dxf_hatch_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (hatch->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         if (strcmp (hatch->layer, "") == 0)
         {
                 fprintf (stderr,
