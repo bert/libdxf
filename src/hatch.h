@@ -563,6 +563,9 @@ dxf_hatch_struct
         /* Specific members for a DXF hatch. */
         char *pattern_name;
                 /*!< group code = 2. */
+        DxfPoint *p0;
+                /*!< Base point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< Base point.\n
                  * Group code = 10. */
