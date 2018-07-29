@@ -695,6 +695,7 @@ long dxf_hatch_get_transparency (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_transparency (DxfHatch *hatch, long transparency);
 char *dxf_hatch_get_pattern_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_pattern_name (DxfHatch *hatch, char *pattern_name);
+DxfPoint *dxf_hatch_get_p0 (DxfHatch *hatch);
 double dxf_hatch_get_x0 (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_x0 (DxfHatch *hatch, double x0);
 double dxf_hatch_get_y0 (DxfHatch *hatch);

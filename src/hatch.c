@@ -2134,6 +2134,43 @@ dxf_hatch_set_pattern_name
 
 
 /*!
+ * \brief Get the base point of a DXF \c HATCH entity.
+ *
+ * \return the base point \c p0.
+ */
+DxfPoint *
+dxf_hatch_get_p0
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (hatch->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch->p0);
+}
+
+
+/*!
  * \brief Get the base point X-value from a DXF \c HATCH.
  *
  * \return base point X-value.
