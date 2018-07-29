@@ -350,9 +350,9 @@ dxf_hatch_write
                 fprintf (fp->fp, "284\n%d\n", hatch->shadow_mode);
         }
         fprintf (fp->fp, "100\nAcDbHatch\n");
-        fprintf (fp->fp, " 10\n%f\n", hatch->x0);
-        fprintf (fp->fp, " 20\n%f\n", hatch->y0);
-        fprintf (fp->fp, " 30\n%f\n", hatch->z0);
+        fprintf (fp->fp, " 10\n%f\n", hatch->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", hatch->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", hatch->p0->z0);
         fprintf (fp->fp, "210\n%f\n", hatch->extr_x0);
         fprintf (fp->fp, "220\n%f\n", hatch->extr_y0);
         fprintf (fp->fp, "230\n%f\n", hatch->extr_z0);
