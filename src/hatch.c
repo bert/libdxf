@@ -2301,8 +2301,6 @@ dxf_hatch_get_y0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -2311,11 +2309,17 @@ dxf_hatch_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->y0;
+        if (hatch->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->p0->y0);
 }
 
 
