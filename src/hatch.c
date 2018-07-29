@@ -2171,6 +2171,47 @@ dxf_hatch_get_p0
 
 
 /*!
+ * \brief Set the base point \c p0 of a DXF \c HATCH entity.
+ *
+ * \return a pointer to \c hatch when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfHatch *
+dxf_hatch_set_p0
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->p0 = (DxfPoint *) point;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
+/*!
  * \brief Get the base point X-value from a DXF \c HATCH.
  *
  * \return base point X-value.
