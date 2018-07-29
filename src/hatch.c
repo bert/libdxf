@@ -437,6 +437,7 @@ dxf_hatch_free
         free (hatch->plot_style_name);
         free (hatch->color_name);
         free (hatch->pattern_name);
+        dxf_point_free ((DxfPoint *) hatch->p0);
         dxf_hatch_boundary_path_free_chain ((DxfHatchBoundaryPath *) hatch->paths);
         dxf_hatch_pattern_free_chain ((DxfHatchPattern *) hatch->patterns);
         dxf_hatch_pattern_def_line_free_chain ((DxfHatchPatternDefLine *) hatch->def_lines);
