@@ -2421,7 +2421,14 @@ dxf_hatch_set_z0
                   __FUNCTION__);
                 return (NULL);
         }
-        hatch->z0 = z0;
+        if (hatch->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->p0->z0 = z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
