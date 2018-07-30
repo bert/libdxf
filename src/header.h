@@ -50,7 +50,7 @@ extern "C" {
 
 
 typedef struct
-dxf_header
+dxf_header_struct
 {
         int id_code;
                 /*!< group code = 5. */
