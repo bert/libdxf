@@ -1,7 +1,7 @@
 /*!
  * \file header.h
  *
- * \author Copyright (C) 2008, 2009, 2010, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2008, 2009, 2010, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
