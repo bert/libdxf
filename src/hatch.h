@@ -566,15 +566,6 @@ dxf_hatch_struct
         DxfPoint *p0;
                 /*!< Base point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< Base point.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Base point.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Base point.\n
-                 * Group code = 30. */
         double pattern_scale;
                 /*!< Pattern fill only.\n
                  * Group code 41. */
