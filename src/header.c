@@ -10,6 +10,12 @@
  *
  * \brief DXF header section.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -48,12 +54,6 @@
  * \brief Allocate memory for a \c DxfHeader.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHeader *
 dxf_header_new ()
