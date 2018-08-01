@@ -130,11 +130,18 @@ dxf_header_struct
         char *CLayer;
                 /*!< */
         char *CELType;
-                /*!< */
+                /*!< Entity linetype name, or BYBLOCK or BYLAYER.\n
+                 * Group code = 6. */
         int CEColor;
-                /*!< */
+                /*!< Current entity color number:
+                 * <ol>
+                 *   <li value = 0> BYBLOCK.</li>
+                 *   <li value = 256> BYLAYER. </li>
+                 * </ol>
+                 * Group code = 62. */
         double CELTScale;
-                /*!< */
+                /*!< Current entity linetype scale.\n
+                 * Group code = 40. */
         int DelObj;
                 /*!< */
         int DispSilH;
@@ -224,8 +231,12 @@ dxf_header_struct
         int LUPrec; /*!< */
         double Sketchinc; /*!< */
         double FilletRad; /*!< */
-        int AUnits; /*!< */
-        int AUPrec; /*!< */
+        int AUnits;
+                /*!< Units format for angles.\n
+                 * Group code = 70. */
+        int AUPrec;
+                /*!< Units precision for angles.\n
+                 * Group code = 70. */
         char *Menu; /*!< */
         double Elevation; /*!< */
         double PElevation; /*!< */
@@ -245,7 +256,7 @@ dxf_header_struct
         double TDUSRTimer; /*!< */
         int USRTimer; /*!< */
         double AngBase;
-                /*!< Angle 0 direction. \n
+                /*!< Angle 0 direction.\n
                  * Group code = 50. */
         int AngDir;
                 /*!< <ol>
@@ -328,7 +339,9 @@ dxf_header_struct
         int ProxyGraphics; /*!< */
         int Measurement; /*!< */
         int SaveImages; /*!< */
-        int CELWeight; /*!< */
+        int CELWeight;
+                /*!< Lineweight of new objects.\n
+                 * Group code = 370. */
         int EndCaps; /*!< */
         int JoinStyle; /*!< */
         int LWDisplay; /*!< */
@@ -337,6 +350,10 @@ dxf_header_struct
         char *StyleSheet; /*!< */
         int XEdit; /*!< */
         int CEPSNType; /*!< */
+        char *CEPSNID;
+                /*!< Plotstyle handle of new objects; if CEPSNTYPE is 3,
+                 * then this value indicates the handle.\n
+                 * Group code = 390. */
         int PStyleMode; /*!< */
         char *FingerPrintGUID; /*!< */
         char *VersionGUID; /*!< */
@@ -355,8 +372,10 @@ dxf_header_struct
         int DimASSOC; /*!< */
         char *ProjectName; /*!< */
 
-        DxfPoint GridUnit; /*!< Grid X and Y spacing  */
-        int GridMode; /*!< Grid mode on if nonzero */
+        DxfPoint GridUnit;
+                /*!< Grid X and Y spacing  */
+        int GridMode;
+                /*!< Grid mode on if nonzero */
 } DxfHeader;
 
 
