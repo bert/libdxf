@@ -59,17 +59,34 @@ typedef struct
 dxf_header_struct
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
         char *AcadVer;
                 /*!< */
         int _AcadVer;
-                /*!< */
+                /*!< The AutoCAD drawing database version number:
+                 * <ul>
+                 *   <li>AC1006 = R10.</li>
+                 *   <li>AC1009 = R11 and R12.</li>
+                 *   <li>AC1012 = R13.</li>
+                 *   <li>AC1014 = R14.</li>
+                 *   <li>AC1015 = AutoCAD 2000.</li>
+                 *   <li>AC1018 = AutoCAD 2004.</li>
+                 *   <li>AC1021 = AutoCAD 2007.</li>
+                 *   <li>AC1024 = AutoCAD 2010.</li>
+                 *   <li>AC1027 = AutoCAD 2013.</li>
+                 * </ul>
+                 * Group code = 1. */
         int AcadMaintVer;
-                /*!< */
+                /*!< Maintenance version number (should be ignored).\n
+                 * Group code = 70. */
         char *DWGCodePage;
-                /*!< drawing code page.\n
+                /*!< Drawing code page.\n
                  * Set to the system code page when a new drawing is created,
-                 * but not otherwise maintained by AutoCAD. */
+                 * but not otherwise maintained by AutoCAD.\n
+                 * Group code =  */
         DxfPoint InsBase;
                 /*!< */
         DxfPoint ExtMin;
@@ -97,7 +114,13 @@ dxf_header_struct
         int OSMode;
                 /*!< */
         int AttMode;
-                /*!< */
+                /*!< Attribute visibility:
+                 * <ol>
+                 *   <li value = 0> None.</li>
+                 *   <li value = 1> Normal.</li>
+                 *   <li value = 2> All.</li>
+                 * </ol>
+                 * Group code = 70. */
         double TextSize;
                 /*!< */
         double TraceWid;
@@ -138,13 +161,19 @@ dxf_header_struct
         int DimZIN; /*!< */
         char *DimBLK; /*!< */
         int DimASO;
-                /*!< create associative dimensions:\n
-                 * 0 = draw individual entities.\n
-                 * 1 = create associative dimensioning. */
+                /*!< Create associative dimensions:
+                 * <ol>
+                 *   <li value = 0> Draw individual entities.</li>
+                 *   <li value = 1> Create associative dimensioning.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimSHO;
-                /*!< recompute dimensions while dragging:\n
-                 * 0 = drag original image.\n
-                 * 1 = recompute dimensions while dragging. */
+                /*!< Recompute dimensions while dragging:
+                 * <ol>
+                 *   <li value = 0> Drag original image.</li>
+                 *   <li value = 1> Recompute dimensions while dragging.</li>
+                 * </ol>
+                 * Group code = 70. */
         char *DimPOST; /*!< */
         char *DimAPOST; /*!< */
         int DimALT; /*!< */
@@ -215,8 +244,15 @@ dxf_header_struct
         double TDInDWG; /*!< */
         double TDUSRTimer; /*!< */
         int USRTimer; /*!< */
-        double AngBase; /*!< */
-        int AngDir; /*!< */
+        double AngBase;
+                /*!< Angle 0 direction. \n
+                 * Group code = 50. */
+        int AngDir;
+                /*!< <ol>
+                 *   <li value = 0> Counterclockwise angles.</li>
+                 *   <li value = 1> Clockwise angles.</li>
+                 * </ol>
+                 * Group code = 70. */
         int PDMode; /*!< */
         double PDSize; /*!< */
         double PLineWid; /*!< */
