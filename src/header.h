@@ -128,7 +128,8 @@ dxf_header_struct
         char *TextStyle;
                 /*!< */
         char *CLayer;
-                /*!< */
+                /*!< Current layer name.\n
+                 * Group code = 8. */
         char *CELType;
                 /*!< Entity linetype name, or BYBLOCK or BYLAYER.\n
                  * Group code = 6. */
@@ -249,8 +250,12 @@ dxf_header_struct
         double ChamferB;
                 /*!< Second chamfer distance.\n
                  * Group code = 40. */
-        double ChamferC; /*!< */
-        double ChamferD; /*!< */
+        double ChamferC;
+                /*!< Chamfer length.\n
+                 * Group code = 40. */
+        double ChamferD;
+                /*!< Chamfer angle.
+                 * Group code = 40. */
         int SKPoly; /*!< */
         double TDCreate; /*!< */
         double TDUCreate; /*!< */
@@ -338,8 +343,17 @@ dxf_header_struct
         int TreeDepth; /*!< */
         int PickStyle; /*!< */
         char *CMLStyle; /*!< */
-        int CMLJust; /*!< */
-        double CMLScale; /*!< */
+        int CMLJust;
+                /*!< Current multiline justification:
+                 * <ol>
+                 *   <li value = 0> Top.<li>
+                 *   <li value = 1> Middle.</li>
+                 *   <li value = 2> Bottom.</li>
+                 * </ol>
+                 * Group value = 70. */
+        double CMLScale;
+                /*!< Current multiline scale.\n
+                 * Group code = 40. */
         int ProxyGraphics; /*!< */
         int Measurement; /*!< */
         int SaveImages; /*!< */
