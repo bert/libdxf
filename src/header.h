@@ -243,8 +243,12 @@ dxf_header_struct
         double Thickness; /*!< */
         int LimCheck; /*!< */
         int BlipMode; /*!< */
-        double ChamferA; /*!< */
-        double ChamferB; /*!< */
+        double ChamferA;
+                /*!< First chamfer distance.\n
+                 * Group code = 40. */
+        double ChamferB;
+                /*!< Second chamfer distance.\n
+                 * Group code = 40. */
         double ChamferC; /*!< */
         double ChamferD; /*!< */
         int SKPoly; /*!< */
@@ -349,7 +353,15 @@ dxf_header_struct
         char *HyperLinkBase; /*!< */
         char *StyleSheet; /*!< */
         int XEdit; /*!< */
-        int CEPSNType; /*!< */
+        int CEPSNType;
+                /*!< Plot style type of new objects:
+                 * <ol>
+                 *   <li value = 0> Plot style by layer.</li>
+                 *   <li value = 1> Plot style by block.</li>
+                 *   <li value = 2> Plot style by dictionary default.</li>
+                 *   <li value = 3> Plot style by object ID/handle.</li>
+                 * </ol>
+                 * Group code = 380. */
         char *CEPSNID;
                 /*!< Plotstyle handle of new objects; if CEPSNTYPE is 3,
                  * then this value indicates the handle.\n
