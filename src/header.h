@@ -221,7 +221,16 @@ dxf_header_struct
         int DimSD2; /*!< */
         int DimTOLJ; /*!< */
         int DimTZIN; /*!< */
-        int DimALTZ; /*!< */
+        int DimALTZ;
+                /*!< Controls suppression of zeros for alternate unit
+                 * dimension values:
+                 * <ol>
+                 *   <li value = 0> Suppresses zero feet and precisely zero inches.</li>
+                 *   <li value = 1> Includes zero feet and precisely zero inches.</li>
+                 *   <li value = 2> Includes zero feet and suppresses zero inches.</li>
+                 *   <li value = 3> Includes zero inches and suppresses zero feet.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimALTTZ;
                 /*!< Controls suppression of zeros for alternate
                  * tolerance values:
@@ -237,7 +246,19 @@ dxf_header_struct
         int DimUNIT; /*!< */
         int DimDEC; /*!< */
         int DimTDEC; /*!< */
-        int DimALTU; /*!< */
+        int DimALTU;
+                /*!< Units format for alternate units of all dimension
+                 * style family members except angular:
+                 * <ol>
+                 *   <li value = 1> Scientific.</li>
+                 *   <li value = 2> Decimal.</li>
+                 *   <li value = 3> Engineering.</li>
+                 *   <li value = 4> Architectural (stacked).</li>
+                 *   <li value = 5> Fractional (stacked).</li>
+                 *   <li value = 6> Architectural.</li>
+                 *   <li value = 7> Fractional.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimALTTD;
                 /*!< Number of decimal places for tolerance values of an
                  * alternate units dimension.\n
@@ -247,7 +268,7 @@ dxf_header_struct
         int DimADEC;
                 /*!< Number of precision places displayed in angular
                  * dimensions.\n
-                 * Group cade = 70. */
+                 * Group code = 70. */
         double DimALTRND;
                 /*!< Determines rounding of alternate units.\n
                  * Group code = 40. */
