@@ -143,6 +143,15 @@ dxf_header_struct
         double CELTScale;
                 /*!< Current entity linetype scale.\n
                  * Group code = 40. */
+        int16_t CShadow;
+                /*!< Shadow mode for a 3D object:\n
+                 * <ol>
+                 * <li value = "0"> Casts and receives shadows.</li>
+                 * <li value = "1"> Casts shadows.</li>
+                 * <li value = "2"> Receives shadows.</li>
+                 * <li value = "3"> Ignores shadows.</li>
+                 * </ol>\n
+                 * Group code = 284.\n */
         int DelObj;
                 /*!< */
         int DispSilH;
@@ -184,9 +193,15 @@ dxf_header_struct
                  * Group code = 70. */
         char *DimPOST; /*!< */
         char *DimAPOST; /*!< */
-        int DimALT; /*!< */
-        int DimALTD; /*!< */
-        double DimALTF; /*!< */
+        int DimALT;
+                /*!< Alternate unit dimensioning performed if nonzero.\n
+                 * Group code = 70. */
+        int DimALTD;
+                /*!< Alternate unit decimal places.\n
+                 * Group code = 70. */
+        double DimALTF;
+                /*!< Alternate unit scale factor.\n
+                 * Group code = 40. */
         double DimLFAC; /*!< */
         int DimTOFL; /*!< */
         double DimTVP; /*!< */
@@ -207,18 +222,35 @@ dxf_header_struct
         int DimTOLJ; /*!< */
         int DimTZIN; /*!< */
         int DimALTZ; /*!< */
-        int DimALTTZ; /*!< */
+        int DimALTTZ;
+                /*!< Controls suppression of zeros for alternate
+                 * tolerance values:
+                 * <ol>
+                 *   <li value = 0> Suppresses zero feet and precisely zero inches.</li>
+                 *   <li value = 1> Includes zero feet and precisely zero inches.</li>
+                 *   <li value = 2> Includes zero feet and suppresses zero inches.</li>
+                 *   <li value = 3> Includes zero inches and suppresses zero feet.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimFIT; /*!< */
         int DimUPT; /*!< */
         int DimUNIT; /*!< */
         int DimDEC; /*!< */
         int DimTDEC; /*!< */
         int DimALTU; /*!< */
-        int DimALTTD; /*!< */
+        int DimALTTD;
+                /*!< Number of decimal places for tolerance values of an
+                 * alternate units dimension.\n
+                 * Group code = 70. */
         char *DimTXSTY; /*!< */
         int DimAUNIT; /*!< */
-        int DimADEC; /*!< */
-        double DimALTRND; /*!< */
+        int DimADEC;
+                /*!< Number of precision places displayed in angular
+                 * dimensions.\n
+                 * Group cade = 70. */
+        double DimALTRND;
+                /*!< Determines rounding of alternate units.\n
+                 * Group code = 40. */
         int DimAZIN; /*!< */
         int DimDSEP; /*!< */
         int DimATFIT; /*!< */
@@ -342,7 +374,9 @@ dxf_header_struct
         int PSLTScale; /*!< */
         int TreeDepth; /*!< */
         int PickStyle; /*!< */
-        char *CMLStyle; /*!< */
+        char *CMLStyle;
+                /*!< Current multiline style name.\n
+                 * Goup code = 2. */
         int CMLJust;
                 /*!< Current multiline justification:
                  * <ol>
