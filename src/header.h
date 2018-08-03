@@ -192,7 +192,9 @@ dxf_header_struct
                  * </ol>
                  * Group code = 70. */
         char *DimPOST; /*!< */
-        char *DimAPOST; /*!< */
+        char *DimAPOST;
+                /*!< Alternate dimensioning suffix.\n
+                 * Group code = 1. */
         int DimALT;
                 /*!< Alternate unit dimensioning performed if nonzero.\n
                  * Group code = 70. */
@@ -450,7 +452,20 @@ dxf_header_struct
         int ObsLType; /*!< */
         int InterSectionDisplay; /*!< */
         int InterSectionColor; /*!< */
-        int DimASSOC; /*!< */
+        int DimASSOC;
+                /*!< Controls the associativity of dimension objects:
+                 * <ol>
+                 *   <li value = 0> Creates exploded dimensions;
+                 *     there is no association between elements of the
+                 *     dimension, and the lines, arcs, arrowheads, and
+                 *     text of a dimension are drawn as separate objects.</li>
+                 *   <li value = 1> Creates non-associative dimension
+                 *     objects; the elements of the dimension are formed
+                 *     into a single object, and if the definition point
+                 *     on the object moves, then the dimension value is
+                 *     updated.</li>
+                 * </ol>
+                 * Group code = 70. */
         char *ProjectName; /*!< */
 
         DxfPoint GridUnit;
