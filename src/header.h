@@ -157,7 +157,9 @@ dxf_header_struct
         int DispSilH;
                 /*!< */
         double DimSCALE; /*!< */
-        double DimASZ; /*!< */
+        double DimASZ;
+                /*!< Dimensioning arrow size.\n
+                 * Group code = 40. */
         double DimEXO; /*!< */
         double DimDLI; /*!< */
         double DimRND; /*!< */
@@ -276,7 +278,21 @@ dxf_header_struct
                  * Group code = 40. */
         int DimAZIN; /*!< */
         int DimDSEP; /*!< */
-        int DimATFIT; /*!< */
+        int DimATFIT;
+                /*!< Controls dimension text and arrow placement when
+                 * space is not sufficient to place both within the
+                 * extension lines:
+                 * <ol>
+                 *   <li value = 0> Places both text and arrows outside
+                 *     extension lines.</li>
+                 *   <li value = 1> Moves arrows first, then text.</li>
+                 *   <li value = 2> Moves text first, then arrows.</li>
+                 *   <li value = 3> Moves either text or arrows,
+                 *     whichever fits best.\n
+                 *     AutoCAD adds a leader to moved dimension text
+                 *     when DIMTMOVE is set to 1.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimFRAC; /*!< */
         char *DimLDRBLK; /*!< */
         int DimLUNIT; /*!< */
@@ -464,8 +480,13 @@ dxf_header_struct
                  *     into a single object, and if the definition point
                  *     on the object moves, then the dimension value is
                  *     updated.</li>
+                 *   <li value = 2> Creates associative dimension
+                 *     objects; the elements of the dimension are formed
+                 *     into a single object and one or more definition
+                 *     points of the dimension are coupled with
+                 *     association points on geometric objects.</li>
                  * </ol>
-                 * Group code = 70. */
+                 * Group code = 280. */
         char *ProjectName; /*!< */
 
         DxfPoint GridUnit;
