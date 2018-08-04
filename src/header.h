@@ -179,11 +179,25 @@ dxf_header_struct
         double DimASZ;
                 /*!< Dimensioning arrow size.\n
                  * Group code = 40. */
-        double DimEXO; /*!< */
-        double DimDLI; /*!< */
+        double DimEXO;
+                /*!< Extension line offset.\n
+                 * Group code = 40. */
+        double DimDLI;
+                /*!< Dimension line increment.\n
+                 * Group code = 40. */
         double DimRND; /*!< */
-        double DimDLE; /*!< */
-        double DimEXE; /*!< */
+        double DimDLE;
+                /*!< Dimension line extension.\n
+                 * Group code = 40. */
+        double DimEXE;
+                /*!< Extension line extension.\n
+                 * Group code = 40. */
+        double DimFAC;
+                /*!< Scale factor used to calculate the height of text
+                 * for dimension fractions and tolerances.\n
+                 * AutoCAD multiplies DIMTXT by DIMTFAC to set the
+                 * fractional or tolerance text height.\n
+                 * Group code = 40. */
         double DimTP; /*!< */
         double DimTM; /*!< */
         double DimTXT; /*!< */
@@ -242,12 +256,46 @@ dxf_header_struct
         int DimSOXD; /*!< */
         int DimSAH; /*!< */
         char *DimSTYLE; /*!< */
-        int DimCLRD; /*!< */
-        int DimCLRE; /*!< */
-        int DimCLRT; /*!< */
+        int DimCLRD;
+                /*!< Dimension line color, range is:
+                 * <ol>
+                 *   <li value = 0> BYBLOCK.</li>
+                 *   <li value = 256> BYLAYER.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int DimCLRE;
+                /*!< Dimension extension line color, range is:
+                 * <ol>
+                 *   <li value = 0> BYBLOCK.</li>
+                 *   <li value = 256> BYLAYER.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int DimCLRT;
+                /*!< Dimension text color, range is:
+                 * <ol>
+                 *   <li value = 0> BYBLOCK.</li>
+                 *   <li value = 256> BYLAYER.</li>
+                 * </ol>
+                 * Group code = 70. */
         double DimTFAC; /*!< */
-        double DimGAP; /*!< */
-        int DimJUST; /*!< */
+        double DimGAP;
+                /*!< Dimension line gap.\n
+                 * Group code = 40. */
+        int DimJUST;
+                /*!< Horizontal dimension text position:
+                 * <ol>
+                 *   <li value = 0> Above dimension line and center-
+                 *     justified between extension lines.</li>
+                 *   <li value = 1> Above dimension line and next to
+                 *     first extension line.</li>
+                 *   <li value = 2> Above dimension line and next to
+                 *     second extension line.</li>
+                 *   <li value = 3> Above and center-justified to first
+                 *    extension line.</li>
+                 *   <li value = 4> Above and center-justified to second
+                 *     extension line.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimSD1; /*!< */
         int DimSD2; /*!< */
         int DimTOLJ; /*!< */
@@ -283,7 +331,10 @@ dxf_header_struct
         int DimFIT; /*!< */
         int DimUPT; /*!< */
         int DimUNIT; /*!< */
-        int DimDEC; /*!< */
+        int DimDEC;
+                /*!< Number of decimal places for the tolerance values
+                 * of a primary units dimension.\n
+                 * Group code = 70. */
         int DimTDEC; /*!< */
         int DimALTU;
                 /*!< Units format for alternate units of all dimension
@@ -334,7 +385,10 @@ dxf_header_struct
                  *     zeros.</li>
                  * </ol>
                  * Group code = 70. */
-        int DimDSEP; /*!< */
+        int DimDSEP;
+                /*!< Single-character decimal separator used when
+                 * creating dimensions whose unit format is decimal.\n
+                 * Group code = 70. */
         int DimATFIT;
                 /*!< Controls dimension text and arrow placement when
                  * space is not sufficient to place both within the
