@@ -84,8 +84,8 @@ dxf_header_struct
                  * Group code = 70. */
         char *DWGCodePage;
                 /*!< Drawing code page.\n
-                 * Set to the system code page when a new drawing is created,
-                 * but not otherwise maintained by AutoCAD.\n
+                 * Set to the system code page when a new drawing is
+                 * created, but not otherwise maintained by AutoCAD.\n
                  * Group code =  */
         DxfPoint InsBase;
                 /*!< */
@@ -154,6 +154,25 @@ dxf_header_struct
                  * Group code = 284.\n */
         int DelObj;
                 /*!< */
+        int DimASSOC;
+                /*!< Controls the associativity of dimension objects:
+                 * <ol>
+                 *   <li value = 0> Creates exploded dimensions;
+                 *     there is no association between elements of the
+                 *     dimension, and the lines, arcs, arrowheads, and
+                 *     text of a dimension are drawn as separate objects.</li>
+                 *   <li value = 1> Creates non-associative dimension
+                 *     objects; the elements of the dimension are formed
+                 *     into a single object, and if the definition point
+                 *     on the object moves, then the dimension value is
+                 *     updated.</li>
+                 *   <li value = 2> Creates associative dimension
+                 *     objects; the elements of the dimension are formed
+                 *     into a single object and one or more definition
+                 *     points of the dimension are coupled with
+                 *     association points on geometric objects.</li>
+                 * </ol>
+                 * Group code = 280. */
         int DispSilH;
                 /*!< */
         double DimSCALE; /*!< */
@@ -168,7 +187,9 @@ dxf_header_struct
         double DimTP; /*!< */
         double DimTM; /*!< */
         double DimTXT; /*!< */
-        double DimCEN; /*!< */
+        double DimCEN;
+                /*!< Size of center mark/lines.\n
+                 * Group code = 40. */
         double DimTSZ; /*!< */
         int DimTOL; /*!< */
         int DimLIM; /*!< */
@@ -178,7 +199,15 @@ dxf_header_struct
         int DimSE2; /*!< */
         int DimTAD; /*!< */
         int DimZIN; /*!< */
-        char *DimBLK; /*!< */
+        char *DimBLK;
+                /*!< Arrow block name.\n
+                 * Group code = 1. */
+        char *DimBLK1;
+                /*!< First arrow block name.\n
+                 * Group code = 1. */
+        char *DimBLK2;
+                /*!< Second arrow block name.\n
+                 * Group code = 1. */
         int DimASO;
                 /*!< Create associative dimensions:
                  * <ol>
@@ -212,8 +241,6 @@ dxf_header_struct
         int DimTIX; /*!< */
         int DimSOXD; /*!< */
         int DimSAH; /*!< */
-        char *DimBLK1; /*!< */
-        char *DimBLK2; /*!< */
         char *DimSTYLE; /*!< */
         int DimCLRD; /*!< */
         int DimCLRE; /*!< */
@@ -229,20 +256,28 @@ dxf_header_struct
                 /*!< Controls suppression of zeros for alternate unit
                  * dimension values:
                  * <ol>
-                 *   <li value = 0> Suppresses zero feet and precisely zero inches.</li>
-                 *   <li value = 1> Includes zero feet and precisely zero inches.</li>
-                 *   <li value = 2> Includes zero feet and suppresses zero inches.</li>
-                 *   <li value = 3> Includes zero inches and suppresses zero feet.</li>
+                 *   <li value = 0> Suppresses zero feet and precisely
+                 *     zero inches.</li>
+                 *   <li value = 1> Includes zero feet and precisely
+                 *     zero inches.</li>
+                 *   <li value = 2> Includes zero feet and suppresses
+                 *     zero inches.</li>
+                 *   <li value = 3> Includes zero inches and suppresses
+                 *     zero feet.</li>
                  * </ol>
                  * Group code = 70. */
         int DimALTTZ;
                 /*!< Controls suppression of zeros for alternate
                  * tolerance values:
                  * <ol>
-                 *   <li value = 0> Suppresses zero feet and precisely zero inches.</li>
-                 *   <li value = 1> Includes zero feet and precisely zero inches.</li>
-                 *   <li value = 2> Includes zero feet and suppresses zero inches.</li>
-                 *   <li value = 3> Includes zero inches and suppresses zero feet.</li>
+                 *   <li value = 0> Suppresses zero feet and precisely
+                 *     zero inches.</li>
+                 *   <li value = 1> Includes zero feet and precisely
+                 *     zero inches.</li>
+                 *   <li value = 2> Includes zero feet and suppresses
+                 *     zero inches.</li>
+                 *   <li value = 3> Includes zero inches and suppresses
+                 *     zero feet.</li>
                  * </ol>
                  * Group code = 70. */
         int DimFIT; /*!< */
@@ -268,7 +303,16 @@ dxf_header_struct
                  * alternate units dimension.\n
                  * Group code = 70. */
         char *DimTXSTY; /*!< */
-        int DimAUNIT; /*!< */
+        int DimAUNIT;
+                /*!< Angle format for angular dimensions:
+                 * <ol>
+                 *   <li value = 0> Decimal degrees.</li>
+                 *   <li value = 1> Degrees/minutes/seconds.</li>
+                 *   <li value = 2> Gradians.</li>
+                 *   <li value = 3> Radians.</li>
+                 *   <li value = 4> Surveyor's units.</li>
+                 * </lo>
+                 * Group code = 70. */
         int DimADEC;
                 /*!< Number of precision places displayed in angular
                  * dimensions.\n
@@ -276,7 +320,20 @@ dxf_header_struct
         double DimALTRND;
                 /*!< Determines rounding of alternate units.\n
                  * Group code = 40. */
-        int DimAZIN; /*!< */
+        int DimAZIN;
+                /*!< Controls suppression of zeros for angular
+                 * dimensions:
+                 * <ol>
+                 *   <li value = 0> Displays all leading and trailing
+                 *     zeros.</li>
+                 *   <li value = 1> Suppresses leading zeros in decimal
+                 *     dimensions.</li>
+                 *   <li value = 2> Suppresses trailing zeros in decimal
+                 *     dimensions.</li>
+                 *   <li value = 3> Suppresses leading and trailing
+                 *     zeros.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimDSEP; /*!< */
         int DimATFIT;
                 /*!< Controls dimension text and arrow placement when
@@ -468,27 +525,7 @@ dxf_header_struct
         int ObsLType; /*!< */
         int InterSectionDisplay; /*!< */
         int InterSectionColor; /*!< */
-        int DimASSOC;
-                /*!< Controls the associativity of dimension objects:
-                 * <ol>
-                 *   <li value = 0> Creates exploded dimensions;
-                 *     there is no association between elements of the
-                 *     dimension, and the lines, arcs, arrowheads, and
-                 *     text of a dimension are drawn as separate objects.</li>
-                 *   <li value = 1> Creates non-associative dimension
-                 *     objects; the elements of the dimension are formed
-                 *     into a single object, and if the definition point
-                 *     on the object moves, then the dimension value is
-                 *     updated.</li>
-                 *   <li value = 2> Creates associative dimension
-                 *     objects; the elements of the dimension are formed
-                 *     into a single object and one or more definition
-                 *     points of the dimension are coupled with
-                 *     association points on geometric objects.</li>
-                 * </ol>
-                 * Group code = 280. */
         char *ProjectName; /*!< */
-
         DxfPoint GridUnit;
                 /*!< Grid X and Y spacing  */
         int GridMode;
