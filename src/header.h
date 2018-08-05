@@ -173,7 +173,9 @@ dxf_header_struct
                  *     association points on geometric objects.</li>
                  * </ol>
                  * Group code = 280. */
-        double DimSCALE; /*!< */
+        double DimSCALE;
+                /*!< Overall dimensioning scale factor.\n
+                 * Group code = 40. */
         double DimASZ;
                 /*!< Dimensioning arrow size.\n
                  * Group code = 40. */
@@ -183,7 +185,9 @@ dxf_header_struct
         double DimDLI;
                 /*!< Dimension line increment.\n
                  * Group code = 40. */
-        double DimRND; /*!< */
+        double DimRND;
+                /*!< Rounding value for dimension distances.\n
+                 * Group code = 40. */
         double DimDLE;
                 /*!< Dimension line extension.\n
                  * Group code = 40. */
@@ -209,8 +213,12 @@ dxf_header_struct
                  * Group code = 70. */
         int DimTIH; /*!< */
         int DimTOH; /*!< */
-        int DimSE1; /*!< */
-        int DimSE2; /*!< */
+        int DimSE1;
+                /*!< First extension line suppressed if nonzero.\n
+                 * Group code = 70. */
+        int DimSE2;
+                /*!< Second extension line suppressed if nonzero.\n
+                 * Group code = 70. */
         int DimTAD; /*!< */
         int DimZIN; /*!< */
         char *DimBLK;
@@ -236,7 +244,9 @@ dxf_header_struct
                  *   <li value = 1> Recompute dimensions while dragging.</li>
                  * </ol>
                  * Group code = 70. */
-        char *DimPOST; /*!< */
+        char *DimPOST;
+                /*!< General dimensioning suffix.\n
+                 * Group code = 1. */
         char *DimAPOST;
                 /*!< Alternate dimensioning suffix.\n
                  * Group code = 1. */
@@ -256,7 +266,9 @@ dxf_header_struct
         double DimTVP; /*!< */
         int DimTIX; /*!< */
         int DimSOXD; /*!< */
-        int DimSAH; /*!< */
+        int DimSAH;
+                /*!< Use separate arrow blocks if nonzero.\n
+                 * Group code = 70. */
         char *DimSTYLE; /*!< */
         int DimCLRD;
                 /*!< Dimension line color, range is:
@@ -298,8 +310,20 @@ dxf_header_struct
                  *     extension line.</li>
                  * </ol>
                  * Group code = 70. */
-        int DimSD1; /*!< */
-        int DimSD2; /*!< */
+        int DimSD1;
+                /*!< Suppression of first extension line:
+                 * <ol>
+                 *   <li value = 0> Not suppressed.</li>
+                 *   <li value = 1> Suppressed.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int DimSD2;
+                /*!< Suppression of second extension line:
+                 * <ol>
+                 *   <li value = 0> Not suppressed.</li>
+                 *   <li value = 1> Suppressed.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimTOLJ; /*!< */
         int DimTZIN; /*!< */
         int DimALTZ;
