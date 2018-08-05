@@ -173,8 +173,6 @@ dxf_header_struct
                  *     association points on geometric objects.</li>
                  * </ol>
                  * Group code = 280. */
-        int DispSilH;
-                /*!< */
         double DimSCALE; /*!< */
         double DimASZ;
                 /*!< Dimensioning arrow size.\n
@@ -206,7 +204,9 @@ dxf_header_struct
                  * Group code = 40. */
         double DimTSZ; /*!< */
         int DimTOL; /*!< */
-        int DimLIM; /*!< */
+        int DimLIM;
+                /*!< Dimension limits generated if nonzero.\n
+                 * Group code = 70. */
         int DimTIH; /*!< */
         int DimTOH; /*!< */
         int DimSE1; /*!< */
@@ -249,7 +249,9 @@ dxf_header_struct
         double DimALTF;
                 /*!< Alternate unit scale factor.\n
                  * Group code = 40. */
-        double DimLFAC; /*!< */
+        double DimLFAC;
+                /*!< Linear measurements scale factor.\n
+                 * Group code = 40. */
         int DimTOFL; /*!< */
         double DimTVP; /*!< */
         int DimTIX; /*!< */
@@ -405,11 +407,43 @@ dxf_header_struct
                  * </ol>
                  * Group code = 70. */
         int DimFRAC; /*!< */
-        char *DimLDRBLK; /*!< */
-        int DimLUNIT; /*!< */
-        int DimLWD; /*!< */
-        int DimLWE; /*!< */
+        char *DimLDRBLK;
+                /*!< Arrow block name for leaders.\n
+                 * Group code = 1, */
+        int DimLUNIT;
+                /*!< Sets units for all dimension types except Angular:\n
+                 * <ol>
+                 *   <li vlaue = 1> Scientific.</li>
+                 *   <li value = 2> Decimal.</li>
+                 *   <li value = 3> Engineering.</li>
+                 *   <li value = 4> Architectural.</li>
+                 *   <li value = 5> Fractional.</li>
+                 *   <li value = 6> Windows desktop.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int DimLWD;
+                /*!< Dimension line lineweight:
+                 * <ul>
+                 *   <li>-3 = Standard.</li>
+                 *   <li>-2 = ByLayer.</li>
+                 *   <li>-1 = ByBlock.</li>
+                 *   <li>0-211 = an integer representing 100th of
+                 *     mm.</li>
+                 * </ul>
+                 * Group code = 70. */
+        int DimLWE;
+                /*!< Extension line lineweight:
+                 * <ul>
+                 *   <li>-3 = Standard.</li>
+                 *   <li>-2 = ByLayer.</li>
+                 *   <li>-1 = ByBlock.</li>
+                 *   <li>0-211 = an integer representing 100th of
+                 *     mm.</li>
+                 * </ul>
+                 * Group code = 70. */
         int DimTMOVE; /*!< */
+        int DispSilH;
+                /*!< */
         int LUnits; /*!< */
         int LUPrec; /*!< */
         double Sketchinc; /*!< */
