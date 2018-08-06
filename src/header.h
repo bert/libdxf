@@ -200,23 +200,34 @@ dxf_header_struct
                  * AutoCAD multiplies DIMTXT by DIMTFAC to set the
                  * fractional or tolerance text height.\n
                  * Group code = 40. */
-        double DimTP; /*!< */
+        double DimTP;
+                /*!< Plus tolerance.\n
+                 * Group code = 40. */
         double DimTM;
                 /*!< Minus tolerance.\n
                  * Group code = 40. */
-        double DimTXT; /*!< */
+        double DimTXT;
+                /*!< Dimensioning text height.\n
+                 * Group code = 40. */
         double DimCEN;
                 /*!< Size of center mark/lines.\n
                  * Group code = 40. */
-        double DimTSZ; /*!< */
-        int DimTOL; /*!< */
+        double DimTSZ;
+                /*!< Dimensioning tick size:\n
+                 * 0 = No ticks.
+                 * Group code = 40. */
+        int DimTOL;
+                /*!< Dimension tolerances generated if nonzero.\n
+                 * Group code = 70. */
         int DimLIM;
                 /*!< Dimension limits generated if nonzero.\n
                  * Group code = 70. */
         int DimTIH;
                 /*!< Text inside horizontal if nonzero.\n
                  * Group code = 70. */
-        int DimTOH; /*!< */
+        int DimTOH;
+                /*!< Text outside horizontal if nonzero.\n
+                 * Group code = 70. */
         int DimSE1;
                 /*!< First extension line suppressed if nonzero.\n
                  * Group code = 70. */
@@ -272,7 +283,9 @@ dxf_header_struct
                 /*!< If text is outside extensions, force line
                  * extensions between extensions if nonzero.\n
                  * Group code = 70. */
-        double DimTVP; /*!< */
+        double DimTVP;
+                /*!< Text vertical position.\n
+                 * Group code = 40. */
         int DimTIX;
                 /*!< Force text inside extensions if nonzero.\n
                  * Group code = 70. */
@@ -342,7 +355,14 @@ dxf_header_struct
                  *   <li value = 1> Suppressed.</li>
                  * </ol>
                  * Group code = 70. */
-        int DimTOLJ; /*!< */
+        int DimTOLJ;
+                /*!< Vertical justification for tolerance values:
+                 * <ol>
+                 *   <li value = 0> Top.</li>
+                 *   <li value = 1> Middle.</li>
+                 *   <li value = 2> Bottom.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimTZIN; /*!< */
         int DimALTZ;
                 /*!< Controls suppression of zeros for alternate unit
@@ -400,7 +420,9 @@ dxf_header_struct
                 /*!< Number of decimal places for tolerance values of an
                  * alternate units dimension.\n
                  * Group code = 70. */
-        char *DimTXSTY; /*!< */
+        char *DimTXSTY;
+                /*!< Dimension text style.\n
+                 * Group code = 7. */
         int DimAUNIT;
                 /*!< Angle format for angular dimensions:
                  * <ol>
