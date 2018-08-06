@@ -201,7 +201,9 @@ dxf_header_struct
                  * fractional or tolerance text height.\n
                  * Group code = 40. */
         double DimTP; /*!< */
-        double DimTM; /*!< */
+        double DimTM;
+                /*!< Minus tolerance.\n
+                 * Group code = 40. */
         double DimTXT; /*!< */
         double DimCEN;
                 /*!< Size of center mark/lines.\n
@@ -211,7 +213,9 @@ dxf_header_struct
         int DimLIM;
                 /*!< Dimension limits generated if nonzero.\n
                  * Group code = 70. */
-        int DimTIH; /*!< */
+        int DimTIH;
+                /*!< Text inside horizontal if nonzero.\n
+                 * Group code = 70. */
         int DimTOH; /*!< */
         int DimSE1;
                 /*!< First extension line suppressed if nonzero.\n
@@ -219,7 +223,9 @@ dxf_header_struct
         int DimSE2;
                 /*!< Second extension line suppressed if nonzero.\n
                  * Group code = 70. */
-        int DimTAD; /*!< */
+        int DimTAD;
+                /*!< Text above dimension line if nonzero.\n
+                 * Group code = 70. */
         int DimZIN; /*!< */
         char *DimBLK;
                 /*!< Arrow block name.\n
@@ -262,14 +268,24 @@ dxf_header_struct
         double DimLFAC;
                 /*!< Linear measurements scale factor.\n
                  * Group code = 40. */
-        int DimTOFL; /*!< */
+        int DimTOFL;
+                /*!< If text is outside extensions, force line
+                 * extensions between extensions if nonzero.\n
+                 * Group code = 70. */
         double DimTVP; /*!< */
-        int DimTIX; /*!< */
-        int DimSOXD; /*!< */
+        int DimTIX;
+                /*!< Force text inside extensions if nonzero.\n
+                 * Group code = 70. */
+        int DimSOXD;
+                /*!< Suppress outside-extensions dimension lines if
+                 * nonzero.\n
+                 * Group code = 70. */
         int DimSAH;
                 /*!< Use separate arrow blocks if nonzero.\n
                  * Group code = 70. */
-        char *DimSTYLE; /*!< */
+        char *DimSTYLE;
+                /*!< Dimension style name.\n
+                 * Group code = 2.*/
         int DimCLRD;
                 /*!< Dimension line color, range is:
                  * <ol>
@@ -291,7 +307,9 @@ dxf_header_struct
                  *   <li value = 256> BYLAYER.</li>
                  * </ol>
                  * Group code = 70. */
-        double DimTFAC; /*!< */
+        double DimTFAC;
+                /*!< Dimension tolerance display scale factor.\n
+                 * Group code = 40. */
         double DimGAP;
                 /*!< Dimension line gap.\n
                  * Group code = 40. */
@@ -361,7 +379,10 @@ dxf_header_struct
                 /*!< Number of decimal places for the tolerance values
                  * of a primary units dimension.\n
                  * Group code = 70. */
-        int DimTDEC; /*!< */
+        int DimTDEC;
+                /*!< Number of decimal places to display the tolerance
+                 * values.\n
+                 * Group code = 70. */
         int DimALTU;
                 /*!< Units format for alternate units of all dimension
                  * style family members except angular:
@@ -465,7 +486,17 @@ dxf_header_struct
                  *     mm.</li>
                  * </ul>
                  * Group code = 70. */
-        int DimTMOVE; /*!< */
+        int DimTMOVE;
+                /*!< Dimension text movement rules:
+                 * <ol>
+                 *   <li value = 0> Moves the dimension line with
+                 *     dimension text.</li>
+                 *   <li value = 1> Adds a leader when dimension text is
+                 *     moved.</li>
+                 * <li value = 2> Allows text to be moved freely without
+                 *     a leader.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DispSilH;
                 /*!< */
         int LUnits; /*!< */
