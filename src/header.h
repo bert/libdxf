@@ -363,7 +363,19 @@ dxf_header_struct
                  *   <li value = 2> Bottom.</li>
                  * </ol>
                  * Group code = 70. */
-        int DimTZIN; /*!< */
+        int DimTZIN;
+                /*!< Controls suppression of zeros for tolerance values:
+                 * <ol>
+                 *   <li value = 0> Suppresses zero feet and precisely
+                 *     zero inches.</li>
+                 *   <li value = 1> Includes zero feet and precisely
+                 *     zero inches.</li>
+                 *   <li value = 2> Includes zero feet and suppresses
+                 *     zero inches.</li>
+                 *   <li value = 3> Includes zero inches and suppresses
+                 *     zero feet.</li>
+                 * </ol>
+                 * Group code = 70. */
         int DimALTZ;
                 /*!< Controls suppression of zeros for alternate unit
                  * dimension values:
