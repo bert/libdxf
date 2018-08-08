@@ -701,7 +701,15 @@ dxf_header_struct
         int CELWeight;
                 /*!< Lineweight of new objects.\n
                  * Group code = 370. */
-        int EndCaps; /*!< */
+        int EndCaps;
+                /*!< Lineweight endcaps setting for new objects:
+                 * <ol>
+                 *   <li value = 0> none.</li>
+                 *   <li value = 1> round.</li>
+                 *   <li value = 2> angle.</li>
+                 *   <li value = 3> square.</li>
+                 * </ol>
+                 * Group code = 280. */
         int JoinStyle; /*!< */
         int LWDisplay; /*!< */
         int InsUnits; /*!< */
