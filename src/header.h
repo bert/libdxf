@@ -90,9 +90,11 @@ dxf_header_struct
         DxfPoint InsBase;
                 /*!< */
         DxfPoint ExtMin;
-                /*!< */
+                /*!< X, Y, and Z drawing extents lower-left corner (in WCS).\n
+                 * Group code = 10, 20 and 30. */
         DxfPoint ExtMax;
-                /*!< */
+                /*!< X, Y, and Z drawing extents upper-right corner (in WCS).\n
+                 * Group code = 10, 20 and 30. */
         DxfPoint LimMin;
                 /*!< */
         DxfPoint LimMax;
