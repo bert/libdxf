@@ -553,7 +553,18 @@ dxf_header_struct
                  * </ol>
                  * Group code = 70. */
         int DispSilH;
-                /*!< */
+                /*!< Controls the display of silhouette curves of body
+                 * objects in Wireframe mode:
+                 * <ol>
+                 *   <li value = 0> Off.</li>
+                 *   <li value = 1> On.</li>
+                 * </ol>
+                 * Group code = 70. */
+        char *DragVS;
+                /*!< Hard-pointer ID to visual style while creating 3D
+                 * solid primitives.\n
+                 * The defualt value is NULL.\n
+                 * Group code = 349. */
         int LUnits; /*!< */
         int LUPrec; /*!< */
         double Sketchinc; /*!< */
@@ -565,7 +576,9 @@ dxf_header_struct
                 /*!< Units precision for angles.\n
                  * Group code = 70. */
         char *Menu; /*!< */
-        double Elevation; /*!< */
+        double Elevation;
+                /*!< Current elevation set by ELEV command.\n
+                 * Group code = 40. */
         double PElevation; /*!< */
         double Thickness; /*!< */
         int LimCheck; /*!< */
