@@ -734,7 +734,22 @@ dxf_header_struct
         int PStyleMode; /*!< */
         char *FingerPrintGUID; /*!< */
         char *VersionGUID; /*!< */
-        int ExtNames; /*!< */
+        int ExtNames;
+                /*!< Controls symbol table naming:
+                 * <ol>
+                 *   <li value = 0> Release 14 compatibility.\n
+                 *     Limits names to 31 characters in length.\n
+                 *     Names can include the letters A to Z, the
+                 *     numerals 0 to 9, and the special characters
+                 *     dollar sign ($), underscore (_), and hyphen (-).</li>
+                 *   <li value = 1> AutoCAD 2000.\n
+                 *     Names can be up to 255 characters in length, and
+                 *     can include the letters A to Z, the numerals 0 to
+                 *     9, spaces, and any special characters not used
+                 *     for other purposes by Microsoft Windows and
+                 *     AutoCAD.</li>
+                 * </ol>
+                 * Group code = 290. */
         double PSVPScale; /*!< */
         int OLEStartUp; /*!< */
         int SortEnts; /*!< */
