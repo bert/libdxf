@@ -720,7 +720,10 @@ dxf_header_struct
         int JoinStyle; /*!< */
         int LWDisplay; /*!< */
         int InsUnits; /*!< */
-        char *HyperLinkBase; /*!< */
+        char *HyperLinkBase;
+                /*!< Path for all relative hyperlinks in the drawing.\n
+                 * If null, the drawing path is used.\n
+                 * Group code = 1. */
         char *StyleSheet; /*!< */
         int XEdit; /*!< */
         int CEPSNType;
@@ -761,8 +764,25 @@ dxf_header_struct
         double PSVPScale; /*!< */
         int OLEStartUp; /*!< */
         int SortEnts; /*!< */
-        int IndexCtl; /*!< */
-        int HideText; /*!< */
+        int IndexCtl;
+                /*!< Controls whether layer and spatial indexes are
+                 * created and saved in drawing files:
+                 * <ol>
+                 *   <li value = 0> No indexes are created.</li>
+                 *   <li value = 1> Layer index is created.</li>
+                 *   <li value = 2> Spatial index is created.</li>
+                 *   <li value = 3> Layer and spatial indexes are
+                 *     created.</li>
+                 * </ol>
+                 * Group code = 290. */
+        int HideText;
+                /*!< Specifies HIDETEXT system variable:
+                 * <ol>
+                 *   <li value = 0> HIDE ignores text objects when
+                 *     producing the hidden view.</li>
+                 *   <li value = 1> HIDE does not ignore text objects.</li>
+                 * </ol>
+                 * Group code = 290. */
         int XClipFrame; /*!< */
         int HaloGap;
                 /*!< Specifies a gap to be displayed where an object is
