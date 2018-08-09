@@ -104,7 +104,8 @@ dxf_header_struct
         int RegenMode;
                 /*!< */
         int FillMode;
-                /*!< */
+                /*!< Fill mode on if nonzero.\n
+                 * Group code = 70. */
         int QTextMode;
                 /*!< */
         int MirrText;
@@ -570,7 +571,9 @@ dxf_header_struct
         int LUnits; /*!< */
         int LUPrec; /*!< */
         double Sketchinc; /*!< */
-        double FilletRad; /*!< */
+        double FilletRad;
+                /*!< Fillet radius.\n
+                 * Group code = 40. */
         int AUnits;
                 /*!< Units format for angles.\n
                  * Group code = 70. */
@@ -624,7 +627,9 @@ dxf_header_struct
         int AttDia; /*!< */
         int AttReq; /*!< */
         int Handling; /*!< */
-        char *HandSeed; /*!< */
+        char *HandSeed;
+                /*!< Next available handle.\n
+                 * Group code = 5. */
         int SurfTab1; /*!< */
         int SurfTab2; /*!< */
         int SurfType; /*!< */
@@ -732,7 +737,10 @@ dxf_header_struct
                  * then this value indicates the handle.\n
                  * Group code = 390. */
         int PStyleMode; /*!< */
-        char *FingerPrintGUID; /*!< */
+        char *FingerPrintGUID;
+                /*!< Set at creation time, uniquely identifies a
+                 * particular drawing.\n
+                 * Group code = 2. */
         char *VersionGUID; /*!< */
         int ExtNames;
                 /*!< Controls symbol table naming:
@@ -756,7 +764,15 @@ dxf_header_struct
         int IndexCtl; /*!< */
         int HideText; /*!< */
         int XClipFrame; /*!< */
-        int HaloGap; /*!< */
+        int HaloGap;
+                /*!< Specifies a gap to be displayed where an object is
+                 * hidden by another object; the value is specified as a
+                 * percent of one unit and is independent of the zoom
+                 * level.\n
+                 * A haloed line is shortened at the point where it is
+                 * hidden when HIDE or the Hidden option of SHADEMODE is
+                 * used.\n
+                 * Group code = 280. */
         int ObsColor; /*!< */
         int ObsLType; /*!< */
         int InterSectionDisplay; /*!< */
