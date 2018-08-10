@@ -97,9 +97,11 @@ dxf_header_struct
                 /*!< X, Y, and Z drawing extents upper-right corner (in WCS).\n
                  * Group code = 10, 20 and 30. */
         DxfPoint LimMin;
-                /*!< */
+                /*!< XY drawing limits lower-left corner (in WCS).\n
+                 * Group code = 10 and 20. */
         DxfPoint LimMax;
-                /*!< */
+                /*!< XY drawing limits upper-right corner (in WCS).\n
+                 * Group code = 10 and 20. */
         int OrthoMode;
                 /*!< */
         int RegenMode;
@@ -587,7 +589,9 @@ dxf_header_struct
                  * Group code = 40. */
         double PElevation; /*!< */
         double Thickness; /*!< */
-        int LimCheck; /*!< */
+        int LimCheck;
+                /*!< Nonzero if limits checking is on.\n
+                 * Group code = 70. */
         int BlipMode; /*!< */
         double ChamferA;
                 /*!< First chamfer distance.\n
@@ -718,7 +722,15 @@ dxf_header_struct
                  *   <li value = 3> square.</li>
                  * </ol>
                  * Group code = 280. */
-        int JoinStyle; /*!< */
+        int JoinStyle;
+                /*!< Lineweight joint setting for new objects:
+                 * <ol>
+                 *   <li value = 0> none.</li>
+                 *   <li value = 1> round.</li>
+                 *   <li value = 2> angle.</li>
+                 *   <li value = 3> flat.</li>
+                 * </ol>
+                 * Group code = 280. */
         int LWDisplay; /*!< */
         int InsUnits;
                 /*!< Default drawing units for AutoCAD DesignCenter
@@ -822,13 +834,45 @@ dxf_header_struct
                  * Group code = 280. */
         int ObsColor; /*!< */
         int ObsLType; /*!< */
-        int InterSectionDisplay; /*!< */
-        int InterSectionColor; /*!< */
+        int InterSectionDisplay;
+                /*!< Specifies the display of intersection polylines:
+                 * <ol>
+                 *   <li value = 0> Turns off the display of
+                 *     intersection polylines.</li>
+                 *   <li value = 1> Turns on the display of intersection
+                 *     polylines.</li>
+                 * </ol>
+                 * Group code = 290. */
+        int InterSectionColor;
+                /*!< Specifies the entity color of intersection
+                 * polylines:\n
+                 * Values 1-255 designate an AutoCAD color index (ACI).\n
+                 * <ol>
+                 *   <li value = 0> Color BYBLOCK.</li>
+                 *   <li value = 256> Color BYLAYER.</li>
+                 *   <li value = 257> Color BYENTITY.</li>
+                 * </ol>
+                 * Group code = 70. */
         char *ProjectName; /*!< */
         DxfPoint GridUnit;
                 /*!< Grid X and Y spacing  */
         int GridMode;
                 /*!< Grid mode on if nonzero */
+        int16_t InterfereColor;
+                /*!< Represents the ACI color index of the "interference
+                 * objects" created during the interfere command.\n
+                 * Default value is 1.\n
+                 * Group code = 62. */
+        char *InterfereObjVS;
+                /*!< Hard-pointer ID to the visual style for
+                 * interference objects.\n
+                 * Default visual style is Conceptual.\n
+                 * Group code = 345. */
+        char *InterfereVPVS;
+                /*!< Hard-pointer ID to the visual style for the
+                 * viewport during interference checking.\n
+                 * Default visual style is 3d Wireframe.\n
+                 * Group code = 346. */
 } DxfHeader;
 
 
