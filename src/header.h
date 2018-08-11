@@ -116,7 +116,8 @@ dxf_header_struct
         int DragMode;
                 /*!< */
         double LTScale;
-                /*!< */
+                /*!< Global linetype scale.\n
+                 * Group code = 40. */
         int OSMode;
                 /*!< */
         int AttMode;
@@ -571,8 +572,12 @@ dxf_header_struct
                  * solid primitives.\n
                  * The defualt value is NULL.\n
                  * Group code = 349. */
-        int LUnits; /*!< */
-        int LUPrec; /*!< */
+        int LUnits;
+                /*!< Units format for coordinates and distances.\n
+                 * Group code = 70. */
+        int LUPrec;
+                /*!< Units precision for coordinates and distances.\n
+                 * Group code = 70. */
         double Sketchinc; /*!< */
         double FilletRad;
                 /*!< Fillet radius.\n
