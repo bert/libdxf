@@ -731,7 +731,14 @@ dxf_header_struct
                  *     and ends with a dash.</li>
                  * </ol>
                  * Group code = 70. */
-        int PSLTScale; /*!< */
+        int PSLTScale;
+                /*!< Controls paper space linetype scaling:
+                 * <ol>
+                 *   <li value = 1> No special linetype scaling.</li>
+                 *   <li value = 0> Viewport scaling governs linetype
+                 *     scaling.</li>
+                 * </ol>
+                 * Group code = 70. */
         int TreeDepth; /*!< */
         int PickStyle; /*!< */
         char *CMLStyle;
@@ -748,7 +755,9 @@ dxf_header_struct
         double CMLScale;
                 /*!< Current multiline scale.\n
                  * Group code = 40. */
-        int ProxyGraphics; /*!< */
+        int ProxyGraphics;
+                /*!< Controls the saving of proxy object images.\n
+                 * Group code = 70. */
         int Measurement;
                 /*!< Sets drawing units:
                  * <ol>
