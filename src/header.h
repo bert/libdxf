@@ -103,7 +103,8 @@ dxf_header_struct
                 /*!< XY drawing limits upper-right corner (in WCS).\n
                  * Group code = 10 and 20. */
         int OrthoMode;
-                /*!< */
+                /*!< Ortho mode on if nonzero.\n
+                 * Group code = 70. */
         int RegenMode;
                 /*!< */
         int FillMode;
@@ -595,7 +596,9 @@ dxf_header_struct
         double Elevation;
                 /*!< Current elevation set by ELEV command.\n
                  * Group code = 40. */
-        double PElevation; /*!< */
+        double PElevation;
+                /*!< Current paper space elevation.\n
+                 * Group code = 40. */
         double Thickness; /*!< */
         int LimCheck;
                 /*!< Nonzero if limits checking is on.\n
@@ -630,8 +633,12 @@ dxf_header_struct
                  *   <li value = 1> Clockwise angles.</li>
                  * </ol>
                  * Group code = 70. */
-        int PDMode; /*!< */
-        double PDSize; /*!< */
+        int PDMode;
+                /*!< Point display mode.\n
+                 * Group code = 70. */
+        double PDSize;
+                /*!< Point display size.\n
+                 * Group code = 40. */
         double PLineWid; /*!< */
         int Coords; /*!< */
         int SPLFrame; /*!< */
@@ -691,15 +698,37 @@ dxf_header_struct
         int MaxActVP;
                 /*!< Sets maximum number of viewports to be regenerated.\n
                  * Group code = 70. */
-        DxfPoint PInsBase; /*!< */
-        int PLimCheck; /*!< */
-        DxfPoint PExtMin; /*!< */
-        DxfPoint PExtMax; /*!< */
-        DxfPoint PLimMin; /*!< */
-        DxfPoint PLimMax; /*!< */
+        DxfPoint PInsBase;
+                /*!< Paper space insertion base point.\n
+                 * Group code = 10, 20 and 30. */
+        int PLimCheck;
+                /*!< Limits checking in paper space when nonzero.\n
+                 * Group code = 70. */
+        DxfPoint PExtMin;
+                /*!< Minimum X, Y, and Z extents for paper space.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint PExtMax;
+                /*!< Maximum X, Y, and Z extents for paper space.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint PLimMin;
+                /*!< Minimum X and Y limits in paper space.\n
+                 * Group code = 10 and 20. */
+        DxfPoint PLimMax;
+                /*!< Maximum X and Y limits in paper space.\n
+                 * Group code = 10 and 20. */
         int UnitMode; /*!< */
         int VisRetain; /*!< */
-        int PLineGen; /*!< */
+        int PLineGen;
+                /*!< Governs the generation of linetype patterns around
+                 * the vertices of a 2D polyline:
+                 * <ol>
+                 *   <li value = 1> Linetype is generated in a
+                 *     continuous pattern around vertices of the
+                 *     polyline.</li>
+                 *   <li value = 0> Each segment of the polyline starts
+                 *     and ends with a dash.</li>
+                 * </ol>
+                 * Group code = 70. */
         int PSLTScale; /*!< */
         int TreeDepth; /*!< */
         int PickStyle; /*!< */
