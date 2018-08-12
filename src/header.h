@@ -639,7 +639,9 @@ dxf_header_struct
         double PDSize;
                 /*!< Point display size.\n
                  * Group code = 40. */
-        double PLineWid; /*!< */
+        double PLineWid;
+                /*!< Default polyline width.\n
+                 * Group code = 40. */
         int Coords; /*!< */
         int SPLFrame; /*!< */
         int SPLineType; /*!< */
@@ -936,7 +938,16 @@ dxf_header_struct
                  *   <li value = 257> Color BYENTITY.</li>
                  * </ol>
                  * Group code = 70. */
-        char *ProjectName; /*!< */
+        char *ProjectName;
+                /*!< Assigns a project name to the current drawing.\n
+                 * Used when an external reference or image is not found
+                 * on its original path.\n
+                 * The project name points to a section in the registry
+                 * that can contain one or more search paths for each
+                 * project name defined.\n
+                 * Project names and their search directories are
+                 * created from the Files tab of the Options dialog box.\n
+                 * Group code = 1. */
         DxfPoint GridUnit;
                 /*!< Grid X and Y spacing  */
         int GridMode;
