@@ -112,7 +112,8 @@ dxf_header_struct
         int QTextMode;
                 /*!< */
         int MirrText;
-                /*!< */
+                /*!< Mirror text if nonzero.\n
+                 * Group code = 70. */
         int DragMode;
                 /*!< */
         double LTScale;
@@ -588,7 +589,9 @@ dxf_header_struct
         int AUPrec;
                 /*!< Units precision for angles.\n
                  * Group code = 70. */
-        char *Menu; /*!< */
+        char *Menu;
+                /*!< Name of menu file.\n
+                 * Group code = 1. */
         double Elevation;
                 /*!< Current elevation set by ELEV command.\n
                  * Group code = 40. */
@@ -685,7 +688,9 @@ dxf_header_struct
         int ShadEdge; /*!< */
         int ShadeDif; /*!< */
         int TileMode; /*!< */
-        int MaxActVP; /*!< */
+        int MaxActVP;
+                /*!< Sets maximum number of viewports to be regenerated.\n
+                 * Group code = 70. */
         DxfPoint PInsBase; /*!< */
         int PLimCheck; /*!< */
         DxfPoint PExtMin; /*!< */
@@ -713,7 +718,13 @@ dxf_header_struct
                 /*!< Current multiline scale.\n
                  * Group code = 40. */
         int ProxyGraphics; /*!< */
-        int Measurement; /*!< */
+        int Measurement;
+                /*!< Sets drawing units:
+                 * <ol>
+                 *   <li value = 0> Imperial.</li>
+                 *   <li value = 1> Metric.</li>
+                 * </ol>
+                 * Group code = 70. */
         int SaveImages; /*!< */
         int CELWeight;
                 /*!< Lineweight of new objects.\n
@@ -736,7 +747,14 @@ dxf_header_struct
                  *   <li value = 3> flat.</li>
                  * </ol>
                  * Group code = 280. */
-        int LWDisplay; /*!< */
+        int LWDisplay;
+                /*!< Controls the display of lineweights on the Model or
+                 * Layout tab:
+                 * <ol>
+                 *   <li value = 0> Lineweight is not displayed.</li>
+                 *   <li value = 1> Lineweight is displayed.</li>
+                 * </ol>
+                 * Group code = 290. */
         int InsUnits;
                 /*!< Default drawing units for AutoCAD DesignCenter
                  * blocks:
