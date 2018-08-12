@@ -855,8 +855,39 @@ dxf_header_struct
                  * hidden when HIDE or the Hidden option of SHADEMODE is
                  * used.\n
                  * Group code = 280. */
-        int ObsColor; /*!< */
-        int ObsLType; /*!< */
+        int ObsColor;
+                /*!< Specifies the color of obscured lines.\n
+                 * An obscured line is a hidden line made visible by
+                 * changing its color and linetype and is visible only
+                 * when the HIDE or SHADEMODE command is used.\n
+                 * The OBSCUREDCOLOR setting is visible only if the
+                 * OBSCUREDLTYPE is turned ON by setting it to a value
+                 * other than 0.\n
+                 * 0 and 256 = Entity color.\n
+                 * 1-255 = An AutoCAD color index (ACI).\n
+                 * Group code = 70. */
+        int ObsLType;
+                /*!< Specifies the linetype of obscured lines.\n
+                 * Obscured linetypes are independent of zoom level,
+                 * unlike regular AutoCAD linetypes.\n
+                 * Value 0 turns off display of obscured lines and is
+                 * the default.\n
+                 * Linetype values are defined as follows:
+                 * <ol>
+                 *   <li value = 0> Off.</li>
+                 *   <li value = 1> Solid.</li>
+                 *   <li value = 2> Dashed.</li>
+                 *   <li value = 3> Dotted.</li>
+                 *   <li value = 4> Short Dash.</li>
+                 *   <li value = 5> Medium Dash.</li>
+                 *   <li value = 6> Long Dash.</li>
+                 *   <li value = 7> Double Short Dash.</li>
+                 *   <li value = 8> Double Medium Dash.</li>
+                 *   <li value = 9> Double Long Dash.</li>
+                 *   <li value = 10> Medium Long Dash.</li>
+                 *   <li value = 11> Sparse Dot.</li>
+                 * </ol>
+                 *   Group code = 280. */
         int InterSectionDisplay;
                 /*!< Specifies the display of intersection polylines:
                  * <ol>
