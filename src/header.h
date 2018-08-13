@@ -670,8 +670,14 @@ dxf_header_struct
         DxfPoint UCSOrgRight; /*!< */
         DxfPoint UCSOrgFront; /*!< */
         DxfPoint UCSOrgBack; /*!< */
-        char *PUCSBase; /*!< */
-        char *PUCSName; /*!< */
+        char *PUCSBase;
+                /*!< Name of the UCS that defines the origin and
+                 * orientation of orthographic UCS settings (paper space
+                 * only).\n
+                 * Group code = 2. */
+        char *PUCSName;
+                /*!< Current paper space UCS name.\n
+                 * Group code = 2. */
         DxfPoint PUCSOrg; /*!< */
         DxfPoint PUCSXDir; /*!< */
         DxfPoint PUCSYDir; /*!< */
@@ -841,7 +847,16 @@ dxf_header_struct
                 /*!< Plotstyle handle of new objects; if CEPSNTYPE is 3,
                  * then this value indicates the handle.\n
                  * Group code = 390. */
-        int PStyleMode; /*!< */
+        int PStyleMode;
+                /*!< Indicates whether the current drawing is in a
+                 * Color-Dependent or Named Plot Style mode:
+                 * <ol>
+                 *   <li value =0> Uses named plot style tables in the
+                 *     current drawing.</li>
+                 *   <li value = 1> Uses color-dependent plot style
+                 *     tables in the current drawing.</li>
+                 * </ol>
+                 * Group code = 290. */
         char *FingerPrintGUID;
                 /*!< Set at creation time, uniquely identifies a
                  * particular drawing.\n
@@ -863,7 +878,11 @@ dxf_header_struct
                  *     AutoCAD.</li>
                  * </ol>
                  * Group code = 290. */
-        double PSVPScale; /*!< */
+        double PSVPScale;
+                /*!< View scale factor for new viewports:\n
+                 * 0 = Scaled to fit.\n
+                 * >0 = Scale factor (a positive real value).\n
+                 * Group code = 40. */
         int OLEStartUp; /*!< */
         int SortEnts; /*!< */
         int IndexCtl;
