@@ -664,12 +664,36 @@ dxf_header_struct
         DxfPoint UCSYDir; /*!< */
         char *UCSOrthoRef; /*!< */
         int UCSOrthoView; /*!< */
-        DxfPoint UCSOrgTop; /*!< */
-        DxfPoint UCSOrgBottom; /*!< */
-        DxfPoint UCSOrgLeft; /*!< */
-        DxfPoint UCSOrgRight; /*!< */
-        DxfPoint UCSOrgFront; /*!< */
-        DxfPoint UCSOrgBack; /*!< */
+        DxfPoint UCSOrgTop;
+                /*!< Point which becomes the new UCS origin after
+                 * changing paper space UCS to TOP when PUCSBASE is set
+                 * to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgBottom;
+                /*!< Point which becomes the new UCS origin after
+                 * changing paper space UCS to BOTTOM when PUCSBASE is
+                 * set to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgLeft;
+                /*!< Point which becomes the new UCS origin after
+                 * changing paper space UCS to LEFT when PUCSBASE is set
+                 * to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgRight;
+                /*!< Point which becomes the new UCS origin after
+                 * changing paper space UCS to RIGHT when PUCSBASE is
+                 * set to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgFront;
+                /*!< Point which becomes the new UCS origin after
+                 * changing paper space UCS to FRONT when PUCSBASE is
+                 * set to WORLD.\n
+                 * Group ode = 10, 20 and 30. */
+        DxfPoint UCSOrgBack;
+                /*!< Point which becomes the new UCS origin after
+                 * changing paper space UCS to BACK when PUCSBASE is set
+                 * to WORLD.\n
+                 * Group code = 10, 20 and 30. */
         char *PUCSBase;
                 /*!< Name of the UCS that defines the origin and
                  * orientation of orthographic UCS settings (paper space
@@ -678,7 +702,9 @@ dxf_header_struct
         char *PUCSName;
                 /*!< Current paper space UCS name.\n
                  * Group code = 2. */
-        DxfPoint PUCSOrg; /*!< */
+        DxfPoint PUCSOrg;
+                /*!< Current paper space UCS origin.\n
+                 * Group code = 10, 20 and 30. */
         DxfPoint PUCSXDir; /*!< */
         DxfPoint PUCSYDir; /*!< */
         char *PUCSOrthoRef; /*!< */
