@@ -106,12 +106,14 @@ dxf_header_struct
                 /*!< Ortho mode on if nonzero.\n
                  * Group code = 70. */
         int RegenMode;
-                /*!< */
+                /*!< REGENAUTO mode on if nonzero.\n
+                 * Group code = 70. */
         int FillMode;
                 /*!< Fill mode on if nonzero.\n
                  * Group code = 70. */
         int QTextMode;
-                /*!< */
+                /*!< Quick Text mode on if nonzero.\n
+                 * Group code = 70. */
         int MirrText;
                 /*!< Mirror text if nonzero.\n
                  * Group code = 70. */
@@ -711,8 +713,12 @@ dxf_header_struct
                  * changing paper space UCS to BACK when PUCSBASE is set
                  * to WORLD.\n
                  * Group code = 10, 20 and 30. */
-        DxfPoint PUCSXDir; /*!< */
-        DxfPoint PUCSYDir; /*!< */
+        DxfPoint PUCSXDir;
+                /*!< Current paper space UCS X axis.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint PUCSYDir;
+                /*!< Current paper space UCS Y axis.\n
+                 * Group code = 10, 20 and 30. */
         char *PUCSOrthoRef;
                 /*!< If paper space UCS is orthographic (PUCSORTHOVIEW
                  * not equal to 0), this is the name of the UCS that the
@@ -742,8 +748,19 @@ dxf_header_struct
         double UserR4; /*!< */
         double UserR5; /*!< */
         int WorldView; /*!< */
-        int ShadEdge; /*!< */
-        int ShadeDif; /*!< */
+        int ShadEdge;
+                /*!< <ol>
+                 *   <li value = 0> Faces shaded, edges not highlighted.</li>
+                 *   <li value = 1> Faces shaded, edges highlighted in black.</li>
+                 *   <li value = 2> Faces not filled, edges in entity color.</li>
+                 *   <li value = 3> Faces in entity color, edges in black.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int ShadeDif;
+                /*!< Percent ambient/diffuse light.\n
+                 * Range 1-100.\n
+                 * Default 70.\n
+                 * Group code = 70. */
         int TileMode; /*!< */
         int MaxActVP;
                 /*!< Sets maximum number of viewports to be regenerated.\n
@@ -1037,6 +1054,10 @@ dxf_header_struct
                  * viewport during interference checking.\n
                  * Default visual style is 3d Wireframe.\n
                  * Group code = 346. */
+        double ShadowPlaneLocation;
+                /*!< Location of the ground shadow plane.\n
+                 * This is a Z axis ordinate.\n
+                 * Group code = 40. */
 } DxfHeader;
 
 
