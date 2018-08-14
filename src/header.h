@@ -582,7 +582,9 @@ dxf_header_struct
         int LUPrec;
                 /*!< Units precision for coordinates and distances.\n
                  * Group code = 70. */
-        double Sketchinc; /*!< */
+        double Sketchinc;
+                /*!< Sketch record increment.\n
+                 * Group code = 40. */
         double FilletRad;
                 /*!< Fillet radius.\n
                  * Group code = 40. */
@@ -618,7 +620,12 @@ dxf_header_struct
         double ChamferD;
                 /*!< Chamfer angle.
                  * Group code = 40. */
-        int SKPoly; /*!< */
+        int SKPoly;
+                /*!< <ol>
+                 *   <li value = 0> Sketch lines.</li>
+                 *   <li value = 1> Sketch polylines.</li>
+                 * </ol>
+                 * Group code = 70. */
         double TDCreate; /*!< */
         double TDUCreate; /*!< */
         double TDUpdate; /*!< */
@@ -943,7 +950,22 @@ dxf_header_struct
                  * >0 = Scale factor (a positive real value).\n
                  * Group code = 40. */
         int OLEStartUp; /*!< */
-        int SortEnts; /*!< */
+        int SortEnts;
+                /*!< Controls the object sorting methods; accessible
+                 * from the Options dialog box User Preferences tab.\n
+                 * SORTENTS uses the following bitcodes:
+                 * <ol>
+                 *   <li value = 0> Disables SORTENTS.</li>
+                 *   <li value = 1> Sorts for object selection.</li>
+                 *   <li value = 2> Sorts for object snap.</li>
+                 *   <li value = 4> Sorts for redraws.</li>
+                 *   <li value = 8> Sorts for MSLIDE command slide
+                 *     creation.</li>
+                 *   <li value = 16> Sorts for REGEN commands.</li>
+                 *   <li value = 32> Sorts for plotting.</li>
+                 *   <li value = 64> Sorts for PostScript output.</li>
+                 * </ol>
+                 * Group code = 280. */
         int IndexCtl;
                 /*!< Controls whether layer and spatial indexes are
                  * created and saved in drawing files:
