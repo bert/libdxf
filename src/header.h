@@ -653,19 +653,33 @@ dxf_header_struct
                  * Group code = 40. */
         int Coords; /*!< */
         int SPLFrame; /*!< */
-        int SPLineType; /*!< */
-        int SPLineSegs; /*!< */
+        int SPLineType;
+                /*!< Spline curve type for PEDIT Spline.\n
+                 * Group code = 70. */
+        int SPLineSegs;
+                /*!< Number of line segments per spline patch.\n
+                 * Group code = 70. */
         int AttDia; /*!< */
         int AttReq; /*!< */
         int Handling; /*!< */
         char *HandSeed;
                 /*!< Next available handle.\n
                  * Group code = 5. */
-        int SurfTab1; /*!< */
-        int SurfTab2; /*!< */
-        int SurfType; /*!< */
-        int SurfU; /*!< */
-        int SurfV; /*!< */
+        int SurfTab1;
+                /*!< Number of mesh tabulations in first direction.\n
+                 * Group code = 70. */
+        int SurfTab2;
+                /*!< Number of mesh tabulations in second direction.\n
+                 * Group code = 70. */
+        int SurfType;
+                /*!< Surface type for PEDIT Smooth.\n
+                 * Group code = 70. */
+        int SurfU;
+                /*!< Surface density (for PEDIT Smooth) in M direction.\n
+                 * Group code = 70. */
+        int SurfV;
+                /*!< Surface density (for PEDIT Smooth) in N direction.\n
+                 * Group code = 70. */
         char *UCSBase; /*!< */
         char *UCSName; /*!< */
         DxfPoint UCSOrg; /*!< */
