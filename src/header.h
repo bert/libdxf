@@ -626,12 +626,29 @@ dxf_header_struct
                  *   <li value = 1> Sketch polylines.</li>
                  * </ol>
                  * Group code = 70. */
-        double TDCreate; /*!< */
-        double TDUCreate; /*!< */
-        double TDUpdate; /*!< */
-        double TDUUpdate; /*!< */
-        double TDInDWG; /*!< */
-        double TDUSRTimer; /*!< */
+        double TDCreate;
+                /*!< Local date/time of drawing creation (see Special
+                 * Handling of Date/Time Variables).\n
+                 * Group code = 40. */
+        double TDUCreate;
+                /*!< Universal date/time the drawing was created (see
+                 * Special Handling of Date/Time Variables).\n
+                 * Group code = 40. */
+        double TDUpdate;
+                /*!< Local date/time of last drawing update (see Special
+                 * Handling of Date/Time Variables).\n
+                 * Group code = 40. */
+        double TDUUpdate;
+                /*!< Universal date/time of the last update/save (see
+                 * Special Handling of Date/Time Variables).\n
+                 * Group code = 40. */
+        double TDInDWG;
+                /*!< Cumulative editing time for this drawing (see
+                 * Special Handling of Date/Time Variables).\n
+                 * Group code = 40. */
+        double TDUSRTimer;
+                /*!< User-elapsed timer.\n
+                 * Group code = 40. */
         int USRTimer; /*!< */
         double AngBase;
                 /*!< Angle 0 direction.\n
