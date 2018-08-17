@@ -133,11 +133,14 @@ dxf_header_struct
                  * </ol>
                  * Group code = 70. */
         double TextSize;
-                /*!< */
+                /*!< Default text height.\n
+                 * Group code = 40. */
         double TraceWid;
-                /*!< */
+                /*!< Default trace width.\n
+                 * Group code = 40. */
         char *TextStyle;
-                /*!< */
+                /*!< Current text style name.\n
+                 * Group code = 7. */
         char *CLayer;
                 /*!< Current layer name.\n
                  * Group code = 8. */
@@ -603,7 +606,9 @@ dxf_header_struct
         double PElevation;
                 /*!< Current paper space elevation.\n
                  * Group code = 40. */
-        double Thickness; /*!< */
+        double Thickness;
+                /*!< Current thickness set by ELEV command.\n
+                 * Group code = 40. */
         int LimCheck;
                 /*!< Nonzero if limits checking is on.\n
                  * Group code = 70. */
@@ -799,7 +804,10 @@ dxf_header_struct
                  * Range 1-100.\n
                  * Default 70.\n
                  * Group code = 70. */
-        int TileMode; /*!< */
+        int TileMode;
+                /*!< 1 for previous release compatibility mode;
+                 * 0 otherwise.\n
+                 * Group code = 70. */
         int MaxActVP;
                 /*!< Sets maximum number of viewports to be regenerated.\n
                  * Group code = 70. */
@@ -842,7 +850,9 @@ dxf_header_struct
                  *     scaling.</li>
                  * </ol>
                  * Group code = 70. */
-        int TreeDepth; /*!< */
+        int TreeDepth;
+                /*!< Specifies the maximum depth of the spatial index.\n
+                 * Group code = 70. */
         int PickStyle; /*!< */
         char *CMLStyle;
                 /*!< Current multiline style name.\n
