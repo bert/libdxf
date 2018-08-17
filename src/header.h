@@ -702,15 +702,26 @@ dxf_header_struct
         int SurfV;
                 /*!< Surface density (for PEDIT Smooth) in N direction.\n
                  * Group code = 70. */
-        char *UCSBase; /*!< */
-        char *UCSName; /*!< */
-        DxfPoint UCSOrg; /*!< */
+        char *UCSBase;
+                /*!< Name of the UCS that defines the origin and
+                 * orientation of orthographic UCS settings.\n
+                 * Group code = 2. */
+        char *UCSName;
+                /*!< Name of current UCS.\n
+                 * Group code = 2. */
+        DxfPoint UCSOrg;
+                /*!< Origin of current UCS (in WCS).\n
+                 * Group code 10, 20 and 30. */
         DxfPoint UCSOrgTop; /*!< */
         DxfPoint UCSOrgBottom; /*!< */
         DxfPoint UCSOrgLeft; /*!< */
         DxfPoint UCSOrgRight; /*!< */
         DxfPoint UCSOrgFront; /*!< */
-        DxfPoint UCSOrgBack; /*!< */
+        DxfPoint UCSOrgBack;
+                /*!< Point which becomes the new UCS origin after
+                 * changing model space UCS to BACK when UCSBASE is set
+                 * to WORLD.\n
+                 * Group codes = 10, 20 and 30. */
         DxfPoint UCSXDir; /*!< */
         DxfPoint UCSYDir; /*!< */
         char *UCSOrthoRef; /*!< */
