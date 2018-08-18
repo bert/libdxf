@@ -831,11 +831,26 @@ dxf_header_struct
                  *   <li value = 6> Right.</li>
                  * </ol>
                  * Group code = 70. */
-        int UserI1; /*!< */
-        int UserI2; /*!< */
-        int UserI3; /*!< */
-        int UserI4; /*!< */
-        int UserI5; /*!< */
+        int UserI1;
+                /*!< Integer variables intended for use by third-party
+                 * developers.\n
+                 * Group code = 70. */
+        int UserI2;
+                /*!< Integer variables intended for use by third-party
+                 * developers.\n
+                 * Group code = 70. */
+        int UserI3;
+                /*!< Integer variables intended for use by third-party
+                 * developers.\n
+                 * Group code = 70. */
+        int UserI4;
+                /*!< Integer variables intended for use by third-party
+                 * developers.\n
+                 * Group code = 70. */
+        int UserI5;
+                /*!< Integer variables intended for use by third-party
+                 * developers.\n
+                 * Group code = 70. */
         double UserR1; /*!< */
         double UserR2; /*!< */
         double UserR3; /*!< */
@@ -880,7 +895,10 @@ dxf_header_struct
         DxfPoint PLimMax;
                 /*!< Maximum X and Y limits in paper space.\n
                  * Group code = 10 and 20. */
-        int UnitMode; /*!< */
+        int UnitMode;
+                /*!< Low bit set = Display fractions, feet-and-inches,
+                 * and surveyor's angles in input format.\n
+                 * Group code = 70. */
         int VisRetain; /*!< */
         int PLineGen;
                 /*!< Governs the generation of linetype patterns around
