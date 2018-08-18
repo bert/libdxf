@@ -832,30 +832,45 @@ dxf_header_struct
                  * </ol>
                  * Group code = 70. */
         int UserI1;
-                /*!< Integer variables intended for use by third-party
+                /*!< Integer variable intended for use by third-party
                  * developers.\n
                  * Group code = 70. */
         int UserI2;
-                /*!< Integer variables intended for use by third-party
+                /*!< Integer variable intended for use by third-party
                  * developers.\n
                  * Group code = 70. */
         int UserI3;
-                /*!< Integer variables intended for use by third-party
+                /*!< Integer variable intended for use by third-party
                  * developers.\n
                  * Group code = 70. */
         int UserI4;
-                /*!< Integer variables intended for use by third-party
+                /*!< Integer variable intended for use by third-party
                  * developers.\n
                  * Group code = 70. */
         int UserI5;
-                /*!< Integer variables intended for use by third-party
+                /*!< Integer variable intended for use by third-party
                  * developers.\n
                  * Group code = 70. */
-        double UserR1; /*!< */
-        double UserR2; /*!< */
-        double UserR3; /*!< */
-        double UserR4; /*!< */
-        double UserR5; /*!< */
+        double UserR1;
+                /*!< Real variable intended for use by third-party
+                 * developers.\n
+                 * Group code = 40. */
+        double UserR2;
+                /*!< Real variable intended for use by third-party
+                 * developers.\n
+                 * Group code = 40. */
+        double UserR3;
+                /*!< Real variable intended for use by third-party
+                 * developers.\n
+                 * Group code = 40. */
+        double UserR4;
+                /*!< Real variable intended for use by third-party
+                 * developers.\n
+                 * Group code = 40. */
+        double UserR5;
+                /*!< Real variable intended for use by third-party
+                 * developers.\n
+                 * Group code = 40. */
         int WorldView; /*!< */
         int ShadEdge;
                 /*!< <ol>
