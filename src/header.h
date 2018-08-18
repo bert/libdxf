@@ -654,7 +654,12 @@ dxf_header_struct
         double TDUSRTimer;
                 /*!< User-elapsed timer.\n
                  * Group code = 40. */
-        int USRTimer; /*!< */
+        int USRTimer;
+                /*!< <ol>
+                 *   <li value = 0> Timer off.</li>
+                 *   <li value = 1> Timer on.</li>
+                 * </ol>
+                 * Group code = 70. */
         double AngBase;
                 /*!< Angle 0 direction.\n
                  * Group code = 50. */
@@ -871,7 +876,12 @@ dxf_header_struct
                 /*!< Real variable intended for use by third-party
                  * developers.\n
                  * Group code = 40. */
-        int WorldView; /*!< */
+        int WorldView;
+                /*!< <ol>
+                 *   <li value = 0> Don't change UCS.</li>
+                 *   <li value = 1> Set UCS to WCS during DVIEW/VPOINT.</li>
+                 * </ol>
+                 * Group code = 70. */
         int ShadEdge;
                 /*!< <ol>
                  *   <li value = 0> Faces shaded, edges not highlighted.</li>
@@ -914,7 +924,14 @@ dxf_header_struct
                 /*!< Low bit set = Display fractions, feet-and-inches,
                  * and surveyor's angles in input format.\n
                  * Group code = 70. */
-        int VisRetain; /*!< */
+        int VisRetain;
+                /*!< <ol>
+                 *   <li value = 0> Don't retain xref-dependent
+                 *     visibility settings.</li>
+                 *   <li value = 1> Retain xref-dependent visibility
+                 *     settings.</li>
+                 * </ol>
+                 * Group code = 70. */
         int PLineGen;
                 /*!< Governs the generation of linetype patterns around
                  * the vertices of a 2D polyline:
@@ -1052,7 +1069,11 @@ dxf_header_struct
                 /*!< Set at creation time, uniquely identifies a
                  * particular drawing.\n
                  * Group code = 2. */
-        char *VersionGUID; /*!< */
+        char *VersionGUID;
+                /*!< Uniquely identifies a particular version of a
+                 * drawing.\n
+                 * Updated when the drawing is modified.\n
+                 * Group code = 2. */
         int ExtNames;
                 /*!< Controls symbol table naming:
                  * <ol>
