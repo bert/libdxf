@@ -712,20 +712,60 @@ dxf_header_struct
         DxfPoint UCSOrg;
                 /*!< Origin of current UCS (in WCS).\n
                  * Group code 10, 20 and 30. */
-        DxfPoint UCSOrgTop; /*!< */
-        DxfPoint UCSOrgBottom; /*!< */
-        DxfPoint UCSOrgLeft; /*!< */
-        DxfPoint UCSOrgRight; /*!< */
-        DxfPoint UCSOrgFront; /*!< */
+        DxfPoint UCSOrgTop;
+                /*!< Point which becomes the new UCS origin after
+                 * changing model space UCS to TOP when UCSBASE is set
+                 * to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgBottom;
+                /*!< Point which becomes the new UCS origin after
+                 * changing model space UCS to BOTTOM when UCSBASE is
+                 * set to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgLeft;
+                /*!< Point which becomes the new UCS origin after
+                 * changing model space UCS to LEFT when UCSBASE is set
+                 * to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgRight;
+                /*!< Point which becomes the new UCS origin after
+                 * changing model space UCS to RIGHT when UCSBASE is set
+                 * to WORLD.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSOrgFront;
+                /*!< Point which becomes the new UCS origin after
+                 * changing model space UCS to FRONT when UCSBASE is set
+                 * to WORLD.\n
+                 * Group code = 10, 20 and 30. */
         DxfPoint UCSOrgBack;
                 /*!< Point which becomes the new UCS origin after
                  * changing model space UCS to BACK when UCSBASE is set
                  * to WORLD.\n
                  * Group codes = 10, 20 and 30. */
-        DxfPoint UCSXDir; /*!< */
-        DxfPoint UCSYDir; /*!< */
-        char *UCSOrthoRef; /*!< */
-        int UCSOrthoView; /*!< */
+        DxfPoint UCSXDir;
+                /*!< Direction of the current UCS X axis (in WCS).\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint UCSYDir;
+                /*!< Direction of the current UCS Y axis (in WCS).\n
+                 * Group code = 10, 20 and 30. */
+        char *UCSOrthoRef;
+                /*!< If model space UCS is orthographic (UCSORTHOVIEW
+                 * not equal to 0), this is the name of the UCS that the
+                 * orthographic UCS is relative to.\n
+                 * If blank, UCS is relative to WORLD.\n
+                 * Group code = 2. */
+        int UCSOrthoView;
+                /*!< Orthographic view type of model space UCS:
+                 * <ol>
+                 *   <li value = 0> UCS is not orthographic.</li>
+                 *   <li value = 1> Top.</li>
+                 *   <li value = 2> Bottom.</li>
+                 *   <li value = 3> Front.</li>
+                 *   <li value = 4> Back.</li>
+                 *   <li value = 5> Left.</li>
+                 *   <li value = 6> Right.</li>
+                 * </ol>
+                 * Group code = 70. */
         char *PUCSBase;
                 /*!< Name of the UCS that defines the origin and
                  * orientation of orthographic UCS settings (paper space
