@@ -1041,7 +1041,15 @@ dxf_header_struct
                  * If null, the drawing path is used.\n
                  * Group code = 1. */
         char *StyleSheet; /*!< */
-        int XEdit; /*!< */
+        int XEdit;
+                /*!< Controls whether the current drawing can be edited
+                 * in-place when being referenced by another drawing.
+                 * <ol>
+                 *   <li value = 0> Can't use in-place reference
+                 *     editing.</li>
+                 *   <li value = 1> Can use in-place reference editing.</li>
+                 * </ol>
+                 * Group code = 290. */
         int CEPSNType;
                 /*!< Plot style type of new objects:
                  * <ol>
@@ -1131,7 +1139,14 @@ dxf_header_struct
                  *   <li value = 1> HIDE does not ignore text objects.</li>
                  * </ol>
                  * Group code = 290. */
-        int XClipFrame; /*!< */
+        int XClipFrame;
+                /*!< Controls the visibility of xref
+                 * clipping boundaries:
+                 * <ol>
+                 *   <li value = 0> Clipping boundary is not visible.</li>
+                 *   <li value = 1> Clipping boundary is visible.</li>
+                 * </ol>
+                 * Group code = 290. */
         int HaloGap;
                 /*!< Specifies a gap to be displayed where an object is
                  * hidden by another object; the value is specified as a
