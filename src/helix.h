@@ -260,6 +260,7 @@ DxfBinaryGraphicsData *dxf_helix_get_binary_graphics_data (DxfHelix *helix);
 DxfHelix *dxf_helix_set_binary_graphics_data (DxfHelix *helix, DxfBinaryGraphicsData *data);
 char *dxf_helix_get_dictionary_owner_soft (DxfHelix *helix);
 DxfHelix *dxf_helix_set_dictionary_owner_soft (DxfHelix *helix, char *dictionary_owner_soft);
+char *dxf_helix_get_object_owner_soft (DxfHelix *helix);
 char *dxf_helix_get_material (DxfHelix *helix);
 DxfHelix *dxf_helix_set_material (DxfHelix *helix, char *material);
 char *dxf_helix_get_dictionary_owner_hard (DxfHelix *helix);
