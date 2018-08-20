@@ -6,6 +6,8 @@
  *
  * \brief Header file for a DXF helix entity (\c HELIX).
  *
+ * \since The \c HELIX entity was introduced in DXF R2007.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
