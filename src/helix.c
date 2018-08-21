@@ -1652,7 +1652,7 @@ dxf_helix_get_binary_graphics_data
         if (helix->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
