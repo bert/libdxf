@@ -106,7 +106,7 @@ dxf_helix_init
         if (helix == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfHelix struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
