@@ -6,6 +6,8 @@
  *
  * \brief Functions for a DXF helix entity (\c HELIX).
  *
+ * \since The \c HELIX entity was introduced in DXF R2007.
+ *
  * \warning The \c HELIX entity requires AutoCAD version 2007 or higher.\n
  *
  * <hr>
