@@ -63,7 +63,7 @@ dxf_helix_new ()
         if ((helix = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHelix struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 helix = NULL;
         }
