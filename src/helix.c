@@ -531,6 +531,7 @@ dxf_helix_write
         char *dxf_entity_name = strdup ("HELIX");
         int i;
         DxfPoint *iter = NULL;
+        DxfBinaryGraphicsData *iter_310 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -640,10 +641,11 @@ dxf_helix_write
 #else
         fprintf (fp->fp, " 92\n%d\n", helix->graphics_data_size);
 #endif
-        while (helix->binary_graphics_data != NULL)
+        iter_310 = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
+        while (iter_310 != NULL)
         {
-                fprintf (fp->fp, "310\n%s\n", helix->binary_graphics_data->data_line);
-                helix->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (helix->binary_graphics_data);
+                fprintf (fp->fp, "310\n%s\n", iter_310->data_line);
+                iter_310 = (DxfBinaryGraphicsData *) iter_310->next;
         }
         fprintf (fp->fp, "420\n%ld\n", helix->color_value);
         fprintf (fp->fp, "430\n%s\n", helix->color_name);
