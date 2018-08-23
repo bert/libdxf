@@ -550,6 +550,15 @@ dxf_helix_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (helix->spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         if (helix->radius == 0.0)
         {
                 fprintf (stderr,
