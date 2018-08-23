@@ -3622,16 +3622,14 @@ dxf_helix_set_constraint_type
         if (constraint_type < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative constraint_type value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (constraint_type > 2)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid constraint_type value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         helix->constraint_type = constraint_type;
 #if DEBUG
