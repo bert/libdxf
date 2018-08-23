@@ -3577,16 +3577,14 @@ dxf_helix_get_constraint_type
         if (helix->constraint_type < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the constraint_type member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (helix->constraint_type > 2)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was found in the constraint_type member.\n")),
+                  (_("Warning in %s () an invalid value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
