@@ -3666,16 +3666,14 @@ dxf_helix_get_handedness
         if (helix->handedness < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the handedness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (helix->handedness > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was found in the handedness member.\n")),
+                  (_("Warning in %s () an invalid value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
