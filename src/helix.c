@@ -530,6 +530,7 @@ dxf_helix_write
 #endif
         char *dxf_entity_name = strdup ("HELIX");
         int i;
+        DxfPoint *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -679,19 +680,21 @@ dxf_helix_write
                         /*! \todo implement as a single linked list of double. */
                 }
         }
-        while (helix->spline->p0 != NULL)
+        iter = (DxfPoint *) helix->spline->p0;
+        while (iter != NULL)
         {
-                fprintf (fp->fp, " 10\n%f\n", helix->spline->p0->x0);
-                fprintf (fp->fp, " 20\n%f\n", helix->spline->p0->y0);
-                fprintf (fp->fp, " 30\n%f\n", helix->spline->p0->z0);
-                helix->spline->p0 = (DxfPoint *) helix->spline->p0->next;
+                fprintf (fp->fp, " 10\n%f\n", iter->x0);
+                fprintf (fp->fp, " 20\n%f\n", iter->y0);
+                fprintf (fp->fp, " 30\n%f\n", iter->z0);
+                iter = (DxfPoint *) iter->next;
         }
-        while (helix->spline->p1 != NULL)
+        iter = (DxfPoint *) helix->spline->p1;
+        while (iter != NULL)
         {
-                fprintf (fp->fp, " 11\n%f\n", helix->spline->p1->x0);
-                fprintf (fp->fp, " 21\n%f\n", helix->spline->p1->y0);
-                fprintf (fp->fp, " 31\n%f\n", helix->spline->p1->z0);
-                helix->spline->p1 = (DxfPoint *) helix->spline->p1->next;
+                fprintf (fp->fp, " 11\n%f\n", iter->x0);
+                fprintf (fp->fp, " 21\n%f\n", iter->y0);
+                fprintf (fp->fp, " 31\n%f\n", iter->z0);
+                iter = (DxfPoint *) iter->next;
         }
         /* Continue writing helix entity parameters. */
         fprintf (fp->fp, "100\nAcDbHelix\n");
