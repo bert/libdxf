@@ -3711,16 +3711,14 @@ dxf_helix_set_handedness
         if (handedness < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative handedness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (handedness > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid handedness value was passed.\n")),
+                  (_("Warning in %s () an invalid value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         helix->handedness = handedness;
 #if DEBUG
