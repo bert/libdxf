@@ -64,7 +64,7 @@ dxf_idbuffer_new ()
         if ((idbuffer = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfIdbuffer struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 idbuffer = NULL;
         }
