@@ -707,7 +707,7 @@ dxf_idbuffer_get_entity_pointer
         if (idbuffer->entity_pointer == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the entity_pointer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
