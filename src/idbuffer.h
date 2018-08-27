@@ -76,7 +76,7 @@ dxf_idbuffer_entity_pointer_struct
  * \brief DXF definition of an AutoCAD idbuffer object (\c IDBUFFER).
  */
 typedef struct
-dxf_idbuffer
+dxf_idbuffer_struct
 {
         /* Members common for all DXF objects. */
         int id_code;
