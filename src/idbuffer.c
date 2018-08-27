@@ -6,6 +6,9 @@
  *
  * \brief Functions for a DXF idbuffer object (\c IDBUFFER).
  *
+ * The \c IDBUFFER object is a utility object that is just a list of
+ * references to objects.
+ *
  * \since The \c IDBUFFER object was introduced in DXF R14.
  *
  * \version According to DXF R10 (backward compatibility).
