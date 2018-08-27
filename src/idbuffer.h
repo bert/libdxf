@@ -117,6 +117,7 @@ DxfIdbuffer *dxf_idbuffer_set_id_code (DxfIdbuffer *idbuffer, int id_code);
 char *dxf_idbuffer_get_dictionary_owner_soft (DxfIdbuffer *idbuffer);
 DxfIdbuffer *dxf_idbuffer_set_dictionary_owner_soft (DxfIdbuffer *idbuffer, char *dictionary_owner_soft);
 char *dxf_idbuffer_get_object_owner_soft (DxfIdbuffer *idbuffer);
+DxfIdbuffer *dxf_idbuffer_set_object_owner_soft (DxfIdbuffer *idbuffer, char *object_owner_soft);
 char *dxf_idbuffer_get_dictionary_owner_hard (DxfIdbuffer *idbuffer);
 DxfIdbuffer *dxf_idbuffer_set_dictionary_owner_hard (DxfIdbuffer *idbuffer, char *dictionary_owner_hard);
 DxfIdbufferEntityPointer *dxf_idbuffer_get_entity_pointer (DxfIdbuffer *idbuffer);

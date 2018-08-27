@@ -638,6 +638,46 @@ dxf_idbuffer_get_object_owner_soft
 
 
 /*!
+ * \brief Set the pointer to the \c object_owner_soft for a DXF
+ * \c IDBUFFER object.
+ */
+DxfIdbuffer *
+dxf_idbuffer_set_object_owner_soft
+(
+        DxfIdbuffer *idbuffer,
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+        char *object_owner_soft
+                /*!< a string containing the pointer to the
+                 * \c object_owner_soft for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (idbuffer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        idbuffer->object_owner_soft = strdup (object_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (idbuffer);
+}
+
+
+/*!
  * \brief Get the pointer to the \c dictionary_owner_hard from a DXF
  * \c IDBUFFER object.
  *
