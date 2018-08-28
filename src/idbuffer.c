@@ -352,6 +352,11 @@ dxf_idbuffer_write
                 fprintf (fp->fp, "360\n%s\n", dxf_idbuffer_get_dictionary_owner_hard (idbuffer));
                 fprintf (fp->fp, "102\n}\n");
         }
+        if ((strcmp (idbuffer->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", idbuffer->object_owner_soft);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbIdBuffer\n");
