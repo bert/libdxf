@@ -116,6 +116,7 @@ dxf_idbuffer_init
         }
         idbuffer->id_code = 0;
         idbuffer->dictionary_owner_soft = strdup ("");
+        idbuffer->object_owner_soft = strdup ("");
         idbuffer->dictionary_owner_hard = strdup ("");
         idbuffer->entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_entity_pointer_init (idbuffer->entity_pointer);
         idbuffer->next = NULL;
