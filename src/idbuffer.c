@@ -153,6 +153,7 @@ dxf_idbuffer_read
         char *temp_string = NULL;
         int i;
         DxfIdbufferEntityPointer *entity_pointer = NULL;
+        int iter330;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -180,6 +181,7 @@ dxf_idbuffer_read
         }
         i = 0;
         entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_entity_pointer_init (entity_pointer);
+        iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -217,11 +219,22 @@ dxf_idbuffer_read
                 else if ((strcmp (temp_string, "330") == 0)
                   && (i == 0))
                 {
-                        /* Now follows a string containing Soft-pointer
-                         * ID/handle to owner dictionary. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", idbuffer->dictionary_owner_soft);
-                        i++;
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", idbuffer->dictionary_owner_soft);
+                                i++;
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", idbuffer->object_owner_soft);
+                        }
+                        iter330++;
                 }
                 else if ((strcmp (temp_string, "330") == 0)
                   && (i > 0))
