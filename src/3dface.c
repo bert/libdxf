@@ -789,7 +789,7 @@ dxf_3dface_free_chain
         }
         while (faces != NULL)
         {
-                struct Dxf3dface *iter = faces->next;
+                Dxf3dface *iter = (Dxf3dface *) faces->next;
                 dxf_3dface_free (faces);
                 faces = (Dxf3dface *) iter;
         }
