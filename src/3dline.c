@@ -778,7 +778,7 @@ dxf_3dline_free_chain
         }
         while (lines != NULL)
         {
-                struct Dxf3dline *iter = (struct Dxf3dline *) lines->next;
+                Dxf3dline *iter = (Dxf3dline *) lines->next;
                 dxf_3dline_free (lines);
                 lines = (Dxf3dline *) iter;
         }
