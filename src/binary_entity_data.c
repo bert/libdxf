@@ -215,7 +215,7 @@ dxf_binary_entity_data_free_chain
         }
         while (data != NULL)
         {
-                struct DxfBinaryEntityData *iter = data->next;
+                DxfBinaryEntityData *iter = (DxfBinaryEntityData *) data->next;
                 dxf_binary_entity_data_free (data);
                 data = (DxfBinaryEntityData *) iter;
         }
