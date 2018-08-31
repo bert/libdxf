@@ -730,7 +730,7 @@ dxf_circle_free_chain
         }
         while (circles != NULL)
         {
-                struct DxfCircle *iter = circles->next;
+                DxfCircle *iter = (DxfCircle *) circles->next;
                 dxf_circle_free (circles);
                 circles = (DxfCircle *) iter;
         }
