@@ -616,7 +616,7 @@ dxf_block_free_chain
         }
         while (blocks != NULL)
         {
-                struct DxfBlock *iter = blocks->next;
+                DxfBlock *iter = (DxfBlock *) blocks->next;
                 dxf_block_free (blocks);
                 blocks = (DxfBlock *) iter;
         }
