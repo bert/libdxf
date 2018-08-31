@@ -531,7 +531,7 @@ dxf_block_record_free_chain
         }
         while (block_records != NULL)
         {
-                struct DxfBlockRecord *iter= block_records->next;
+                DxfBlockRecord *iter= (DxfBlockRecord *) block_records->next;
                 dxf_block_record_free (block_records);
                 block_records = (DxfBlockRecord *) iter;
         }
