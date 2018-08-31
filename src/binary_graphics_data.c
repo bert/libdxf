@@ -215,7 +215,7 @@ dxf_binary_graphics_data_free_chain
         }
         while (data != NULL)
         {
-                struct DxfBinaryGraphicsData *iter = data->next;
+                DxfBinaryGraphicsData *iter = (DxfBinaryGraphicsData *) data->next;
                 dxf_binary_graphics_data_free (data);
                 data = (DxfBinaryGraphicsData *) iter;
         }
