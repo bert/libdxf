@@ -233,7 +233,7 @@ dxf_comment_free_chain
         }
         while (comments != NULL)
         {
-                struct DxfComment *iter = comments->next;
+                DxfComment *iter = (DxfComment *) comments->next;
                 dxf_comment_free (comments);
                 comments = (DxfComment *) iter;
         }
