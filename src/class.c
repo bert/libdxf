@@ -1,8 +1,8 @@
 /*!
  * \file class.c
  *
- * \author Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2017
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2017,
+ * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -484,7 +484,7 @@ dxf_class_free_chain
         }
         while (classes != NULL)
         {
-                struct DxfClass *iter = classes->next;
+                DxfClass *iter = (DxfClass *) classes->next;
                 dxf_class_free (classes);
                 classes = (DxfClass *) iter;
         }
