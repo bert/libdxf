@@ -424,7 +424,7 @@ dxf_dictionary_free_chain
         }
         while (dictionaries != NULL)
         {
-                struct DxfDictionary *iter = dictionaries->next;
+                DxfDictionary *iter = (DxfDictionary *) dictionaries->next;
                 dxf_dictionary_free (dictionaries);
                 dictionaries = (DxfDictionary *) iter;
         }
