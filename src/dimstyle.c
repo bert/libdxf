@@ -1015,7 +1015,7 @@ dxf_dimstyle_free_chain
         }
         while (dimstyles != NULL)
         {
-                struct DxfDimStyle *iter = dimstyles->next;
+                DxfDimStyle *iter = (DxfDimStyle *) dimstyles->next;
                 dxf_dimstyle_free (dimstyles);
                 dimstyles = (DxfDimStyle *) iter;
         }
