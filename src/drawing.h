@@ -72,6 +72,9 @@ dxf_drawing_struct
         /*!< Objects section data (single linked list).*/
     struct DxfThumbnail *thumbnail;
         /*!< Thumbnail data.*/
+    struct DxfDrawing *next;
+                /*!< Pointer to the next DxfDrawing.\n
+                 * \c NULL in the last DxfDrawing. */
 } DxfDrawing;
 
 
