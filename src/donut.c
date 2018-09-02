@@ -387,7 +387,7 @@ dxf_donut_free_chain
         }
         while (donuts != NULL)
         {
-                struct DxfDonut *iter = donuts->next;
+                DxfDonut *iter = (DxfDonut *) donuts->next;
                 dxf_donut_free (donuts);
                 donuts = (DxfDonut *) iter;
         }
