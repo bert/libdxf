@@ -428,7 +428,7 @@ dxf_dictionaryvar_free_chain
         }
         while (dictionaryvars != NULL)
         {
-                struct DxfDictionaryVar *iter = dictionaryvars->next;
+                DxfDictionaryVar *iter = (DxfDictionaryVar *) dictionaryvars->next;
                 dxf_dictionaryvar_free (dictionaryvars);
                 dictionaryvars = (DxfDictionaryVar *) iter;
         }
