@@ -817,4 +817,49 @@ dxf_drawing_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c DRAWING from a linked
+ * list of libDXF \c DRAWINGs.
+ *
+ * \return pointer to the last \c DRAWING.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfDrawing *
+dxf_drawing_get_last
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a libDXF \c DRAWING. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfDrawing *) drawing);
+        }
+        DxfDrawing *iter = (DxfDrawing *) drawing->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfDrawing *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDrawing *) iter);
+}
+
+
 /* EOF*/
