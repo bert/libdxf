@@ -112,6 +112,7 @@ dxf_drawing_init
         //dxf_entities_init ((DxfEntities *) drawing->entities_list);
         dxf_object_init ((DxfObject *) drawing->object_list);
         dxf_thumbnail_init ((DxfThumbnail *) drawing->thumbnail);
+        drawing->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
