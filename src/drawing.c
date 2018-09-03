@@ -146,6 +146,13 @@ dxf_drawing_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (drawing->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
         dxf_header_free ((DxfHeader *) drawing->header);
         dxf_class_free_chain ((DxfClass *) drawing->class_list);
         dxf_block_free_chain ((DxfBlock *) drawing->block_list);
