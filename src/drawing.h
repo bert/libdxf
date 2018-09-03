@@ -96,6 +96,7 @@ DxfObject *dxf_drawing_get_object_list (DxfDrawing *drawing);
 DxfDrawing *dxf_drawing_set_object_list (DxfDrawing *drawing, DxfObject *object_list);
 DxfThumbnail *dxf_drawing_get_thumbnail (DxfDrawing *drawing);
 DxfDrawing *dxf_drawing_set_thumbnail (DxfDrawing *drawing, DxfThumbnail *thumbnail);
+DxfDrawing *dxf_drawing_get_next (DxfDrawing *drawing);
 
 
 #ifdef __cplusplus

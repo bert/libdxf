@@ -736,4 +736,44 @@ dxf_drawing_set_thumbnail
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DRAWING from a DXF 
+ * \c DRAWING.
+ *
+ * \return pointer to the next \c DRAWING.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfDrawing *
+dxf_drawing_get_next
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a DXF \c DRAWING. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDrawing *) drawing->next);
+}
+
+
 /* EOF*/
