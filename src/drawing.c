@@ -776,4 +776,45 @@ dxf_drawing_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next libDXF \c DRAWING for a \c DRAWING.
+ *
+ * \return a pointer to \c drawing when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDrawing *
+dxf_drawing_set_next
+(
+        DxfDrawing *drawing,
+                /*!< a pointer to a libDXF \c DRAWING. */
+        DxfDrawing *next
+                /*!< a pointer to the next \c DRAWING. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        drawing->next = (struct DxfDrawing *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (drawing);
+}
+
+
 /* EOF*/
