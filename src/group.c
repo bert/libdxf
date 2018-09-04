@@ -451,7 +451,7 @@ dxf_group_free_chain
         }
         while (groups != NULL)
         {
-                struct DxfGroup *iter = groups->next;
+                DxfGroup *iter = (DxfGroup *) groups->next;
                 dxf_group_free (groups);
                 groups = (DxfGroup *) iter;
         }
