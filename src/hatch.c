@@ -3717,7 +3717,7 @@ dxf_hatch_pattern_free_chain
         }
         while (patterns != NULL)
         {
-                struct DxfHatchPattern *iter = patterns->next;
+                DxfHatchPattern *iter = (DxfHatchPattern *) patterns->next;
                 dxf_hatch_pattern_free (patterns);
                 patterns = (DxfHatchPattern *) iter;
         }
