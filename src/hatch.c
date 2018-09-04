@@ -4384,7 +4384,7 @@ dxf_hatch_pattern_def_line_dash_free_chain
         }
         while (dashes != NULL)
         {
-                struct DxfHatchPatternDefLineDash *iter = dashes->next;
+                DxfHatchPatternDefLineDash *iter = (DxfHatchPatternDefLineDash *) dashes->next;
                 dxf_hatch_pattern_def_line_dash_free (dashes);
                 dashes = (DxfHatchPatternDefLineDash *) iter;
         }
