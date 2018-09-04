@@ -813,7 +813,7 @@ dxf_ellipse_free_chain
         }
         while (ellipses != NULL)
         {
-                struct DxfEllipse *iter = ellipses->next;
+                DxfEllipse *iter = (DxfEllipse *) ellipses->next;
                 dxf_ellipse_free (ellipses);
                 ellipses = (DxfEllipse *) iter;
         }
