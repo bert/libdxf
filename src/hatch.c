@@ -474,7 +474,7 @@ dxf_hatch_free_chain
         }
         while (hatches != NULL)
         {
-                struct DxfHatch *iter = hatches->next;
+                DxfHatch *iter = (DxfHatch *) hatches->next;
                 dxf_hatch_free (hatches);
                 hatches = (DxfHatch *) iter;
         }
