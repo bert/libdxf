@@ -4821,7 +4821,7 @@ dxf_hatch_pattern_def_line_free_chain
         }
         while (lines != NULL)
         {
-                struct DxfHatchPatternDefLine *iter = lines->next;
+                DxfHatchPatternDefLine *iter = (DxfHatchPatternDefLine *) lines->next;
                 dxf_hatch_pattern_def_line_free (lines);
                 lines = (DxfHatchPatternDefLine *) iter;
         }
