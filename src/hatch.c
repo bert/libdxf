@@ -5710,7 +5710,7 @@ dxf_hatch_pattern_seedpoint_free_chain
         }
         while (hatch_pattern_seed_points != NULL)
         {
-                struct DxfHatchPatternSeedPoint *iter = hatch_pattern_seed_points->next;
+                DxfHatchPatternSeedPoint *iter = (DxfHatchPatternSeedPoint *) hatch_pattern_seed_points->next;
                 dxf_hatch_pattern_seedpoint_free (hatch_pattern_seed_points);
                 hatch_pattern_seed_points = (DxfHatchPatternSeedPoint *) iter;
         }
