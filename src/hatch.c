@@ -9214,7 +9214,7 @@ dxf_hatch_boundary_path_edge_arc_free_chain
         }
         while (hatch_boundary_path_edge_arcs != NULL)
         {
-                struct DxfHatchBoundaryPathEdgeArc *iter = hatch_boundary_path_edge_arcs->next;
+                DxfHatchBoundaryPathEdgeArc *iter = (DxfHatchBoundaryPathEdgeArc *) hatch_boundary_path_edge_arcs->next;
                 dxf_hatch_boundary_path_edge_arc_free (hatch_boundary_path_edge_arcs);
                 hatch_boundary_path_edge_arcs = (DxfHatchBoundaryPathEdgeArc *) iter;
         }
