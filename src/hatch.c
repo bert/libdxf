@@ -7740,7 +7740,7 @@ dxf_hatch_boundary_path_polyline_vertex_free_chain
         }
         while (hatch_boundary_path_polyline_vertices != NULL)
         {
-                struct DxfHatchBoundaryPathPolylineVertex *iter = hatch_boundary_path_polyline_vertices->next;
+                DxfHatchBoundaryPathPolylineVertex *iter = (DxfHatchBoundaryPathPolylineVertex *) hatch_boundary_path_polyline_vertices->next;
                 dxf_hatch_boundary_path_polyline_vertex_free (hatch_boundary_path_polyline_vertices);
                 hatch_boundary_path_polyline_vertices = (DxfHatchBoundaryPathPolylineVertex *) iter;
         }
