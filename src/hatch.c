@@ -6869,7 +6869,7 @@ dxf_hatch_boundary_path_polyline_free_chain
         }
         while (polylines != NULL)
         {
-                struct DxfHatchBoundaryPathPolyline *iter = polylines->next;
+                DxfHatchBoundaryPathPolyline *iter = (DxfHatchBoundaryPathPolyline *) polylines->next;
                 dxf_hatch_boundary_path_polyline_free (polylines);
                 polylines = (DxfHatchBoundaryPathPolyline *) iter;
         }
