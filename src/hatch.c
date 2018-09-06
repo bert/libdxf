@@ -6288,7 +6288,7 @@ dxf_hatch_boundary_path_free_chain
         }
         while (hatch_boundary_paths != NULL)
         {
-                struct DxfHatchBoundaryPath *iter = hatch_boundary_paths->next;
+                DxfHatchBoundaryPath *iter = (DxfHatchBoundaryPath *) hatch_boundary_paths->next;
                 dxf_hatch_boundary_path_free (hatch_boundary_paths);
                 hatch_boundary_paths = (DxfHatchBoundaryPath *) iter;
         }
