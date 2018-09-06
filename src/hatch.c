@@ -8490,7 +8490,7 @@ dxf_hatch_boundary_path_edge_free_chain
         }
         while (edges != NULL)
         {
-                struct DxfHatchBoundaryPathEdge *iter = edges->next;
+                DxfHatchBoundaryPathEdge *iter = (DxfHatchBoundaryPathEdge *) edges->next;
                 dxf_hatch_boundary_path_edge_free (edges);
                 edges = (DxfHatchBoundaryPathEdge *) iter;
         }
