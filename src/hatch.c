@@ -10107,7 +10107,7 @@ dxf_hatch_boundary_path_edge_ellipse_free_chain
         }
         while (hatch_boundary_path_edge_ellipses != NULL)
         {
-                struct DxfHatchBoundaryPathEdgeEllipse *iter = hatch_boundary_path_edge_ellipses->next;
+                DxfHatchBoundaryPathEdgeEllipse *iter = (DxfHatchBoundaryPathEdgeEllipse *) hatch_boundary_path_edge_ellipses->next;
                 dxf_hatch_boundary_path_edge_ellipse_free (hatch_boundary_path_edge_ellipses);
                 hatch_boundary_path_edge_ellipses = (DxfHatchBoundaryPathEdgeEllipse *) iter;
         }
