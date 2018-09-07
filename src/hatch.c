@@ -12113,7 +12113,7 @@ dxf_hatch_boundary_path_edge_spline_free_chain
         }
         while (hatch_boundary_path_edge_splines != NULL)
         {
-                struct DxfHatchBoundaryPathEdgeSpline *iter = hatch_boundary_path_edge_splines->next;
+                DxfHatchBoundaryPathEdgeSpline *iter = (DxfHatchBoundaryPathEdgeSpline *) hatch_boundary_path_edge_splines->next;
                 dxf_hatch_boundary_path_edge_spline_free (hatch_boundary_path_edge_splines);
                 hatch_boundary_path_edge_splines = (DxfHatchBoundaryPathEdgeSpline *) iter;
         }
