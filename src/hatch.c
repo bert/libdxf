@@ -11264,7 +11264,7 @@ dxf_hatch_boundary_path_edge_line_free_chain
         }
         while (hatch_boundary_path_edge_lines != NULL)
         {
-                struct DxfHatchBoundaryPathEdgeLine *iter = hatch_boundary_path_edge_lines->next;
+                DxfHatchBoundaryPathEdgeLine *iter = (DxfHatchBoundaryPathEdgeLine *) hatch_boundary_path_edge_lines->next;
                 dxf_hatch_boundary_path_edge_line_free (hatch_boundary_path_edge_lines);
                 hatch_boundary_path_edge_lines = (DxfHatchBoundaryPathEdgeLine *) iter;
         }
