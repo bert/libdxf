@@ -14349,7 +14349,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_free_chain
         }
         while (hatch_boundary_path_edge_spline_control_points != NULL)
         {
-                struct DxfHatchBoundaryPathEdgeSplineCp *iter = hatch_boundary_path_edge_spline_control_points->next;
+                DxfHatchBoundaryPathEdgeSplineCp *iter = (DxfHatchBoundaryPathEdgeSplineCp *) hatch_boundary_path_edge_spline_control_points->next;
                 dxf_hatch_boundary_path_edge_spline_control_point_free (hatch_boundary_path_edge_spline_control_points);
                 hatch_boundary_path_edge_spline_control_points = (DxfHatchBoundaryPathEdgeSplineCp *) iter;
         }
