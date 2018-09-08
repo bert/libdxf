@@ -801,7 +801,7 @@ dxf_helix_free_chain
         }
         while (helices != NULL)
         {
-                struct DxfHelix *iter = helices->next;
+                DxfHelix *iter = (DxfHelix *) helices->next;
                 dxf_helix_free (helices);
                 helices = (DxfHelix *) iter;
         }
