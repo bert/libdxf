@@ -1133,7 +1133,7 @@ dxf_idbuffer_entity_pointer_free_chain
         }
         while (entity_pointers != NULL)
         {
-                struct DxfIdbufferEntityPointer *iter = entity_pointers->next;
+                DxfIdbufferEntityPointer *iter = (DxfIdbufferEntityPointer *) entity_pointers->next;
                 dxf_idbuffer_entity_pointer_free (entity_pointers);
                 entity_pointers = (DxfIdbufferEntityPointer *) iter;
         }
