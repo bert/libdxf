@@ -769,7 +769,7 @@ dxf_image_free_chain
         }
         while (images != NULL)
         {
-                struct DxfImage *iter = images->next;
+                DxfImage *iter = (DxfImage *) images->next;
                 dxf_image_free (images);
                 images = (DxfImage *) iter;
         }
