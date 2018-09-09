@@ -432,7 +432,7 @@ dxf_imagedef_reactor_free_chain
         }
         while (imagedef_reactors != NULL)
         {
-                struct DxfImagedefReactor *iter = imagedef_reactors->next;
+                DxfImagedefReactor *iter = (DxfImagedefReactor *) imagedef_reactors->next;
                 dxf_imagedef_reactor_free (imagedef_reactors);
                 imagedef_reactors = (DxfImagedefReactor *) iter;
         }
