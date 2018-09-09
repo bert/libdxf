@@ -516,7 +516,7 @@ dxf_imagedef_free_chain
         }
         while (imagedefs != NULL)
         {
-                struct DxfImagedef *iter = imagedefs->next;
+                DxfImagedef *iter = (DxfImagedef *) imagedefs->next;
                 dxf_imagedef_free (imagedefs);
                 imagedefs = (DxfImagedef *) iter;
         }
