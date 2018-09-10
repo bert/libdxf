@@ -502,7 +502,7 @@ dxf_layer_index_free_chain
         }
         while (layer_indices != NULL)
         {
-                struct DxfLayerIndex *iter = layer_indices->next;
+                DxfLayerIndex *iter = (DxfLayerIndex *) layer_indices->next;
                 dxf_layer_index_free (layer_indices);
                 layer_indices = (DxfLayerIndex *) iter;
         }
