@@ -1,7 +1,8 @@
 /*!
  * \file layer_index.c
  *
- * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF layer_index object (\c LAYER_INDEX).
  *
