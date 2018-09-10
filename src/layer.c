@@ -495,7 +495,7 @@ dxf_layer_free_chain
         }
         while (layers != NULL)
         {
-                struct DxfLayer *iter = layers->next;
+                DxfLayer *iter = (DxfLayer *) layers->next;
                 dxf_layer_free (layers);
                 layers = (DxfLayer *) iter;
         }
