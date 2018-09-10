@@ -774,7 +774,7 @@ dxf_insert_free_chain
         }
         while (inserts != NULL)
         {
-                struct DxfInsert *iter = inserts->next;
+                DxfInsert *iter = (DxfInsert *) inserts->next;
                 dxf_insert_free (inserts);
                 inserts = (DxfInsert *) iter;
         }
