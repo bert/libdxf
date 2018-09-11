@@ -185,7 +185,7 @@ dxf_layer_name_free_chain
         }
         while (layer_names != NULL)
         {
-                struct DxfLayerName *iter = layer_names->next;
+                DxfLayerName *iter = (DxfLayerName *) layer_names->next;
                 dxf_layer_name_free (layer_names);
                 layer_names = (DxfLayerName *) iter;
         }
