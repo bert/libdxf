@@ -830,7 +830,7 @@ dxf_leader_free_chain
         }
         while (leaders != NULL)
         {
-                struct DxfLeader *iter = leaders->next;
+                DxfLeader *iter = (DxfLeader *) leaders->next;
                 dxf_leader_free (leaders);
                 leaders = (DxfLeader *) iter;
         }
