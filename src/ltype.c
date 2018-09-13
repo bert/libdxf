@@ -631,7 +631,7 @@ dxf_ltype_free_chain
         }
         while (ltypes != NULL)
         {
-                struct DxfLType *iter = ltypes->next;
+                DxfLType *iter = (DxfLType *) ltypes->next;
                 dxf_ltype_free (ltypes);
                 ltypes = (DxfLType *) iter;
         }
