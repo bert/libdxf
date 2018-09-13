@@ -743,7 +743,7 @@ dxf_line_free_chain
         }
         while (lines != NULL)
         {
-                struct DxfLine *iter = lines->next;
+                DxfLine *iter = (DxfLine *) lines->next;
                 dxf_line_free (lines);
                 lines = (DxfLine *) iter;
         }
