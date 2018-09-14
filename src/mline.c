@@ -960,7 +960,7 @@ dxf_mline_free_chain
         }
         while (mlines != NULL)
         {
-                struct DxfMline *iter = mlines->next;
+                DxfMline *iter = (DxfMline *) mlines->next;
                 dxf_mline_free (mlines);
                 mlines = (DxfMline *) iter;
         }
