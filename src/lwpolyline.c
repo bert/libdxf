@@ -682,7 +682,7 @@ dxf_lwpolyline_free_chain
         }
         while (lwpolylines != NULL)
         {
-                struct DxfLWPolyline *iter = lwpolylines->next;
+                DxfLWPolyline *iter = (DxfLWPolyline *) lwpolylines->next;
                 dxf_lwpolyline_free (lwpolylines);
                 lwpolylines = (DxfLWPolyline *) iter;
         }
