@@ -527,7 +527,7 @@ dxf_mlinestyle_free_chain
         }
         while (mlinestyles != NULL)
         {
-                struct DxfMlinestyle *iter = mlinestyles->next;
+                DxfMlinestyle *iter = (DxfMlinestyle *) mlinestyles->next;
                 dxf_mlinestyle_free (mlinestyles);
                 mlinestyles = (DxfMlinestyle *) iter;
         }
