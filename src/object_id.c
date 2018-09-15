@@ -176,7 +176,7 @@ dxf_object_id_free_chain
         }
         while (object_ids != NULL)
         {
-                struct DxfObjectId *iter = object_ids->next;
+                DxfObjectId *iter = (DxfObjectId *) object_ids->next;
                 dxf_object_id_free (object_ids);
                 object_ids = (DxfObjectId *) iter;
         }
