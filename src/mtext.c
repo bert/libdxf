@@ -790,7 +790,7 @@ dxf_mtext_free_chain
         }
         while (mtexts != NULL)
         {
-                struct DxfMtext *iter = mtexts->next;
+                DxfMtext *iter = (DxfMtext *) mtexts->next;
                 dxf_mtext_free (mtexts);
                 mtexts = (DxfMtext *) iter;
         }
