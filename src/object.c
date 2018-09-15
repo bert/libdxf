@@ -208,7 +208,7 @@ dxf_object_free_chain
         }
         while (objects != NULL)
         {
-                struct DxfObject *iter = objects->next;
+                DxfObject *iter = (DxfObject *) objects->next;
                 dxf_object_free (objects);
                 objects = (DxfObject *) iter;
         }
