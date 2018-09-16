@@ -409,7 +409,7 @@ dxf_object_ptr_free_chain
         }
         while (objectptrs != NULL)
         {
-                struct DxfObjectPtr *iter = objectptrs->next;
+                DxfObjectPtr *iter = (DxfObjectPtr *) objectptrs->next;
                 dxf_object_ptr_free (objectptrs);
                 objectptrs = (DxfObjectPtr *) iter;
         }
