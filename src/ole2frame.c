@@ -674,7 +674,7 @@ dxf_ole2frame_free_chain
         }
         while (ole2frames != NULL)
         {
-                struct DxfOle2Frame *iter = ole2frames->next;
+                DxfOle2Frame *iter = (DxfOle2Frame *) ole2frames->next;
                 dxf_ole2frame_free (ole2frames);
                 ole2frames = (DxfOle2Frame *) iter;
         }
