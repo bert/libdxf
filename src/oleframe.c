@@ -598,7 +598,7 @@ dxf_oleframe_free_chain
         }
         while (oleframes != NULL)
         {
-                struct DxfOleFrame *iter = oleframes->next;
+                DxfOleFrame *iter = (DxfOleFrame *) oleframes->next;
                 dxf_oleframe_free (oleframes);
                 oleframes = (DxfOleFrame *) iter;
         }
