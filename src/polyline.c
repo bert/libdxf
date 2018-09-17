@@ -716,7 +716,7 @@ dxf_polyline_free_chain
         }
         while (polylines != NULL)
         {
-                struct DxfPolyline *iter = polylines->next;
+                DxfPolyline *iter = (DxfPolyline *) polylines->next;
                 dxf_polyline_free (polylines);
                 polylines = (DxfPolyline *) iter;
         }
