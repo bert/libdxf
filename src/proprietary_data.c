@@ -177,7 +177,7 @@ dxf_proprietary_data_free_chain
         }
         while (datas != NULL)
         {
-                struct DxfProprietaryData *iter = datas->next;
+                DxfProprietaryData *iter = (DxfProprietaryData *) datas->next;
                 dxf_proprietary_data_free (datas);
                 datas = (DxfProprietaryData *) iter;
         }
