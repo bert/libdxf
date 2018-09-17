@@ -602,7 +602,7 @@ dxf_point_free_chain
         }
         while (points != NULL)
         {
-                struct DxfPoint *iter = points->next;
+                DxfPoint *iter = (DxfPoint *) points->next;
                 dxf_point_free (points);
                 points = (DxfPoint *) iter;
         }
