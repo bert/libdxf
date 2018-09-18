@@ -607,7 +607,7 @@ dxf_ray_free_chain
         }
         while (rays != NULL)
         {
-                struct DxfRay *iter = rays->next;
+                DxfRay *iter = (DxfRay *) rays->next;
                 dxf_ray_free (rays);
                 rays = (DxfRay *) iter;
         }
