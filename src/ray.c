@@ -1,7 +1,8 @@
 /*!
  * \file ray.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013, 2014, 2015, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ray entity (\c RAY).
  *
