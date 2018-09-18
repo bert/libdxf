@@ -602,7 +602,7 @@ dxf_region_free_chain
         }
         while (regions != NULL)
         {
-                struct DxfRegion *iter = regions->next;
+                DxfRegion *iter = (DxfRegion *) regions->next;
                 dxf_region_free (regions);
                 regions = (DxfRegion *) iter;
         }
