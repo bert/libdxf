@@ -436,7 +436,7 @@ dxf_rastervariables_free_chain
         }
         while (rastervariables != NULL)
         {
-                struct DxfRasterVariables *iter = rastervariables->next;
+                DxfRasterVariables *iter = (DxfRasterVariables *) rastervariables->next;
                 dxf_rastervariables_free (rastervariables);
                 rastervariables = (DxfRasterVariables *) iter;
         }
