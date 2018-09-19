@@ -784,7 +784,7 @@ dxf_shape_free_chain
         }
         while (shapes != NULL)
         {
-                struct DxfShape *iter = shapes->next;
+                DxfShape *iter = (DxfShape *) shapes->next;
                 dxf_shape_free (shapes);
                 shapes = (DxfShape *) iter;
         }
