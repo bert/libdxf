@@ -618,7 +618,7 @@ dxf_spatial_filter_free_chain
         }
         while (spatial_filters != NULL)
         {
-                struct DxfSpatialFilter *iter = spatial_filters->next;
+                DxfSpatialFilter *iter = (DxfSpatialFilter *) spatial_filters->next;
                 dxf_spatial_filter_free (spatial_filters);
                 spatial_filters = (DxfSpatialFilter *) iter;
         }
