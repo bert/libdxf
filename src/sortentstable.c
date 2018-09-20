@@ -476,7 +476,7 @@ dxf_sortentstable_free_chain
         }
         while (sortentstables != NULL)
         {
-                struct DxfSortentsTable *iter = sortentstables->next;
+                DxfSortentsTable *iter = (DxfSortentsTable *) sortentstables->next;
                 dxf_sortentstable_free (sortentstables);
                 sortentstables = (DxfSortentsTable *) iter;
         }
