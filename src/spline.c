@@ -1058,7 +1058,7 @@ dxf_spline_free_chain
         }
         while (splines != NULL)
         {
-                struct DxfSpline *iter = splines->next;
+                DxfSpline *iter = (DxfSpline *) splines->next;
                 dxf_spline_free (splines);
                 splines = (DxfSpline *) iter;
         }
