@@ -431,7 +431,7 @@ dxf_spatial_index_free_chain
         }
         while (spatial_indices != NULL)
         {
-                struct DxfSpatialIndex *iter = spatial_indices->next;
+                DxfSpatialIndex *iter = (DxfSpatialIndex *) spatial_indices->next;
                 dxf_spatial_index_free (spatial_indices);
                 spatial_indices = (DxfSpatialIndex *) iter;
         }
