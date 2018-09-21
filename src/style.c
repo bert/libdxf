@@ -502,7 +502,7 @@ dxf_style_free_chain
         }
         while (styles != NULL)
         {
-                struct DxfStyle *iter = styles->next;
+                DxfStyle *iter = (DxfStyle *) styles->next;
                 dxf_style_free (styles);
                 styles = (DxfStyle *) iter;
         }
