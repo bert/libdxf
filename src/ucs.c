@@ -621,7 +621,7 @@ dxf_ucs_free_chain
         }
         while (ucss != NULL)
         {
-                struct DxfUcs *iter = ucss->next;
+                DxfUcs *iter = (DxfUcs *) ucss->next;
                 dxf_ucs_free (ucss);
                 ucss = (DxfUcs *) iter;
         }
