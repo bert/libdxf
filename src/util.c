@@ -183,7 +183,7 @@ dxf_char_free_chain
         }
         while (chars != NULL)
         {
-                struct DxfChar *iter = chars->next;
+                DxfChar *iter = (DxfChar *) chars->next;
                 dxf_char_free (chars);
                 chars = (DxfChar *) iter;
         }
