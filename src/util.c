@@ -336,7 +336,7 @@ dxf_double_free_chain
         }
         while (doubles != NULL)
         {
-                struct DxfDouble *iter = doubles->next;
+                DxfDouble *iter = (DxfDouble *) doubles->next;
                 dxf_double_free (doubles);
                 doubles = (DxfDouble *) iter;
         }
