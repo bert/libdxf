@@ -489,7 +489,7 @@ dxf_int_free_chain
         }
         while (ints != NULL)
         {
-                struct DxfInt *iter = ints->next;
+                DxfInt *iter = (DxfInt *) ints->next;
                 dxf_int_free (ints);
                 ints = (DxfInt *) iter;
         }
