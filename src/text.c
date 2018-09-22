@@ -883,7 +883,7 @@ dxf_text_free_chain
         }
         while (texts != NULL)
         {
-                struct DxfText *iter = texts->next;
+                DxfText *iter = (DxfText *) texts->next;
                 dxf_text_free (texts);
                 texts = (DxfText *) iter;
         }
