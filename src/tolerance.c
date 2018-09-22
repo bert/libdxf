@@ -753,7 +753,7 @@ dxf_tolerance_free_chain
         }
         while (tolerances != NULL)
         {
-                struct DxfTolerance *iter = tolerances->next;
+                DxfTolerance *iter = (DxfTolerance *) tolerances->next;
                 dxf_tolerance_free (tolerances);
                 tolerances = (DxfTolerance *) iter;
         }
