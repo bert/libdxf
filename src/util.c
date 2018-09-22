@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
- * \author Copyright (C) 2010, 2012, 2015, 2017
+ * \author Copyright (C) 2010, 2012, 2015, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for libDXF coding utilities.
