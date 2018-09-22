@@ -948,7 +948,7 @@ dxf_table_cell_free_chain
         }
         while (cells != NULL)
         {
-                struct DxfTableCell *iter = cells->next;
+                DxfTableCell *iter = (DxfTableCell *) cells->next;
                 dxf_table_cell_free (cells);
                 cells = (DxfTableCell *) iter;
         }
