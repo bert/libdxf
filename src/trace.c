@@ -787,7 +787,7 @@ dxf_trace_free_chain
         }
         while (traces != NULL)
         {
-                struct DxfTrace *iter = traces->next;
+                DxfTrace *iter = (DxfTrace *) traces->next;
                 dxf_trace_free (traces);
                 traces = (DxfTrace *) iter;
         }
