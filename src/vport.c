@@ -886,7 +886,7 @@ dxf_vport_free_chain
         }
         while (vports != NULL)
         {
-                struct DxfVPort *iter = vports->next;
+                DxfVPort *iter = (DxfVPort *) vports->next;
                 dxf_vport_free (vports);
                 vports = (DxfVPort *) iter;
         }
