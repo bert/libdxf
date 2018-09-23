@@ -1285,7 +1285,7 @@ dxf_viewport_free_chain
         }
         while (viewports != NULL)
         {
-                struct DxfViewport *iter = viewports->next;
+                DxfViewport *iter = (DxfViewport *) viewports->next;
                 dxf_viewport_free (viewports);
                 viewports = (DxfViewport *) iter;
         }
