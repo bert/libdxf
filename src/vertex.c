@@ -751,7 +751,7 @@ dxf_vertex_free_chain
         }
         while (vertices != NULL)
         {
-                struct DxfVertex *iter = vertices->next;
+                DxfVertex *iter = (DxfVertex *) vertices->next;
                 dxf_vertex_free (vertices);
                 vertices = (DxfVertex *) iter;
         }
