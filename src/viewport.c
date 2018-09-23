@@ -911,7 +911,7 @@ dxf_viewport_read
                                  * names and bail out when a group code
                                  * with a value of "1002" is encountered.*/
                                 /*! \todo Do a proper implementation of reading frozen layers.*/
-                                iter = viewport->frozen_layers;
+                                iter = (DxfChar *) viewport->frozen_layers;
                                 do
                                 {
                                         (fp->line_number)++;
