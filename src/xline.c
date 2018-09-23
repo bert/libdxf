@@ -751,7 +751,7 @@ dxf_xline_free_chain
         }
         while (xlines != NULL)
         {
-                struct DxfXLine *iter = xlines->next;
+                DxfXLine *iter = (DxfXLine *) xlines->next;
                 dxf_xline_free (xlines);
                 xlines = (DxfXLine *) iter;
         }
