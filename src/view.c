@@ -563,7 +563,7 @@ dxf_view_free_chain
         }
         while (views != NULL)
         {
-                struct DxfView *iter = views->next;
+                DxfView *iter = (DxfView *) views->next;
                 dxf_view_free (views);
                 views = (DxfView *) iter;
         }
