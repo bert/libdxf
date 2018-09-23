@@ -522,7 +522,7 @@ dxf_xrecord_free_chain
         }
         while (xrecords != NULL)
         {
-                struct DxfXrecord *iter = xrecords->next;
+                DxfXrecord *iter = (DxfXrecord *) xrecords->next;
                 dxf_xrecord_free (xrecords);
                 xrecords = (DxfXrecord *) iter;
         }
