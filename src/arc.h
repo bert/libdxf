@@ -223,7 +223,7 @@ DxfArc *dxf_arc_init (DxfArc *arc);
 DxfArc *dxf_arc_read (DxfFile *fp, DxfArc *arc);
 int dxf_arc_write (DxfFile *fp, DxfArc *arc);
 int dxf_arc_free (DxfArc *arc);
-void dxf_arc_free_chain (DxfArc *arcs);
+void dxf_arc_free_list (DxfArc *arcs);
 int dxf_arc_get_id_code (DxfArc *arc);
 DxfArc *dxf_arc_set_id_code (DxfArc *arc, int id_code);
 char *dxf_arc_get_linetype (DxfArc *arc);

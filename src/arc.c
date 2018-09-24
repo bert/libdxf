@@ -794,11 +794,11 @@ dxf_arc_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c ARC
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c ARC entities and all their data fields.
  */
 void
-dxf_arc_free_chain
+dxf_arc_free_list
 (
         DxfArc *arcs
                 /*!< a pointer to the chain of DXF \c ARC entities. */
