@@ -242,7 +242,7 @@ DxfAcadProxyEntity *dxf_acad_proxy_entity_init (DxfAcadProxyEntity *acad_proxy_e
 DxfAcadProxyEntity *dxf_acad_proxy_entity_read (DxfFile *fp, DxfAcadProxyEntity *acad_proxy_entity);
 int dxf_acad_proxy_entity_write (DxfFile *fp, DxfAcadProxyEntity *acad_proxy_entity);
 int dxf_acad_proxy_entity_free (DxfAcadProxyEntity *acad_proxy_entity);
-void dxf_acad_proxy_entity_free_chain (DxfAcadProxyEntity *acad_proxy_entities);
+void dxf_acad_proxy_entity_free_list (DxfAcadProxyEntity *acad_proxy_entities);
 int dxf_acad_proxy_entity_get_id_code (DxfAcadProxyEntity *acad_proxy_entity);
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_id_code (DxfAcadProxyEntity *acad_proxy_entity, int id_code);
 char *dxf_acad_proxy_entity_get_linetype (DxfAcadProxyEntity *acad_proxy_entity);

@@ -797,11 +797,11 @@ dxf_acad_proxy_entity_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c ACAD_PROXY_ENTITY
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c ACAD_PROXY_ENTITY entities and all their data fields.
  */
 void
-dxf_acad_proxy_entity_free_chain
+dxf_acad_proxy_entity_free_list
 (
         DxfAcadProxyEntity *acad_proxy_entities
                 /*!< a pointer to the chain of DXF ACAD_PROXY_ENTITY entities. */
