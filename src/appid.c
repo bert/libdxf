@@ -421,11 +421,11 @@ dxf_appid_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c APPID
- * symbol table entries and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c APPID symbol table entries and all their data fields.
  */
 void
-dxf_appid_free_chain
+dxf_appid_free_list
 (
         DxfAppid *appids
                 /*!< a pointer to a chain of DXF \c APPID symbol table

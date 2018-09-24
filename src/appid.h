@@ -117,7 +117,7 @@ DxfAppid *dxf_appid_init (DxfAppid *appid);
 DxfAppid *dxf_appid_read (DxfFile *fp, DxfAppid *appid);
 int dxf_appid_write (DxfFile *fp, DxfAppid* appid);
 int dxf_appid_free (DxfAppid *appid);
-void dxf_appid_free_chain (DxfAppid *appids);
+void dxf_appid_free_list (DxfAppid *appids);
 int dxf_appid_get_id_code (DxfAppid *appid);
 DxfAppid *dxf_appid_set_id_code (DxfAppid *appid, int id_code);
 char *dxf_appid_get_application_name (DxfAppid *appid);
