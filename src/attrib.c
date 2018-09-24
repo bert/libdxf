@@ -945,11 +945,11 @@ dxf_attrib_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c ATTRIB
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c ATTRIB entities and all their data fields.
  */
 void
-dxf_attrib_free_chain
+dxf_attrib_free_list
 (
         DxfAttrib *attribs
                 /*!< pointer to the chain of DXF ATTRIB entities. */

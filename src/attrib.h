@@ -296,7 +296,7 @@ DxfAttrib *dxf_attrib_init (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_read (DxfFile *fp, DxfAttrib *attrib);
 int dxf_attrib_write (DxfFile *fp, DxfAttrib *attrib);
 int dxf_attrib_free (DxfAttrib *attrib);
-void dxf_attrib_free_chain (DxfAttrib *attribs);
+void dxf_attrib_free_list (DxfAttrib *attribs);
 int dxf_attrib_get_id_code (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_id_code (DxfAttrib *attrib, int id_code);
 char *dxf_attrib_get_linetype (DxfAttrib *attrib);
