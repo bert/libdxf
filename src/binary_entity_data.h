@@ -82,7 +82,7 @@ dxf_binary_entity_data_free
         DxfBinaryEntityData *data
 );
 void
-dxf_binary_entity_data_free_chain
+dxf_binary_entity_data_free_list
 (
         DxfBinaryEntityData *data
 );

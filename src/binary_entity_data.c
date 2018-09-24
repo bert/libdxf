@@ -192,14 +192,14 @@ dxf_binary_entity_data_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of binary entity data
- * bobjects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of binary
+ * entity data objects and all their data fields.
  */
 void
-dxf_binary_entity_data_free_chain
+dxf_binary_entity_data_free_list
 (
         DxfBinaryEntityData *data
-                /*!< pointer to the chain of DXF \c HATCH binary
+                /*!< pointer to the single linked list of DXF binary
                  * entity data objects. */
 )
 {
