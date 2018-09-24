@@ -936,11 +936,11 @@ dxf_attdef_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c ATTDEF
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c ATTDEF entities and all their data fields.
  */
 void
-dxf_attdef_free_chain
+dxf_attdef_free_list
 (
         DxfAttdef *attdefs
                 /*!< pointer to the chain of DXF \c ATTDEF entities. */

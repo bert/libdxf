@@ -298,7 +298,7 @@ DxfAttdef *dxf_attdef_init (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_read (DxfFile *fp, DxfAttdef *attdef);
 int dxf_attdef_write (DxfFile *fp, DxfAttdef *attdef);
 int dxf_attdef_free (DxfAttdef *attdef);
-void dxf_attdef_free_chain (DxfAttdef *attdefs);
+void dxf_attdef_free_list (DxfAttdef *attdefs);
 int dxf_attdef_get_id_code (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_id_code (DxfAttdef *attdef, int id_code);
 char *dxf_attdef_get_linetype (DxfAttdef *attdef);
