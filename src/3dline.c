@@ -757,11 +757,11 @@ dxf_3dline_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c 3DLINE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c 3DLINE entities and all their data fields.
  */
 void
-dxf_3dline_free_chain
+dxf_3dline_free_list
 (
         Dxf3dline *lines
                 /*!< a pointer to the chain of DXF 3DLINE entities. */
