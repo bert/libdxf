@@ -765,7 +765,8 @@ void
 dxf_3dsolid_free_list
 (
         Dxf3dsolid *solids
-                /*!< a pointer to the chain of DXF \c 3DSOLID entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c 3DSOLID entities. */
 )
 {
 #ifdef DEBUG
