@@ -768,11 +768,11 @@ dxf_3dface_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c 3DFACE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of
+ * DXF \c 3DFACE entities and all their data fields.
  */
 void
-dxf_3dface_free_chain
+dxf_3dface_free_list
 (
         Dxf3dface *faces
                 /*!< a pointer to the chain of DXF \c 3DFACE entities. */
