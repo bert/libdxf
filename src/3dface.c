@@ -775,7 +775,8 @@ void
 dxf_3dface_free_list
 (
         Dxf3dface *faces
-                /*!< a pointer to the chain of DXF \c 3DFACE entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c 3DFACE entities. */
 )
 {
 #ifdef DEBUG
