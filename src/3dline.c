@@ -764,7 +764,8 @@ void
 dxf_3dline_free_list
 (
         Dxf3dline *lines
-                /*!< a pointer to the chain of DXF 3DLINE entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c 3DLINE entities. */
 )
 {
 #ifdef DEBUG
