@@ -758,11 +758,11 @@ dxf_3dsolid_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c 3DSOLID
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c 3DSOLID entities and all their data fields.
  */
 void
-dxf_3dsolid_free_chain
+dxf_3dsolid_free_list
 (
         Dxf3dsolid *solids
                 /*!< a pointer to the chain of DXF \c 3DSOLID entities. */
