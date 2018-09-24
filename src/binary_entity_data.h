@@ -67,64 +67,17 @@ dxf_binary_entity_data_struct
 DxfBinaryEntityData *
 dxf_binary_entity_data_new ();
 DxfBinaryEntityData *
-dxf_binary_entity_data_init
-(
-        DxfBinaryEntityData *data
-);
-int
-dxf_binary_entity_data_write
-(
-        DxfFile *fp,
-        DxfBinaryEntityData *data
-);
-int
-dxf_binary_entity_data_free
-(
-        DxfBinaryEntityData *data
-);
-void
-dxf_binary_entity_data_free_list
-(
-        DxfBinaryEntityData *data
-);
-char *
-dxf_binary_entity_data_get_data_line
-(
-        DxfBinaryEntityData *data
-);
-DxfBinaryEntityData *
-dxf_binary_entity_data_set_data_line
-(
-        DxfBinaryEntityData *data,
-        char *data_line
-);
-int
-dxf_binary_entity_data_get_length
-(
-        DxfBinaryEntityData *data
-);
-DxfBinaryEntityData *
-dxf_binary_entity_data_set_length
-(
-        DxfBinaryEntityData *data,
-        int length
-);
-DxfBinaryEntityData *
-dxf_binary_entity_data_get_next
-(
-        DxfBinaryEntityData *data
-);
-DxfBinaryEntityData *
-dxf_binary_entity_data_set_next
-(
-        DxfBinaryEntityData *data,
-        DxfBinaryEntityData *next
-);
-DxfBinaryEntityData *
-dxf_binary_entity_data_get_last
-(
-        DxfBinaryEntityData *data
-);
+dxf_binary_entity_data_init (DxfBinaryEntityData *data);
+int dxf_binary_entity_data_write (DxfFile *fp, DxfBinaryEntityData *data);
+int dxf_binary_entity_data_free (DxfBinaryEntityData *data);
+void dxf_binary_entity_data_free_list (DxfBinaryEntityData *data);
+char *dxf_binary_entity_data_get_data_line (DxfBinaryEntityData *data);
+DxfBinaryEntityData *dxf_binary_entity_data_set_data_line (DxfBinaryEntityData *data, char *data_line);
+int dxf_binary_entity_data_get_length (DxfBinaryEntityData *data);
+DxfBinaryEntityData *dxf_binary_entity_data_set_length (DxfBinaryEntityData *data, int length);
+DxfBinaryEntityData *dxf_binary_entity_data_get_next (DxfBinaryEntityData *data);
+DxfBinaryEntityData *dxf_binary_entity_data_set_next (DxfBinaryEntityData *data, DxfBinaryEntityData *next);
+DxfBinaryEntityData *dxf_binary_entity_data_get_last (DxfBinaryEntityData *data);
 
 
 #ifdef __cplusplus
