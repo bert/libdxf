@@ -804,7 +804,8 @@ void
 dxf_acad_proxy_entity_free_list
 (
         DxfAcadProxyEntity *acad_proxy_entities
-                /*!< a pointer to the chain of DXF ACAD_PROXY_ENTITY entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c ACAD_PROXY_ENTITY entities. */
 )
 {
 #ifdef DEBUG
