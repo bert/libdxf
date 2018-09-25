@@ -952,7 +952,8 @@ void
 dxf_attrib_free_list
 (
         DxfAttrib *attribs
-                /*!< pointer to the chain of DXF ATTRIB entities. */
+                /*!< pointer to the single linked list of DXF ATTRIB
+                 * entities. */
 )
 {
 #ifdef DEBUG
