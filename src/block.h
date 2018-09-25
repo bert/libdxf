@@ -149,7 +149,7 @@ int dxf_block_write (DxfFile *fp, DxfBlock *block);
 int dxf_block_write_endblk (DxfFile *fp);
 int dxf_block_write_table (DxfFile *fp, DxfBlock *blocks_list);
 int dxf_block_free (DxfBlock *block);
-void dxf_block_free_chain (DxfBlock *blocks);
+void dxf_block_free_list (DxfBlock *blocks);
 char *dxf_block_get_xref_name (DxfBlock *block);
 DxfBlock *dxf_block_set_xref_name (DxfBlock *block, char *xref_name);
 char *dxf_block_get_block_name (DxfBlock *block);

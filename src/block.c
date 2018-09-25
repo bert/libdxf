@@ -595,14 +595,15 @@ dxf_block_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c BLOCK
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c BLOCK entities and all their data fields.
  */
 void
-dxf_block_free_chain
+dxf_block_free_list
 (
         DxfBlock *blocks
-                /*!< pointer to the chain of DXF \c BLOCK entities. */
+                /*!< pointer to the single linked list of DXF \c BLOCK
+                 * entities. */
 )
 {
 #ifdef DEBUG
