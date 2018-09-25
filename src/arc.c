@@ -801,7 +801,8 @@ void
 dxf_arc_free_list
 (
         DxfArc *arcs
-                /*!< a pointer to the chain of DXF \c ARC entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c ARC entities. */
 )
 {
 #ifdef DEBUG
