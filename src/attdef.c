@@ -943,7 +943,8 @@ void
 dxf_attdef_free_list
 (
         DxfAttdef *attdefs
-                /*!< pointer to the chain of DXF \c ATTDEF entities. */
+                /*!< pointer to the single linked list of DXF \c ATTDEF
+                 * entities. */
 )
 {
 #ifdef DEBUG
