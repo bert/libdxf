@@ -760,7 +760,7 @@ dxf_helix_free
         }
         free (helix->linetype);
         free (helix->layer);
-        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) helix->binary_graphics_data);
+        dxf_binary_graphics_data_free_list ((DxfBinaryGraphicsData *) helix->binary_graphics_data);
         free (helix->dictionary_owner_hard);
         free (helix->material);
         free (helix->dictionary_owner_soft);

@@ -923,7 +923,7 @@ dxf_attrib_free
         }
         free (attrib->linetype);
         free (attrib->layer);
-        dxf_binary_graphics_data_free_chain (attrib->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (attrib->binary_graphics_data);
         free (attrib->dictionary_owner_soft);
         free (attrib->object_owner_soft);
         free (attrib->material);

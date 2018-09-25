@@ -602,7 +602,7 @@ dxf_seqend_free
         }
         free (seqend->linetype);
         free (seqend->layer);
-        dxf_binary_graphics_data_free_chain (seqend->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (seqend->binary_graphics_data);
         free (seqend->dictionary_owner_soft);
         free (seqend->material);
         free (seqend->dictionary_owner_hard);

@@ -192,15 +192,15 @@ dxf_binary_graphics_data_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of binary graphics data
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of binary
+ * graphics data objects and all their data fields.
  */
 void
-dxf_binary_graphics_data_free_chain
+dxf_binary_graphics_data_free_list
 (
         DxfBinaryGraphicsData *data
-                /*!< pointer to the chain of DXF \c binary graphics data
-                 * objects. */
+                /*!< pointer to the single linked list of DXF \c binary
+                 * graphics data objects. */
 )
 {
 #ifdef DEBUG

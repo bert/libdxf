@@ -918,7 +918,7 @@ dxf_mline_free
         }
         free (mline->linetype);
         free (mline->layer);
-        dxf_binary_graphics_data_free (mline->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (mline->binary_graphics_data);
         free (mline->dictionary_owner_soft);
         free (mline->material);
         free (mline->dictionary_owner_hard);

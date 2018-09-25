@@ -725,7 +725,7 @@ dxf_image_free
         }
         free (dxf_image_get_linetype (image));
         free (dxf_image_get_layer (image));
-        dxf_binary_graphics_data_free_chain (dxf_image_get_binary_graphics_data (image));
+        dxf_binary_graphics_data_free_list (dxf_image_get_binary_graphics_data (image));
         free (dxf_image_get_dictionary_owner_soft (image));
         free (dxf_image_get_material (image));
         free (dxf_image_get_dictionary_owner_hard (image));

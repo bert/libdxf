@@ -1108,7 +1108,7 @@ dxf_dimension_free
         }
         free (dimension->linetype);
         free (dimension->layer);
-        dxf_binary_graphics_data_free_chain (dimension->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (dimension->binary_graphics_data);
         free (dimension->dim_text);
         free (dimension->dimblock_name);
         free (dimension->dimstyle_name);

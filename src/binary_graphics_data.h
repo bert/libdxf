@@ -82,7 +82,7 @@ dxf_binary_graphics_data_free
         DxfBinaryGraphicsData *data
 );
 void
-dxf_binary_graphics_data_free_chain
+dxf_binary_graphics_data_free_list
 (
         DxfBinaryGraphicsData *data
 );

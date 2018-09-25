@@ -430,7 +430,7 @@ dxf_hatch_free
         }
         free (hatch->linetype);
         free (hatch->layer);
-        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) hatch->binary_graphics_data);
+        dxf_binary_graphics_data_free_list ((DxfBinaryGraphicsData *) hatch->binary_graphics_data);
         free (hatch->dictionary_owner_soft);
         free (hatch->material);
         free (hatch->dictionary_owner_hard);

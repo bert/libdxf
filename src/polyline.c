@@ -677,7 +677,7 @@ dxf_polyline_free
         }
         free (dxf_polyline_get_linetype (polyline));
         free (dxf_polyline_get_layer (polyline));
-        dxf_binary_graphics_data_free_chain (dxf_polyline_get_binary_graphics_data (polyline));
+        dxf_binary_graphics_data_free_list (dxf_polyline_get_binary_graphics_data (polyline));
         free (dxf_polyline_get_dictionary_owner_soft (polyline));
         free (dxf_polyline_get_material (polyline));
         free (dxf_polyline_get_dictionary_owner_hard (polyline));

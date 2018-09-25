@@ -563,7 +563,7 @@ dxf_region_free
         }
         free (region->linetype);
         free (region->layer);
-        dxf_binary_graphics_data_free (region->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (region->binary_graphics_data);
         free (region->dictionary_owner_soft);
         free (region->material);
         free (region->dictionary_owner_hard);

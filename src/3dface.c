@@ -747,7 +747,7 @@ dxf_3dface_free
         }
         free (face->linetype);
         free (face->layer);
-        dxf_binary_graphics_data_free_chain (face->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (face->binary_graphics_data);
         free (face->dictionary_owner_soft);
         free (face->object_owner_soft);
         free (face->material);

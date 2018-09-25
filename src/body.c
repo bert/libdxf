@@ -579,7 +579,7 @@ dxf_body_free
         }
         free (body->linetype);
         free (body->layer);
-        dxf_binary_graphics_data_free_chain (body->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (body->binary_graphics_data);
         free (body->dictionary_owner_soft);
         free (body->object_owner_soft);
         free (body->material);

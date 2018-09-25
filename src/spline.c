@@ -1015,7 +1015,7 @@ dxf_spline_free
         }
         free (spline->linetype);
         free (spline->layer);
-        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) spline->binary_graphics_data);
+        dxf_binary_graphics_data_free_list ((DxfBinaryGraphicsData *) spline->binary_graphics_data);
         free (spline->dictionary_owner_soft);
         free (spline->material);
         free (spline->dictionary_owner_hard);

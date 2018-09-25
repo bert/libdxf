@@ -704,7 +704,7 @@ dxf_line_free
         }
         free (dxf_line_get_linetype (line));
         free (dxf_line_get_layer (line));
-        dxf_binary_graphics_data_free_chain (dxf_line_get_binary_graphics_data (line));
+        dxf_binary_graphics_data_free_list (dxf_line_get_binary_graphics_data (line));
         free (dxf_line_get_dictionary_owner_soft (line));
         free (dxf_line_get_material (line));
         free (dxf_line_get_dictionary_owner_hard (line));

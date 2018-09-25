@@ -738,7 +738,7 @@ dxf_3dsolid_free
         }
         free (solid->linetype);
         free (solid->layer);
-        dxf_binary_graphics_data_free_chain (solid->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (solid->binary_graphics_data);
         free (solid->dictionary_owner_soft);
         free (solid->object_owner_soft);
         free (solid->material);

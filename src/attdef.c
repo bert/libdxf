@@ -913,7 +913,7 @@ dxf_attdef_free
         }
         free (attdef->linetype);
         free (attdef->layer);
-        dxf_binary_graphics_data_free_chain (attdef->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (attdef->binary_graphics_data);
         free (attdef->dictionary_owner_soft);
         free (attdef->object_owner_soft);
         free (attdef->material);

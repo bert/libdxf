@@ -713,7 +713,7 @@ dxf_vertex_free
         }
         free (vertex->linetype);
         free (vertex->layer);
-        dxf_binary_graphics_data_free_chain (vertex->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (vertex->binary_graphics_data);
         free (vertex->dictionary_owner_soft);
         free (vertex->material);
         free (vertex->dictionary_owner_hard);

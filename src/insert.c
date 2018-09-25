@@ -736,7 +736,7 @@ dxf_insert_free
         }
         free (dxf_insert_get_linetype (insert));
         free (dxf_insert_get_layer (insert));
-        dxf_binary_graphics_data_free_chain (dxf_insert_get_binary_graphics_data (insert));
+        dxf_binary_graphics_data_free_list (dxf_insert_get_binary_graphics_data (insert));
         free (dxf_insert_get_dictionary_owner_soft (insert));
         free (dxf_insert_get_material (insert));
         free (dxf_insert_get_dictionary_owner_hard (insert));

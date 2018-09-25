@@ -745,7 +745,7 @@ dxf_shape_free
         }
         free (shape->linetype);
         free (shape->layer);
-        dxf_binary_graphics_data_free_chain (shape->binary_graphics_data);
+        dxf_binary_graphics_data_free_list (shape->binary_graphics_data);
         free (shape->dictionary_owner_soft);
         free (shape->material);
         free (shape->dictionary_owner_hard);
