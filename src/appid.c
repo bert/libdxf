@@ -428,8 +428,8 @@ void
 dxf_appid_free_list
 (
         DxfAppid *appids
-                /*!< a pointer to a chain of DXF \c APPID symbol table
-                 * entries. */
+                /*!< a pointer to a single linked list of DXF
+                 * \c APPID symbol table entries. */
 )
 {
 #ifdef DEBUG
