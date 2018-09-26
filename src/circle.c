@@ -709,14 +709,15 @@ dxf_circle_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c CIRCLE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c CIRCLE entities and all their data fields.
  */
 void
-dxf_circle_free_chain
+dxf_circle_free_list
 (
         DxfCircle *circles
-                /*!< pointer to the chain of DXF \c CIRCLE entities. */
+                /*!< pointer to the single linked list of DXF \c CIRCLE
+                 * entities. */
 )
 {
 #ifdef DEBUG

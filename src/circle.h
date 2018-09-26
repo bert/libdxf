@@ -220,7 +220,7 @@ DxfCircle *dxf_circle_init (DxfCircle *circle);
 DxfCircle *dxf_circle_read (DxfFile *fp, DxfCircle *circle);
 int dxf_circle_write (DxfFile *fp, DxfCircle *circle);
 int dxf_circle_free (DxfCircle *circle);
-void dxf_circle_free_chain (DxfCircle *circles);
+void dxf_circle_free_list (DxfCircle *circles);
 int dxf_circle_get_id_code (DxfCircle *circle);
 DxfCircle *dxf_circle_set_id_code (DxfCircle *circle, int id_code);
 char *dxf_circle_get_linetype (DxfCircle *circle);
