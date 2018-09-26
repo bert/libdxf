@@ -132,7 +132,7 @@ DxfClass *dxf_class_read (DxfFile *fp, DxfClass *class);
 int dxf_class_write (DxfFile *fp, DxfClass *class);
 int dxf_class_write_endclass (DxfFile *fp);
 int dxf_class_free (DxfClass *class);
-void dxf_class_free_chain (DxfClass *classes);
+void dxf_class_free_list (DxfClass *classes);
 char *dxf_class_get_record_type (DxfClass *class);
 DxfClass *dxf_class_set_record_type (DxfClass *class, char *record_type);
 char *dxf_class_get_record_name (DxfClass *class);

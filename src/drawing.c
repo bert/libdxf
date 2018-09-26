@@ -154,7 +154,7 @@ dxf_drawing_free
               return (EXIT_FAILURE);
         }
         dxf_header_free ((DxfHeader *) drawing->header);
-        dxf_class_free_chain ((DxfClass *) drawing->class_list);
+        dxf_class_free_list ((DxfClass *) drawing->class_list);
         dxf_block_free_list ((DxfBlock *) drawing->block_list);
         //dxf_entities_free_chain ((DxfEntities *) drawing->entities_list);
         dxf_object_free_chain ((DxfObject *) drawing->object_list);

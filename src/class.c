@@ -463,14 +463,15 @@ dxf_class_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c CLASS
- * classes and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c CLASS classes and all their data fields.
  */
 void
-dxf_class_free_chain
+dxf_class_free_list
 (
         DxfClass *classes
-                /*!< pointer to the chain of DXF \c CLASS classes. */
+                /*!< pointer to the single linked list of DXF \c CLASS
+                 * classes. */
 )
 {
 #ifdef DEBUG
