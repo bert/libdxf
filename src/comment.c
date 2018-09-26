@@ -212,14 +212,15 @@ dxf_comment_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c COMMENT
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c COMMENT entities and all their data fields.
  */
 void
-dxf_comment_free_chain
+dxf_comment_free_list
 (
         DxfComment *comments
-                /*!< a pointer to the chain of DXF \c COMMENT entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c COMMENT entities. */
 )
 {
 #ifdef DEBUG
