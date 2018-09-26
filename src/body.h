@@ -213,7 +213,7 @@ DxfBody *dxf_body_init (DxfBody *body);
 DxfBody *dxf_body_read (DxfFile *fp, DxfBody *body);
 int dxf_body_write (DxfFile *fp, DxfBody *body);
 int dxf_body_free (DxfBody *body);
-void dxf_body_free_chain (DxfBody *bodies);
+void dxf_body_free_list (DxfBody *bodies);
 int dxf_body_get_id_code (DxfBody *body);
 DxfBody *dxf_body_set_id_code (DxfBody *body, int id_code);
 char *dxf_body_get_linetype (DxfBody *body);

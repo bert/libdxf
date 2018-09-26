@@ -598,14 +598,15 @@ dxf_body_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c BODY
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c BODY entities and all their data fields.
  */
 void
-dxf_body_free_chain
+dxf_body_free_list
 (
         DxfBody *bodies
-                /*!< pointer to the chain of DXF \c BODY entities. */
+                /*!< pointer to the single linked list of DXF \c BODY
+                 * entities. */
 )
 {
 #ifdef DEBUG
