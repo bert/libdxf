@@ -510,14 +510,15 @@ dxf_block_record_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c BLOCK_RECORD
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c BLOCK_RECORD entities and all their data fields.
  */
 void
-dxf_block_record_free_chain
+dxf_block_record_free_list
 (
         DxfBlockRecord *block_records
-                /*!< pointer to the chain of DXF \c BLOCK_RECORD entities. */
+                /*!< pointer to the single linked list of DXF
+                 * \c BLOCK_RECORD entities. */
 )
 {
 #ifdef DEBUG

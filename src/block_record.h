@@ -164,7 +164,7 @@ DxfBlockRecord *dxf_block_record_init (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_read (DxfFile *fp, DxfBlockRecord *block_record);
 int dxf_block_record_write (DxfFile *fp, DxfBlockRecord *block_record);
 int dxf_block_record_free (DxfBlockRecord *block_record);
-void dxf_block_record_free_chain (DxfBlockRecord *block_records);
+void dxf_block_record_free_list (DxfBlockRecord *block_records);
 int dxf_block_record_get_id_code (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_id_code (DxfBlockRecord *block_record, int id_code);
 char *dxf_block_record_get_block_name (DxfBlockRecord *block_record);
