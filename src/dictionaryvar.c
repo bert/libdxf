@@ -407,14 +407,15 @@ dxf_dictionaryvar_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c DICTIONARYVAR
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c DICTIONARYVAR objects and all their data fields.
  */
 void
-dxf_dictionaryvar_free_chain
+dxf_dictionaryvar_free_list
 (
         DxfDictionaryVar *dictionaryvars
-                /*!< pointer to the chain of DXF \c DICTIONARYVAR objects. */
+                /*!< pointer to the single linked list of DXF
+                 * \c DICTIONARYVAR objects. */
 )
 {
 #ifdef DEBUG

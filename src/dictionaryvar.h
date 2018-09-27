@@ -89,7 +89,7 @@ DxfDictionaryVar *dxf_dictionaryvar_init (DxfDictionaryVar *dictionaryvar);
 DxfDictionaryVar *dxf_dictionaryvar_read (DxfFile *fp, DxfDictionaryVar *dictionaryvar);
 int dxf_dictionaryvar_write (DxfFile *fp, DxfDictionaryVar *dictionaryvar);
 int dxf_dictionaryvar_free (DxfDictionaryVar *dictionaryvar);
-void dxf_dictionaryvar_free_chain (DxfDictionaryVar *dictionaryvars);
+void dxf_dictionaryvar_free_list (DxfDictionaryVar *dictionaryvars);
 int dxf_dictionaryvar_get_id_code (DxfDictionaryVar *dictionaryvar);
 DxfDictionaryVar *dxf_dictionaryvar_set_id_code (DxfDictionaryVar *dictionaryvar, int id_code);
 char *dxf_dictionaryvar_get_dictionary_owner_soft (DxfDictionaryVar *dictionaryvar);
