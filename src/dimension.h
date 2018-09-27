@@ -344,7 +344,7 @@ DxfDimension *dxf_dimension_init (DxfDimension *dimension);
 DxfDimension *dxf_dimension_read (DxfFile *fp, DxfDimension *dimension);
 int dxf_dimension_write (DxfFile *fp, DxfDimension *dimension);
 int dxf_dimension_free (DxfDimension *dimension);
-void dxf_dimension_free_chain (DxfDimension *dimensions);
+void dxf_dimension_free_list (DxfDimension *dimensions);
 int dxf_dimension_get_id_code (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_id_code (DxfDimension *dimension, int id_code);
 char *dxf_dimension_get_linetype (DxfDimension *dimension);
