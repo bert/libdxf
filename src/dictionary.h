@@ -88,7 +88,7 @@ DxfDictionary *dxf_dictionary_init (DxfDictionary *dictionary);
 DxfDictionary *dxf_dictionary_read (DxfFile *fp, DxfDictionary *dictionary);
 int dxf_dictionary_write (DxfFile *fp, DxfDictionary *dictionary);
 int dxf_dictionary_free (DxfDictionary *dictionary);
-void dxf_dictionary_free_chain (DxfDictionary *dictionaries);
+void dxf_dictionary_free_list (DxfDictionary *dictionaries);
 int dxf_dictionary_get_id_code (DxfDictionary *dictionary);
 DxfDictionary *dxf_dictionary_set_id_code (DxfDictionary *dictionary, int id_code);
 char *dxf_dictionary_get_dictionary_owner_soft (DxfDictionary *dictionary);
