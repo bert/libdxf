@@ -993,15 +993,15 @@ dxf_dimstyle_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c DIMSTYLE
- * symbol table and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c DIMSTYLE symbol table and all their data fields.
  */
 void
-dxf_dimstyle_free_chain
+dxf_dimstyle_free_list
 (
         DxfDimStyle *dimstyles
-                /*!< pointer to the chain of DXF \c DIMSTYLE symbol
-                 * tables. */
+                /*!< pointer to the single linked list of DXF
+                 * \c DIMSTYLE symbol tables. */
 )
 {
 #ifdef DEBUG

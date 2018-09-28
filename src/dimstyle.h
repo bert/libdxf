@@ -341,7 +341,7 @@ DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dimstyle);
 int dxf_dimstyle_write (DxfFile *fp, DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_read (DxfFile *fp, DxfDimStyle *dimstyle);
 int dxf_dimstyle_free (DxfDimStyle *dimstyle);
-void dxf_dimstyle_free_chain (DxfDimStyle *dimstyles);
+void dxf_dimstyle_free_list (DxfDimStyle *dimstyles);
 char *dxf_dimstyle_get_dimstyle_name (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimstyle_name (DxfDimStyle *dimstyle, char *dimstyle_name);
 char *dxf_dimstyle_get_dimpost (DxfDimStyle *dimstyle);
