@@ -360,8 +360,8 @@ dxf_donut_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF donut entities
- * and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * donut entities and all their data fields.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -370,10 +370,11 @@ dxf_donut_free
  * \version According to DXF R14.
  */
 void
-dxf_donut_free_chain
+dxf_donut_free_list
 (
         DxfDonut *donuts
-                /*!< pointer to the chain of DXF donut entities. */
+                /*!< pointer to the single linked list of DXF donut
+                 * entities. */
 )
 {
 #ifdef DEBUG

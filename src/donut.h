@@ -204,7 +204,7 @@ DxfDonut *dxf_donut_new ();
 DxfDonut *dxf_donut_init (DxfDonut *donut);
 int dxf_donut_write (DxfFile *fp, DxfDonut *donut);
 int dxf_donut_free (DxfDonut *donut);
-void dxf_donut_free_chain (DxfDonut *donuts);
+void dxf_donut_free_list (DxfDonut *donuts);
 int dxf_donut_get_id_code (DxfDonut *donut);
 DxfDonut *dxf_donut_set_id_code (DxfDonut *donut, int id_code);
 char *dxf_donut_get_linetype (DxfDonut *donut);
