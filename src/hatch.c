@@ -10084,15 +10084,15 @@ dxf_hatch_boundary_path_edge_ellipse_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path edge ellipses and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HATCH boundary path edge ellipses and all their data fields.
  */
 void
-dxf_hatch_boundary_path_edge_ellipse_free_chain
+dxf_hatch_boundary_path_edge_ellipse_free_list
 (
         DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * edge ellipses. */
+                /*!< pointer to the single linked list of DXF \c HATCH
+                 * boundary path edge ellipses. */
 )
 {
 #ifdef DEBUG
