@@ -792,14 +792,15 @@ dxf_ellipse_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c ELLIPSE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c ELLIPSE entities and all their data fields.
  */
 void
-dxf_ellipse_free_chain
+dxf_ellipse_free_list
 (
         DxfEllipse *ellipses
-                /*!< pointer to the chain of DXF \c ELLIPSE entities. */
+                /*!< pointer to the single linked list of DXF
+                 * \c ELLIPSE entities. */
 )
 {
 #ifdef DEBUG

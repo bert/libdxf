@@ -248,7 +248,7 @@ DxfEllipse *dxf_ellipse_init (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_read (DxfFile *fp, DxfEllipse *ellipse);
 int dxf_ellipse_write (DxfFile *fp, DxfEllipse *ellipse);
 int dxf_ellipse_free (DxfEllipse *ellipse);
-void dxf_ellipse_free_chain (DxfEllipse *ellipses);
+void dxf_ellipse_free_list (DxfEllipse *ellipses);
 int dxf_ellipse_get_id_code (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_id_code (DxfEllipse *ellipse, int id_code);
 char *dxf_ellipse_get_linetype (DxfEllipse *ellipse);
