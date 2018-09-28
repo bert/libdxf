@@ -8,6 +8,12 @@
  *
  * \warning This is not an official AutoCAD entity.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * \c donut is an AutoCAD command that generates a polyline (\c POLYLINE)
  * consisting of two vertices (\c VERTEX) and an end of sequence marker
  * (\c SEQEND).
@@ -362,12 +368,6 @@ dxf_donut_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * donut entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_donut_free_list
