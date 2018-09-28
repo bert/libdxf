@@ -9191,15 +9191,15 @@ dxf_hatch_boundary_path_edge_arc_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path edge arcs and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HATCH boundary path edge arcs and all their data fields.
  */
 void
-dxf_hatch_boundary_path_edge_arc_free_chain
+dxf_hatch_boundary_path_edge_arc_free_list
 (
         DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * edge arcs. */
+                /*!< pointer to the single linked list of DXF \c HATCH
+                 * boundary path edge arcs. */
 )
 {
 #ifdef DEBUG

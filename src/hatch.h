@@ -867,7 +867,7 @@ DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge_get_last (DxfHatchBoundar
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_new ();
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_init (DxfHatchBoundaryPathEdgeArc *arc);
 int dxf_hatch_boundary_path_edge_arc_free (DxfHatchBoundaryPathEdgeArc *arc);
-void dxf_hatch_boundary_path_edge_arc_free_chain (DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs);
+void dxf_hatch_boundary_path_edge_arc_free_list (DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs);
 int dxf_hatch_boundary_path_edge_arc_get_id_code (DxfHatchBoundaryPathEdgeArc *arc);
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_set_id_code (DxfHatchBoundaryPathEdgeArc *arc, int id_code);
 double dxf_hatch_boundary_path_edge_arc_get_x0 (DxfHatchBoundaryPathEdgeArc *arc);
