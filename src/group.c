@@ -430,14 +430,15 @@ dxf_group_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c GROUP
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c GROUP objects and all their data fields.
  */
 void
-dxf_group_free_chain
+dxf_group_free_list
 (
         DxfGroup *groups
-                /*!< pointer to the chain of DXF \c GROUP objects. */
+                /*!< pointer to the single linked list of DXF \c GROUP
+                 * objects. */
 )
 {
 #ifdef DEBUG

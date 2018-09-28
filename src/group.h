@@ -110,7 +110,7 @@ DxfGroup *dxf_group_init (DxfGroup *group);
 DxfGroup *dxf_group_read (DxfFile *fp, DxfGroup *group);
 int dxf_group_write (DxfFile *fp, DxfGroup *group);
 int dxf_group_free (DxfGroup *group);
-void dxf_group_free_chain (DxfGroup *groups);
+void dxf_group_free_list (DxfGroup *groups);
 int dxf_group_get_id_code (DxfGroup *group);
 DxfGroup *dxf_group_set_id_code (DxfGroup *group, int id_code);
 char *dxf_group_get_dictionary_owner_soft (DxfGroup *group);
