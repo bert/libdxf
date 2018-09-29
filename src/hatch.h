@@ -727,7 +727,7 @@ DxfHatch *dxf_hatch_get_last (DxfHatch *hatch);
 DxfHatchPattern *dxf_hatch_pattern_new ();
 DxfHatchPattern *dxf_hatch_pattern_init (DxfHatchPattern *pattern);
 int dxf_hatch_pattern_free (DxfHatchPattern *pattern);
-void dxf_hatch_pattern_free_chain (DxfHatchPattern *patterns);
+void dxf_hatch_pattern_free_list (DxfHatchPattern *patterns);
 int dxf_hatch_pattern_get_id_code (DxfHatchPattern *pattern);
 DxfHatchPattern *dxf_hatch_pattern_set_id_code (DxfHatchPattern *pattern, int id_code);
 int dxf_hatch_pattern_get_number_of_def_lines (DxfHatchPattern *pattern);
