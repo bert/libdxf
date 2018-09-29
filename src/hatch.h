@@ -745,7 +745,7 @@ DxfHatchPattern *dxf_hatch_pattern_get_last (DxfHatchPattern *pattern);
 DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_dash_new ();
 DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_dash_init (DxfHatchPatternDefLineDash *dash);
 int dxf_hatch_pattern_def_line_dash_free (DxfHatchPatternDefLineDash *dash);
-void dxf_hatch_pattern_def_line_dash_free_chain (DxfHatchPatternDefLineDash *dashes);
+void dxf_hatch_pattern_def_line_dash_free_list (DxfHatchPatternDefLineDash *dashes);
 double dxf_hatch_pattern_def_line_dash_get_length (DxfHatchPatternDefLineDash *dash);
 DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_dash_set_length (DxfHatchPatternDefLineDash *dash, double length);
 DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_dash_get_next (DxfHatchPatternDefLineDash *dash);

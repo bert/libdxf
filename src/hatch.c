@@ -4363,15 +4363,15 @@ dxf_hatch_pattern_def_line_dash_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
- * definition line dashes and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HATCH pattern definition line dashes and all their data fields.
  */
 void
-dxf_hatch_pattern_def_line_dash_free_chain
+dxf_hatch_pattern_def_line_dash_free_list
 (
         DxfHatchPatternDefLineDash *dashes
-                /*!< pointer to the chain of DXF \c HATCH pattern
-                 * definition line dashes. */
+                /*!< pointer to the single linked list of DXF \c HATCH
+                 * pattern definition line dashes. */
 )
 {
 #ifdef DEBUG
