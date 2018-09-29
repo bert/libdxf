@@ -13507,11 +13507,12 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
 
 /*!
  * \brief Copy control points from a \c HATCH boundary path edge spline
- * entity into a new chain of control points.
+ * entity into a new sinle linked list of control points.
  *
  * After testing for \c NULL pointers and size of the allocated memory,
- * a new chain of control points (destination) is setup by copying the
- * member values from the control points from the spline (source).\n
+ * a new single linked list of control points (destination) is setup by
+ * copying the member values from the control points from the spline
+ * (source).\n
  * For each control point in the destination chain new memory is
  * allocated.\n
  * \n
