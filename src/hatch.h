@@ -643,7 +643,7 @@ DxfHatch *dxf_hatch_new ();
 DxfHatch *dxf_hatch_init (DxfHatch *hatch);
 int dxf_hatch_write (DxfFile *fp, DxfHatch *hatch);
 int dxf_hatch_free (DxfHatch *hatch);
-void dxf_hatch_free_chain (DxfHatch *hatches);
+void dxf_hatch_free_list (DxfHatch *hatches);
 int dxf_hatch_get_id_code (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_id_code (DxfHatch *hatch, int id_code);
 char *dxf_hatch_get_linetype (DxfHatch *hatch);

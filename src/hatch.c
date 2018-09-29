@@ -452,14 +452,15 @@ dxf_hatch_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HATCH entities and all their data fields.
  */
 void
-dxf_hatch_free_chain
+dxf_hatch_free_list
 (
         DxfHatch *hatches
-                /*!< pointer to the chain of DXF \c HATCH entities. */
+                /*!< pointer to the single linked list of DXF \c HATCH
+                 * entities. */
 )
 {
 #ifdef DEBUG
