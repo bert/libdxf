@@ -12090,15 +12090,15 @@ dxf_hatch_boundary_path_edge_spline_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path edge splines and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HATCH boundary path edge splines and all their data fields.
  */
 void
-dxf_hatch_boundary_path_edge_spline_free_chain
+dxf_hatch_boundary_path_edge_spline_free_list
 (
         DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * edge splines. */
+                /*!< pointer to the single linked list of DXF \c HATCH
+                 * boundary path edge splines. */
 )
 {
 #ifdef DEBUG
