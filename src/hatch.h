@@ -921,7 +921,7 @@ DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_get_last (
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_new ();
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_init (DxfHatchBoundaryPathEdgeLine *line);
 int dxf_hatch_boundary_path_edge_line_free (DxfHatchBoundaryPathEdgeLine *line);
-void dxf_hatch_boundary_path_edge_line_free_chain (DxfHatchBoundaryPathEdgeLine *hatch_boundary_path_edge_lines);
+void dxf_hatch_boundary_path_edge_line_free_list (DxfHatchBoundaryPathEdgeLine *hatch_boundary_path_edge_lines);
 int dxf_hatch_boundary_path_edge_line_get_id_code (DxfHatchBoundaryPathEdgeLine *line);
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_set_id_code (DxfHatchBoundaryPathEdgeLine *line, int id_code);
 double dxf_hatch_boundary_path_edge_line_get_x0 (DxfHatchBoundaryPathEdgeLine *line);
