@@ -756,7 +756,7 @@ DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_new ();
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_init (DxfHatchPatternDefLine *line);
 int dxf_hatch_pattern_def_line_write (DxfFile *fp, DxfHatchPatternDefLine *line);
 int dxf_hatch_pattern_def_line_free (DxfHatchPatternDefLine *line);
-void dxf_hatch_pattern_def_line_free_chain (DxfHatchPatternDefLine *lines);
+void dxf_hatch_pattern_def_line_free_list (DxfHatchPatternDefLine *lines);
 int dxf_hatch_pattern_def_line_get_id_code (DxfHatchPatternDefLine *line);
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_id_code (DxfHatchPatternDefLine *line, int id_code);
 double dxf_hatch_pattern_def_line_get_angle (DxfHatchPatternDefLine *line);
