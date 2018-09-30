@@ -441,7 +441,7 @@ dxf_hatch_free
         dxf_hatch_boundary_path_free_chain ((DxfHatchBoundaryPath *) hatch->paths);
         dxf_hatch_pattern_free_list ((DxfHatchPattern *) hatch->patterns);
         dxf_hatch_pattern_def_line_free_list ((DxfHatchPatternDefLine *) hatch->def_lines);
-        dxf_hatch_pattern_seedpoint_free_chain ((DxfHatchPatternSeedPoint *) hatch->seed_points);
+        dxf_hatch_pattern_seedpoint_free_list ((DxfHatchPatternSeedPoint *) hatch->seed_points);
         free (hatch);
         hatch = NULL;
 #if DEBUG
@@ -5689,15 +5689,15 @@ dxf_hatch_pattern_seedpoint_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
- * seed points and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HATCH pattern seed points and all their data fields.
  */
 void
-dxf_hatch_pattern_seedpoint_free_chain
+dxf_hatch_pattern_seedpoint_free_list
 (
         DxfHatchPatternSeedPoint *hatch_pattern_seed_points
-                /*!< pointer to the chain of DXF \c HATCH pattern seed
-                 * points. */
+                /*!< pointer to the single linked list of DXF \c HATCH
+                 * pattern seed points. */
 )
 {
 #ifdef DEBUG

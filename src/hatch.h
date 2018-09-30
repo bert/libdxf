@@ -781,7 +781,7 @@ DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_new ();
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_init (DxfHatchPatternSeedPoint *seedpoint);
 int dxf_hatch_pattern_seedpoint_write (DxfFile *fp, DxfHatchPatternSeedPoint *seedpoint);
 int dxf_hatch_pattern_seedpoint_free (DxfHatchPatternSeedPoint *seedpoint);
-void dxf_hatch_pattern_seedpoint_free_chain (DxfHatchPatternSeedPoint *hatch_pattern_seed_points);
+void dxf_hatch_pattern_seedpoint_free_list (DxfHatchPatternSeedPoint *hatch_pattern_seed_points);
 int dxf_hatch_pattern_seedpoint_get_id_code (DxfHatchPatternSeedPoint *point);
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_set_id_code (DxfHatchPatternSeedPoint *point, int id_code);
 double dxf_hatch_pattern_seedpoint_get_x0 (DxfHatchPatternSeedPoint *point);
