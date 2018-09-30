@@ -796,7 +796,7 @@ DxfHatchBoundaryPath *dxf_hatch_boundary_path_new ();
 DxfHatchBoundaryPath *dxf_hatch_boundary_path_init (DxfHatchBoundaryPath *path);
 int dxf_hatch_boundary_path_write (DxfFile *fp, DxfHatchBoundaryPath *path);
 int dxf_hatch_boundary_path_free (DxfHatchBoundaryPath *path);
-void dxf_hatch_boundary_path_free_chain (DxfHatchBoundaryPath *hatch_boundary_paths);
+void dxf_hatch_boundary_path_free_list (DxfHatchBoundaryPath *hatch_boundary_paths);
 int dxf_hatch_boundary_path_get_id_code (DxfHatchBoundaryPath *path);
 DxfHatchBoundaryPath *dxf_hatch_boundary_path_set_id_code (DxfHatchBoundaryPath *path, int id_code);
 DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_get_edges (DxfHatchBoundaryPath *path);

@@ -438,7 +438,7 @@ dxf_hatch_free
         free (hatch->color_name);
         free (hatch->pattern_name);
         dxf_point_free ((DxfPoint *) hatch->p0);
-        dxf_hatch_boundary_path_free_chain ((DxfHatchBoundaryPath *) hatch->paths);
+        dxf_hatch_boundary_path_free_list ((DxfHatchBoundaryPath *) hatch->paths);
         dxf_hatch_pattern_free_list ((DxfHatchPattern *) hatch->patterns);
         dxf_hatch_pattern_def_line_free_list ((DxfHatchPatternDefLine *) hatch->def_lines);
         dxf_hatch_pattern_seedpoint_free_list ((DxfHatchPatternSeedPoint *) hatch->seed_points);
@@ -6268,14 +6268,15 @@ dxf_hatch_boundary_path_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * paths and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HATCH boundary paths and all their data fields.
  */
 void
-dxf_hatch_boundary_path_free_chain
+dxf_hatch_boundary_path_free_list
 (
         DxfHatchBoundaryPath *hatch_boundary_paths
-                /*!< pointer to the chain of DXF \c HATCH boundary paths. */
+                /*!< pointer to the single linked list of DXF \c HATCH
+                 * boundary paths. */
 )
 {
 #ifdef DEBUG
