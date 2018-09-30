@@ -811,7 +811,7 @@ DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_new ();
 DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_init (DxfHatchBoundaryPathPolyline *polyline);
 int dxf_hatch_boundary_path_polyline_write (DxfFile *fp, DxfHatchBoundaryPathPolyline *polyline);
 int dxf_hatch_boundary_path_polyline_free (DxfHatchBoundaryPathPolyline *polyline);
-void dxf_hatch_boundary_path_polyline_free_chain (DxfHatchBoundaryPathPolyline *polylines);
+void dxf_hatch_boundary_path_polyline_free_list (DxfHatchBoundaryPathPolyline *polylines);
 int dxf_hatch_boundary_path_polyline_get_id_code (DxfHatchBoundaryPathPolyline *polyline);
 DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_id_code (DxfHatchBoundaryPathPolyline *polyline, int id_code);
 int dxf_hatch_boundary_path_polyline_get_is_closed (DxfHatchBoundaryPathPolyline *polyline);
