@@ -748,14 +748,15 @@ dxf_image_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c IMAGE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c IMAGE entities and all their data fields.
  */
 void
-dxf_image_free_chain
+dxf_image_free_list
 (
         DxfImage *images
-                /*!< pointer to the chain of DXF \c IMAGE entities. */
+                /*!< pointer to the single linked list of DXF \c IMAGE
+                 * entities. */
 )
 {
 #ifdef DEBUG

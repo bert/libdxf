@@ -264,7 +264,7 @@ DxfImage *dxf_image_init (DxfImage *image);
 DxfImage *dxf_image_read (DxfFile *fp, DxfImage *image);
 int dxf_image_write (DxfFile *fp, DxfImage *image);
 int dxf_image_free (DxfImage *image);
-void dxf_image_free_chain (DxfImage *images);
+void dxf_image_free_list (DxfImage *images);
 int dxf_image_get_id_code (DxfImage *image);
 DxfImage *dxf_image_set_id_code (DxfImage *image, int id_code);
 char *dxf_image_get_linetype (DxfImage *image);
