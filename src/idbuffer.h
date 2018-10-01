@@ -111,7 +111,7 @@ DxfIdbuffer *dxf_idbuffer_init (DxfIdbuffer *idbuffer);
 DxfIdbuffer *dxf_idbuffer_read (DxfFile *fp, DxfIdbuffer *idbuffer);
 int dxf_idbuffer_write (DxfFile *fp, DxfIdbuffer *idbuffer);
 int dxf_idbuffer_free (DxfIdbuffer *idbuffer);
-void dxf_idbuffer_free_chain (DxfIdbuffer *id_buffers);
+void dxf_idbuffer_free_list (DxfIdbuffer *id_buffers);
 int dxf_idbuffer_get_id_code (DxfIdbuffer *idbuffer);
 DxfIdbuffer *dxf_idbuffer_set_id_code (DxfIdbuffer *idbuffer, int id_code);
 char *dxf_idbuffer_get_dictionary_owner_soft (DxfIdbuffer *idbuffer);

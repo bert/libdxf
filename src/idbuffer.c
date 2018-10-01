@@ -423,14 +423,15 @@ dxf_idbuffer_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c IDBUFFER
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c IDBUFFER objects and all their data fields.
  */
 void
-dxf_idbuffer_free_chain
+dxf_idbuffer_free_list
 (
         DxfIdbuffer *id_buffers
-                /*!< pointer to the chain of DXF \c IDBUFFER objects. */
+                /*!< pointer to the single linked list of DXF
+                 * \c IDBUFFER objects. */
 )
 {
 #ifdef DEBUG
