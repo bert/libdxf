@@ -235,7 +235,7 @@ DxfHelix *dxf_helix_init (DxfHelix *helix);
 DxfHelix *dxf_helix_read (DxfFile *fp, DxfHelix *helix);
 int dxf_helix_write (DxfFile *fp, DxfHelix *helix);
 int dxf_helix_free (DxfHelix *helix);
-void dxf_helix_free_chain (DxfHelix *helices);
+void dxf_helix_free_list (DxfHelix *helices);
 int dxf_helix_get_id_code (DxfHelix *helix);
 DxfHelix *dxf_helix_set_id_code (DxfHelix *helix, int id_code);
 char *dxf_helix_get_linetype (DxfHelix *helix);

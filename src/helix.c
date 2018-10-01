@@ -779,15 +779,15 @@ dxf_helix_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c HELIX
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c HELIX entities and all their data fields.
  */
 void
-dxf_helix_free_chain
+dxf_helix_free_list
 (
         DxfHelix *helices
-                /*!< pointer to the first entry in a chain of DXF
-                 * \c HELIX entities. */
+                /*!< pointer to the first entry in a single linked list
+                 * of DXF \c HELIX entities. */
 )
 {
 #ifdef DEBUG
