@@ -849,7 +849,7 @@ DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_get_
 DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge_new ();
 DxfHatchBoundaryPathEdge * dxf_hatch_boundary_path_edge_init (DxfHatchBoundaryPathEdge *edge);
 int dxf_hatch_boundary_path_edge_free (DxfHatchBoundaryPathEdge *edge);
-void dxf_hatch_boundary_path_edge_free_chain (DxfHatchBoundaryPathEdge *edges);
+void dxf_hatch_boundary_path_edge_free_list (DxfHatchBoundaryPathEdge *edges);
 int dxf_hatch_boundary_path_edge_get_id_code (DxfHatchBoundaryPathEdge *edge);
 DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge_set_id_code (DxfHatchBoundaryPathEdge *edge, int id_code);
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_get_arcs (DxfHatchBoundaryPathEdge *edge);
