@@ -128,7 +128,7 @@ DxfIdbuffer *dxf_idbuffer_get_last (DxfIdbuffer *idbuffer);
 DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_new ();
 DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_init (DxfIdbufferEntityPointer *entity_pointer);
 int dxf_idbuffer_entity_pointer_free (DxfIdbufferEntityPointer *entity_pointer);
-void dxf_idbuffer_entity_pointer_free_chain (DxfIdbufferEntityPointer *entity_pointers);
+void dxf_idbuffer_entity_pointer_free_list (DxfIdbufferEntityPointer *entity_pointers);
 char *dxf_idbuffer_entity_pointer_get_soft_pointer (DxfIdbufferEntityPointer *entity_pointer);
 DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_set_soft_pointer (DxfIdbufferEntityPointer *entity_pointer, char *soft_pointer);
 DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_get_next (DxfIdbufferEntityPointer *entity_pointer);

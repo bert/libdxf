@@ -412,7 +412,7 @@ dxf_idbuffer_free
         free (idbuffer->dictionary_owner_soft);
         free (idbuffer->object_owner_soft);
         free (idbuffer->dictionary_owner_hard);
-        dxf_idbuffer_entity_pointer_free_chain ((DxfIdbufferEntityPointer *) idbuffer->entity_pointer);
+        dxf_idbuffer_entity_pointer_free_list ((DxfIdbufferEntityPointer *) idbuffer->entity_pointer);
         free (idbuffer);
         idbuffer = NULL;
 #if DEBUG
@@ -1111,14 +1111,14 @@ dxf_idbuffer_entity_pointer_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF
+ * \brief Free the allocated memory for a single linked list of DXF
  * \c DxfIdbufferEntityPointer structs and all their data fields.
  */
 void
-dxf_idbuffer_entity_pointer_free_chain
+dxf_idbuffer_entity_pointer_free_list
 (
         DxfIdbufferEntityPointer *entity_pointers
-                /*!< pointer to the chain of DXF
+                /*!< pointer to the single linked list of DXF
                  * \c DxfIdbufferEntityPointer structs. */
 )
 {
