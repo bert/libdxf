@@ -753,14 +753,15 @@ dxf_insert_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c INSERT
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c INSERT entities and all their data fields.
  */
 void
-dxf_insert_free_chain
+dxf_insert_free_list
 (
         DxfInsert *inserts
-                /*!< pointer to the chain of DXF \c INSERT entities. */
+                /*!< pointer to the single linked list of DXF \c INSERT
+                 * entities. */
 )
 {
 #ifdef DEBUG

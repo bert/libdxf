@@ -258,7 +258,7 @@ DxfInsert *dxf_insert_init (DxfInsert *insert);
 DxfInsert *dxf_insert_read (DxfFile *fp, DxfInsert *insert);
 int dxf_insert_write (DxfFile *fp, DxfInsert *insert);
 int dxf_insert_free (DxfInsert *insert);
-void dxf_insert_free_chain (DxfInsert *inserts);
+void dxf_insert_free_list (DxfInsert *inserts);
 int dxf_insert_get_id_code (DxfInsert *insert);
 DxfInsert *dxf_insert_set_id_code (DxfInsert *insert, int id_code);
 char *dxf_insert_get_linetype (DxfInsert *insert);
