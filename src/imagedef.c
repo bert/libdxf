@@ -496,14 +496,15 @@ dxf_imagedef_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c IMAGEDEF
- * objects and all their data fields.
+ * \brief Free the allocated memory for a sible linked list of DXF
+ * \c IMAGEDEF objects and all their data fields.
  */
 void
-dxf_imagedef_free_chain
+dxf_imagedef_free_list
 (
         DxfImagedef *imagedefs
-                /*!< pointer to the chain of DXF \c IMAGEDEF objects. */
+                /*!< pointer to the single linked list of DXF
+                 * \c IMAGEDEF objects. */
 )
 {
 #ifdef DEBUG

@@ -143,7 +143,7 @@ DxfImagedef *dxf_imagedef_init (DxfImagedef *imagedef);
 DxfImagedef *dxf_imagedef_read (DxfFile *fp, DxfImagedef *imagedef);
 int dxf_imagedef_write (DxfFile *fp, DxfImagedef *imagedef);
 int dxf_imagedef_free (DxfImagedef *imagedef);
-void dxf_imagedef_free_chain (DxfImagedef *imagedefs);
+void dxf_imagedef_free_list (DxfImagedef *imagedefs);
 int dxf_imagedef_get_id_code (DxfImagedef *imagedef);
 DxfImagedef *dxf_imagedef_set_id_code (DxfImagedef *imagedef, int id_code);
 char *dxf_imagedef_get_dictionary_owner_soft (DxfImagedef *imagedef);
