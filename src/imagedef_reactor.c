@@ -411,15 +411,15 @@ dxf_imagedef_reactor_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c IMAGEDEF_REACTOR
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c IMAGEDEF_REACTOR objects and all their data fields.
  */
 void
-dxf_imagedef_reactor_free_chain
+dxf_imagedef_reactor_free_list
 (
         DxfImagedefReactor *imagedef_reactors
-                /*!< pointer to the chain of DXF \c IMAGEDEF_REACTOR
-                 * objects. */
+                /*!< pointer to the single linked list of DXF
+                 * \c IMAGEDEF_REACTOR objects. */
 )
 {
 #ifdef DEBUG

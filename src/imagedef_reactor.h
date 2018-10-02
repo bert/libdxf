@@ -95,7 +95,7 @@ DxfImagedefReactor *dxf_imagedef_reactor_init (DxfImagedefReactor *imagedef_reac
 DxfImagedefReactor *dxf_imagedef_reactor_read (DxfFile *fp, DxfImagedefReactor *imagedef_reactor);
 int dxf_imagedef_reactor_write (DxfFile *fp, DxfImagedefReactor *imagedef_reactor);
 int dxf_imagedef_reactor_free (DxfImagedefReactor *imagedef_reactor);
-void dxf_imagedef_reactor_free_chain (DxfImagedefReactor *imagedef_reactors);
+void dxf_imagedef_reactor_free_list (DxfImagedefReactor *imagedef_reactors);
 int dxf_imagedef_reactor_get_id_code (DxfImagedefReactor *imagedef_reactor);
 DxfImagedefReactor *dxf_imagedef_reactor_set_id_code (DxfImagedefReactor *imagedef_reactor, int id_code);
 char *dxf_imagedef_reactor_get_dictionary_owner_soft (DxfImagedefReactor *imagedef_reactor);
