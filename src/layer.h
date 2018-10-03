@@ -114,7 +114,7 @@ DxfLayer *dxf_layer_init (DxfLayer *layer);
 DxfLayer *dxf_layer_read (DxfFile *fp, DxfLayer *layer);
 int dxf_layer_write (DxfFile *fp, DxfLayer *layer);
 int dxf_layer_free (DxfLayer *layer);
-void dxf_layer_free_chain (DxfLayer *layers);
+void dxf_layer_free_list (DxfLayer *layers);
 int dxf_layer_get_id_code (DxfLayer *layer);
 DxfLayer *dxf_layer_set_id_code (DxfLayer *layer, int id_code);
 char *dxf_layer_get_layer_name (DxfLayer *layer);

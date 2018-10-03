@@ -468,8 +468,8 @@ dxf_layer_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c LAYER
- * tables and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c LAYER tables and all their data fields.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -478,10 +478,11 @@ dxf_layer_free
  * \version According to DXF R14.
  */
 void
-dxf_layer_free_chain
+dxf_layer_free_list
 (
         DxfLayer *layers
-                /*!< pointer to the chain of DXF \c LAYER tables. */
+                /*!< pointer to the single linked list of DXF \c LAYER
+                 * tables. */
 )
 {
 #ifdef DEBUG
