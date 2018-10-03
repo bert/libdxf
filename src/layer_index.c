@@ -482,14 +482,15 @@ dxf_layer_index_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c LAYER_INDEX
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c LAYER_INDEX objects and all their data fields.
  */
 void
-dxf_layer_index_free_chain
+dxf_layer_index_free_list
 (
         DxfLayerIndex *layer_indices
-                /*!< pointer to the chain of DXF \c LAYER_INDEX objects. */
+                /*!< pointer to the single linked list of DXF
+                 * \c LAYER_INDEX objects. */
 )
 {
 #ifdef DEBUG
