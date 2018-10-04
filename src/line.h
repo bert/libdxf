@@ -213,7 +213,7 @@ DxfLine *dxf_line_init (DxfLine *line);
 DxfLine *dxf_line_read (DxfFile *fp, DxfLine *line);
 int dxf_line_write (DxfFile *fp, DxfLine *line);
 int dxf_line_free (DxfLine *line);
-void dxf_line_free_chain (DxfLine *lines);
+void dxf_line_free_list (DxfLine *lines);
 int dxf_line_get_id_code (DxfLine *line);
 DxfLine *dxf_line_set_id_code (DxfLine *line, int id_code);
 char *dxf_line_get_linetype (DxfLine *line);
