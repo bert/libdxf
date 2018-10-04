@@ -1,7 +1,8 @@
 /*!
  * \file leader.h
  *
- * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017, 2018
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF leader entity (\c LEADER).
  *
