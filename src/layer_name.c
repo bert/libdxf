@@ -165,14 +165,15 @@ dxf_layer_name_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c LAYER_NAME
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c LAYER_NAME objects and all their data fields.
  */
 void
-dxf_layer_name_free_chain
+dxf_layer_name_free_list
 (
         DxfLayerName *layer_names
-                /*!< pointer to the chain of DXF \c LAYER_NAME objects. */
+                /*!< pointer to the single linked list of DXF
+                 * \c LAYER_NAME objects. */
 )
 {
 #ifdef DEBUG

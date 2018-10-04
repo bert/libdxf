@@ -467,7 +467,7 @@ dxf_layer_index_free
         }
         free (layer_index->dictionary_owner_soft);
         free (layer_index->dictionary_owner_hard);
-        dxf_layer_name_free_chain (layer_index->layer_name);
+        dxf_layer_name_free_list (layer_index->layer_name);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 free (layer_index->hard_owner_reference[i]);
