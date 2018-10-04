@@ -810,14 +810,15 @@ dxf_leader_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c LEADER
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c LEADER entities and all their data fields.
  */
 void
-dxf_leader_free_chain
+dxf_leader_free_list
 (
         DxfLeader *leaders
-                /*!< pointer to the chain of DXF \c LEADER entities. */
+                /*!< pointer to the single linked list of DXF
+                 * \c LEADER entities. */
 )
 {
 #ifdef DEBUG

@@ -214,7 +214,7 @@ DxfLeader *dxf_leader_init (DxfLeader *leader);
 DxfLeader *dxf_leader_read (DxfFile *fp, DxfLeader *leader);
 int dxf_leader_write (DxfFile *fp, DxfLeader *leader);
 int dxf_leader_free (DxfLeader *leader);
-void dxf_leader_free_chain (DxfLeader *leaders);
+void dxf_leader_free_list (DxfLeader *leaders);
 int dxf_leader_get_id_code (DxfLeader *leader);
 DxfLeader *dxf_leader_set_id_code (DxfLeader *leader, int id_code);
 char *dxf_leader_get_linetype (DxfLeader *leader);
