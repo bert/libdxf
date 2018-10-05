@@ -10,6 +10,12 @@
  *
  * \warning This entity requires AutoCAD version R14 or higher.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -46,12 +52,6 @@
  * Fill the memory contents with zeros.
  * 
  * \return a pointer to the DXF \c LWPOLYLINE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfLWPolyline *
 dxf_lwpolyline_new ()
@@ -89,12 +89,6 @@ dxf_lwpolyline_new ()
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfLWPolyline *
 dxf_lwpolyline_init
@@ -157,12 +151,6 @@ dxf_lwpolyline_init
  * While parsing the DXF file store data in \c lwpolyline. \n
  *
  * \return a pointer to \c lwpolyline.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfLWPolyline *
 dxf_lwpolyline_read
@@ -429,12 +417,6 @@ dxf_lwpolyline_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_lwpolyline_write
@@ -611,12 +593,6 @@ dxf_lwpolyline_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_lwpolyline_free
@@ -657,12 +633,6 @@ dxf_lwpolyline_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c LWPOLYLINE entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_lwpolyline_free_list
