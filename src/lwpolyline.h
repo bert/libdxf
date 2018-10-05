@@ -227,7 +227,7 @@ DxfLWPolyline *dxf_lwpolyline_init (DxfLWPolyline *lwpolyline);
 DxfLWPolyline *dxf_lwpolyline_read (DxfFile *fp, DxfLWPolyline *lwpolyline);
 int dxf_lwpolyline_write (DxfFile *fp, DxfLWPolyline *lwpolyline);
 int dxf_lwpolyline_free (DxfLWPolyline *lwpolyline);
-void dxf_lwpolyline_free_chain (DxfLWPolyline *lwpolylines);
+void dxf_lwpolyline_free_list (DxfLWPolyline *lwpolylines);
 int dxf_lwpolyline_get_id_code (DxfLWPolyline *lwpolyline);
 DxfLWPolyline *dxf_lwpolyline_set_id_code (DxfLWPolyline *lwpolyline, int id_code);
 char *dxf_lwpolyline_get_linetype (DxfLWPolyline *lwpolyline);

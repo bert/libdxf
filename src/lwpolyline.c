@@ -655,8 +655,8 @@ dxf_lwpolyline_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c LWPOLYLINE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c LWPOLYLINE entities and all their data fields.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -665,10 +665,11 @@ dxf_lwpolyline_free
  * \version According to DXF R14.
  */
 void
-dxf_lwpolyline_free_chain
+dxf_lwpolyline_free_list
 (
         DxfLWPolyline *lwpolylines
-                /*!< a pointer to the chain of DXF \c LWPOLYLINE entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c LWPOLYLINE entities. */
 )
 {
 #ifdef DEBUG
