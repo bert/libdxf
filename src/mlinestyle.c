@@ -507,14 +507,15 @@ dxf_mlinestyle_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c MLINESTYLE
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c MLINESTYLE objects and all their data fields.
  */
 void
-dxf_mlinestyle_free_chain
+dxf_mlinestyle_free_list
 (
         DxfMlinestyle *mlinestyles
-                /*!< a pointer to the chain of DXF \c MLINESTYLE objects. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c MLINESTYLE objects. */
 )
 {
 #ifdef DEBUG

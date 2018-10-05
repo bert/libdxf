@@ -139,7 +139,7 @@ DxfMlinestyle *dxf_mlinestyle_init (DxfMlinestyle *mlinestyle);
 DxfMlinestyle *dxf_mlinestyle_read (DxfFile *fp, DxfMlinestyle *mlinestyle);
 int dxf_mlinestyle_write (DxfFile *fp, DxfMlinestyle *mlinestyle);
 int dxf_mlinestyle_free (DxfMlinestyle *mlinestyle);
-void dxf_mlinestyle_free_chain (DxfMlinestyle *mlinestyles);
+void dxf_mlinestyle_free_list (DxfMlinestyle *mlinestyles);
 int dxf_mlinestyle_get_id_code (DxfMlinestyle *mlinestyle);
 DxfMlinestyle *dxf_mlinestyle_set_id_code (DxfMlinestyle *mlinestyle, int id_code);
 char *dxf_mlinestyle_get_dictionary_owner_soft (DxfMlinestyle *mlinestyle);
