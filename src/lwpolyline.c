@@ -88,7 +88,7 @@ dxf_lwpolyline_new ()
  * \c LWPOLYLINE entity.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfLWPolyline *
 dxf_lwpolyline_init
