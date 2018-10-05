@@ -158,7 +158,7 @@ DxfLType *dxf_ltype_init (DxfLType *ltype);
 DxfLType *dxf_ltype_read (DxfFile *fp, DxfLType *ltype);
 int dxf_ltype_write (DxfFile *fp, DxfLType *ltype);
 int dxf_ltype_free (DxfLType *ltype);
-void dxf_ltype_free_chain (DxfLType *ltypes);
+void dxf_ltype_free_list (DxfLType *ltypes);
 int dxf_ltype_get_id_code (DxfLType *ltype);
 DxfLType *dxf_ltype_set_id_code (DxfLType *ltype, int id_code);
 char *dxf_ltype_get_linetype_name (DxfLType *ltype);
