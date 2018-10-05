@@ -285,7 +285,7 @@ DxfMline *dxf_mline_init (DxfMline *mline);
 DxfMline *dxf_mline_read (DxfFile *fp, DxfMline *mline);
 int dxf_mline_write (DxfFile *fp, DxfMline *mline);
 int dxf_mline_free (DxfMline *mline);
-void dxf_mline_free_chain (DxfMline *mlines);
+void dxf_mline_free_list (DxfMline *mlines);
 int dxf_mline_get_id_code (DxfMline *mline);
 DxfMline *dxf_mline_set_id_code (DxfMline *mline, int id_code);
 char *dxf_mline_get_linetype (DxfMline *mline);

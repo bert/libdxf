@@ -940,14 +940,15 @@ dxf_mline_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c MLINE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c MLINE entities and all their data fields.
  */
 void
-dxf_mline_free_chain
+dxf_mline_free_list
 (
         DxfMline *mlines
-                /*!< a pointer to the chain of DXF \c MLINE entities. */
+                /*!< a pointer to the single linked list of DXF \c MLINE
+                 * entities. */
 )
 {
 #ifdef DEBUG
