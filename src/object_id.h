@@ -66,7 +66,7 @@ dxf_object_id_struct
 DxfObjectId *dxf_object_id_new ();
 DxfObjectId *dxf_object_id_init (DxfObjectId *object_id);
 int dxf_object_id_free (DxfObjectId *object_id);
-void dxf_object_id_free_chain (DxfObjectId *object_ids);
+void dxf_object_id_free_list (DxfObjectId *object_ids);
 int dxf_object_id_get_group_code (DxfObjectId *object_id);
 DxfObjectId *dxf_object_id_set_group_code (DxfObjectId *object_id, int group_code);
 char *dxf_object_id_get_data (DxfObjectId *object_id);

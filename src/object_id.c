@@ -156,14 +156,15 @@ dxf_object_id_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c object_ids
- * and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c object_ids and all their data fields.
  */
 void
-dxf_object_id_free_chain
+dxf_object_id_free_list
 (
         DxfObjectId *object_ids
-                /*!< a pointer to the chain of DXF \c object_ids. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c object_ids. */
 )
 {
 #ifdef DEBUG
