@@ -351,7 +351,7 @@ DxfMtext *dxf_mtext_init (DxfMtext *mtext);
 DxfMtext *dxf_mtext_read (DxfFile *fp, DxfMtext *mtext);
 int dxf_mtext_write (DxfFile *fp, DxfMtext *mtext);
 int dxf_mtext_free (DxfMtext *mtext);
-void dxf_mtext_free_chain (DxfMtext *mtexts);
+void dxf_mtext_free_list (DxfMtext *mtexts);
 int dxf_mtext_get_id_code (DxfMtext *mtext);
 DxfMtext *dxf_mtext_set_id_code (DxfMtext *mtext, int id_code);
 char *dxf_mtext_get_linetype (DxfMtext *mtext);

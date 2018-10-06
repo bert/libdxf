@@ -769,14 +769,15 @@ dxf_mtext_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c MTEXT
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c MTEXT entities and all their data fields.
  */
 void
-dxf_mtext_free_chain
+dxf_mtext_free_list
 (
         DxfMtext *mtexts
-                /*!< a pointer to the chain of DXF \c MTEXT entities. */
+                /*!< a pointer to the single linked list of DXF \c MTEXT
+                 * entities. */
 )
 {
 #ifdef DEBUG
