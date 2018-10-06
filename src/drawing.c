@@ -157,7 +157,7 @@ dxf_drawing_free
         dxf_class_free_list ((DxfClass *) drawing->class_list);
         dxf_block_free_list ((DxfBlock *) drawing->block_list);
         //dxf_entities_free_chain ((DxfEntities *) drawing->entities_list);
-        dxf_object_free_chain ((DxfObject *) drawing->object_list);
+        dxf_object_free_list ((DxfObject *) drawing->object_list);
         dxf_thumbnail_free ((DxfThumbnail *) drawing->thumbnail);
         free (drawing);
         drawing = NULL;
