@@ -389,14 +389,15 @@ dxf_object_ptr_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c OBJECT_PTR
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c OBJECT_PTR objects and all their data fields.
  */
 void
-dxf_object_ptr_free_chain
+dxf_object_ptr_free_list
 (
         DxfObjectPtr *objectptrs
-                /*!< a pointer to the chain of DXF \c OBJECT_PTR objects. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c OBJECT_PTR objects. */
 )
 {
 #ifdef DEBUG

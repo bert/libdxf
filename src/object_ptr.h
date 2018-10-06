@@ -85,7 +85,7 @@ DxfObjectPtr *dxf_object_ptr_init (DxfObjectPtr *object_ptr);
 DxfObjectPtr *dxf_object_ptr_read (DxfFile *fp, DxfObjectPtr *object_ptr);
 int dxf_object_ptr_write (DxfFile *fp, DxfObjectPtr *object_ptr);
 int dxf_object_ptr_free (DxfObjectPtr *object_ptr);
-void dxf_object_ptr_free_chain (DxfObjectPtr *objectptrs);
+void dxf_object_ptr_free_list (DxfObjectPtr *objectptrs);
 int dxf_object_ptr_get_id_code (DxfObjectPtr *object_ptr);
 DxfObjectPtr *dxf_object_ptr_set_id_code (DxfObjectPtr *object_ptr, int id_code);
 char *dxf_object_ptr_get_dictionary_owner_soft (DxfObjectPtr *object_ptr);
