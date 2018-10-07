@@ -654,14 +654,15 @@ dxf_ole2frame_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c OLE2FRAME
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c OLE2FRAME entities and all their data fields.
  */
 void
-dxf_ole2frame_free_chain
+dxf_ole2frame_free_list
 (
         DxfOle2Frame *ole2frames
-                /*!< a pointer to the chain of DXF \c OLE2FRAME entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c OLE2FRAME entities. */
 )
 {
 #ifdef DEBUG
