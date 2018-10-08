@@ -926,9 +926,9 @@ dxf_mline_free
         free (mline->color_name);
         free (mline->style_name);
         dxf_point_free (mline->p0);
-        dxf_point_free_chain (mline->p1);
-        dxf_point_free_chain (mline->p2);
-        dxf_point_free_chain (mline->p3);
+        dxf_point_free_list (mline->p1);
+        dxf_point_free_list (mline->p2);
+        dxf_point_free_list (mline->p3);
         free (mline->mlinestyle_dictionary);
         free (mline);
         mline = NULL;

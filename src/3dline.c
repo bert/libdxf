@@ -745,8 +745,8 @@ dxf_3dline_free
         free (line->dictionary_owner_hard);
         free (line->plot_style_name);
         free (line->color_name);
-        dxf_point_free_chain (line->p0);
-        dxf_point_free_chain (line->p1);
+        dxf_point_free_list (line->p0);
+        dxf_point_free_list (line->p1);
         free (line);
         line = NULL;
 #if DEBUG

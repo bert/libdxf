@@ -1021,8 +1021,8 @@ dxf_spline_free
         free (spline->dictionary_owner_hard);
         free (spline->plot_style_name);
         free (spline->color_name);
-        dxf_point_free_chain (spline->p0);
-        dxf_point_free_chain (spline->p1);
+        dxf_point_free_list (spline->p0);
+        dxf_point_free_list (spline->p1);
         dxf_point_free (spline->p2);
         dxf_point_free (spline->p3);
         dxf_double_free_chain (spline->knot_value);

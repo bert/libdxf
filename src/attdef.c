@@ -924,8 +924,8 @@ dxf_attdef_free
         free (attdef->tag_value);
         free (attdef->prompt_value);
         free (attdef->text_style);
-        dxf_point_free_chain (attdef->p0);
-        dxf_point_free_chain (attdef->p1);
+        dxf_point_free_list (attdef->p0);
+        dxf_point_free_list (attdef->p1);
         free (attdef);
         attdef = NULL;
 #if DEBUG

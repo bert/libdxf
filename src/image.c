@@ -735,7 +735,7 @@ dxf_image_free
         dxf_point_free (dxf_image_get_p1 (image));
         dxf_point_free (dxf_image_get_p2 (image));
         dxf_point_free (dxf_image_get_p3 (image));
-        dxf_point_free_chain (dxf_image_get_p4 (image));
+        dxf_point_free_list (dxf_image_get_p4 (image));
         free (dxf_image_get_imagedef_object (image));
         free (dxf_image_get_imagedef_reactor_object (image));
         free (image);

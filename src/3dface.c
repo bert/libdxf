@@ -754,10 +754,10 @@ dxf_3dface_free
         free (face->dictionary_owner_hard);
         free (face->plot_style_name);
         free (face->color_name);
-        dxf_point_free_chain (face->p0);
-        dxf_point_free_chain (face->p1);
-        dxf_point_free_chain (face->p2);
-        dxf_point_free_chain (face->p3);
+        dxf_point_free_list (face->p0);
+        dxf_point_free_list (face->p1);
+        dxf_point_free_list (face->p2);
+        dxf_point_free_list (face->p3);
         free (face);
         face = NULL;
 #ifdef DEBUG

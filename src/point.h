@@ -208,7 +208,7 @@ DxfPoint *dxf_point_init (DxfPoint *point);
 DxfPoint *dxf_point_read (DxfFile *fp, DxfPoint *point);
 int dxf_point_write (DxfFile *fp, DxfPoint *point);
 int dxf_point_free (DxfPoint *point);
-void dxf_point_free_chain (DxfPoint *points);
+void dxf_point_free_list (DxfPoint *points);
 int dxf_point_get_id_code (DxfPoint *point);
 DxfPoint *dxf_point_set_id_code (DxfPoint *point, int id_code);
 char *dxf_point_get_linetype (DxfPoint *point);

@@ -780,8 +780,8 @@ dxf_ellipse_free
         free (ellipse->dictionary_owner_hard);
         free (ellipse->plot_style_name);
         free (ellipse->color_name);
-        dxf_point_free_chain (ellipse->p0);
-        dxf_point_free_chain (ellipse->p1);
+        dxf_point_free_list (ellipse->p0);
+        dxf_point_free_list (ellipse->p1);
         free (ellipse);
         ellipse = NULL;
 #if DEBUG
