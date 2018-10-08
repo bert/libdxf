@@ -6,6 +6,12 @@
  *
  * \brief Functions for a DXF oleframe entity (\c OLEFRAME).
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -40,9 +46,6 @@
  * \brief Allocate memory for a \c DxfOleFrame.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfOleFrame *
 dxf_oleframe_new ()
@@ -80,9 +83,6 @@ dxf_oleframe_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfOleFrame *
 dxf_oleframe_init
@@ -145,9 +145,6 @@ dxf_oleframe_init
  * While parsing the DXF file store data in \c oleframe. \n
  *
  * \return a pointer to \c oleframe.
- *
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfOleFrame *
 dxf_oleframe_read
@@ -362,9 +359,6 @@ dxf_oleframe_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
- *
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_oleframe_write
@@ -526,9 +520,6 @@ dxf_oleframe_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_oleframe_free
@@ -573,12 +564,6 @@ dxf_oleframe_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c OLEFRAME entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_oleframe_free_list
