@@ -1,7 +1,7 @@
 /*!
  * \file oleframe.h
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF oleframe entity (\c OLEFRAME).
