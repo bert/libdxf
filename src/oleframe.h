@@ -56,9 +56,6 @@ extern "C" {
 
 /*!
  * \brief DXF definition of an AutoCAD oleframe entity (\c OLEFRAME).
- *
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_oleframe_struct
