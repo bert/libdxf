@@ -202,7 +202,7 @@ DxfOleFrame *dxf_oleframe_init (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_read (DxfFile *fp, DxfOleFrame *oleframe);
 int dxf_oleframe_write (DxfFile *fp, DxfOleFrame *oleframe);
 int dxf_oleframe_free (DxfOleFrame *oleframe);
-void dxf_oleframe_free_chain (DxfOleFrame *oleframes);
+void dxf_oleframe_free_list (DxfOleFrame *oleframes);
 int dxf_oleframe_get_id_code (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_id_code (DxfOleFrame *oleframe, int id_code);
 char *dxf_oleframe_get_linetype (DxfOleFrame *oleframe);

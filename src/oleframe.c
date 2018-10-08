@@ -571,8 +571,8 @@ dxf_oleframe_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c OLEFRAME
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c OLEFRAME entities and all their data fields.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -581,10 +581,11 @@ dxf_oleframe_free
  * \version According to DXF R14.
  */
 void
-dxf_oleframe_free_chain
+dxf_oleframe_free_list
 (
         DxfOleFrame *oleframes
-                /*!< a pointer to the chain of DXF \c OLEFRAME entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c OLEFRAME entities. */
 )
 {
 #ifdef DEBUG
