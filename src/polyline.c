@@ -695,14 +695,15 @@ dxf_polyline_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c POLYLINE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c POLYLINE entities and all their data fields.
  */
 void
-dxf_polyline_free_chain
+dxf_polyline_free_list
 (
         DxfPolyline *polylines
-                /*!< a pointer to the chain of DXF \c POLYLINE entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c POLYLINE entities. */
 )
 {
 #ifdef DEBUG

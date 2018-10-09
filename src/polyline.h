@@ -312,7 +312,7 @@ DxfPolyline *dxf_polyline_init (DxfPolyline *polyline);
 DxfPolyline *dxf_polyline_read (DxfFile *fp, DxfPolyline *polyline);
 int dxf_polyline_write (DxfFile *fp, DxfPolyline *polyline);
 int dxf_polyline_free (DxfPolyline *polyline);
-void dxf_polyline_free_chain (DxfPolyline *polylines);
+void dxf_polyline_free_list (DxfPolyline *polylines);
 int dxf_polyline_get_id_code (DxfPolyline *polyline);
 DxfPolyline *dxf_polyline_set_id_code (DxfPolyline *polyline, int id_code);
 char *dxf_polyline_get_linetype (DxfPolyline *polyline);
