@@ -745,8 +745,8 @@ dxf_3dsolid_free
         free (solid->dictionary_owner_hard);
         free (solid->plot_style_name);
         free (solid->color_name);
-        dxf_proprietary_data_free_chain (solid->proprietary_data);
-        dxf_proprietary_data_free_chain (solid->additional_proprietary_data);
+        dxf_proprietary_data_free_list (solid->proprietary_data);
+        dxf_proprietary_data_free_list (solid->additional_proprietary_data);
         free (solid->history);
         free (solid);
         solid = NULL;

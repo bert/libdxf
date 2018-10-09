@@ -586,8 +586,8 @@ dxf_body_free
         free (body->dictionary_owner_hard);
         free (body->plot_style_name);
         free (body->color_name);
-        dxf_proprietary_data_free_chain (body->proprietary_data);
-        dxf_proprietary_data_free_chain (body->additional_proprietary_data);
+        dxf_proprietary_data_free_list (body->proprietary_data);
+        dxf_proprietary_data_free_list (body->additional_proprietary_data);
         free (body);
         body = NULL;
 #if DEBUG

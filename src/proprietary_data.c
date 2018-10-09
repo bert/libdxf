@@ -156,15 +156,15 @@ dxf_proprietary_data_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF
+ * \brief Free the allocated memory for a single linked list of DXF
  * \c DxfProprietaryData objects and all their data fields.
  */
 void
-dxf_proprietary_data_free_chain
+dxf_proprietary_data_free_list
 (
         DxfProprietaryData *datas
-                /*!< a pointer to the chain of DXF \c DxfProprietaryData
-                 * objects. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c DxfProprietaryData objects. */
 )
 {
 #ifdef DEBUG

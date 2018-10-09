@@ -69,7 +69,7 @@ dxf_proprietary_data_struct
 DxfProprietaryData *dxf_proprietary_data_new ();
 DxfProprietaryData *dxf_proprietary_data_init (DxfProprietaryData *data);
 int dxf_proprietary_data_free (DxfProprietaryData *data);
-void dxf_proprietary_data_free_chain (DxfProprietaryData *datas);
+void dxf_proprietary_data_free_list (DxfProprietaryData *datas);
 int dxf_proprietary_data_get_order (DxfProprietaryData *data);
 DxfProprietaryData *dxf_proprietary_data_set_order (DxfProprietaryData *data, int order);
 char *dxf_proprietary_data_get_line (DxfProprietaryData *data);
