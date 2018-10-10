@@ -587,14 +587,15 @@ dxf_ray_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c RAY
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c RAY entities and all their data fields.
  */
 void
-dxf_ray_free_chain
+dxf_ray_free_list
 (
         DxfRay *rays
-                /*!< a pointer to the chain of DXF \c RAY entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c RAY entities. */
 )
 {
 #ifdef DEBUG
