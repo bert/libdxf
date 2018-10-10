@@ -118,7 +118,7 @@ DxfRasterVariables *dxf_rastervariables_init (DxfRasterVariables *rastervariable
 DxfRasterVariables *dxf_rastervariables_read (DxfFile *fp, DxfRasterVariables *rastervariables);
 int dxf_rastervariables_write (DxfFile *fp, DxfRasterVariables *rastervariables);
 int dxf_rastervariables_free (DxfRasterVariables *rastervariables);
-void dxf_rastervariables_free_chain (DxfRasterVariables *rastervariables);
+void dxf_rastervariables_free_list (DxfRasterVariables *rastervariables);
 int dxf_rastervariables_get_id_code (DxfRasterVariables *rastervariables);
 DxfRasterVariables *dxf_rastervariables_set_id_code (DxfRasterVariables *rastervariables, int id_code);
 char *dxf_rastervariables_get_dictionary_owner_soft (DxfRasterVariables *rastervariables);

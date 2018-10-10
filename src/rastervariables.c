@@ -415,15 +415,15 @@ dxf_rastervariables_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c RASTERVARIABLES
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c RASTERVARIABLES objects and all their data fields.
  */
 void
-dxf_rastervariables_free_chain
+dxf_rastervariables_free_list
 (
         DxfRasterVariables *rastervariables
-                /*!< a pointer to the chain of DXF \c RASTERVARIABLES
-                 * objects. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c RASTERVARIABLES objects. */
 )
 {
 #ifdef DEBUG
