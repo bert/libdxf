@@ -107,7 +107,7 @@ DxfSortentsTable *dxf_sortentstable_init (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_read (DxfFile *fp, DxfSortentsTable *sortentstable);
 int dxf_sortentstable_write (DxfFile *fp, DxfSortentsTable *sortentstable);
 int dxf_sortentstable_free (DxfSortentsTable *sortentstable);
-void dxf_sortentstable_free_chain (DxfSortentsTable *sortentstables);
+void dxf_sortentstable_free_list (DxfSortentsTable *sortentstables);
 int dxf_sortentstable_get_id_code (DxfSortentsTable *sortentstable);
 DxfSortentsTable *dxf_sortentstable_set_id_code (DxfSortentsTable *sortentstable, int id_code);
 char *dxf_sortentstable_get_dictionary_owner_soft (DxfSortentsTable *sortentstable);

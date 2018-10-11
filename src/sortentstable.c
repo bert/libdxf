@@ -455,15 +455,15 @@ dxf_sortentstable_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c SORTENTSTABLE
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c SORTENTSTABLE objects and all their data fields.
  */
 void
-dxf_sortentstable_free_chain
+dxf_sortentstable_free_list
 (
         DxfSortentsTable *sortentstables
-                /*!< a pointer to the chain of DXF \c SORTENTSTABLE
-                 * objects. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c SORTENTSTABLE objects. */
 )
 {
 #ifdef DEBUG
