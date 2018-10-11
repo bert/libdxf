@@ -836,14 +836,15 @@ dxf_solid_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c SOLID
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c SOLID entities and all their data fields.
  */
 void
-dxf_solid_free_chain
+dxf_solid_free_list
 (
         DxfSolid *solids
-                /*!< pointer to the chain of DXF \c SOLID entities. */
+                /*!< pointer to the single linked list of DXF \c SOLID
+                 * entities. */
 )
 {
 #ifdef DEBUG

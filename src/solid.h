@@ -266,7 +266,7 @@ DxfSolid *dxf_solid_init (DxfSolid *solid);
 DxfSolid *dxf_solid_read (DxfFile *fp, DxfSolid *solid);
 int dxf_solid_write (DxfFile *fp, DxfSolid *solid);
 int dxf_solid_free (DxfSolid *solid);
-void dxf_solid_free_chain (DxfSolid *solids);
+void dxf_solid_free_list (DxfSolid *solids);
 int dxf_solid_get_id_code (DxfSolid *solid);
 DxfSolid *dxf_solid_set_id_code (DxfSolid *solid, int id_code);
 char *dxf_solid_get_linetype (DxfSolid *solid);
