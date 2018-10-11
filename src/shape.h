@@ -234,7 +234,7 @@ DxfShape *dxf_shape_init (DxfShape *shape);
 DxfShape *dxf_shape_read (DxfFile *fp, DxfShape *shape);
 int dxf_shape_write (DxfFile *fp, DxfShape *shape);
 int dxf_shape_free (DxfShape *shape);
-void dxf_shape_free_chain (DxfShape *shapes);
+void dxf_shape_free_list (DxfShape *shapes);
 int dxf_shape_get_id_code (DxfShape *shape);
 DxfShape *dxf_shape_set_id_code (DxfShape *shape, int id_code);
 char *dxf_shape_get_linetype (DxfShape *shape);

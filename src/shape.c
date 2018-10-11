@@ -763,14 +763,15 @@ dxf_shape_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c SHAPE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c SHAPE entities and all their data fields.
  */
 void
-dxf_shape_free_chain
+dxf_shape_free_list
 (
         DxfShape *shapes
-                /*!< a pointer to the chain of DXF \c SHAPE entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c SHAPE entities. */
 )
 {
 #ifdef DEBUG
