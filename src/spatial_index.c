@@ -410,15 +410,15 @@ dxf_spatial_index_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c SPATIAL_INDEX
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c SPATIAL_INDEX objects and all their data fields.
  */
 void
-dxf_spatial_index_free_chain
+dxf_spatial_index_free_list
 (
         DxfSpatialIndex *spatial_indices
-                /*!< a pointer to the chain of DXF \c SPATIAL_INDEX
-                 * objects. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c SPATIAL_INDEX objects. */
 )
 {
 #ifdef DEBUG

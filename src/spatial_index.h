@@ -88,7 +88,7 @@ DxfSpatialIndex *dxf_spatial_index_init (DxfSpatialIndex *spatial_index);
 DxfSpatialIndex *dxf_spatial_index_read (DxfFile *fp, DxfSpatialIndex *spatial_index);
 int dxf_spatial_index_write (DxfFile *fp, DxfSpatialIndex *spatial_index);
 int dxf_spatial_index_free (DxfSpatialIndex *spatial_index);
-void dxf_spatial_index_free_chain (DxfSpatialIndex *spatial_indices);
+void dxf_spatial_index_free_list (DxfSpatialIndex *spatial_indices);
 int dxf_spatial_index_get_id_code (DxfSpatialIndex *spatial_index);
 DxfSpatialIndex *dxf_spatial_index_set_id_code (DxfSpatialIndex *spatial_index, int id_code);
 char *dxf_spatial_index_get_dictionary_owner_soft (DxfSpatialIndex *spatial_index);
