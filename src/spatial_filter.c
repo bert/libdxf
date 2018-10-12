@@ -598,14 +598,15 @@ dxf_spatial_filter_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c SPATIAL_FILTER
- * objects and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c SPATIAL_FILTER objects and all their data fields.
  */
 void
-dxf_spatial_filter_free_chain
+dxf_spatial_filter_free_list
 (
         DxfSpatialFilter *spatial_filters
-                /*!< a pointer to the chain of DXF \c SPATIAL_FILTER objects. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c SPATIAL_FILTER objects. */
 )
 {
 #ifdef DEBUG
