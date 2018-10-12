@@ -247,7 +247,7 @@ DxfSpline *dxf_spline_init (DxfSpline *spline);
 DxfSpline *dxf_spline_read (DxfFile *fp, DxfSpline *spline);
 int dxf_spline_write (DxfFile *fp, DxfSpline *spline);
 int dxf_spline_free (DxfSpline *spline);
-void dxf_spline_free_chain (DxfSpline *splines);
+void dxf_spline_free_list (DxfSpline *splines);
 int dxf_spline_get_id_code (DxfSpline *spline);
 DxfSpline *dxf_spline_set_id_code (DxfSpline *spline, int id_code);
 char *dxf_spline_get_linetype (DxfSpline *spline);
