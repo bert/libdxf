@@ -481,15 +481,15 @@ dxf_style_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c STYLE
- * symbol table entries and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c STYLE symbol table entries and all their data fields.
  */
 void
-dxf_style_free_chain
+dxf_style_free_list
 (
         DxfStyle *styles
-                /*!< a pointer to the chain of DXF \c STYLE symbol table
-                 * entries. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c STYLE symbol table entries. */
 )
 {
 #ifdef DEBUG

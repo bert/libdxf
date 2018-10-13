@@ -146,7 +146,7 @@ DxfStyle *dxf_style_init (DxfStyle *style);
 DxfStyle *dxf_style_read (DxfFile *fp, DxfStyle *style);
 int dxf_style_write (DxfFile *fp, DxfStyle *style);
 int dxf_style_free (DxfStyle *style);
-void dxf_style_free_chain (DxfStyle *styles);
+void dxf_style_free_list (DxfStyle *styles);
 int dxf_style_get_id_code (DxfStyle *style);
 DxfStyle *dxf_style_set_id_code (DxfStyle *style, int id_code);
 char *dxf_style_get_style_name (DxfStyle *style);
