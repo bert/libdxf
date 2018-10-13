@@ -897,14 +897,15 @@ dxf_table_cell_free_list
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c TABLE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c TABLE entities and all their data fields.
  */
 void
-dxf_table_free_chain
+dxf_table_free_list
 (
         DxfTable *tables
-                /*!< pointer to the chain of DXF \c TABLE entities. */
+                /*!< pointer to the single linked list of DXF
+                 * \c TABLE entities. */
 )
 {
 #ifdef DEBUG
