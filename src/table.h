@@ -483,7 +483,7 @@ int dxf_table_cell_write (DxfFile *fp, DxfTableCell *cell);
 int dxf_table_write (DxfFile *fp, DxfTable *table);
 int dxf_table_cell_free (DxfTableCell *cell);
 int dxf_table_free (DxfTable *table);
-void dxf_table_cell_free_chain (DxfTableCell *cells);
+void dxf_table_cell_free_list (DxfTableCell *cells);
 void dxf_table_free_chain (DxfTable *tables);
 
 

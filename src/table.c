@@ -919,8 +919,8 @@ dxf_table_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c TABLE
- * cells and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c TABLE cells and all their data fields.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -930,10 +930,11 @@ dxf_table_free
  * \version According to DXF R2005.
  */
 void
-dxf_table_cell_free_chain
+dxf_table_cell_free_list
 (
         DxfTableCell *cells
-                /*!< pointer to the chain of DXF \c TABLE cells. */
+                /*!< pointer to the single linked list of DXF \c TABLE
+                 * cells. */
 )
 {
 #ifdef DEBUG
