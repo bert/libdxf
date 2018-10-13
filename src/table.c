@@ -8,7 +8,14 @@
  *
  * \brief Functions for a DXF table entry (\c TABLE).
  *
- * \version The \c TABLE entity was introduced in DXF R2005.
+ * \since The \c TABLE entity was introduced in DXF R2005.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -47,13 +54,6 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 DxfTableCell *
 dxf_table_cell_new ()
@@ -92,13 +92,6 @@ dxf_table_cell_new ()
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 DxfTable *
 dxf_table_new ()
@@ -136,13 +129,6 @@ dxf_table_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 DxfTableCell *
 dxf_table_cell_init
@@ -223,13 +209,6 @@ dxf_table_cell_init
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 DxfTable *
 dxf_table_init
@@ -326,13 +305,6 @@ dxf_table_init
  * While parsing the DXF file store data in \c table. \n
  *
  * \return a pointer to \c table.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 DxfTable *
 dxf_table_read
@@ -601,13 +573,6 @@ dxf_table_read
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 int
 dxf_table_cell_write
@@ -692,13 +657,6 @@ dxf_table_cell_write
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 int
 dxf_table_write
@@ -801,13 +759,6 @@ dxf_table_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 int
 dxf_table_cell_free
@@ -861,13 +812,6 @@ dxf_table_cell_free
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 int
 dxf_table_free
@@ -921,13 +865,6 @@ dxf_table_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c TABLE cells and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 void
 dxf_table_cell_free_list
@@ -962,13 +899,6 @@ dxf_table_cell_free_list
 /*!
  * \brief Free the allocated memory for a chain of DXF \c TABLE
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2005.
  */
 void
 dxf_table_free_chain
