@@ -542,15 +542,15 @@ dxf_view_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c VIEW
- * symbol table and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c VIEW symbol table and all their data fields.
  */
 void
-dxf_view_free_chain
+dxf_view_free_list
 (
         DxfView *views
-                /*!< a pointer to the chain of DXF \c VIEW symbol table
-                 * entries. */
+                /*!< a pointer to the single linked list of DXF \c VIEW
+                 * symbol table entries. */
 )
 {
 #ifdef DEBUG

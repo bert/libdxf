@@ -135,7 +135,7 @@ DxfView *dxf_view_init (DxfView *view);
 DxfView *dxf_view_read (DxfFile *fp, DxfView *view);
 int dxf_view_write (DxfFile *fp, DxfView *view);
 int dxf_view_free (DxfView *view);
-void dxf_view_free_chain (DxfView *views);
+void dxf_view_free_list (DxfView *views);
 int dxf_view_get_id_code (DxfView *view);
 DxfView *dxf_view_set_id_code (DxfView *view, int id_code);
 char *dxf_view_get_name (DxfView *view);
