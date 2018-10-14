@@ -470,7 +470,7 @@ dxf_int_free
  * objects and all their data fields.
  */
 int
-dxf_int_free_chain
+dxf_int_free_list
 (
         DxfInt *ints
                 /*!< a pointer to the single linked list of DxfInt
