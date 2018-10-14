@@ -1,7 +1,7 @@
 /*!
  * \file text.h
  *
- * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017, 2018
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2012 by Paolo Caroni <kenren89@gmail.com>.
