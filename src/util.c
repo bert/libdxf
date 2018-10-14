@@ -317,7 +317,7 @@ dxf_double_free
  * DxfDouble objects and all their data fields.
  */
 int
-dxf_double_free_chain
+dxf_double_free_list
 (
         DxfDouble *doubles
                 /*!< a pointer to the single linked list of DxfDouble

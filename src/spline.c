@@ -1025,8 +1025,8 @@ dxf_spline_free
         dxf_point_free_list (spline->p1);
         dxf_point_free (spline->p2);
         dxf_point_free (spline->p3);
-        dxf_double_free_chain (spline->knot_value);
-        dxf_double_free_chain (spline->weight_value);
+        dxf_double_free_list (spline->knot_value);
+        dxf_double_free_list (spline->weight_value);
         free (spline);
         spline = NULL;
 #if DEBUG
