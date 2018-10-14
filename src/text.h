@@ -276,7 +276,7 @@ DxfText *dxf_text_init (DxfText *text);
 DxfText *dxf_text_read (DxfFile *fp, DxfText *text);
 int dxf_text_write (DxfFile *fp, DxfText *text);
 int dxf_text_free (DxfText *text);
-void dxf_text_free_chain (DxfText *texts);
+void dxf_text_free_list (DxfText *texts);
 int dxf_text_get_id_code (DxfText *text);
 DxfText *dxf_text_set_id_code (DxfText *text, int id_code);
 char *dxf_text_get_linetype (DxfText *text);

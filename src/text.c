@@ -862,14 +862,15 @@ dxf_text_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c TEXT
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c TEXT entities and all their data fields.
  */
 void
-dxf_text_free_chain
+dxf_text_free_list
 (
         DxfText *texts
-                /*!< a pointer to the chain of DXF \c TEXT entities. */
+                /*!< a pointer to the single linked list of DXF \c TEXT
+                 * entities. */
 )
 {
 #ifdef DEBUG
