@@ -766,14 +766,15 @@ dxf_trace_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c TRACE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c TRACE entities and all their data fields.
  */
 void
-dxf_trace_free_chain
+dxf_trace_free_list
 (
         DxfTrace *traces
-                /*!< a pointer to the chain of DXF \c TRACE entities. */
+                /*!< a pointer to the single linked list of DXF \c TRACE
+                 * entities. */
 )
 {
 #ifdef DEBUG

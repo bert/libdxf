@@ -219,7 +219,7 @@ DxfTrace *dxf_trace_init (DxfTrace *trace);
 DxfTrace *dxf_trace_read (DxfFile *fp, DxfTrace *trace);
 int dxf_trace_write (DxfFile *fp, DxfTrace *trace);
 int dxf_trace_free (DxfTrace *trace);
-void dxf_trace_free_chain (DxfTrace *traces);
+void dxf_trace_free_list (DxfTrace *traces);
 int dxf_trace_get_id_code (DxfTrace *trace);
 DxfTrace *dxf_trace_set_id_code (DxfTrace *trace, int id_code);
 char *dxf_trace_get_linetype (DxfTrace *trace);
