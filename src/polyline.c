@@ -684,7 +684,7 @@ dxf_polyline_free
         free (dxf_polyline_get_plot_style_name (polyline));
         free (dxf_polyline_get_color_name (polyline));
         dxf_point_free (dxf_polyline_get_p0 (polyline));
-        dxf_vertex_free_chain (dxf_polyline_get_vertices (polyline));
+        dxf_vertex_free_list (dxf_polyline_get_vertices (polyline));
         free (polyline);
         polyline = NULL;
 #if DEBUG
