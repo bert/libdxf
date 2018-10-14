@@ -1263,15 +1263,15 @@ dxf_viewport_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c VIEWPORT
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c VIEWPORT entities and all their data fields.
  */
 void
-dxf_viewport_free_chain
+dxf_viewport_free_list
 (
         DxfViewport *viewports
-                /*!< a pointer to the chain of DXF \c VIEWPORT
-                 * entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c VIEWPORT entities. */
 )
 {
 #ifdef DEBUG

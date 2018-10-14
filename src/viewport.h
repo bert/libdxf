@@ -337,7 +337,7 @@ DxfViewport *dxf_viewport_init (DxfViewport *viewport);
 DxfViewport *dxf_viewport_read (DxfFile *fp, DxfViewport *viewport);
 int dxf_viewport_write (DxfFile *fp, DxfViewport *viewport);
 int dxf_viewport_free (DxfViewport *viewport);
-void dxf_viewport_free_chain (DxfViewport *viewports);
+void dxf_viewport_free_list (DxfViewport *viewports);
 int dxf_viewport_get_id_code (DxfViewport *viewport);
 DxfViewport *dxf_viewport_set_id_code (DxfViewport *viewport, int id_code);
 char *dxf_viewport_get_linetype (DxfViewport *viewport);
