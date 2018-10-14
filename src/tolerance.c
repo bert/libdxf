@@ -731,15 +731,15 @@ dxf_tolerance_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c TOLERANCE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c TOLERANCE entities and all their data fields.
  */
 void
-dxf_tolerance_free_chain
+dxf_tolerance_free_list
 (
         DxfTolerance *tolerances
-                /*!< a pointer to the chain of DXF \c TOLERANCE
-                 * entities. */
+                /*!< a pointer to the single linked list of DXF
+                 * \c TOLERANCE entities. */
 )
 {
 #ifdef DEBUG

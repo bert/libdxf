@@ -216,7 +216,7 @@ DxfTolerance *dxf_tolerance_init (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_read (DxfFile *fp, DxfTolerance *tolerance);
 int dxf_tolerance_write (DxfFile *fp, DxfTolerance *tolerance);
 int dxf_tolerance_free (DxfTolerance *tolerance);
-void dxf_tolerance_free_chain (DxfTolerance *tolerances);
+void dxf_tolerance_free_list (DxfTolerance *tolerances);
 int dxf_tolerance_get_id_code (DxfTolerance *tolerance);
 DxfTolerance *dxf_tolerance_set_id_code (DxfTolerance *tolerance, int id_code);
 char *dxf_tolerance_get_linetype (DxfTolerance *tolerance);
