@@ -444,7 +444,7 @@ dxf_sortentstable_free
         free (sortentstable->dictionary_owner_soft);
         free (sortentstable->dictionary_owner_hard);
         free (sortentstable->block_owner);
-        dxf_char_free_chain (sortentstable->entity_owner);
+        dxf_char_free_list (sortentstable->entity_owner);
         free (sortentstable);
         sortentstable = NULL;
 #if DEBUG

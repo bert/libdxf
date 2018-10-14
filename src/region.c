@@ -569,8 +569,8 @@ dxf_region_free
         free (region->dictionary_owner_hard);
         free (region->plot_style_name);
         free (region->color_name);
-        dxf_char_free_chain (region->proprietary_data);
-        dxf_char_free_chain (region->additional_proprietary_data);
+        dxf_char_free_list (region->proprietary_data);
+        dxf_char_free_list (region->additional_proprietary_data);
         free (region);
         region = NULL;
 #if DEBUG

@@ -1250,7 +1250,7 @@ dxf_viewport_free
         free (viewport->viewport_data);
         free (viewport->window_descriptor_begin);
         free (viewport->frozen_layer_list_begin);
-        dxf_char_free_chain (viewport->frozen_layers);
+        dxf_char_free_list (viewport->frozen_layers);
         free (viewport->frozen_layer_list_end);
         free (viewport->window_descriptor_end);
         free (viewport);

@@ -164,7 +164,7 @@ dxf_char_free
  * objects and all their data fields.
  */
 int
-dxf_char_free_chain
+dxf_char_free_list
 (
         DxfChar *chars
                 /*!< a pointer to the single linked list of DxfChar

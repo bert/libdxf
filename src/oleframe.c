@@ -551,7 +551,7 @@ dxf_oleframe_free
         free (oleframe->layer);
         free (oleframe->dictionary_owner_soft);
         free (oleframe->dictionary_owner_hard);
-        dxf_char_free_chain (oleframe->binary_data);
+        dxf_char_free_list (oleframe->binary_data);
         free (oleframe);
         oleframe = NULL;
 #if DEBUG
