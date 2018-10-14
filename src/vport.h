@@ -183,7 +183,7 @@ DxfVPort *dxf_vport_init (DxfVPort *vport);
 DxfVPort *dxf_vport_read (DxfFile *fp, DxfVPort *vport);
 int dxf_vport_write (DxfFile *fp, DxfVPort *vport);
 int dxf_vport_free (DxfVPort *vport);
-void dxf_vport_free_chain (DxfVPort *vports);
+void dxf_vport_free_list (DxfVPort *vports);
 int dxf_vport_get_id_code (DxfVPort *vport);
 DxfVPort *dxf_vport_set_id_code (DxfVPort *vport, int id_code);
 char *dxf_vport_get_viewport_name (DxfVPort *vport);
