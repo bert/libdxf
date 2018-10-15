@@ -328,7 +328,7 @@ char *
 dxf_comment_get_value
 (
         DxfComment *comment
-                /*!< a pointer to the chain of DXF \c COMMENT entities. */
+                /*!< a pointer to the DXF \c COMMENT entity. */
 )
 {
 #ifdef DEBUG
