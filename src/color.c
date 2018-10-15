@@ -6,6 +6,12 @@
  *
  * \brief Functions for DXF colors.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -2254,12 +2260,6 @@ dxf_RGB_color_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c COLOR entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_RGB_color_free_list

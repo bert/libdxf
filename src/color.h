@@ -6,6 +6,12 @@
  *
  * \brief Definition of DXF color values.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * These definitions contain the following:\n
  * <ul>
  * <li>Colors mapping to standard pen widths.\n
