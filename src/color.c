@@ -2252,8 +2252,8 @@ dxf_RGB_color_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c COLOR
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c COLOR entities and all their data fields.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -2262,10 +2262,11 @@ dxf_RGB_color_free
  * \version According to DXF R14.
  */
 void
-dxf_RGB_color_free_chain
+dxf_RGB_color_free_list
 (
         DxfRGBColor *colors
-                /*!< a pointer to the chain of DXF \c COLOR entities. */
+                /*!< a pointer to the single linked list of DXF \c COLOR
+                 * entities. */
 )
 {
 #ifdef DEBUG
