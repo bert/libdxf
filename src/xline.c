@@ -730,14 +730,15 @@ dxf_xline_free
 
 
 /*!
- * \brief Free the allocated memory for a chain of DXF \c XLINE
- * entities and all their data fields.
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c XLINE entities and all their data fields.
  */
 void
-dxf_xline_free_chain
+dxf_xline_free_list
 (
         DxfXLine *xlines
-                /*!< a pointer to the chain of DXF \c XLINE entities. */
+                /*!< a pointer to the single linked list of DXF \c XLINE
+                 * entities. */
 )
 {
 #ifdef DEBUG
