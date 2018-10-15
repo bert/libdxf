@@ -362,7 +362,7 @@ DxfComment *
 dxf_comment_set_value
 (
         DxfComment *comment,
-                /*!< a pointer to the chain of DXF \c COMMENT entities. */
+                /*!< a pointer to the DXF \c COMMENT entity. */
         char *value
                 /*!< the comment value (string) to be set.*/
 )
