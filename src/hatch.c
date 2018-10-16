@@ -13385,10 +13385,10 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                         new->x0 = control_point->x0;
                         new->y0 = control_point->y0;
                         new->weight = control_point->weight;
-                        /* the next step is to connect the "downward chain" to
+                        /* the next step is to connect the "downward list" to
                          * the to be inserted "control_point->next". */
                         new->next = temp->next;
-                        /* the final step is to connect the "upward chain" to
+                        /* the final step is to connect the "upward list" to
                          * the to be inserted control point. */
                         temp =  new;
                 }
@@ -13489,14 +13489,14 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
                          * pointer is in "iter->next"). */
                 }
                 /* first we have to get a pointer to the next control
-                 * point in the "downward chain" after the  position
+                 * point in the "downward list" after the  position
                  * of the requested control point and store this one in
                  * a temporary variable. */
                 temp = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
-                /* the next step is to connect the "downward chain" to
+                /* the next step is to connect the "downward list" to
                  * the the contol point before the requested control
                  * point (the pointer to the last control point in the
-                 * "upward chain" is in "iter"). */
+                 * "upward list" is in "iter"). */
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) temp->next;
                 /* clean up. */
                 dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
@@ -13516,7 +13516,7 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
  * a new single linked list of control points (destination) is setup by
  * copying the member values from the control points from the spline
  * (source).\n
- * For each control point in the destination chain new memory is
+ * For each control point in the destination list new memory is
  * allocated.\n
  * \n
  * <h3>Example:</h3>
@@ -13556,7 +13556,7 @@ digraph dxf_hatch_boundary_path_edge_spline_copy_control_points__control_points_
 
  * \n
  * Finished situation: the unchanged \c spline with 4 control points,
- * and a chain of control points starting at \c control_points.\n
+ * and a list of control points starting at \c control_points.\n
  * \n
 
 \dot
@@ -13662,11 +13662,11 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                         }
                         else
                         {
-                                /* create a new control point in the chain. */
+                                /* create a new control point in the list. */
                                 iter_new->next = (struct DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline_control_point_new ();
                         }
                         /* set both iterators to the next control point
-                         * in their chain. */
+                         * in their list. */
                         iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
                         iter_new = (DxfHatchBoundaryPathEdgeSplineCp *) iter_new->next;
                 }
