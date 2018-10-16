@@ -51,7 +51,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 Dxf3dline *
 dxf_3dline_new ()
@@ -88,7 +88,7 @@ dxf_3dline_new ()
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 Dxf3dline *
 dxf_3dline_init
