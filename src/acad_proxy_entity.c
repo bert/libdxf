@@ -61,7 +61,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_new ()
@@ -98,7 +98,7 @@ dxf_acad_proxy_entity_new ()
  * table.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_init
