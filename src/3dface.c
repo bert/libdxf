@@ -48,7 +48,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 Dxf3dface *
 dxf_3dface_new ()
@@ -85,7 +85,7 @@ dxf_3dface_new ()
  * entity.
  *
  * \return \c NULL when an error occurred, a pointer to the initialized
- * memory when succesful.
+ * memory when successful.
  */
 Dxf3dface *
 dxf_3dface_init
