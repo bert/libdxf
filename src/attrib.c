@@ -82,7 +82,7 @@ dxf_attrib_new ()
  * \c ATTRIB entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfAttrib *
 dxf_attrib_init
