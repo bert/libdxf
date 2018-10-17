@@ -99,7 +99,7 @@ dxf_appid_new ()
  * symbol table entry.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfAppid *
 dxf_appid_init
