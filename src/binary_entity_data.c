@@ -76,7 +76,7 @@ dxf_binary_entity_data_new ()
  * entity data entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfBinaryEntityData *
 dxf_binary_entity_data_init
