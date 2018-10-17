@@ -76,7 +76,7 @@ dxf_binary_graphics_data_new ()
  * graphics data entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfBinaryGraphicsData *
 dxf_binary_graphics_data_init
