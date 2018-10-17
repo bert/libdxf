@@ -82,7 +82,7 @@ dxf_comment_new ()
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfComment *
 dxf_comment_init
