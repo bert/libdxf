@@ -87,7 +87,7 @@ dxf_imagedef_reactor_new ()
  * \c IMAGEDEF_REACTOR object.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfImagedefReactor *
 dxf_imagedef_reactor_init
