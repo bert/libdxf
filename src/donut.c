@@ -54,7 +54,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfDonut *
 dxf_donut_new ()
@@ -91,7 +91,7 @@ dxf_donut_new ()
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfDonut *
 dxf_donut_init
