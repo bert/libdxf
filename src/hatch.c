@@ -84,7 +84,7 @@ dxf_hatch_new ()
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatch *
 dxf_hatch_init
@@ -3611,7 +3611,7 @@ dxf_hatch_pattern_new ()
  * pattern entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchPattern *
 dxf_hatch_pattern_init
@@ -4290,7 +4290,7 @@ dxf_hatch_pattern_def_line_dash_new ()
  * pattern definition line dash entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchPatternDefLineDash *
 dxf_hatch_pattern_def_line_dash_init
@@ -4631,7 +4631,7 @@ dxf_hatch_pattern_def_line_new ()
  * pattern definition line entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
@@ -5564,7 +5564,7 @@ dxf_hatch_pattern_seedpoint_new ()
  * pattern seedpoint entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init
@@ -6100,7 +6100,7 @@ dxf_hatch_boundary_path_new ()
  * boundary path entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_init
@@ -6697,7 +6697,7 @@ dxf_hatch_boundary_path_polyline_new ()
  * boundary path polyline entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_init
@@ -7592,7 +7592,7 @@ dxf_hatch_boundary_path_polyline_vertex_new ()
  * boundary path polyline vertex entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_init
@@ -8383,7 +8383,7 @@ dxf_hatch_boundary_path_edge_new ()
  * boundary path edge entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_init
@@ -9109,7 +9109,7 @@ dxf_hatch_boundary_path_edge_arc_new ()
  * boundary path edge arc entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_init
@@ -10000,7 +10000,7 @@ dxf_hatch_boundary_path_edge_ellipse_new ()
  * boundary path edge ellipse entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_init
@@ -11161,7 +11161,7 @@ dxf_hatch_boundary_path_edge_line_new ()
  * boundary path edge line entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_init
@@ -12001,7 +12001,7 @@ dxf_hatch_boundary_path_edge_spline_new ()
  * boundary path edge spline entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_init
@@ -14248,7 +14248,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
  * boundary path edge spline control point entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_init
