@@ -87,7 +87,7 @@ dxf_idbuffer_new ()
  * object.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfIdbuffer *
 dxf_idbuffer_init
@@ -1032,7 +1032,7 @@ dxf_idbuffer_entity_pointer_new ()
  * \c DxfIdbufferEntityPointer struct.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfIdbufferEntityPointer *
 dxf_idbuffer_entity_pointer_init
