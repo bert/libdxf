@@ -49,7 +49,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfDimension *
 dxf_dimension_new ()
