@@ -48,7 +48,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfDimStyle *
 dxf_dimstyle_new ()
@@ -85,7 +85,7 @@ dxf_dimstyle_new ()
  * DIMSTYLE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfDimStyle *
 dxf_dimstyle_init
