@@ -52,7 +52,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfLayer *
 dxf_layer_new ()
@@ -89,7 +89,7 @@ dxf_layer_new ()
  * table.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfLayer *
 dxf_layer_init
