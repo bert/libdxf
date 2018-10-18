@@ -103,7 +103,7 @@ dxf_layer_index_new ()
  * object.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfLayerIndex *
 dxf_layer_index_init
