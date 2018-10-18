@@ -86,7 +86,7 @@ dxf_insert_new ()
  * \brief Allocate memory and initialize data fields in a \c INSERT entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfInsert *
 dxf_insert_init
