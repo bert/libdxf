@@ -41,7 +41,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfDrawing *
 dxf_drawing_new ()
@@ -77,7 +77,7 @@ dxf_drawing_new ()
  * \brief Allocate memory and initialize data fields in a libDXF drawing.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfDrawing *
 dxf_drawing_init
