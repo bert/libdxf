@@ -83,7 +83,7 @@ dxf_polyline_new ()
  * \brief Allocate memory and initialize data fields in a \c POLYLINE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfPolyline *
 dxf_polyline_init
