@@ -50,7 +50,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfSeqend *
 dxf_seqend_new ()
@@ -87,7 +87,7 @@ dxf_seqend_new ()
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfSeqend *
 dxf_seqend_init
