@@ -50,7 +50,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfMline *
 dxf_mline_new ()
@@ -86,7 +86,7 @@ dxf_mline_new ()
  * \brief Allocate memory and initialize data fields in a \c MLINE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfMline *
 dxf_mline_init
