@@ -76,7 +76,7 @@ dxf_proprietary_data_new ()
  * \c DxfProprietaryData object.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfProprietaryData *
 dxf_proprietary_data_init
