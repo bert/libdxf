@@ -76,7 +76,7 @@ dxf_object_id_new ()
  * \c object_id.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfObjectId *
 dxf_object_id_init
