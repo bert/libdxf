@@ -239,7 +239,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfSpline *
 dxf_spline_new ()
@@ -276,7 +276,7 @@ dxf_spline_new ()
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfSpline *
 dxf_spline_init
