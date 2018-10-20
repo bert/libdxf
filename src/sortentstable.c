@@ -93,7 +93,7 @@ dxf_sortentstable_new ()
  * object.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfSortentsTable *
 dxf_sortentstable_init
