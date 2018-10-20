@@ -53,7 +53,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfTableCell *
 dxf_table_cell_new ()
@@ -91,7 +91,7 @@ dxf_table_cell_new ()
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfTable *
 dxf_table_new ()
@@ -128,7 +128,7 @@ dxf_table_new ()
  * cell.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfTableCell *
 dxf_table_cell_init
@@ -208,7 +208,7 @@ dxf_table_cell_init
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfTable *
 dxf_table_init
