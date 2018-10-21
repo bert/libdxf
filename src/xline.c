@@ -48,7 +48,7 @@
  * Fill the memory contents with zeros.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfXLine *
 dxf_xline_new ()
@@ -84,7 +84,7 @@ dxf_xline_new ()
  * \brief Allocate memory and initialize data fields in an \c XLINE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfXLine *
 dxf_xline_init
