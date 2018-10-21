@@ -63,7 +63,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfThumbnail *
 dxf_thumbnail_new ()
@@ -100,7 +100,7 @@ dxf_thumbnail_new ()
  * \c THUMBNAILIMAGE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfThumbnail *
 dxf_thumbnail_init
