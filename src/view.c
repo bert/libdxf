@@ -48,7 +48,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfView *
 dxf_view_new ()
@@ -85,7 +85,7 @@ dxf_view_new ()
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfView *
 dxf_view_init
