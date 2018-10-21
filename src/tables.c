@@ -42,7 +42,7 @@
  * Fill the memory contents with zeros.
  *
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfTables *
 dxf_tables_new ()
@@ -79,7 +79,7 @@ dxf_tables_new ()
  * section.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * allocated memory when successful.
  */
 DxfTables *
 dxf_tables_init
