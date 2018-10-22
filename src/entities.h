@@ -67,7 +67,8 @@ extern "C" {
 /*!
  * \brief Definition of a DXF entity container.
  */
-typedef struct dxf_entities_struct
+typedef struct
+dxf_entities_struct
 {
     struct Dxf3dface *dface_list;
     struct Dxf3dsolid *dsolid_list;
