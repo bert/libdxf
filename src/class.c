@@ -325,7 +325,7 @@ dxf_class_write
                 return (EXIT_FAILURE);
         }
         if ((!class->record_type)
-                || (strcmp (dxf_class_get_record_type (class), "") == 0))
+                || (strcmp (class->record_type, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty record type string for the %s entity\n")),
@@ -335,7 +335,7 @@ dxf_class_write
                 return (EXIT_FAILURE);
         }
         if ((!class->class_name)
-                || (strcmp (dxf_class_get_class_name (class), "") == 0))
+                || (strcmp (class->class_name, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty class name string for the %s entity\n")),
