@@ -124,6 +124,48 @@ dxf_entities_init
         }
         entities->dface_list = NULL;
         entities->dsolid_list = NULL;
+        entities->acad_proxy_entity_list = NULL;
+        entities->arc_list = NULL;
+        entities->attdef_list = NULL;
+        entities->attrib_list = NULL;
+        entities->body_list = NULL;
+        entities->circle_list = NULL;
+        entities->dimension_list = NULL;
+        entities->ellipse_list = NULL;
+        entities->hatch_list = NULL;
+        entities->helix_list = NULL;
+        entities->image_list = NULL;
+        entities->insert_list = NULL;
+        entities->leader_list = NULL;
+        //entities->light_list = NULL;
+        entities->line_list = NULL;
+        entities->lw_polyline_list = NULL;
+        //entities->mesh_list = NULL;
+        entities->mline_list = NULL;
+        //entities->mleader_list = NULL;
+        //entities->mleaderstyle_list = NULL;
+        entities->mtext_list = NULL;
+        entities->oleframe_list = NULL;
+        entities->ole2frame_list = NULL;
+        entities->point_list = NULL;
+        entities->polyline_list = NULL;
+        entities->ray_list = NULL;
+        entities->region_list = NULL;
+        //entities->section_list = NULL;
+        entities->shape_list = NULL;
+        entities->solid_list = NULL;
+        entities->spline_list = NULL;
+        //entities->sun_list = NULL;
+        //entities->surface_list = NULL;
+        entities->table_list = NULL;
+        entities->text_list = NULL;
+        entities->tolerance_list = NULL;
+        entities->trace_list = NULL;
+        //entities->underlay_list = NULL;
+        entities->vertex_list = NULL;
+        entities->viewport_list = NULL;
+        //entities->wipeout_list = NULL;
+        //entities->xline_list = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
