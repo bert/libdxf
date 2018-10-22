@@ -117,6 +117,7 @@ dxf_entities_struct
 } DxfEntities;
 
 
+DxfEntities *dxf_entities_new ();
 int dxf_entities_read_table (char *filename, FILE *fp, int line_number, char *dxf_entities_list, int acad_version_number);
 int dxf_entities_write_table (char *dxf_entities_list, int acad_version_number);
 

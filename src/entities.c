@@ -56,6 +56,41 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c ENTITIES section.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfEntities *
+dxf_entities_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfEntities *entities = NULL;
+        size_t size;
+
+        size = sizeof (DxfEntities);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((entities = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfEntities struct.\n")),
+                  __FUNCTION__);
+                entities = NULL;
+        }
+        else
+        {
+                memset (entities, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (entities);
+}
+
+
+/*!
  * \brief Read and parse the \c ENTITIES table from a DXF file.
  */
 int
