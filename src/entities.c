@@ -91,6 +91,47 @@ dxf_entities_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF
+ * \c ENTITIES section.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfEntities *
+dxf_entities_init
+(
+        DxfEntities *entities
+                /*!< DXF entities section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (entities == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                entities = dxf_entities_new ();
+        }
+        if (entities == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfEntities struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->dface_list = NULL;
+        entities->dsolid_list = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (entities);
+}
+
+
+/*!
  * \brief Read and parse the \c ENTITIES table from a DXF file.
  */
 int
