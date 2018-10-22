@@ -113,14 +113,14 @@ dxf_class_init
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_class_set_record_type (class, strdup (""));
-        dxf_class_set_record_name (class, strdup (""));
-        dxf_class_set_class_name (class, strdup (""));
-        dxf_class_set_app_name (class, strdup (""));
-        dxf_class_set_proxy_cap_flag (class, 0);
-        dxf_class_set_was_a_proxy_flag (class, 0);
-        dxf_class_set_is_an_entity_flag (class, 0);
-        dxf_class_set_next (class, NULL);
+        class->record_type = strdup ("");
+        class->record_name = strdup ("");
+        class->class_name = strdup ("");
+        class->app_name = strdup ("");
+        class->proxy_cap_flag = 0;
+        class->was_a_proxy_flag = 0;
+        class->is_an_entity_flag = 0;
+        class->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
