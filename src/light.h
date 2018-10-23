@@ -257,6 +257,9 @@ dxf_light_struct
 } DxfLight;
 
 
+DxfLight *dxf_light_new ();
+
+
 #ifdef __cplusplus
 }
 #endif
