@@ -218,10 +218,6 @@ dxf_helix_struct
                  * <li value = "1"> Right</li>
                  * </ol>
                  * Group code = 290. */
-/*! \todo We need to use a 
-        struct DxfSpline *spline;
- * in stead of a DxfSpline *spline;
- */
         DxfSpline *spline;
                 /*!< Pointer to the DxfSpline. */
         struct DxfHelix *next;
