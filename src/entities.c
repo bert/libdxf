@@ -225,4 +225,82 @@ dxf_entities_write_table
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c ENTITIES section and
+ * all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_entities_free
+(
+        DxfEntities *entities
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c ENTITIES section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (entities == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dxf_3dface_free_list ((Dxf3dface *) entities->dface_list);
+        dxf_3dsolid_free_list ((Dxf3dsolid *) entities->dsolid_list);
+        dxf_acad_proxy_entity_free_list ((DxfAcadProxyEntity *) entities->acad_proxy_entity_list);
+        dxf_arc_free_list ((DxfArc *) entities->arc_list);
+        dxf_attdef_free_list ((DxfAttdef *) entities->attdef_list);
+        dxf_attrib_free_list ((DxfAttrib *) entities->attrib_list);
+        dxf_body_free_list ((DxfBody *) entities->body_list);
+        dxf_circle_free_list ((DxfCircle *) entities->circle_list);
+        dxf_dimension_free_list ((DxfDimension *) entities->dimension_list);
+        dxf_ellipse_free_list ((DxfEllipse *) entities->ellipse_list);
+        dxf_hatch_free_list ((DxfHatch *) entities->hatch_list);
+        //dxf_helix_free_list ((DxfHelix *) entities->helix_list);
+        dxf_image_free_list ((DxfImage *) entities->image_list);
+        dxf_insert_free_list ((DxfInsert *) entities->insert_list);
+        dxf_leader_free_list ((DxfLeader *) entities->leader_list);
+        //dxf_light_free_list ((DxfLight *) entities->light_list);
+        dxf_line_free_list ((DxfLine *) entities->line_list);
+        dxf_lwpolyline_free_list ((DxfLWPolyline *) entities->lw_polyline_list);
+        //dxf_light_free_list ((DxfLight *) entities->light_list);
+        dxf_mline_free_list ((DxfMline *) entities->mline_list);
+        //dxf_mleader_free_list ((DxfMLeader *) entities->mleader_list);
+        //dxf_mleaderstyle_free_list ((DxfMLeaderStyle *) entities->mleaderstyle_list);
+        dxf_mtext_free_list ((DxfMtext *) entities->mtext_list);
+        dxf_oleframe_free_list ((DxfOleFrame *) entities->oleframe_list);
+        dxf_ole2frame_free_list ((DxfOle2Frame *) entities->ole2frame_list);
+        dxf_point_free_list ((DxfPoint *) entities->point_list);
+        dxf_polyline_free_list ((DxfPolyline *) entities->polyline_list);
+        dxf_ray_free_list ((DxfRay *) entities->ray_list);
+        dxf_region_free_list ((DxfRegion *) entities->region_list);
+        //dxf_section_free_list ((DxfSection *) entities->section_list);
+        dxf_shape_free_list ((DxfShape *) entities->shape_list);
+        dxf_solid_free_list ((DxfSolid *) entities->solid_list);
+        //dxf_spline_free_list (DxfSpline *) entities->spline_list);
+        //dxf_sun_free_list (DxfSun *) entities->sun_list);
+        //dxf_surface_free_list (DxfSurface *) entities->surface_list);
+        dxf_table_free_list ((DxfTable *) entities->table_list);
+        dxf_text_free_list ((DxfText *) entities->text_list);
+        dxf_tolerance_free_list ((DxfTolerance *) entities->tolerance_list);
+        dxf_trace_free_list ((DxfTrace *) entities->trace_list);
+        //dxf_underlay_free_list (DxfUnderlay *) entities->underlay_list);
+        dxf_vertex_free_list ((DxfVertex *) entities->vertex_list);
+        dxf_viewport_free_list ((DxfViewport *) entities->viewport_list);
+        //dxf_wipeout_free_list (DxfWipeout *) entities->wipeout_list);
+        //dxf_xline_free_list (DxfXLine *) entities->xline_list);
+        free (entities);
+        entities = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

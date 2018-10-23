@@ -57,6 +57,49 @@
 
 
 #include "global.h"
+#include "3dface.h"
+#include "3dsolid.h"
+#include "acad_proxy_entity.h"
+#include "arc.h"
+#include "attdef.h"
+#include "attrib.h"
+#include "body.h"
+#include "circle.h"
+#include "dimension.h"
+#include "ellipse.h"
+#include "hatch.h"
+//#include "spline.h"
+//#include "helix.h"
+#include "image.h"
+#include "insert.h"
+#include "leader.h"
+//#include "light.h"
+#include "line.h"
+#include "lwpolyline.h"
+//#include "mesh.h"
+#include "mline.h"
+//#include "mleader.h"
+#include "mtext.h"
+#include "oleframe.h"
+#include "ole2frame.h"
+#include "point.h"
+#include "polyline.h"
+#include "ray.h"
+#include "region.h"
+#include "section.h"
+#include "shape.h"
+#include "solid.h"
+//#include "sun.h"
+//#include "surface.h"
+#include "table.h"
+#include "text.h"
+#include "tolerance.h"
+#include "trace.h"
+//#include "underlay.h"
+#include "vertex.h"
+#include "viewport.h"
+//#include "wipeout.h"
+#include "xline.h"
 
 
 #ifdef __cplusplus
@@ -113,7 +156,7 @@ dxf_entities_struct
     struct DxfVertex *vertex_list;
     struct DxfViewport *viewport_list;
     //struct DxfWipeout *wipeout_list;
-    //struct DxfXline *xline_list;
+    //struct DxfXLine *xline_list;
 } DxfEntities;
 
 
