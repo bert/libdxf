@@ -40,6 +40,7 @@
 
 #include "global.h"
 #include "binary_graphics_data.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -182,9 +183,74 @@ dxf_light_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF light. */
+        char *light_name;
+                /*!< Light name.\n
+                 * Group code = 1.*/
+        DxfPoint *p0;
+                /*!< Light position.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< Target location.\n
+                 * Group codes = 11, 21 and 31.*/
+        double intensity;
+                /*!< Intensity.\n
+                 * Group code = 40.*/
+        double attenuation_start_limit;
+                /*!< Attenuation start limit.\n
+                 * Group code = 41.*/
+        double attenuation_end_limit;
+                /*!< Attenuation end limit.\n
+                 * Group code = 42.*/
+        double hotspot_angle;
+                /*!< Hotspot angle.\n
+                 * Group code = 50.*/
+        double falloff_angle;
+                /*!< Falloff angle.\n
+                 * Group code = 51.*/
+        int light_type;
+                /*!< Light type.\n
+                 * <ol>
+                 *   <li value = 1>Distant.</li>
+                 *   <li value = 2>Point.</li>
+                 *   <li value = 3>Spot.</li>
+                 * </ol>
+                 * Group code = 70.*/
+        int attenuation_type;
+                /*!< Attenuation type.\n
+                 * <ol>
+                 *   <li value = 0>None.</li>
+                 *   <li value = 1>Inverse Linear.</li>
+                 *   <li value = 2>Inverse Square.</li>
+                 * </ol>
+                 * Group code = 72.*/
+        int shadow_type;
+                /*!< Shadow type.\n
+                 * <ol>
+                 *   <li value = 0>Ray traced shadows.</li>
+                 *   <li value = 1>Shadow maps.</li>
+                 * </ol>
+                 * Group code = 73.*/
         int version_number;
                 /*!< Version number.\n
-                 * Group codes = 90.*/
+                 * Group code = 90.*/
+        int shadow_map_size;
+                /*!< Shadow map size.\n
+                 * Group code = 91.*/
+        int shadow_map_softness;
+                /*!< Shadow map softness.\n
+                 * Group code = 280.*/
+        int status;
+                /*!< Status.\n
+                 * Group code = 290.*/
+        int plot_glyph;
+                /*!< Plot glyph.\n
+                 * Group code = 291.*/
+        int use_attenuation_limits;
+                /*!< Use attenuation limits.\n
+                 * Group code = 292.*/
+        int cast_shadows;
+                /*!< Cast shadows.\n
+                 * Group code = 293.*/
         struct DxfLight *next;
                 /*!< Pointer to the next DxfLight.\n
                  * \c NULL in the last DxfLight. */
