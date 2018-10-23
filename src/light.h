@@ -207,7 +207,7 @@ dxf_light_struct
         double falloff_angle;
                 /*!< Falloff angle.\n
                  * Group code = 51.*/
-        int light_type;
+        int16_t light_type;
                 /*!< Light type.\n
                  * <ol>
                  *   <li value = 1>Distant.</li>
@@ -215,7 +215,7 @@ dxf_light_struct
                  *   <li value = 3>Spot.</li>
                  * </ol>
                  * Group code = 70.*/
-        int attenuation_type;
+        int16_t attenuation_type;
                 /*!< Attenuation type.\n
                  * <ol>
                  *   <li value = 0>None.</li>
@@ -223,20 +223,20 @@ dxf_light_struct
                  *   <li value = 2>Inverse Square.</li>
                  * </ol>
                  * Group code = 72.*/
-        int shadow_type;
+        int16_t shadow_type;
                 /*!< Shadow type.\n
                  * <ol>
                  *   <li value = 0>Ray traced shadows.</li>
                  *   <li value = 1>Shadow maps.</li>
                  * </ol>
                  * Group code = 73.*/
-        int version_number;
+        int32_t version_number;
                 /*!< Version number.\n
                  * Group code = 90.*/
-        int shadow_map_size;
+        int32_t shadow_map_size;
                 /*!< Shadow map size.\n
                  * Group code = 91.*/
-        int shadow_map_softness;
+        int16_t shadow_map_softness;
                 /*!< Shadow map softness.\n
                  * Group code = 280.*/
         int status;
