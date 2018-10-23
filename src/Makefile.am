@@ -85,6 +85,8 @@ libdxf_la_SOURCES = \
   ltype.c \
   line.c \
   line.h \
+  light.c \
+  light.h \
   leader.c \
   leader.h \
   layer_name.h \

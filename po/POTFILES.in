@@ -91,6 +91,8 @@ src/layer_name.c
 src/layer_name.h
 src/leader.c
 src/leader.h
+src/light.c
+src/light.h
 src/line.c
 src/line.h
 src/ltype.c
