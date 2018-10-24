@@ -674,4 +674,57 @@ dxf_light_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LIGHT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_light_free
+(
+        DxfLight *light
+                /*!< Pointer to the memory occupied by the DXF \c LIGHT
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (light->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (light->linetype);
+        free (light->layer);
+        dxf_binary_graphics_data_free_list ((DxfBinaryGraphicsData *) light->binary_graphics_data);
+        free (light->dictionary_owner_hard);
+        free (light->material);
+        free (light->dictionary_owner_soft);
+        free (light->plot_style_name);
+        free (light->color_name);
+        free (light->light_name);
+        dxf_point_free (light->p0);
+        dxf_point_free (light->p1);
+        free (light);
+        light = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/

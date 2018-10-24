@@ -261,6 +261,7 @@ DxfLight *dxf_light_new ();
 DxfLight *dxf_light_init (DxfLight *light);
 DxfLight *dxf_light_read (DxfFile *fp, DxfLight *light);
 int dxf_light_write (DxfFile *fp, DxfLight *light);
+int dxf_light_free (DxfLight *light);
 
 
 #ifdef __cplusplus
