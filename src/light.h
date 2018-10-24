@@ -259,6 +259,7 @@ dxf_light_struct
 
 DxfLight *dxf_light_new ();
 DxfLight *dxf_light_init (DxfLight *light);
+DxfLight *dxf_light_read (DxfFile *fp, DxfLight *light);
 
 
 #ifdef __cplusplus
