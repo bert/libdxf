@@ -159,9 +159,9 @@ dxf_light_init
  * Now follows some data for the \c LIGHT, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC.\n
- * While parsing the DXF file store data in \c helix.\n
+ * While parsing the DXF file store data in \c light.\n
  *
- * \return a pointer to \c helix when successful, \c NULL when an error
+ * \return a pointer to \c light when successful, \c NULL when an error
  * occurred.
  */
 DxfLight *
