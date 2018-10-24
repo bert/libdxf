@@ -760,4 +760,41 @@ dxf_light_free_list
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c LIGHT entity.
+ *
+ * \return \c id_code when successful, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_light_get_id_code
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (light->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->id_code);
+}
+
+
 /* EOF*/

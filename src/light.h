@@ -263,6 +263,7 @@ DxfLight *dxf_light_read (DxfFile *fp, DxfLight *light);
 int dxf_light_write (DxfFile *fp, DxfLight *light);
 int dxf_light_free (DxfLight *light);
 void dxf_light_free_list (DxfLight *light_list);
+int dxf_light_get_id_code (DxfLight *light);
 
 
 #ifdef __cplusplus
