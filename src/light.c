@@ -522,4 +522,156 @@ dxf_light_read
 }
 
 
+/*!
+ * \brief Write DXF output for a DXF \c LIGHT entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_light_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfLight *light
+                /*!< DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("LIGHT");
+        DxfBinaryGraphicsData *iter_310 = NULL;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (strcmp (light->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, light->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                light->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (light->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, light->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to default layer.\n")),
+                  dxf_entity_name);
+                light->layer = DXF_DEFAULT_LAYER;
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (light->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", light->id_code);
+        }
+        fprintf (fp->fp, "330\n%s\n", light->dictionary_owner_soft);
+        fprintf (fp->fp, "100\nAcDbEntity\n");
+        if (light->paperspace != DXF_MODELSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", light->layer);
+        if (strcmp (light->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", light->linetype);
+        }
+        if (strcmp (light->material, "") != 0)
+        {
+                fprintf (fp->fp, "347\n%s\n", light->material);
+        }
+        if (light->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", light->color);
+        }
+        fprintf (fp->fp, "370\n%d\n", light->lineweight);
+        if (light->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", light->thickness);
+        }
+        if (light->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", light->linetype_scale);
+        }
+        if (light->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", light->visibility);
+        }
+#ifdef BUILD_64
+        fprintf (fp->fp, "160\n%d\n", light->graphics_data_size);
+#else
+        fprintf (fp->fp, " 92\n%d\n", light->graphics_data_size);
+#endif
+        iter_310 = (DxfBinaryGraphicsData *) light->binary_graphics_data;
+        while (iter_310 != NULL)
+        {
+                fprintf (fp->fp, "310\n%s\n", iter_310->data_line);
+                iter_310 = (DxfBinaryGraphicsData *) iter_310->next;
+        }
+        fprintf (fp->fp, "420\n%ld\n", light->color_value);
+        fprintf (fp->fp, "430\n%s\n", light->color_name);
+        fprintf (fp->fp, "440\n%ld\n", light->transparency);
+        fprintf (fp->fp, "390\n%s\n", light->plot_style_name);
+        fprintf (fp->fp, "284\n%d\n", light->shadow_mode);
+        fprintf (fp->fp, "100\nAcDbLight\n");
+        fprintf (fp->fp, " 90\n%hi\n", light->version_number);
+        fprintf (fp->fp, "  1\n%s\n", light->light_name);
+        fprintf (fp->fp, " 70\n%hi\n", light->light_type);
+        fprintf (fp->fp, "290\n%d\n", light->status);
+        fprintf (fp->fp, "291\n%d\n", light->plot_glyph);
+        fprintf (fp->fp, " 40\n%f\n", light->intensity);
+        fprintf (fp->fp, " 10\n%f\n", light->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", light->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", light->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", light->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", light->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", light->p1->z0);
+        fprintf (fp->fp, " 72\n%hi\n", light->attenuation_type);
+        fprintf (fp->fp, "292\n%d\n", light->use_attenuation_limits);
+        fprintf (fp->fp, " 41\n%f\n", light->attenuation_start_limit);
+        fprintf (fp->fp, " 42\n%f\n", light->attenuation_end_limit);
+        fprintf (fp->fp, " 50\n%f\n", light->hotspot_angle);
+        fprintf (fp->fp, " 51\n%f\n", light->falloff_angle);
+        fprintf (fp->fp, "293\n%d\n", light->cast_shadows);
+        fprintf (fp->fp, " 73\n%hi\n", light->shadow_type);
+        fprintf (fp->fp, " 91\n%hi\n", light->shadow_map_size);
+        fprintf (fp->fp, "280\n%d\n", light->shadow_map_softness);
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
