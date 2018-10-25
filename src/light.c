@@ -917,4 +917,41 @@ dxf_light_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a DXF \c LIGHT entity.
+ *
+ * \return \c layer when sucessful, or \c NULL when an error occurred.
+ */
+char *
+dxf_light_get_layer
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (light->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (light->layer));
+}
+
+
 /* EOF*/

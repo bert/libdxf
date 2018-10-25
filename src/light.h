@@ -267,6 +267,7 @@ int dxf_light_get_id_code (DxfLight *light);
 DxfLight *dxf_light_set_id_code (DxfLight *light, int id_code);
 char *dxf_light_get_linetype (DxfLight *light);
 DxfLight *dxf_light_set_linetype (DxfLight *light, char *linetype);
+char *dxf_light_get_layer (DxfLight *light);
 
 
 #ifdef __cplusplus
