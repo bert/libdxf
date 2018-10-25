@@ -269,6 +269,7 @@ char *dxf_light_get_linetype (DxfLight *light);
 DxfLight *dxf_light_set_linetype (DxfLight *light, char *linetype);
 char *dxf_light_get_layer (DxfLight *light);
 DxfLight *dxf_light_set_layer (DxfLight *light, char *layer);
+double dxf_light_get_thickness (DxfLight *light);
 
 
 #ifdef __cplusplus
