@@ -1072,4 +1072,41 @@ dxf_light_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a DXF \c LIGHT entity.
+ *
+ * \return \c linetype_scale when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+double
+dxf_light_get_linetype_scale
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (light->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->linetype_scale);
+}
+
+
 /* EOF*/
