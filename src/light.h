@@ -281,6 +281,7 @@ int dxf_light_get_paperspace (DxfLight *light);
 DxfLight *dxf_light_set_paperspace (DxfLight *light, int paperspace);
 int dxf_light_get_graphics_data_size (DxfLight *light);
 DxfLight *dxf_light_set_graphics_data_size (DxfLight *light, int graphics_data_size);
+int16_t dxf_light_get_shadow_mode (DxfLight *light);
 
 
 #ifdef __cplusplus
