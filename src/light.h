@@ -280,6 +280,7 @@ DxfLight *dxf_light_set_color (DxfLight *light, int color);
 int dxf_light_get_paperspace (DxfLight *light);
 DxfLight *dxf_light_set_paperspace (DxfLight *light, int paperspace);
 int dxf_light_get_graphics_data_size (DxfLight *light);
+DxfLight *dxf_light_set_graphics_data_size (DxfLight *light, int graphics_data_size);
 
 
 #ifdef __cplusplus
