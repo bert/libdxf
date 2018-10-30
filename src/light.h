@@ -278,6 +278,7 @@ DxfLight *dxf_light_set_visibility (DxfLight *light, int16_t visibility);
 int dxf_light_get_color (DxfLight *light);
 DxfLight *dxf_light_set_color (DxfLight *light, int color);
 int dxf_light_get_paperspace (DxfLight *light);
+DxfLight *dxf_light_set_paperspace (DxfLight *light, int paperspace);
 
 
 #ifdef __cplusplus
