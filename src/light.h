@@ -275,6 +275,7 @@ double dxf_light_get_linetype_scale (DxfLight *light);
 DxfLight *dxf_light_set_linetype_scale (DxfLight *light, double linetype_scale);
 int16_t dxf_light_get_visibility (DxfLight *light);
 DxfLight *dxf_light_set_visibility (DxfLight *light, int16_t visibility);
+int dxf_light_get_color (DxfLight *light);
 
 
 #ifdef __cplusplus
