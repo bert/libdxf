@@ -284,6 +284,7 @@ DxfLight *dxf_light_set_graphics_data_size (DxfLight *light, int graphics_data_s
 int16_t dxf_light_get_shadow_mode (DxfLight *light);
 DxfLight *dxf_light_set_shadow_mode (DxfLight *light, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_light_get_binary_graphics_data (DxfLight *light);
+DxfLight *dxf_light_set_binary_graphics_data (DxfLight *light, DxfBinaryGraphicsData *data);
 
 
 #ifdef __cplusplus
