@@ -1669,4 +1669,45 @@ dxf_light_set_binary_graphics_data
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
+ * \c LIGHT entity.
+ *
+ * \return pointer to the \c dictionary_owner_soft, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_light_get_dictionary_owner_soft
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (light->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (light->dictionary_owner_soft));
+}
+
+
 /* EOF*/
