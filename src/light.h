@@ -288,6 +288,7 @@ DxfLight *dxf_light_set_binary_graphics_data (DxfLight *light, DxfBinaryGraphics
 char *dxf_light_get_dictionary_owner_soft (DxfLight *light);
 DxfLight *dxf_light_set_dictionary_owner_soft (DxfLight *light, char *dictionary_owner_soft);
 char *dxf_light_get_object_owner_soft (DxfLight *light);
+DxfLight *dxf_light_set_object_owner_soft (DxfLight *light, char *object_owner_soft);
 
 
 #ifdef __cplusplus
