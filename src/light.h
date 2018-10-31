@@ -286,6 +286,7 @@ DxfLight *dxf_light_set_shadow_mode (DxfLight *light, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_light_get_binary_graphics_data (DxfLight *light);
 DxfLight *dxf_light_set_binary_graphics_data (DxfLight *light, DxfBinaryGraphicsData *data);
 char *dxf_light_get_dictionary_owner_soft (DxfLight *light);
+DxfLight *dxf_light_set_dictionary_owner_soft (DxfLight *light, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
