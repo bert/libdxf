@@ -294,6 +294,7 @@ DxfLight *dxf_light_set_material (DxfLight *light, char *material);
 char *dxf_light_get_dictionary_owner_hard (DxfLight *light);
 DxfLight *dxf_light_set_dictionary_owner_hard (DxfLight *light, char *dictionary_owner_hard);
 int16_t dxf_light_get_lineweight (DxfLight *light);
+DxfLight *dxf_light_set_lineweight (DxfLight *light, int16_t lineweight);
 
 
 #ifdef __cplusplus
