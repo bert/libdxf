@@ -295,6 +295,7 @@ char *dxf_light_get_dictionary_owner_hard (DxfLight *light);
 DxfLight *dxf_light_set_dictionary_owner_hard (DxfLight *light, char *dictionary_owner_hard);
 int16_t dxf_light_get_lineweight (DxfLight *light);
 DxfLight *dxf_light_set_lineweight (DxfLight *light, int16_t lineweight);
+char *dxf_light_get_plot_style_name (DxfLight *light);
 
 
 #ifdef __cplusplus
