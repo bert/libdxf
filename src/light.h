@@ -292,6 +292,7 @@ DxfLight *dxf_light_set_object_owner_soft (DxfLight *light, char *object_owner_s
 char *dxf_light_get_material (DxfLight *light);
 DxfLight *dxf_light_set_material (DxfLight *light, char *material);
 char *dxf_light_get_dictionary_owner_hard (DxfLight *light);
+DxfLight *dxf_light_set_dictionary_owner_hard (DxfLight *light, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus
