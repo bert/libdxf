@@ -301,6 +301,7 @@ long dxf_light_get_color_value (DxfLight *light);
 DxfLight *dxf_light_set_color_value (DxfLight *light, long color_value);
 char *dxf_light_get_color_name (DxfLight *light);
 DxfLight *dxf_light_set_color_name (DxfLight *light, char *color_name);
+long dxf_light_get_transparency (DxfLight *light);
 
 
 #ifdef __cplusplus
