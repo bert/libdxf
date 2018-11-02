@@ -300,6 +300,7 @@ DxfLight *dxf_light_set_plot_style_name (DxfLight *light, char *plot_style_name)
 long dxf_light_get_color_value (DxfLight *light);
 DxfLight *dxf_light_set_color_value (DxfLight *light, long color_value);
 char *dxf_light_get_color_name (DxfLight *light);
+DxfLight *dxf_light_set_color_name (DxfLight *light, char *color_name);
 
 
 #ifdef __cplusplus

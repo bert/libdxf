@@ -2247,4 +2247,46 @@ dxf_light_get_color_name
 }
 
 
+/*!
+ * \brief Set the \c color_name for a DXF \c LIGHT entity.
+ *
+ * \return a pointer to \c light when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLight *
+dxf_light_set_color_name
+(
+        DxfLight *light,
+                /*!< a pointer to a DXF \c LIGHT entity. */
+        char *color_name
+                /*!< a string containing the \c color_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        light->color_name = strdup (color_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light);
+}
+
+
 /* EOF*/
