@@ -2354,4 +2354,42 @@ dxf_light_set_transparency
 }
 
 
+/*!
+ * \brief Get the axis base point \c p0 from a DXF \c LIGHT entity.
+ *
+ * \return axis base point \c p0 when sucessful, or \c NULL when an
+ * error occurred.
+ */
+DxfPoint *
+dxf_light_get_p0
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (light->p0 ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPoint *) light->p0);
+}
+
+
 /* EOF*/
