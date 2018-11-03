@@ -2355,9 +2355,9 @@ dxf_light_set_transparency
 
 
 /*!
- * \brief Get the axis base point \c p0 from a DXF \c LIGHT entity.
+ * \brief Get the light position point \c p0 from a DXF \c LIGHT entity.
  *
- * \return axis base point \c p0 when sucessful, or \c NULL when an
+ * \return light position point \c p0 when sucessful, or \c NULL when an
  * error occurred.
  */
 DxfPoint *
