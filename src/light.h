@@ -306,6 +306,7 @@ DxfLight *dxf_light_set_transparency (DxfLight *light, long transparency);
 DxfPoint *dxf_light_get_p0 (DxfLight *light);
 DxfLight *dxf_light_set_p0 (DxfLight *light, DxfPoint *p0);
 double dxf_light_get_x0 (DxfLight *light);
+DxfLight *dxf_light_set_x0 (DxfLight *light, double x0);
 
 
 #ifdef __cplusplus
