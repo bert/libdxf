@@ -2631,4 +2631,42 @@ dxf_light_set_z0
 }
 
 
+/*!
+ * \brief Get the target location point \c p1 from a DXF \c LIGHT entity.
+ *
+ * \return target location point \c p1 when sucessful, or \c NULL when
+ * an error occurred.
+ */
+DxfPoint *
+dxf_light_get_p1
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (light->p1 ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPoint *) light->p1);
+}
+
+
 /* EOF*/
