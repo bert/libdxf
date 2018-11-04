@@ -2565,4 +2565,35 @@ dxf_light_set_y0
 }
 
 
+/*!
+ * \brief Get the light position point Z-value \c z0 from a DXF \c LIGHT.
+ *
+ * \return light position point Z-value \c z0 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+double
+dxf_light_get_z0
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->p0->z0);
+}
+
+
 /* EOF*/
