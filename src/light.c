@@ -2742,4 +2742,47 @@ dxf_light_get_x1
 }
 
 
+/*!
+ * \brief Set the light target location point X-value \c x1 for a DXF
+ * \c LIGHT.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLight *
+dxf_light_set_x1
+(
+        DxfLight *light,
+                /*!< a pointer to a DXF \c LIGHT. */
+        double x1
+                /*!< the light target location point X-value \c x1 to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (light->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        light->p1->x0 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light);
+}
+
+
 /* EOF*/
