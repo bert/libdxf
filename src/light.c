@@ -2834,4 +2834,43 @@ dxf_light_set_x1
 }
 
 
+/*!
+ * \brief Get the target location point Y-value \c y1 from a DXF
+ * \c LIGHT.
+ *
+ * \return target location point Y-value \c y1 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+double
+dxf_light_get_y1
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (light->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->p1->y0);
+}
+
+
 /* EOF*/
