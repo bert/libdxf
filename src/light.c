@@ -2658,6 +2658,13 @@ dxf_light_set_z0
                   __FUNCTION__);
                 return (NULL);
         }
+        if (light->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         light->p0->z0 = z0;
 #if DEBUG
         DXF_DEBUG_END
