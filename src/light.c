@@ -2457,6 +2457,13 @@ dxf_light_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (light->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
