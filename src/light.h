@@ -318,6 +318,7 @@ DxfLight *dxf_light_set_x1 (DxfLight *light, double x1);
 double dxf_light_get_y1 (DxfLight *light);
 DxfLight *dxf_light_set_y1 (DxfLight *light, double y1);
 double dxf_light_get_z1 (DxfLight *light);
+DxfLight *dxf_light_set_z1 (DxfLight *light, double z1);
 
 
 #ifdef __cplusplus
