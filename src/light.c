@@ -2474,7 +2474,7 @@ dxf_light_get_x0
 /*!
  * \brief Set the light position point X-value \c x0 for a DXF \c LIGHT.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
+ * \return a pointer to \c light when successful, or \c NULL when an
  * error occurred.
  */
 DxfLight *
@@ -2554,7 +2554,7 @@ dxf_light_get_y0
 /*!
  * \brief Set the light position point Y-value \c y0 for a DXF \c LIGHT.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
+ * \return a pointer to \c light when successful, or \c NULL when an
  * error occurred.
  */
 DxfLight *
@@ -2634,7 +2634,7 @@ dxf_light_get_z0
 /*!
  * \brief Set the light position point Z-value \c z0 for a DXF \c LIGHT.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
+ * \return a pointer to \c light when successful, or \c NULL when an
  * error occurred.
  */
 DxfLight *
@@ -2795,7 +2795,7 @@ dxf_light_get_x1
  * \brief Set the light target location point X-value \c x1 for a DXF
  * \c LIGHT.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
+ * \return a pointer to \c light when successful, or \c NULL when an
  * error occurred.
  */
 DxfLight *
@@ -2877,7 +2877,7 @@ dxf_light_get_y1
  * \brief Set the light target location point Y-value \c y1 for a DXF
  * \c LIGHT.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
+ * \return a pointer to \c light when successful, or \c NULL when an
  * error occurred.
  */
 DxfLight *
