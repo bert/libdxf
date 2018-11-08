@@ -322,6 +322,7 @@ DxfLight *dxf_light_set_z1 (DxfLight *light, double z1);
 double dxf_light_get_intensity (DxfLight *light);
 DxfLight *dxf_light_set_intensity (DxfLight *light, double intensity);
 double dxf_light_get_attenuation_start_limit (DxfLight *light);
+DxfLight *dxf_light_set_attenuation_start_limit (DxfLight *light, double attenuation_start_limit);
 
 
 #ifdef __cplusplus
