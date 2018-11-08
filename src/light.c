@@ -3029,4 +3029,38 @@ dxf_light_get_intensity
 }
 
 
+/*!
+ * \brief Set the \c intensity for a DXF \c LIGHT.
+ *
+ * \return a pointer to \c light when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLight *
+dxf_light_set_intensity
+(
+        DxfLight *light,
+                /*!< a pointer to a DXF \c LIGHT. */
+        double intensity
+                /*!< the \c intensity to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        light->intensity = intensity;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light);
+}
+
+
 /* EOF*/
