@@ -3195,4 +3195,35 @@ dxf_light_set_attenuation_end_limit
 }
 
 
+/*!
+ * \brief Get the \c hotspot_angle from a DXF \c LIGHT.
+ *
+ * \return \c hotspot_angle when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+double
+dxf_light_get_hotspot_angle
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->hotspot_angle);
+}
+
+
 /* EOF*/
