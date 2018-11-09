@@ -328,6 +328,7 @@ DxfLight *dxf_light_set_attenuation_end_limit (DxfLight *light, double attenuati
 double dxf_light_get_hotspot_angle (DxfLight *light);
 DxfLight *dxf_light_set_hotspot_angle (DxfLight *light, double hotspot_angle);
 double dxf_light_get_falloff_angle (DxfLight *light);
+DxfLight *dxf_light_set_falloff_angle (DxfLight *light, double falloff_angle);
 
 
 #ifdef __cplusplus

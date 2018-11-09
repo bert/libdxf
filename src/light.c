@@ -3291,4 +3291,38 @@ dxf_light_get_falloff_angle
 }
 
 
+/*!
+ * \brief Set the \c falloff_angle for a DXF \c LIGHT.
+ *
+ * \return a pointer to \c light when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLight *
+dxf_light_set_falloff_angle
+(
+        DxfLight *light,
+                /*!< a pointer to a DXF \c LIGHT. */
+        double falloff_angle
+                /*!< the \c falloff_angle to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        light->falloff_angle = falloff_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light);
+}
+
+
 /* EOF*/
