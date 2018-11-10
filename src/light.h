@@ -334,6 +334,7 @@ DxfLight *dxf_light_set_light_type (DxfLight *light, int16_t light_type);
 int16_t dxf_light_get_attenuation_type (DxfLight *light);
 DxfLight *dxf_light_set_attenuation_type (DxfLight *light, int16_t attenuation_type);
 int16_t dxf_light_get_shadow_type (DxfLight *light);
+DxfLight *dxf_light_set_shadow_type (DxfLight *light, int16_t shadow_type);
 
 
 #ifdef __cplusplus
