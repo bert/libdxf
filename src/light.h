@@ -340,6 +340,7 @@ DxfLight *dxf_light_set_version_number (DxfLight *light, int16_t version_number)
 int16_t dxf_light_get_shadow_map_size (DxfLight *light);
 DxfLight *dxf_light_set_shadow_map_size (DxfLight *light, int16_t shadow_map_size);
 int16_t dxf_light_get_shadow_map_softness (DxfLight *light);
+DxfLight *dxf_light_set_shadow_map_softness (DxfLight *light, int16_t shadow_map_softness);
 
 
 #ifdef __cplusplus
