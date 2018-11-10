@@ -332,6 +332,7 @@ DxfLight *dxf_light_set_falloff_angle (DxfLight *light, double falloff_angle);
 int16_t dxf_light_get_light_type (DxfLight *light);
 DxfLight *dxf_light_set_light_type (DxfLight *light, int16_t light_type);
 int16_t dxf_light_get_attenuation_type (DxfLight *light);
+DxfLight *dxf_light_set_attenuation_type (DxfLight *light, int16_t attenuation_type);
 
 
 #ifdef __cplusplus
