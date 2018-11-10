@@ -3414,4 +3414,47 @@ dxf_light_set_light_type
 }
 
 
+/*!
+ * \brief Get the \c attenuation_type from a DXF \c LIGHT entity.
+ *
+ * \return \c attenuation_type when successful, or \c EXIT_FAILURE when
+ * an error occurred.
+ */
+int16_t
+dxf_light_get_attenuation_type
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (light->attenuation_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (light->attenuation_type > 2)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->attenuation_type);
+}
+
+
 /* EOF*/
