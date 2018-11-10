@@ -337,6 +337,7 @@ int16_t dxf_light_get_shadow_type (DxfLight *light);
 DxfLight *dxf_light_set_shadow_type (DxfLight *light, int16_t shadow_type);
 int16_t dxf_light_get_version_number (DxfLight *light);
 DxfLight *dxf_light_set_version_number (DxfLight *light, int16_t version_number);
+int16_t dxf_light_get_shadow_map_size (DxfLight *light);
 
 
 #ifdef __cplusplus

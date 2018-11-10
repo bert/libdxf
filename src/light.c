@@ -3657,4 +3657,35 @@ dxf_light_set_version_number
 }
 
 
+/*!
+ * \brief Get the \c shadow_map_size from a DXF \c LIGHT entity.
+ *
+ * \return \c shadow_map_size when successful, or \c EXIT_FAILURE when
+ * an error occurred.
+ */
+int16_t
+dxf_light_get_shadow_map_size
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->shadow_map_size);
+}
+
+
 /* EOF*/
