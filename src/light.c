@@ -3984,4 +3984,35 @@ dxf_light_set_use_attenuation_limits
 }
 
 
+/*!
+ * \brief Get the \c cast_shadows from a DXF \c LIGHT entity.
+ *
+ * \return \c cast_shadows when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int
+dxf_light_get_cast_shadows
+(
+        DxfLight *light
+                /*!< a pointer to a DXF \c LIGHT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light->cast_shadows);
+}
+
+
 /* EOF*/
