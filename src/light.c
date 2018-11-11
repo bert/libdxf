@@ -4015,4 +4015,38 @@ dxf_light_get_cast_shadows
 }
 
 
+/*!
+ * \brief Set the \c cast_shadows for a DXF \c LIGHT entity.
+ *
+ * \return a pointer to \c light when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLight *
+dxf_light_set_cast_shadows
+(
+        DxfLight *light,
+                /*!< a pointer to a DXF \c LIGHT entity. */
+        int cast_shadows
+                /*!< the \c cast_shadows to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        light->cast_shadows = cast_shadows;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light);
+}
+
+
 /* EOF*/
