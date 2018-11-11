@@ -346,6 +346,7 @@ DxfLight *dxf_light_set_status (DxfLight *light, int status);
 int dxf_light_get_plot_glyph (DxfLight *light);
 DxfLight *dxf_light_set_plot_glyph (DxfLight *light, int plot_glyph);
 int dxf_light_get_use_attenuation_limits (DxfLight *light);
+DxfLight *dxf_light_set_use_attenuation_limits (DxfLight *light, int use_attenuation_limits);
 
 
 #ifdef __cplusplus

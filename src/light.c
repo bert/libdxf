@@ -3949,4 +3949,39 @@ dxf_light_get_use_attenuation_limits
 }
 
 
+/*!
+ * \brief Set the \c use_attenuation_limits for a DXF \c LIGHT entity.
+ *
+ * \return a pointer to \c light when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLight *
+dxf_light_set_use_attenuation_limits
+(
+        DxfLight *light,
+                /*!< a pointer to a DXF \c LIGHT entity. */
+        int use_attenuation_limits
+                /*!< the \c use_attenuation_limits to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (light == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        light->use_attenuation_limits = use_attenuation_limits;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (light);
+}
+
+
 /* EOF*/
