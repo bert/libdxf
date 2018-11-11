@@ -344,6 +344,7 @@ DxfLight *dxf_light_set_shadow_map_softness (DxfLight *light, int16_t shadow_map
 int dxf_light_get_status (DxfLight *light);
 DxfLight *dxf_light_set_status (DxfLight *light, int status);
 int dxf_light_get_plot_glyph (DxfLight *light);
+DxfLight *dxf_light_set_plot_glyph (DxfLight *light, int plot_glyph);
 
 
 #ifdef __cplusplus
