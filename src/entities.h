@@ -73,7 +73,7 @@
 #include "image.h"
 #include "insert.h"
 #include "leader.h"
-//#include "light.h"
+#include "light.h"
 #include "line.h"
 #include "lwpolyline.h"
 //#include "mesh.h"
@@ -128,7 +128,7 @@ dxf_entities_struct
     struct DxfImage *image_list;
     struct DxfInsert *insert_list;
     struct DxfLeader *leader_list;
-    //struct DxfLight *light_list;
+    struct DxfLight *light_list;
     struct DxfLine *line_list;
     struct DxfLWPolyline *lw_polyline_list;
     //struct DxfMesh *mesh_list;
