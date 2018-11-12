@@ -265,7 +265,7 @@ dxf_entities_free
         dxf_image_free_list ((DxfImage *) entities->image_list);
         dxf_insert_free_list ((DxfInsert *) entities->insert_list);
         dxf_leader_free_list ((DxfLeader *) entities->leader_list);
-        //dxf_light_free_list ((DxfLight *) entities->light_list);
+        dxf_light_free_list ((DxfLight *) entities->light_list);
         dxf_line_free_list ((DxfLine *) entities->line_list);
         dxf_lwpolyline_free_list ((DxfLWPolyline *) entities->lw_polyline_list);
         //dxf_light_free_list ((DxfLight *) entities->light_list);
