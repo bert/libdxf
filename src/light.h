@@ -349,6 +349,7 @@ int dxf_light_get_use_attenuation_limits (DxfLight *light);
 DxfLight *dxf_light_set_use_attenuation_limits (DxfLight *light, int use_attenuation_limits);
 int dxf_light_get_cast_shadows (DxfLight *light);
 DxfLight *dxf_light_set_cast_shadows (DxfLight *light, int cast_shadows);
+DxfLight *dxf_light_get_next (DxfLight *light);
 
 
 #ifdef __cplusplus
