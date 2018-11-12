@@ -351,6 +351,7 @@ int dxf_light_get_cast_shadows (DxfLight *light);
 DxfLight *dxf_light_set_cast_shadows (DxfLight *light, int cast_shadows);
 DxfLight *dxf_light_get_next (DxfLight *light);
 DxfLight *dxf_light_set_next (DxfLight *light, DxfLight *next);
+DxfLight *dxf_light_get_last (DxfLight *light);
 
 
 #ifdef __cplusplus
