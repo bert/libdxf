@@ -137,7 +137,7 @@ dxf_entities_init
         entities->image_list = NULL;
         entities->insert_list = NULL;
         entities->leader_list = NULL;
-        //entities->light_list = NULL;
+        entities->light_list = NULL;
         entities->line_list = NULL;
         entities->lw_polyline_list = NULL;
         //entities->mesh_list = NULL;
