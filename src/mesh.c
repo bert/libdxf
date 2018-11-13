@@ -86,7 +86,7 @@ DxfMesh *
 dxf_mesh_init
 (
         DxfMesh *mesh
-                /*!< a pointer to the DXF \c ARC entity. */
+                /*!< a pointer to the DXF \c MESH entity. */
 )
 {
 #if DEBUG
