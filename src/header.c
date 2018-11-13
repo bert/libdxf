@@ -1408,12 +1408,12 @@ dxf_header_read_parser
                                          &header->AcadMaintVer,
                                          acad_version_number > AC1014);
         dxf_return(ret);
-                
+
         ret = dxf_header_read_parse_string (fp, temp_string, "$DWGCODEPAGE",
                                             &header->DWGCodePage,
                                             acad_version_number >= AC1012);
         dxf_return(ret);
-        
+
         ret = dxf_header_read_parse_n_double (fp, temp_string, "$INSBASE",
                                               TRUE,
                                               3,
@@ -1789,14 +1789,14 @@ dxf_header_read_parser
                                               TRUE,
                                               2,
                                               &header->PLimMin.x0,
-                                              header->PLimMin.y0);
+                                              &header->PLimMin.y0);
         dxf_return(ret);
     
         ret = dxf_header_read_parse_n_double (fp, temp_string, "$PLIMMAX",
                                               TRUE,
                                               2,
                                               &header->PLimMax.x0,
-                                              header->PLimMax.y0);
+                                              &header->PLimMax.y0);
         dxf_return(ret);
         /*
         fprintf (fp, "  9\n$UNITMODE\n 70\n%i\n", header->UnitMode);
