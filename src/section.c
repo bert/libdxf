@@ -51,7 +51,7 @@ dxf_section_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *temp_string = NULL;
+        char temp_string[DXF_MAX_STRING_LENGTH];
         DxfHeader dxf_header;
         DxfBlock dxf_block;
         char *dxf_entities_list = NULL;
@@ -62,15 +62,15 @@ dxf_section_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
-                /* Clean up. */
-                free (temp_string);
                 return (EXIT_FAILURE);
         }
+        memset(temp_string, 0, sizeof(temp_string));
         dxf_read_line (temp_string, fp);
         if (strcmp (temp_string, "2") == 0)
         {
                 while (!feof (fp->fp))
                 {
+                        memset(temp_string, 0, sizeof(temp_string));
                         dxf_read_line (temp_string, fp);
                         if (strcmp (temp_string, "HEADER") == 0)
                         {
@@ -125,8 +125,6 @@ dxf_section_read
                   (_("Warning in %s () unexpected string encountered while reading line %d from: %s.\n")),
                   __FUNCTION__, fp->line_number, fp->filename);
         }
-        /* Clean up. */
-        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
