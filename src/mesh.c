@@ -75,4 +75,84 @@ dxf_mesh_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c MESH
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMesh *
+dxf_mesh_init
+(
+        DxfMesh *mesh
+                /*!< a pointer to the DXF \c ARC entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                mesh = dxf_mesh_new ();
+        }
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->id_code = 0;
+        mesh->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        mesh->layer = strdup (DXF_DEFAULT_LAYER);
+        mesh->elevation = 0.0;
+        mesh->thickness = 0.0;
+        mesh->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        mesh->visibility = DXF_DEFAULT_VISIBILITY;
+        mesh->color = DXF_COLOR_BYLAYER;
+        mesh->paperspace = DXF_MODELSPACE;
+        mesh->graphics_data_size = 0;
+        mesh->shadow_mode = 0;
+        mesh->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        mesh->dictionary_owner_soft = strdup ("");
+        mesh->object_owner_soft = strdup ("");
+        mesh->material = strdup ("");
+        mesh->dictionary_owner_hard = strdup ("");
+        mesh->lineweight = 0;
+        mesh->plot_style_name = strdup ("");
+        mesh->color_value = 0;
+        mesh->color_name = strdup ("");
+        mesh->transparency = 0;
+        mesh->p0 = dxf_point_new ();
+        mesh->p0 = dxf_point_init (mesh->p0);
+        mesh->p0->x0 = 0.0;
+        mesh->p0->y0 = 0.0;
+        mesh->p0->z0 = 0.0;
+        mesh->version = 0;
+        mesh->blend_crease_property = 0;
+        mesh->face_list_item = 0;
+        mesh->edge_vertex_index = 0;
+        mesh->number_of_property_overridden_sub_entities = 0;
+        mesh->property_type = 0;
+        mesh->subdivision_level = 0;
+        mesh->sub_entity_marker = 0;
+        mesh->vertex_count_level_0 = 0;
+        mesh->count_of_property_overridden = 0;
+        mesh->face_list_size_level_0 = 0;
+        mesh->edge_count_level_0 = 0;
+        mesh->edge_crease_count_level_0 = 0;
+        mesh->edge_create_value = 0.0;
+        mesh->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/
