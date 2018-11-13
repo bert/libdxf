@@ -37,4 +37,42 @@
 #include "mesh.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c MESH entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMesh *
+dxf_mesh_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfMesh *mesh = NULL;
+        size_t size;
+
+        size = sizeof (DxfMesh);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((mesh = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                mesh = NULL;
+        }
+        else
+        {
+                memset (mesh, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/

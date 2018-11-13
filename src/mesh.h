@@ -250,6 +250,9 @@ dxf_mesh_struct
 } DxfMesh;
 
 
+DxfMesh *dxf_mesh_new ();
+
+
 #ifdef __cplusplus
 }
 #endif
