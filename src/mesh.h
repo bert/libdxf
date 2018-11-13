@@ -49,7 +49,7 @@ extern "C" {
 
 
 /*!
- * \brief DXF definition of an AutoCAD light entity (\c MESH).
+ * \brief DXF definition of an AutoCAD mesh entity (\c MESH).
  */
 typedef struct
 dxf_mesh_struct
