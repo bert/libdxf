@@ -252,6 +252,7 @@ dxf_mesh_struct
 
 DxfMesh *dxf_mesh_new ();
 DxfMesh *dxf_mesh_init (DxfMesh *mesh);
+int dxf_mesh_free (DxfMesh *mesh);
 
 
 #ifdef __cplusplus

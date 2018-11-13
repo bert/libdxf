@@ -155,4 +155,55 @@ dxf_mesh_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c MESH entity and all
+ * it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mesh_free
+(
+        DxfMesh *mesh
+                /*!< a pointer to the memory occupied by the DXF \c MESH
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mesh->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (mesh->linetype);
+        free (mesh->layer);
+        free (mesh->dictionary_owner_soft);
+        free (mesh->object_owner_soft);
+        free (mesh->material);
+        free (mesh->dictionary_owner_hard);
+        free (mesh->plot_style_name);
+        free (mesh->color_name);
+        dxf_point_free (mesh->p0);
+        free (mesh);
+        mesh = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
