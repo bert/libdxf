@@ -1408,12 +1408,12 @@ dxf_header_read_parser
                                          &header->AcadMaintVer,
                                          acad_version_number > AC1014);
         dxf_return(ret);
-                
+
         ret = dxf_header_read_parse_string (fp, temp_string, "$DWGCODEPAGE",
                                             &header->DWGCodePage,
                                             acad_version_number >= AC1012);
         dxf_return(ret);
-        
+
         ret = dxf_header_read_parse_n_double (fp, temp_string, "$INSBASE",
                                               TRUE,
                                               3,
@@ -1789,14 +1789,14 @@ dxf_header_read_parser
                                               TRUE,
                                               2,
                                               &header->PLimMin.x0,
-                                              header->PLimMin.y0);
+                                              &header->PLimMin.y0);
         dxf_return(ret);
     
         ret = dxf_header_read_parse_n_double (fp, temp_string, "$PLIMMAX",
                                               TRUE,
                                               2,
                                               &header->PLimMax.x0,
-                                              header->PLimMax.y0);
+                                              &header->PLimMax.y0);
         dxf_return(ret);
         /*
         fprintf (fp, "  9\n$UNITMODE\n 70\n%i\n", header->UnitMode);
@@ -1908,10 +1908,10 @@ dxf_header_read
         dxf_return_val_if_fail (ret, FALSE);
         /* turn the acad_version into an integer */
         acad_version_number = dxf_header_acad_version_from_string (header->AcadVer);
-    
+
         /*! \todo FIXME: stores the autocad version as int */
         header->_AcadVer = acad_version_number;
-    
+
         /* a loop to read all the header with no particulary order */
         while (!feof (fp->fp))
         {
@@ -1935,7 +1935,7 @@ dxf_header_read
                           (_("[File: %s: line: %d] read_header :: Section Ended.\n")),
                           __FILE__, __LINE__);
 #endif
-                }        
+                }
         }
 #if DEBUG
         DXF_DEBUG_END
