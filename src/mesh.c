@@ -354,4 +354,46 @@ dxf_mesh_get_linetype
 }
 
 
+/*!
+ * \brief Set the \c linetype for a DXF \c MESH entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_linetype
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        char *linetype
+                /*!< a pointer to a string containing the \c linetype
+                 * to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/

@@ -257,6 +257,7 @@ void dxf_mesh_free_list (DxfMesh *meshes);
 int dxf_mesh_get_id_code (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_id_code (DxfMesh *mesh, int id_code);
 char *dxf_mesh_get_linetype (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_linetype (DxfMesh *mesh, char *linetype);
 
 
 #ifdef __cplusplus
