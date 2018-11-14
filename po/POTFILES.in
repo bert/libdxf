@@ -99,6 +99,8 @@ src/ltype.c
 src/ltype.h
 src/lwpolyline.c
 src/lwpolyline.h
+src/mesh.c
+src/mesh.h
 src/mline.c
 src/mline.h
 src/mlinestyle.c
