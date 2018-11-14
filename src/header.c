@@ -1875,69 +1875,128 @@ dxf_header_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char temp_string[255];
-        int n, acad_version_number, ret;
 
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL file pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (header == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                header = dxf_header_new ();
-//                header = dxf_header_init (header, acad_version_number);
-        }
-        if (header == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHeader struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        /* first of all we MUST read the version number */
-        dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
-        ret = dxf_header_read_parse_string (fp, temp_string,
-          "$ACADVER", &header->AcadVer, TRUE);
-        dxf_return_val_if_fail (ret, FALSE);
-        /* turn the acad_version into an integer */
-        acad_version_number = dxf_header_acad_version_from_string (header->AcadVer);
+        char line_in[256];
+        char temp_string[256];
+        int ch;
 
-        /*! \todo FIXME: stores the autocad version as int */
-        header->_AcadVer = acad_version_number;
-
-        /* a loop to read all the header with no particulary order */
-        while (!feof (fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
-                /* reads the next header content */
-                dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
-                /* if it is a valid line */
-                if (n == 9)
+            /* Skip whitespace */
+            if(iswhite(ch))
+            {
+                if(ch == '\n')
                 {
-                        /* parses the header content and extract info to the header struct */
-                        ret = dxf_header_read_parser (fp, header,
-                          temp_string, acad_version_number);
-                        dxf_return_val_if_fail (ret, FALSE);
-                        if (ret != FOUND)
-                                return FALSE;
+                    fp->line_number++;
                 }
-                /* or it can be the end of the section */
-                else if (n == 0 && strcmp (temp_string, "ENDSEC") == 0)
+                continue;
+            }
+
+            if(ch = '9')
+            {
+                /* Skip to variable name */
+                while((ch = fgetc(fp->fp)) != '$')
                 {
-#if DEBUG
-                        fprintf (stderr,
-                          (_("[File: %s: line: %d] read_header :: Section Ended.\n")),
-                          __FILE__, __LINE__);
-                        break;
-#endif
+                    if(ch == '\n')
+                    {
+                        fp->line_number++;
+                    }
+                    continue;
                 }
+                ungetc(ch, fp->fp);
+                fgets(line_in, sizeof(line_in), fp->fp);
+                fp->line_number++;
+                sscanf(line_in, "%s", temp_string);
+                /* TODO: Match temp_string to variable name, then get
+                 * value for variable */
+                if(!strcmp(temp_string, "$ACADMAINTVER"))
+                {
+                    /* Do nothing. $ACADMAINTVER is an ignored variable */
+                    continue;
+                }
+                else if(!strcmp(temp_string, "$ACADVER"))
+                {
+                    dxf_header_get_string_variable(&header->AcadVer, fp);
+                    header->_AcadVer = atoi(header->AcadVer);
+                }
+                else if(!strcmp(temp_string, "$ANGBASE"))
+                {
+                    dxf_header_get_double_variable(&header->AngBase, fp);
+                }
+                else if(!strcmp(temp_string, "$ANGDIR"))
+                {
+                    dxf_header_get_int_variable(&header->AngDir, fp);
+                }
+                else if(!strcmp(temp_string, "$ATTMODE"))
+                {
+                    dxf_header_get_int_variable(&header->AttMode, fp);
+                }
+                else if(!strcmp(temp_string, "$AUNITS"))
+                {
+                    dxf_header_get_int_variable(&header->AUnits, fp);
+                }
+                else if(!strcmp(temp_string, "$AUPREC"))
+                {
+                    dxf_header_get_int_variable(&header->AUPrec, fp);
+                }
+                else if(!strcmp(temp_string, "$CECOLOR"))
+                {
+                    dxf_header_get_int_variable(&header->CEColor, fp);
+                }
+                else if(!strcmp(temp_string, "$CELTSCALE"))
+                {
+                    dxf_header_get_double_variable(&header->CELTScale, fp);
+                }
+                else if(!strcmp(temp_string, "$CELTYPE"))
+                {
+                    dxf_header_get_string_variable(&header->CELType, fp);
+                }
+                else if(!strcmp(temp_string, "$CELWEIGHT"))
+                {
+                    dxf_header_get_int_variable(&header->CELWeight, fp);
+                }
+                else if(!strcmp(temp_string, "$CEPSNID"))
+                {
+                    dxf_header_get_string_variable(&header->CEPSNID, fp);
+                }
+                else if(!strcmp(temp_string, "$CEPSNTYPE"))
+                {
+                    dxf_header_get_int_variable(&header->CEPSNType, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFERA"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferA, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFERB"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferB, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFER"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferC, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFERD"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferD, fp);
+                }
+                else if(!strcmp(temp_string, "$CLAYER"))
+                {
+                    dxf_header_get_string_variable(&header->CLayer, fp);
+                }
+                else if(!strcmp(temp_string, "$CMLJUST"))
+                {
+                    dxf_header_get_int_variable(&header->CMLJust, fp);
+                }
+
+            }
+
+            if(ch == '0')
+            {
+                /* End of header section */
+                break;
+            }
         }
+
 #if DEBUG
         DXF_DEBUG_END
 #endif
