@@ -76,6 +76,7 @@ dxf_file_read
         }
         while (fp)
         {
+                memset(temp_string, 0, sizeof(temp_string));
                 dxf_read_line (temp_string, fp);
                 if (strcmp (temp_string, "999") == 0)
                 {

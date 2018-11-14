@@ -41,7 +41,7 @@
  */
 int main (void)
 {
-    if (dxf_file_read ("../examples/qcad-example_R2000.dxf"))
+    if (dxf_file_read ("../../examples/qcad-example_R2000.dxf"))
         fprintf (stdout, "TESTS: R2000 exited with error\n");
     else
         fprintf (stdout, "TESTS: R2000 exited with no error\n");
