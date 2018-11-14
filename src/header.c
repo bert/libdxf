@@ -2204,11 +2204,565 @@ dxf_header_read
                     dxf_header_get_int_variable(&header->DimTDEC, fp);
                 }
                 else if(!strcmp(temp_string, "$DIMTFAC"))
-                {
+                  {
                     dxf_header_get_double_variable(&header->DimTFAC, fp);
-                }
-
-
+                  }
+                else if(!strcmp(temp_string, "$DIMTIH"))
+                  {
+                    dxf_header_get_int_variable(&header->DimTIH, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTIX"))
+                  {
+                    dxf_header_get_int_variable(&header->DimTIX, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTM"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTMOVE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTOFL"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTOH"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTOL"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTOLJ"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTP"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTSZ"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTVP"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTXSTY"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTXT"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMTZIN"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMUPT"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DIMZIN"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DISPSILH"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DRAGVS"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$DWGCODEPAGE"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$ELEVATION"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$ENDCAPS"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$EXTMAX"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$EXTMIN"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$EXTNAMES"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$FILLETRAD"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$FILLMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$FINGERPRINTGUID"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$HALOGAP"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$HANDSEED"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$HIDETEXT"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$HYPERLINKBASE"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INDEXCTL"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INSBASE"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INSUNITS"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INTERFERECOLOR"))
+                  {
+                    dxf_header_get_int16_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INTERFEREOBJVS"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INTERFEREVPVS"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INTERSECTIONCOLOR"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$INTERSECTIONDISPLAY"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$JOINSTYLE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$LIMCHECK"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$LIMMAX"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$LIMMIN"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$LTSCALE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$LUNITS"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$LUPREC"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$LWDISPLAY"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$MAXACTVP"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$MEASUREMENT"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$MENU"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$OBSCOLOR"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$OBSLTYPE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$ORTHOMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PDMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PDSIZE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PELEVATION"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PEXTMAX"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PEXTMIN"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PINSBASE"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PLIMCHECK"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PLIMMAX"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PLIMMIN"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PLINEGEN"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PLINEWID"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PROJECTNAME"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PROXYGRAPHICS"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PSLTSCALE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PSTYLEMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PSVPSCALE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSBASE"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSNAME"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORG"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORGBACK"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORGBOTTOM"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORGFRONT"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORGLEFT"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORGRIGHT"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORGTOP"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORTHOREF"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSORTHOVIEW"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSXDIR"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$PUCSYDIR"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$QTEXTMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$REGENMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SHADEEDGE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SHADEDIF"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SHADOWPLANELOCATION"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SKETCHINC"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SKPOLY"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SORTENTS"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SPLINESEGS"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SPLINETYPE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SURFTAB1"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SURFTAB2"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SURFTYPE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SURFU"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$SURFV"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TDCREATE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TDINDWG"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TDUCREATE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TDUPDATE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TDUSRTIMER"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TDUUPDATE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TEXTSIZE"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TEXTSTYLE"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$THICKNESS"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TILEMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TRACEWID"))
+                  {
+                    dxf_header_get_double_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$TREEDEPTH"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSBASE"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSNAME"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORG"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORGBACK"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORGBOTTOM"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORGFRONT"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORGLEFT"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORGRIGHT"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORGTOP"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORTHOREF"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSORTHOVIEW"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSXDIR"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UCSYDIR"))
+                  {
+                    dxf_header_get_dxf_point_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$UINTMODE"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERI1"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERI2"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERI3"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERI4"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERI5"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERR1"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERR2"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERR3"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERR4"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USERR5"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$USRTIMER"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$VERSINGUID"))
+                  {
+                    dxf_header_get_string_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$VISRETAIN"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$WORLDVIEW"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$XCLIPFRAME"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
+                else if(!strcmp(temp_string, "$XEDIT"))
+                  {
+                    dxf_header_get_int_variable(&header->TK, fp);
+                  }
 
                 /* Procedure for getting the variable value: fgetc()
                  * to the next isnum(), then check to make sure the
