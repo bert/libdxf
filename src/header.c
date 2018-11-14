@@ -2191,6 +2191,24 @@ dxf_header_read
                 {
                     dxf_header_get_int_variable(&header->DimSOXD, fp);
                 }
+                else if(!strcmp(temp_string, "$DIMSTYLE"))
+                {
+                    dxf_header_get_string_variable(&header->DimSTYLE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTAD"))
+                {
+                    dxf_header_get_int_variable(&header->DimTAD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTDEC"))
+                {
+                    dxf_header_get_int_variable(&header->DimTDEC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTFAC"))
+                {
+                    dxf_header_get_double_variable(&header->DimTFAC, fp);
+                }
+
+
 
                 /* Procedure for getting the variable value: fgetc()
                  * to the next isnum(), then check to make sure the
