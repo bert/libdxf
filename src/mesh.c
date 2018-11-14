@@ -206,4 +206,37 @@ dxf_mesh_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c MESH entities and all their data fields.
+ */
+void
+dxf_mesh_free_list
+(
+        DxfMesh *meshes
+                /*!< a pointer to the single linked list of DXF
+                 * \c MESH entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (meshes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (meshes != NULL)
+        {
+                DxfMesh *iter = (DxfMesh *) meshes->next;
+                dxf_mesh_free (meshes);
+                meshes = (DxfMesh *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
