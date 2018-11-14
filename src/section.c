@@ -64,11 +64,13 @@ dxf_section_read
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        memset(temp_string, 0, sizeof(temp_string));
         dxf_read_line (temp_string, fp);
         if (strcmp (temp_string, "2") == 0)
         {
                 while (!feof (fp->fp)) /* Does this actually work? */
                 {
+                        memset(temp_string, 0, sizeof(temp_string));
                         dxf_read_line (temp_string, fp);
                         if (strcmp (temp_string, "HEADER") == 0)
                         {
