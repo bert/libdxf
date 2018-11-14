@@ -51,7 +51,7 @@ dxf_section_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *temp_string = NULL;
+        char temp_string[DXF_MAX_STRING_LENGTH];
         DxfHeader dxf_header;
         DxfBlock dxf_block;
         char *dxf_entities_list = NULL;
@@ -69,7 +69,7 @@ dxf_section_read
         dxf_read_line (temp_string, fp);
         if (strcmp (temp_string, "2") == 0)
         {
-                while (!feof (fp->fp))
+                while (!feof (fp->fp)) /* Does this actually work? */
                 {
                         dxf_read_line (temp_string, fp);
                         if (strcmp (temp_string, "HEADER") == 0)
@@ -125,8 +125,6 @@ dxf_section_read
                   (_("Warning in %s () unexpected string encountered while reading line %d from: %s.\n")),
                   __FUNCTION__, fp->line_number, fp->filename);
         }
-        /* Clean up. */
-        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
