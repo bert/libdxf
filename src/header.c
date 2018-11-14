@@ -1934,6 +1934,7 @@ dxf_header_read
                         fprintf (stderr,
                           (_("[File: %s: line: %d] read_header :: Section Ended.\n")),
                           __FILE__, __LINE__);
+                        break;
 #endif
                 }        
         }
