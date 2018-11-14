@@ -2139,7 +2139,58 @@ dxf_header_read
                 {
                     dxf_header_get_int_variable(&header->DimLIM, fp);
                 }
-
+                else if(!strcmp(temp_string, "$DIMLUNIT"))
+                {
+                    dxf_header_get_int_variable(&header->DimLUNIT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLWD"))
+                {
+                    dxf_header_get_int_variable(&header->DimLWD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLWE"))
+                {
+                    dxf_header_get_int_variable(&header->DimLWE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMPOST"))
+                {
+                    dxf_header_get_string_variable(&header->DimPOST, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMRND"))
+                {
+                    dxf_header_get_double_variable(&header->DimRND, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSAH"))
+                {
+                    dxf_header_get_int_variable(&header->DimSAH, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSCALE"))
+                {
+                    dxf_header_get_double_variable(&header->DimSCALE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSD1"))
+                {
+                    dxf_header_get_int_variable(&header->DimSD1, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSD2"))
+                {
+                    dxf_header_get_int_variable(&header->DimSD2, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSE1"))
+                {
+                    dxf_header_get_int_variable(&header->DimSE1, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSE2"))
+                {
+                    dxf_header_get_int_variable(&header->DimSE2, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSHO"))
+                {
+                    dxf_header_get_int_variable(&header->DimSHO, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSOXD"))
+                {
+                    dxf_header_get_int_variable(&header->DimSOXD, fp);
+                }
 
                 /* Procedure for getting the variable value: fgetc()
                  * to the next isnum(), then check to make sure the
