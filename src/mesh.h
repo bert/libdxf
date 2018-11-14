@@ -259,6 +259,7 @@ DxfMesh *dxf_mesh_set_id_code (DxfMesh *mesh, int id_code);
 char *dxf_mesh_get_linetype (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_linetype (DxfMesh *mesh, char *linetype);
 char *dxf_mesh_get_layer (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_layer (DxfMesh *mesh, char *layer);
 
 
 #ifdef __cplusplus
