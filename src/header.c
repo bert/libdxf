@@ -2047,6 +2047,99 @@ dxf_header_read
                 {
                     dxf_header_get_int_variable(&header->DimASSOC, fp);
                 }
+                else if(!strcmp(temp_string, "$DIMASZ"))
+                {
+                    dxf_header_get_double_variable(&header->DimASZ, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMATFIT"))
+                {
+                    dxf_header_get_int_variable(&header->DimATFIT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMAUNIT"))
+                {
+                    dxf_header_get_int_variable(&header->DimAUNIT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMAZIN"))
+                {
+                    dxf_header_get_int_variable(&header->DimAZIN, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMBLK"))
+                {
+                    dxf_header_get_string_variable(&header->DimBLK, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMBLK1"))
+                {
+                    dxf_header_get_string_variable(&header->DimBLK1, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMBLK2"))
+                {
+                    dxf_header_get_string_variable(&header->DimBLK2, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCEN"))
+                {
+                    dxf_header_get_double_variable(&header->DimCEN, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCLRD"))
+                {
+                    dxf_header_get_int_variable(&header->DimCLRD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCLRE"))
+                {
+                    dxf_header_get_int_variable(&header->DimCLRE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCLRT"))
+                {
+                    dxf_header_get_int_variable(&header->DimCLRT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDEC"))
+                {
+                    dxf_header_get_int_variable(&header->DimDEC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDLE"))
+                {
+                    dxf_header_get_double_variable(&header->DimDLE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDLI"))
+                {
+                    dxf_header_get_double_variable(&header->DimDLI, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDSEP"))
+                {
+                    dxf_header_get_int_variable(&header->DimDSEP, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMEXE"))
+                {
+                    dxf_header_get_double_variable(&header->DimEXE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMEXO"))
+                {
+                    dxf_header_get_double_variable(&header->DimEXO, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMFAC"))
+                {
+                    dxf_header_get_double_variable(&header->DimFAC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMGAP"))
+                {
+                    dxf_header_get_double_variable(&header->DimGAP, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMJUST"))
+                {
+                    dxf_header_get_int_variable(&header->DimJUST, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLDRBLK"))
+                {
+                    dxf_header_get_string_variable(&header->DimLDRBLK, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLFAC"))
+                {
+                    dxf_header_get_double_variable(&header->DimLFAC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLIM"))
+                {
+                    dxf_header_get_int_variable(&header->DimLIM, fp);
+                }
+
 
                 /* Procedure for getting the variable value: fgetc()
                  * to the next isnum(), then check to make sure the
@@ -2056,6 +2149,14 @@ dxf_header_read
                  * good. If it's a string, free the current string,
                  * allocate space, and strcpy() it into the new
                  * space. */
+
+                /* Maybe don't check to make sure the group code
+                 * matches; there are a lot of type mismatches
+                 * between member variables and the DXF group codes */
+
+                /* TODO: Investigate overflow risk of member
+                 * variables stored as an int, but that can have up
+                 * to sixteen hexadecimal digits (64 bits) */
 
             }
 
