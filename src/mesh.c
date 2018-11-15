@@ -317,4 +317,162 @@ dxf_mesh_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c linetype from a DXF \c MESH entity.
+ *
+ * \return \c linetype when successful, \c NULL when an error occurred.
+ */
+char *
+dxf_mesh_get_linetype
+(
+        DxfMesh *mesh
+                /*!< a pointer to a DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mesh->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mesh->linetype));
+}
+
+
+/*!
+ * \brief Set the \c linetype for a DXF \c MESH entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_linetype
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        char *linetype
+                /*!< a pointer to a string containing the \c linetype
+                 * to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
+/*!
+ * \brief Get the \c layer from a DXF \c MESH entity.
+ *
+ * \return \c layer when successful, \c NULL when an error occurred.
+ */
+char *
+dxf_mesh_get_layer
+(
+        DxfMesh *mesh
+                /*!< a pointer to a DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mesh->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mesh->layer));
+}
+
+
+/*!
+ * \brief Set the \c layer for a DXF \c MESH entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_layer
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        char *layer
+                /*!< a pointer to a string containing the \c layer to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/
