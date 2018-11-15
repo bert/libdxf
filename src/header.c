@@ -1922,7 +1922,7 @@ dxf_header_read
                 else if(!strcmp(temp_string, "$ACADVER"))
                 {
                     dxf_header_get_string_variable(&header->AcadVer, fp);
-                    header->_AcadVer = dxf_header_acad_version_from_string(header->AcadVer)
+                    header->_AcadVer = dxf_header_acad_version_from_string(header->AcadVer);
                 }
                 else if(!strcmp(temp_string, "$ANGBASE"))
                 {
@@ -2765,23 +2765,18 @@ dxf_header_read
                     dxf_header_get_int_variable(&header->XClipFrame, fp);
                   }
                 else if(!strcmp(temp_string, "$XEDIT"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->XEdit, fp);
-                  }
-
-                /* Procedure for getting the variable value: fgetc()
-                 * to the next isnum(), then check to make sure the
-                 * group code matches the return type. If not, do
-                 * nothing. If so, fgetc() to the value, ungetc(),
-                 * fgets(), sscanf(). If it's a number, call it
-                 * good. If it's a string, free the current string,
-                 * allocate space, and strcpy() it into the new
-                 * space. */
-
-                /* Maybe don't check to make sure the group code
-                 * matches; there are a lot of type mismatches
-                 * between member variables and the DXF group codes */
-
+                }
+                else
+                {
+                    fprintf(stderr, (_("Warning in %s () unknown variable name: %s\n"
+                                       "File: %s\n"
+                                       "Line: %d\n")),
+                            __FUNCTION__, temp_string,
+                            fp->filename, fp->line_number);
+                    continue;
+                }
                 /* TODO: Investigate overflow risk of member
                  * variables stored as an int, but that can have up
                  * to sixteen hexadecimal digits (64 bits) */
