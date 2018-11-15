@@ -3009,7 +3009,7 @@ dxf_header_get_int16_variable
                         int group_code;
                         /* Get the group code. This will, for now at least, be ignored. */
                         fgets(line_in, sizeof(line_in), fp->fp);
-                        sscanf(line_in, "%" SCNd16, &group_code);
+                        sscanf(line_in, "%d", &group_code);
                         break;
                 }
                 else
@@ -3058,5 +3058,178 @@ dxf_header_get_int16_variable
                 }
         }
 }
+
+/*!
+ *  \brief Read a double-precision floating-point variable from a /c
+ *  DxfFile
+ */
+static void
+dxf_header_get_double_variable
+(
+        double *res
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+)
+{
+        int ch;
+        while(ch = fgetc(fp->fp))
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                        continue;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        int group_code;
+                        /* Get the group code. This will, for now at least, be ignored. */
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "d", &group_code);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, fp->file_name, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+
+        while(ch = fgetc(fp->fp))
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        /* Store the variable value in the result */
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%lf", res);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, fp->file_name, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+}
+
+/*!
+ *  \brief Read a string variable from a /c DxfFile
+ */
+static void
+dxf_header_get_string_variable
+(
+        int16_t *res
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+)
+{
+        int ch;
+        while(ch = fgetc(fp->fp))
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                        continue;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        int group_code;
+                        /* Get the group code. This will, for now at least, be ignored. */
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%" SCNd16, &group_code);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, fp->file_name, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+
+        while(ch = fgetc(fp->fp))
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isalpha(ch))
+                {
+                        /* Store the variable value in the result */
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        char temp_string[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%s", temp_string);
+                        /* Swap out the default string for the new one */
+                        free(res);
+                        res = strdup(temp_string);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, fp->file_name, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+}
+
+
 
 /* EOF */
