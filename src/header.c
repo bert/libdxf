@@ -1922,7 +1922,7 @@ dxf_header_read
                 else if(!strcmp(temp_string, "$ACADVER"))
                 {
                     dxf_header_get_string_variable(&header->AcadVer, fp);
-                    header->_AcadVer = atoi(header->AcadVer);
+                    header->_AcadVer = dxf_header_acad_version_from_string(header->AcadVer)
                 }
                 else if(!strcmp(temp_string, "$ANGBASE"))
                 {
