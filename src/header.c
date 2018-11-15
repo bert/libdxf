@@ -53,6 +53,7 @@ static void dxf_header_get_int_variable(int *res, DxfFile *fp);
 static void dxf_header_get_int16_variable(int16_t *res, DxfFile *fp);
 static void dxf_header_get_double_variable(double *res, DxfFile *fp);
 static void dxf_header_get_string_variable(char **res, DxfFile *fp);
+static void dxf_header_get_dxf_point_variable(DxfPoint *res, DxfFile *fp);
 
 /*!
  * \brief Allocate memory for a \c DxfHeader.
@@ -1887,7 +1888,7 @@ dxf_header_read
         while((ch = fgetc(fp->fp)) != EOF)
         {
             /* Skip whitespace */
-            if(iswhite(ch))
+            if(isspace(ch))
             {
                 if(ch == '\n')
                 {
@@ -1896,7 +1897,7 @@ dxf_header_read
                 continue;
             }
 
-            if(ch = '9')
+            if(ch == '9')
             {
                 /* Skip to variable name */
                 while((ch = fgetc(fp->fp)) != '$')
@@ -2899,7 +2900,7 @@ dxf_header_free
 static void
 dxf_header_get_int_variable
 (
-        int *res
+        int *res,
         /*!< Pointer to the member variable in which the resulting
           value shall be stored. */
         DxfFile *fp
@@ -2907,7 +2908,7 @@ dxf_header_get_int_variable
 )
 {
         int ch;
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -2937,12 +2938,12 @@ dxf_header_get_int_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
 
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -2970,7 +2971,7 @@ dxf_header_get_int_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
@@ -2982,7 +2983,7 @@ dxf_header_get_int_variable
 static void
 dxf_header_get_int16_variable
 (
-        int16_t *res
+        int16_t *res,
         /*!< Pointer to the member variable in which the resulting
           value shall be stored. */
         DxfFile *fp
@@ -2990,7 +2991,7 @@ dxf_header_get_int16_variable
 )
 {
         int ch;
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -3020,12 +3021,12 @@ dxf_header_get_int16_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
 
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -3053,7 +3054,7 @@ dxf_header_get_int16_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
@@ -3066,7 +3067,7 @@ dxf_header_get_int16_variable
 static void
 dxf_header_get_double_variable
 (
-        double *res
+        double *res,
         /*!< Pointer to the member variable in which the resulting
           value shall be stored. */
         DxfFile *fp
@@ -3074,7 +3075,7 @@ dxf_header_get_double_variable
 )
 {
         int ch;
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -3093,7 +3094,7 @@ dxf_header_get_double_variable
                         int group_code;
                         /* Get the group code. This will, for now at least, be ignored. */
                         fgets(line_in, sizeof(line_in), fp->fp);
-                        sscanf(line_in, "d", &group_code);
+                        sscanf(line_in, "%d", &group_code);
                         break;
                 }
                 else
@@ -3104,12 +3105,12 @@ dxf_header_get_double_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
 
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -3137,7 +3138,7 @@ dxf_header_get_double_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
@@ -3149,7 +3150,7 @@ dxf_header_get_double_variable
 static void
 dxf_header_get_string_variable
 (
-        int16_t *res
+        char **res,
         /*!< Pointer to the member variable in which the resulting
           value shall be stored. */
         DxfFile *fp
@@ -3157,7 +3158,7 @@ dxf_header_get_string_variable
 )
 {
         int ch;
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -3176,7 +3177,7 @@ dxf_header_get_string_variable
                         int group_code;
                         /* Get the group code. This will, for now at least, be ignored. */
                         fgets(line_in, sizeof(line_in), fp->fp);
-                        sscanf(line_in, "%" SCNd16, &group_code);
+                        sscanf(line_in, "%d", &group_code);
                         break;
                 }
                 else
@@ -3187,12 +3188,12 @@ dxf_header_get_string_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
 
-        while(ch = fgetc(fp->fp))
+        while((ch = fgetc(fp->fp))!= EOF)
         {
                 /* Skip whitespace */
                 if(ch == '\n')
@@ -3213,7 +3214,7 @@ dxf_header_get_string_variable
                         sscanf(line_in, "%s", temp_string);
                         /* Swap out the default string for the new one */
                         free(res);
-                        res = strdup(temp_string);
+                        *res = strdup(temp_string);
                         break;
                 }
                 else
@@ -3224,7 +3225,7 @@ dxf_header_get_string_variable
                         fprintf(stderr, (_("Warning in %s () unknown input: %s"
                                            "File: %s\n"
                                            "Line: %d\n")),
-                                __FUNCTION__, fp->file_name, fp->line_number);
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
                         fp->line_number++;
                 }
         }
