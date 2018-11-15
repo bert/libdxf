@@ -2209,561 +2209,561 @@ dxf_header_read
                     dxf_header_get_int_variable(&header->DimTDEC, fp);
                 }
                 else if(!strcmp(temp_string, "$DIMTFAC"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->DimTFAC, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTIH"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTIH, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTIX"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTIX, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTM"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->DimTM, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTMOVE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTMOVE, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTOFL"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTOFL, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTOH"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTOH, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTOL"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTOL, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTOLJ"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTOLJ, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTP"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->DimTP, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTSZ"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->DimTSZ, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTVP"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->DimTVP, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTXSTY"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->DimTXSTY, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTXT"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->DimTXT, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMTZIN"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimTZIN, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMUPT"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimUPT, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DIMZIN"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DimZIN, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DISPSILH"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->DispSilH, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DRAGVS"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->DragVS, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$DWGCODEPAGE"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->DWGCodePage, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$ELEVATION"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->Elevation, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$ENDCAPS"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->EndCaps, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$EXTMAX"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->ExtMax, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$EXTMIN"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->ExtMin, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$EXTNAMES"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->ExtNames, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$FILLETRAD"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->FilletRad, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$FILLMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->FillMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$FINGERPRINTGUID"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->FingerPrintGUID, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$HALOGAP"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->HaloGap, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$HANDSEED"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->HandSeed, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$HIDETEXT"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->HideText, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$HYPERLINKBASE"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->HyperLinkBase, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INDEXCTL"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->IndexCtl, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INSBASE"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->InsBase, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INSUNITS"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->InsUnits, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INTERFERECOLOR"))
-                  {
+                {
                     dxf_header_get_int16_variable(&header->InterfereColor, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INTERFEREOBJVS"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->InterfereObjVS, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INTERFEREVPVS"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->InterfereVPVS, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INTERSECTIONCOLOR"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->InterSectionColor, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$INTERSECTIONDISPLAY"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->InterSectionDisplay, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$JOINSTYLE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->JoinStyle, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$LIMCHECK"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->LimCheck, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$LIMMAX"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->LimMax, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$LIMMIN"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->LimMin, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$LTSCALE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->LTScale, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$LUNITS"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->LUnits, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$LUPREC"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->LUPrec, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$LWDISPLAY"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->LWDisplay, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$MAXACTVP"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->MaxActVP, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$MEASUREMENT"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->Measurement, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$MENU"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->Menu, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$OBSCOLOR"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->ObsColor, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$OBSLTYPE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->ObsLType, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$ORTHOMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->OrthoMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PDMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->PDMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PDSIZE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->PDSize, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PELEVATION"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->PElevation, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PEXTMAX"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PExtMax, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PEXTMIN"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PExtMin, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PINSBASE"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PInsBase, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PLIMCHECK"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->PLimCheck, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PLIMMAX"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PLimMax, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PLIMMIN"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PLimMin, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PLINEGEN"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->PLineGen, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PLINEWID"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->PLineWid, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PROJECTNAME"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->ProjectName, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PROXYGRAPHICS"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->ProxyGraphics, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PSLTSCALE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->PSLTScale, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PSTYLEMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->PStyleMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PSVPSCALE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->PSVPScale, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSBASE"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->PUCSBase, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSNAME"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->PUCSName, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORG"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSOrg, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORGBACK"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSOrgBack, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORGBOTTOM"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSOrgBottom, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORGFRONT"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSOrgFront, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORGLEFT"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSOrgLeft, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORGRIGHT"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSOrgRight, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORGTOP"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSOrgTop, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORTHOREF"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->PUCSOrthoRef, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSORTHOVIEW"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->PUCSOrthoView, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSXDIR"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSXDir, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$PUCSYDIR"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->PUCSYDir, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$QTEXTMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->QTextMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$REGENMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->RegenMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SHADEEDGE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->ShadEdge, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SHADEDIF"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->ShadeDif, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SHADOWPLANELOCATION"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->ShadowPlaneLocation, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SKETCHINC"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->Sketchinc, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SKPOLY"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SKPoly, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SORTENTS"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SortEnts, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SPLINESEGS"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SPLineSegs, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SPLINETYPE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SPLineType, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SURFTAB1"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SurfTab1, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SURFTAB2"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SurfTab2, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SURFTYPE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SurfType, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SURFU"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SurfU, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$SURFV"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->SurfV, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TDCREATE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TDCreate, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TDINDWG"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TDInDWG, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TDUCREATE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TDUCreate, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TDUPDATE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TDUpdate, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TDUSRTIMER"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TDUSRTimer, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TDUUPDATE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TDUpdate, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TEXTSIZE"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TextSize, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TEXTSTYLE"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->TextStyle, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$THICKNESS"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->Thickness, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TILEMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->TileMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TRACEWID"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->TraceWid, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$TREEDEPTH"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->TreeDepth, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSBASE"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->UCSBase, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSNAME"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->UCSName, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORG"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSOrg, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORGBACK"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSOrgBack, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORGBOTTOM"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSOrgBottom, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORGFRONT"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSOrgFront, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORGLEFT"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSOrgLeft, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORGRIGHT"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSOrgRight, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORGTOP"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSOrgTop, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORTHOREF"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->UCSOrthoRef, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSORTHOVIEW"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->UCSOrthoView, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSXDIR"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSXDir, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UCSYDIR"))
-                  {
+                {
                     dxf_header_get_dxf_point_variable(&header->UCSYDir, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$UNITMODE"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->UnitMode, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERI1"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->UserI1, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERI2"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->UserI2, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERI3"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->UserI3, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERI4"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->UserI4, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERI5"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->UserI5, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERR1"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->UserR1, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERR2"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->UserR2, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERR3"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->UserR3, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERR4"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->UserR4, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USERR5"))
-                  {
+                {
                     dxf_header_get_double_variable(&header->UserR5, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$USRTIMER"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->USRTimer, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$VERSIONGUID"))
-                  {
+                {
                     dxf_header_get_string_variable(&header->VersionGUID, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$VISRETAIN"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->VisRetain, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$WORLDVIEW"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->WorldView, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$XCLIPFRAME"))
-                  {
+                {
                     dxf_header_get_int_variable(&header->XClipFrame, fp);
-                  }
+                }
                 else if(!strcmp(temp_string, "$XEDIT"))
                 {
                     dxf_header_get_int_variable(&header->XEdit, fp);
@@ -2780,6 +2780,13 @@ dxf_header_read
                 /* TODO: Investigate overflow risk of member
                  * variables stored as an int, but that can have up
                  * to sixteen hexadecimal digits (64 bits) */
+
+                /* Good news: the DXF reference provided by Autodesk
+                 * is only accurate to AutoCAD 2012. There are
+                 * header variables in a DXF I just created that are
+                 * nowhere to be found in the DXF reference. I can't
+                 * find any information on DXF file format
+                 * specifications more recent than 2012. */
 
             }
 
