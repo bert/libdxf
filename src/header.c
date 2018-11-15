@@ -3155,7 +3155,7 @@ dxf_header_get_string_variable
           value shall be stored. */
         DxfFile *fp
         /*!< DXF file handle of input file (or device)  */
-)
+        )
 {
         int ch;
         while((ch = fgetc(fp->fp)) != EOF)
@@ -3213,7 +3213,7 @@ dxf_header_get_string_variable
                         fgets(line_in, sizeof(line_in), fp->fp);
                         sscanf(line_in, "%s", temp_string);
                         /* Swap out the default string for the new one */
-                        free(res);
+                        free(*res);
                         *res = strdup(temp_string);
                         break;
                 }
@@ -3231,6 +3231,20 @@ dxf_header_get_string_variable
         }
 }
 
-
+/*!
+ *  \brief Read a DxfPoint variable from a /c DxfFile
+ */
+static void
+dxf_header_get_dxf_point_variable
+(
+        DxfPoint *res,
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+        )
+{
+        dxf_point_read(fp, res);
+}
 
 /* EOF */
