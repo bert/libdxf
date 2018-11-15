@@ -263,6 +263,7 @@ DxfMesh *dxf_mesh_set_layer (DxfMesh *mesh, char *layer);
 double dxf_mesh_get_elevation (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_elevation (DxfMesh *mesh, double elevation);
 double dxf_mesh_get_thickness (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_thickness (DxfMesh *mesh, double thickness);
 
 
 #ifdef __cplusplus
