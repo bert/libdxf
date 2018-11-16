@@ -268,6 +268,7 @@ double dxf_mesh_get_linetype_scale (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_linetype_scale (DxfMesh *mesh, double linetype_scale);
 int16_t dxf_mesh_get_visibility (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_visibility (DxfMesh *mesh, int16_t visibility);
+int dxf_mesh_get_color (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
