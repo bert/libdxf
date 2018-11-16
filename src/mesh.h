@@ -266,6 +266,7 @@ double dxf_mesh_get_thickness (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_thickness (DxfMesh *mesh, double thickness);
 double dxf_mesh_get_linetype_scale (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_linetype_scale (DxfMesh *mesh, double linetype_scale);
+int16_t dxf_mesh_get_visibility (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
