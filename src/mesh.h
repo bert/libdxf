@@ -273,6 +273,7 @@ DxfMesh *dxf_mesh_set_color (DxfMesh *mesh, int color);
 int dxf_mesh_get_paperspace (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_paperspace (DxfMesh *mesh, int paperspace);
 int dxf_mesh_get_graphics_data_size (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_graphics_data_size (DxfMesh *mesh, int graphics_data_size);
 
 
 #ifdef __cplusplus
