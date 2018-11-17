@@ -49,6 +49,11 @@
 #include "util.h"
 #include "point.h"
 
+static void dxf_header_get_int_variable(int *res, DxfFile *fp);
+static void dxf_header_get_int16_variable(int16_t *res, DxfFile *fp);
+static void dxf_header_get_double_variable(double *res, DxfFile *fp);
+static void dxf_header_get_string_variable(char **res, DxfFile *fp);
+static void dxf_header_get_dxf_point_variable(DxfPoint *res, DxfFile *fp);
 
 /*!
  * \brief Allocate memory for a \c DxfHeader.
@@ -1875,68 +1880,923 @@ dxf_header_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char temp_string[255];
-        int n, acad_version_number, ret;
 
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL file pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (header == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                header = dxf_header_new ();
-//                header = dxf_header_init (header, acad_version_number);
-        }
-        if (header == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHeader struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        /* first of all we MUST read the version number */
-        dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
-        ret = dxf_header_read_parse_string (fp, temp_string,
-          "$ACADVER", &header->AcadVer, TRUE);
-        dxf_return_val_if_fail (ret, FALSE);
-        /* turn the acad_version into an integer */
-        acad_version_number = dxf_header_acad_version_from_string (header->AcadVer);
+        char line_in[256];
+        char temp_string[256];
+        int ch;
 
-        /*! \todo FIXME: stores the autocad version as int */
-        header->_AcadVer = acad_version_number;
-
-        /* a loop to read all the header with no particulary order */
-        while (!feof (fp->fp))
+        while((ch = fgetc(fp->fp)) != EOF)
         {
-                /* reads the next header content */
-                dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
-                /* if it is a valid line */
-                if (n == 9)
+            /* Skip whitespace */
+            if(isspace(ch))
+            {
+                if(ch == '\n')
                 {
-                        /* parses the header content and extract info to the header struct */
-                        ret = dxf_header_read_parser (fp, header,
-                          temp_string, acad_version_number);
-                        dxf_return_val_if_fail (ret, FALSE);
-                        if (ret != FOUND)
-                                return FALSE;
+                    fp->line_number++;
                 }
-                /* or it can be the end of the section */
-                else if (n == 0 && strcmp (temp_string, "ENDSEC") == 0)
+                continue;
+            }
+
+            if(ch == '9')
+            {
+                /* Skip to variable name */
+                while((ch = fgetc(fp->fp)) != '$')
                 {
-#if DEBUG
-                        fprintf (stderr,
-                          (_("[File: %s: line: %d] read_header :: Section Ended.\n")),
-                          __FILE__, __LINE__);
-#endif
+                    if(ch == '\n')
+                    {
+                        fp->line_number++;
+                    }
+                    continue;
                 }
+                ungetc(ch, fp->fp);
+                fgets(line_in, sizeof(line_in), fp->fp);
+                fp->line_number++;
+                sscanf(line_in, "%s", temp_string);
+                /* TODO: Match temp_string to variable name, then get
+                 * value for variable */
+                if(!strcmp(temp_string, "$ACADMAINTVER"))
+                {
+                    /* Do nothing. $ACADMAINTVER is an ignored variable */
+                    continue;
+                }
+                else if(!strcmp(temp_string, "$ACADVER"))
+                {
+                    dxf_header_get_string_variable(&header->AcadVer, fp);
+                    header->_AcadVer = dxf_header_acad_version_from_string(header->AcadVer);
+                }
+                else if(!strcmp(temp_string, "$ANGBASE"))
+                {
+                    dxf_header_get_double_variable(&header->AngBase, fp);
+                }
+                else if(!strcmp(temp_string, "$ANGDIR"))
+                {
+                    dxf_header_get_int_variable(&header->AngDir, fp);
+                }
+                else if(!strcmp(temp_string, "$ATTMODE"))
+                {
+                    dxf_header_get_int_variable(&header->AttMode, fp);
+                }
+                else if(!strcmp(temp_string, "$AUNITS"))
+                {
+                    dxf_header_get_int_variable(&header->AUnits, fp);
+                }
+                else if(!strcmp(temp_string, "$AUPREC"))
+                {
+                    dxf_header_get_int_variable(&header->AUPrec, fp);
+                }
+                else if(!strcmp(temp_string, "$CECOLOR"))
+                {
+                    dxf_header_get_int_variable(&header->CEColor, fp);
+                }
+                else if(!strcmp(temp_string, "$CELTSCALE"))
+                {
+                    dxf_header_get_double_variable(&header->CELTScale, fp);
+                }
+                else if(!strcmp(temp_string, "$CELTYPE"))
+                {
+                    dxf_header_get_string_variable(&header->CELType, fp);
+                }
+                else if(!strcmp(temp_string, "$CELWEIGHT"))
+                {
+                    dxf_header_get_int_variable(&header->CELWeight, fp);
+                }
+                else if(!strcmp(temp_string, "$CEPSNID"))
+                {
+                    dxf_header_get_string_variable(&header->CEPSNID, fp);
+                }
+                else if(!strcmp(temp_string, "$CEPSNTYPE"))
+                {
+                    dxf_header_get_int_variable(&header->CEPSNType, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFERA"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferA, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFERB"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferB, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFER"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferC, fp);
+                }
+                else if(!strcmp(temp_string, "$CHAMFERD"))
+                {
+                    dxf_header_get_double_variable(&header->ChamferD, fp);
+                }
+                else if(!strcmp(temp_string, "$CLAYER"))
+                {
+                    dxf_header_get_string_variable(&header->CLayer, fp);
+                }
+                else if(!strcmp(temp_string, "$CMLJUST"))
+                {
+                    dxf_header_get_int_variable(&header->CMLJust, fp);
+                }
+                else if(!strcmp(temp_string, "$CMLSCALE"))
+                {
+                    dxf_header_get_double_variable(&header->CMLScale, fp);
+                }
+                else if(!strcmp(temp_string, "$CMLSTYLE"))
+                {
+                    dxf_header_get_string_variable(&header->CMLStyle, fp);
+                }
+                else if(!strcmp(temp_string, "$CSHADOW"))
+                {
+                    dxf_header_get_int16_variable(&header->CShadow, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMADEC"))
+                {
+                    dxf_header_get_int_variable(&header->DimADEC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALT"))
+                {
+                    dxf_header_get_int_variable(&header->DimALT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALTD"))
+                {
+                    dxf_header_get_int_variable(&header->DimALTD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALTF"))
+                {
+                    dxf_header_get_double_variable(&header->DimALTF, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALTRND"))
+                {
+                    dxf_header_get_double_variable(&header->DimALTRND, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALTTD"))
+                {
+                    dxf_header_get_int_variable(&header->DimALTTD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALTTZ"))
+                {
+                    dxf_header_get_int_variable(&header->DimALTTZ, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALTU"))
+                {
+                    dxf_header_get_int_variable(&header->DimALTU, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMALTZ"))
+                {
+                    dxf_header_get_int_variable(&header->DimALTZ, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMAPOST"))
+                {
+                    dxf_header_get_string_variable(&header->DimAPOST, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMASO"))
+                {
+                    dxf_header_get_int_variable(&header->DimASO, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMASSOC"))
+                {
+                    dxf_header_get_int_variable(&header->DimASSOC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMASZ"))
+                {
+                    dxf_header_get_double_variable(&header->DimASZ, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMATFIT"))
+                {
+                    dxf_header_get_int_variable(&header->DimATFIT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMAUNIT"))
+                {
+                    dxf_header_get_int_variable(&header->DimAUNIT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMAZIN"))
+                {
+                    dxf_header_get_int_variable(&header->DimAZIN, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMBLK"))
+                {
+                    dxf_header_get_string_variable(&header->DimBLK, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMBLK1"))
+                {
+                    dxf_header_get_string_variable(&header->DimBLK1, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMBLK2"))
+                {
+                    dxf_header_get_string_variable(&header->DimBLK2, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCEN"))
+                {
+                    dxf_header_get_double_variable(&header->DimCEN, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCLRD"))
+                {
+                    dxf_header_get_int_variable(&header->DimCLRD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCLRE"))
+                {
+                    dxf_header_get_int_variable(&header->DimCLRE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMCLRT"))
+                {
+                    dxf_header_get_int_variable(&header->DimCLRT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDEC"))
+                {
+                    dxf_header_get_int_variable(&header->DimDEC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDLE"))
+                {
+                    dxf_header_get_double_variable(&header->DimDLE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDLI"))
+                {
+                    dxf_header_get_double_variable(&header->DimDLI, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMDSEP"))
+                {
+                    dxf_header_get_int_variable(&header->DimDSEP, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMEXE"))
+                {
+                    dxf_header_get_double_variable(&header->DimEXE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMEXO"))
+                {
+                    dxf_header_get_double_variable(&header->DimEXO, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMFAC"))
+                {
+                    dxf_header_get_double_variable(&header->DimFAC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMGAP"))
+                {
+                    dxf_header_get_double_variable(&header->DimGAP, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMJUST"))
+                {
+                    dxf_header_get_int_variable(&header->DimJUST, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLDRBLK"))
+                {
+                    dxf_header_get_string_variable(&header->DimLDRBLK, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLFAC"))
+                {
+                    dxf_header_get_double_variable(&header->DimLFAC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLIM"))
+                {
+                    dxf_header_get_int_variable(&header->DimLIM, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLUNIT"))
+                {
+                    dxf_header_get_int_variable(&header->DimLUNIT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLWD"))
+                {
+                    dxf_header_get_int_variable(&header->DimLWD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMLWE"))
+                {
+                    dxf_header_get_int_variable(&header->DimLWE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMPOST"))
+                {
+                    dxf_header_get_string_variable(&header->DimPOST, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMRND"))
+                {
+                    dxf_header_get_double_variable(&header->DimRND, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSAH"))
+                {
+                    dxf_header_get_int_variable(&header->DimSAH, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSCALE"))
+                {
+                    dxf_header_get_double_variable(&header->DimSCALE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSD1"))
+                {
+                    dxf_header_get_int_variable(&header->DimSD1, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSD2"))
+                {
+                    dxf_header_get_int_variable(&header->DimSD2, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSE1"))
+                {
+                    dxf_header_get_int_variable(&header->DimSE1, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSE2"))
+                {
+                    dxf_header_get_int_variable(&header->DimSE2, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSHO"))
+                {
+                    dxf_header_get_int_variable(&header->DimSHO, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSOXD"))
+                {
+                    dxf_header_get_int_variable(&header->DimSOXD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMSTYLE"))
+                {
+                    dxf_header_get_string_variable(&header->DimSTYLE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTAD"))
+                {
+                    dxf_header_get_int_variable(&header->DimTAD, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTDEC"))
+                {
+                    dxf_header_get_int_variable(&header->DimTDEC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTFAC"))
+                {
+                    dxf_header_get_double_variable(&header->DimTFAC, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTIH"))
+                {
+                    dxf_header_get_int_variable(&header->DimTIH, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTIX"))
+                {
+                    dxf_header_get_int_variable(&header->DimTIX, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTM"))
+                {
+                    dxf_header_get_double_variable(&header->DimTM, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTMOVE"))
+                {
+                    dxf_header_get_int_variable(&header->DimTMOVE, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTOFL"))
+                {
+                    dxf_header_get_int_variable(&header->DimTOFL, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTOH"))
+                {
+                    dxf_header_get_int_variable(&header->DimTOH, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTOL"))
+                {
+                    dxf_header_get_int_variable(&header->DimTOL, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTOLJ"))
+                {
+                    dxf_header_get_int_variable(&header->DimTOLJ, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTP"))
+                {
+                    dxf_header_get_double_variable(&header->DimTP, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTSZ"))
+                {
+                    dxf_header_get_double_variable(&header->DimTSZ, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTVP"))
+                {
+                    dxf_header_get_double_variable(&header->DimTVP, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTXSTY"))
+                {
+                    dxf_header_get_string_variable(&header->DimTXSTY, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTXT"))
+                {
+                    dxf_header_get_double_variable(&header->DimTXT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMTZIN"))
+                {
+                    dxf_header_get_int_variable(&header->DimTZIN, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMUPT"))
+                {
+                    dxf_header_get_int_variable(&header->DimUPT, fp);
+                }
+                else if(!strcmp(temp_string, "$DIMZIN"))
+                {
+                    dxf_header_get_int_variable(&header->DimZIN, fp);
+                }
+                else if(!strcmp(temp_string, "$DISPSILH"))
+                {
+                    dxf_header_get_int_variable(&header->DispSilH, fp);
+                }
+                else if(!strcmp(temp_string, "$DRAGVS"))
+                {
+                    dxf_header_get_string_variable(&header->DragVS, fp);
+                }
+                else if(!strcmp(temp_string, "$DWGCODEPAGE"))
+                {
+                    dxf_header_get_string_variable(&header->DWGCodePage, fp);
+                }
+                else if(!strcmp(temp_string, "$ELEVATION"))
+                {
+                    dxf_header_get_double_variable(&header->Elevation, fp);
+                }
+                else if(!strcmp(temp_string, "$ENDCAPS"))
+                {
+                    dxf_header_get_int_variable(&header->EndCaps, fp);
+                }
+                else if(!strcmp(temp_string, "$EXTMAX"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->ExtMax, fp);
+                }
+                else if(!strcmp(temp_string, "$EXTMIN"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->ExtMin, fp);
+                }
+                else if(!strcmp(temp_string, "$EXTNAMES"))
+                {
+                    dxf_header_get_int_variable(&header->ExtNames, fp);
+                }
+                else if(!strcmp(temp_string, "$FILLETRAD"))
+                {
+                    dxf_header_get_double_variable(&header->FilletRad, fp);
+                }
+                else if(!strcmp(temp_string, "$FILLMODE"))
+                {
+                    dxf_header_get_int_variable(&header->FillMode, fp);
+                }
+                else if(!strcmp(temp_string, "$FINGERPRINTGUID"))
+                {
+                    dxf_header_get_string_variable(&header->FingerPrintGUID, fp);
+                }
+                else if(!strcmp(temp_string, "$HALOGAP"))
+                {
+                    dxf_header_get_int_variable(&header->HaloGap, fp);
+                }
+                else if(!strcmp(temp_string, "$HANDSEED"))
+                {
+                    dxf_header_get_string_variable(&header->HandSeed, fp);
+                }
+                else if(!strcmp(temp_string, "$HIDETEXT"))
+                {
+                    dxf_header_get_int_variable(&header->HideText, fp);
+                }
+                else if(!strcmp(temp_string, "$HYPERLINKBASE"))
+                {
+                    dxf_header_get_string_variable(&header->HyperLinkBase, fp);
+                }
+                else if(!strcmp(temp_string, "$INDEXCTL"))
+                {
+                    dxf_header_get_int_variable(&header->IndexCtl, fp);
+                }
+                else if(!strcmp(temp_string, "$INSBASE"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->InsBase, fp);
+                }
+                else if(!strcmp(temp_string, "$INSUNITS"))
+                {
+                    dxf_header_get_int_variable(&header->InsUnits, fp);
+                }
+                else if(!strcmp(temp_string, "$INTERFERECOLOR"))
+                {
+                    dxf_header_get_int16_variable(&header->InterfereColor, fp);
+                }
+                else if(!strcmp(temp_string, "$INTERFEREOBJVS"))
+                {
+                    dxf_header_get_string_variable(&header->InterfereObjVS, fp);
+                }
+                else if(!strcmp(temp_string, "$INTERFEREVPVS"))
+                {
+                    dxf_header_get_string_variable(&header->InterfereVPVS, fp);
+                }
+                else if(!strcmp(temp_string, "$INTERSECTIONCOLOR"))
+                {
+                    dxf_header_get_int_variable(&header->InterSectionColor, fp);
+                }
+                else if(!strcmp(temp_string, "$INTERSECTIONDISPLAY"))
+                {
+                    dxf_header_get_int_variable(&header->InterSectionDisplay, fp);
+                }
+                else if(!strcmp(temp_string, "$JOINSTYLE"))
+                {
+                    dxf_header_get_int_variable(&header->JoinStyle, fp);
+                }
+                else if(!strcmp(temp_string, "$LIMCHECK"))
+                {
+                    dxf_header_get_int_variable(&header->LimCheck, fp);
+                }
+                else if(!strcmp(temp_string, "$LIMMAX"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->LimMax, fp);
+                }
+                else if(!strcmp(temp_string, "$LIMMIN"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->LimMin, fp);
+                }
+                else if(!strcmp(temp_string, "$LTSCALE"))
+                {
+                    dxf_header_get_double_variable(&header->LTScale, fp);
+                }
+                else if(!strcmp(temp_string, "$LUNITS"))
+                {
+                    dxf_header_get_int_variable(&header->LUnits, fp);
+                }
+                else if(!strcmp(temp_string, "$LUPREC"))
+                {
+                    dxf_header_get_int_variable(&header->LUPrec, fp);
+                }
+                else if(!strcmp(temp_string, "$LWDISPLAY"))
+                {
+                    dxf_header_get_int_variable(&header->LWDisplay, fp);
+                }
+                else if(!strcmp(temp_string, "$MAXACTVP"))
+                {
+                    dxf_header_get_int_variable(&header->MaxActVP, fp);
+                }
+                else if(!strcmp(temp_string, "$MEASUREMENT"))
+                {
+                    dxf_header_get_int_variable(&header->Measurement, fp);
+                }
+                else if(!strcmp(temp_string, "$MENU"))
+                {
+                    dxf_header_get_string_variable(&header->Menu, fp);
+                }
+                else if(!strcmp(temp_string, "$OBSCOLOR"))
+                {
+                    dxf_header_get_int_variable(&header->ObsColor, fp);
+                }
+                else if(!strcmp(temp_string, "$OBSLTYPE"))
+                {
+                    dxf_header_get_int_variable(&header->ObsLType, fp);
+                }
+                else if(!strcmp(temp_string, "$ORTHOMODE"))
+                {
+                    dxf_header_get_int_variable(&header->OrthoMode, fp);
+                }
+                else if(!strcmp(temp_string, "$PDMODE"))
+                {
+                    dxf_header_get_int_variable(&header->PDMode, fp);
+                }
+                else if(!strcmp(temp_string, "$PDSIZE"))
+                {
+                    dxf_header_get_double_variable(&header->PDSize, fp);
+                }
+                else if(!strcmp(temp_string, "$PELEVATION"))
+                {
+                    dxf_header_get_double_variable(&header->PElevation, fp);
+                }
+                else if(!strcmp(temp_string, "$PEXTMAX"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PExtMax, fp);
+                }
+                else if(!strcmp(temp_string, "$PEXTMIN"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PExtMin, fp);
+                }
+                else if(!strcmp(temp_string, "$PINSBASE"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PInsBase, fp);
+                }
+                else if(!strcmp(temp_string, "$PLIMCHECK"))
+                {
+                    dxf_header_get_int_variable(&header->PLimCheck, fp);
+                }
+                else if(!strcmp(temp_string, "$PLIMMAX"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PLimMax, fp);
+                }
+                else if(!strcmp(temp_string, "$PLIMMIN"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PLimMin, fp);
+                }
+                else if(!strcmp(temp_string, "$PLINEGEN"))
+                {
+                    dxf_header_get_int_variable(&header->PLineGen, fp);
+                }
+                else if(!strcmp(temp_string, "$PLINEWID"))
+                {
+                    dxf_header_get_double_variable(&header->PLineWid, fp);
+                }
+                else if(!strcmp(temp_string, "$PROJECTNAME"))
+                {
+                    dxf_header_get_string_variable(&header->ProjectName, fp);
+                }
+                else if(!strcmp(temp_string, "$PROXYGRAPHICS"))
+                {
+                    dxf_header_get_int_variable(&header->ProxyGraphics, fp);
+                }
+                else if(!strcmp(temp_string, "$PSLTSCALE"))
+                {
+                    dxf_header_get_int_variable(&header->PSLTScale, fp);
+                }
+                else if(!strcmp(temp_string, "$PSTYLEMODE"))
+                {
+                    dxf_header_get_int_variable(&header->PStyleMode, fp);
+                }
+                else if(!strcmp(temp_string, "$PSVPSCALE"))
+                {
+                    dxf_header_get_double_variable(&header->PSVPScale, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSBASE"))
+                {
+                    dxf_header_get_string_variable(&header->PUCSBase, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSNAME"))
+                {
+                    dxf_header_get_string_variable(&header->PUCSName, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORG"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSOrg, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORGBACK"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSOrgBack, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORGBOTTOM"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSOrgBottom, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORGFRONT"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSOrgFront, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORGLEFT"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSOrgLeft, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORGRIGHT"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSOrgRight, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORGTOP"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSOrgTop, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORTHOREF"))
+                {
+                    dxf_header_get_string_variable(&header->PUCSOrthoRef, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSORTHOVIEW"))
+                {
+                    dxf_header_get_int_variable(&header->PUCSOrthoView, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSXDIR"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSXDir, fp);
+                }
+                else if(!strcmp(temp_string, "$PUCSYDIR"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->PUCSYDir, fp);
+                }
+                else if(!strcmp(temp_string, "$QTEXTMODE"))
+                {
+                    dxf_header_get_int_variable(&header->QTextMode, fp);
+                }
+                else if(!strcmp(temp_string, "$REGENMODE"))
+                {
+                    dxf_header_get_int_variable(&header->RegenMode, fp);
+                }
+                else if(!strcmp(temp_string, "$SHADEEDGE"))
+                {
+                    dxf_header_get_int_variable(&header->ShadEdge, fp);
+                }
+                else if(!strcmp(temp_string, "$SHADEDIF"))
+                {
+                    dxf_header_get_int_variable(&header->ShadeDif, fp);
+                }
+                else if(!strcmp(temp_string, "$SHADOWPLANELOCATION"))
+                {
+                    dxf_header_get_double_variable(&header->ShadowPlaneLocation, fp);
+                }
+                else if(!strcmp(temp_string, "$SKETCHINC"))
+                {
+                    dxf_header_get_double_variable(&header->Sketchinc, fp);
+                }
+                else if(!strcmp(temp_string, "$SKPOLY"))
+                {
+                    dxf_header_get_int_variable(&header->SKPoly, fp);
+                }
+                else if(!strcmp(temp_string, "$SORTENTS"))
+                {
+                    dxf_header_get_int_variable(&header->SortEnts, fp);
+                }
+                else if(!strcmp(temp_string, "$SPLINESEGS"))
+                {
+                    dxf_header_get_int_variable(&header->SPLineSegs, fp);
+                }
+                else if(!strcmp(temp_string, "$SPLINETYPE"))
+                {
+                    dxf_header_get_int_variable(&header->SPLineType, fp);
+                }
+                else if(!strcmp(temp_string, "$SURFTAB1"))
+                {
+                    dxf_header_get_int_variable(&header->SurfTab1, fp);
+                }
+                else if(!strcmp(temp_string, "$SURFTAB2"))
+                {
+                    dxf_header_get_int_variable(&header->SurfTab2, fp);
+                }
+                else if(!strcmp(temp_string, "$SURFTYPE"))
+                {
+                    dxf_header_get_int_variable(&header->SurfType, fp);
+                }
+                else if(!strcmp(temp_string, "$SURFU"))
+                {
+                    dxf_header_get_int_variable(&header->SurfU, fp);
+                }
+                else if(!strcmp(temp_string, "$SURFV"))
+                {
+                    dxf_header_get_int_variable(&header->SurfV, fp);
+                }
+                else if(!strcmp(temp_string, "$TDCREATE"))
+                {
+                    dxf_header_get_double_variable(&header->TDCreate, fp);
+                }
+                else if(!strcmp(temp_string, "$TDINDWG"))
+                {
+                    dxf_header_get_double_variable(&header->TDInDWG, fp);
+                }
+                else if(!strcmp(temp_string, "$TDUCREATE"))
+                {
+                    dxf_header_get_double_variable(&header->TDUCreate, fp);
+                }
+                else if(!strcmp(temp_string, "$TDUPDATE"))
+                {
+                    dxf_header_get_double_variable(&header->TDUpdate, fp);
+                }
+                else if(!strcmp(temp_string, "$TDUSRTIMER"))
+                {
+                    dxf_header_get_double_variable(&header->TDUSRTimer, fp);
+                }
+                else if(!strcmp(temp_string, "$TDUUPDATE"))
+                {
+                    dxf_header_get_double_variable(&header->TDUpdate, fp);
+                }
+                else if(!strcmp(temp_string, "$TEXTSIZE"))
+                {
+                    dxf_header_get_double_variable(&header->TextSize, fp);
+                }
+                else if(!strcmp(temp_string, "$TEXTSTYLE"))
+                {
+                    dxf_header_get_string_variable(&header->TextStyle, fp);
+                }
+                else if(!strcmp(temp_string, "$THICKNESS"))
+                {
+                    dxf_header_get_double_variable(&header->Thickness, fp);
+                }
+                else if(!strcmp(temp_string, "$TILEMODE"))
+                {
+                    dxf_header_get_int_variable(&header->TileMode, fp);
+                }
+                else if(!strcmp(temp_string, "$TRACEWID"))
+                {
+                    dxf_header_get_double_variable(&header->TraceWid, fp);
+                }
+                else if(!strcmp(temp_string, "$TREEDEPTH"))
+                {
+                    dxf_header_get_int_variable(&header->TreeDepth, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSBASE"))
+                {
+                    dxf_header_get_string_variable(&header->UCSBase, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSNAME"))
+                {
+                    dxf_header_get_string_variable(&header->UCSName, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORG"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSOrg, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORGBACK"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSOrgBack, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORGBOTTOM"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSOrgBottom, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORGFRONT"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSOrgFront, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORGLEFT"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSOrgLeft, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORGRIGHT"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSOrgRight, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORGTOP"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSOrgTop, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORTHOREF"))
+                {
+                    dxf_header_get_string_variable(&header->UCSOrthoRef, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSORTHOVIEW"))
+                {
+                    dxf_header_get_int_variable(&header->UCSOrthoView, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSXDIR"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSXDir, fp);
+                }
+                else if(!strcmp(temp_string, "$UCSYDIR"))
+                {
+                    dxf_header_get_dxf_point_variable(&header->UCSYDir, fp);
+                }
+                else if(!strcmp(temp_string, "$UNITMODE"))
+                {
+                    dxf_header_get_int_variable(&header->UnitMode, fp);
+                }
+                else if(!strcmp(temp_string, "$USERI1"))
+                {
+                    dxf_header_get_int_variable(&header->UserI1, fp);
+                }
+                else if(!strcmp(temp_string, "$USERI2"))
+                {
+                    dxf_header_get_int_variable(&header->UserI2, fp);
+                }
+                else if(!strcmp(temp_string, "$USERI3"))
+                {
+                    dxf_header_get_int_variable(&header->UserI3, fp);
+                }
+                else if(!strcmp(temp_string, "$USERI4"))
+                {
+                    dxf_header_get_int_variable(&header->UserI4, fp);
+                }
+                else if(!strcmp(temp_string, "$USERI5"))
+                {
+                    dxf_header_get_int_variable(&header->UserI5, fp);
+                }
+                else if(!strcmp(temp_string, "$USERR1"))
+                {
+                    dxf_header_get_double_variable(&header->UserR1, fp);
+                }
+                else if(!strcmp(temp_string, "$USERR2"))
+                {
+                    dxf_header_get_double_variable(&header->UserR2, fp);
+                }
+                else if(!strcmp(temp_string, "$USERR3"))
+                {
+                    dxf_header_get_double_variable(&header->UserR3, fp);
+                }
+                else if(!strcmp(temp_string, "$USERR4"))
+                {
+                    dxf_header_get_double_variable(&header->UserR4, fp);
+                }
+                else if(!strcmp(temp_string, "$USERR5"))
+                {
+                    dxf_header_get_double_variable(&header->UserR5, fp);
+                }
+                else if(!strcmp(temp_string, "$USRTIMER"))
+                {
+                    dxf_header_get_int_variable(&header->USRTimer, fp);
+                }
+                else if(!strcmp(temp_string, "$VERSIONGUID"))
+                {
+                    dxf_header_get_string_variable(&header->VersionGUID, fp);
+                }
+                else if(!strcmp(temp_string, "$VISRETAIN"))
+                {
+                    dxf_header_get_int_variable(&header->VisRetain, fp);
+                }
+                else if(!strcmp(temp_string, "$WORLDVIEW"))
+                {
+                    dxf_header_get_int_variable(&header->WorldView, fp);
+                }
+                else if(!strcmp(temp_string, "$XCLIPFRAME"))
+                {
+                    dxf_header_get_int_variable(&header->XClipFrame, fp);
+                }
+                else if(!strcmp(temp_string, "$XEDIT"))
+                {
+                    dxf_header_get_int_variable(&header->XEdit, fp);
+                }
+                else
+                {
+                    fprintf(stderr, (_("Warning in %s () unknown variable name: %s\n"
+                                       "File: %s\n"
+                                       "Line: %d\n")),
+                            __FUNCTION__, temp_string,
+                            fp->filename, fp->line_number);
+                    continue;
+                }
+                /* TODO: Investigate overflow risk of member
+                 * variables stored as an int, but that can have up
+                 * to sixteen hexadecimal digits (64 bits) */
+
+                /* Good news: the DXF reference provided by Autodesk
+                 * is only accurate to AutoCAD 2012. There are
+                 * header variables in a DXF I just created that are
+                 * nowhere to be found in the DXF reference. I can't
+                 * find any information on DXF file format
+                 * specifications more recent than 2012. */
+
+            }
+
+            if(ch == '0')
+            {
+                /* End of header section */
+                break;
+            }
         }
+
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2036,5 +2896,357 @@ dxf_header_free
         return (header);
 }
 
+/*!
+ *  \brief Read an integer variable from a /c DxfFile
+ */
+static void
+dxf_header_get_int_variable
+(
+        int *res,
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+)
+{
+        int ch;
+        while((ch = fgetc(fp->fp)) != EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                        continue;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        int group_code;
+                        /* Get the group code. This will, for now at least, be ignored. */
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%d", &group_code);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+
+        while((ch = fgetc(fp->fp)) != EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        /* Store the variable value in the result */
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%d", res);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+}
+
+/*!
+ *  \brief Read a 16-bit integer variable from a /c DxfFile
+ */
+static void
+dxf_header_get_int16_variable
+(
+        int16_t *res,
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+)
+{
+        int ch;
+        while((ch = fgetc(fp->fp)) != EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                        continue;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        int group_code;
+                        /* Get the group code. This will, for now at least, be ignored. */
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%d", &group_code);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+
+        while((ch = fgetc(fp->fp)) != EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        /* Store the variable value in the result */
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%" SCNd16, res);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+}
+
+/*!
+ *  \brief Read a double-precision floating-point variable from a /c
+ *  DxfFile
+ */
+static void
+dxf_header_get_double_variable
+(
+        double *res,
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+)
+{
+        int ch;
+        while((ch = fgetc(fp->fp)) != EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                        continue;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        int group_code;
+                        /* Get the group code. This will, for now at least, be ignored. */
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%d", &group_code);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+
+        while((ch = fgetc(fp->fp)) != EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        /* Store the variable value in the result */
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%lf", res);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+}
+
+/*!
+ *  \brief Read a string variable from a /c DxfFile
+ */
+static void
+dxf_header_get_string_variable
+(
+        char **res,
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+        )
+{
+        int ch;
+        while((ch = fgetc(fp->fp)) != EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                        continue;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isdigit(ch))
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        int group_code;
+                        /* Get the group code. This will, for now at least, be ignored. */
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%d", &group_code);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+
+        while((ch = fgetc(fp->fp))!= EOF)
+        {
+                /* Skip whitespace */
+                if(ch == '\n')
+                {
+                        fp->line_number++;
+                }
+                else if(isspace(ch))
+                {
+                        continue;
+                }
+                else if(isalpha(ch))
+                {
+                        /* Store the variable value in the result */
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        char temp_string[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        sscanf(line_in, "%s", temp_string);
+                        /* Swap out the default string for the new one */
+                        free(*res);
+                        *res = strdup(temp_string);
+                        break;
+                }
+                else
+                {
+                        ungetc(ch, fp->fp);
+                        char line_in[64] = {};
+                        fgets(line_in, sizeof(line_in), fp->fp);
+                        fprintf(stderr, (_("Warning in %s () unknown input: %s"
+                                           "File: %s\n"
+                                           "Line: %d\n")),
+                                __FUNCTION__, line_in, fp->filename, fp->line_number);
+                        fp->line_number++;
+                }
+        }
+}
+
+/*!
+ *  \brief Read a DxfPoint variable from a /c DxfFile
+ */
+static void
+dxf_header_get_dxf_point_variable
+(
+        DxfPoint *res,
+        /*!< Pointer to the member variable in which the resulting
+          value shall be stored. */
+        DxfFile *fp
+        /*!< DXF file handle of input file (or device)  */
+        )
+{
+        dxf_point_read(fp, res);
+}
 
 /* EOF */
