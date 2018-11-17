@@ -274,6 +274,7 @@ int dxf_mesh_get_paperspace (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_paperspace (DxfMesh *mesh, int paperspace);
 int dxf_mesh_get_graphics_data_size (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_graphics_data_size (DxfMesh *mesh, int graphics_data_size);
+int16_t dxf_mesh_get_shadow_mode (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
