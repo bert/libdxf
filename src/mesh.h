@@ -271,6 +271,7 @@ DxfMesh *dxf_mesh_set_visibility (DxfMesh *mesh, int16_t visibility);
 int dxf_mesh_get_color (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_color (DxfMesh *mesh, int color);
 int dxf_mesh_get_paperspace (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_paperspace (DxfMesh *mesh, int paperspace);
 
 
 #ifdef __cplusplus
