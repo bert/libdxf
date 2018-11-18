@@ -280,6 +280,7 @@ DxfBinaryGraphicsData *dxf_mesh_get_binary_graphics_data (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_binary_graphics_data (DxfMesh *mesh, DxfBinaryGraphicsData *data);
 char *dxf_mesh_get_dictionary_owner_soft (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_dictionary_owner_soft (DxfMesh *mesh, char *dictionary_owner_soft);
+char *dxf_mesh_get_object_owner_soft (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
