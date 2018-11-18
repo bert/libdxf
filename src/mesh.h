@@ -279,6 +279,7 @@ DxfMesh *dxf_mesh_set_shadow_mode (DxfMesh *mesh, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_mesh_get_binary_graphics_data (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_binary_graphics_data (DxfMesh *mesh, DxfBinaryGraphicsData *data);
 char *dxf_mesh_get_dictionary_owner_soft (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_dictionary_owner_soft (DxfMesh *mesh, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
