@@ -276,6 +276,7 @@ int dxf_mesh_get_graphics_data_size (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_graphics_data_size (DxfMesh *mesh, int graphics_data_size);
 int16_t dxf_mesh_get_shadow_mode (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_shadow_mode (DxfMesh *mesh, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_mesh_get_binary_graphics_data (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
