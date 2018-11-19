@@ -286,6 +286,7 @@ char *dxf_mesh_get_material (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_material (DxfMesh *mesh, char *material);
 char *dxf_mesh_get_dictionary_owner_hard (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_dictionary_owner_hard (DxfMesh *mesh, char *dictionary_owner_hard);
+int16_t dxf_mesh_get_lineweight (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
