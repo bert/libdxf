@@ -283,6 +283,7 @@ DxfMesh *dxf_mesh_set_dictionary_owner_soft (DxfMesh *mesh, char *dictionary_own
 char *dxf_mesh_get_object_owner_soft (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_object_owner_soft (DxfMesh *mesh, char *object_owner_soft);
 char *dxf_mesh_get_material (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_material (DxfMesh *mesh, char *material);
 
 
 #ifdef __cplusplus
