@@ -294,6 +294,7 @@ long dxf_mesh_get_color_value (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_color_value (DxfMesh *mesh, long color_value);
 char *dxf_mesh_get_color_name (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_color_name (DxfMesh *mesh, char *color_name);
+long dxf_mesh_get_transparency (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
