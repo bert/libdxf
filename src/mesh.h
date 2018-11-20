@@ -288,6 +288,7 @@ char *dxf_mesh_get_dictionary_owner_hard (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_dictionary_owner_hard (DxfMesh *mesh, char *dictionary_owner_hard);
 int16_t dxf_mesh_get_lineweight (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_lineweight (DxfMesh *mesh, int16_t lineweight);
+char *dxf_mesh_get_plot_style_name (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
