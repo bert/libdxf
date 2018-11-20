@@ -290,6 +290,7 @@ int16_t dxf_mesh_get_lineweight (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_lineweight (DxfMesh *mesh, int16_t lineweight);
 char *dxf_mesh_get_plot_style_name (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_plot_style_name (DxfMesh *mesh, char *plot_style_name);
+long dxf_mesh_get_color_value (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
