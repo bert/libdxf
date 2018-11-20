@@ -3,6 +3,8 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
+ * \author Copyright (C) 2018 Calvin Tower <Calvin@CorianderDesigns.com>
+ *
  * \brief Tests for libdxf.
  *
  * <hr>

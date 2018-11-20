@@ -8,6 +8,8 @@
  *
  * \author Copyright (C) 2013, 2016 by Paolo Caroni <kenren89@gmail.com>.
  *
+ * \author Copyright (C) 2018 Calvin Tower <Calvin@CorianderDesigns.com>
+ *
  * \brief DXF header section.
  *
  * \version According to DXF R10.

@@ -6,6 +6,8 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
+ * \author Copyright (C) 2018 Calvin Tower <Calvin@CorianderDesigns.com>
+ *
  * \brief Functions for a DXF section entity (\c SECTION).
  *
  * <hr>
