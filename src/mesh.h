@@ -297,6 +297,7 @@ DxfMesh *dxf_mesh_set_color_name (DxfMesh *mesh, char *color_name);
 long dxf_mesh_get_transparency (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_transparency (DxfMesh *mesh, long transparency);
 DxfPoint *dxf_mesh_get_p0 (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_p0 (DxfMesh *mesh, DxfPoint *p0);
 
 
 #ifdef __cplusplus
