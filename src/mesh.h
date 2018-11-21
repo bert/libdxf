@@ -298,6 +298,7 @@ long dxf_mesh_get_transparency (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_transparency (DxfMesh *mesh, long transparency);
 DxfPoint *dxf_mesh_get_p0 (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_p0 (DxfMesh *mesh, DxfPoint *p0);
+double dxf_mesh_get_x0 (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
