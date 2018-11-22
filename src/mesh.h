@@ -303,6 +303,7 @@ DxfMesh *dxf_mesh_set_x0 (DxfMesh *mesh, double x0);
 double dxf_mesh_get_y0 (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_y0 (DxfMesh *mesh, double y0);
 double dxf_mesh_get_z0 (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_z0 (DxfMesh *mesh, double z0);
 
 
 #ifdef __cplusplus
