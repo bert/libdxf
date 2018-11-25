@@ -308,6 +308,7 @@ int16_t dxf_mesh_get_version (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_version (DxfMesh *mesh, int16_t version);
 int16_t dxf_mesh_get_blend_crease_property (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_blend_crease_property (DxfMesh *mesh, int16_t blend_crease_property);
+int32_t dxf_mesh_get_face_list_item (DxfMesh *mesh);
 
 
 #ifdef __cplusplus

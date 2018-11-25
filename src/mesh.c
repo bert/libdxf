@@ -2358,4 +2358,34 @@ dxf_mesh_set_blend_crease_property
 }
 
 
+/*!
+ * \brief Get the \c face_list_item from a DXF \c MESH entity.
+ *
+ * \return \c face_list_item.
+ */
+int32_t
+dxf_mesh_get_face_list_item
+(
+        DxfMesh *mesh
+                /*!< a pointer to a DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh->face_list_item);
+}
+
+
 /* EOF*/
