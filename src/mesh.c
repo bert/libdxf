@@ -2488,4 +2488,35 @@ dxf_mesh_set_edge_vertex_index
 }
 
 
+/*!
+ * \brief Get the \c number_of_property_overridden_sub_entities from a
+ * DXF \c MESH entity.
+ *
+ * \return \c number_of_property_overridden_sub_entities.
+ */
+int32_t
+dxf_mesh_get_number_of_property_overridden_sub_entities
+(
+        DxfMesh *mesh
+                /*!< a pointer to a DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh->number_of_property_overridden_sub_entities);
+}
+
+
 /* EOF*/
