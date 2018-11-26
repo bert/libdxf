@@ -311,6 +311,7 @@ DxfMesh *dxf_mesh_set_blend_crease_property (DxfMesh *mesh, int16_t blend_crease
 int32_t dxf_mesh_get_face_list_item (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_face_list_item (DxfMesh *mesh, int32_t face_list_item);
 int32_t dxf_mesh_get_edge_vertex_index (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_edge_vertex_index (DxfMesh *mesh, int32_t edge_vertex_index);
 
 
 #ifdef __cplusplus

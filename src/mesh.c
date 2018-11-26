@@ -2453,4 +2453,39 @@ dxf_mesh_get_edge_vertex_index
 }
 
 
+/*!
+ * \brief Set the \c edge_vertex_index for a DXF \c MESH entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMesh *
+dxf_mesh_set_edge_vertex_index
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        int32_t edge_vertex_index
+                /*!< the \c edge_vertex_index to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->edge_vertex_index = edge_vertex_index;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/
