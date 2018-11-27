@@ -2621,4 +2621,50 @@ dxf_mesh_get_property_type
 }
 
 
+/*!
+ * \brief Set the \c property_type for a DXF \c MESH entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_property_type
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        int32_t property_type
+                /*!< the \c property_type to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (property_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (property_type > 3)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+        mesh->property_type = property_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/
