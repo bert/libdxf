@@ -2579,4 +2579,46 @@ dxf_mesh_set_number_of_property_overridden_sub_entities
 }
 
 
+/*!
+ * \brief Get the \c property_type from a DXF \c MESH entity.
+ *
+ * \return \c property_type.
+ */
+int32_t
+dxf_mesh_get_property_type
+(
+        DxfMesh *mesh
+                /*!< a pointer to a DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mesh->property_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (mesh->property_type > 3)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh->property_type);
+}
+
+
 /* EOF*/

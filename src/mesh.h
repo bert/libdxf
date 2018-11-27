@@ -314,6 +314,7 @@ int32_t dxf_mesh_get_edge_vertex_index (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_edge_vertex_index (DxfMesh *mesh, int32_t edge_vertex_index);
 int32_t dxf_mesh_get_number_of_property_overridden_sub_entities (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_number_of_property_overridden_sub_entities (DxfMesh *mesh, int32_t number_of_property_overridden_sub_entities);
+int32_t dxf_mesh_get_property_type (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
