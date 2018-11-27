@@ -2316,6 +2316,18 @@ dxf_mesh_get_blend_crease_property
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (mesh->blend_crease_property < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (mesh->blend_crease_property > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
