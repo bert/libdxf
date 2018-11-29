@@ -319,6 +319,7 @@ DxfMesh *dxf_mesh_set_property_type (DxfMesh *mesh, int32_t property_type);
 int32_t dxf_mesh_get_subdivision_level (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_subdivision_level (DxfMesh *mesh, int32_t subdivision_level);
 int32_t dxf_mesh_get_sub_entity_marker (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_sub_entity_marker (DxfMesh *mesh, int32_t sub_entity_marker);
 
 
 #ifdef __cplusplus

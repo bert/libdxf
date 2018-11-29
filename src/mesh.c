@@ -2761,4 +2761,38 @@ dxf_mesh_get_sub_entity_marker
 }
 
 
+/*!
+ * \brief Set the \c sub_entity_marker for a DXF \c MESH entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_sub_entity_marker
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        int32_t sub_entity_marker
+                /*!< the \c sub_entity_marker to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->sub_entity_marker = sub_entity_marker;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/
