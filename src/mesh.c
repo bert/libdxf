@@ -2795,4 +2795,34 @@ dxf_mesh_set_sub_entity_marker
 }
 
 
+/*!
+ * \brief Get the \c vertex_count_level_0 from a DXF \c MESH entity.
+ *
+ * \return \c vertex_count_level_0.
+ */
+int32_t
+dxf_mesh_get_vertex_count_level_0
+(
+        DxfMesh *mesh
+                /*!< a pointer to a DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh->vertex_count_level_0);
+}
+
+
 /* EOF*/
