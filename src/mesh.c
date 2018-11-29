@@ -2891,4 +2891,40 @@ dxf_mesh_get_count_of_property_overridden
 }
 
 
+/*!
+ * \brief Set the \c count_of_property_overridden for a DXF \c MESH
+ * entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_count_of_property_overridden
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        int32_t count_of_property_overridden
+                /*!< the \c count_of_property_overridden to be set for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->count_of_property_overridden = count_of_property_overridden;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/
