@@ -321,6 +321,7 @@ DxfMesh *dxf_mesh_set_subdivision_level (DxfMesh *mesh, int32_t subdivision_leve
 int32_t dxf_mesh_get_sub_entity_marker (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_sub_entity_marker (DxfMesh *mesh, int32_t sub_entity_marker);
 int32_t dxf_mesh_get_vertex_count_level_0 (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_vertex_count_level_0 (DxfMesh *mesh, int32_t vertex_count_level_0);
 
 
 #ifdef __cplusplus
