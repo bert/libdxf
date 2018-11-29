@@ -2731,4 +2731,34 @@ dxf_mesh_set_subdivision_level
 }
 
 
+/*!
+ * \brief Get the \c sub_entity_marker from a DXF \c MESH entity.
+ *
+ * \return \c sub_entity_marker.
+ */
+int32_t
+dxf_mesh_get_sub_entity_marker
+(
+        DxfMesh *mesh
+                /*!< a pointer to a DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh->sub_entity_marker);
+}
+
+
 /* EOF*/
