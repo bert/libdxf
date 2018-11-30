@@ -3023,6 +3023,41 @@ dxf_mesh_get_edge_count_level_0
 
 
 /*!
+ * \brief Set the \c edge_count_level_0 for a DXF \c MESH entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_edge_count_level_0
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        int32_t edge_count_level_0
+                /*!< the \c edge_count_level_0 to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->edge_count_level_0 = edge_count_level_0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
+/*!
  * \brief Get the \c edge_crease_count_level_0 from a DXF \c MESH entity.
  *
  * \return \c edge_crease_count_level_0.
