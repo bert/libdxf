@@ -326,6 +326,7 @@ int32_t dxf_mesh_get_count_of_property_overridden (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_count_of_property_overridden (DxfMesh *mesh, int32_t count_of_property_overridden);
 int32_t dxf_mesh_get_face_list_size_level_0 (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_face_list_size_level_0 (DxfMesh *mesh, int32_t face_list_size_level_0);
+int32_t dxf_mesh_get_edge_count_level_0 (DxfMesh *mesh);
 int32_t dxf_mesh_get_edge_crease_count_level_0 (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_edge_crease_count_level_0 (DxfMesh *mesh, int32_t edge_crease_count_level_0);
 
