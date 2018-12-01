@@ -333,6 +333,7 @@ DxfMesh *dxf_mesh_set_edge_crease_count_level_0 (DxfMesh *mesh, int32_t edge_cre
 double dxf_mesh_get_edge_create_value (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_edge_create_value (DxfMesh *mesh, double edge_create_value);
 DxfMesh *dxf_mesh_get_next (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_next (DxfMesh *mesh, DxfMesh *next);
 
 
 #ifdef __cplusplus

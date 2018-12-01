@@ -3227,4 +3227,46 @@ dxf_mesh_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c MESH for a DXF \c MESH
+ * entity.
+ *
+ * \return a pointer to \c mesh when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMesh *
+dxf_mesh_set_next
+(
+        DxfMesh *mesh,
+                /*!< a pointer to a DXF \c MESH entity. */
+        DxfMesh *next
+                /*!< a pointer to the next \c MESH for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mesh->next = (struct DxfMesh *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mesh);
+}
+
+
 /* EOF*/
