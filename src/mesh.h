@@ -334,6 +334,7 @@ double dxf_mesh_get_edge_create_value (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_edge_create_value (DxfMesh *mesh, double edge_create_value);
 DxfMesh *dxf_mesh_get_next (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_next (DxfMesh *mesh, DxfMesh *next);
+DxfMesh *dxf_mesh_get_last (DxfMesh *mesh);
 
 
 #ifdef __cplusplus
