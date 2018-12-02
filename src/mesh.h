@@ -252,6 +252,7 @@ dxf_mesh_struct
 
 DxfMesh *dxf_mesh_new ();
 DxfMesh *dxf_mesh_init (DxfMesh *mesh);
+int dxf_mesh_write (DxfFile *fp, DxfMesh *mesh);
 int dxf_mesh_free (DxfMesh *mesh);
 void dxf_mesh_free_list (DxfMesh *meshes);
 int dxf_mesh_get_id_code (DxfMesh *mesh);

@@ -156,6 +156,211 @@ dxf_mesh_init
 
 
 /*!
+ * \brief Write DXF output for a DXF \c MESH entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mesh_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfMesh *mesh
+                /*!< a pointer to the DXF \c MESH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("MESH");
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (mesh == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (mesh->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (mesh->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, mesh->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                mesh->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (mesh->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, mesh->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
+                mesh->layer = DXF_DEFAULT_LAYER;
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (mesh->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", mesh->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (mesh->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", mesh->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (mesh->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", mesh->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (mesh->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", mesh->object_owner_soft);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (mesh->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", mesh->layer);
+        if (strcmp (mesh->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", mesh->linetype);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (mesh->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", mesh->material);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (mesh->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", mesh->elevation);
+        }
+        if (mesh->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", mesh->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", mesh->lineweight);
+        }
+        if (mesh->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", mesh->linetype_scale);
+        }
+        if (mesh->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", mesh->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", mesh->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", mesh->graphics_data_size);
+#endif
+                if (mesh->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) mesh->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", mesh->color_value);
+                fprintf (fp->fp, "430\n%s\n", mesh->color_name);
+                fprintf (fp->fp, "440\n%ld\n", mesh->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", mesh->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", mesh->shadow_mode);
+        }
+        if (mesh->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", mesh->thickness);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSubMesh\n");
+        }
+        fprintf (fp->fp, " 71\n%d\n", mesh->version);
+        fprintf (fp->fp, " 72\n%d\n", mesh->blend_crease_property);
+        fprintf (fp->fp, " 91\n%d\n", mesh->subdivision_level);
+        fprintf (fp->fp, " 92\n%d\n", mesh->vertex_count_level_0);
+        fprintf (fp->fp, " 10\n%f\n", mesh->p0->x0);
+        fprintf (fp->fp, " 93\n%d\n", mesh->face_list_size_level_0);
+        fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item);
+        fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
+        fprintf (fp->fp, " 90\n%d\n", mesh->edge_vertex_index);
+        /*! \todo Implement multiple entries for edge_vertex_index. */
+        fprintf (fp->fp, " 95\n%d\n", mesh->edge_crease_count_level_0);
+        fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value);
+        fprintf (fp->fp, " 90\n%d\n", mesh->number_of_property_overridden_sub_entities);
+        fprintf (fp->fp, " 91\n%d\n", mesh->sub_entity_marker);
+        fprintf (fp->fp, " 92\n%d\n", mesh->count_of_property_overridden);
+        fprintf (fp->fp, " 90\n%d\n", mesh->property_type);
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MESH entity and all
  * it's data fields.
  *
