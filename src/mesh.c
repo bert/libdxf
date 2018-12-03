@@ -627,9 +627,19 @@ dxf_mesh_write
         fprintf (fp->fp, " 72\n%d\n", mesh->blend_crease_property);
         fprintf (fp->fp, " 91\n%d\n", mesh->subdivision_level);
         fprintf (fp->fp, " 92\n%d\n", mesh->vertex_count_level_0);
-        fprintf (fp->fp, " 10\n%f\n", mesh->p0->x0);
-        fprintf (fp->fp, " 20\n%f\n", mesh->p0->y0);
-        fprintf (fp->fp, " 30\n%f\n", mesh->p0->z0);
+        if (mesh->p0 != NULL)
+        {
+                DxfPoint *p0_iter;
+                p0_iter = dxf_point_new();
+                p0_iter = (DxfPoint *) mesh->p0;
+                while (p0_iter != NULL)
+                {
+                        fprintf (fp->fp, " 10\n%f\n", mesh->p0->x0);
+                        fprintf (fp->fp, " 20\n%f\n", mesh->p0->y0);
+                        fprintf (fp->fp, " 30\n%f\n", mesh->p0->z0);
+                        p0_iter = (DxfPoint *) p0_iter->next;
+                }
+        }
         fprintf (fp->fp, " 93\n%d\n", mesh->face_list_size_level_0);
         fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item);
         fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
