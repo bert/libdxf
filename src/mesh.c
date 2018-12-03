@@ -642,11 +642,13 @@ dxf_mesh_write
         }
         fprintf (fp->fp, " 93\n%d\n", mesh->face_list_size_level_0);
         fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item);
+        /*! \todo Implement multiple entries for face_list_item. */
         fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
         fprintf (fp->fp, " 90\n%d\n", mesh->edge_vertex_index);
         /*! \todo Implement multiple entries for edge_vertex_index. */
         fprintf (fp->fp, " 95\n%d\n", mesh->edge_crease_count_level_0);
         fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value);
+        /*! \todo Implement multiple entries for edge_create_value. */
         fprintf (fp->fp, " 90\n%d\n", mesh->number_of_property_overridden_sub_entities);
         fprintf (fp->fp, " 91\n%d\n", mesh->sub_entity_marker);
         fprintf (fp->fp, " 92\n%d\n", mesh->count_of_property_overridden);
