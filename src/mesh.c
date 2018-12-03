@@ -628,6 +628,8 @@ dxf_mesh_write
         fprintf (fp->fp, " 91\n%d\n", mesh->subdivision_level);
         fprintf (fp->fp, " 92\n%d\n", mesh->vertex_count_level_0);
         fprintf (fp->fp, " 10\n%f\n", mesh->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", mesh->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", mesh->p0->z0);
         fprintf (fp->fp, " 93\n%d\n", mesh->face_list_size_level_0);
         fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item);
         fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
