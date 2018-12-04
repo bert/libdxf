@@ -253,6 +253,20 @@ dxf_int_struct
 } DxfInt;
 
 
+/*!
+ * \brief DXF definition of a single linked list of int16_t.
+ */
+typedef struct
+dxf_int16_struct
+{
+    int16_t value;
+        /*!< Store the int16_t value here. */
+    struct DxfInt16 *next;
+        /*!< Pointer to the next DxfInt16.\n
+         * \c NULL if the last DxfInt16. */
+} DxfInt16;
+
+
 /* AutoCAD(TM) versions by name */
 #define AutoCAD_1_0 0
         /*!< \brief AutoCAD Version 1.0. */
