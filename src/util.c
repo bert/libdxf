@@ -558,7 +558,7 @@ dxf_int32_init
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                i = dxf_int_new ();
+                i = dxf_int32_new ();
         }
         if (i == NULL)
         {
