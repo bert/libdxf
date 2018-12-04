@@ -196,7 +196,7 @@ dxf_mesh_struct
                  *   <li value=1>Turn on.</li>
                  * </ol>
                  * Group code = 72. */
-        int32_t face_list_item;
+        DxfInt32 *face_list_item;
                 /*!< Face list item.\n
                  * Group code = 90. */
         int32_t edge_vertex_index;
@@ -310,8 +310,8 @@ int16_t dxf_mesh_get_version (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_version (DxfMesh *mesh, int16_t version);
 int16_t dxf_mesh_get_blend_crease_property (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_blend_crease_property (DxfMesh *mesh, int16_t blend_crease_property);
-int32_t dxf_mesh_get_face_list_item (DxfMesh *mesh);
-DxfMesh *dxf_mesh_set_face_list_item (DxfMesh *mesh, int32_t face_list_item);
+DxfInt32 *dxf_mesh_get_face_list_item (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_face_list_item (DxfMesh *mesh, DxfInt32 *face_list_item);
 int32_t dxf_mesh_get_edge_vertex_index (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_edge_vertex_index (DxfMesh *mesh, int32_t edge_vertex_index);
 int32_t dxf_mesh_get_number_of_property_overridden_sub_entities (DxfMesh *mesh);

@@ -135,7 +135,7 @@ dxf_mesh_init
         mesh->p0->z0 = 0.0;
         mesh->version = 0;
         mesh->blend_crease_property = 0;
-        mesh->face_list_item = 0;
+        mesh->face_list_item = NULL;
         mesh->edge_vertex_index = 0;
         mesh->number_of_property_overridden_sub_entities = 0;
         mesh->property_type = 0;
@@ -641,7 +641,7 @@ dxf_mesh_write
                 }
         }
         fprintf (fp->fp, " 93\n%d\n", mesh->face_list_size_level_0);
-        fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item);
+        fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item->value);
         /*! \todo Implement multiple entries for face_list_item. */
         fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
         fprintf (fp->fp, " 90\n%d\n", mesh->edge_vertex_index);
@@ -2890,11 +2890,12 @@ dxf_mesh_set_blend_crease_property
 
 
 /*!
- * \brief Get the \c face_list_item from a DXF \c MESH entity.
+ * \brief Get the pointer to a linked list of \c face_list_item from a
+ * DXF \c MESH entity.
  *
  * \return \c face_list_item.
  */
-int32_t
+DxfInt32 *
 dxf_mesh_get_face_list_item
 (
         DxfMesh *mesh
@@ -2915,12 +2916,13 @@ dxf_mesh_get_face_list_item
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (mesh->face_list_item);
+        return ((DxfInt32 *) mesh->face_list_item);
 }
 
 
 /*!
- * \brief Set the \c face_list_item for a DXF \c MESH entity.
+ * \brief Set the pointer to a linked list of \c face_list_item for a
+ * DXF \c MESH entity.
  *
  * \return a pointer to \c mesh when successful, or \c NULL when an
  * error occurred.
@@ -2930,7 +2932,7 @@ dxf_mesh_set_face_list_item
 (
         DxfMesh *mesh,
                 /*!< a pointer to a DXF \c MESH entity. */
-        int32_t face_list_item
+        DxfInt32 *face_list_item
                 /*!< the \c face_list_item to be set for the
                  * entity. */
 )
