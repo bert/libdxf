@@ -76,6 +76,7 @@ DxfInt *dxf_int_new ();
 DxfInt *dxf_int_init (DxfInt *i);
 int dxf_int_free (DxfInt *i);
 int dxf_int_free_list (DxfInt *ints);
+DxfInt32 *dxf_int32_new ();
 int dxf_read_is_double (int type);
 int dxf_read_is_int (int type);
 int dxf_read_is_string (int type);
