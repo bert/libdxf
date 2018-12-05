@@ -501,6 +501,41 @@ dxf_int_free_list
 
 
 /*!
+ * \brief Allocate memory for a \c DxfInt16.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfInt16 *
+dxf_int16_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfInt16 *i = NULL;
+        size_t size;
+
+        size = sizeof (DxfInt16);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((i = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfInt16 struct.\n")),
+                  __FUNCTION__);
+                i = NULL;
+        }
+        else
+        {
+                memset (i, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (i);
+}
+
+
+/*!
  * \brief Allocate memory for a \c DxfInt32.
  *
  * Fill the memory contents with zeros.
