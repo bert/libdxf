@@ -549,7 +549,7 @@ dxf_int32_new ()
         DxfInt32 *i = NULL;
         size_t size;
 
-        size = sizeof (DxfInt);
+        size = sizeof (DxfInt32);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
         if ((i = malloc (size)) == NULL)
