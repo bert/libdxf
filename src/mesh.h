@@ -199,7 +199,7 @@ dxf_mesh_struct
         DxfInt32 *face_list_item;
                 /*!< Face list item.\n
                  * Group code = 90. */
-        int32_t edge_vertex_index;
+        DxfInt32 *edge_vertex_index;
                 /*!< Vertex index of each edge (multiple entries ?).\n
                  * Group code = 90.
                  * \todo Solve multiple group code issue. */
@@ -312,8 +312,8 @@ int16_t dxf_mesh_get_blend_crease_property (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_blend_crease_property (DxfMesh *mesh, int16_t blend_crease_property);
 DxfInt32 *dxf_mesh_get_face_list_item (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_face_list_item (DxfMesh *mesh, DxfInt32 *face_list_item);
-int32_t dxf_mesh_get_edge_vertex_index (DxfMesh *mesh);
-DxfMesh *dxf_mesh_set_edge_vertex_index (DxfMesh *mesh, int32_t edge_vertex_index);
+DxfInt32 *dxf_mesh_get_edge_vertex_index (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_edge_vertex_index (DxfMesh *mesh, DxfInt32 *edge_vertex_index);
 int32_t dxf_mesh_get_number_of_property_overridden_sub_entities (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_number_of_property_overridden_sub_entities (DxfMesh *mesh, int32_t number_of_property_overridden_sub_entities);
 int32_t dxf_mesh_get_property_type (DxfMesh *mesh);

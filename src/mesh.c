@@ -136,7 +136,7 @@ dxf_mesh_init
         mesh->version = 0;
         mesh->blend_crease_property = 0;
         mesh->face_list_item = NULL;
-        mesh->edge_vertex_index = 0;
+        mesh->edge_vertex_index = NULL;
         mesh->number_of_property_overridden_sub_entities = 0;
         mesh->property_type = 0;
         mesh->subdivision_level = 0;
@@ -644,7 +644,7 @@ dxf_mesh_write
         fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item->value);
         /*! \todo Implement multiple entries for face_list_item. */
         fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
-        fprintf (fp->fp, " 90\n%d\n", mesh->edge_vertex_index);
+        fprintf (fp->fp, " 90\n%d\n", mesh->edge_vertex_index->value);
         /*! \todo Implement multiple entries for edge_vertex_index. */
         fprintf (fp->fp, " 95\n%d\n", mesh->edge_crease_count_level_0);
         fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value);
@@ -2911,7 +2911,7 @@ dxf_mesh_get_face_list_item
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2961,7 +2961,7 @@ dxf_mesh_set_face_list_item
  *
  * \return \c edge_vertex_index.
  */
-int32_t
+DxfInt32 *
 dxf_mesh_get_edge_vertex_index
 (
         DxfMesh *mesh
@@ -2977,7 +2977,7 @@ dxf_mesh_get_edge_vertex_index
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2997,7 +2997,7 @@ dxf_mesh_set_edge_vertex_index
 (
         DxfMesh *mesh,
                 /*!< a pointer to a DXF \c MESH entity. */
-        int32_t edge_vertex_index
+        DxfInt32 *edge_vertex_index
                 /*!< the \c edge_vertex_index to be set for the
                  * entity. */
 )
@@ -3013,7 +3013,7 @@ dxf_mesh_set_edge_vertex_index
                   __FUNCTION__);
                 return (NULL);
         }
-        mesh->edge_vertex_index = edge_vertex_index;
+        mesh->edge_vertex_index = (DxfInt32 *) edge_vertex_index;
 #if DEBUG
         DXF_DEBUG_END
 #endif
