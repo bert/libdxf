@@ -79,6 +79,7 @@ int dxf_int_free_list (DxfInt *ints);
 DxfInt16 *dxf_int16_new ();
 DxfInt16 *dxf_int16_init (DxfInt16 *i);
 int dxf_int16_free (DxfInt16 *i);
+int dxf_int16_free_list (DxfInt16 *ints);
 DxfInt32 *dxf_int32_new ();
 DxfInt32 *dxf_int32_init (DxfInt32 *i);
 int dxf_int32_free (DxfInt32 *i);
