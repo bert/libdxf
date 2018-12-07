@@ -41,6 +41,7 @@
 #include "global.h"
 #include "binary_graphics_data.h"
 #include "point.h"
+#include "util.h"
 
 
 #ifdef __cplusplus

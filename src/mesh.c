@@ -641,8 +641,17 @@ dxf_mesh_write
                 }
         }
         fprintf (fp->fp, " 93\n%d\n", mesh->face_list_size_level_0);
-        fprintf (fp->fp, " 90\n%d\n", mesh->face_list_item->value);
-        /*! \todo Implement multiple entries for face_list_item. */
+        if (mesh->face_list_item != NULL)
+        {
+                DxfInt32 *face_list_item_iter;
+                face_list_item_iter = dxf_int32_new ();
+                face_list_item_iter = (DxfInt32 *) mesh->face_list_item;
+                while (face_list_item_iter != NULL)
+                {
+                        fprintf (fp->fp, " 90\n%d\n", face_list_item_iter->value);
+                        face_list_item_iter = (DxfInt32 *) face_list_item_iter->next;
+                }
+        }
         fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
         fprintf (fp->fp, " 90\n%d\n", mesh->edge_vertex_index->value);
         /*! \todo Implement multiple entries for edge_vertex_index. */
