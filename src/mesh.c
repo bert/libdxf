@@ -669,8 +669,17 @@ dxf_mesh_write
                 }
         }
         fprintf (fp->fp, " 95\n%d\n", mesh->edge_crease_count_level_0);
-        fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value->value);
-        /*! \todo Implement multiple entries for edge_create_value. */
+        if (mesh->edge_create_value != NULL)
+        {
+                DxfDouble *edge_create_value_iter;
+                edge_create_value_iter = dxf_double_new ();
+                edge_create_value_iter = (DxfDouble *) mesh->edge_create_value;
+                while (edge_create_value_iter != NULL)
+                {
+                        fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value->value);
+                        edge_create_value_iter = (DxfDouble *) edge_create_value_iter->next;
+                }
+        }
         fprintf (fp->fp, " 90\n%d\n", mesh->number_of_property_overridden_sub_entities);
         fprintf (fp->fp, " 91\n%d\n", mesh->sub_entity_marker);
         fprintf (fp->fp, " 92\n%d\n", mesh->count_of_property_overridden);
