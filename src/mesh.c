@@ -135,8 +135,10 @@ dxf_mesh_init
         mesh->p0->z0 = 0.0;
         mesh->version = 0;
         mesh->blend_crease_property = 0;
-        mesh->face_list_item = NULL;
-        mesh->edge_vertex_index = NULL;
+        mesh->face_list_item = dxf_int32_new ();
+        mesh->face_list_item = dxf_int32_init (mesh->face_list_item);
+        mesh->edge_vertex_index = dxf_int32_new ();
+        mesh->edge_vertex_index = dxf_int32_init (mesh->edge_vertex_index);
         mesh->number_of_property_overridden_sub_entities = 0;
         mesh->property_type = 0;
         mesh->subdivision_level = 0;
@@ -146,7 +148,8 @@ dxf_mesh_init
         mesh->face_list_size_level_0 = 0;
         mesh->edge_count_level_0 = 0;
         mesh->edge_crease_count_level_0 = 0;
-        mesh->edge_create_value = NULL;
+        mesh->edge_create_value = dxf_double_new ();
+        mesh->edge_create_value = dxf_double_init (mesh->edge_create_value);
         mesh->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
