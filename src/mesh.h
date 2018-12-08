@@ -242,7 +242,7 @@ dxf_mesh_struct
         int32_t edge_crease_count_level_0;
                 /*!< Edge crease count of level 0.\n
                  * Group code = 95. */
-        double edge_create_value;
+        DxfDouble *edge_create_value;
                 /*!< Edge create value.\n
                  * Group code = 140. */
         struct DxfMesh *next;
@@ -333,8 +333,8 @@ int32_t dxf_mesh_get_edge_count_level_0 (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_edge_count_level_0 (DxfMesh *mesh, int32_t edge_count_level_0);
 int32_t dxf_mesh_get_edge_crease_count_level_0 (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_edge_crease_count_level_0 (DxfMesh *mesh, int32_t edge_crease_count_level_0);
-double dxf_mesh_get_edge_create_value (DxfMesh *mesh);
-DxfMesh *dxf_mesh_set_edge_create_value (DxfMesh *mesh, double edge_create_value);
+DxfDouble *dxf_mesh_get_edge_create_value (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_edge_create_value (DxfMesh *mesh, DxfDouble *edge_create_value);
 DxfMesh *dxf_mesh_get_next (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_next (DxfMesh *mesh, DxfMesh *next);
 DxfMesh *dxf_mesh_get_last (DxfMesh *mesh);

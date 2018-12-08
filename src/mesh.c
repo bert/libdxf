@@ -146,7 +146,7 @@ dxf_mesh_init
         mesh->face_list_size_level_0 = 0;
         mesh->edge_count_level_0 = 0;
         mesh->edge_crease_count_level_0 = 0;
-        mesh->edge_create_value = 0.0;
+        mesh->edge_create_value = NULL;
         mesh->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -665,7 +665,7 @@ dxf_mesh_write
                 }
         }
         fprintf (fp->fp, " 95\n%d\n", mesh->edge_crease_count_level_0);
-        fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value);
+        fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value->value);
         /*! \todo Implement multiple entries for edge_create_value. */
         fprintf (fp->fp, " 90\n%d\n", mesh->number_of_property_overridden_sub_entities);
         fprintf (fp->fp, " 91\n%d\n", mesh->sub_entity_marker);
@@ -3654,7 +3654,7 @@ dxf_mesh_set_edge_crease_count_level_0
  *
  * \return \c edge_create_value.
  */
-double
+DxfDouble *
 dxf_mesh_get_edge_create_value
 (
         DxfMesh *mesh
@@ -3671,12 +3671,12 @@ dxf_mesh_get_edge_create_value
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (mesh->edge_create_value);
+        return ((DxfDouble *) mesh->edge_create_value);
 }
 
 
@@ -3691,7 +3691,7 @@ dxf_mesh_set_edge_create_value
 (
         DxfMesh *mesh,
                 /*!< a pointer to a DXF \c MESH entity. */
-        double edge_create_value
+        DxfDouble *edge_create_value
                 /*!< the \c edge_create_value of a DXF \c MESH entity. */
 )
 {
