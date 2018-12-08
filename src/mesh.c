@@ -719,6 +719,7 @@ dxf_mesh_free
         }
         free (mesh->linetype);
         free (mesh->layer);
+        dxf_binary_graphics_data_free_list (mesh->binary_graphics_data);
         free (mesh->dictionary_owner_soft);
         free (mesh->object_owner_soft);
         free (mesh->material);
@@ -726,6 +727,9 @@ dxf_mesh_free
         free (mesh->plot_style_name);
         free (mesh->color_name);
         dxf_point_free (mesh->p0);
+        dxf_int32_free_list (mesh->face_list_item);
+        dxf_int32_free_list (mesh->edge_vertex_index);
+        dxf_double_free_list (mesh->edge_create_value);
         free (mesh);
         mesh = NULL;
 #if DEBUG
