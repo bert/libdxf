@@ -653,8 +653,17 @@ dxf_mesh_write
                 }
         }
         fprintf (fp->fp, " 94\n%d\n", mesh->edge_count_level_0);
-        fprintf (fp->fp, " 90\n%d\n", mesh->edge_vertex_index->value);
-        /*! \todo Implement multiple entries for edge_vertex_index. */
+        if (mesh->edge_vertex_index != NULL)
+        {
+                DxfInt32 *edge_vertex_index_iter;
+                edge_vertex_index_iter = dxf_int32_new ();
+                edge_vertex_index_iter = (DxfInt32 *) mesh->edge_vertex_index;
+                while (edge_vertex_index_iter != NULL)
+                {
+                        fprintf (fp->fp, " 90\n%d\n", edge_vertex_index_iter->value);
+                        edge_vertex_index_iter = (DxfInt32 *) edge_vertex_index_iter->next;
+                }
+        }
         fprintf (fp->fp, " 95\n%d\n", mesh->edge_crease_count_level_0);
         fprintf (fp->fp, "140\n%f\n", mesh->edge_create_value);
         /*! \todo Implement multiple entries for edge_create_value. */
