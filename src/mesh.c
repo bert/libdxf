@@ -119,6 +119,7 @@ dxf_mesh_init
         mesh->graphics_data_size = 0;
         mesh->shadow_mode = 0;
         mesh->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        mesh->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (mesh->binary_graphics_data);
         mesh->dictionary_owner_soft = strdup ("");
         mesh->object_owner_soft = strdup ("");
         mesh->material = strdup ("");
