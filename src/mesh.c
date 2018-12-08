@@ -726,7 +726,7 @@ dxf_mesh_free
         free (mesh->dictionary_owner_hard);
         free (mesh->plot_style_name);
         free (mesh->color_name);
-        dxf_point_free (mesh->p0);
+        dxf_point_free_list (mesh->p0);
         dxf_int32_free_list (mesh->face_list_item);
         dxf_int32_free_list (mesh->edge_vertex_index);
         dxf_double_free_list (mesh->edge_create_value);
