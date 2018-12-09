@@ -129,6 +129,7 @@ dxf_3dsolid_init
         solid->paperspace = DXF_MODELSPACE;
         solid->graphics_data_size = 0;
         solid->shadow_mode = 0;
+        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
         solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (solid->binary_graphics_data);
         solid->dictionary_owner_soft = strdup ("");
         solid->object_owner_soft = strdup ("");
