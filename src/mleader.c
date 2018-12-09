@@ -37,4 +37,42 @@
 #include "mleader.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c MLEADER entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeader *
+dxf_mleader_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfMLeader *mleader = NULL;
+        size_t size;
+
+        size = sizeof (DxfMLeader);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((mleader = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                mleader = NULL;
+        }
+        else
+        {
+                memset (mleader, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/

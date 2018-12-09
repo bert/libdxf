@@ -318,6 +318,9 @@ dxf_mleader_struct
 } DxfMLeader;
 
 
+DxfMLeader *dxf_mleader_new();
+
+
 #ifdef __cplusplus
 }
 #endif
