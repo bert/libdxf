@@ -124,6 +124,7 @@ dxf_arc_init
         arc->graphics_data_size = 0;
         arc->shadow_mode = 0;
         arc->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        arc->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (arc->binary_graphics_data);
         arc->dictionary_owner_soft = strdup ("");
         arc->object_owner_soft = strdup ("");
         arc->material = strdup ("");
