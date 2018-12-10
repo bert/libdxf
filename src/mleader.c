@@ -75,4 +75,66 @@ dxf_mleader_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c MLEADER
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeader *
+dxf_mleader_init
+(
+        DxfMLeader *mleader
+                /*!< a pointer to the DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                mleader = dxf_mleader_new ();
+        }
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleader->id_code = 0;
+        mleader->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        mleader->layer = strdup (DXF_DEFAULT_LAYER);
+        mleader->elevation = 0.0;
+        mleader->thickness = 0.0;
+        mleader->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        mleader->visibility = DXF_DEFAULT_VISIBILITY;
+        mleader->color = DXF_COLOR_BYLAYER;
+        mleader->paperspace = DXF_MODELSPACE;
+        mleader->graphics_data_size = 0;
+        mleader->shadow_mode = 0;
+        mleader->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        mleader->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (mleader->binary_graphics_data);
+        mleader->dictionary_owner_soft = strdup ("");
+        mleader->object_owner_soft = strdup ("");
+        mleader->material = strdup ("");
+        mleader->dictionary_owner_hard = strdup ("");
+        mleader->lineweight = 0;
+        mleader->plot_style_name = strdup ("");
+        mleader->color_value = 0;
+        mleader->color_name = strdup ("");
+        mleader->transparency = 0;
+        mleader->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/
