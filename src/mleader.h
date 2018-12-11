@@ -317,6 +317,20 @@ dxf_mleader_struct
                  * \c NULL in the last DxfMLeader. */
 } DxfMLeader;
 
+/*!
+ * \brief DXF definition of an AutoCAD mleader context data group object.
+ */
+typedef struct
+dxf_mleader_context_data_group_struct
+{
+        double content_scale;
+                /*!< Content scale.\n
+                 * Group code = 40. */
+        struct DxfMLeader *next;
+                /*!< Pointer to the next DxfMLeader.\n
+                 * \c NULL in the last DxfMLeader. */
+} DxfMLeaderContextDataGroup;
+
 
 DxfMLeader *dxf_mleader_new ();
 DxfMLeader *dxf_mleader_init (DxfMLeader *mleader);
