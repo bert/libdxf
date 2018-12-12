@@ -323,9 +323,40 @@ dxf_mleader_struct
 typedef struct
 dxf_mleader_context_data_group_struct
 {
+        DxfPoint *p0;
+                /*!< Content base position.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< Text normal direction.\n
+                 * Group codes = 11, 21 and 31.*/
+        DxfPoint *p2;
+                /*!< Text location.\n
+                 * Group codes = 12, 22 and 32.*/
+        DxfPoint *p3;
+                /*!< Text direction.\n
+                 * Group codes = 13, 23 and 33.*/
         double content_scale;
                 /*!< Content scale.\n
                  * Group code = 40. */
+        double text_height;
+                /*!< Text height.\n
+                 * Group code = 41. */
+        double arrowhead_size;
+                /*!< Arrowhead size.\n
+                 * Group code = 140. */
+        double landing_gap;
+                /*!< Landing gap.\n
+                 * Group code = 145. */
+        int hasMtext;
+                /*!< Has M text (boolean).\n
+                 * Group code = 290. */
+        char *default_text_contents;
+                /*!< Default text contents.\n
+                 * Group code = 304. */
+        char *type_style_id;
+                /*!< Type style ID (string representing hex object
+                 * IDs).\n
+                 * Group code = 340. */
         struct DxfMLeader *next;
                 /*!< Pointer to the next DxfMLeader.\n
                  * \c NULL in the last DxfMLeader. */
