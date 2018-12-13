@@ -341,12 +341,36 @@ dxf_mleader_context_data_group_struct
         double text_height;
                 /*!< Text height.\n
                  * Group code = 41. */
+        double text_rotation;
+                /*!< Text rotation.\n
+                 * Group code = 42. */
+        double text_width;
+                /*!< Text width.\n
+                 * Group code = 43. */
+        double text_height2;
+                /*!< Text height.\n
+                 * Group code = 44. */
+        double text_line_spacing_factor;
+                /*!< Text line spacing factor.\n
+                 * Group code = 45. */
+        int32_t text_color;
+                /*!< Text color.\n
+                 * Group code = 90. */
         double arrowhead_size;
                 /*!< Arrowhead size.\n
                  * Group code = 140. */
         double landing_gap;
                 /*!< Landing gap.\n
                  * Group code = 145. */
+        int16_t text_line_spacing_style;
+                /*!< Text line spacing style.\n
+                 * Group code = 170. */
+        int16_t text_attachment;
+                /*!< Text attachment.\n
+                 * Group code = 171. */
+        int16_t text_flow_direction;
+                /*!< Text flow direction.\n
+                 * Group code = 172. */
         int hasMtext;
                 /*!< Has M text (boolean).\n
                  * Group code = 290. */
