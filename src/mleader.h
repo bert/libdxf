@@ -356,9 +356,18 @@ dxf_mleader_context_data_group_struct
         int32_t text_color;
                 /*!< Text color.\n
                  * Group code = 90. */
+        int32_t text_background_color;
+                /*!< Text background color.\n
+                 * Group code = 91. */
+        int32_t text_background_transparency;
+                /*!< Text background transparency.\n
+                 * Group code = 92. */
         double arrowhead_size;
                 /*!< Arrowhead size.\n
                  * Group code = 140. */
+        double text_background_scale_factor;
+                /*!< Text background scale factor.\n
+                 * Group code = 141. */
         double landing_gap;
                 /*!< Landing gap.\n
                  * Group code = 145. */
@@ -374,6 +383,12 @@ dxf_mleader_context_data_group_struct
         int hasMtext;
                 /*!< Has M text (boolean).\n
                  * Group code = 290. */
+        int is_text_background_color_on;
+                /*!< Is text background color on (boolean).\n
+                 * Group code = 291. */
+        int is_text_background_fill_on;
+                /*!< Is text background fill on (boolean).\n
+                 * Group code = 292. */
         char *default_text_contents;
                 /*!< Default text contents.\n
                  * Group code = 304. */
