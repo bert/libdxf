@@ -318,13 +318,16 @@ dxf_mleader_struct
 } DxfMLeader;
 
 /*!
- * \brief DXF definition of an AutoCAD mleader context data group object.
+ * \brief DXF definition of an AutoCAD mleader context data object.
  */
 typedef struct
-dxf_mleader_context_data_group_struct
+dxf_mleader_context_data_struct
 {
         DxfPoint *p0;
                 /*!< Content base position.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *vertex;
+                /*!< Vertex.\n
                  * Group codes = 10, 20 and 30.*/
         DxfPoint *p1;
                 /*!< Text normal direction.\n
@@ -335,6 +338,15 @@ dxf_mleader_context_data_group_struct
         DxfPoint *p3;
                 /*!< Text direction.\n
                  * Group codes = 13, 23 and 33.*/
+        DxfPoint *p4;
+                /*!< Block content normal direction.\n
+                 * Group codes = 14, 24 and 34.*/
+        DxfPoint *p5;
+                /*!< Block content position.\n
+                 * Group codes = 15, 25 and 35.*/
+        double block_content_scale;
+                /*!< Block content scale.\n
+                 * Group code = 16. */
         double content_scale;
                 /*!< Content scale.\n
                  * Group code = 40. */
@@ -353,8 +365,17 @@ dxf_mleader_context_data_group_struct
         double text_line_spacing_factor;
                 /*!< Text line spacing factor.\n
                  * Group code = 45. */
+        double block_content_rotation;
+                /*!< Block content rotation.\n
+                 * Group code = 46. */
+        double block_transformation_matrix;
+                /*!< Block transformation matrix.\n
+                 * Group code = 47. */
         int32_t text_color;
                 /*!< Text color.\n
+                 * Group code = 90. */
+        int32_t break_point_index;
+                /*!< Break point index.\n
                  * Group code = 90. */
         int32_t text_background_color;
                 /*!< Text background color.\n
@@ -362,12 +383,33 @@ dxf_mleader_context_data_group_struct
         int32_t text_background_transparency;
                 /*!< Text background transparency.\n
                  * Group code = 92. */
+        int32_t block_content_color;
+                /*!< Block content color.\n
+                 * Group code = 93. */
+        double MLeader_plane_origin_point;
+                /*!< MLeader plane origin point.\n
+                 * Group code = 110. */
+        double MLeader_plane_X_axis_direction;
+                /*!< MLeader plane X-axis direction.\n
+                 * Group code = 111. */
+        double MLeader_plane_Y_axis_direction;
+                /*!< MLeader plane Y-axis direction.\n
+                 * Group code = 112. */
         double arrowhead_size;
                 /*!< Arrowhead size.\n
                  * Group code = 140. */
         double text_background_scale_factor;
                 /*!< Text background scale factor.\n
                  * Group code = 141. */
+        double text_column_width;
+                /*!< Text column width.\n
+                 * Group code = 142. */
+        double text_column_gutter_width;
+                /*!< Text column gutter width.\n
+                 * Group code = 143. */
+        double text_column_height;
+                /*!< Text column height.\n
+                 * Group code = 144. */
         double landing_gap;
                 /*!< Landing gap.\n
                  * Group code = 145. */
@@ -380,6 +422,9 @@ dxf_mleader_context_data_group_struct
         int16_t text_flow_direction;
                 /*!< Text flow direction.\n
                  * Group code = 172. */
+        int16_t text_column_type;
+                /*!< Text column type.\n
+                 * Group code = 173. */
         int hasMtext;
                 /*!< Has M text (boolean).\n
                  * Group code = 290. */
@@ -389,6 +434,21 @@ dxf_mleader_context_data_group_struct
         int is_text_background_fill_on;
                 /*!< Is text background fill on (boolean).\n
                  * Group code = 292. */
+        int use_text_auto_height;
+                /*!< Use text auto height (boolean).\n
+                 * Group code = 293. */
+        int text_column_flow_reversed;
+                /*!< Text column flow reversed (boolean).\n
+                 * Group code = 294. */
+        int text_use_word_break;
+                /*!< Text use word break (boolean).\n
+                 * Group code = 295. */
+        int has_block;
+                /*!< Has block (boolean).\n
+                 * Group code = 296. */
+        int MLeader_plane_normal_reversed;
+                /*!< MLeader plane normal reversed (boolean).\n
+                 * Group code = 297. */
         char *default_text_contents;
                 /*!< Default text contents.\n
                  * Group code = 304. */
@@ -396,10 +456,14 @@ dxf_mleader_context_data_group_struct
                 /*!< Type style ID (string representing hex object
                  * IDs).\n
                  * Group code = 340. */
+        char *block_content_id;
+                /*!< Block content ID (string representing hex object
+                 * IDs).\n
+                 * Group code = 341. */
         struct DxfMLeader *next;
                 /*!< Pointer to the next DxfMLeader.\n
                  * \c NULL in the last DxfMLeader. */
-} DxfMLeaderContextDataGroup;
+} DxfMLeaderContextData;
 
 
 DxfMLeader *dxf_mleader_new ();
