@@ -465,6 +465,41 @@ dxf_mleader_context_data_struct
                  * \c NULL in the last DxfMLeader. */
 } DxfMLeaderContextData;
 
+/*!
+ * \brief DXF definition of an AutoCAD mleader node object.
+ */
+typedef struct
+dxf_mleader_node_struct
+{
+        DxfPoint *p0;
+                /*!< Last leader line point.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< Dogleg vector.\n
+                 * Group codes = 11, 21 and 31.*/
+        DxfPoint *p2;
+                /*!< Break start point.\n
+                 * Group codes = 12, 22 and 32.*/
+        DxfPoint *p3;
+                /*!< Break end point.\n
+                 * Group codes = 13, 23 and 33.*/
+        double dogleg_length;
+                /*!< Dogleg length.\n
+                 * Group code = 40. */
+        int32_t leader_branch_index;
+                /*!< Leadr branch index.\n
+                 * Group code = 90. */
+        int has_set_last_leader_line_point;
+                /*!< Has set last leader line point (boolean).\n
+                 * Group code = 290. */
+        int has_set_dogleg_vector;
+                /*!< Has set dogleg vector (boolean).\n
+                 * Group code = 291. */
+        struct DxfMLeaderNode *next;
+                /*!< Pointer to the next DxfMLeaderNode.\n
+                 * \c NULL in the last DxfMLeaderNode. */
+} DxfMLeaderNode;
+
 
 DxfMLeader *dxf_mleader_new ();
 DxfMLeader *dxf_mleader_init (DxfMLeader *mleader);
