@@ -301,4 +301,46 @@ dxf_mleader_get_id_code
 }
 
 
+/*!
+ * \brief Set the \c id_code for a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c mleader when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMLeader *
+dxf_mleader_set_id_code
+(
+        DxfMLeader *mleader,
+                /*!< a pointer to a DXF \c MLEADER entity. */
+        int id_code
+                /*!< the \c id_code to be set for the entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mleader->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/
