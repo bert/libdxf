@@ -317,6 +317,7 @@ dxf_mleader_struct
                  * \c NULL in the last DxfMLeader. */
 } DxfMLeader;
 
+
 /*!
  * \brief DXF definition of an AutoCAD mleader context data object.
  */
@@ -465,6 +466,7 @@ dxf_mleader_context_data_struct
                  * \c NULL in the last DxfMLeaderContextData. */
 } DxfMLeaderContextData;
 
+
 /*!
  * \brief DXF definition of an AutoCAD mleader leader node object.
  */
@@ -499,6 +501,7 @@ dxf_mleader_leader_node_struct
                 /*!< Pointer to the next DxfMLeaderLeaderNode.\n
                  * \c NULL in the last DxfMLeaderLeaderNode. */
 } DxfMLeaderLeaderNode;
+
 
 /*!
  * \brief DXF definition of an AutoCAD mleader leader line object.
