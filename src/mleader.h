@@ -529,6 +529,7 @@ dxf_mleader_leader_line_struct
 
 DxfMLeader *dxf_mleader_new ();
 DxfMLeader *dxf_mleader_init (DxfMLeader *mleader);
+int dxf_mleader_free (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
