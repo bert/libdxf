@@ -422,4 +422,41 @@ dxf_mleader_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a DXF \c MLEADER entity.
+ *
+ * \return \c layer when successful, \c NULL when an error occurred.
+ */
+char *
+dxf_mleader_get_layer
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleader->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mleader->layer));
+}
+
+
 /* EOF*/
