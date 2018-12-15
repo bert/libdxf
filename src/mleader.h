@@ -537,6 +537,7 @@ void dxf_mleader_free_list (DxfMLeader *mleaders);
 int dxf_mleader_get_id_code (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_id_code (DxfMLeader *mleader, int id_code);
 char *dxf_mleader_get_linetype (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_linetype (DxfMLeader *mleader, char *linetype);
 
 
 #ifdef __cplusplus
