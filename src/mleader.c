@@ -760,4 +760,50 @@ dxf_mleader_get_visibility
 }
 
 
+/*!
+ * \brief Set the \c visibility for a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c mleader when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeader *
+dxf_mleader_set_visibility
+(
+        DxfMLeader *mleader,
+                /*!< a pointer to a DXF \c MLEADER entity. */
+        int16_t visibility
+                /*!< the \c visibility to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mleader->visibility = visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/
