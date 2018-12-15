@@ -487,7 +487,7 @@ dxf_mleader_node_struct
                 /*!< Dogleg length.\n
                  * Group code = 40. */
         int32_t leader_branch_index;
-                /*!< Leadr branch index.\n
+                /*!< Leader branch index.\n
                  * Group code = 90. */
         int has_set_last_leader_line_point;
                 /*!< Has set last leader line point (boolean).\n
