@@ -500,6 +500,32 @@ dxf_mleader_node_struct
                  * \c NULL in the last DxfMLeaderNode. */
 } DxfMLeaderNode;
 
+/*!
+ * \brief DXF definition of an AutoCAD mleader line object.
+ */
+typedef struct
+dxf_mleader_line_struct
+{
+        DxfPoint *p0;
+                /*!< Vertex.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< Break start point.\n
+                 * Group codes = 11, 21 and 31.*/
+        DxfPoint *p2;
+                /*!< Break end point.\n
+                 * Group codes = 12, 22 and 32.*/
+        int32_t break_point_index;
+                /*!< Break point index.\n
+                 * Group code = 90. */
+        int32_t leader_line_index;
+                /*!< Leader line index.\n
+                 * Group code = 91. */
+        struct DxfMLeaderLine *next;
+                /*!< Pointer to the next DxfMLeaderLine.\n
+                 * \c NULL in the last DxfMLeaderLine. */
+} DxfMLeaderLine;
+
 
 DxfMLeader *dxf_mleader_new ();
 DxfMLeader *dxf_mleader_init (DxfMLeader *mleader);
