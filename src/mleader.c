@@ -232,4 +232,37 @@ dxf_mleader_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c MLEADER entities and all their data fields.
+ */
+void
+dxf_mleader_free_list
+(
+        DxfMLeader *mleaders
+                /*!< a pointer to the single linked list of DXF
+                 * \c MLEADER entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (mleaders == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (mleaders != NULL)
+        {
+                DxfMLeader *iter = (DxfMLeader *) mleaders->next;
+                dxf_mleader_free (mleaders);
+                mleaders = (DxfMLeader *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
