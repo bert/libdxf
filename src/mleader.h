@@ -501,10 +501,10 @@ dxf_mleader_leader_node_struct
 } DxfMLeaderLeaderNode;
 
 /*!
- * \brief DXF definition of an AutoCAD mleader line object.
+ * \brief DXF definition of an AutoCAD mleader leader line object.
  */
 typedef struct
-dxf_mleader_line_struct
+dxf_mleader_leader_line_struct
 {
         DxfPoint *p0;
                 /*!< Vertex.\n
@@ -521,10 +521,10 @@ dxf_mleader_line_struct
         int32_t leader_line_index;
                 /*!< Leader line index.\n
                  * Group code = 91. */
-        struct DxfMLeaderLine *next;
-                /*!< Pointer to the next DxfMLeaderLine.\n
-                 * \c NULL in the last DxfMLeaderLine. */
-} DxfMLeaderLine;
+        struct DxfMLeaderLeaderLine *next;
+                /*!< Pointer to the next DxfMLeaderLeaderLine.\n
+                 * \c NULL in the last DxfMLeaderLeaderLine. */
+} DxfMLeaderLeaderLine;
 
 
 DxfMLeader *dxf_mleader_new ();
