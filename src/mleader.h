@@ -543,6 +543,7 @@ DxfMLeader *dxf_mleader_set_layer (DxfMLeader *mleader, char *layer);
 double dxf_mleader_get_elevation (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_elevation (DxfMLeader *mleader, double elevation);
 double dxf_mleader_get_thickness (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_thickness (DxfMLeader *mleader, double thickness);
 
 
 #ifdef __cplusplus
