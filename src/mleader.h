@@ -466,10 +466,10 @@ dxf_mleader_context_data_struct
 } DxfMLeaderContextData;
 
 /*!
- * \brief DXF definition of an AutoCAD mleader node object.
+ * \brief DXF definition of an AutoCAD mleader leader node object.
  */
 typedef struct
-dxf_mleader_node_struct
+dxf_mleader_leader_node_struct
 {
         DxfPoint *p0;
                 /*!< Last leader line point.\n
@@ -495,10 +495,10 @@ dxf_mleader_node_struct
         int has_set_dogleg_vector;
                 /*!< Has set dogleg vector (boolean).\n
                  * Group code = 291. */
-        struct DxfMLeaderNode *next;
-                /*!< Pointer to the next DxfMLeaderNode.\n
-                 * \c NULL in the last DxfMLeaderNode. */
-} DxfMLeaderNode;
+        struct DxfMLeaderLeaderNode *next;
+                /*!< Pointer to the next DxfMLeaderLeaderNode.\n
+                 * \c NULL in the last DxfMLeaderLeaderNode. */
+} DxfMLeaderLeaderNode;
 
 /*!
  * \brief DXF definition of an AutoCAD mleader line object.
