@@ -545,6 +545,7 @@ DxfMLeader *dxf_mleader_set_elevation (DxfMLeader *mleader, double elevation);
 double dxf_mleader_get_thickness (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_thickness (DxfMLeader *mleader, double thickness);
 double dxf_mleader_get_linetype_scale (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_linetype_scale (DxfMLeader *mleader, double linetype_scale);
 
 
 #ifdef __cplusplus
