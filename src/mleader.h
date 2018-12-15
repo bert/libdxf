@@ -460,9 +460,9 @@ dxf_mleader_context_data_struct
                 /*!< Block content ID (string representing hex object
                  * IDs).\n
                  * Group code = 341. */
-        struct DxfMLeader *next;
-                /*!< Pointer to the next DxfMLeader.\n
-                 * \c NULL in the last DxfMLeader. */
+        struct DxfMLeaderContextData *next;
+                /*!< Pointer to the next DxfMLeaderContextData.\n
+                 * \c NULL in the last DxfMLeaderContextData. */
 } DxfMLeaderContextData;
 
 /*!
