@@ -552,6 +552,7 @@ int dxf_mleader_get_color (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_color (DxfMLeader *mleader, int color);
 int dxf_mleader_get_paperspace (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_paperspace (DxfMLeader *mleader, int paperspace);
+int dxf_mleader_get_graphics_data_size (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
