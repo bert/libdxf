@@ -554,6 +554,7 @@ int dxf_mleader_get_paperspace (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_paperspace (DxfMLeader *mleader, int paperspace);
 int dxf_mleader_get_graphics_data_size (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_graphics_data_size (DxfMLeader *mleader, int graphics_data_size);
+int16_t dxf_mleader_get_shadow_mode (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
