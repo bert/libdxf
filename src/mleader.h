@@ -558,6 +558,7 @@ int16_t dxf_mleader_get_shadow_mode (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_shadow_mode (DxfMLeader *mleader, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_mleader_get_binary_graphics_data (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_binary_graphics_data (DxfMLeader *mleader, DxfBinaryGraphicsData *data);
+char *dxf_mleader_get_dictionary_owner_soft (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
