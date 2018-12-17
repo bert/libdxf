@@ -561,6 +561,7 @@ DxfMLeader *dxf_mleader_set_binary_graphics_data (DxfMLeader *mleader, DxfBinary
 char *dxf_mleader_get_dictionary_owner_soft (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_dictionary_owner_soft (DxfMLeader *mleader, char *dictionary_owner_soft);
 char *dxf_mleader_get_object_owner_soft (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_object_owner_soft (DxfMLeader *mleader, char *object_owner_soft);
 
 
 #ifdef __cplusplus
