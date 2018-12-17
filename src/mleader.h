@@ -557,6 +557,7 @@ DxfMLeader *dxf_mleader_set_graphics_data_size (DxfMLeader *mleader, int graphic
 int16_t dxf_mleader_get_shadow_mode (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_shadow_mode (DxfMLeader *mleader, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_mleader_get_binary_graphics_data (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_binary_graphics_data (DxfMLeader *mleader, DxfBinaryGraphicsData *data);
 
 
 #ifdef __cplusplus
