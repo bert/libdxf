@@ -569,6 +569,7 @@ DxfMLeader *dxf_mleader_set_dictionary_owner_hard (DxfMLeader *mleader, char *di
 int16_t dxf_mleader_get_lineweight (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_lineweight (DxfMLeader *mleader, int16_t lineweight);
 char *dxf_mleader_get_plot_style_name (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_plot_style_name (DxfMLeader *mleader, char *plot_style_name);
 
 
 #ifdef __cplusplus
