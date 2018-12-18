@@ -1484,4 +1484,44 @@ dxf_mleader_set_material
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
+ * \c MLEADER entity.
+ *
+ * \return pointer to the \c dictionary_owner_hard.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_mleader_get_dictionary_owner_hard
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleader->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mleader->dictionary_owner_hard));
+}
+
+
 /* EOF*/

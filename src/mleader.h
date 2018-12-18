@@ -564,6 +564,7 @@ char *dxf_mleader_get_object_owner_soft (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_object_owner_soft (DxfMLeader *mleader, char *object_owner_soft);
 char *dxf_mleader_get_material (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_material (DxfMLeader *mleader, char *material);
+char *dxf_mleader_get_dictionary_owner_hard (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
