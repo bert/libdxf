@@ -1922,4 +1922,34 @@ dxf_mleader_set_transparency
 }
 
 
+/*!
+ * \brief Get the \c block_content_scale of a DXF \c MLEADER entity.
+ *
+ * \return the \c block_content_scale.
+ */
+double
+dxf_mleader_get_block_content_scale
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader->block_content_scale);
+}
+
+
 /* EOF*/
