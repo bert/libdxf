@@ -575,6 +575,7 @@ DxfMLeader *dxf_mleader_set_color_value (DxfMLeader *mleader, long color_value);
 char *dxf_mleader_get_color_name (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_color_name (DxfMLeader *mleader, char *color_name);
 long dxf_mleader_get_transparency (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_transparency (DxfMLeader *mleader, long transparency);
 
 
 #ifdef __cplusplus
