@@ -1987,4 +1987,34 @@ dxf_mleader_set_block_content_scale
 }
 
 
+/*!
+ * \brief Get the \c dogleg_length of a DXF \c MLEADER entity.
+ *
+ * \return the \c dogleg_length.
+ */
+double
+dxf_mleader_get_dogleg_length
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader->dogleg_length);
+}
+
+
 /* EOF*/
