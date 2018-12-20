@@ -583,6 +583,7 @@ DxfMLeader *dxf_mleader_set_dogleg_length (DxfMLeader *mleader, double dogleg_le
 double dxf_mleader_get_arrowhead_size (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_arrowhead_size (DxfMLeader *mleader, double arrowhead_size);
 double dxf_mleader_get_block_content_rotation (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_block_content_rotation (DxfMLeader *mleader, double block_content_rotation);
 
 
 #ifdef __cplusplus
