@@ -580,6 +580,7 @@ double dxf_mleader_get_block_content_scale (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_content_scale (DxfMLeader *mleader, double block_content_scale);
 double dxf_mleader_get_dogleg_length (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_dogleg_length (DxfMLeader *mleader, double dogleg_length);
+double dxf_mleader_get_arrowhead_size (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus

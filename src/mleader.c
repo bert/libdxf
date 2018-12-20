@@ -2052,4 +2052,34 @@ dxf_mleader_set_dogleg_length
 }
 
 
+/*!
+ * \brief Get the \c arrowhead_size of a DXF \c MLEADER entity.
+ *
+ * \return the \c arrowhead_size.
+ */
+double
+dxf_mleader_get_arrowhead_size
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader->arrowhead_size);
+}
+
+
 /* EOF*/
