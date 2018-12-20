@@ -2017,4 +2017,39 @@ dxf_mleader_get_dogleg_length
 }
 
 
+/*!
+ * \brief Set the  \c dogleg_length of a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c mleader when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeader *
+dxf_mleader_set_dogleg_length
+(
+        DxfMLeader *mleader,
+                /*!< a pointer to a DXF \c MLEADER entity. */
+        double dogleg_length
+                /*!< the \c dogleg_length of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleader->dogleg_length = dogleg_length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/
