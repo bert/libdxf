@@ -2117,4 +2117,34 @@ dxf_mleader_set_arrowhead_size
 }
 
 
+/*!
+ * \brief Get the \c block_content_rotation of a DXF \c MLEADER entity.
+ *
+ * \return the \c block_content_rotation.
+ */
+double
+dxf_mleader_get_block_content_rotation
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader->block_content_rotation);
+}
+
+
 /* EOF*/
