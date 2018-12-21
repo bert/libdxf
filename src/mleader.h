@@ -590,6 +590,7 @@ int32_t dxf_mleader_get_property_override_flag (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_property_override_flag (DxfMLeader *mleader, int32_t property_override_flag);
 int32_t dxf_mleader_get_leader_line_color (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_leader_line_color (DxfMLeader *mleader, int32_t leader_line_color);
+int32_t dxf_mleader_get_text_color (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
