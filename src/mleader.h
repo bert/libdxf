@@ -586,6 +586,7 @@ double dxf_mleader_get_block_content_rotation (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_content_rotation (DxfMLeader *mleader, double block_content_rotation);
 double dxf_mleader_get_block_attribute_width (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_attribute_width (DxfMLeader *mleader, double block_attribute_width);
+int32_t dxf_mleader_get_property_override_flag (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
