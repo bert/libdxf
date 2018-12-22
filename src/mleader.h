@@ -594,6 +594,7 @@ int32_t dxf_mleader_get_text_color (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_text_color (DxfMLeader *mleader, int32_t text_color);
 int32_t dxf_mleader_get_block_content_color (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_content_color (DxfMLeader *mleader, int32_t block_content_color);
+int32_t dxf_mleader_get_arrowhead_index (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
