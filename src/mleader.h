@@ -599,6 +599,7 @@ DxfMLeader *dxf_mleader_set_arrowhead_index (DxfMLeader *mleader, int32_t arrowh
 int32_t dxf_mleader_get_text_right_attachment_type (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_text_right_attachment_type (DxfMLeader *mleader, int32_t text_right_attachment_type);
 int16_t dxf_mleader_get_leader_linetype_style (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_leader_linetype_style (DxfMLeader *mleader, int16_t leader_linetype_style);
 
 
 #ifdef __cplusplus
