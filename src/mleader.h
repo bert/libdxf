@@ -601,6 +601,7 @@ DxfMLeader *dxf_mleader_set_text_right_attachment_type (DxfMLeader *mleader, int
 int16_t dxf_mleader_get_leader_linetype_style (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_leader_linetype_style (DxfMLeader *mleader, int16_t leader_linetype_style);
 int16_t dxf_mleader_get_leader_line_weight (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_leader_line_weight (DxfMLeader *mleader, int16_t leader_line_weight);
 
 
 #ifdef __cplusplus
