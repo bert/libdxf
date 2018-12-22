@@ -597,6 +597,7 @@ DxfMLeader *dxf_mleader_set_block_content_color (DxfMLeader *mleader, int32_t bl
 int32_t dxf_mleader_get_arrowhead_index (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_arrowhead_index (DxfMLeader *mleader, int32_t arrowhead_index);
 int32_t dxf_mleader_get_text_right_attachment_type (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_text_right_attachment_type (DxfMLeader *mleader, int32_t text_right_attachment_type);
 
 
 #ifdef __cplusplus
