@@ -613,6 +613,7 @@ DxfMLeader *dxf_mleader_set_text_alignment_type (DxfMLeader *mleader, int16_t te
 int16_t dxf_mleader_get_block_content_connection_type (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_content_connection_type (DxfMLeader *mleader, int16_t block_content_connection_type);
 int16_t dxf_mleader_get_block_attribute_index (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_block_attribute_index (DxfMLeader *mleader, int16_t block_attribute_index);
 
 
 #ifdef __cplusplus
