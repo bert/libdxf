@@ -3299,4 +3299,47 @@ dxf_mleader_set_text_attachment_point
 }
 
 
+/*!
+ * \brief Get the \c text_attachment_direction from a DXF \c MLEADER
+ * entity.
+ *
+ * \return \c text_attachment_direction.
+ */
+int16_t
+dxf_mleader_get_text_attachment_direction
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mleader->text_attachment_direction < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (mleader->text_attachment_direction > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader->text_attachment_direction);
+}
+
+
 /* EOF*/
