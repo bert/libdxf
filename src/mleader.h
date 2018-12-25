@@ -617,6 +617,7 @@ DxfMLeader *dxf_mleader_set_block_attribute_index (DxfMLeader *mleader, int16_t 
 int16_t dxf_mleader_get_text_align_in_IPE (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_text_align_in_IPE (DxfMLeader *mleader, int16_t text_align_in_IPE);
 int16_t dxf_mleader_get_text_attachment_point (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_text_attachment_point (DxfMLeader *mleader, int16_t text_attachment_point);
 
 
 #ifdef __cplusplus
