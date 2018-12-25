@@ -3391,7 +3391,8 @@ dxf_mleader_set_text_attachment_direction
 
 
 /*!
- * \brief Get the \c bottom_text_attachment_direction from a DXF \c MLEADER entity.
+ * \brief Get the \c bottom_text_attachment_direction from a DXF
+ * \c MLEADER entity.
  *
  * \return \c bottom_text_attachment_direction.
  */
