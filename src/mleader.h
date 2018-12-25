@@ -622,6 +622,7 @@ int16_t dxf_mleader_get_text_attachment_direction (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_text_attachment_direction (DxfMLeader *mleader, int16_t text_attachment_direction);
 int16_t dxf_mleader_get_bottom_text_attachment_direction (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_bottom_text_attachment_direction (DxfMLeader *mleader, int16_t bottom_text_attachment_direction);
+int16_t dxf_mleader_get_top_text_attachment_direction (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
