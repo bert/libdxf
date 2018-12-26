@@ -625,6 +625,7 @@ DxfMLeader *dxf_mleader_set_bottom_text_attachment_direction (DxfMLeader *mleade
 int16_t dxf_mleader_get_top_text_attachment_direction (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_top_text_attachment_direction (DxfMLeader *mleader, int16_t top_text_attachment_direction);
 int dxf_mleader_get_enable_landing (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_enable_landing (DxfMLeader *mleader, int enable_landing);
 
 
 #ifdef __cplusplus

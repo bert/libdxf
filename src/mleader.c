@@ -3567,4 +3567,50 @@ dxf_mleader_get_enable_landing
 }
 
 
+/*!
+ * \brief Set the \c enable_landing for a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c mleader when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeader *
+dxf_mleader_set_enable_landing
+(
+        DxfMLeader *mleader,
+                /*!< a pointer to a DXF \c MLEADER entity. */
+        int enable_landing
+                /*!< the \c enable_landing to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (enable_landing < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (enable_landing > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mleader->enable_landing = enable_landing;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/
