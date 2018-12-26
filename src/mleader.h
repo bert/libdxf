@@ -628,6 +628,7 @@ int dxf_mleader_get_enable_landing (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_enable_landing (DxfMLeader *mleader, int enable_landing);
 int dxf_mleader_get_enable_dogleg (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_enable_dogleg (DxfMLeader *mleader, int enable_dogleg);
+int dxf_mleader_get_enable_frame_text (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
