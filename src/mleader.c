@@ -3613,4 +3613,46 @@ dxf_mleader_set_enable_landing
 }
 
 
+/*!
+ * \brief Get the \c enable_dogleg from a DXF \c MLEADER entity.
+ *
+ * \return \c enable_dogleg (boolean).
+ */
+int
+dxf_mleader_get_enable_dogleg
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mleader->enable_dogleg < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (mleader->enable_dogleg > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader->enable_dogleg);
+}
+
+
 /* EOF*/
