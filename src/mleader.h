@@ -631,6 +631,7 @@ DxfMLeader *dxf_mleader_set_enable_dogleg (DxfMLeader *mleader, int enable_dogle
 int dxf_mleader_get_enable_frame_text (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_enable_frame_text (DxfMLeader *mleader, int enable_frame_text);
 int dxf_mleader_get_enable_annotation_scale (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_enable_annotation_scale (DxfMLeader *mleader, int enable_annotation_scale);
 
 
 #ifdef __cplusplus
