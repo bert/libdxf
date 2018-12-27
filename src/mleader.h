@@ -632,6 +632,7 @@ int dxf_mleader_get_enable_frame_text (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_enable_frame_text (DxfMLeader *mleader, int enable_frame_text);
 int dxf_mleader_get_enable_annotation_scale (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_enable_annotation_scale (DxfMLeader *mleader, int enable_annotation_scale);
+int dxf_mleader_get_text_direction_negative (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
