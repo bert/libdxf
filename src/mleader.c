@@ -3971,4 +3971,43 @@ dxf_mleader_set_text_direction_negative
 }
 
 
+/*!
+ * \brief Get the \c block_attribute_text_string from a DXF \c MLEADER
+ * entity.
+ *
+ * \return \c block_attribute_text_string when successful, \c NULL when
+ * an error occurred.
+ */
+char *
+dxf_mleader_get_block_attribute_text_string
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleader->block_attribute_text_string ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mleader->block_attribute_text_string));
+}
+
+
 /* EOF*/

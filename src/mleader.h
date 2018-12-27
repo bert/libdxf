@@ -634,6 +634,7 @@ int dxf_mleader_get_enable_annotation_scale (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_enable_annotation_scale (DxfMLeader *mleader, int enable_annotation_scale);
 int dxf_mleader_get_text_direction_negative (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_text_direction_negative (DxfMLeader *mleader, int text_direction_negative);
+char *dxf_mleader_get_block_attribute_text_string (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
