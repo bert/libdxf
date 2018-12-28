@@ -640,6 +640,7 @@ char *dxf_mleader_get_block_attribute_id (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_attribute_id (DxfMLeader *mleader, char *block_attribute_id);
 char *dxf_mleader_get_leader_style_id (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_leader_style_id (DxfMLeader *mleader, char *leader_style_id);
+char *dxf_mleader_get_leader_linetype_id (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
