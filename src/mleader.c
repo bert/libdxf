@@ -4092,4 +4092,46 @@ dxf_mleader_get_block_attribute_id
 }
 
 
+/*!
+ * \brief Set the \c block_attribute_id for a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c mleader when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeader *
+dxf_mleader_set_block_attribute_id
+(
+        DxfMLeader *mleader,
+                /*!< a pointer to a DXF \c MLEADER entity. */
+        char *block_attribute_id
+                /*!< a pointer to a string containing the
+                 * \c block_attribute_id to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_attribute_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleader->block_attribute_id = strdup (block_attribute_id);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/

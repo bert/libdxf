@@ -637,6 +637,7 @@ DxfMLeader *dxf_mleader_set_text_direction_negative (DxfMLeader *mleader, int te
 char *dxf_mleader_get_block_attribute_text_string (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_attribute_text_string (DxfMLeader *mleader, char *block_attribute_text_string);
 char *dxf_mleader_get_block_attribute_id (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_block_attribute_id (DxfMLeader *mleader, char *block_attribute_id);
 
 
 #ifdef __cplusplus
