@@ -4172,4 +4172,46 @@ dxf_mleader_get_leader_style_id
 }
 
 
+/*!
+ * \brief Set the \c leader_style_id for a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c mleader when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeader *
+dxf_mleader_set_leader_style_id
+(
+        DxfMLeader *mleader,
+                /*!< a pointer to a DXF \c MLEADER entity. */
+        char *leader_style_id
+                /*!< a pointer to a string containing the
+                 * \c leader_style_id to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader_style_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleader->leader_style_id = strdup (leader_style_id);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleader);
+}
+
+
 /* EOF*/
