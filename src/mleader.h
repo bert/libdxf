@@ -638,6 +638,7 @@ char *dxf_mleader_get_block_attribute_text_string (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_attribute_text_string (DxfMLeader *mleader, char *block_attribute_text_string);
 char *dxf_mleader_get_block_attribute_id (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_block_attribute_id (DxfMLeader *mleader, char *block_attribute_id);
+char *dxf_mleader_get_leader_style_id (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
