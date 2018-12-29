@@ -644,6 +644,7 @@ char *dxf_mleader_get_leader_linetype_id (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_leader_linetype_id (DxfMLeader *mleader, char *leader_linetype_id);
 char *dxf_mleader_get_arrowhead_id (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_arrowhead_id (DxfMLeader *mleader, char *arrowhead_id);
+char *dxf_mleader_get_text_style_id (DxfMLeader *mleader);
 
 
 #ifdef __cplusplus
