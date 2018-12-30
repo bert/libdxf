@@ -4614,4 +4614,44 @@ dxf_mleader_set_arrow_head_id
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c MLEADER entity from a DXF
+ * \c MLEADER entity.
+ *
+ * \return pointer to the next \c MLEADER entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMLeader *
+dxf_mleader_get_next
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleader->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMLeader *) mleader->next);
+}
+
+
 /* EOF*/
