@@ -651,6 +651,7 @@ DxfMLeader *dxf_mleader_set_block_content_id (DxfMLeader *mleader, char *block_c
 char *dxf_mleader_get_arrow_head_id (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_arrow_head_id (DxfMLeader *mleader, char *arrow_head_id);
 DxfMLeader *dxf_mleader_get_next (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_set_next (DxfMLeader *mleader, DxfMLeader *next);
 
 
 #ifdef __cplusplus
