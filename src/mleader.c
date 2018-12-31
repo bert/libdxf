@@ -4741,4 +4741,43 @@ dxf_mleader_get_last
 }
 
 
+/*!
+ * \brief Allocate memory for a DxfMLeaderContextData object for a DXF
+ * \c MLEADER entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfMLeaderContextData *data = NULL;
+        size_t size;
+
+        size = sizeof (DxfMLeaderContextData);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((data = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                data = NULL;
+        }
+        else
+        {
+                memset (data, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/

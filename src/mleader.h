@@ -653,6 +653,7 @@ DxfMLeader *dxf_mleader_set_arrow_head_id (DxfMLeader *mleader, char *arrow_head
 DxfMLeader *dxf_mleader_get_next (DxfMLeader *mleader);
 DxfMLeader *dxf_mleader_set_next (DxfMLeader *mleader, DxfMLeader *next);
 DxfMLeader *dxf_mleader_get_last (DxfMLeader *mleader);
+DxfMLeaderContextData *dxf_mleader_context_data_new ();
 
 
 #ifdef __cplusplus
