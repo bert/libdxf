@@ -4696,4 +4696,49 @@ dxf_mleader_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c MLEADER entity from a linked
+ * list of DXF \c MLEADER entities.
+ *
+ * \return pointer to the last \c MLEADER entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMLeader *
+dxf_mleader_get_last
+(
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleader->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfMLeader *) mleader);
+        }
+        DxfMLeader *iter = (DxfMLeader *) mleader->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfMLeader *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMLeader *) iter);
+}
+
+
 /* EOF*/
