@@ -4862,8 +4862,9 @@ dxf_mleader_context_data_init
         data->text_use_word_break = 0;
         data->has_block = 0;
         data->MLeader_plane_normal_reversed = 0;
-        data->default_text_contents = 0;
-        data->block_content_id = 0;
+        data->default_text_contents = strdup ("");
+        data->type_style_id = strdup ("");
+        data->block_content_id = strdup ("");
         data->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
