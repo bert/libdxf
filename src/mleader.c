@@ -4780,4 +4780,96 @@ dxf_mleader_context_data_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a
+ * DxfMLeaderContextData object for a DXF \c MLEADER entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_init
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to the DxfMLeaderContextData object for
+                 * the DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                data = dxf_mleader_context_data_new ();
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->p0 = dxf_point_new ();
+        data->p0 = dxf_point_init (data->p0);
+        data->vertex = dxf_point_new ();
+        data->vertex = dxf_point_init (data->vertex);
+        data->p1 = dxf_point_new ();
+        data->p1 = dxf_point_init (data->p1);
+        data->p2 = dxf_point_new ();
+        data->p2 = dxf_point_init (data->p2);
+        data->p3 = dxf_point_new ();
+        data->p3 = dxf_point_init (data->p3);
+        data->p4 = dxf_point_new ();
+        data->p4 = dxf_point_init (data->p4);
+        data->p5 = dxf_point_new ();
+        data->p5 = dxf_point_init (data->p5);
+        data->block_content_scale = 1.0;
+        data->content_scale = 1.0;
+        data->text_height = 1.0;
+        data->text_rotation = 0.0;
+        data->text_width = 1.0;
+        data->text_height2 = 1.0;
+        data->text_line_spacing_factor = 1.0;
+        data->block_content_rotation = 0.0;
+        data->block_transformation_matrix = 1.0;
+        data->text_color = 0;
+        data->break_point_index = 0;
+        data->text_background_color = 0;
+        data->text_background_transparency = 0;
+        data->block_content_color = 0;
+        data->MLeader_plane_origin_point = 0.0;
+        data->MLeader_plane_X_axis_direction = 0.0;
+        data->MLeader_plane_Y_axis_direction = 0.0;
+        data->arrowhead_size = 0.0;
+        data->text_background_scale_factor = 1.0;
+        data->text_column_width = 0.0;
+        data->text_column_gutter_width = 0.0;
+        data->text_column_height = 0.0;
+        data->landing_gap = 0.0;
+        data->text_line_spacing_style = 0;
+        data->text_attachment = 0;
+        data->text_flow_direction = 0;
+        data->text_column_type = 0;
+        data->hasMtext = 0;
+        data->is_text_background_color_on = 0;
+        data->is_text_background_fill_on = 0;
+        data->use_text_auto_height = 0;
+        data->text_column_flow_reversed = 0;
+        data->text_use_word_break = 0;
+        data->has_block = 0;
+        data->MLeader_plane_normal_reversed = 0;
+        data->default_text_contents = 0;
+        data->block_content_id = 0;
+        data->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
