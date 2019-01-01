@@ -1,7 +1,7 @@
 /*!
  * \file mleader.h
  *
- * \author Copyright (C) 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF mleader entity (\c MLEADER).
  *
