@@ -4873,4 +4873,57 @@ dxf_mleader_context_data_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DxfMLeaderContextData object
+ * of a DXF \c MLEADER entity and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mleader_context_data_free
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to the memory occupied by the
+                 * DxfMLeaderContextData object of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dxf_point_free_list (data->p0);
+        dxf_point_free_list (data->vertex);
+        dxf_point_free_list (data->p1);
+        dxf_point_free_list (data->p2);
+        dxf_point_free_list (data->p3);
+        dxf_point_free_list (data->p4);
+        dxf_point_free_list (data->p5);
+        free (data->default_text_contents);
+        free (data->type_style_id);
+        free (data->block_content_id);
+        free (data);
+        data = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
