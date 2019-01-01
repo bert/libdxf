@@ -4926,4 +4926,38 @@ dxf_mleader_context_data_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of \c
+ * DxfMLeaderContextData objects of a DXF \c MLEADER entity and all
+ * their data fields.
+ */
+void
+dxf_mleader_context_data_free_list
+(
+        DxfMLeaderContextData *datas
+                /*!< a pointer to the single linked list of
+                 * \c DxfMLeaderContextData objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (datas == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (datas != NULL)
+        {
+                DxfMLeaderContextData *iter = (DxfMLeaderContextData *) datas->next;
+                dxf_mleader_context_data_free (datas);
+                datas = (DxfMLeaderContextData *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/

@@ -656,6 +656,7 @@ DxfMLeader *dxf_mleader_get_last (DxfMLeader *mleader);
 DxfMLeaderContextData *dxf_mleader_context_data_new ();
 DxfMLeaderContextData *dxf_mleader_context_data_init (DxfMLeaderContextData *data);
 int dxf_mleader_context_data_free (DxfMLeaderContextData *data);
+void dxf_mleader_context_data_free_list (DxfMLeaderContextData *datas);
 
 
 #ifdef __cplusplus
