@@ -659,6 +659,7 @@ int dxf_mleader_context_data_free (DxfMLeaderContextData *data);
 void dxf_mleader_context_data_free_list (DxfMLeaderContextData *datas);
 DxfPoint *dxf_mleader_context_data_get_p0 (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_p0 (DxfMLeaderContextData *data, DxfPoint *p0);
+double dxf_mleader_context_data_get_x0 (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
