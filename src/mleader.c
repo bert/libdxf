@@ -5407,4 +5407,48 @@ dxf_mleader_context_data_get_vertex_x0
 }
 
 
+/*!
+ * \brief Set the X-value of a DxfMLeaderContextData object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_vertex_x0
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DxfMLeaderContextData object. */
+        double vertex_x0
+                /*!< the X-value of the \c vertex_x0 of a
+                 * DxfMLeaderContextData object of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->vertex->x0 = vertex_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
