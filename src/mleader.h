@@ -673,6 +673,7 @@ double dxf_mleader_context_data_get_vertex_y0 (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_vertex_y0 (DxfMLeaderContextData *data, double vertex_y0);
 double dxf_mleader_context_data_get_vertex_z0 (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_vertex_z0 (DxfMLeaderContextData *data, double vertex_z0);
+DxfPoint *dxf_mleader_context_data_get_p1 (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
