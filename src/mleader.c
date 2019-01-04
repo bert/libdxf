@@ -5408,8 +5408,8 @@ dxf_mleader_context_data_get_vertex_x0
 
 
 /*!
- * \brief Set the X-value of a DxfMLeaderContextData object of a
- * DXF \c MLEADER entity.
+ * \brief Set the X-value of the \c vertex_x0 of a DxfMLeaderContextData
+ * object of a DXF \c MLEADER entity.
  *
  * \return a pointer to \c data when successful, or \c NULL when an error
  * occurred.
