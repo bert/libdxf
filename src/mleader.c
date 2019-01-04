@@ -5491,8 +5491,8 @@ dxf_mleader_context_data_get_vertex_y0
 
 
 /*!
- * \brief Set the Y-value of a DxfMLeaderContextData object of a
- * DXF \c MLEADER entity.
+ * \brief Set the Y-value of the \c vertex_y0 of a DxfMLeaderContextData
+ * object of a DXF \c MLEADER entity.
  *
  * \return a pointer to \c data when successful, or \c NULL when an error
  * occurred.
