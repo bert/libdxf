@@ -5574,8 +5574,8 @@ dxf_mleader_context_data_get_vertex_z0
 
 
 /*!
- * \brief Set the Z-value of a DxfMLeaderContextData object of a
- * DXF \c MLEADER entity.
+ * \brief Set the Z-value of the \c vertex_z0 of a DxfMLeaderContextData
+ * object of a DXF \c MLEADER entity.
  *
  * \return a pointer to \c data when successful, or \c NULL when an error
  * occurred.
