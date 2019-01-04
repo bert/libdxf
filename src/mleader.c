@@ -5003,8 +5003,8 @@ dxf_mleader_context_data_get_p0
  * \brief Set the \c p0 of a \c DxfMLeaderContextData object of a DXF
  * \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_p0
@@ -5084,8 +5084,8 @@ dxf_mleader_context_data_get_x0
  * \brief Set the X-value of a DxfMLeaderContextData object of a
  * DXF \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_x0
@@ -5166,8 +5166,8 @@ dxf_mleader_context_data_get_y0
  * \brief Set the Y-value of a DxfMLeaderContextData object of a
  * DXF \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_y0
@@ -5248,8 +5248,8 @@ dxf_mleader_context_data_get_z0
  * \brief Set the Z-value \c z0 of a DxfMLeaderContextData object of a
  * DXF \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_z0
@@ -5330,8 +5330,8 @@ dxf_mleader_context_data_get_vertex
  * \brief Set the \c vertex of a \c DxfMLeaderContextData object of a
  * DXF \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_vertex
@@ -5369,8 +5369,8 @@ dxf_mleader_context_data_set_vertex
 
 
 /*!
- * \brief Get the X-value \c vertex_x0 of a DxfMLeaderContextData object of a
- * DXF \c MLEADER entity.
+ * \brief Get the X-value \c vertex_x0 of a DxfMLeaderContextData object
+ * of a DXF \c MLEADER entity.
  *
  * \return the X-value \c vertex_x0.
  */
@@ -5411,8 +5411,8 @@ dxf_mleader_context_data_get_vertex_x0
  * \brief Set the X-value of the \c vertex_x0 of a DxfMLeaderContextData
  * object of a DXF \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_vertex_x0
@@ -5452,8 +5452,8 @@ dxf_mleader_context_data_set_vertex_x0
 
 
 /*!
- * \brief Get the Y-value \c vertex_y0 of a DxfMLeaderContextData object of a
- * DXF \c MLEADER entity.
+ * \brief Get the Y-value \c vertex_y0 of a DxfMLeaderContextData object
+ * of a DXF \c MLEADER entity.
  *
  * \return the Y-value \c vertex_y0.
  */
@@ -5494,8 +5494,8 @@ dxf_mleader_context_data_get_vertex_y0
  * \brief Set the Y-value of the \c vertex_y0 of a DxfMLeaderContextData
  * object of a DXF \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_vertex_y0
@@ -5535,8 +5535,8 @@ dxf_mleader_context_data_set_vertex_y0
 
 
 /*!
- * \brief Get the Z-value \c vertex_z0 of a DxfMLeaderContextData object of a
- * DXF \c MLEADER entity.
+ * \brief Get the Z-value \c vertex_z0 of a DxfMLeaderContextData object
+ * of a DXF \c MLEADER entity.
  *
  * \return the Z-value \c vertex_z0.
  */
@@ -5577,8 +5577,8 @@ dxf_mleader_context_data_get_vertex_z0
  * \brief Set the Z-value of the \c vertex_z0 of a DxfMLeaderContextData
  * object of a DXF \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_vertex_z0
@@ -5660,8 +5660,8 @@ dxf_mleader_context_data_get_p1
  * \brief Set the \c p1 of a \c DxfMLeaderContextData object of a DXF
  * \c MLEADER entity.
  *
- * \return a pointer to \c data when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
  */
 DxfMLeaderContextData *
 dxf_mleader_context_data_set_p1
