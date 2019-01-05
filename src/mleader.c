@@ -5983,4 +5983,46 @@ dxf_mleader_context_data_get_p2
 }
 
 
+/*!
+ * \brief Set the \c p2 of a \c DxfMLeaderContextData object of a DXF
+ * \c MLEADER entity.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_p2
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a \c DxfMLeaderContextData object. */
+        DxfPoint *p2
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->p2 = p2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
