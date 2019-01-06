@@ -690,6 +690,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_y2 (DxfMLeaderContextData *d
 double dxf_mleader_context_data_get_z2 (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_z2 (DxfMLeaderContextData *data, double z2);
 DxfPoint *dxf_mleader_context_data_get_p3 (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_p3 (DxfMLeaderContextData *data, DxfPoint *p3);
 
 
 #ifdef __cplusplus
