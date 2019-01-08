@@ -6882,4 +6882,47 @@ dxf_mleader_context_data_get_z4
 }
 
 
+/*!
+ * \brief Set the Z-value \c z4 of a DxfMLeaderContextData object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_z4
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DxfMLeaderContextData object. */
+        double z4
+                /*!< the Z-value of the \c z4 of a DxfMLeaderContextData
+                 * object of a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->p4 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->p4->z0 = z4;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
