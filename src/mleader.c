@@ -6598,4 +6598,43 @@ dxf_mleader_context_data_set_z3
 }
 
 
+/*!
+ * \brief Get the \c p4 of a \c DxfMLeaderContextData object of a DXF
+ * \c MLEADER entity.
+ *
+ * \return \c p4.
+ */
+DxfPoint *
+dxf_mleader_context_data_get_p4
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a \c DxfMLeaderContextData object of a
+                 * DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->p4 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->p4);
+}
+
+
 /* EOF*/
