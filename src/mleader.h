@@ -712,6 +712,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_x5 (DxfMLeaderContextData *d
 double dxf_mleader_context_data_get_y5 (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_y5 (DxfMLeaderContextData *data, double y5);
 double dxf_mleader_context_data_get_z5 (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_z5 (DxfMLeaderContextData *data, double z5);
 
 
 #ifdef __cplusplus
