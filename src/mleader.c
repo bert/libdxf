@@ -7127,4 +7127,47 @@ dxf_mleader_context_data_get_y5
 }
 
 
+/*!
+ * \brief Set the Y-value \c y5 of a DxfMLeaderContextData object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_y5
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DxfMLeaderContextData object. */
+        double y5
+                /*!< the Y-value of the \c y5 of a DxfMLeaderContextData
+                 * object of a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->p5 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->p5->y0 = y5;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
