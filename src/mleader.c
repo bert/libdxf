@@ -7170,4 +7170,43 @@ dxf_mleader_context_data_set_y5
 }
 
 
+/*!
+ * \brief Get the Z-value \c z5 of a DxfMLeaderContextData object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return the Z-value \c z5.
+ */
+double
+dxf_mleader_context_data_get_z5
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a \c DxfMLeaderContextData object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->p5 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->p5->z0);
+}
+
+
 /* EOF*/
