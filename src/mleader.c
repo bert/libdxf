@@ -7319,4 +7319,35 @@ dxf_mleader_context_data_set_block_content_scale
 }
 
 
+/*!
+ * \brief Get the \c content_scale of a DXF \c DxfMLeaderContextData
+ * object.
+ *
+ * \return the \c content_scale.
+ */
+double
+dxf_mleader_context_data_get_content_scale
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->content_scale);
+}
+
+
 /* EOF*/
