@@ -719,6 +719,7 @@ double dxf_mleader_context_data_get_content_scale (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_content_scale (DxfMLeaderContextData *data, double content_scale);
 double dxf_mleader_context_data_get_text_height (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_height (DxfMLeaderContextData *data, double text_height);
+double dxf_mleader_context_data_get_text_rotation (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
