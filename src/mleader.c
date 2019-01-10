@@ -7284,7 +7284,7 @@ dxf_mleader_context_data_get_block_content_scale
 
 
 /*!
- * \brief Set the  \c block_content_scale of a DXF
+ * \brief Set the \c block_content_scale of a DXF
  * \c DxfMLeaderContextData object.
  *
  * \return a pointer to \c data when successful, or \c NULL when an
@@ -7296,8 +7296,7 @@ dxf_mleader_context_data_set_block_content_scale
         DxfMLeaderContextData *data,
                 /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
         double block_content_scale
-                /*!< the \c block_content_scale of a DXF \c MLEADER
-                 * entity. */
+                /*!< the \c block_content_scale. */
 )
 {
 #ifdef DEBUG
