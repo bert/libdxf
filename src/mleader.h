@@ -714,6 +714,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_y5 (DxfMLeaderContextData *d
 double dxf_mleader_context_data_get_z5 (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_z5 (DxfMLeaderContextData *data, double z5);
 double dxf_mleader_context_data_get_block_content_scale (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_block_content_scale (DxfMLeaderContextData *data, double block_content_scale);
 
 
 #ifdef __cplusplus
