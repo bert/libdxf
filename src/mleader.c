@@ -7483,4 +7483,40 @@ dxf_mleader_context_data_get_text_rotation
 }
 
 
+/*!
+ * \brief Set the \c text_rotation of a DXF \c DxfMLeaderContextData
+ * object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_text_rotation
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        double text_rotation
+                /*!< the \c text_rotation of a DXF
+                 * \c DxfMLeaderContextData object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->text_rotation = text_rotation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
