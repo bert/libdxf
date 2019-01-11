@@ -7519,4 +7519,35 @@ dxf_mleader_context_data_set_text_rotation
 }
 
 
+/*!
+ * \brief Get the \c text_width of a DXF \c DxfMLeaderContextData
+ * object.
+ *
+ * \return the \c text_width.
+ */
+double
+dxf_mleader_context_data_get_text_width
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->text_width);
+}
+
+
 /* EOF*/
