@@ -7684,4 +7684,40 @@ dxf_mleader_context_data_get_text_line_spacing_factor
 }
 
 
+/*!
+ * \brief Set the \c text_line_spacing_factor of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_text_line_spacing_factor
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        double text_line_spacing_factor
+                /*!< the \c text_line_spacing_factor of a DXF
+                 * \c DxfMLeaderContextData object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->text_line_spacing_factor = text_line_spacing_factor;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/

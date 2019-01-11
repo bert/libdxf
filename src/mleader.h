@@ -726,6 +726,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_width (DxfMLeaderContex
 double dxf_mleader_context_data_get_text_height2 (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_height2 (DxfMLeaderContextData *data, double text_height2);
 double dxf_mleader_context_data_get_text_line_spacing_factor (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_text_line_spacing_factor (DxfMLeaderContextData *data, double text_line_spacing_factor);
 
 
 #ifdef __cplusplus
