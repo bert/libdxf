@@ -7854,4 +7854,34 @@ dxf_mleader_context_data_set_block_transformation_matrix
 }
 
 
+/*!
+ * \brief Get the \c text_color of a DXF \c DxfMLeaderContextData object.
+ *
+ * \return \c text_color.
+ */
+int32_t
+dxf_mleader_context_data_get_text_color
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->text_color);
+}
+
+
 /* EOF*/
