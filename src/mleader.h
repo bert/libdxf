@@ -730,6 +730,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_line_spacing_factor (Dx
 double dxf_mleader_context_data_get_block_content_rotation (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_block_content_rotation (DxfMLeaderContextData *data, double block_content_rotation);
 double dxf_mleader_context_data_get_block_transformation_matrix (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_block_transformation_matrix (DxfMLeaderContextData *data, double block_transformation_matrix);
 
 
 #ifdef __cplusplus
