@@ -736,6 +736,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_color (DxfMLeaderContex
 int32_t dxf_mleader_context_data_get_break_point_index (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_break_point_index (DxfMLeaderContextData *data, int32_t break_point_index);
 int32_t dxf_mleader_context_data_get_text_background_color (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_text_background_color (DxfMLeaderContextData *data, int32_t text_background_color);
 
 
 #ifdef __cplusplus
