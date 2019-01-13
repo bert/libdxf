@@ -8120,4 +8120,35 @@ dxf_mleader_context_data_set_text_background_transparency
 }
 
 
+/*!
+ * \brief Get the \c block_content_color of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return \c block_content_color.
+ */
+int32_t
+dxf_mleader_context_data_get_block_content_color
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->block_content_color);
+}
+
+
 /* EOF*/
