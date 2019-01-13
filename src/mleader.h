@@ -733,6 +733,7 @@ double dxf_mleader_context_data_get_block_transformation_matrix (DxfMLeaderConte
 DxfMLeaderContextData *dxf_mleader_context_data_set_block_transformation_matrix (DxfMLeaderContextData *data, double block_transformation_matrix);
 int32_t dxf_mleader_context_data_get_text_color (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_color (DxfMLeaderContextData *data, int32_t text_color);
+int32_t dxf_mleader_context_data_get_break_point_index (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
