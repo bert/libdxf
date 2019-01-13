@@ -740,6 +740,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_background_color (DxfML
 int32_t dxf_mleader_context_data_get_text_background_transparency (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_background_transparency (DxfMLeaderContextData *data, int32_t text_background_transparency);
 int32_t dxf_mleader_context_data_get_block_content_color (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_block_content_color (DxfMLeaderContextData *data, int32_t block_content_color);
 
 
 #ifdef __cplusplus
