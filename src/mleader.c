@@ -8186,4 +8186,35 @@ dxf_mleader_context_data_set_block_content_color
 }
 
 
+/*!
+ * \brief Get the \c MLeader_plane_origin_point of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return the \c MLeader_plane_origin_point.
+ */
+double
+dxf_mleader_context_data_get_MLeader_plane_origin_point
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->MLeader_plane_origin_point);
+}
+
+
 /* EOF*/
