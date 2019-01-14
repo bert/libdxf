@@ -53,9 +53,12 @@ OBJ  = \
 	src/layer_index.o \
 	src/layer_name.o \
 	src/leader.o \
+	src/light.o \
 	src/line.o \
 	src/ltype.o \
 	src/lwpolyline.o \
+	src/mesh.o \
+	src/mleader.o \
 	src/mline.o \
 	src/mlinestyle.o \
 	src/mtext.o \
@@ -71,6 +74,7 @@ OBJ  = \
 	src/ray.o \
 	src/region.o \
 	src/section.o \
+	src/seqend.o \
 	src/shape.o \
 	src/solid.o \
 	src/sortentstable.o \
@@ -138,9 +142,12 @@ LINKOBJ  = \
 	src/layer_index.o \
 	src/layer_name.o \
 	src/leader.o \
+	src/light.o \
 	src/line.o \
 	src/ltype.o \
 	src/lwpolyline.o \
+	src/mesh.o \
+	src/mleader.o \
 	src/mline.o \
 	src/mlinestyle.o \
 	src/mtext.o \
@@ -156,6 +163,7 @@ LINKOBJ  = \
 	src/ray.o \
 	src/region.o \
 	src/section.o \
+	src/seqend.o \
 	src/shape.o \
 	src/solid.o \
 	src/sortentstable.o \
@@ -337,6 +345,9 @@ src/layer_name.o: src/layer_name.c
 src/leader.o: src/leader.c
 	$(CC) -c src/leader.c -o src/leader.o $(CFLAGS)
 
+src/line.o: src/light.c
+	$(CC) -c src/light.c -o src/light.o $(CFLAGS)
+
 src/line.o: src/line.c
 	$(CC) -c src/line.c -o src/line.o $(CFLAGS)
 
@@ -345,6 +356,12 @@ src/ltype.o: src/ltype.c
 
 src/lwpolyline.o: src/lwpolyline.c
 	$(CC) -c src/lwpolyline.c -o src/lwpolyline.o $(CFLAGS)
+
+src/mline.o: src/mesh.c
+	$(CC) -c src/mesh.c -o src/mesh.o $(CFLAGS)
+
+src/mline.o: src/mleader.c
+	$(CC) -c src/mleader.c -o src/mleader.o $(CFLAGS)
 
 src/mline.o: src/mline.c
 	$(CC) -c src/mline.c -o src/mline.o $(CFLAGS)
@@ -390,6 +407,9 @@ src/region.o: src/region.c
 
 src/section.o: src/section.c
 	$(CC) -c src/section.c -o src/section.o $(CFLAGS)
+
+src/section.o: src/seqend.c
+	$(CC) -c src/seqend.c -o src/seqend.o $(CFLAGS)
 
 src/shape.o: src/shape.c
 	$(CC) -c src/shape.c -o src/shape.o $(CFLAGS)
