@@ -8217,4 +8217,40 @@ dxf_mleader_context_data_get_MLeader_plane_origin_point
 }
 
 
+/*!
+ * \brief Set the \c MLeader_plane_origin_point of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_MLeader_plane_origin_point
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        double MLeader_plane_origin_point
+                /*!< the \c MLeader_plane_origin_point of a DXF
+                 * \c DxfMLeaderContextData object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->MLeader_plane_origin_point = MLeader_plane_origin_point;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
