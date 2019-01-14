@@ -743,6 +743,7 @@ int32_t dxf_mleader_context_data_get_block_content_color (DxfMLeaderContextData 
 DxfMLeaderContextData *dxf_mleader_context_data_set_block_content_color (DxfMLeaderContextData *data, int32_t block_content_color);
 double dxf_mleader_context_data_get_MLeader_plane_origin_point (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_origin_point (DxfMLeaderContextData *data, double MLeader_plane_origin_point);
+double dxf_mleader_context_data_get_MLeader_plane_X_axis_direction (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
