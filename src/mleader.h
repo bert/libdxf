@@ -746,6 +746,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_origin_point (
 double dxf_mleader_context_data_get_MLeader_plane_X_axis_direction (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_X_axis_direction (DxfMLeaderContextData *data, double MLeader_plane_X_axis_direction);
 double dxf_mleader_context_data_get_MLeader_plane_Y_axis_direction (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_Y_axis_direction (DxfMLeaderContextData *data, double MLeader_plane_Y_axis_direction);
 
 
 #ifdef __cplusplus
