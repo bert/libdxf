@@ -8456,7 +8456,7 @@ dxf_mleader_context_data_set_arrowhead_size
 
 /*!
  * \brief Get the \c text_background_scale_factor of a DXF
- * \c DxfMLeaderContextData  object.
+ * \c DxfMLeaderContextData object.
  *
  * \return the \c text_background_scale_factor.
  */
