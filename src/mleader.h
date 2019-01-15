@@ -750,6 +750,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_Y_axis_directi
 double dxf_mleader_context_data_get_arrowhead_size (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_arrowhead_size (DxfMLeaderContextData *data, double arrowhead_size);
 double dxf_mleader_context_data_get_text_background_scale_factor (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_text_background_scale_factor (DxfMLeaderContextData *data, double text_background_scale_factor);
 
 
 #ifdef __cplusplus
