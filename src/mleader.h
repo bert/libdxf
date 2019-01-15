@@ -754,6 +754,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_background_scale_factor
 double dxf_mleader_context_data_get_text_column_width (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_width (DxfMLeaderContextData *data, double text_column_width);
 double dxf_mleader_context_data_get_text_column_gutter_width (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_gutter_width (DxfMLeaderContextData *data, double text_column_gutter_width);
 
 
 #ifdef __cplusplus
