@@ -757,6 +757,7 @@ double dxf_mleader_context_data_get_text_column_gutter_width (DxfMLeaderContextD
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_gutter_width (DxfMLeaderContextData *data, double text_column_gutter_width);
 double dxf_mleader_context_data_get_text_column_height (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_height (DxfMLeaderContextData *data, double text_column_height);
+double dxf_mleader_context_data_get_landing_gap (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
