@@ -759,6 +759,7 @@ double dxf_mleader_context_data_get_text_column_height (DxfMLeaderContextData *d
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_height (DxfMLeaderContextData *data, double text_column_height);
 double dxf_mleader_context_data_get_landing_gap (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_landing_gap (DxfMLeaderContextData *data, double landing_gap);
+int16_t dxf_mleader_context_data_get_text_line_spacing_style (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
