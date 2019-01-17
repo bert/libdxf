@@ -761,6 +761,7 @@ double dxf_mleader_context_data_get_landing_gap (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_landing_gap (DxfMLeaderContextData *data, double landing_gap);
 int16_t dxf_mleader_context_data_get_text_line_spacing_style (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_line_spacing_style (DxfMLeaderContextData *data, int16_t text_line_spacing_style);
+int16_t dxf_mleader_context_data_get_text_attachment (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
