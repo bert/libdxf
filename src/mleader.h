@@ -766,6 +766,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_attachment (DxfMLeaderC
 int16_t dxf_mleader_context_data_get_text_flow_direction (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_flow_direction (DxfMLeaderContextData *data, int16_t text_flow_direction);
 int16_t dxf_mleader_context_data_get_text_column_type (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_type (DxfMLeaderContextData *data, int16_t text_column_type);
 
 
 #ifdef __cplusplus
