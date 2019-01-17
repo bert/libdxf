@@ -764,6 +764,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_line_spacing_style (Dxf
 int16_t dxf_mleader_context_data_get_text_attachment (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_attachment (DxfMLeaderContextData *data, int16_t text_attachment);
 int16_t dxf_mleader_context_data_get_text_flow_direction (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_text_flow_direction (DxfMLeaderContextData *data, int16_t text_flow_direction);
 
 
 #ifdef __cplusplus
