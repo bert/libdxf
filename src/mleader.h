@@ -426,7 +426,7 @@ dxf_mleader_context_data_struct
         int16_t text_column_type;
                 /*!< Text column type.\n
                  * Group code = 173. */
-        int hasMtext;
+        int has_Mtext;
                 /*!< Has M text (boolean).\n
                  * Group code = 290. */
         int is_text_background_color_on;

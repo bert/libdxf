@@ -4854,7 +4854,7 @@ dxf_mleader_context_data_init
         data->text_attachment = 0;
         data->text_flow_direction = 0;
         data->text_column_type = 0;
-        data->hasMtext = 0;
+        data->has_Mtext = 0;
         data->is_text_background_color_on = 0;
         data->is_text_background_fill_on = 0;
         data->use_text_auto_height = 0;
@@ -9055,12 +9055,12 @@ dxf_mleader_context_data_set_text_column_type
 
 
 /*!
- * \brief Get the \c hasMtext of a DXF \c DxfMLeaderContextData object.
+ * \brief Get the \c has_Mtext of a DXF \c DxfMLeaderContextData object.
  *
- * \return \c hasMtext.
+ * \return \c has_Mtext.
  */
 int
-dxf_mleader_context_data_get_hasMtext
+dxf_mleader_context_data_get_has_Mtext
 (
         DxfMLeaderContextData *data
                 /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
@@ -9080,23 +9080,23 @@ dxf_mleader_context_data_get_hasMtext
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (data->hasMtext);
+        return (data->has_Mtext);
 }
 
 
 /*!
- * \brief Set the \c hasMtext of a DXF \c DxfMLeaderContextData object.
+ * \brief Set the \c has_Mtext of a DXF \c DxfMLeaderContextData object.
  *
  * \return a pointer to \c data when successful, or \c NULL when an
  * error occurred.
  */
 DxfMLeaderContextData *
-dxf_mleader_context_data_set_hasMtext
+dxf_mleader_context_data_set_has_Mtext
 (
         DxfMLeaderContextData *data,
                 /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
-        int hasMtext
-                /*!< the \c hasMtext to be set for the object. */
+        int has_Mtext
+                /*!< the \c has_Mtext to be set for the object. */
 )
 {
 #if DEBUG
@@ -9110,7 +9110,7 @@ dxf_mleader_context_data_set_hasMtext
                   __FUNCTION__);
                 return (NULL);
         }
-        data->hasMtext = hasMtext;
+        data->has_Mtext = has_Mtext;
 #if DEBUG
         DXF_DEBUG_END
 #endif
