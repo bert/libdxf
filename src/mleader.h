@@ -770,6 +770,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_type (DxfMLeader
 int dxf_mleader_context_data_get_hasMtext (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_hasMtext (DxfMLeaderContextData *data, int hasMtext);
 int dxf_mleader_context_data_get_is_text_background_color_on (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_is_text_background_color_on (DxfMLeaderContextData *data, int is_text_background_color_on);
 
 
 #ifdef __cplusplus
