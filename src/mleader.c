@@ -9185,4 +9185,35 @@ dxf_mleader_context_data_set_is_text_background_color_on
 }
 
 
+/*!
+ * \brief Get the \c is_text_background_fill_on of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return \c is_text_background_fill_on.
+ */
+int
+dxf_mleader_context_data_get_is_text_background_fill_on
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->is_text_background_fill_on);
+}
+
+
 /* EOF*/
