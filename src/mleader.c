@@ -9216,4 +9216,40 @@ dxf_mleader_context_data_get_is_text_background_fill_on
 }
 
 
+/*!
+ * \brief Set the \c is_text_background_fill_on of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_is_text_background_fill_on
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        int is_text_background_fill_on
+                /*!< the \c is_text_background_fill_on to be set for
+                 * the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->is_text_background_fill_on = is_text_background_fill_on;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
