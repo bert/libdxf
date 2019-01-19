@@ -775,6 +775,7 @@ int dxf_mleader_context_data_get_is_text_background_fill_on (DxfMLeaderContextDa
 DxfMLeaderContextData *dxf_mleader_context_data_set_is_text_background_fill_on (DxfMLeaderContextData *data, int is_text_background_fill_on);
 int dxf_mleader_context_data_get_use_text_auto_height (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_use_text_auto_height (DxfMLeaderContextData *data, int use_text_auto_height);
+int dxf_mleader_context_data_get_text_column_flow_reversed (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
