@@ -777,6 +777,7 @@ int dxf_mleader_context_data_get_use_text_auto_height (DxfMLeaderContextData *da
 DxfMLeaderContextData *dxf_mleader_context_data_set_use_text_auto_height (DxfMLeaderContextData *data, int use_text_auto_height);
 int dxf_mleader_context_data_get_text_column_flow_reversed (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_text_column_flow_reversed (DxfMLeaderContextData *data, int text_column_flow_reversed);
+int dxf_mleader_context_data_get_text_use_word_break (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
