@@ -9283,4 +9283,40 @@ dxf_mleader_context_data_get_use_text_auto_height
 }
 
 
+/*!
+ * \brief Set the \c use_text_auto_height of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_use_text_auto_height
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        int use_text_auto_height
+                /*!< the \c use_text_auto_height to be set for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->use_text_auto_height = use_text_auto_height;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
