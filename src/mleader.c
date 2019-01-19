@@ -9417,4 +9417,40 @@ dxf_mleader_context_data_get_text_use_word_break
 }
 
 
+/*!
+ * \brief Set the \c text_use_word_break of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_text_use_word_break
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        int text_use_word_break
+                /*!< the \c text_use_word_break to be set for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->text_use_word_break = text_use_word_break;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
