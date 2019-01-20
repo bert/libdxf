@@ -782,6 +782,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_text_use_word_break (DxfMLea
 int dxf_mleader_context_data_get_has_block (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_has_block (DxfMLeaderContextData *data, int has_block);
 int dxf_mleader_context_data_get_MLeader_plane_normal_reversed (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_normal_reversed (DxfMLeaderContextData *data, int MLeader_plane_normal_reversed);
 
 
 #ifdef __cplusplus

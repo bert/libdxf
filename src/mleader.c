@@ -9548,4 +9548,40 @@ dxf_mleader_context_data_get_MLeader_plane_normal_reversed
 }
 
 
+/*!
+ * \brief Set the \c MLeader_plane_normal_reversed of a DXF
+ * \c DxfMLeaderContextData object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_MLeader_plane_normal_reversed
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        int MLeader_plane_normal_reversed
+                /*!< the \c MLeader_plane_normal_reversed to be set for
+                 * the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->MLeader_plane_normal_reversed = MLeader_plane_normal_reversed;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
