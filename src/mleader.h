@@ -783,6 +783,7 @@ int dxf_mleader_context_data_get_has_block (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_has_block (DxfMLeaderContextData *data, int has_block);
 int dxf_mleader_context_data_get_MLeader_plane_normal_reversed (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_normal_reversed (DxfMLeaderContextData *data, int MLeader_plane_normal_reversed);
+char *dxf_mleader_context_data_get_default_text_contents (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus
