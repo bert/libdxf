@@ -786,6 +786,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_set_MLeader_plane_normal_reverse
 char *dxf_mleader_context_data_get_default_text_contents (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_default_text_contents (DxfMLeaderContextData *data, char *default_text_contents);
 char *dxf_mleader_context_data_get_type_style_id (DxfMLeaderContextData *data);
+DxfMLeaderContextData *dxf_mleader_context_data_set_type_style_id (DxfMLeaderContextData *data, char *type_style_id);
 
 
 #ifdef __cplusplus

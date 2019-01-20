@@ -9682,4 +9682,39 @@ dxf_mleader_context_data_get_type_style_id
 }
 
 
+/*!
+ * \brief Set the \c type_style_id of a DXF \c DxfMLeaderContextData
+ * object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_set_type_style_id
+(
+        DxfMLeaderContextData *data,
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+        char *type_style_id
+                /*!< the \c type_style_id to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->type_style_id = type_style_id;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF*/
