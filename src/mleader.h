@@ -789,6 +789,7 @@ char *dxf_mleader_context_data_get_type_style_id (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_type_style_id (DxfMLeaderContextData *data, char *type_style_id);
 char *dxf_mleader_context_data_get_block_content_id (DxfMLeaderContextData *data);
 DxfMLeaderContextData *dxf_mleader_context_data_set_block_content_id (DxfMLeaderContextData *data, char *block_content_id);
+DxfMLeaderContextData *dxf_mleader_context_data_get_next (DxfMLeaderContextData *data);
 
 
 #ifdef __cplusplus

@@ -9783,4 +9783,44 @@ dxf_mleader_context_data_set_block_content_id
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DxfMLeaderContextData object
+ * from a DXF \c DxfMLeaderContextData object.
+ *
+ * \return pointer to the next \c DxfMLeaderContextData object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMLeaderContextData *
+dxf_mleader_context_data_get_next
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMLeaderContextData *) data->next);
+}
+
+
 /* EOF*/
