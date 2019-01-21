@@ -9717,4 +9717,35 @@ dxf_mleader_context_data_set_type_style_id
 }
 
 
+/*!
+ * \brief Get the \c block_content_id of a DXF \c DxfMLeaderContextData
+ * object.
+ *
+ * \return \c block_content_id.
+ */
+char *
+dxf_mleader_context_data_get_block_content_id
+(
+        DxfMLeaderContextData *data
+                /*!< a pointer to a DXF \c DxfMLeaderContextData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->block_content_id);
+}
+
+
 /* EOF*/
