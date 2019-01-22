@@ -9912,6 +9912,45 @@ dxf_mleader_context_data_get_last
 
 
 /*!
+ * \brief Allocate memory for a \c DxfMLeaderLeaderNode object for a DXF
+ * \c MLEADER entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_leader_node_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfMLeaderLeaderNode *node = NULL;
+        size_t size;
+
+        size = sizeof (DxfMLeaderLeaderNode);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((node = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                node = NULL;
+        }
+        else
+        {
+                memset (node, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node);
+}
+
+
+/*!
  * \brief Get the \c p0 of a \c DxfMLeaderLeaderNode object of a DXF
  * \c MLEADER entity.
  *
