@@ -793,6 +793,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_get_next (DxfMLeaderContextData 
 DxfMLeaderContextData *dxf_mleader_context_data_set_next (DxfMLeaderContextData *data, DxfMLeaderContextData *next);
 DxfMLeaderContextData *dxf_mleader_context_data_get_last (DxfMLeaderContextData *data);
 DxfPoint *dxf_mleader_leader_node_get_p0 (DxfMLeaderLeaderNode *node);
+DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_p0 (DxfMLeaderLeaderNode *node, DxfPoint *p0);
 
 
 #ifdef __cplusplus
