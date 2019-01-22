@@ -795,6 +795,7 @@ DxfMLeaderContextData *dxf_mleader_context_data_get_last (DxfMLeaderContextData 
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_new ();
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_init (DxfMLeaderLeaderNode *node);
 int dxf_mleader_leader_node_free (DxfMLeaderLeaderNode *node);
+void dxf_mleader_leader_node_free_list (DxfMLeaderLeaderNode *nodes);
 DxfPoint *dxf_mleader_leader_node_get_p0 (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_p0 (DxfMLeaderLeaderNode *node, DxfPoint *p0);
 

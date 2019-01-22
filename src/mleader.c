@@ -10051,6 +10051,40 @@ dxf_mleader_leader_node_free
 
 
 /*!
+ * \brief Free the allocated memory for a single linked list of \c
+ * DxfMLeaderLeaderNode objects of a DXF \c MLEADER entity and all
+ * their data fields.
+ */
+void
+dxf_mleader_leader_node_free_list
+(
+        DxfMLeaderLeaderNode *nodes
+                /*!< a pointer to the single linked list of
+                 * \c DxfMLeaderLeaderNode objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (nodes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (nodes != NULL)
+        {
+                DxfMLeaderLeaderNode *iter = (DxfMLeaderLeaderNode *) nodes->next;
+                dxf_mleader_leader_node_free (nodes);
+                nodes = (DxfMLeaderLeaderNode *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Get the \c p0 of a \c DxfMLeaderLeaderNode object of a DXF
  * \c MLEADER entity.
  *
