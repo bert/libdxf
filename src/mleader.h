@@ -798,6 +798,7 @@ int dxf_mleader_leader_node_free (DxfMLeaderLeaderNode *node);
 void dxf_mleader_leader_node_free_list (DxfMLeaderLeaderNode *nodes);
 DxfPoint *dxf_mleader_leader_node_get_p0 (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_p0 (DxfMLeaderLeaderNode *node, DxfPoint *p0);
+double dxf_mleader_leader_node_get_x0 (DxfMLeaderLeaderNode *node);
 
 
 #ifdef __cplusplus
