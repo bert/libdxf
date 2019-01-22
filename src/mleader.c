@@ -9911,4 +9911,43 @@ dxf_mleader_context_data_get_last
 }
 
 
+/*!
+ * \brief Get the \c p0 of a \c DxfMLeaderLeaderNode object of a DXF
+ * \c MLEADER entity.
+ *
+ * \return \c p0.
+ */
+DxfPoint *
+dxf_mleader_leader_node_get_p0
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object of a
+                 * DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (node->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node->p0);
+}
+
+
 /* EOF*/
