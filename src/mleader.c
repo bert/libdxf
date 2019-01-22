@@ -9951,6 +9951,59 @@ dxf_mleader_leader_node_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a
+ * \c DxfMLeaderLeaderNode object for a DXF \c MLEADER entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_leader_node_init
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to the \c DxfMLeaderLeaderNode object for
+                 * the DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                node = dxf_mleader_leader_node_new ();
+        }
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        node->p0 = dxf_point_new ();
+        node->p0 = dxf_point_init (node->p0);
+        node->p1 = dxf_point_new ();
+        node->p1 = dxf_point_init (node->p1);
+        node->p2 = dxf_point_new ();
+        node->p2 = dxf_point_init (node->p2);
+        node->p3 = dxf_point_new ();
+        node->p3 = dxf_point_init (node->p3);
+        node->dogleg_length = 0.0;
+        node->leader_branch_index = 0;
+        node->has_set_last_leader_line_point = 0;
+        node->has_set_dogleg_vector = 0;
+        node->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node);
+}
+
+
+/*!
  * \brief Get the \c p0 of a \c DxfMLeaderLeaderNode object of a DXF
  * \c MLEADER entity.
  *
