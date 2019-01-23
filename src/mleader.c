@@ -10287,4 +10287,48 @@ dxf_mleader_leader_node_get_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of a \c DxfMLeaderLeaderNode object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c node when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_leader_node_set_y0
+(
+        DxfMLeaderLeaderNode *node,
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object. */
+        double y0
+                /*!< the Y-value of the \c y0 of a
+                 * \c DxfMLeaderLeaderNode object of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (node->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        node->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node);
+}
+
+
 /* EOF*/
