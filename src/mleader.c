@@ -10331,4 +10331,43 @@ dxf_mleader_leader_node_set_y0
 }
 
 
+/*!
+ * \brief Get the Z-value \c z0 of a \c DxfMLeaderLeaderNode object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return the Z-value \c z0.
+ */
+double
+dxf_mleader_leader_node_get_z0
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (node->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node->p0->z0);
+}
+
+
 /* EOF*/
