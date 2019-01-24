@@ -10563,7 +10563,7 @@ dxf_mleader_leader_node_set_x1
                   __FUNCTION__);
                 return (NULL);
         }
-        if (node->p0 == NULL)
+        if (node->p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
