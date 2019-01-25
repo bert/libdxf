@@ -816,6 +816,7 @@ DxfPoint *dxf_mleader_leader_node_get_p2 (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_p2 (DxfMLeaderLeaderNode *node, DxfPoint *p2);
 double dxf_mleader_leader_node_get_x2 (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_x2 (DxfMLeaderLeaderNode *node, double x2);
+double dxf_mleader_leader_node_get_y2 (DxfMLeaderLeaderNode *node);
 
 
 #ifdef __cplusplus
