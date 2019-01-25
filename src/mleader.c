@@ -11074,4 +11074,43 @@ dxf_mleader_leader_node_set_z2
 }
 
 
+/*!
+ * \brief Get the \c p3 of a \c DxfMLeaderLeaderNode object of a DXF
+ * \c MLEADER entity.
+ *
+ * \return \c p3.
+ */
+DxfPoint *
+dxf_mleader_leader_node_get_p3
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object of a
+                 * DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (node->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node->p3);
+}
+
+
 /* EOF*/
