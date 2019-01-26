@@ -830,6 +830,7 @@ double dxf_mleader_leader_node_get_z3 (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_z3 (DxfMLeaderLeaderNode *node, double z3);
 double dxf_mleader_leader_node_get_dogleg_length (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_dogleg_length (DxfMLeaderLeaderNode *node, double dogleg_length);
+int32_t dxf_mleader_leader_node_get_leader_branch_index (DxfMLeaderLeaderNode *node);
 
 
 #ifdef __cplusplus

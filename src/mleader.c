@@ -11472,4 +11472,35 @@ dxf_mleader_leader_node_set_dogleg_length
 }
 
 
+/*!
+ * \brief Get the \c leader_branch_index of a DXF
+ * \c DxfMLeaderLeaderNode object of a DXF \c MLEADER entity.
+ *
+ * \return \c leader_branch_index.
+ */
+int32_t
+dxf_mleader_leader_node_get_leader_branch_index
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node->leader_branch_index);
+}
+
+
 /* EOF*/
