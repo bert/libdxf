@@ -11605,4 +11605,35 @@ dxf_mleader_context_data_set_has_set_last_leader_line_point
 }
 
 
+/*!
+ * \brief Get the \c has_set_dogleg_vector of a DXF
+ * \c DxfMLeaderLeaderNode object of a DXF \c MLEADER entity.
+ *
+ * \return \c has_set_dogleg_vector.
+ */
+int
+dxf_mleader_leader_node_get_has_set_dogleg_vector
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node->has_set_dogleg_vector);
+}
+
+
 /* EOF*/
