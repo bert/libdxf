@@ -11503,4 +11503,39 @@ dxf_mleader_leader_node_get_leader_branch_index
 }
 
 
+/*!
+ * \brief Set the \c leader_branch_index of a DXF
+ * \c DxfMLeaderLeaderNode object of a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c node when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_context_data_set_leader_branch_index
+(
+        DxfMLeaderLeaderNode *node,
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object. */
+        int32_t leader_branch_index
+                /*!< the \c leader_branch_index to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        node->leader_branch_index = leader_branch_index;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node);
+}
+
+
 /* EOF*/
