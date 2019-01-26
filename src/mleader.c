@@ -11569,4 +11569,40 @@ dxf_mleader_leader_node_get_has_set_last_leader_line_point
 }
 
 
+/*!
+ * \brief Set the \c has_set_last_leader_line_point of a DXF
+ * \c DxfMLeaderLeaderNode object of a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c node when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_context_data_set_has_set_last_leader_line_point
+(
+        DxfMLeaderLeaderNode *node,
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object. */
+        int has_set_last_leader_line_point
+                /*!< the \c has_set_last_leader_line_point to be set
+                 * for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        node->has_set_last_leader_line_point = has_set_last_leader_line_point;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node);
+}
+
+
 /* EOF*/

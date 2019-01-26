@@ -833,6 +833,7 @@ DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_dogleg_length (DxfMLeaderLeade
 int32_t dxf_mleader_leader_node_get_leader_branch_index (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_context_data_set_leader_branch_index (DxfMLeaderLeaderNode *node, int32_t leader_branch_index);
 int dxf_mleader_leader_node_get_has_set_last_leader_line_point (DxfMLeaderLeaderNode *node);
+DxfMLeaderLeaderNode *dxf_mleader_context_data_set_has_set_last_leader_line_point (DxfMLeaderLeaderNode *node, int has_set_last_leader_line_point);
 
 
 #ifdef __cplusplus
