@@ -11436,4 +11436,40 @@ dxf_mleader_leader_node_get_dogleg_length
 }
 
 
+/*!
+ * \brief Set the \c dogleg_length of a \c DxfMLeaderLeaderNode object
+ * of a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c node when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_leader_node_set_dogleg_length
+(
+        DxfMLeaderLeaderNode *node,
+                /*!< a pointer to a \c DxfMLeaderLeaderNode object. */
+        double dogleg_length
+                /*!< the \c dogleg_length of a \c DxfMLeaderLeaderNode
+                 * object of a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        node->dogleg_length = dogleg_length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node);
+}
+
+
 /* EOF*/
