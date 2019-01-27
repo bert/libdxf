@@ -11672,4 +11672,44 @@ dxf_mleader_context_data_set_has_set_dogleg_vector
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DxfMLeaderLeaderNode object
+ * from a DXF \c DxfMLeaderLeaderNode object.
+ *
+ * \return pointer to the next \c DxfMLeaderLeaderNode object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_leader_node_get_next
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to a DXF \c DxfMLeaderLeaderNode object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (node->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMLeaderLeaderNode *) node->next);
+}
+
+
 /* EOF*/
