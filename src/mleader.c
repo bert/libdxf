@@ -11755,4 +11755,49 @@ dxf_mleader_leader_node_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c DxfMLeaderLeaderNode object
+ * from a linked list of DXF \c DxfMLeaderLeaderNode objects.
+ *
+ * \return pointer to the last \c DxfMLeaderLeaderNode object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_leader_node_get_last
+(
+        DxfMLeaderLeaderNode *node
+                /*!< a pointer to a DXF \c DxfMLeaderLeaderNode object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (node->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfMLeaderLeaderNode *) node);
+        }
+        DxfMLeaderLeaderNode *iter = (DxfMLeaderLeaderNode *) node->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfMLeaderLeaderNode *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMLeaderLeaderNode *) iter);
+}
+
+
 /* EOF*/
