@@ -11839,4 +11839,53 @@ dxf_mleader_leader_line_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a
+ * \c DxfMLeaderLeaderLine object for a DXF \c MLEADER entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_init
+(
+        DxfMLeaderLeaderLine *line
+                /*!< a pointer to the \c DxfMLeaderLeaderLine object for
+                 * the DXF \c MLEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                line = dxf_mleader_leader_line_new ();
+        }
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p0 = dxf_point_new ();
+        line->p0 = dxf_point_init (line->p0);
+        line->p1 = dxf_point_new ();
+        line->p1 = dxf_point_init (line->p1);
+        line->p2 = dxf_point_new ();
+        line->p2 = dxf_point_init (line->p2);
+        line->break_point_index = 0;
+        line->leader_line_index = 0;
+        line->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
