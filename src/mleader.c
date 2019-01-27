@@ -11712,4 +11712,47 @@ dxf_mleader_leader_node_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c DxfMLeaderLeaderNode object
+ * for a DXF \c DxfMLeaderLeaderNode object.
+ *
+ * \return a pointer to \c node when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderNode *
+dxf_mleader_leader_node_set_next
+(
+        DxfMLeaderLeaderNode *node,
+                /*!< a pointer to a DXF \c DxfMLeaderLeaderNode object. */
+        DxfMLeaderLeaderNode *next
+                /*!< a pointer to the next \c DxfMLeaderLeaderNode
+                 * object for the DxfMLeaderLeaderNode object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (node == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        node->next = (struct DxfMLeaderLeaderNode *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (node);
+}
+
+
 /* EOF*/
