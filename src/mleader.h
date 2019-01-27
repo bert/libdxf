@@ -839,6 +839,7 @@ DxfMLeaderLeaderNode *dxf_mleader_context_data_set_has_set_dogleg_vector (DxfMLe
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_get_next (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_next (DxfMLeaderLeaderNode *node, DxfMLeaderLeaderNode *next);
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_get_last (DxfMLeaderLeaderNode *node);
+DxfMLeaderLeaderLine *dxf_mleader_leader_line_new ();
 
 
 #ifdef __cplusplus

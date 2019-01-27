@@ -11800,4 +11800,43 @@ dxf_mleader_leader_node_get_last
 }
 
 
+/*!
+ * \brief Allocate memory for a \c DxfMLeaderLeaderLine object for a DXF
+ * \c MLEADER entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfMLeaderLeaderLine *line = NULL;
+        size_t size;
+
+        size = sizeof (DxfMLeaderLeaderLine);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((line = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                line = NULL;
+        }
+        else
+        {
+                memset (line, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
