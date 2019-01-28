@@ -12007,4 +12007,46 @@ dxf_mleader_leader_line_get_p0
 }
 
 
+/*!
+ * \brief Set the \c p0 of a \c DxfMLeaderLeaderLine object of a DXF
+ * \c MLEADER entity.
+ *
+ * \return a pointer to \c node when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_set_p0
+(
+        DxfMLeaderLeaderLine *line,
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object. */
+        DxfPoint *p0
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p0 = p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
