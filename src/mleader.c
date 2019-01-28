@@ -11888,4 +11888,50 @@ dxf_mleader_leader_line_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a \c DxfMLeaderLeaderLine object
+ * of a DXF \c MLEADER entity and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mleader_leader_line_free
+(
+        DxfMLeaderLeaderLine *line
+                /*!< a pointer to the memory occupied by the
+                 * \c DxfMLeaderLeaderLine object of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dxf_point_free_list (line->p0);
+        dxf_point_free_list (line->p1);
+        dxf_point_free_list (line->p2);
+        free (line);
+        line = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/

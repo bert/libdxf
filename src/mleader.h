@@ -841,6 +841,7 @@ DxfMLeaderLeaderNode *dxf_mleader_leader_node_set_next (DxfMLeaderLeaderNode *no
 DxfMLeaderLeaderNode *dxf_mleader_leader_node_get_last (DxfMLeaderLeaderNode *node);
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_new ();
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_init (DxfMLeaderLeaderLine *line);
+int dxf_mleader_leader_line_free (DxfMLeaderLeaderLine *line);
 
 
 #ifdef __cplusplus
