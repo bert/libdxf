@@ -11934,4 +11934,38 @@ dxf_mleader_leader_line_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of \c
+ * DxfMLeaderLeaderLine objects of a DXF \c MLEADER entity and all
+ * their data fields.
+ */
+void
+dxf_mleader_leader_line_free_list
+(
+        DxfMLeaderLeaderLine *lines
+                /*!< a pointer to the single linked list of
+                 * \c DxfMLeaderLeaderLine objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (lines != NULL)
+        {
+                DxfMLeaderLeaderLine *iter = (DxfMLeaderLeaderLine *) lines->next;
+                dxf_mleader_leader_line_free (lines);
+                lines = (DxfMLeaderLeaderLine *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
