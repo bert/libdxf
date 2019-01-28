@@ -843,6 +843,7 @@ DxfMLeaderLeaderLine *dxf_mleader_leader_line_new ();
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_init (DxfMLeaderLeaderLine *line);
 int dxf_mleader_leader_line_free (DxfMLeaderLeaderLine *line);
 void dxf_mleader_leader_line_free_list (DxfMLeaderLeaderLine *lines);
+DxfPoint *dxf_mleader_leader_line_get_p0 (DxfMLeaderLeaderLine *line);
 
 
 #ifdef __cplusplus

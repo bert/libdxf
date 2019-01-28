@@ -11968,4 +11968,43 @@ dxf_mleader_leader_line_free_list
 }
 
 
+/*!
+ * \brief Get the \c p0 of a \c DxfMLeaderLeaderLine object of a DXF
+ * \c MLEADER entity.
+ *
+ * \return \c p0.
+ */
+DxfPoint *
+dxf_mleader_leader_line_get_p0
+(
+        DxfMLeaderLeaderLine *line
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object of a
+                 * DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line->p0);
+}
+
+
 /* EOF*/
