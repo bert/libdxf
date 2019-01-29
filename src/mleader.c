@@ -12172,7 +12172,7 @@ dxf_mleader_leader_line_get_y0
 
 
 /*!
- * \brief Set the Y-value \c y0of a \c DxfMLeaderLeaderLine object of a
+ * \brief Set the Y-value \c y0 of a \c DxfMLeaderLeaderLine object of a
  * DXF \c MLEADER entity.
  *
  * \return a pointer to \c line when successful, or \c NULL when an
