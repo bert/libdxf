@@ -12418,4 +12418,48 @@ dxf_mleader_leader_line_get_x1
 }
 
 
+/*!
+ * \brief Set the X-value \c x1 of a \c DxfMLeaderLeaderLine object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_set_x1
+(
+        DxfMLeaderLeaderLine *line,
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object. */
+        double x1
+                /*!< the X-value of the \c x1 of a
+                 * \c DxfMLeaderLeaderLine object of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p1->x0 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
