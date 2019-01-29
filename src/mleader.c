@@ -12254,4 +12254,48 @@ dxf_mleader_leader_line_get_z0
 }
 
 
+/*!
+ * \brief Set the Z-value \c z0 of a \c DxfMLeaderLeaderLine object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_set_z0
+(
+        DxfMLeaderLeaderLine *line,
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object. */
+        double z0
+                /*!< the Z-value of the \c z0 of a
+                 * \c DxfMLeaderLeaderLine object of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
