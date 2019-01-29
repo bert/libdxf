@@ -12089,7 +12089,7 @@ dxf_mleader_leader_line_get_x0
 
 
 /*!
- * \brief Set the X-value of a \c DxfMLeaderLeaderLine object of a
+ * \brief Set the X-value \c x0 of a \c DxfMLeaderLeaderLine object of a
  * DXF \c MLEADER entity.
  *
  * \return a pointer to \c line when successful, or \c NULL when an
