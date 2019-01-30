@@ -858,6 +858,7 @@ DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_x1 (DxfMLeaderLeaderLine *line
 double dxf_mleader_leader_line_get_y1 (DxfMLeaderLeaderLine *line);
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_y1 (DxfMLeaderLeaderLine *line, double y1);
 double dxf_mleader_leader_line_get_z1 (DxfMLeaderLeaderLine *line);
+DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_z1 (DxfMLeaderLeaderLine *line, double z1);
 
 
 #ifdef __cplusplus
