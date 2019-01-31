@@ -12667,4 +12667,46 @@ dxf_mleader_leader_line_get_p2
 }
 
 
+/*!
+ * \brief Set the \c p2 of a \c DxfMLeaderLeaderLine object of a DXF
+ * \c MLEADER entity.
+ *
+ * \return a pointer to \c node when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_set_p2
+(
+        DxfMLeaderLeaderLine *line,
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object. */
+        DxfPoint *p2
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p2 = p2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
