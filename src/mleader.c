@@ -12831,4 +12831,48 @@ dxf_mleader_leader_line_get_y2
 }
 
 
+/*!
+ * \brief Set the Y-value \c y2 of a \c DxfMLeaderLeaderLine object of a
+ * DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_set_y2
+(
+        DxfMLeaderLeaderLine *line,
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object. */
+        double y2
+                /*!< the Y-value of the \c y2 of a
+                 * \c DxfMLeaderLeaderLine object of a DXF \c MLEADER
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p2->y0 = y2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
