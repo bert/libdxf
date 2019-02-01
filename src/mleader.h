@@ -867,6 +867,7 @@ double dxf_mleader_leader_line_get_y2 (DxfMLeaderLeaderLine *line);
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_y2 (DxfMLeaderLeaderLine *line, double y2);
 double dxf_mleader_leader_line_get_z2 (DxfMLeaderLeaderLine *line);
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_z2 (DxfMLeaderLeaderLine *line, double z2);
+int32_t dxf_mleader_leader_line_get_break_point_index (DxfMLeaderLeaderLine *line);
 
 
 #ifdef __cplusplus
