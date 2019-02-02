@@ -13090,4 +13090,44 @@ dxf_mleader_leader_line_set_leader_line_index
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DxfMLeaderLeaderLine object
+ * from a DXF \c DxfMLeaderLeaderLine object.
+ *
+ * \return pointer to the next \c DxfMLeaderLeaderLine object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_get_next
+(
+        DxfMLeaderLeaderLine *line
+                /*!< a pointer to a DXF \c DxfMLeaderLeaderLine object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMLeaderLeaderLine *) line->next);
+}
+
+
 /* EOF*/
