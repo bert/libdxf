@@ -13055,4 +13055,39 @@ dxf_mleader_leader_line_get_leader_line_index
 }
 
 
+/*!
+ * \brief Set the \c leader_line_index of a DXF
+ * \c DxfMLeaderLeaderLine object of a DXF \c MLEADER entity.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_set_leader_line_index
+(
+        DxfMLeaderLeaderLine *line,
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object. */
+        int32_t leader_line_index
+                /*!< the \c leader_line_index to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->leader_line_index = leader_line_index;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
