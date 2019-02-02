@@ -13024,4 +13024,35 @@ dxf_mleader_leader_line_set_break_point_index
 }
 
 
+/*!
+ * \brief Get the \c leader_line_index of a DXF
+ * \c DxfMLeaderLeaderLine object of a DXF \c MLEADER entity.
+ *
+ * \return \c leader_line_index.
+ */
+int32_t
+dxf_mleader_leader_line_get_leader_line_index
+(
+        DxfMLeaderLeaderLine *line
+                /*!< a pointer to a \c DxfMLeaderLeaderLine object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line->leader_line_index);
+}
+
+
 /* EOF*/
