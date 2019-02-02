@@ -872,6 +872,7 @@ DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_break_point_index (DxfMLeaderL
 int32_t dxf_mleader_leader_line_get_leader_line_index (DxfMLeaderLeaderLine *line);
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_leader_line_index (DxfMLeaderLeaderLine *line, int32_t leader_line_index);
 DxfMLeaderLeaderLine *dxf_mleader_leader_line_get_next (DxfMLeaderLeaderLine *line);
+DxfMLeaderLeaderLine *dxf_mleader_leader_line_set_next (DxfMLeaderLeaderLine *line, DxfMLeaderLeaderLine *next);
 
 
 #ifdef __cplusplus

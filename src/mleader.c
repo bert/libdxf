@@ -13130,4 +13130,47 @@ dxf_mleader_leader_line_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c DxfMLeaderLeaderLine object
+ * for a DXF \c DxfMLeaderLeaderLine object.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMLeaderLeaderLine *
+dxf_mleader_leader_line_set_next
+(
+        DxfMLeaderLeaderLine *line,
+                /*!< a pointer to a DXF \c DxfMLeaderLeaderLine object. */
+        DxfMLeaderLeaderLine *next
+                /*!< a pointer to the next \c DxfMLeaderLeaderLine
+                 * object for the DxfMLeaderLeaderLine object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->next = (struct DxfMLeaderLeaderLine *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF*/
