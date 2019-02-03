@@ -532,6 +532,7 @@ dxf_mleader_leader_line_struct
 
 DxfMLeader *dxf_mleader_new ();
 DxfMLeader *dxf_mleader_init (DxfMLeader *mleader);
+DxfMLeader *dxf_mleader_read (DxfFile *fp, DxfMLeader *mleader);
 int dxf_mleader_free (DxfMLeader *mleader);
 void dxf_mleader_free_list (DxfMLeader *mleaders);
 int dxf_mleader_get_id_code (DxfMLeader *mleader);
