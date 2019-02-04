@@ -254,6 +254,13 @@ dxf_mleader_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", mleader->layer);
                 }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Block content scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleader->block_content_scale);
+                }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0))
                 {
@@ -268,6 +275,34 @@ dxf_mleader_read
                          * thickness. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &mleader->thickness);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Dogleg length. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleader->dogleg_length);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Arrowhead size. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleader->arrowhead_size);
+                }
+                else if (strcmp (temp_string, "43") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Block content rotation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleader->block_content_rotation);
+                }
+                else if (strcmp (temp_string, "44") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Block attribute width. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleader->block_attribute_width);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
@@ -296,6 +331,20 @@ dxf_mleader_read
                          * paperspace value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &mleader->paperspace);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Property override flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->property_override_flag);
+                }
+                else if (strcmp (temp_string, "91") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Leader line color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->leader_line_color);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
