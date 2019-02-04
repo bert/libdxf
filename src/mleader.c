@@ -198,6 +198,7 @@ dxf_mleader_read
 #endif
         char *temp_string = NULL;
         DxfBinaryGraphicsData *iter310 = NULL;
+        int iter92;
         int iter330;
 
         /* Do some basic checks. */
@@ -219,6 +220,7 @@ dxf_mleader_read
                 mleader = dxf_mleader_init (mleader);
         }
         iter310 = (DxfBinaryGraphicsData *) mleader->binary_graphics_data;
+        iter92 = 0;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -348,10 +350,21 @@ dxf_mleader_read
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
-                        /* Now follows a string containing the
-                         * graphics data size value. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &mleader->graphics_data_size);
+                        if (iter92 == 0)
+                        {
+                                /* Now follows a string containing the
+                                 * graphics data size value. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%d\n", &mleader->graphics_data_size);
+                        }
+                        if (iter92 == 1)
+                        {
+                                /* Now follows a string containing the
+                                 * text color. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%d\n", &mleader->text_color);
+                        }
+                        iter92++;
                 }
                 else if (strcmp (temp_string, "160") == 0)
                 {
