@@ -366,6 +366,27 @@ dxf_mleader_read
                         }
                         iter92++;
                 }
+                else if (strcmp (temp_string, "93") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Block content color. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->block_content_color);
+                }
+                else if (strcmp (temp_string, "94") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Arrowhead index. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->arrowhead_index);
+                }
+                else if (strcmp (temp_string, "95") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text right attachment type value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->text_right_attachment_type);
+                }
                 else if (strcmp (temp_string, "160") == 0)
                 {
                         /* Now follows a string containing the
