@@ -429,6 +429,41 @@ dxf_mleader_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%hd\n", &mleader->text_angle_type);
                 }
+                else if (strcmp (temp_string, "175") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text alignment type. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->text_alignment_type);
+                }
+                else if (strcmp (temp_string, "176") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Block content connection type. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->block_content_connection_type);
+                }
+                else if (strcmp (temp_string, "177") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Block attribute index. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->block_attribute_index);
+                }
+                else if (strcmp (temp_string, "178") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text align in IPE. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->text_align_in_IPE);
+                }
+                else if (strcmp (temp_string, "179") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text attachment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->text_attachment_point);
+                }
                 else if (strcmp (temp_string, "284") == 0)
                 {
                         /* Now follows a string containing the shadow
