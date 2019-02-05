@@ -394,6 +394,41 @@ dxf_mleader_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &mleader->graphics_data_size);
                 }
+                else if (strcmp (temp_string, "170") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Leader linetype style. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->leader_linetype_style);
+                }
+                else if (strcmp (temp_string, "171") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Leader line weight. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->leader_line_weight);
+                }
+                else if (strcmp (temp_string, "172") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Content type. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->content_type);
+                }
+                else if (strcmp (temp_string, "173") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text left attachment type value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->text_left_attachment_type);
+                }
+                else if (strcmp (temp_string, "174") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text angle type. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->text_angle_type);
+                }
                 else if (strcmp (temp_string, "284") == 0)
                 {
                         /* Now follows a string containing the shadow
