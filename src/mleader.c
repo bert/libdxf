@@ -464,12 +464,68 @@ dxf_mleader_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%hd\n", &mleader->text_attachment_point);
                 }
+                else if (strcmp (temp_string, "271") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text attachment direction. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->text_attachment_direction);
+                }
+                else if (strcmp (temp_string, "272") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Bottom text attachment direction. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->bottom_text_attachment_direction);
+                }
+                else if (strcmp (temp_string, "273") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Top text attachment direction. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleader->top_text_attachment_direction);
+                }
                 else if (strcmp (temp_string, "284") == 0)
                 {
                         /* Now follows a string containing the shadow
                          * mode value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%hd\n", &mleader->shadow_mode);
+                }
+                else if (strcmp (temp_string, "290") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Enable landing value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->enable_landing);
+                }
+                else if (strcmp (temp_string, "291") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Enable dogleg value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->enable_dogleg);
+                }
+                else if (strcmp (temp_string, "292") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Enable frame text value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->enable_frame_text);
+                }
+                else if (strcmp (temp_string, "293") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Enable annotation scale value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->enable_annotation_scale);
+                }
+                else if (strcmp (temp_string, "294") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Text direction negative value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleader->text_direction_negative);
                 }
                 else if (strcmp (temp_string, "310") == 0)
                 {
