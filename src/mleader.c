@@ -527,6 +527,13 @@ dxf_mleader_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &mleader->text_direction_negative);
                 }
+                else if (strcmp (temp_string, "302") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Block attribute text string. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleader->block_attribute_text_string);
+                }
                 else if (strcmp (temp_string, "310") == 0)
                 {
                         /* Now follows a string containing binary
@@ -552,7 +559,28 @@ dxf_mleader_read
                                 (fp->line_number)++;
                                 fscanf (fp->fp, "%s\n", mleader->object_owner_soft);
                         }
+                        if (iter330 == 2)
+                        {
+                                /* Now follows a string containing a
+                                 * Block attribute ID. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", mleader->block_attribute_id);
+                        }
                         iter330++;
+                }
+                else if (strcmp (temp_string, "340") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Leader style ID. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleader->leader_style_id);
+                }
+                else if (strcmp (temp_string, "341") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Leader linetype ID. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleader->leader_linetype_id);
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
