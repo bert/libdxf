@@ -582,6 +582,34 @@ dxf_mleader_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", mleader->leader_linetype_id);
                 }
+                else if (strcmp (temp_string, "342") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Arrowhead ID. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleader->arrowhead_id);
+                }
+                else if (strcmp (temp_string, "343") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Text style ID. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleader->text_style_id);
+                }
+                else if (strcmp (temp_string, "344") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Block content ID. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleader->block_content_id);
+                }
+                else if (strcmp (temp_string, "345") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Arrow head ID. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleader->arrow_head_id);
+                }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing a
