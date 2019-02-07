@@ -693,6 +693,183 @@ dxf_mleader_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c MLEADE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mleader_write
+(
+        DxfFile *fp,
+                /*!< a DXF \c FILE pointer to an output file (or device). */
+        DxfMLeader *mleader
+                /*!< a pointer to a DXF \c MLEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("3DFACE");
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (mleader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if ((strcmp (mleader->layer, "") == 0) || (mleader->layer == NULL))
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () invalid layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, mleader->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
+                mleader->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (mleader->linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () invalid linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, mleader->id_code);
+                fprintf (stderr,
+                  (_("\t%s linetype is set to %s\n")),
+                  dxf_entity_name, DXF_DEFAULT_LINETYPE);
+                mleader->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (mleader->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", mleader->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (mleader->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", mleader->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (mleader->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", mleader->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (mleader->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", mleader->object_owner_soft);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (mleader->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", mleader->layer);
+        if (strcmp (mleader->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", mleader->linetype);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (mleader->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", mleader->material);
+        }
+        if (mleader->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", mleader->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", mleader->lineweight);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (mleader->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", mleader->elevation);
+        }
+        if ((fp->acad_version_number <= AutoCAD_13)
+          && (mleader->thickness != 0.0))
+        {
+                fprintf (fp->fp, " 39\n%f\n", mleader->thickness);
+        }
+        if (mleader->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", mleader->linetype_scale);
+        }
+        if (mleader->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", mleader->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", mleader->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", mleader->graphics_data_size);
+#endif
+                if (mleader->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) mleader->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", mleader->color_value);
+                fprintf (fp->fp, "430\n%s\n", mleader->color_name);
+                fprintf (fp->fp, "440\n%ld\n", mleader->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", mleader->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", mleader->shadow_mode);
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MLEADER entity and all
  * it's data fields.
  *
