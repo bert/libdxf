@@ -79,6 +79,8 @@ libdxf_la_SOURCES = \
   mlinestyle.c \
   mline.h \
   mline.c \
+  mleaderstyle.h \
+  mleaderstyle.c \
   mleader.h \
   mleader.c \
   mesh.h \

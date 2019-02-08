@@ -103,6 +103,8 @@ src/mesh.c
 src/mesh.h
 src/mleader.c
 src/mleader.h
+src/mleaderstyle.c
+src/mleaderstyle.h
 src/mline.c
 src/mline.h
 src/mlinestyle.c
