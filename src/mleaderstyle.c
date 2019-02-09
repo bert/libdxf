@@ -37,4 +37,42 @@
 #include "mleaderstyle.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c MLEADERSTYLE entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfMLeaderStyle *
+dxf_mleaderstyle_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfMLeaderStyle *mleaderstyle = NULL;
+        size_t size;
+
+        size = sizeof (DxfMLeaderStyle);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((mleaderstyle = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                mleaderstyle = NULL;
+        }
+        else
+        {
+                memset (mleaderstyle, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
 /* EOF*/

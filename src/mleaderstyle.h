@@ -187,6 +187,9 @@ dxf_mleader_style_struct
 } DxfMLeaderStyle;
 
 
+DxfMLeaderStyle *dxf_mleaderstyle_new ();
+
+
 #ifdef __cplusplus
 }
 #endif
