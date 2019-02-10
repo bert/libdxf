@@ -202,6 +202,15 @@ dxf_mleader_style_struct
         double text_height;
                 /*!< Text Height.\n
                  * Group code = 45. */
+        double align_space;
+                /*!< Align Space.\n
+                 * Group code = 46. */
+        double block_content_scale_x;
+                /*!< Block Content Scale on X-axis.\n
+                 * Group code = 47. */
+        double block_content_scale_y;
+                /*!< Block Content Scale on Y-axis.\n
+                 * Group code = 49. */
         int32_t leader_line_weight;
                 /*!< Leader Line Weight.\n
                  * Group code = 90. */
@@ -211,6 +220,15 @@ dxf_mleader_style_struct
         int32_t text_color;
                 /*!< Text Color.\n
                  * Group code = 93. */
+        int32_t block_content_color;
+                /*!< Block Content Color.\n
+                 * Group code = 94. */
+        double block_content_scale_z;
+                /*!< Block Content Scale on Z-axis.\n
+                 * Group code = 140. */
+        double block_content_rotation;
+                /*!< Block Content Rotation.\n
+                 * Group code = 141. */
         int16_t content_type;
                 /*!< Content type.\n
                  * Group code = 170. */
@@ -244,6 +262,12 @@ dxf_mleader_style_struct
         int enable_frame_text;
                 /*!< Enable Frame Text (boolean).\n
                  * Group code = 292. */
+        int enable_block_content_scale;
+                /*!< Enable Block Content Scale (boolean).\n
+                 * Group code = 293. */
+        int enable_block_content_rotation;
+                /*!< Enable Block Content Rotation (boolean).\n
+                 * Group code = 294. */
         int text_align_always_left;
                 /*!< Text Align Always Left (boolean).\n
                  * Group code = 297. */
@@ -262,6 +286,10 @@ dxf_mleader_style_struct
                 /*!< mTextStyleId (string representing hex object
                  * IDs).\n
                  * Group code = 342. */
+        char *block_content_id;
+                /*!< Block Content Id (string representing hex object
+                 * IDs).\n
+                 * Group code = 343. */
         struct DxfMLeaderStyle *next;
                 /*!< Pointer to the next DxfMLeaderStyle.\n
                  * \c NULL in the last DxfMLeaderStyle. */
