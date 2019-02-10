@@ -45,16 +45,16 @@
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
-DxfMLeaderStyle *
+DxfMLeaderstyle *
 dxf_mleaderstyle_new ()
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfMLeaderStyle *mleaderstyle = NULL;
+        DxfMLeaderstyle *mleaderstyle = NULL;
         size_t size;
 
-        size = sizeof (DxfMLeaderStyle);
+        size = sizeof (DxfMLeaderstyle);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
         if ((mleaderstyle = malloc (size)) == NULL)
@@ -82,10 +82,10 @@ dxf_mleaderstyle_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
-DxfMLeaderStyle *
+DxfMLeaderstyle *
 dxf_mleaderstyle_init
 (
-        DxfMLeaderStyle *mleaderstyle
+        DxfMLeaderstyle *mleaderstyle
                 /*!< a pointer to the DXF \c MLEADERSTYLE entity. */
 )
 {

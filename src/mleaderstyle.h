@@ -50,7 +50,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD mleaderstyle entity (\c MLEADERSTYLE).
  */
 typedef struct
-dxf_mleader_style_struct
+dxf_mleaderstyle_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
@@ -326,14 +326,14 @@ dxf_mleader_style_struct
                 /*!< Block Content Id (string representing hex object
                  * IDs).\n
                  * Group code = 343. */
-        struct DxfMLeaderStyle *next;
-                /*!< Pointer to the next DxfMLeaderStyle.\n
-                 * \c NULL in the last DxfMLeaderStyle. */
-} DxfMLeaderStyle;
+        struct DxfMLeaderstyle *next;
+                /*!< Pointer to the next DxfMLeaderstyle.\n
+                 * \c NULL in the last DxfMLeaderstyle. */
+} DxfMLeaderstyle;
 
 
-DxfMLeaderStyle *dxf_mleaderstyle_new ();
-DxfMLeaderStyle *dxf_mleaderstyle_init (DxfMLeaderStyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_new ();
+DxfMLeaderstyle *dxf_mleaderstyle_init (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
