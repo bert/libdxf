@@ -181,6 +181,87 @@ dxf_mleader_style_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF MLeaderStyle. */
+        char *mleaderstyle_description;
+                /*!< Mleader Style Description.\n
+                 * Group code = 3. */
+        double first_segment_angle_constraint;
+                /*!< First Segment Angle Constraint.\n
+                 * Group code = 40. */
+        double second_segment_angle_constraint;
+                /*!< Second Segment Angle Constraint.\n
+                 * Group code = 41. */
+        double landing_gap;
+                /*!< Landing Gap.\n
+                 * Group code = 42. */
+        double dogleg_length;
+                /*!< Dogleg Length.\n
+                 * Group code = 43. */
+        double arrowhead_size;
+                /*!< Arrowhead Size.\n
+                 * Group code = 44. */
+        double text_height;
+                /*!< Text Height.\n
+                 * Group code = 45. */
+        int32_t leader_line_weight;
+                /*!< Leader Line Weight.\n
+                 * Group code = 90. */
+        int32_t maxleader_segment_points;
+                /*!< MaxLeader Segment Points.\n
+                 * Group code = 92. */
+        int32_t text_color;
+                /*!< Text Color.\n
+                 * Group code = 93. */
+        int16_t content_type;
+                /*!< Content type.\n
+                 * Group code = 170. */
+        int16_t draw_mleader_order_type;
+                /*!< Draw MLeader Order type.\n
+                 * Group code = 171. */
+        int16_t draw_leader_order_type;
+                /*!< Draw Leader Order type.\n
+                 * Group code = 172. */
+        int16_t leader_line_color;
+                /*!< LeaderLineColor.\n
+                 * Group code = 173. */
+        int16_t text_left_attachment_type;
+                /*!< Text Left Attachment Type.\n
+                 * Group code = 174. */
+        int16_t text_angle_type;
+                /*!< Text Angle Type.\n
+                 * Group code = 175. */
+        int16_t text_alignment_type;
+                /*!< Text Alignment Type.\n
+                 * Group code = 176. */
+        int16_t text_right_attachment_type;
+                /*!< Text Right Attachment Type.\n
+                 * Group code = 178. */
+        int enable_landing;
+                /*!< Enable landing (boolean).\n
+                 * Group code = 290. */
+        int enable_dogleg;
+                /*!< Enable dogleg (boolean).\n
+                 * Group code = 291. */
+        int enable_frame_text;
+                /*!< Enable Frame Text (boolean).\n
+                 * Group code = 292. */
+        int text_align_always_left;
+                /*!< Text Align Always Left (boolean).\n
+                 * Group code = 297. */
+        char *default_mtext_contents;
+                /*!< Default MText Contents.\n
+                 * Group code = 300. */
+        char *leader_linetype_id;
+                /*!< LeaderLineType ID (string representing hex object
+                 * IDs).\n
+                 * Group code = 340. */
+        char *arrow_head_id;
+                /*!< Arrowhead ID (string representing hex object
+                 * IDs).\n
+                 * Group code = 341. */
+        char *mtext_style_id;
+                /*!< mTextStyleId (string representing hex object
+                 * IDs).\n
+                 * Group code = 342. */
         struct DxfMLeaderStyle *next;
                 /*!< Pointer to the next DxfMLeaderStyle.\n
                  * \c NULL in the last DxfMLeaderStyle. */
