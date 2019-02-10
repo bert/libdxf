@@ -229,6 +229,12 @@ dxf_mleader_style_struct
         double block_content_rotation;
                 /*!< Block Content Rotation.\n
                  * Group code = 141. */
+        double scale;
+                /*!< Scale.\n
+                 * Group code = 142. */
+        double break_gap_size;
+                /*!< Break Gap Size.\n
+                 * Group code = 143. */
         int16_t content_type;
                 /*!< Content type.\n
                  * Group code = 170. */
@@ -250,9 +256,33 @@ dxf_mleader_style_struct
         int16_t text_alignment_type;
                 /*!< Text Alignment Type.\n
                  * Group code = 176. */
+        int16_t block_content_connection_type;
+                /*!< Block Content Connection Type.\n
+                 * Group code = 177. */
         int16_t text_right_attachment_type;
                 /*!< Text Right Attachment Type.\n
                  * Group code = 178. */
+        int16_t text_attachment_direction;
+                /*!< Text attachment direction for MText contents:
+                 * <ol>
+                 *   <li value = 0>Horizontal.</li>
+                 *   <li value = 1>Vertical.</li>
+                 * </ol>
+                 * Group code = 271. */
+        int16_t bottom_text_attachment_direction;
+                /*!< Bottom text attachment direction:
+                 * <ol>
+                 *   <li value = 9>Center.</li>
+                 *   <li value = 10>Underline and Center.</li>
+                 * </ol>
+                 * Group code = 272. */
+        int16_t top_text_attachment_direction;
+                /*!< Top text attachment direction:
+                 * <ol>
+                 *   <li value = 9>Center.</li>
+                 *   <li value = 10>Overline and Center.</li>
+                 * </ol>
+                 * Group code = 273. */
         int enable_landing;
                 /*!< Enable landing (boolean).\n
                  * Group code = 290. */
@@ -268,6 +298,12 @@ dxf_mleader_style_struct
         int enable_block_content_rotation;
                 /*!< Enable Block Content Rotation (boolean).\n
                  * Group code = 294. */
+        int overwrite_property_value;
+                /*!< Overwrite Property Value (boolean).\n
+                 * Group code = 295. */
+        int is_annotative;
+                /*!< Is Annotative (boolean).\n
+                 * Group code = 296. */
         int text_align_always_left;
                 /*!< Text Align Always Left (boolean).\n
                  * Group code = 297. */
