@@ -336,6 +336,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_new ();
 DxfMLeaderstyle *dxf_mleaderstyle_init (DxfMLeaderstyle *mleaderstyle);
 int dxf_mleaderstyle_free (DxfMLeaderstyle *mleaderstyle);
 void dxf_mleaderstyle_free_list (DxfMLeaderstyle *mleaderstyles);
+int dxf_mleaderstyle_get_id_code (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
