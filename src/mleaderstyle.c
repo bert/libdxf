@@ -179,4 +179,61 @@ dxf_mleaderstyle_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c MLEADERSTYLE entity and all
+ * it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mleaderstyle_free
+(
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to the memory occupied by the DXF
+                 * \c MLEADERSTYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mleaderstyle->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (mleaderstyle->linetype);
+        free (mleaderstyle->layer);
+        dxf_binary_graphics_data_free_list (mleaderstyle->binary_graphics_data);
+        free (mleaderstyle->dictionary_owner_soft);
+        free (mleaderstyle->object_owner_soft);
+        free (mleaderstyle->material);
+        free (mleaderstyle->dictionary_owner_hard);
+        free (mleaderstyle->plot_style_name);
+        free (mleaderstyle->color_name);
+        free (mleaderstyle->mleaderstyle_description);
+        free (mleaderstyle->default_mtext_contents);
+        free (mleaderstyle->leader_linetype_id);
+        free (mleaderstyle->arrow_head_id);
+        free (mleaderstyle->mtext_style_id);
+        free (mleaderstyle->block_content_id);
+        free (mleaderstyle);
+        mleaderstyle = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
