@@ -236,4 +236,37 @@ dxf_mleaderstyle_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c MLEADERSTYLE entities and all their data fields.
+ */
+void
+dxf_mleaderstyle_free_list
+(
+        DxfMLeaderstyle *mleaderstyles
+                /*!< a pointer to the single linked list of DXF
+                 * \c MLEADERSTYLE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (mleaderstyles == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (mleaderstyles != NULL)
+        {
+                DxfMLeaderstyle *iter = (DxfMLeaderstyle *) mleaderstyles->next;
+                dxf_mleaderstyle_free (mleaderstyles);
+                mleaderstyles = (DxfMLeaderstyle *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
