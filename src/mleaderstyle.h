@@ -339,6 +339,7 @@ void dxf_mleaderstyle_free_list (DxfMLeaderstyle *mleaderstyles);
 int dxf_mleaderstyle_get_id_code (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_id_code (DxfMLeaderstyle *mleaderstyle, int id_code);
 char *dxf_mleaderstyle_get_linetype (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_linetype (DxfMLeaderstyle *mleaderstyle, char *linetype);
 
 
 #ifdef __cplusplus
