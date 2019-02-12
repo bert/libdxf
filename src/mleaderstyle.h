@@ -341,6 +341,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_id_code (DxfMLeaderstyle *mleaderstyle, in
 char *dxf_mleaderstyle_get_linetype (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_linetype (DxfMLeaderstyle *mleaderstyle, char *linetype);
 char *dxf_mleaderstyle_get_layer (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_layer (DxfMLeaderstyle *mleaderstyle, char *layer);
 
 
 #ifdef __cplusplus
