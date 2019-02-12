@@ -343,6 +343,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_linetype (DxfMLeaderstyle *mleaderstyle, c
 char *dxf_mleaderstyle_get_layer (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_layer (DxfMLeaderstyle *mleaderstyle, char *layer);
 double dxf_mleaderstyle_get_elevation (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_elevation (DxfMLeaderstyle *mleaderstyle, double elevation);
 
 
 #ifdef __cplusplus
