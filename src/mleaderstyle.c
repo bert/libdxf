@@ -505,4 +505,34 @@ dxf_mleaderstyle_set_layer
 }
 
 
+/*!
+ * \brief Get the \c elevation from a DXF \c MLEADERSTYLE entity.
+ *
+ * \return \c elevation.
+ */
+double
+dxf_mleaderstyle_get_elevation
+(
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle->elevation);
+}
+
+
 /* EOF*/
