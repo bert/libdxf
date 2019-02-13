@@ -344,6 +344,7 @@ char *dxf_mleaderstyle_get_layer (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_layer (DxfMLeaderstyle *mleaderstyle, char *layer);
 double dxf_mleaderstyle_get_elevation (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_elevation (DxfMLeaderstyle *mleaderstyle, double elevation);
+double dxf_mleaderstyle_get_thickness (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
