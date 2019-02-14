@@ -347,6 +347,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_elevation (DxfMLeaderstyle *mleaderstyle, 
 double dxf_mleaderstyle_get_thickness (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_thickness (DxfMLeaderstyle *mleaderstyle, double thickness);
 double dxf_mleaderstyle_get_linetype_scale (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_linetype_scale (DxfMLeaderstyle *mleaderstyle, double linetype_scale);
 
 
 #ifdef __cplusplus
