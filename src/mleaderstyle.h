@@ -348,6 +348,7 @@ double dxf_mleaderstyle_get_thickness (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_thickness (DxfMLeaderstyle *mleaderstyle, double thickness);
 double dxf_mleaderstyle_get_linetype_scale (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_linetype_scale (DxfMLeaderstyle *mleaderstyle, double linetype_scale);
+int16_t dxf_mleaderstyle_get_visibility (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
