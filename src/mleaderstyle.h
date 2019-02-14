@@ -352,6 +352,7 @@ int16_t dxf_mleaderstyle_get_visibility (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_visibility (DxfMLeaderstyle *mleaderstyle, int16_t visibility);
 int dxf_mleaderstyle_get_color (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_color (DxfMLeaderstyle *mleaderstyle, int color);
+int dxf_mleaderstyle_get_paperspace (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
