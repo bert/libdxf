@@ -361,6 +361,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_shadow_mode (DxfMLeaderstyle *mleaderstyle
 DxfBinaryGraphicsData *dxf_mleaderstyle_get_binary_graphics_data (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_binary_graphics_data (DxfMLeaderstyle *mleaderstyle, DxfBinaryGraphicsData *data);
 char *dxf_mleaderstyle_get_dictionary_owner_soft (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_dictionary_owner_soft (DxfMLeaderstyle *mleaderstyle, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
