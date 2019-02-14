@@ -646,4 +646,40 @@ dxf_mleaderstyle_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a DXF \c MLEADERSTYLE entity.
+ *
+ * \return \c linetype_scale.
+ */
+double
+dxf_mleaderstyle_get_linetype_scale
+(
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mleaderstyle->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle->linetype_scale);
+}
+
+
 /* EOF*/
