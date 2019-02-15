@@ -365,6 +365,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_dictionary_owner_soft (DxfMLeaderstyle *ml
 char *dxf_mleaderstyle_get_object_owner_soft (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_object_owner_soft (DxfMLeaderstyle *mleaderstyle, char *object_owner_soft);
 char *dxf_mleaderstyle_get_material (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_material (DxfMLeaderstyle *mleaderstyle, char *material);
 
 
 #ifdef __cplusplus
