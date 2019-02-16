@@ -374,6 +374,7 @@ char *dxf_mleaderstyle_get_plot_style_name (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_plot_style_name (DxfMLeaderstyle *mleaderstyle, char *plot_style_name);
 long dxf_mleaderstyle_get_color_value (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_color_value (DxfMLeaderstyle *mleaderstyle, long color_value);
+char *dxf_mleaderstyle_get_color_name (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
