@@ -368,6 +368,7 @@ char *dxf_mleaderstyle_get_material (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_material (DxfMLeaderstyle *mleaderstyle, char *material);
 char *dxf_mleaderstyle_get_dictionary_owner_hard (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_dictionary_owner_hard (DxfMLeaderstyle *mleaderstyle, char *dictionary_owner_hard);
+int16_t dxf_mleaderstyle_get_lineweight (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
