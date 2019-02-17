@@ -381,6 +381,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_transparency (DxfMLeaderstyle *mleaderstyl
 char *dxf_mleaderstyle_get_mleaderstyle_description (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_mleaderstyle_description (DxfMLeaderstyle *mleaderstyle, char *mleaderstyle_description);
 double dxf_mleaderstyle_get_first_segment_angle_constraint (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_first_segment_angle_constraint (DxfMLeaderstyle *mleaderstyle, double first_segment_angle_constraint);
 
 
 #ifdef __cplusplus
