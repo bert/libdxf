@@ -1967,4 +1967,47 @@ dxf_mleaderstyle_get_mleaderstyle_description
 }
 
 
+/*!
+ * \brief Set the \c mleaderstyle_description for a DXF \c MLEADERSTYLE
+ * entity.
+ *
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_set_mleaderstyle_description
+(
+        DxfMLeaderstyle *mleaderstyle,
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+        char *mleaderstyle_description
+                /*!< a pointer to a string containing the
+                 * \c mleaderstyle_description to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleaderstyle_description == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleaderstyle->mleaderstyle_description = strdup (mleaderstyle_description);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
 /* EOF*/
