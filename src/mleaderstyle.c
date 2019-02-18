@@ -10,15 +10,15 @@
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 2 of the License,
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License,
  * or (at your option) any later version.\n\n
  * This program is distributed in the hope that it will be useful, but
  * <b>WITHOUT ANY WARRANTY</b>; without even the implied warranty of
  * <b>MERCHANTABILITY</b> or <b>FITNESS FOR A PARTICULAR PURPOSE</b>.\n
  * See the GNU General Public License for more details.\n\n
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to:\n
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to:\n
  * Free Software Foundation, Inc.,\n
  * 59 Temple Place,\n
  * Suite 330,\n
@@ -180,8 +180,8 @@ dxf_mleaderstyle_init
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c MLEADERSTYLE entity and all
- * it's data fields.
+ * \brief Free the allocated memory for a DXF \c MLEADERSTYLE entity and
+ * all it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -308,8 +308,8 @@ dxf_mleaderstyle_get_id_code
 /*!
  * \brief Set the \c id_code for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_id_code
@@ -387,8 +387,8 @@ dxf_mleaderstyle_get_linetype
 /*!
  * \brief Set the \c linetype for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_linetype
@@ -466,8 +466,8 @@ dxf_mleaderstyle_get_layer
 /*!
  * \brief Set the \c layer for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_layer
@@ -538,8 +538,8 @@ dxf_mleaderstyle_get_elevation
 /*!
  * \brief Set the \c elevation for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_elevation
@@ -609,8 +609,8 @@ dxf_mleaderstyle_get_thickness
 /*!
  * \brief Set the \c thickness for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_thickness
@@ -685,8 +685,8 @@ dxf_mleaderstyle_get_linetype_scale
 /*!
  * \brief Set the \c linetype_scale for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_linetype_scale
@@ -767,8 +767,8 @@ dxf_mleaderstyle_get_visibility
 /*!
  * \brief Set the \c visibility for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_visibility
@@ -849,8 +849,8 @@ dxf_mleaderstyle_get_color
 /*!
  * \brief Set the \c color for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_color
@@ -1024,8 +1024,8 @@ dxf_mleaderstyle_get_graphics_data_size
  * \brief Set the \c graphics_data_size value for a DXF \c MLEADERSTYLE
  * entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_graphics_data_size
@@ -1284,8 +1284,8 @@ dxf_mleaderstyle_get_dictionary_owner_soft
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_dictionary_owner_soft
@@ -1752,8 +1752,8 @@ dxf_mleaderstyle_get_color_value
 /*!
  * \brief Set the \c color_value for a DXF \c MLEADERSTYLE entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_color_value
@@ -1971,8 +1971,8 @@ dxf_mleaderstyle_get_mleaderstyle_description
  * \brief Set the \c mleaderstyle_description for a DXF \c MLEADERSTYLE
  * entity.
  *
- * \return a pointer to \c mleaderstyle when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
  */
 DxfMLeaderstyle *
 dxf_mleaderstyle_set_mleaderstyle_description
@@ -2011,7 +2011,8 @@ dxf_mleaderstyle_set_mleaderstyle_description
 
 
 /*!
- * \brief Get the \c first_segment_angle_constraint from a DXF \c MLEADERSTYLE entity.
+ * \brief Get the \c first_segment_angle_constraint from a DXF
+ * \c MLEADERSTYLE entity.
  *
  * \return \c first_segment_angle_constraint.
  */
