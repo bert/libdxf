@@ -385,6 +385,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_first_segment_angle_constraint (DxfMLeader
 double dxf_mleaderstyle_get_second_segment_angle_constraint (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_second_segment_angle_constraint (DxfMLeaderstyle *mleaderstyle, double second_segment_angle_constraint);
 double dxf_mleaderstyle_get_landing_gap (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_landing_gap (DxfMLeaderstyle *mleaderstyle, double landing_gap);
 
 
 #ifdef __cplusplus
