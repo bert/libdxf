@@ -2107,4 +2107,40 @@ dxf_mleaderstyle_get_second_segment_angle_constraint
 }
 
 
+/*!
+ * \brief Set the \c second_segment_angle_constraint for a DXF
+ * \c MLEADERSTYLE entity.
+ *
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_set_second_segment_angle_constraint
+(
+        DxfMLeaderstyle *mleaderstyle,
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+        double second_segment_angle_constraint
+                /*!< the \c second_segment_angle_constraint to be set
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleaderstyle->second_segment_angle_constraint = second_segment_angle_constraint;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
 /* EOF*/
