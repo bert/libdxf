@@ -386,6 +386,7 @@ double dxf_mleaderstyle_get_second_segment_angle_constraint (DxfMLeaderstyle *ml
 DxfMLeaderstyle *dxf_mleaderstyle_set_second_segment_angle_constraint (DxfMLeaderstyle *mleaderstyle, double second_segment_angle_constraint);
 double dxf_mleaderstyle_get_landing_gap (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_landing_gap (DxfMLeaderstyle *mleaderstyle, double landing_gap);
+double dxf_mleaderstyle_get_dogleg_length (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
