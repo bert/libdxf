@@ -2238,4 +2238,38 @@ dxf_mleaderstyle_get_dogleg_length
 }
 
 
+/*!
+ * \brief Set the \c dogleg_length for a DXF \c MLEADERSTYLE entity.
+ *
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_set_dogleg_length
+(
+        DxfMLeaderstyle *mleaderstyle,
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+        double dogleg_length
+                /*!< the \c dogleg_length to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleaderstyle->dogleg_length = dogleg_length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
 /* EOF*/
