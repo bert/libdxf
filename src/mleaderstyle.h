@@ -389,6 +389,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_landing_gap (DxfMLeaderstyle *mleaderstyle
 double dxf_mleaderstyle_get_dogleg_length (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_dogleg_length (DxfMLeaderstyle *mleaderstyle, double dogleg_length);
 double dxf_mleaderstyle_get_arrowhead_size (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_arrowhead_size (DxfMLeaderstyle *mleaderstyle, double arrowhead_size);
 
 
 #ifdef __cplusplus
