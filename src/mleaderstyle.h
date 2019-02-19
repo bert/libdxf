@@ -391,6 +391,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_dogleg_length (DxfMLeaderstyle *mleadersty
 double dxf_mleaderstyle_get_arrowhead_size (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_arrowhead_size (DxfMLeaderstyle *mleaderstyle, double arrowhead_size);
 double dxf_mleaderstyle_get_text_height (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_text_height (DxfMLeaderstyle *mleaderstyle, double text_height);
 
 
 #ifdef __cplusplus
