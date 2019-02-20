@@ -396,6 +396,7 @@ double dxf_mleaderstyle_get_align_space (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_align_space (DxfMLeaderstyle *mleaderstyle, double align_space);
 double dxf_mleaderstyle_get_block_content_scale_x (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_scale_x (DxfMLeaderstyle *mleaderstyle, double block_content_scale_x);
+double dxf_mleaderstyle_get_block_content_scale_y (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
