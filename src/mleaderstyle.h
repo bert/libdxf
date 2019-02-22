@@ -402,6 +402,7 @@ int32_t dxf_mleaderstyle_get_leader_line_weight (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_leader_line_weight (DxfMLeaderstyle *mleaderstyle, int32_t leader_line_weight);
 int32_t dxf_mleaderstyle_get_maxleader_segment_points (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_maxleader_segment_points (DxfMLeaderstyle *mleaderstyle, int32_t maxleader_segment_points);
+int32_t dxf_mleaderstyle_get_text_color (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
