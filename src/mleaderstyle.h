@@ -399,6 +399,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_scale_x (DxfMLeaderstyle *ml
 double dxf_mleaderstyle_get_block_content_scale_y (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_scale_y (DxfMLeaderstyle *mleaderstyle, double block_content_scale_y);
 double dxf_mleaderstyle_get_block_content_scale_z (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_scale_z (DxfMLeaderstyle *mleaderstyle, double block_content_scale_z);
 int32_t dxf_mleaderstyle_get_leader_line_weight (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_leader_line_weight (DxfMLeaderstyle *mleaderstyle, int32_t leader_line_weight);
 int32_t dxf_mleaderstyle_get_maxleader_segment_points (DxfMLeaderstyle *mleaderstyle);
