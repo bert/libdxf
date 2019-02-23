@@ -409,6 +409,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_text_color (DxfMLeaderstyle *mleaderstyle,
 int32_t dxf_mleaderstyle_get_block_content_color (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_color (DxfMLeaderstyle *mleaderstyle, int32_t block_content_color);
 double dxf_mleaderstyle_get_block_content_rotation (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_rotation (DxfMLeaderstyle *mleaderstyle, double block_content_rotation);
 
 
 #ifdef __cplusplus
