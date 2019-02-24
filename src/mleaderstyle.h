@@ -411,6 +411,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_color (DxfMLeaderstyle *mlea
 double dxf_mleaderstyle_get_block_content_rotation (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_rotation (DxfMLeaderstyle *mleaderstyle, double block_content_rotation);
 double dxf_mleaderstyle_get_scale (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_scale (DxfMLeaderstyle *mleaderstyle, double scale);
 
 
 #ifdef __cplusplus
