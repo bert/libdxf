@@ -416,6 +416,7 @@ double dxf_mleaderstyle_get_break_gap_size (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_break_gap_size (DxfMLeaderstyle *mleaderstyle, double break_gap_size);
 int16_t dxf_mleaderstyle_get_content_type (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_content_type (DxfMLeaderstyle *mleaderstyle, int16_t content_type);
+int16_t dxf_mleaderstyle_get_draw_mleader_order_type (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
