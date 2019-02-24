@@ -414,6 +414,7 @@ double dxf_mleaderstyle_get_scale (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_scale (DxfMLeaderstyle *mleaderstyle, double scale);
 double dxf_mleaderstyle_get_break_gap_size (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_break_gap_size (DxfMLeaderstyle *mleaderstyle, double break_gap_size);
+int16_t dxf_mleaderstyle_get_content_type (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
