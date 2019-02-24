@@ -413,6 +413,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_rotation (DxfMLeaderstyle *m
 double dxf_mleaderstyle_get_scale (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_scale (DxfMLeaderstyle *mleaderstyle, double scale);
 double dxf_mleaderstyle_get_break_gap_size (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_break_gap_size (DxfMLeaderstyle *mleaderstyle, double break_gap_size);
 
 
 #ifdef __cplusplus
