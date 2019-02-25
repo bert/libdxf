@@ -420,6 +420,7 @@ int16_t dxf_mleaderstyle_get_draw_mleader_order_type (DxfMLeaderstyle *mleaderst
 DxfMLeaderstyle *dxf_mleaderstyle_set_draw_mleader_order_type (DxfMLeaderstyle *mleaderstyle, int16_t draw_mleader_order_type);
 int16_t dxf_mleaderstyle_get_draw_leader_order_type (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_draw_leader_order_type (DxfMLeaderstyle *mleaderstyle, int16_t draw_leader_order_type);
+int16_t dxf_mleaderstyle_get_leader_line_color (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
