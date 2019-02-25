@@ -422,6 +422,7 @@ int16_t dxf_mleaderstyle_get_draw_leader_order_type (DxfMLeaderstyle *mleadersty
 DxfMLeaderstyle *dxf_mleaderstyle_set_draw_leader_order_type (DxfMLeaderstyle *mleaderstyle, int16_t draw_leader_order_type);
 int16_t dxf_mleaderstyle_get_leader_line_color (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_leader_line_color (DxfMLeaderstyle *mleaderstyle, int16_t leader_line_color);
+int16_t dxf_mleaderstyle_get_text_left_attachment_type (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
