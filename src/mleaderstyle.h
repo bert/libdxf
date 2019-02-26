@@ -429,6 +429,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_text_angle_type (DxfMLeaderstyle *mleaders
 int16_t dxf_mleaderstyle_get_text_alignment_type (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_text_alignment_type (DxfMLeaderstyle *mleaderstyle, int16_t text_alignment_type);
 int16_t dxf_mleaderstyle_get_block_content_connection_type (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_connection_type (DxfMLeaderstyle *mleaderstyle, int16_t block_content_connection_type);
 
 
 #ifdef __cplusplus
