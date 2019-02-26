@@ -3451,4 +3451,34 @@ dxf_mleaderstyle_set_text_left_attachment_type
 }
 
 
+/*!
+ * \brief Get the \c text_angle_type from a DXF \c MLEADERSTYLE entity.
+ *
+ * \return \c text_angle_type.
+ */
+int16_t
+dxf_mleaderstyle_get_text_angle_type
+(
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle->text_angle_type);
+}
+
+
 /* EOF*/
