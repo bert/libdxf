@@ -426,6 +426,7 @@ int16_t dxf_mleaderstyle_get_text_left_attachment_type (DxfMLeaderstyle *mleader
 DxfMLeaderstyle *dxf_mleaderstyle_set_text_left_attachment_type (DxfMLeaderstyle *mleaderstyle, int16_t text_left_attachment_type);
 int16_t dxf_mleaderstyle_get_text_angle_type (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_text_angle_type (DxfMLeaderstyle *mleaderstyle, int16_t text_angle_type);
+int16_t dxf_mleaderstyle_get_text_alignment_type (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
