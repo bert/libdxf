@@ -3692,7 +3692,8 @@ dxf_mleaderstyle_set_block_content_connection_type
         DxfMLeaderstyle *mleaderstyle,
                 /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
         int16_t block_content_connection_type
-                /*!< the \c block_content_connection_type to be set for the entity. */
+                /*!< the \c block_content_connection_type to be set for
+                 * the entity. */
 )
 {
 #if DEBUG
