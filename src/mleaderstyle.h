@@ -434,6 +434,7 @@ int16_t dxf_mleaderstyle_get_block_content_connection_type (DxfMLeaderstyle *mle
 DxfMLeaderstyle *dxf_mleaderstyle_set_block_content_connection_type (DxfMLeaderstyle *mleaderstyle, int16_t block_content_connection_type);
 int16_t dxf_mleaderstyle_get_text_attachment_direction (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_text_attachment_direction (DxfMLeaderstyle *mleaderstyle, int16_t text_attachment_direction);
+int16_t dxf_mleaderstyle_get_bottom_text_attachment_direction (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
