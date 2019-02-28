@@ -3946,4 +3946,38 @@ dxf_mleaderstyle_get_enable_landing
 }
 
 
+/*!
+ * \brief Set the \c enable_landing for a DXF \c MLEADERSTYLE entity.
+ *
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_set_enable_landing
+(
+        DxfMLeaderstyle *mleaderstyle,
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+        int enable_landing
+                /*!< the \c enable_landing to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleaderstyle->enable_landing = enable_landing;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
 /* EOF*/
