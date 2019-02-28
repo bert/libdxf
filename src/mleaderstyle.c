@@ -3826,8 +3826,8 @@ dxf_mleaderstyle_set_bottom_text_attachment_direction
         DxfMLeaderstyle *mleaderstyle,
                 /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
         int16_t bottom_text_attachment_direction
-                /*!< the \c bottom_text_attachment_direction to be set for the
-                 * entity. */
+                /*!< the \c bottom_text_attachment_direction to be set
+                 * for the entity. */
 )
 {
 #if DEBUG
