@@ -440,6 +440,7 @@ int16_t dxf_mleaderstyle_get_top_text_attachment_direction (DxfMLeaderstyle *mle
 DxfMLeaderstyle *dxf_mleaderstyle_set_top_text_attachment_direction (DxfMLeaderstyle *mleaderstyle, int16_t top_text_attachment_direction);
 int dxf_mleaderstyle_get_enable_landing (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_enable_landing (DxfMLeaderstyle *mleaderstyle, int enable_landing);
+int dxf_mleaderstyle_get_enable_dogleg (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
