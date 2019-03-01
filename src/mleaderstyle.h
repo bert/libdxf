@@ -442,6 +442,7 @@ int dxf_mleaderstyle_get_enable_landing (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_enable_landing (DxfMLeaderstyle *mleaderstyle, int enable_landing);
 int dxf_mleaderstyle_get_enable_dogleg (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_enable_dogleg (DxfMLeaderstyle *mleaderstyle, int enable_dogleg);
+int dxf_mleaderstyle_get_enable_frame_text (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
