@@ -443,6 +443,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_enable_landing (DxfMLeaderstyle *mleaderst
 int dxf_mleaderstyle_get_enable_dogleg (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_enable_dogleg (DxfMLeaderstyle *mleaderstyle, int enable_dogleg);
 int dxf_mleaderstyle_get_enable_frame_text (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_enable_frame_text (DxfMLeaderstyle *mleaderstyle, int enable_frame_text);
 
 
 #ifdef __cplusplus
