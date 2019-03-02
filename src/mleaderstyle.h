@@ -450,6 +450,7 @@ int dxf_mleaderstyle_get_enable_block_content_rotation (DxfMLeaderstyle *mleader
 DxfMLeaderstyle *dxf_mleaderstyle_set_enable_block_content_rotation (DxfMLeaderstyle *mleaderstyle, int enable_block_content_rotation);
 int dxf_mleaderstyle_get_overwrite_property_value (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_overwrite_property_value (DxfMLeaderstyle *mleaderstyle, int overwrite_property_value);
+int dxf_mleaderstyle_get_is_annotative (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
