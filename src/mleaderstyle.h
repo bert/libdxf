@@ -449,6 +449,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_enable_block_content_scale (DxfMLeaderstyl
 int dxf_mleaderstyle_get_enable_block_content_rotation (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_enable_block_content_rotation (DxfMLeaderstyle *mleaderstyle, int enable_block_content_rotation);
 int dxf_mleaderstyle_get_overwrite_property_value (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_overwrite_property_value (DxfMLeaderstyle *mleaderstyle, int overwrite_property_value);
 
 
 #ifdef __cplusplus
