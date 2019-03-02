@@ -4219,8 +4219,8 @@ dxf_mleaderstyle_set_enable_block_content_rotation
         DxfMLeaderstyle *mleaderstyle,
                 /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
         int enable_block_content_rotation
-                /*!< the \c enable_block_content_rotation to be set for the
-                 * entity. */
+                /*!< the \c enable_block_content_rotation to be set for
+                 * the entity. */
 )
 {
 #if DEBUG
