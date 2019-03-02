@@ -4206,4 +4206,40 @@ dxf_mleaderstyle_get_enable_block_content_rotation
 }
 
 
+/*!
+ * \brief Set the \c enable_block_content_rotation for a DXF
+ * \c MLEADERSTYLE entity.
+ *
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_set_enable_block_content_rotation
+(
+        DxfMLeaderstyle *mleaderstyle,
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+        int enable_block_content_rotation
+                /*!< the \c enable_block_content_rotation to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleaderstyle->enable_block_content_rotation = enable_block_content_rotation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
 /* EOF*/

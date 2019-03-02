@@ -447,6 +447,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_enable_frame_text (DxfMLeaderstyle *mleade
 int dxf_mleaderstyle_get_enable_block_content_scale (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_enable_block_content_scale (DxfMLeaderstyle *mleaderstyle, int enable_block_content_scale);
 int dxf_mleaderstyle_get_enable_block_content_rotation (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_enable_block_content_rotation (DxfMLeaderstyle *mleaderstyle, int enable_block_content_rotation);
 
 
 #ifdef __cplusplus
