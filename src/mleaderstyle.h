@@ -457,6 +457,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_text_align_always_left (DxfMLeaderstyle *m
 char *dxf_mleaderstyle_get_default_mtext_contents (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_default_mtext_contents (DxfMLeaderstyle *mleaderstyle, char *default_mtext_contents);
 char *dxf_mleaderstyle_get_leader_linetype_id (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_leader_linetype_id (DxfMLeaderstyle *mleaderstyle, char *leader_linetype_id);
 
 
 #ifdef __cplusplus
