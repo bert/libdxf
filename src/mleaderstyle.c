@@ -4404,4 +4404,40 @@ dxf_mleaderstyle_get_text_align_always_left
 }
 
 
+/*!
+ * \brief Set the \c text_align_always_left for a DXF \c MLEADERSTYLE
+ * entity.
+ *
+ * \return a pointer to \c mleaderstyle when successful, or \c NULL when
+ * an error occurred.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_set_text_align_always_left
+(
+        DxfMLeaderstyle *mleaderstyle,
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+        int text_align_always_left
+                /*!< the \c text_align_always_left to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mleaderstyle->text_align_always_left = text_align_always_left;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
 /* EOF*/
