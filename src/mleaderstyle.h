@@ -452,6 +452,7 @@ int dxf_mleaderstyle_get_overwrite_property_value (DxfMLeaderstyle *mleaderstyle
 DxfMLeaderstyle *dxf_mleaderstyle_set_overwrite_property_value (DxfMLeaderstyle *mleaderstyle, int overwrite_property_value);
 int dxf_mleaderstyle_get_is_annotative (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_is_annotative (DxfMLeaderstyle *mleaderstyle, int is_annotative);
+int dxf_mleaderstyle_get_text_align_always_left (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus
