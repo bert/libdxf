@@ -4444,7 +4444,8 @@ dxf_mleaderstyle_set_text_align_always_left
  * \brief Get the \c default_mtext_contents from a DXF \c MLEADERSTYLE
  * entity.
  *
- * \return \c default_mtext_contents when successful, \c NULL when an error occurred.
+ * \return \c default_mtext_contents when successful, \c NULL when an
+ * error occurred.
  */
 char *
 dxf_mleaderstyle_get_default_mtext_contents
