@@ -459,6 +459,7 @@ DxfMLeaderstyle *dxf_mleaderstyle_set_default_mtext_contents (DxfMLeaderstyle *m
 char *dxf_mleaderstyle_get_leader_linetype_id (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_leader_linetype_id (DxfMLeaderstyle *mleaderstyle, char *leader_linetype_id);
 char *dxf_mleaderstyle_get_arrow_head_id (DxfMLeaderstyle *mleaderstyle);
+DxfMLeaderstyle *dxf_mleaderstyle_set_arrow_head_id (DxfMLeaderstyle *mleaderstyle, char *arrow_head_id);
 
 
 #ifdef __cplusplus
