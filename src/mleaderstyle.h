@@ -462,6 +462,7 @@ char *dxf_mleaderstyle_get_arrow_head_id (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_arrow_head_id (DxfMLeaderstyle *mleaderstyle, char *arrow_head_id);
 char *dxf_mleaderstyle_get_mtext_style_id (DxfMLeaderstyle *mleaderstyle);
 DxfMLeaderstyle *dxf_mleaderstyle_set_mtext_style_id (DxfMLeaderstyle *mleaderstyle, char *mtext_style_id);
+char *dxf_mleaderstyle_get_block_content_id (DxfMLeaderstyle *mleaderstyle);
 
 
 #ifdef __cplusplus

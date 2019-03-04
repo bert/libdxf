@@ -4768,4 +4768,43 @@ dxf_mleaderstyle_set_mtext_style_id
 }
 
 
+/*!
+ * \brief Get the \c block_content_id from a DXF \c MLEADERSTYLE
+ * entity.
+ *
+ * \return \c block_content_id when successful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_mleaderstyle_get_block_content_id
+(
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleaderstyle->block_content_id ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mleaderstyle->block_content_id));
+}
+
+
 /* EOF*/
