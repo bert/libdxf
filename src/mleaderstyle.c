@@ -4604,4 +4604,43 @@ dxf_mleaderstyle_set_leader_linetype_id
 }
 
 
+/*!
+ * \brief Get the \c arrow_head_id from a DXF \c MLEADERSTYLE
+ * entity.
+ *
+ * \return \c arrow_head_id when successful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_mleaderstyle_get_arrow_head_id
+(
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleaderstyle->arrow_head_id ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mleaderstyle->arrow_head_id));
+}
+
+
 /* EOF*/
