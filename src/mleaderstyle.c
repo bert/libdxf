@@ -4850,4 +4850,44 @@ dxf_mleaderstyle_set_block_content_id
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c MLEADERSTYLE entity from a DXF
+ * \c MLEADER entity.
+ *
+ * \return pointer to the next \c MLEADERSTYLE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_get_next
+(
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mleaderstyle->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMLeaderstyle *) mleaderstyle->next);
+}
+
+
 /* EOF*/
