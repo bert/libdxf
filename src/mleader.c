@@ -690,8 +690,6 @@ dxf_mleader_read
 }
 
 
-
-
 /*!
  * \brief Write DXF output to a file for a DXF \c MLEADE entity.
  *
