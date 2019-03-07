@@ -180,6 +180,39 @@ dxf_mleaderstyle_init
 
 
 /*!
+ * \brief Read data from a DXF file into an \c MLEADERSTYLE entity.
+ *
+ * The last line read from file contained the string "MLEADERSTYLE". \n
+ * Now follows some data for the \c MLEADERSTYLE, to be terminated with a
+ * "  0" string announcing the following entity, or the end of the
+ * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c mleaderstyle.
+ *
+ * \return a pointer to \c mleaderstyle.
+ */
+DxfMLeaderstyle *
+dxf_mleaderstyle_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfMLeaderstyle *mleaderstyle
+                /*!< DXF mleaderstyle entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+/*! \todo Add code here. */
+
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mleaderstyle);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MLEADERSTYLE entity and
  * all it's data fields.
  *
