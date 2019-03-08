@@ -708,7 +708,7 @@ dxf_mleader_write
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *dxf_entity_name = strdup ("3DFACE");
+        char *dxf_entity_name = strdup ("MLEADER");
 
         /* Do some basic checks. */
         if (fp == NULL)
