@@ -213,6 +213,37 @@ dxf_mleaderstyle_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c MLEADESTYLE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mleaderstyle_write
+(
+        DxfFile *fp,
+                /*!< a DXF \c FILE pointer to an output file (or device). */
+        DxfMLeaderstyle *mleaderstyle
+                /*!< a pointer to a DXF \c MLEADERSTYLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("MLEADERSTYLE");
+
+/*! \todo Add code here. */
+
+        /* Clean up. */
+        free (dxf_entity_name);
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MLEADERSTYLE entity and
  * all it's data fields.
  *
