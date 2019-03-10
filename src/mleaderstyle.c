@@ -202,9 +202,237 @@ dxf_mleaderstyle_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        char *temp_string = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
+        int iter92;
+        int iter330;
 
-/*! \todo Add code here. */
-
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (mleaderstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                mleaderstyle = dxf_mleaderstyle_new ();
+                mleaderstyle = dxf_mleaderstyle_init (mleaderstyle);
+        }
+        iter310 = (DxfBinaryGraphicsData *) mleaderstyle->binary_graphics_data;
+        iter92 = 0;
+        iter330 = 0;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &mleaderstyle->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleaderstyle->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleaderstyle->layer);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleaderstyle->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleaderstyle->thickness);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mleaderstyle->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleaderstyle->visibility);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleaderstyle->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleaderstyle->paperspace);
+                }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleaderstyle->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "93") == 0)
+                {
+                        /* Now follows a string containing the
+                         * text color. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleaderstyle->text_color);
+                }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mleaderstyle->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleaderstyle->shadow_mode);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
+                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", mleaderstyle->dictionary_owner_soft);
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", mleaderstyle->object_owner_soft);
+                        }
+                        iter330++;
+                }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleaderstyle->material);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleaderstyle->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mleaderstyle->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleaderstyle->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &mleaderstyle->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mleaderstyle->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &mleaderstyle->transparency);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (mleaderstyle->linetype, "") == 0)
+        {
+                mleaderstyle->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (mleaderstyle->layer, "") == 0)
+        {
+                mleaderstyle->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
