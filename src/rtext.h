@@ -232,6 +232,9 @@ dxf_rtext_struct
 #endif
 
 
+DxfRText *dxf_rtext_new ();
+
+
 #endif /* LIBDXF_SRC_RTEXT_H */
 
 
