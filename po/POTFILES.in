@@ -134,6 +134,8 @@ src/ray.c
 src/ray.h
 src/region.c
 src/region.h
+src/rtext.c
+src/rtext.h
 src/section.c
 src/section.h
 src/seqend.c

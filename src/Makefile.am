@@ -50,6 +50,8 @@ libdxf_la_SOURCES = \
   seqend.h \
   section.h \
   section.c \
+  rtext.h \
+  rtext.c \
   region.h \
   region.c \
   ray.h \

@@ -73,6 +73,7 @@ OBJ  = \
 	src/rastervariable.o \
 	src/ray.o \
 	src/region.o \
+	src/rtext.o \
 	src/section.o \
 	src/seqend.o \
 	src/shape.o \
@@ -162,6 +163,7 @@ LINKOBJ  = \
 	src/rastervariable.o \
 	src/ray.o \
 	src/region.o \
+	src/rtext.o \
 	src/section.o \
 	src/seqend.o \
 	src/shape.o \
@@ -404,6 +406,9 @@ src/ray.o: src/ray.c
 
 src/region.o: src/region.c
 	$(CC) -c src/region.c -o src/region.o $(CFLAGS)
+
+src/rtext.o: src/rtext.c
+	$(CC) -c src/rtext.c -o src/rtext.o $(CFLAGS)
 
 src/section.o: src/section.c
 	$(CC) -c src/section.c -o src/section.o $(CFLAGS)
