@@ -77,4 +77,77 @@ dxf_rtext_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c RTEXT entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfRText *
+dxf_rtext_init
+(
+        DxfRText *rtext
+                /*!< a pointer to the DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                rtext = dxf_rtext_new ();
+        }
+        if (rtext == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfRText struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        rtext->id_code = 0;
+        rtext->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        rtext->layer = strdup (DXF_DEFAULT_LAYER);
+        rtext->elevation = 0.0;
+        rtext->thickness = 0.0;
+        rtext->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        rtext->visibility = DXF_DEFAULT_VISIBILITY;
+        rtext->color = DXF_COLOR_BYLAYER;
+        rtext->paperspace = DXF_MODELSPACE;
+        rtext->graphics_data_size = 0;
+        rtext->shadow_mode = 0;
+        rtext->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        rtext->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) rtext->binary_graphics_data);
+        rtext->dictionary_owner_soft = strdup ("");
+        rtext->material = strdup ("");
+        rtext->dictionary_owner_hard = strdup ("");
+        rtext->lineweight = 0;
+        rtext->plot_style_name = strdup ("");
+        rtext->color_value = 0;
+        rtext->color_name = strdup ("");
+        rtext->transparency = 0;
+        rtext->text_value = strdup ("");
+        rtext->text_style = strdup ("");
+        rtext->p0 = (DxfPoint *) dxf_point_new ();
+        rtext->p0 = dxf_point_init ((DxfPoint *) rtext->p0);
+        rtext->p0->x0 = 0.0;
+        rtext->p0->y0 = 0.0;
+        rtext->p0->z0 = 0.0;
+        rtext->height = 0.0;
+        rtext->rot_angle = 0.0;
+        rtext->type_flags = 0;
+        rtext->extr_x0 = 0.0;
+        rtext->extr_y0 = 0.0;
+        rtext->extr_z0 = 0.0;
+        rtext->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext);
+}
+
+
 /* EOF */
