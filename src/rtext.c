@@ -150,4 +150,56 @@ dxf_rtext_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c RTEXT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_rtext_free
+(
+        DxfRText *rtext
+                /*!< a pointer to the memory occupied by the DXF
+                 * \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (rtext->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (rtext->linetype);
+        free (rtext->layer);
+        dxf_binary_graphics_data_free_list (rtext->binary_graphics_data);
+        free (rtext->dictionary_owner_soft);
+        free (rtext->material);
+        free (rtext->dictionary_owner_hard);
+        free (rtext->plot_style_name);
+        free (rtext->color_name);
+        free (rtext->text_value);
+        free (rtext->text_style);
+        dxf_point_free (rtext->p0);
+        free (rtext);
+        rtext = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
