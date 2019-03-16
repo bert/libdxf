@@ -202,4 +202,37 @@ dxf_rtext_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c RTEXT entities and all their data fields.
+ */
+void
+dxf_rtext_free_list
+(
+        DxfRText *rtexts
+                /*!< a pointer to the single linked list of DXF \c RTEXT
+                 * entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (rtexts == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (rtexts != NULL)
+        {
+                DxfRText *iter = (DxfRText *) rtexts->next;
+                dxf_rtext_free (rtexts);
+                rtexts = (DxfRText *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
