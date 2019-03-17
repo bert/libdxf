@@ -236,6 +236,7 @@ DxfRText *dxf_rtext_new ();
 DxfRText *dxf_rtext_init (DxfRText *rtext);
 int dxf_rtext_free (DxfRText *rtext);
 void dxf_rtext_free_list (DxfRText *rtexts);
+int dxf_rtext_get_id_code (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
