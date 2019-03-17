@@ -310,4 +310,41 @@ dxf_rtext_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c linetype from a DXF \c RTEXT entity.
+ *
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_rtext_get_linetype
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rtext->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (rtext->linetype));
+}
+
+
 /* EOF */

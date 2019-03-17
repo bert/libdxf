@@ -238,6 +238,7 @@ int dxf_rtext_free (DxfRText *rtext);
 void dxf_rtext_free_list (DxfRText *rtexts);
 int dxf_rtext_get_id_code (DxfRText *rtext);
 DxfRText *dxf_rtext_set_id_code (DxfRText *rtext, int id_code);
+char *dxf_rtext_get_linetype (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
