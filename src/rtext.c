@@ -386,4 +386,41 @@ dxf_rtext_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a DXF \c RTEXT entity.
+ *
+ * \return \c layer when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_rtext_get_layer
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rtext->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (rtext->layer));
+}
+
+
 /* EOF */

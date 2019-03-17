@@ -240,6 +240,7 @@ int dxf_rtext_get_id_code (DxfRText *rtext);
 DxfRText *dxf_rtext_set_id_code (DxfRText *rtext, int id_code);
 char *dxf_rtext_get_linetype (DxfRText *rtext);
 DxfRText *dxf_rtext_set_linetype (DxfRText *rtext, char *linetype);
+char *dxf_rtext_get_layer (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
