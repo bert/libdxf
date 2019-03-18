@@ -244,6 +244,7 @@ char *dxf_rtext_get_layer (DxfRText *rtext);
 DxfRText *dxf_rtext_set_layer (DxfRText *rtext, char *layer);
 double dxf_rtext_get_elevation (DxfRText *rtext);
 DxfRText *dxf_rtext_set_elevation (DxfRText *rtext, double elevation);
+double dxf_rtext_get_thickness (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
