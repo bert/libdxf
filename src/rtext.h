@@ -249,6 +249,7 @@ DxfRText *dxf_rtext_set_thickness (DxfRText *rtext, double thickness);
 double dxf_rtext_get_linetype_scale (DxfRText *rtext);
 DxfRText *dxf_rtext_set_linetype_scale (DxfRText *rtext, double linetype_scale);
 int16_t dxf_rtext_get_visibility (DxfRText *rtext);
+DxfRText *dxf_rtext_set_visibility (DxfRText *rtext, int16_t visibility);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
