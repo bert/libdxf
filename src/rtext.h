@@ -246,6 +246,7 @@ double dxf_rtext_get_elevation (DxfRText *rtext);
 DxfRText *dxf_rtext_set_elevation (DxfRText *rtext, double elevation);
 double dxf_rtext_get_thickness (DxfRText *rtext);
 DxfRText *dxf_rtext_set_thickness (DxfRText *rtext, double thickness);
+double dxf_rtext_get_linetype_scale (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
