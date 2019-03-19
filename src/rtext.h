@@ -252,6 +252,7 @@ int16_t dxf_rtext_get_visibility (DxfRText *rtext);
 DxfRText *dxf_rtext_set_visibility (DxfRText *rtext, int16_t visibility);
 int dxf_rtext_get_color (DxfRText *rtext);
 DxfRText *dxf_rtext_set_color (DxfRText *rtext, int color);
+int dxf_rtext_get_paperspace (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
