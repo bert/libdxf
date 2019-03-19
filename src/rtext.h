@@ -254,6 +254,7 @@ int dxf_rtext_get_color (DxfRText *rtext);
 DxfRText *dxf_rtext_set_color (DxfRText *rtext, int color);
 int dxf_rtext_get_paperspace (DxfRText *rtext);
 DxfRText *dxf_rtext_set_paperspace (DxfRText *rtext, int paperspace);
+int dxf_rtext_get_graphics_data_size (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
