@@ -262,6 +262,7 @@ DxfBinaryGraphicsData *dxf_rtext_get_binary_graphics_data (DxfRText *rtext);
 DxfRText *dxf_rtext_set_binary_graphics_data (DxfRText *rtext, DxfBinaryGraphicsData *data);
 char *dxf_rtext_get_dictionary_owner_soft (DxfRText *rtext);
 DxfRText *dxf_rtext_set_dictionary_owner_soft (DxfRText *rtext, char *dictionary_owner_soft);
+char *dxf_rtext_get_material (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
