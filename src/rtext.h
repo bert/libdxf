@@ -258,6 +258,7 @@ int dxf_rtext_get_graphics_data_size (DxfRText *rtext);
 DxfRText *dxf_rtext_set_graphics_data_size (DxfRText *rtext, int graphics_data_size);
 int16_t dxf_rtext_get_shadow_mode (DxfRText *rtext);
 DxfRText *dxf_rtext_set_shadow_mode (DxfRText *rtext, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_rtext_get_binary_graphics_data (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */

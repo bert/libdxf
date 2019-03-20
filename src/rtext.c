@@ -1092,4 +1092,44 @@ dxf_rtext_set_shadow_mode
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF
+ * \c RTEXT entity.
+ *
+ * \return pointer to the \c binary_graphics_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_rtext_get_binary_graphics_data
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c TEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rtext->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryGraphicsData *) rtext->binary_graphics_data);
+}
+
+
 /* EOF */
