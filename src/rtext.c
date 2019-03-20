@@ -1292,4 +1292,46 @@ dxf_rtext_get_material
 }
 
 
+/*!
+ * \brief Set the pointer to the \c material for a DXF \c RTEXT entity.
+ *
+ * \return a pointer to \c rtext when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRText *
+dxf_rtext_set_material
+(
+        DxfRText *rtext,
+                /*!< a pointer to a DXF \c RTEXT entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        rtext->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext);
+}
+
+
 /* EOF */
