@@ -260,6 +260,7 @@ int16_t dxf_rtext_get_shadow_mode (DxfRText *rtext);
 DxfRText *dxf_rtext_set_shadow_mode (DxfRText *rtext, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_rtext_get_binary_graphics_data (DxfRText *rtext);
 DxfRText *dxf_rtext_set_binary_graphics_data (DxfRText *rtext, DxfBinaryGraphicsData *data);
+char *dxf_rtext_get_dictionary_owner_soft (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
