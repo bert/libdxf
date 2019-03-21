@@ -269,6 +269,7 @@ DxfRText *dxf_rtext_set_dictionary_owner_hard (DxfRText *rtext, char *dictionary
 int16_t dxf_rtext_get_lineweight (DxfRText *rtext);
 DxfRText *dxf_rtext_set_lineweight (DxfRText *rtext, int16_t lineweight);
 char *dxf_rtext_get_plot_style_name (DxfRText *rtext);
+DxfRText *dxf_rtext_set_plot_style_name (DxfRText *rtext, char *plot_style_name);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
