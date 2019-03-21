@@ -267,6 +267,7 @@ DxfRText *dxf_rtext_set_material (DxfRText *rtext, char *material);
 char *dxf_rtext_get_dictionary_owner_hard (DxfRText *rtext);
 DxfRText *dxf_rtext_set_dictionary_owner_hard (DxfRText *rtext, char *dictionary_owner_hard);
 int16_t dxf_rtext_get_lineweight (DxfRText *rtext);
+DxfRText *dxf_rtext_set_lineweight (DxfRText *rtext, int16_t lineweight);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */

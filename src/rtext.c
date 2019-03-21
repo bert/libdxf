@@ -1445,4 +1445,38 @@ dxf_rtext_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c RTEXT entity.
+ *
+ * \return a pointer to \c rtext when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfRText *
+dxf_rtext_set_lineweight
+(
+        DxfRText *rtext,
+                /*!< a pointer to a DXF \c RTEXT entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        rtext->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext);
+}
+
+
 /* EOF */
