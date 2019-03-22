@@ -272,6 +272,7 @@ char *dxf_rtext_get_plot_style_name (DxfRText *rtext);
 DxfRText *dxf_rtext_set_plot_style_name (DxfRText *rtext, char *plot_style_name);
 long dxf_rtext_get_color_value (DxfRText *rtext);
 DxfRText *dxf_rtext_set_color_value (DxfRText *rtext, long color_value);
+char *dxf_rtext_get_color_name (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
