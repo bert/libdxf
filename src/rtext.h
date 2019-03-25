@@ -277,6 +277,7 @@ DxfRText *dxf_rtext_set_color_name (DxfRText *rtext, char *color_name);
 long dxf_rtext_get_transparency (DxfRText *rtext);
 DxfRText *dxf_rtext_set_transparency (DxfRText *rtext, long transparency);
 char *dxf_rtext_get_text_value (DxfRText *rtext);
+DxfRText *dxf_rtext_set_text_value (DxfRText *rtext, char *text_value);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
