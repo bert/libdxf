@@ -1929,4 +1929,41 @@ dxf_rtext_set_text_style
 }
 
 
+/*!
+ * \brief Get the insertion point \c p0 of a DXF \c RTEXT entity.
+ *
+ * \return the insertion point \c p0.
+ */
+DxfPoint *
+dxf_rtext_get_p0
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c RTEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rtext->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext->p0);
+}
+
+
 /* EOF */

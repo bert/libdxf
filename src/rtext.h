@@ -280,6 +280,7 @@ char *dxf_rtext_get_text_value (DxfRText *rtext);
 DxfRText *dxf_rtext_set_text_value (DxfRText *rtext, char *text_value);
 char *dxf_rtext_get_text_style (DxfRText *rtext);
 DxfRText *dxf_rtext_set_text_style (DxfRText *rtext, char *text_style);
+DxfPoint *dxf_rtext_get_p0 (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
