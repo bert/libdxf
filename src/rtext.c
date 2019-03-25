@@ -1769,4 +1769,42 @@ dxf_rtext_set_transparency
 }
 
 
+/*!
+ * \brief Get the \c text_value from a DXF \c RTEXT entity.
+ *
+ * \return \c text_value when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_rtext_get_text_value
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rtext->text_value ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (rtext->text_value));
+}
+
+
 /* EOF */
