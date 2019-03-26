@@ -2046,7 +2046,7 @@ dxf_rtext_get_x0
 
 
 /*!
- * \brief Set the X-value of the alignment point \c x0 of a DXF \c RTEXT
+ * \brief Set the X-value of the insertion point \c x0 of a DXF \c RTEXT
  * entity.
  *
  * \return a pointer to \c rtext when successful, or \c NULL when an
@@ -2058,7 +2058,7 @@ dxf_rtext_set_x0
         DxfRText *rtext,
                 /*!< a pointer to a DXF \c RTEXT entity. */
         double x0
-                /*!< the X-value of the alignment point \c x0 of a DXF
+                /*!< the X-value of the insertion point \c x0 of a DXF
                  * \c RTEXT entity. */
 )
 {
