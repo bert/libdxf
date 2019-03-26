@@ -18,6 +18,7 @@ libdxfdoc_DATA = \
 	COPYING \
 	INSTALL \
 	LICENSE \
+	MANIFEST \
 	NEWS \
 	README
 	
