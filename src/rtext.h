@@ -289,6 +289,7 @@ DxfRText *dxf_rtext_set_y0 (DxfRText *rtext, double y0);
 double dxf_rtext_get_z0 (DxfRText *rtext);
 DxfRText *dxf_rtext_set_z0 (DxfRText *rtext, double z0);
 double dxf_rtext_get_height (DxfRText *rtext);
+DxfRText *dxf_rtext_set_height (DxfRText *rtext, double height);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
