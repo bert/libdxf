@@ -2452,4 +2452,47 @@ dxf_rtext_get_type_flags
 }
 
 
+/*!
+ * \brief Set the \c type_flags for a DXF \c RTEXT entity.
+ */
+DxfRText *
+dxf_rtext_set_type_flags
+(
+        DxfRText *rtext,
+                /*!< a pointer to a DXF \c RTEXT entity. */
+        int type_flags
+                /*!< the \c type_flags to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (type_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (type_flags > 2)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        rtext->type_flags = type_flags;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext);
+}
+
+
 /* EOF */
