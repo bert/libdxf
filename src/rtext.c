@@ -2495,4 +2495,36 @@ dxf_rtext_set_type_flags
 }
 
 
+/*!
+ * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
+ * \c RTEXT entity.
+ *
+ * \return the X-value of the extrusion vector \c extr_x0.
+ */
+double
+dxf_rtext_get_extr_x0
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c RTEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext->extr_x0);
+}
+
+
 /* EOF */
