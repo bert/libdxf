@@ -297,6 +297,7 @@ DxfRText *dxf_rtext_set_type_flags (DxfRText *rtext, int type_flags);
 double dxf_rtext_get_extr_x0 (DxfRText *rtext);
 DxfRText *dxf_rtext_set_extr_x0 (DxfRText *rtext, double extr_x0);
 double dxf_rtext_get_extr_y0 (DxfRText *rtext);
+DxfRText *dxf_rtext_set_extr_y0 (DxfRText *rtext, double extr_y0);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
