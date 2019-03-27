@@ -292,6 +292,7 @@ double dxf_rtext_get_height (DxfRText *rtext);
 DxfRText *dxf_rtext_set_height (DxfRText *rtext, double height);
 double dxf_rtext_get_rot_angle (DxfRText *rtext);
 DxfRText *dxf_rtext_set_rot_angle (DxfRText *rtext, double rot_angle);
+int dxf_rtext_get_type_flags (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */

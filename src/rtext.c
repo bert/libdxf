@@ -2410,4 +2410,46 @@ dxf_rtext_set_rot_angle
 }
 
 
+/*!
+ * \brief Get the \c type_flags from a DXF \c RTEXT entity.
+ *
+ * \return \c type_flags.
+ */
+int
+dxf_rtext_get_type_flags
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (rtext->type_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (rtext->type_flags > 2)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext->type_flags);
+}
+
+
 /* EOF */
