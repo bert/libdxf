@@ -300,6 +300,7 @@ double dxf_rtext_get_extr_y0 (DxfRText *rtext);
 DxfRText *dxf_rtext_set_extr_y0 (DxfRText *rtext, double extr_y0);
 double dxf_rtext_get_extr_z0 (DxfRText *rtext);
 DxfRText *dxf_rtext_set_extr_z0 (DxfRText *rtext, double extr_z0);
+DxfRText *dxf_rtext_set_extrusion_vector_from_point (DxfRText *rtext, DxfPoint *point);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */
