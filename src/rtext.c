@@ -2740,4 +2740,41 @@ dxf_rtext_set_extrusion_vector_from_point
 }
 
 
+/*!
+ * \brief Set the extrusion vector for a DXF \c RTEXT entity.
+ */
+DxfRText *
+dxf_rtext_set_extrusion_vector
+(
+        DxfRText *rtext,
+                /*!< a pointer to a DXF \c RTEXT entity. */
+        double extr_x0,
+                /*!<  X-value of the extrusion direction. */
+        double extr_y0,
+                /*!<  Y-value of the extrusion direction. */
+        double extr_z0
+                /*!<  Z-value of the extrusion direction. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        rtext->extr_x0 = extr_x0;
+        rtext->extr_y0 = extr_y0;
+        rtext->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext);
+}
+
+
 /* EOF */
