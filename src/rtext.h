@@ -304,6 +304,7 @@ DxfRText *dxf_rtext_set_extrusion_vector_from_point (DxfRText *rtext, DxfPoint *
 DxfRText *dxf_rtext_set_extrusion_vector (DxfRText *rtext, double extr_x0, double extr_y0, double extr_z0);
 DxfRText *dxf_rtext_get_next (DxfRText *rtext);
 DxfRText *dxf_rtext_set_next (DxfRText *rtext, DxfRText *next);
+DxfRText *dxf_rtext_get_last (DxfRText *rtext);
 
 
 #endif /* LIBDXF_SRC_RTEXT_H */

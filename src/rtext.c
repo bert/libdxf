@@ -2856,4 +2856,49 @@ dxf_rtext_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c RTEXT entity from a linked list
+ * of DXF \c RTEXT entities.
+ *
+ * \return pointer to the last \c RTEXT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfRText *
+dxf_rtext_get_last
+(
+        DxfRText *rtext
+                /*!< a pointer to a DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rtext->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfRText *) rtext);
+        }
+        DxfRText *iter = (DxfRText *) rtext->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfRText *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfRText *) iter);
+}
+
+
 /* EOF */
