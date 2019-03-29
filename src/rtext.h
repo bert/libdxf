@@ -234,6 +234,7 @@ dxf_rtext_struct
 
 DxfRText *dxf_rtext_new ();
 DxfRText *dxf_rtext_init (DxfRText *rtext);
+DxfRText *dxf_rtext_read (DxfFile *fp, DxfRText *rtext);
 int dxf_rtext_free (DxfRText *rtext);
 void dxf_rtext_free_list (DxfRText *rtexts);
 int dxf_rtext_get_id_code (DxfRText *rtext);

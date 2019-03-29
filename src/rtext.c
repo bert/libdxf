@@ -151,6 +151,345 @@ dxf_rtext_init
 
 
 /*!
+ * \brief Read data from a DXF file into a \c RTEXT entity.
+ *
+ * The last line read from file contained the string "RTEXT". \n
+ * Now follows some data for the \c RTEXT, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c rtext. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+DxfRText *
+dxf_rtext_read
+(
+        DxfFile *fp,
+                /*!< filepointer to the input file (or device). */
+        DxfRText *rtext
+                /*!< a pointer to the DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("RTEXT");
+        char *temp_string = NULL;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                rtext = dxf_rtext_new ();
+                rtext = dxf_rtext_init (rtext);
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "1") == 0)
+                {
+                        /* Now follows a string containing a text value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->text_value);
+                }
+                else if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &rtext->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->linetype);
+                }
+                else if (strcmp (temp_string, "7") == 0)
+                {
+                        /* Now follows a string containing a text style
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->text_style);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->layer);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the insertion point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->p0->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the insertion point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->p0->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the insertion point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->p0->z0);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (rtext->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->thickness);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * height. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->height);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->linetype_scale);
+                }
+                else if (strcmp (temp_string, "50") == 0)
+                {
+                        /* Now follows a string containing the
+                         * rotation angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->rot_angle);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &rtext->visibility);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &rtext->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &rtext->paperspace);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * text flags value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &rtext->type_flags);
+                }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &rtext->graphics_data_size);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbRText") != 0)))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &rtext->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->extr_x0);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->extr_y0);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &rtext->extr_z0);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &rtext->shadow_mode);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) rtext->binary_graphics_data->next);
+                        rtext->binary_graphics_data = (DxfBinaryGraphicsData *) rtext->binary_graphics_data->next;
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->material);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &rtext->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &rtext->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", rtext->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &rtext->transparency);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (rtext->text_value, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () text value string is empty for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, rtext->id_code);
+                dxf_entity_skip (dxf_entity_name);
+                return (NULL);
+        }
+        if (strcmp (rtext->linetype, "") == 0)
+        {
+                rtext->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (rtext->layer, "") == 0)
+        {
+                rtext->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rtext);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c RTEXT and all it's
  * data fields.
  *
