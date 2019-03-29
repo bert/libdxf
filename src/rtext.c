@@ -490,6 +490,221 @@ dxf_rtext_read
 
 
 /*!
+ * \brief Write DXF output to \c fp for a DXF \c RTEXT entity.
+ */
+int
+dxf_rtext_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfRText *rtext
+                /*!< a pointer to the DXF \c RTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("RTEXT");
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (rtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (rtext->text_value, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () text value string is empty for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, rtext->id_code);
+                dxf_entity_skip (dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (rtext->text_style, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () text style string is empty for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, rtext->id_code);
+                rtext->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);        }
+        if (strcmp (rtext->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, rtext->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
+                rtext->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (rtext->height == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () height has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, rtext->id_code);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (rtext->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", rtext->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (rtext->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", rtext->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (rtext->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", rtext->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (rtext->paperspace == 1)
+        {
+                fprintf (fp->fp, " 67\n%d\n", rtext->paperspace);
+        }
+        fprintf (fp->fp, "  8\n%s\n", rtext->layer);
+        if (strcmp (rtext->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", rtext->linetype);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (rtext->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", rtext->material);
+        }
+        if (rtext->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", rtext->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", rtext->lineweight);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (rtext->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", rtext->elevation);
+        }
+        if (rtext->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", rtext->linetype_scale);
+        }
+        if (rtext->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", rtext->visibility);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (rtext->graphics_data_size > 0))
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", rtext->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", rtext->graphics_data_size);
+#endif
+                if (rtext->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = rtext->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", rtext->color_value);
+                fprintf (fp->fp, "430\n%s\n", rtext->color_name);
+                fprintf (fp->fp, "440\n%ld\n", rtext->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", rtext->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", rtext->shadow_mode);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbRText\n");
+        }
+        if (rtext->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", rtext->thickness);
+        }
+        fprintf (fp->fp, " 10\n%f\n", rtext->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", rtext->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", rtext->p0->z0);
+        fprintf (fp->fp, " 40\n%f\n", rtext->height);
+        fprintf (fp->fp, "  1\n%s\n", rtext->text_value);
+        if (rtext->rot_angle != 0.0)
+        {
+                fprintf (fp->fp, " 50\n%f\n", rtext->rot_angle);
+        }
+        if (strcmp (rtext->text_style, DXF_DEFAULT_TEXTSTYLE) != 0)
+        {
+                fprintf (fp->fp, "  7\n%s\n", rtext->text_style);
+        }
+        if (rtext->type_flags != 0)
+        {
+                fprintf (fp->fp, " 70\n%d\n", rtext->type_flags);
+        }
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (rtext->extr_x0 != 0.0)
+                && (rtext->extr_y0 != 0.0)
+                && (rtext->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", rtext->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", rtext->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", rtext->extr_z0);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbRText\n");
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c RTEXT and all it's
  * data fields.
  *
