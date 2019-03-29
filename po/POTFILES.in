@@ -154,6 +154,8 @@ src/spline.c
 src/spline.h
 src/style.c
 src/style.h
+src/sun.c
+src/sun.h
 src/table.c
 src/table.h
 src/tables.c

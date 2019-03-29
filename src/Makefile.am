@@ -32,6 +32,8 @@ libdxf_la_SOURCES = \
   tables.c \
   table.h \
   table.c \
+  sun.h \
+  sun.c \
   style.h \
   style.c \
   spline.h \
