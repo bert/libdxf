@@ -239,6 +239,7 @@ dxf_sun_struct
 DxfSun *dxf_sun_new ();
 DxfSun *dxf_sun_init (DxfSun *sun);
 int dxf_sun_free (DxfSun *sun);
+void dxf_sun_free_list (DxfSun *suns);
 
 
 #endif /* LIBDXF_SRC_SUN_H */

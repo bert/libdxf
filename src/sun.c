@@ -202,4 +202,37 @@ dxf_sun_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c SUN entities and all their data fields.
+ */
+void
+dxf_sun_free_list
+(
+        DxfSun *suns
+                /*!< a pointer to the single linked list of DXF
+                 * \c SUN entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (suns == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (suns != NULL)
+        {
+                DxfSun *iter = (DxfSun *) suns->next;
+                dxf_sun_free (suns);
+                suns = (DxfSun *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
