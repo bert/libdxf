@@ -246,6 +246,7 @@ char *dxf_sun_get_linetype (DxfSun *sun);
 DxfSun *dxf_sun_set_linetype (DxfSun *sun, char *linetype);
 char *dxf_sun_get_layer (DxfSun *sun);
 DxfSun *dxf_sun_set_layer (DxfSun *sun, char *layer);
+double dxf_sun_get_elevation (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
