@@ -41,4 +41,42 @@
 #include "sun.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c SUN entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSun *
+dxf_sun_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfSun *sun = NULL;
+        size_t size;
+
+        size = sizeof (DxfSun);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((sun = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                sun = NULL;
+        }
+        else
+        {
+                memset (sun, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun);
+}
+
+
 /* EOF */
