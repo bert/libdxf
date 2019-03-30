@@ -183,6 +183,43 @@ dxf_sun_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF sun. */
+        double intensity;
+                /*!< Intensity.\n
+                 * Group code = 40. */
+        int sun_color;
+                /*!< Color.\n
+                 * Group code = 63. */
+        int shadow_type;
+                /*!< Shadow type:\n
+                 * <ol>
+                 * <li value = "0"> Ray traced shadows.</li>
+                 * <li value = "1"> Shadow maps.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int shadow_map_size;
+                /*!< Shadow map size.\n
+                 * Group code = 71. */
+        int32_t version;
+                /*!< Version number.\n
+                 * Group code = 90. */
+        int32_t julian_day;
+                /*!< Julian day.\n
+                 * Group code = 91. */
+        int32_t time;
+                /*!< Time (in seconds past midnight).\n
+                 * Group code = 92. */
+        int16_t shadow_softness;
+                /*!< Shadow softness.\n
+                 * Group code = 280.*/
+        int status;
+                /*!< Status (boolean).\n
+                 * Group code = 290. */
+        int shadows;
+                /*!< Shadows (boolean).\n
+                 * Group code = 291. */
+        int daylight_savings_time;
+                /*!< Daylight savings time (boolean).\n
+                 * Group code = 292. */
         struct DxfSun *next;
                 /*!< pointer to the next DxfSun.\n
                  * \c NULL in the last DxfSun. */
