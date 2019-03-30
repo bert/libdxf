@@ -152,4 +152,54 @@ dxf_sun_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c SUN entity and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_sun_free
+(
+        DxfSun *sun
+                /*!< a pointer to the memory occupied by the DXF \c SUN
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (sun->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (sun->linetype);
+        free (sun->layer);
+        free (sun->dictionary_owner_soft);
+        free (sun->object_owner_soft);
+        free (sun->material);
+        free (sun->dictionary_owner_hard);
+        free (sun->plot_style_name);
+        free (sun->color_name);
+        free (sun);
+        sun = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
