@@ -313,4 +313,41 @@ dxf_sun_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c linetype from a DXF \c SUN entity.
+ *
+ * \return \c linetype when successful, \c NULL when an error occurred.
+ */
+char *
+dxf_sun_get_linetype
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sun->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (sun->linetype));
+}
+
+
 /* EOF */

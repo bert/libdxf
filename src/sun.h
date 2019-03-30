@@ -242,6 +242,7 @@ int dxf_sun_free (DxfSun *sun);
 void dxf_sun_free_list (DxfSun *suns);
 int dxf_sun_get_id_code (DxfSun *sun);
 DxfSun *dxf_sun_set_id_code (DxfSun *sun, int id_code);
+char *dxf_sun_get_linetype (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
