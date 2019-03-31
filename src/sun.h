@@ -253,6 +253,7 @@ DxfSun *dxf_sun_set_thickness (DxfSun *sun, double thickness);
 double dxf_sun_get_linetype_scale (DxfSun *sun);
 DxfSun *dxf_sun_set_linetype_scale (DxfSun *sun, double linetype_scale);
 int16_t dxf_sun_get_visibility (DxfSun *sun);
+DxfSun *dxf_sun_set_visibility (DxfSun *sun, int16_t visibility);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
