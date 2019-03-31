@@ -612,4 +612,40 @@ dxf_sun_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a DXF \c SUN entity.
+ *
+ * \return \c linetype_scale.
+ */
+double
+dxf_sun_get_linetype_scale
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (sun->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun->linetype_scale);
+}
+
+
 /* EOF */
