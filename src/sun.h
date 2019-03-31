@@ -248,6 +248,7 @@ char *dxf_sun_get_layer (DxfSun *sun);
 DxfSun *dxf_sun_set_layer (DxfSun *sun, char *layer);
 double dxf_sun_get_elevation (DxfSun *sun);
 DxfSun *dxf_sun_set_elevation (DxfSun *sun, double elevation);
+double dxf_sun_get_thickness (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
