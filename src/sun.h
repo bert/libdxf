@@ -251,6 +251,7 @@ DxfSun *dxf_sun_set_elevation (DxfSun *sun, double elevation);
 double dxf_sun_get_thickness (DxfSun *sun);
 DxfSun *dxf_sun_set_thickness (DxfSun *sun, double thickness);
 double dxf_sun_get_linetype_scale (DxfSun *sun);
+DxfSun *dxf_sun_set_linetype_scale (DxfSun *sun, double linetype_scale);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
