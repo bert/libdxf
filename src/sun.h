@@ -256,6 +256,7 @@ int16_t dxf_sun_get_visibility (DxfSun *sun);
 DxfSun *dxf_sun_set_visibility (DxfSun *sun, int16_t visibility);
 int dxf_sun_get_color (DxfSun *sun);
 DxfSun *dxf_sun_set_color (DxfSun *sun, int color);
+int dxf_sun_get_paperspace (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
