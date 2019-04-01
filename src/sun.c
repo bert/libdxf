@@ -984,4 +984,51 @@ dxf_sun_get_graphics_data_size
 }
 
 
+/*!
+ * \brief Set the \c graphics_data_size value for a DXF \c SUN entity.
+ *
+ * \return a pointer to \c sun when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfSun *
+dxf_sun_set_graphics_data_size
+(
+        DxfSun *sun,
+                /*!< a pointer to a DXF \c SUN entity. */
+        int graphics_data_size
+                /*!< the \c graphics_data_size value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was passed.\n")),
+                  __FUNCTION__);
+        }
+        sun->graphics_data_size = graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun);
+}
+
+
 /* EOF */
