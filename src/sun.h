@@ -261,6 +261,7 @@ DxfSun *dxf_sun_set_paperspace (DxfSun *sun, int paperspace);
 int dxf_sun_get_graphics_data_size (DxfSun *sun);
 DxfSun *dxf_sun_set_graphics_data_size (DxfSun *sun, int graphics_data_size);
 int16_t dxf_sun_get_shadow_mode (DxfSun *sun);
+DxfSun *dxf_sun_set_shadow_mode (DxfSun *sun, int16_t shadow_mode);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
