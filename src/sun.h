@@ -258,6 +258,7 @@ int dxf_sun_get_color (DxfSun *sun);
 DxfSun *dxf_sun_set_color (DxfSun *sun, int color);
 int dxf_sun_get_paperspace (DxfSun *sun);
 DxfSun *dxf_sun_set_paperspace (DxfSun *sun, int paperspace);
+int dxf_sun_get_graphics_data_size (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
