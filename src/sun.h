@@ -255,6 +255,7 @@ DxfSun *dxf_sun_set_linetype_scale (DxfSun *sun, double linetype_scale);
 int16_t dxf_sun_get_visibility (DxfSun *sun);
 DxfSun *dxf_sun_set_visibility (DxfSun *sun, int16_t visibility);
 int dxf_sun_get_color (DxfSun *sun);
+DxfSun *dxf_sun_set_color (DxfSun *sun, int color);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
