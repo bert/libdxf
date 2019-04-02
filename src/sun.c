@@ -1286,4 +1286,44 @@ dxf_sun_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the soft pointer to the object owner from a DXF 
+ * \c SUN entity.
+ *
+ * \return soft pointer to the object owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_sun_get_object_owner_soft
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sun->object_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (sun->object_owner_soft));
+}
+
+
 /* EOF */
