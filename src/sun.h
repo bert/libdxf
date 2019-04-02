@@ -267,6 +267,7 @@ DxfSun *dxf_sun_set_binary_graphics_data (DxfSun *sun, DxfBinaryGraphicsData *da
 char *dxf_sun_get_dictionary_owner_soft (DxfSun *sun);
 DxfSun *dxf_sun_set_dictionary_owner_soft (DxfSun *sun, char *dictionary_owner_soft);
 char *dxf_sun_get_object_owner_soft (DxfSun *sun);
+DxfSun *dxf_sun_set_object_owner_soft (DxfSun *sun, char *object_owner_soft);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
