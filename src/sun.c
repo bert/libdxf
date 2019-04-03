@@ -1488,4 +1488,47 @@ dxf_sun_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c SUN entity.
+ *
+ * \return a pointer to \c sun when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfSun *
+dxf_sun_set_dictionary_owner_hard
+(
+        DxfSun *sun,
+                /*!< a pointer to a DXF \c SUN entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        sun->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun);
+}
+
+
 /* EOF */
