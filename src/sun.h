@@ -270,6 +270,7 @@ char *dxf_sun_get_object_owner_soft (DxfSun *sun);
 DxfSun *dxf_sun_set_object_owner_soft (DxfSun *sun, char *object_owner_soft);
 char *dxf_sun_get_material (DxfSun *sun);
 DxfSun *dxf_sun_set_material (DxfSun *sun, char *material);
+char *dxf_sun_get_dictionary_owner_hard (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
