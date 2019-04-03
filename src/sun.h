@@ -273,6 +273,7 @@ DxfSun *dxf_sun_set_material (DxfSun *sun, char *material);
 char *dxf_sun_get_dictionary_owner_hard (DxfSun *sun);
 DxfSun *dxf_sun_set_dictionary_owner_hard (DxfSun *sun, char *dictionary_owner_hard);
 int16_t dxf_sun_get_lineweight (DxfSun *sun);
+DxfSun *dxf_sun_set_lineweight (DxfSun *sun, int16_t lineweight);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
