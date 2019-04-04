@@ -280,6 +280,7 @@ long dxf_sun_get_color_value (DxfSun *sun);
 DxfSun *dxf_sun_set_color_value (DxfSun *sun, long color_value);
 char *dxf_sun_get_color_name (DxfSun *sun);
 DxfSun *dxf_sun_set_color_name (DxfSun *sun, char *color_name);
+long dxf_sun_get_transparency (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
