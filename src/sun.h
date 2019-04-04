@@ -278,6 +278,7 @@ char *dxf_sun_get_plot_style_name (DxfSun *sun);
 DxfSun *dxf_sun_set_plot_style_name (DxfSun *sun, char *plot_style_name);
 long dxf_sun_get_color_value (DxfSun *sun);
 DxfSun *dxf_sun_set_color_value (DxfSun *sun, long color_value);
+char *dxf_sun_get_color_name (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
