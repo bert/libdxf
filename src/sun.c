@@ -2058,7 +2058,7 @@ dxf_sun_get_shadow_type
         if (sun->shadow_type > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
