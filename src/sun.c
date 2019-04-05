@@ -1962,4 +1962,34 @@ dxf_sun_set_intensity
 }
 
 
+/*!
+ * \brief Get the \c sun_color from a DXF \c SUN entity.
+ *
+ * \return \c sun_color.
+ */
+int
+dxf_sun_get_sun_color
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun->sun_color);
+}
+
+
 /* EOF */
