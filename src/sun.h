@@ -285,6 +285,7 @@ DxfSun *dxf_sun_set_transparency (DxfSun *sun, long transparency);
 double dxf_sun_get_intensity (DxfSun *sun);
 DxfSun *dxf_sun_set_intensity (DxfSun *sun, double intensity);
 int dxf_sun_get_sun_color (DxfSun *sun);
+DxfSun *dxf_sun_set_sun_color (DxfSun *sun, int sun_color);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
