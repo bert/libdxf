@@ -292,6 +292,7 @@ int dxf_sun_get_shadow_map_size (DxfSun *sun);
 DxfSun *dxf_sun_set_shadow_map_size (DxfSun *sun, int shadow_map_size);
 int32_t dxf_sun_get_version (DxfSun *sun);
 DxfSun *dxf_sun_set_version (DxfSun *sun, int32_t version);
+int32_t dxf_sun_get_julian_day (DxfSun *sun);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
