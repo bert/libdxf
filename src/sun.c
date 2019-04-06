@@ -2150,4 +2150,44 @@ dxf_sun_get_shadow_map_size
 }
 
 
+/*!
+ * \brief Set the \c shadow_map_size for a DXF \c SUN entity.
+ *
+ * \return a pointer to \c sun when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfSun *
+dxf_sun_set_shadow_map_size
+(
+        DxfSun *sun,
+                /*!< a pointer to a DXF \c SUN entity. */
+        int shadow_map_size
+                /*!< the \c shadow_map_size to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_map_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        sun->shadow_map_size = shadow_map_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun);
+}
+
+
 /* EOF */

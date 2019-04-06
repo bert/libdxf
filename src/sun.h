@@ -288,6 +288,7 @@ int dxf_sun_get_sun_color (DxfSun *sun);
 DxfSun *dxf_sun_set_sun_color (DxfSun *sun, int sun_color);
 int dxf_sun_get_shadow_type (DxfSun *sun);
 int dxf_sun_get_shadow_map_size (DxfSun *sun);
+DxfSun *dxf_sun_set_shadow_map_size (DxfSun *sun, int shadow_map_size);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
