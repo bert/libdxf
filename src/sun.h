@@ -295,6 +295,7 @@ DxfSun *dxf_sun_set_version (DxfSun *sun, int32_t version);
 int32_t dxf_sun_get_julian_day (DxfSun *sun);
 DxfSun *dxf_sun_set_julian_day (DxfSun *sun, int32_t julian_day);
 int32_t dxf_sun_get_time (DxfSun *sun);
+DxfSun *dxf_sun_set_time (DxfSun *sun, int32_t time);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
