@@ -299,6 +299,7 @@ DxfSun *dxf_sun_set_time (DxfSun *sun, int32_t time);
 int16_t dxf_sun_get_shadow_softness (DxfSun *sun);
 DxfSun *dxf_sun_set_shadow_softness (DxfSun *sun, int16_t shadow_softness);
 int dxf_sun_get_status (DxfSun *sun);
+DxfSun *dxf_sun_set_status (DxfSun *sun, int status);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
