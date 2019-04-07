@@ -2450,4 +2450,34 @@ dxf_sun_set_shadow_softness
 }
 
 
+/*!
+ * \brief Get the \c status from a DXF \c SUN entity.
+ *
+ * \return \c status.
+ */
+int
+dxf_sun_get_status
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun->status);
+}
+
+
 /* EOF */
