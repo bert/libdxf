@@ -2416,4 +2416,38 @@ dxf_sun_get_shadow_softness
 }
 
 
+/*!
+ * \brief Set the \c shadow_softness for a DXF \c SUN entity.
+ *
+ * \return a pointer to \c sun when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfSun *
+dxf_sun_set_shadow_softness
+(
+        DxfSun *sun,
+                /*!< a pointer to a DXF \c SUN entity. */
+        int16_t shadow_softness
+                /*!< the \c shadow_softness to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        sun->shadow_softness = shadow_softness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun);
+}
+
+
 /* EOF */

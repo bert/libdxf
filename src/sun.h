@@ -297,6 +297,7 @@ DxfSun *dxf_sun_set_julian_day (DxfSun *sun, int32_t julian_day);
 int32_t dxf_sun_get_time (DxfSun *sun);
 DxfSun *dxf_sun_set_time (DxfSun *sun, int32_t time);
 int16_t dxf_sun_get_shadow_softness (DxfSun *sun);
+DxfSun *dxf_sun_set_shadow_softness (DxfSun *sun, int16_t shadow_softness);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
