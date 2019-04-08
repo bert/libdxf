@@ -303,6 +303,7 @@ DxfSun *dxf_sun_set_status (DxfSun *sun, int status);
 int dxf_sun_get_shadows (DxfSun *sun);
 DxfSun *dxf_sun_set_shadows (DxfSun *sun, int shadows);
 int dxf_sun_get_daylight_savings_time (DxfSun *sun);
+DxfSun *dxf_sun_set_daylight_savings_time (DxfSun *sun, int daylight_savings_time);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
