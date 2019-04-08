@@ -301,6 +301,7 @@ DxfSun *dxf_sun_set_shadow_softness (DxfSun *sun, int16_t shadow_softness);
 int dxf_sun_get_status (DxfSun *sun);
 DxfSun *dxf_sun_set_status (DxfSun *sun, int status);
 int dxf_sun_get_shadows (DxfSun *sun);
+DxfSun *dxf_sun_set_shadows (DxfSun *sun, int shadows);
 
 
 #endif /* LIBDXF_SRC_SUN_H */
