@@ -2538,4 +2538,46 @@ dxf_sun_set_status
 }
 
 
+/*!
+ * \brief Get the \c shadows from a DXF \c SUN entity.
+ *
+ * \return \c shadows.
+ */
+int
+dxf_sun_get_shadows
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (sun->shadows < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (sun->shadows > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun->shadows);
+}
+
+
 /* EOF */
