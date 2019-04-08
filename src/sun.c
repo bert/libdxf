@@ -2473,6 +2473,18 @@ dxf_sun_get_status
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (sun->status < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (sun->status > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
