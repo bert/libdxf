@@ -2715,4 +2715,44 @@ dxf_sun_set_daylight_savings_time
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c SUN entity from a DXF
+ * \c SUN entity.
+ *
+ * \return pointer to the next \c SUN entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSun *
+dxf_sun_get_next
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sun->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSun *) sun->next);
+}
+
+
 /* EOF */
