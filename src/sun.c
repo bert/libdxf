@@ -2797,4 +2797,49 @@ dxf_sun_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c SUN entity from a linked list
+ * of DXF \c SUN entities.
+ *
+ * \return pointer to the last \c SUN entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSun *
+dxf_sun_get_last
+(
+        DxfSun *sun
+                /*!< a pointer to a DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (sun->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfSun *) sun);
+        }
+        DxfSun *iter = (DxfSun *) sun->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSun *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSun *) iter);
+}
+
+
 /* EOF */
