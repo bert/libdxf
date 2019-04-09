@@ -153,6 +153,87 @@ dxf_sun_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c SUN entity.
+ *
+ * The last line read from file contained the string "SUN". \n
+ * Now follows some data for the \c SUN, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c sun. \n
+ *
+ * \return a pointer to \c sun.
+ */
+DxfSun *
+dxf_sun_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfSun *sun
+                /*!< a pointer to the DXF \c SUN entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
+        int iter330;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (sun == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                sun = dxf_sun_new ();
+                sun = dxf_sun_init (sun);
+        }
+        iter310 = (DxfBinaryGraphicsData *) sun->binary_graphics_data;
+        iter330 = 0;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (sun->linetype, "") == 0)
+        {
+                sun->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (sun->layer, "") == 0)
+        {
+                sun->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sun);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c SUN entity and all it's
  * data fields.
  *
