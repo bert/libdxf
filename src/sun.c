@@ -2789,7 +2789,7 @@ dxf_sun_set_next
                   __FUNCTION__);
                 return (NULL);
         }
-        sun->next = (struct DxfArc *) next;
+        sun->next = (struct DxfSun *) next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
