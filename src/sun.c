@@ -360,12 +360,40 @@ dxf_sun_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &sun->graphics_data_size);
                 }
+                else if (strcmp (temp_string, "280") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * softness value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &sun->shadow_softness);
+                }
                 else if (strcmp (temp_string, "284") == 0)
                 {
                         /* Now follows a string containing the shadow
                          * mode value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%hd\n", &sun->shadow_mode);
+                }
+                else if (strcmp (temp_string, "290") == 0)
+                {
+                        /* Now follows a string containing the status
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->status);
+                }
+                else if (strcmp (temp_string, "291") == 0)
+                {
+                        /* Now follows a string containing the shadows
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->shadows);
+                }
+                else if (strcmp (temp_string, "292") == 0)
+                {
+                        /* Now follows a string containing the daylight
+                         * savings time value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->daylight_savings_time);
                 }
                 else if (strcmp (temp_string, "310") == 0)
                 {
