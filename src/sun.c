@@ -176,6 +176,7 @@ dxf_sun_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        int iter92;
         DxfBinaryGraphicsData *iter310 = NULL;
         int iter330;
 
@@ -197,6 +198,7 @@ dxf_sun_read
                 sun = dxf_sun_new ();
                 sun = dxf_sun_init (sun);
         }
+        iter92 = 0;
         iter310 = (DxfBinaryGraphicsData *) sun->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
@@ -309,21 +311,32 @@ dxf_sun_read
                         /* Now follows a string containing the
                          * version value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &sun->version);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &sun->version);
                 }
                 else if (strcmp (temp_string, "91") == 0)
                 {
                         /* Now follows a string containing the
                          * julian_day value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &sun->julian_day);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &sun->julian_day);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
-                        /* Now follows a string containing the
-                         * graphics data size value. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &sun->graphics_data_size);
+                        if (iter92 == 0)
+                        {
+                                /* Now follows a string containing the
+                                 * graphics data size value. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &sun->graphics_data_size);
+                        }
+                        if (iter92 == 1)
+                        {
+                                /* Now follows a string containing the
+                                 * time value. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &sun->time);
+                        }
+                        iter92++;
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
