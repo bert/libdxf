@@ -248,6 +248,13 @@ dxf_sun_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &sun->thickness);
                 }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * intensity. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &sun->intensity);
+                }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
@@ -269,12 +276,47 @@ dxf_sun_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &sun->color);
                 }
+                else if (strcmp (temp_string, "63") == 0)
+                {
+                        /* Now follows a string containing the sun
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->sun_color);
+                }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &sun->paperspace);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * shadow_type value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->shadow_type);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the
+                         * shadow_map_size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->shadow_map_size);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        /* Now follows a string containing the
+                         * version value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->version);
+                }
+                else if (strcmp (temp_string, "91") == 0)
+                {
+                        /* Now follows a string containing the
+                         * julian_day value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &sun->julian_day);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
