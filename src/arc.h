@@ -95,20 +95,20 @@ dxf_arc_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -238,12 +238,12 @@ double dxf_arc_get_linetype_scale (DxfArc *arc);
 DxfArc *dxf_arc_set_linetype_scale (DxfArc *arc, double linetype_scale);
 int16_t dxf_arc_get_visibility (DxfArc *arc);
 DxfArc *dxf_arc_set_visibility (DxfArc *arc, int16_t visibility);
-int dxf_arc_get_color (DxfArc *arc);
-DxfArc *dxf_arc_set_color (DxfArc *arc, int color);
-int dxf_arc_get_paperspace (DxfArc *arc);
-DxfArc *dxf_arc_set_paperspace (DxfArc *arc, int paperspace);
-int dxf_arc_get_graphics_data_size (DxfArc *arc);
-DxfArc *dxf_arc_set_graphics_data_size (DxfArc *arc, int graphics_data_size);
+int16_t dxf_arc_get_color (DxfArc *arc);
+DxfArc *dxf_arc_set_color (DxfArc *arc, int16_t color);
+int16_t dxf_arc_get_paperspace (DxfArc *arc);
+DxfArc *dxf_arc_set_paperspace (DxfArc *arc, int16_t paperspace);
+int32_t dxf_arc_get_graphics_data_size (DxfArc *arc);
+DxfArc *dxf_arc_set_graphics_data_size (DxfArc *arc, int32_t graphics_data_size);
 int16_t dxf_arc_get_shadow_mode (DxfArc *arc);
 DxfArc *dxf_arc_set_shadow_mode (DxfArc *arc, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_arc_get_binary_graphics_data (DxfArc *arc);
