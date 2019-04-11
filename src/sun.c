@@ -669,7 +669,21 @@ dxf_sun_write
         {
                 fprintf (fp->fp, "100\nAcDbSun\n");
         }
-
+        if (sun->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", sun->thickness);
+        }
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", sun->version);
+        fprintf (fp->fp, "290\n%hd\n", sun->status);
+        fprintf (fp->fp, " 63\n%d\n", sun->sun_color);
+        fprintf (fp->fp, " 40\n%f\n", sun->intensity);
+        fprintf (fp->fp, "291\n%hd\n", sun->shadows);
+        fprintf (fp->fp, " 91\n%" PRIi32 "\n", sun->julian_day);
+        fprintf (fp->fp, " 92\n%" PRIi32 "\n", sun->time);
+        fprintf (fp->fp, "292\n%hd\n", sun->daylight_savings_time);
+        fprintf (fp->fp, " 70\n%d\n", sun->shadow_type);
+        fprintf (fp->fp, " 71\n%d\n", sun->shadow_map_size);
+        fprintf (fp->fp, "280\n%" PRIi16 "\n", sun->shadow_softness);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
