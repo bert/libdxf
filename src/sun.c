@@ -562,6 +562,113 @@ dxf_sun_write
                 sun->layer = DXF_DEFAULT_LAYER;
         }
         /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (sun->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", sun->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (sun->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", sun->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (sun->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", sun->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (sun->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", sun->object_owner_soft);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (sun->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", sun->layer);
+        if (strcmp (sun->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", sun->linetype);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (sun->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", sun->material);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (sun->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", sun->elevation);
+        }
+        if (sun->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", sun->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", sun->lineweight);
+        }
+        if (sun->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", sun->linetype_scale);
+        }
+        if (sun->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", sun->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", sun->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", sun->graphics_data_size);
+#endif
+                if (sun->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) sun->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", sun->color_value);
+                fprintf (fp->fp, "430\n%s\n", sun->color_name);
+                fprintf (fp->fp, "440\n%ld\n", sun->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", sun->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", sun->shadow_mode);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSun\n");
+        }
 
         /* Clean up. */
         free (dxf_entity_name);
