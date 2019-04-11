@@ -239,6 +239,7 @@ dxf_sun_struct
 DxfSun *dxf_sun_new ();
 DxfSun *dxf_sun_init (DxfSun *sun);
 DxfSun *dxf_sun_read (DxfFile *fp, DxfSun *sun);
+int dxf_sun_write (DxfFile *fp, DxfSun *sun);
 int dxf_sun_free (DxfSun *sun);
 void dxf_sun_free_list (DxfSun *suns);
 int dxf_sun_get_id_code (DxfSun *sun);
