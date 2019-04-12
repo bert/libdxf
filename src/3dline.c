@@ -1,7 +1,7 @@
 /*!
  * \file 3dline.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D line entity (\c 3DLINE).
@@ -314,21 +314,21 @@ dxf_3dline_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->color);
+                        fscanf (fp->fp, "%hd\n", &line->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->paperspace);
+                        fscanf (fp->fp, "%hd\n", &line->paperspace);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &line->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "100") == 0)
                 {
@@ -349,7 +349,7 @@ dxf_3dline_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &line->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
@@ -607,7 +607,7 @@ dxf_3dline_write
         if ((line->paperspace == DXF_PAPERSPACE)
           && (fp->acad_version_number >= AutoCAD_13))
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", line->layer);
         if (strcmp (line->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -627,7 +627,7 @@ dxf_3dline_write
         }
         if (line->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", line->color);
+                fprintf (fp->fp, " 62\n%hd\n", line->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
@@ -646,9 +646,9 @@ dxf_3dline_write
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", line->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", line->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", line->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", line->graphics_data_size);
 #endif
                 if (line->binary_graphics_data != NULL)
                 {
@@ -1323,7 +1323,7 @@ dxf_3dline_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_3dline_get_color
 (
         Dxf3dline *line
@@ -1362,7 +1362,7 @@ dxf_3dline_set_color
 (
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1396,7 +1396,7 @@ dxf_3dline_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_3dline_get_paperspace
 (
         Dxf3dline *line
@@ -1444,7 +1444,7 @@ dxf_3dline_set_paperspace
 (
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1486,7 +1486,7 @@ dxf_3dline_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_3dline_get_graphics_data_size
 (
         Dxf3dline *line
@@ -1535,7 +1535,7 @@ dxf_3dline_set_graphics_data_size
 (
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
