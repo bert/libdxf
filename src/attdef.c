@@ -2,7 +2,7 @@
  * \file attdef.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF attribute definition entity (\c ATTDEF).
  *
@@ -386,56 +386,56 @@ dxf_attdef_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->color);
+                        fscanf (fp->fp, "%hd\n", &attdef->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->paperspace);
+                        fscanf (fp->fp, "%hd\n", &attdef->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * attribute flags value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->attr_flags);
+                        fscanf (fp->fp, "%hd\n", &attdef->attr_flags);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * text flags value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->text_flags);
+                        fscanf (fp->fp, "%hd\n", &attdef->text_flags);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the
                          * horizontal alignment value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->hor_align);
+                        fscanf (fp->fp, "%hd\n", &attdef->hor_align);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing the
                          * field length value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->field_length);
+                        fscanf (fp->fp, "%hd\n", &attdef->field_length);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
                         /* Now follows a string containing the
                          * vertical alignment value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->vert_align);
+                        fscanf (fp->fp, "%hd\n", &attdef->vert_align);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &attdef->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -461,7 +461,7 @@ dxf_attdef_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &attdef->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &attdef->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
@@ -734,7 +734,7 @@ dxf_attdef_write
         }
         if (attdef->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", attdef->layer);
         if (strcmp (attdef->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -748,7 +748,7 @@ dxf_attdef_write
         }
         if (attdef->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", attdef->color);
+                fprintf (fp->fp, " 62\n%hd\n", attdef->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
@@ -764,14 +764,14 @@ dxf_attdef_write
         }
         if (attdef->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", attdef->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", attdef->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", attdef->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", attdef->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", attdef->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", attdef->graphics_data_size);
 #endif
                 if (attdef->binary_graphics_data != NULL)
                 {
@@ -810,10 +810,10 @@ dxf_attdef_write
         }
         fprintf (fp->fp, "  3\n%s\n", attdef->prompt_value);
         fprintf (fp->fp, "  2\n%s\n", attdef->tag_value);
-        fprintf (fp->fp, " 70\n%d\n", attdef->attr_flags);
+        fprintf (fp->fp, " 70\n%hd\n", attdef->attr_flags);
         if (attdef->field_length != 0)
         {
-                fprintf (fp->fp, " 73\n%d\n", attdef->field_length);
+                fprintf (fp->fp, " 73\n%hd\n", attdef->field_length);
         }
         if (attdef->rot_angle != 0.0)
         {
@@ -833,15 +833,15 @@ dxf_attdef_write
         }
         if (attdef->text_flags != 0)
         {
-                fprintf (fp->fp, " 71\n%d\n", attdef->text_flags);
+                fprintf (fp->fp, " 71\n%hd\n", attdef->text_flags);
         }
         if (attdef->hor_align != 0)
         {
-                fprintf (fp->fp, " 72\n%d\n", attdef->hor_align);
+                fprintf (fp->fp, " 72\n%hd\n", attdef->hor_align);
         }
         if (attdef->vert_align != 0)
         {
-                fprintf (fp->fp, " 74\n%d\n", attdef->vert_align);
+                fprintf (fp->fp, " 74\n%hd\n", attdef->vert_align);
         }
         if ((attdef->hor_align != 0) || (attdef->vert_align != 0))
         {
@@ -1490,7 +1490,7 @@ dxf_attdef_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_attdef_get_color
 (
         DxfAttdef *attdef
@@ -1529,7 +1529,7 @@ dxf_attdef_set_color
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1563,7 +1563,7 @@ dxf_attdef_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_attdef_get_paperspace
 (
         DxfAttdef *attdef
@@ -1608,7 +1608,7 @@ dxf_attdef_set_paperspace
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1650,7 +1650,7 @@ dxf_attdef_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_attdef_get_graphics_data_size
 (
         DxfAttdef *attdef
@@ -1699,7 +1699,7 @@ dxf_attdef_set_graphics_data_size
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -3818,7 +3818,7 @@ dxf_attdef_set_obl_angle
  *
  * \return attribute flags.
  */
-int
+int16_t
 dxf_attdef_get_attr_flags
 (
         DxfAttdef *attdef
@@ -3863,7 +3863,7 @@ dxf_attdef_set_attr_flags
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int attr_flags
+        int16_t attr_flags
                 /*!< the attribute flags to be set for the entity. */
 )
 {
@@ -4028,7 +4028,7 @@ dxf_attdef_is_preset
  *
  * \return text flags.
  */
-int
+int16_t
 dxf_attdef_get_text_flags
 (
         DxfAttdef *attdef
@@ -4073,7 +4073,7 @@ dxf_attdef_set_text_flags
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int text_flags
+        int16_t text_flags
                 /*!< the text flags to be set for the entity. */
 )
 {
@@ -4113,7 +4113,7 @@ dxf_attdef_set_text_flags
  *
  * \return horizontal alignment.
  */
-int
+int16_t
 dxf_attdef_get_hor_align
 (
         DxfAttdef *attdef
@@ -4158,7 +4158,7 @@ dxf_attdef_set_hor_align
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int hor_align
+        int16_t hor_align
                 /*!< the horizontal alignment to be set for the entity. */
 )
 {
@@ -4200,7 +4200,7 @@ dxf_attdef_set_hor_align
  *
  * \note Not currently used in DXF R14.
  */
-int
+int16_t
 dxf_attdef_get_field_length
 (
         DxfAttdef *attdef
@@ -4241,7 +4241,7 @@ dxf_attdef_set_field_length
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int field_length
+        int16_t field_length
                 /*!< the field length to be set for the entity. */
 )
 {
@@ -4275,7 +4275,7 @@ dxf_attdef_set_field_length
  *
  * \return horizontal alignment.
  */
-int
+int16_t
 dxf_attdef_get_vert_align
 (
         DxfAttdef *attdef
@@ -4321,7 +4321,7 @@ dxf_attdef_set_vert_align
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int vert_align
+        int16_t vert_align
                 /*!< the vertical text alignment to be set for the entity. */
 )
 {

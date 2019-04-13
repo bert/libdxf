@@ -2,7 +2,7 @@
  * \file attdef.h
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF attribute definition entity (\c ATTDEF).
  *
@@ -94,20 +94,20 @@ dxf_attdef_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -224,7 +224,7 @@ dxf_attdef_struct
                 /*!< Oblique angle of the attribute value.\n
                  * Defaults to 0.0 if omitted from DXF file.\n
                  * Group code = 51. */
-        int attr_flags;
+        int16_t attr_flags;
                 /*!< Attribute flags.\n
                  * Bit coded:\n
                  * <ol>
@@ -235,7 +235,7 @@ dxf_attdef_struct
                  * </ol>
                  * Group code = 70.
                  */
-        int text_flags;
+        int16_t text_flags;
                 /*!< Text flags.\n
                  * Bit coded:\n
                  * <ol>
@@ -244,7 +244,7 @@ dxf_attdef_struct
                  * </ol>
                  * Defaults to 0 if ommited from DXF file.\n
                  * Group code = 71. */
-        int hor_align;
+        int16_t hor_align;
                 /*!< Horizontal text justification type (optional,
                  * default = 0).\n
                  * See \c TEXT.\n
@@ -258,11 +258,11 @@ dxf_attdef_struct
                  * <li value = "5"> Fit, only when vert_align = 0.</li>
                  * </ol>
                  * Group code = 72. */
-        int field_length;
+        int16_t field_length;
                 /*!< Field length (optional; default = 0) (not currently
                  * used in DXF R14).\n
                  * Group code = 73. */
-        int vert_align;
+        int16_t vert_align;
                 /*!< Vertical text justification type (optional,
                  * default = 0).\n
                  * See group code 73 in \c TEXT.\n
@@ -313,12 +313,12 @@ double dxf_attdef_get_linetype_scale (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_linetype_scale (DxfAttdef *attdef, double linetype_scale);
 int16_t dxf_attdef_get_visibility (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_visibility (DxfAttdef *attdef, int16_t visibility);
-int dxf_attdef_get_color (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_color (DxfAttdef *attdef, int color);
-int dxf_attdef_get_paperspace (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_paperspace (DxfAttdef *attdef, int paperspace);
-int dxf_attdef_get_graphics_data_size (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_graphics_data_size (DxfAttdef *attdef, int graphics_data_size);
+int16_t dxf_attdef_get_color (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_color (DxfAttdef *attdef, int16_t color);
+int16_t dxf_attdef_get_paperspace (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_paperspace (DxfAttdef *attdef, int16_t paperspace);
+int32_t dxf_attdef_get_graphics_data_size (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_graphics_data_size (DxfAttdef *attdef, int32_t graphics_data_size);
 int16_t dxf_attdef_get_shadow_mode (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_shadow_mode (DxfAttdef *attdef, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_attdef_get_binary_graphics_data (DxfAttdef *attdef);
@@ -373,20 +373,20 @@ double dxf_attdef_get_rot_angle (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_rot_angle (DxfAttdef *attdef, double rot_angle);
 double dxf_attdef_get_obl_angle (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_obl_angle (DxfAttdef *attdef, double obl_angle);
-int dxf_attdef_get_attr_flags (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_attr_flags (DxfAttdef *attdef, int attr_flags);
+int16_t dxf_attdef_get_attr_flags (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_attr_flags (DxfAttdef *attdef, int16_t attr_flags);
 int dxf_attdef_is_invisible (DxfAttdef *attdef);
 int dxf_attdef_is_constant (DxfAttdef *attdef);
 int dxf_attdef_is_verification_required (DxfAttdef *attdef);
 int dxf_attdef_is_preset (DxfAttdef *attdef);
-int dxf_attdef_get_text_flags (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_text_flags (DxfAttdef *attdef, int text_flags);
-int dxf_attdef_get_hor_align (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_hor_align (DxfAttdef *attdef, int hor_align);
-int dxf_attdef_get_field_length (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_field_length (DxfAttdef *attdef, int field_length);
-int dxf_attdef_get_vert_align (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_vert_align (DxfAttdef *attdef, int vert_align);
+int16_t dxf_attdef_get_text_flags (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_text_flags (DxfAttdef *attdef, int16_t text_flags);
+int16_t dxf_attdef_get_hor_align (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_hor_align (DxfAttdef *attdef, int16_t hor_align);
+int16_t dxf_attdef_get_field_length (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_field_length (DxfAttdef *attdef, int16_t field_length);
+int16_t dxf_attdef_get_vert_align (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_vert_align (DxfAttdef *attdef, int16_t vert_align);
 double dxf_attdef_get_extr_x0 (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_extr_x0 (DxfAttdef *attdef, double extr_x0);
 double dxf_attdef_get_extr_y0 (DxfAttdef *attdef);
