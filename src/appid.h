@@ -2,7 +2,7 @@
  * \file appid.h
  *
  * \author Copyright (C) 2008, 2009, 2011, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF application identity symbol table entry
  * (\c APPID).
@@ -78,7 +78,7 @@ dxf_appid_struct
         char *application_name;
                 /*!< Name of the application registered with the drawing.\n
                  * Group code = 2. */
-        int flag;
+        int16_t flag;
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
                  * and need not be set by programs that write DXF files.\n
@@ -122,8 +122,8 @@ int dxf_appid_get_id_code (DxfAppid *appid);
 DxfAppid *dxf_appid_set_id_code (DxfAppid *appid, int id_code);
 char *dxf_appid_get_application_name (DxfAppid *appid);
 DxfAppid *dxf_appid_set_application_name (DxfAppid *appid, char *name);
-int dxf_appid_get_flag (DxfAppid *appid);
-DxfAppid *dxf_appid_set_flag (DxfAppid *appid, int flag);
+int16_t dxf_appid_get_flag (DxfAppid *appid);
+DxfAppid *dxf_appid_set_flag (DxfAppid *appid, int16_t flag);
 int dxf_appid_is_xreferenced (DxfAppid *appid);
 int dxf_appid_is_xresolved (DxfAppid *appid);
 int dxf_appid_is_referenced (DxfAppid *appid);

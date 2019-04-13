@@ -1,8 +1,8 @@
 /*!
  * \file appid.c
  *
- * \author Copyright (C) 2009, 2011, 2012, 2014, 2015, 2016, 2017, 2018
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009, 2011, 2012, 2014, 2015, 2016, 2017, 2018,
+ * 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>
  *
@@ -219,7 +219,7 @@ dxf_appid_read
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &appid->flag);
+                        fscanf (fp->fp, "%hd\n", &appid->flag);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -366,7 +366,7 @@ dxf_appid_write
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", appid->application_name);
-        fprintf (fp->fp, " 70\n%d\n", appid->flag);
+        fprintf (fp->fp, " 70\n%hd\n", appid->flag);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -619,7 +619,7 @@ dxf_appid_set_application_name
  *
  * \return flag value.
  */
-int
+int16_t
 dxf_appid_get_flag
 (
         DxfAppid *appid
@@ -664,7 +664,7 @@ dxf_appid_set_flag
 (
         DxfAppid *appid,
                 /*!< a pointer to a DXF \c APPID symbol table entry. */
-        int flag
+        int16_t flag
                 /*!< the flag value to be set. */
 )
 {
