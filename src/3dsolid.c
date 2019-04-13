@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.c
  *
- * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
@@ -299,28 +299,28 @@ dxf_3dsolid_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &solid->color);
+                        fscanf (fp->fp, "%hd\n", &solid->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &solid->paperspace);
+                        fscanf (fp->fp, "%hd\n", &solid->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the modeler
                          * format version number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &solid->modeler_format_version_number);
+                        fscanf (fp->fp, "%hd\n", &solid->modeler_format_version_number);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &solid->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &solid->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "100") == 0)
                 {
@@ -353,7 +353,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &solid->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &solid->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "284") == 0)
                 {
@@ -586,7 +586,7 @@ dxf_3dsolid_write
         }
         if (solid->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", solid->layer);
         if (strcmp (solid->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -600,7 +600,7 @@ dxf_3dsolid_write
         }
         if (solid->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", solid->color);
+                fprintf (fp->fp, " 62\n%hd\n", solid->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
@@ -622,14 +622,14 @@ dxf_3dsolid_write
         }
         if (solid->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", solid->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", solid->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", solid->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", solid->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", solid->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", solid->graphics_data_size);
 #endif
                 if (solid->binary_graphics_data != NULL)
                 {
@@ -663,7 +663,7 @@ dxf_3dsolid_write
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, " 70\n%d\n", solid->modeler_format_version_number);
+                fprintf (fp->fp, " 70\n%hd\n", solid->modeler_format_version_number);
         }
         if ((solid->proprietary_data != NULL) || (solid->additional_proprietary_data != NULL))
         {
@@ -1313,7 +1313,7 @@ dxf_3dsolid_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_3dsolid_get_color
 (
         Dxf3dsolid *solid
@@ -1352,7 +1352,7 @@ dxf_3dsolid_set_color
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1386,7 +1386,7 @@ dxf_3dsolid_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_3dsolid_get_paperspace
 (
         Dxf3dsolid *solid
@@ -1431,7 +1431,7 @@ dxf_3dsolid_set_paperspace
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1472,7 +1472,7 @@ dxf_3dsolid_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_3dsolid_get_graphics_data_size
 (
         Dxf3dsolid *solid
@@ -1520,7 +1520,7 @@ dxf_3dsolid_set_graphics_data_size
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2569,7 +2569,7 @@ dxf_3dsolid_set_additional_proprietary_data
  *
  * \return the modeler format version number.
  */
-int
+int16_t
 dxf_3dsolid_get_modeler_format_version_number
 (
         Dxf3dsolid *solid
@@ -2615,7 +2615,7 @@ dxf_3dsolid_set_modeler_format_version_number
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
-        int modeler_format_version_number
+        int16_t modeler_format_version_number
                 /*!< the modeler format version number to be set for the
                  * entity. */
 )
