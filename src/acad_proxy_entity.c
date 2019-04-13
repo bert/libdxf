@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF acad_proxy_entity entity
@@ -288,14 +288,14 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the object
                          * visability value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->visibility);
+                        fscanf (fp->fp, "%hd\n", &acad_proxy_entity->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->color);
+                        fscanf (fp->fp, "%hd\n", &acad_proxy_entity->color);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2000)
                   && (strcmp (temp_string, "70") == 0))
@@ -303,7 +303,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the original
                          * custom object data format value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->original_custom_object_data_format);
+                        fscanf (fp->fp, "%hd\n", &acad_proxy_entity->original_custom_object_data_format);
                         if (acad_proxy_entity->original_custom_object_data_format != 1)
                         {
                                 fprintf (stderr,
@@ -316,7 +316,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the proxy
                          * entity ID value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->proxy_entity_class_id);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &acad_proxy_entity->proxy_entity_class_id);
                         if (acad_proxy_entity->proxy_entity_class_id != DXF_DEFAULT_PROXY_ENTITY_ID)
                         {
                                 fprintf (stderr,
@@ -329,7 +329,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the application
                          * entity ID value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->application_entity_class_id);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &acad_proxy_entity->application_entity_class_id);
                         if (acad_proxy_entity->application_entity_class_id < 500)
                         {
                                 fprintf (stderr,
@@ -342,14 +342,14 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the graphics
                          * data size value (bytes). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &acad_proxy_entity->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "93") == 0)
                 {
                         /* Now follows a string containing the entity
                          * data size value (bits). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->entity_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &acad_proxy_entity->entity_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2000)
                   && (strcmp (temp_string, "95") == 0))
@@ -357,7 +357,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the object
                          * drawing format value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &acad_proxy_entity->object_drawing_format);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &acad_proxy_entity->object_drawing_format);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                   && (strcmp (temp_string, "100") == 0))
@@ -634,7 +634,7 @@ dxf_acad_proxy_entity_write
         }
         if (acad_proxy_entity->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", acad_proxy_entity->layer);
         if (strcmp (acad_proxy_entity->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -648,7 +648,7 @@ dxf_acad_proxy_entity_write
         }
         if (acad_proxy_entity->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", acad_proxy_entity->color);
+                fprintf (fp->fp, " 62\n%hd\n", acad_proxy_entity->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
@@ -666,7 +666,7 @@ dxf_acad_proxy_entity_write
                 fprintf (fp->fp, " 39\n%f\n", acad_proxy_entity->thickness);
         }
         fprintf (fp->fp, " 48\n%f\n", acad_proxy_entity->linetype_scale);
-        fprintf (fp->fp, " 60\n%d\n", acad_proxy_entity->visibility);
+        fprintf (fp->fp, " 60\n%hd\n", acad_proxy_entity->visibility);
         if (fp->acad_version_number >= AutoCAD_2004)
         {
                 fprintf (fp->fp, "420\n%ld\n", acad_proxy_entity->color_value);
@@ -688,16 +688,16 @@ dxf_acad_proxy_entity_write
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 70\n%d\n", acad_proxy_entity->original_custom_object_data_format);
+                fprintf (fp->fp, " 70\n%hd\n", acad_proxy_entity->original_custom_object_data_format);
         }
-        fprintf (fp->fp, " 90\n%d\n", acad_proxy_entity->proxy_entity_class_id);
-        fprintf (fp->fp, " 91\n%d\n", acad_proxy_entity->application_entity_class_id);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", acad_proxy_entity->proxy_entity_class_id);
+        fprintf (fp->fp, " 91\n%" PRIi32 "\n", acad_proxy_entity->application_entity_class_id);
         if (fp->acad_version_number >= AutoCAD_14)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", acad_proxy_entity->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", acad_proxy_entity->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", acad_proxy_entity->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", acad_proxy_entity->graphics_data_size);
 #endif
                 if (acad_proxy_entity->binary_graphics_data != NULL)
                 {
@@ -709,7 +709,7 @@ dxf_acad_proxy_entity_write
                                 iter310a = (DxfBinaryGraphicsData *) iter310a->next;
                         }
                 }
-                fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
+                fprintf (fp->fp, " 93\n%" PRIi32 "\n", acad_proxy_entity->entity_data_size);
                 if (acad_proxy_entity->binary_entity_data != NULL)
                 {
                         DxfBinaryEntityData *iter310b = NULL;
@@ -731,11 +731,11 @@ dxf_acad_proxy_entity_write
         fprintf (fp->fp, " 94\n  0\n");
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 95\n%ld\n", acad_proxy_entity->object_drawing_format);
+                fprintf (fp->fp, " 95\n%" PRIi32 "\n", acad_proxy_entity->object_drawing_format);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 70\n%d\n", acad_proxy_entity->original_custom_object_data_format);
+                fprintf (fp->fp, " 70\n%hd\n", acad_proxy_entity->original_custom_object_data_format);
         }
         /* Clean up. */
         free (dxf_entity_name);
@@ -1359,7 +1359,7 @@ dxf_acad_proxy_entity_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_acad_proxy_entity_get_color
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -1398,7 +1398,7 @@ dxf_acad_proxy_entity_set_color
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1435,7 +1435,7 @@ dxf_acad_proxy_entity_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_acad_proxy_entity_get_paperspace
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -1480,7 +1480,7 @@ dxf_acad_proxy_entity_set_paperspace
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -2289,7 +2289,7 @@ dxf_acad_proxy_entity_set_transparency
  *
  * \return original custom object data format value.
  */
-int
+int16_t
 dxf_acad_proxy_entity_get_original_custom_object_data_format
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -2335,7 +2335,7 @@ dxf_acad_proxy_entity_set_original_custom_object_data_format
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        int original_custom_object_data_format
+        int16_t original_custom_object_data_format
                 /*!< the original custom object data format value to be set for the entity. */
 )
 {
@@ -2376,7 +2376,7 @@ dxf_acad_proxy_entity_set_original_custom_object_data_format
  *
  * \return proxy entity class id value.
  */
-int
+int32_t
 dxf_acad_proxy_entity_get_proxy_entity_class_id
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -2416,7 +2416,7 @@ dxf_acad_proxy_entity_set_proxy_entity_class_id
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        int proxy_entity_class_id
+        int32_t proxy_entity_class_id
                 /*!< the proxy entity class id value to be set for the
                  * entity. */
 )
@@ -2452,7 +2452,7 @@ dxf_acad_proxy_entity_set_proxy_entity_class_id
  *
  * \return application entity class id value.
  */
-int
+int32_t
 dxf_acad_proxy_entity_get_application_entity_class_id
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -2492,7 +2492,7 @@ dxf_acad_proxy_entity_set_application_entity_class_id
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        int application_entity_class_id
+        int32_t application_entity_class_id
                 /*!< the application entity class id value to be set for the
                  * entity. */
 )
@@ -2604,7 +2604,7 @@ dxf_acad_proxy_entity_set_graphics_data_size
  *
  * \return entity data size value.
  */
-int
+int32_t
 dxf_acad_proxy_entity_get_entity_data_size
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -2644,7 +2644,7 @@ dxf_acad_proxy_entity_set_entity_data_size
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        int entity_data_size
+        int32_t entity_data_size
                 /*!< the entity data size value to be set for the
                  * entity. */
 )
@@ -2680,7 +2680,7 @@ dxf_acad_proxy_entity_set_entity_data_size
  *
  * \return object drawing format value.
  */
-ulong
+uint32_t
 dxf_acad_proxy_entity_get_object_drawing_format
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -2720,7 +2720,7 @@ dxf_acad_proxy_entity_set_object_drawing_format
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        ulong object_drawing_format
+        uint32_t object_drawing_format
                 /*!< the \c object_drawing_format value to be set for the
                  * entity. */
 )

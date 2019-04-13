@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.h
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF acad_proxy_entity entity
@@ -96,7 +96,7 @@ dxf_acad_proxy_entity_struct
                 /*!< Linetype scale (optional).\n
                  * Group code = 48.\n
                  * \since Introduced in version R13. */
-        int visibility;
+        int16_t visibility;
                 /*!< Object visibility (optional):\n
                  * <ol>
                  * <li value = "0"> Visible</li>
@@ -104,14 +104,14 @@ dxf_acad_proxy_entity_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
@@ -182,7 +182,7 @@ dxf_acad_proxy_entity_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF acad_proxy_entity. */
-        int original_custom_object_data_format;
+        int16_t original_custom_object_data_format;
                 /*!< Original custom object data format:\n
                  * <ol>
                  * <li value = "0"> DWG format</li>
@@ -190,26 +190,26 @@ dxf_acad_proxy_entity_struct
                  * </ol>
                  * Group code = 70.\n
                  * \since Introduced in version R2000. */
-        int proxy_entity_class_id;
+        int32_t proxy_entity_class_id;
                 /*!< Always 498.\n
                  * Group code = 90. */
-        int application_entity_class_id;
+        int32_t application_entity_class_id;
                 /*!< Class IDs are based on the order of the class in the
                  * CLASSES section.\n
                  * The first class is given the ID of 500, the next is
                  * 501, and so on.\n
                  * Group code = 91. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Size of graphics data in bytes.\n
                  * Group code = 92.\n
                  * \since Introduced in version R14.\n
                  * \warning On some 64 bit workstations output is
                  * generated with group code "160", thus omitting group
                  * code "92". */
-        int entity_data_size;
+        int32_t entity_data_size;
                 /*!< Size of entity data in bits.\n
                  * Group code = 93. */
-        ulong object_drawing_format;
+        uint32_t object_drawing_format;
                 /*!< Object drawing format when it becomes a proxy
                  * (a 32-bit unsigned integer):\n
                  * Low word is AcDbDwgVersion.\n
@@ -257,10 +257,10 @@ double dxf_acad_proxy_entity_get_linetype_scale (DxfAcadProxyEntity *acad_proxy_
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_linetype_scale (DxfAcadProxyEntity *acad_proxy_entity, double linetype_scale);
 int16_t dxf_acad_proxy_entity_get_visibility (DxfAcadProxyEntity *acad_proxy_entity);
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_visibility (DxfAcadProxyEntity *acad_proxy_entity, int16_t visibility);
-int dxf_acad_proxy_entity_get_color (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_color (DxfAcadProxyEntity *acad_proxy_entity, int color);
-int dxf_acad_proxy_entity_get_paperspace (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_paperspace (DxfAcadProxyEntity *acad_proxy_entity, int paperspace);
+int16_t dxf_acad_proxy_entity_get_color (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_color (DxfAcadProxyEntity *acad_proxy_entity, int16_t color);
+int16_t dxf_acad_proxy_entity_get_paperspace (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_paperspace (DxfAcadProxyEntity *acad_proxy_entity, int16_t paperspace);
 int16_t dxf_acad_proxy_entity_get_shadow_mode (DxfAcadProxyEntity *acad_proxy_entity);
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_shadow_mode (DxfAcadProxyEntity *acad_proxy_entity, int16_t shadow_mode);
 char *dxf_acad_proxy_entity_get_dictionary_owner_soft (DxfAcadProxyEntity *acad_proxy_entity);
@@ -281,18 +281,18 @@ char *dxf_acad_proxy_entity_get_color_name (DxfAcadProxyEntity *acad_proxy_entit
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_color_name (DxfAcadProxyEntity *acad_proxy_entity, char *color_name);
 long dxf_acad_proxy_entity_get_transparency (DxfAcadProxyEntity *acad_proxy_entity);
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_transparency (DxfAcadProxyEntity *acad_proxy_entity, long transparency);
-int dxf_acad_proxy_entity_get_original_custom_object_data_format (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_original_custom_object_data_format (DxfAcadProxyEntity *acad_proxy_entity, int original_custom_object_data_format);
-int dxf_acad_proxy_entity_get_proxy_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_proxy_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity, int proxy_entity_class_id);
-int dxf_acad_proxy_entity_get_application_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_application_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity, int application_entity_class_id);
-int dxf_acad_proxy_entity_get_graphics_data_size (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_graphics_data_size (DxfAcadProxyEntity *acad_proxy_entity, int graphics_data_size);
-int dxf_acad_proxy_entity_get_entity_data_size (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_entity_data_size (DxfAcadProxyEntity *acad_proxy_entity, int entity_data_size);
-ulong dxf_acad_proxy_entity_get_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity, ulong object_drawing_format);
+int16_t dxf_acad_proxy_entity_get_original_custom_object_data_format (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_original_custom_object_data_format (DxfAcadProxyEntity *acad_proxy_entity, int16_t original_custom_object_data_format);
+int32_t dxf_acad_proxy_entity_get_proxy_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_proxy_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity, int32_t proxy_entity_class_id);
+int32_t dxf_acad_proxy_entity_get_application_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_application_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity, int32_t application_entity_class_id);
+int32_t dxf_acad_proxy_entity_get_graphics_data_size (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_graphics_data_size (DxfAcadProxyEntity *acad_proxy_entity, int32_t graphics_data_size);
+int32_t dxf_acad_proxy_entity_get_entity_data_size (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_entity_data_size (DxfAcadProxyEntity *acad_proxy_entity, int32_t entity_data_size);
+uint32_t dxf_acad_proxy_entity_get_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity, uint32_t object_drawing_format);
 DxfBinaryGraphicsData *dxf_acad_proxy_entity_get_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity);
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity, DxfBinaryGraphicsData *data);
 DxfBinaryEntityData *dxf_acad_proxy_entity_get_binary_entity_data (DxfAcadProxyEntity *acad_proxy_entity);
