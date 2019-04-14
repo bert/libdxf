@@ -338,8 +338,8 @@ dxf_dimstyle_struct
 
 DxfDimStyle *dxf_dimstyle_new ();
 DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dimstyle);
-int dxf_dimstyle_write (DxfFile *fp, DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_read (DxfFile *fp, DxfDimStyle *dimstyle);
+int dxf_dimstyle_write (DxfFile *fp, DxfDimStyle *dimstyle);
 int dxf_dimstyle_free (DxfDimStyle *dimstyle);
 void dxf_dimstyle_free_list (DxfDimStyle *dimstyles);
 char *dxf_dimstyle_get_dimstyle_name (DxfDimStyle *dimstyle);

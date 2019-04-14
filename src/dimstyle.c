@@ -166,219 +166,6 @@ dxf_dimstyle_init
 
 
 /*!
- * \brief Write DXF output for a DXF \c DIMSTYLE table.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_dimstyle_write
-(
-        DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
-        DxfDimStyle *dimstyle
-                /*!< Pointer to the memory occupied by the DXF \c
-                 * DIMSTYLE table. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        char *dxf_entity_name = strdup ("DIMSTYLE");
-
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL file pointer was passed.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (dimstyle == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (strcmp (dimstyle->dimstyle_name, "") == 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () dimstyle_name value is empty for the %s entity.\n")),
-                  __FUNCTION__, dxf_entity_name);
-                fprintf (stderr,
-                  (_("\tskipping %s table.\n")),
-                  dxf_entity_name);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (!dimstyle->dimstyle_name)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () dimstyle_name value is NULL for the %s entity.\n")),
-                  __FUNCTION__, dxf_entity_name);
-                fprintf (stderr,
-                  (_("\tskipping %s table.\n")),
-                  dxf_entity_name);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (fp->acad_version_number < AutoCAD_13)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dimstyle->id_code);
-        }
-        if (!dimstyle->dimpost)
-        {
-                dimstyle->dimpost = strdup ("");
-        }
-        if (!dimstyle->dimapost)
-        {
-                dimstyle->dimapost = strdup ("");
-        }
-        if (!dimstyle->dimblk)
-        {
-                dimstyle->dimblk = strdup ("");
-        }
-        if (!dimstyle->dimblk1)
-        {
-                dimstyle->dimblk1 = strdup ("");
-        }
-        if (!dimstyle->dimblk2)
-        {
-                dimstyle->dimblk2 = strdup ("");
-        }
-        /* Start writing output. */
-        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dimstyle->id_code != -1)
-        {
-                fprintf (fp->fp, "105\n%x\n", dimstyle->id_code);
-        }
-        /*!
-         * \todo for version R14.\n
-         * Implementing the start of application-defined group
-         * "{application_name", with Group code 102.\n
-         * For example: "{ACAD_REACTORS" indicates the start of the
-         * AutoCAD persistent reactors group.\n\n
-         * application-defined codes: Group codes and values within the
-         * 102 groups are application defined (optional).\n\n
-         * End of group, "}" (optional), with Group code 102.
-         */
-        if ((strcmp (dimstyle->dictionary_owner_soft, "") != 0)
-          && (fp->acad_version_number >= AutoCAD_14))
-        {
-                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dimstyle->dictionary_owner_soft);
-                fprintf (fp->fp, "102\n}\n");
-        }
-        if ((strcmp (dimstyle->dictionary_owner_hard, "") != 0)
-          && (fp->acad_version_number >= AutoCAD_14))
-        {
-                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dimstyle->dictionary_owner_hard);
-                fprintf (fp->fp, "102\n}\n");
-        }
-        if ((strcmp (dimstyle->object_owner_soft, "") != 0)
-          && (fp->acad_version_number >= AutoCAD_2000))
-        {
-                fprintf (fp->fp, "330\n%s\n", dimstyle->object_owner_soft);
-        }
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
-        }
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbDimStyleTableRecord\n");
-        }
-        fprintf (fp->fp, "  2\n%s\n", dimstyle->dimstyle_name);
-        fprintf (fp->fp, " 70\n%hd\n", dimstyle->flag);
-        fprintf (fp->fp, "  3\n%s\n", dimstyle->dimpost);
-        fprintf (fp->fp, "  4\n%s\n", dimstyle->dimapost);
-        if (fp->acad_version_number < AutoCAD_2000)
-        {
-                fprintf (fp->fp, "  5\n%s\n", dimstyle->dimblk);
-        }
-        if (fp->acad_version_number < AutoCAD_2000)
-        {
-                fprintf (fp->fp, "  6\n%s\n", dimstyle->dimblk1);
-        }
-        if (fp->acad_version_number < AutoCAD_2000)
-        {
-                fprintf (fp->fp, "  7\n%s\n", dimstyle->dimblk2);
-        }
-        fprintf (fp->fp, " 40\n%f\n", dimstyle->dimscale);
-        fprintf (fp->fp, " 41\n%f\n", dimstyle->dimasz);
-        fprintf (fp->fp, " 42\n%f\n", dimstyle->dimexo);
-        fprintf (fp->fp, " 43\n%f\n", dimstyle->dimdli);
-        fprintf (fp->fp, " 44\n%f\n", dimstyle->dimexe);
-        fprintf (fp->fp, " 45\n%f\n", dimstyle->dimrnd);
-        fprintf (fp->fp, " 46\n%f\n", dimstyle->dimdle);
-        fprintf (fp->fp, " 47\n%f\n", dimstyle->dimtp);
-        fprintf (fp->fp, " 48\n%f\n", dimstyle->dimtm);
-        fprintf (fp->fp, "140\n%f\n", dimstyle->dimtxt);
-        fprintf (fp->fp, "141\n%f\n", dimstyle->dimcen);
-        fprintf (fp->fp, "142\n%f\n", dimstyle->dimtsz);
-        fprintf (fp->fp, "143\n%f\n", dimstyle->dimaltf);
-        fprintf (fp->fp, "144\n%f\n", dimstyle->dimlfac);
-        fprintf (fp->fp, "145\n%f\n", dimstyle->dimtvp);
-        fprintf (fp->fp, "146\n%f\n", dimstyle->dimtfac);
-        fprintf (fp->fp, "147\n%f\n", dimstyle->dimgap);
-        fprintf (fp->fp, " 71\n%hd\n", dimstyle->dimtol);
-        fprintf (fp->fp, " 72\n%hd\n", dimstyle->dimlim);
-        fprintf (fp->fp, " 73\n%hd\n", dimstyle->dimtih);
-        fprintf (fp->fp, " 74\n%hd\n", dimstyle->dimtoh);
-        fprintf (fp->fp, " 75\n%hd\n", dimstyle->dimse1);
-        fprintf (fp->fp, " 76\n%hd\n", dimstyle->dimse2);
-        fprintf (fp->fp, " 77\n%hd\n", dimstyle->dimtad);
-        fprintf (fp->fp, " 78\n%hd\n", dimstyle->dimzin);
-        fprintf (fp->fp, "170\n%hd\n", dimstyle->dimalt);
-        fprintf (fp->fp, "171\n%hd\n", dimstyle->dimaltd);
-        fprintf (fp->fp, "172\n%hd\n", dimstyle->dimtofl);
-        fprintf (fp->fp, "173\n%hd\n", dimstyle->dimsah);
-        fprintf (fp->fp, "174\n%hd\n", dimstyle->dimtix);
-        fprintf (fp->fp, "175\n%hd\n", dimstyle->dimsoxd);
-        fprintf (fp->fp, "176\n%hd\n", dimstyle->dimclrd);
-        fprintf (fp->fp, "177\n%hd\n", dimstyle->dimclre);
-        fprintf (fp->fp, "178\n%dh\n", dimstyle->dimclrt);
-        if ((fp->acad_version_number >= AutoCAD_13)
-          && (fp->acad_version_number < AutoCAD_2000))
-        {
-                fprintf (fp->fp, "270\n%hd\n", dimstyle->dimunit);
-                fprintf (fp->fp, "271\n%hd\n", dimstyle->dimdec);
-                fprintf (fp->fp, "272\n%hd\n", dimstyle->dimtdec);
-                fprintf (fp->fp, "273\n%hd\n", dimstyle->dimaltu);
-                fprintf (fp->fp, "274\n%hd\n", dimstyle->dimalttd);
-                fprintf (fp->fp, "340\n%s\n", dimstyle->dimtxsty);
-                fprintf (fp->fp, "275\n%hd\n", dimstyle->dimaunit);
-                fprintf (fp->fp, "280\n%hd\n", dimstyle->dimjust);
-                fprintf (fp->fp, "281\n%hd\n", dimstyle->dimsd1);
-                fprintf (fp->fp, "282\n%hd\n", dimstyle->dimsd2);
-                fprintf (fp->fp, "283\n%hd\n", dimstyle->dimtolj);
-                fprintf (fp->fp, "284\n%hd\n", dimstyle->dimtzin);
-                fprintf (fp->fp, "285\n%hd\n", dimstyle->dimaltz);
-                fprintf (fp->fp, "286\n%hd\n", dimstyle->dimalttz);
-                fprintf (fp->fp, "287\n%hd\n", dimstyle->dimfit);
-                fprintf (fp->fp, "288\n%hd\n", dimstyle->dimupt);
-                fprintf (fp->fp, "  0\nENDTAB\n");
-        }
-        /* Clean up. */
-        free (dxf_entity_name);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Read data from a DXF file into a DXF \c DIMSTYLE table.
  *
  * The last line read from file contained the string "DIMSTYLE". \n
@@ -938,6 +725,219 @@ dxf_dimstyle_read
         DXF_DEBUG_END
 #endif
         return (dimstyle);
+}
+
+
+/*!
+ * \brief Write DXF output for a DXF \c DIMSTYLE table.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_dimstyle_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfDimStyle *dimstyle
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMSTYLE table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("DIMSTYLE");
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dimstyle->dimstyle_name, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () dimstyle_name value is empty for the %s entity.\n")),
+                  __FUNCTION__, dxf_entity_name);
+                fprintf (stderr,
+                  (_("\tskipping %s table.\n")),
+                  dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (!dimstyle->dimstyle_name)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () dimstyle_name value is NULL for the %s entity.\n")),
+                  __FUNCTION__, dxf_entity_name);
+                fprintf (stderr,
+                  (_("\tskipping %s table.\n")),
+                  dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dimstyle->id_code);
+        }
+        if (!dimstyle->dimpost)
+        {
+                dimstyle->dimpost = strdup ("");
+        }
+        if (!dimstyle->dimapost)
+        {
+                dimstyle->dimapost = strdup ("");
+        }
+        if (!dimstyle->dimblk)
+        {
+                dimstyle->dimblk = strdup ("");
+        }
+        if (!dimstyle->dimblk1)
+        {
+                dimstyle->dimblk1 = strdup ("");
+        }
+        if (!dimstyle->dimblk2)
+        {
+                dimstyle->dimblk2 = strdup ("");
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dimstyle->id_code != -1)
+        {
+                fprintf (fp->fp, "105\n%x\n", dimstyle->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dimstyle->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dimstyle->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dimstyle->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dimstyle->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dimstyle->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", dimstyle->object_owner_soft);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbDimStyleTableRecord\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", dimstyle->dimstyle_name);
+        fprintf (fp->fp, " 70\n%hd\n", dimstyle->flag);
+        fprintf (fp->fp, "  3\n%s\n", dimstyle->dimpost);
+        fprintf (fp->fp, "  4\n%s\n", dimstyle->dimapost);
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  5\n%s\n", dimstyle->dimblk);
+        }
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dimstyle->dimblk1);
+        }
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  7\n%s\n", dimstyle->dimblk2);
+        }
+        fprintf (fp->fp, " 40\n%f\n", dimstyle->dimscale);
+        fprintf (fp->fp, " 41\n%f\n", dimstyle->dimasz);
+        fprintf (fp->fp, " 42\n%f\n", dimstyle->dimexo);
+        fprintf (fp->fp, " 43\n%f\n", dimstyle->dimdli);
+        fprintf (fp->fp, " 44\n%f\n", dimstyle->dimexe);
+        fprintf (fp->fp, " 45\n%f\n", dimstyle->dimrnd);
+        fprintf (fp->fp, " 46\n%f\n", dimstyle->dimdle);
+        fprintf (fp->fp, " 47\n%f\n", dimstyle->dimtp);
+        fprintf (fp->fp, " 48\n%f\n", dimstyle->dimtm);
+        fprintf (fp->fp, "140\n%f\n", dimstyle->dimtxt);
+        fprintf (fp->fp, "141\n%f\n", dimstyle->dimcen);
+        fprintf (fp->fp, "142\n%f\n", dimstyle->dimtsz);
+        fprintf (fp->fp, "143\n%f\n", dimstyle->dimaltf);
+        fprintf (fp->fp, "144\n%f\n", dimstyle->dimlfac);
+        fprintf (fp->fp, "145\n%f\n", dimstyle->dimtvp);
+        fprintf (fp->fp, "146\n%f\n", dimstyle->dimtfac);
+        fprintf (fp->fp, "147\n%f\n", dimstyle->dimgap);
+        fprintf (fp->fp, " 71\n%hd\n", dimstyle->dimtol);
+        fprintf (fp->fp, " 72\n%hd\n", dimstyle->dimlim);
+        fprintf (fp->fp, " 73\n%hd\n", dimstyle->dimtih);
+        fprintf (fp->fp, " 74\n%hd\n", dimstyle->dimtoh);
+        fprintf (fp->fp, " 75\n%hd\n", dimstyle->dimse1);
+        fprintf (fp->fp, " 76\n%hd\n", dimstyle->dimse2);
+        fprintf (fp->fp, " 77\n%hd\n", dimstyle->dimtad);
+        fprintf (fp->fp, " 78\n%hd\n", dimstyle->dimzin);
+        fprintf (fp->fp, "170\n%hd\n", dimstyle->dimalt);
+        fprintf (fp->fp, "171\n%hd\n", dimstyle->dimaltd);
+        fprintf (fp->fp, "172\n%hd\n", dimstyle->dimtofl);
+        fprintf (fp->fp, "173\n%hd\n", dimstyle->dimsah);
+        fprintf (fp->fp, "174\n%hd\n", dimstyle->dimtix);
+        fprintf (fp->fp, "175\n%hd\n", dimstyle->dimsoxd);
+        fprintf (fp->fp, "176\n%hd\n", dimstyle->dimclrd);
+        fprintf (fp->fp, "177\n%hd\n", dimstyle->dimclre);
+        fprintf (fp->fp, "178\n%dh\n", dimstyle->dimclrt);
+        if ((fp->acad_version_number >= AutoCAD_13)
+          && (fp->acad_version_number < AutoCAD_2000))
+        {
+                fprintf (fp->fp, "270\n%hd\n", dimstyle->dimunit);
+                fprintf (fp->fp, "271\n%hd\n", dimstyle->dimdec);
+                fprintf (fp->fp, "272\n%hd\n", dimstyle->dimtdec);
+                fprintf (fp->fp, "273\n%hd\n", dimstyle->dimaltu);
+                fprintf (fp->fp, "274\n%hd\n", dimstyle->dimalttd);
+                fprintf (fp->fp, "340\n%s\n", dimstyle->dimtxsty);
+                fprintf (fp->fp, "275\n%hd\n", dimstyle->dimaunit);
+                fprintf (fp->fp, "280\n%hd\n", dimstyle->dimjust);
+                fprintf (fp->fp, "281\n%hd\n", dimstyle->dimsd1);
+                fprintf (fp->fp, "282\n%hd\n", dimstyle->dimsd2);
+                fprintf (fp->fp, "283\n%hd\n", dimstyle->dimtolj);
+                fprintf (fp->fp, "284\n%hd\n", dimstyle->dimtzin);
+                fprintf (fp->fp, "285\n%hd\n", dimstyle->dimaltz);
+                fprintf (fp->fp, "286\n%hd\n", dimstyle->dimalttz);
+                fprintf (fp->fp, "287\n%hd\n", dimstyle->dimfit);
+                fprintf (fp->fp, "288\n%hd\n", dimstyle->dimupt);
+                fprintf (fp->fp, "  0\nENDTAB\n");
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
 }
 
 
