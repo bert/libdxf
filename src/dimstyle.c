@@ -1,7 +1,7 @@
 /*!
  * \file dimstyle.c
  *
- * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension style table (\c DIMSTYLE).
@@ -299,7 +299,7 @@ dxf_dimstyle_write
                 fprintf (fp->fp, "100\nAcDbDimStyleTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dimstyle->dimstyle_name);
-        fprintf (fp->fp, " 70\n%d\n", dimstyle->flag);
+        fprintf (fp->fp, " 70\n%hd\n", dimstyle->flag);
         fprintf (fp->fp, "  3\n%s\n", dimstyle->dimpost);
         fprintf (fp->fp, "  4\n%s\n", dimstyle->dimapost);
         if (fp->acad_version_number < AutoCAD_2000)
@@ -331,42 +331,42 @@ dxf_dimstyle_write
         fprintf (fp->fp, "145\n%f\n", dimstyle->dimtvp);
         fprintf (fp->fp, "146\n%f\n", dimstyle->dimtfac);
         fprintf (fp->fp, "147\n%f\n", dimstyle->dimgap);
-        fprintf (fp->fp, " 71\n%d\n", dimstyle->dimtol);
-        fprintf (fp->fp, " 72\n%d\n", dimstyle->dimlim);
-        fprintf (fp->fp, " 73\n%d\n", dimstyle->dimtih);
-        fprintf (fp->fp, " 74\n%d\n", dimstyle->dimtoh);
-        fprintf (fp->fp, " 75\n%d\n", dimstyle->dimse1);
-        fprintf (fp->fp, " 76\n%d\n", dimstyle->dimse2);
-        fprintf (fp->fp, " 77\n%d\n", dimstyle->dimtad);
-        fprintf (fp->fp, " 78\n%d\n", dimstyle->dimzin);
-        fprintf (fp->fp, "170\n%d\n", dimstyle->dimalt);
-        fprintf (fp->fp, "171\n%d\n", dimstyle->dimaltd);
-        fprintf (fp->fp, "172\n%d\n", dimstyle->dimtofl);
-        fprintf (fp->fp, "173\n%d\n", dimstyle->dimsah);
-        fprintf (fp->fp, "174\n%d\n", dimstyle->dimtix);
-        fprintf (fp->fp, "175\n%d\n", dimstyle->dimsoxd);
-        fprintf (fp->fp, "176\n%d\n", dimstyle->dimclrd);
-        fprintf (fp->fp, "177\n%d\n", dimstyle->dimclre);
-        fprintf (fp->fp, "178\n%d\n", dimstyle->dimclrt);
+        fprintf (fp->fp, " 71\n%hd\n", dimstyle->dimtol);
+        fprintf (fp->fp, " 72\n%hd\n", dimstyle->dimlim);
+        fprintf (fp->fp, " 73\n%hd\n", dimstyle->dimtih);
+        fprintf (fp->fp, " 74\n%hd\n", dimstyle->dimtoh);
+        fprintf (fp->fp, " 75\n%hd\n", dimstyle->dimse1);
+        fprintf (fp->fp, " 76\n%hd\n", dimstyle->dimse2);
+        fprintf (fp->fp, " 77\n%hd\n", dimstyle->dimtad);
+        fprintf (fp->fp, " 78\n%hd\n", dimstyle->dimzin);
+        fprintf (fp->fp, "170\n%hd\n", dimstyle->dimalt);
+        fprintf (fp->fp, "171\n%hd\n", dimstyle->dimaltd);
+        fprintf (fp->fp, "172\n%hd\n", dimstyle->dimtofl);
+        fprintf (fp->fp, "173\n%hd\n", dimstyle->dimsah);
+        fprintf (fp->fp, "174\n%hd\n", dimstyle->dimtix);
+        fprintf (fp->fp, "175\n%hd\n", dimstyle->dimsoxd);
+        fprintf (fp->fp, "176\n%hd\n", dimstyle->dimclrd);
+        fprintf (fp->fp, "177\n%hd\n", dimstyle->dimclre);
+        fprintf (fp->fp, "178\n%dh\n", dimstyle->dimclrt);
         if ((fp->acad_version_number >= AutoCAD_13)
           && (fp->acad_version_number < AutoCAD_2000))
         {
-                fprintf (fp->fp, "270\n%d\n", dimstyle->dimunit);
-                fprintf (fp->fp, "271\n%d\n", dimstyle->dimdec);
-                fprintf (fp->fp, "272\n%d\n", dimstyle->dimtdec);
-                fprintf (fp->fp, "273\n%d\n", dimstyle->dimaltu);
-                fprintf (fp->fp, "274\n%d\n", dimstyle->dimalttd);
+                fprintf (fp->fp, "270\n%hd\n", dimstyle->dimunit);
+                fprintf (fp->fp, "271\n%hd\n", dimstyle->dimdec);
+                fprintf (fp->fp, "272\n%hd\n", dimstyle->dimtdec);
+                fprintf (fp->fp, "273\n%hd\n", dimstyle->dimaltu);
+                fprintf (fp->fp, "274\n%hd\n", dimstyle->dimalttd);
                 fprintf (fp->fp, "340\n%s\n", dimstyle->dimtxsty);
-                fprintf (fp->fp, "275\n%d\n", dimstyle->dimaunit);
-                fprintf (fp->fp, "280\n%d\n", dimstyle->dimjust);
-                fprintf (fp->fp, "281\n%d\n", dimstyle->dimsd1);
-                fprintf (fp->fp, "282\n%d\n", dimstyle->dimsd2);
-                fprintf (fp->fp, "283\n%d\n", dimstyle->dimtolj);
-                fprintf (fp->fp, "284\n%d\n", dimstyle->dimtzin);
-                fprintf (fp->fp, "285\n%d\n", dimstyle->dimaltz);
-                fprintf (fp->fp, "286\n%d\n", dimstyle->dimalttz);
-                fprintf (fp->fp, "287\n%d\n", dimstyle->dimfit);
-                fprintf (fp->fp, "288\n%d\n", dimstyle->dimupt);
+                fprintf (fp->fp, "275\n%hd\n", dimstyle->dimaunit);
+                fprintf (fp->fp, "280\n%hd\n", dimstyle->dimjust);
+                fprintf (fp->fp, "281\n%hd\n", dimstyle->dimsd1);
+                fprintf (fp->fp, "282\n%hd\n", dimstyle->dimsd2);
+                fprintf (fp->fp, "283\n%hd\n", dimstyle->dimtolj);
+                fprintf (fp->fp, "284\n%hd\n", dimstyle->dimtzin);
+                fprintf (fp->fp, "285\n%hd\n", dimstyle->dimaltz);
+                fprintf (fp->fp, "286\n%hd\n", dimstyle->dimalttz);
+                fprintf (fp->fp, "287\n%hd\n", dimstyle->dimfit);
+                fprintf (fp->fp, "288\n%hd\n", dimstyle->dimupt);
                 fprintf (fp->fp, "  0\nENDTAB\n");
         }
         /* Clean up. */
@@ -577,56 +577,56 @@ dxf_dimstyle_read
                 {
                         /* Now follows a string containing a flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->flag);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->flag);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing a dimension
                          * tolerances flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtol);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtol);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing a dimension
                          * limits flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimlim);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimlim);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing a dimension
                          * text inside horizontal flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtih);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtih);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
                         /* Now follows a string containing a dimension
                          * text outside horizontal flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtoh);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtoh);
                 }
                 else if (strcmp (temp_string, "75") == 0)
                 {
                         /* Now follows a string containing a first
                          * extension line suppression flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimse1);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimse1);
                 }
                 else if (strcmp (temp_string, "76") == 0)
                 {
                         /* Now follows a string containing a second
                          * extension line suppression flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimse2);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimse2);
                 }
                 else if (strcmp (temp_string, "77") == 0)
                 {
                         /* Now follows a string containing a text above
                          * dimension line flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtad);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtad);
                 }
                 else if (strcmp (temp_string, "78") == 0)
                 {
@@ -634,7 +634,7 @@ dxf_dimstyle_read
                          * suppression for "feet & inch" dimensions
                          * flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimzin);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimzin);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -719,14 +719,14 @@ dxf_dimstyle_read
                         /* Now follows a string containing a alternate
                          * unit dimensioning flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimalt);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimalt);
                 }
                 else if (strcmp (temp_string, "171") == 0)
                 {
                         /* Now follows a string containing a alternate
                          * unit decimal places. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimaltd);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimaltd);
                 }
                 else if (strcmp (temp_string, "172") == 0)
                 {
@@ -734,49 +734,49 @@ dxf_dimstyle_read
                          * outside extensions, force line extensions
                          * between extensions flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtofl);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtofl);
                 }
                 else if (strcmp (temp_string, "173") == 0)
                 {
                         /* Now follows a string containing a use
                          * separate arrow blocks flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimsah);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimsah);
                 }
                 else if (strcmp (temp_string, "174") == 0)
                 {
                         /* Now follows a string containing a force text
                          * inside extensions flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtix);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtix);
                 }
                 else if (strcmp (temp_string, "175") == 0)
                 {
                         /* Now follows a string containing a suppress
                          * outside-extensions dimension lines flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimsoxd);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimsoxd);
                 }
                 else if (strcmp (temp_string, "176") == 0)
                 {
                         /* Now follows a string containing a dimension
                          * line color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimclrd);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimclrd);
                 }
                 else if (strcmp (temp_string, "177") == 0)
                 {
                         /* Now follows a string containing a dimension
                          * extension line color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimclre);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimclre);
                 }
                 else if (strcmp (temp_string, "178") == 0)
                 {
                         /* Now follows a string containing a dimension
                          * text color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimclrt);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimclrt);
                 }
                 else if (strcmp (temp_string, "270") == 0)
                 {
@@ -784,7 +784,7 @@ dxf_dimstyle_read
                          * format for all dimension style family members
                          * except angular. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimunit);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimunit);
                 }
                 else if (strcmp (temp_string, "271") == 0)
                 {
@@ -792,7 +792,7 @@ dxf_dimstyle_read
                          * decimal places for the tolerance values of
                          * a primary units dimension. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimdec);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimdec);
                 }
                 else if (strcmp (temp_string, "272") == 0)
                 {
@@ -800,7 +800,7 @@ dxf_dimstyle_read
                          * decimal places to display the tolerance
                          * values. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtdec);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtdec);
                 }
                 else if (strcmp (temp_string, "273") == 0)
                 {
@@ -808,7 +808,7 @@ dxf_dimstyle_read
                          * format for alternate units of all dimension
                          * style family members except angular. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimaltu);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimaltu);
                 }
                 else if (strcmp (temp_string, "274") == 0)
                 {
@@ -816,49 +816,49 @@ dxf_dimstyle_read
                          * decimal places for tolerance values of an
                          * alternate units dimension. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimalttd);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimalttd);
                 }
                 else if (strcmp (temp_string, "275") == 0)
                 {
                         /* Now follows a string containing an angle
                          * format for angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimaunit);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimaunit);
                 }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing a horizontal
                          * dimension text position. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimjust);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimjust);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing suppression
                          * of first extension line. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimsd1);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimsd1);
                 }
                 else if (strcmp (temp_string, "282") == 0)
                 {
                         /* Now follows a string containing suppression
                          * of second extension line. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimsd2);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimsd2);
                 }
                 else if (strcmp (temp_string, "283") == 0)
                 {
                         /* Now follows a string containing vertical
                          * justification for tolerance values. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtolj);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtolj);
                 }
                 else if (strcmp (temp_string, "284") == 0)
                 {
                         /* Now follows a string containing suppression
                          * of zeros for tolerance values. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtzin);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimtzin);
                 }
                 else if (strcmp (temp_string, "285") == 0)
                 {
@@ -866,28 +866,28 @@ dxf_dimstyle_read
                          * suppression of zeros for alternate unit
                          * dimension values. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimaltz);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimaltz);
                 }
                 else if (strcmp (temp_string, "286") == 0)
                 {
                         /* Now follows a string containing toggles
                          * suppression of zeros for tolerance values. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimalttz);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimalttz);
                 }
                 else if (strcmp (temp_string, "287") == 0)
                 {
                         /* Now follows a string containing placement of
                          * text and arrowheads. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimfit);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimfit);
                 }
                 else if (strcmp (temp_string, "288") == 0)
                 {
                         /* Now follows a string containing cursor
                          * functionality for user positioned text. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimupt);
+                        fscanf (fp->fp, "%hd\n", &dimstyle->dimupt);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -2213,7 +2213,7 @@ dxf_dimstyle_set_dimtm
  * it can be ignored by most programs that read DXF files, and need not
  * be set by programs that write DXF files.
  */
-int
+int16_t
 dxf_dimstyle_get_flag
 (
         DxfDimStyle *dimstyle
@@ -2252,7 +2252,7 @@ dxf_dimstyle_set_flag
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int flag
+        int16_t flag
                 /*!< the flag value (\c flag).\n
                  * \note This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF
@@ -2285,7 +2285,7 @@ dxf_dimstyle_set_flag
  *
  * \return the dimension tolerances value (\c dimtol).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtol
 (
         DxfDimStyle *dimstyle
@@ -2324,7 +2324,7 @@ dxf_dimstyle_set_dimtol
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtol
+        int16_t dimtol
                 /*!< the dimension tolerances value (\c dimtol) to be
                  * set for the symbol table. */
 )
@@ -2354,7 +2354,7 @@ dxf_dimstyle_set_dimtol
  *
  * \return the dimension limits value (\c dimlim).
  */
-int
+int16_t
 dxf_dimstyle_get_dimlim
 (
         DxfDimStyle *dimstyle
@@ -2393,7 +2393,7 @@ dxf_dimstyle_set_dimlim
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimlim
+        int16_t dimlim
                 /*!< the dimension limits value (\c dimlim) to be
                  * set for the symbol table. */
 )
@@ -2423,7 +2423,7 @@ dxf_dimstyle_set_dimlim
  *
  * \return the text inside horizontal value (\c dimtih).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtih
 (
         DxfDimStyle *dimstyle
@@ -2462,7 +2462,7 @@ dxf_dimstyle_set_dimtih
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtih
+        int16_t dimtih
                 /*!< the text inside horizontal value (\c dimtih) to be
                  * set for the symbol table. */
 )
@@ -2492,7 +2492,7 @@ dxf_dimstyle_set_dimtih
  *
  * \return the text outside horizontal value (\c dimtoh).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtoh
 (
         DxfDimStyle *dimstyle
@@ -2531,7 +2531,7 @@ dxf_dimstyle_set_dimtoh
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtoh
+        int16_t dimtoh
                 /*!< the text outside horizontal value (\c dimtoh) to be
                  * set for the symbol table. */
 )
@@ -2561,7 +2561,7 @@ dxf_dimstyle_set_dimtoh
  *
  * \return the first extension line suppressed value (\c dimse1).
  */
-int
+int16_t
 dxf_dimstyle_get_dimse1
 (
         DxfDimStyle *dimstyle
@@ -2600,7 +2600,7 @@ dxf_dimstyle_set_dimse1
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimse1
+        int16_t dimse1
                 /*!< the first extension line suppressed value
                  * (\c dimse1) to be set for the symbol table. */
 )
@@ -2630,7 +2630,7 @@ dxf_dimstyle_set_dimse1
  *
  * \return the second extension line suppressed value (\c dimse2).
  */
-int
+int16_t
 dxf_dimstyle_get_dimse2
 (
         DxfDimStyle *dimstyle
@@ -2669,7 +2669,7 @@ dxf_dimstyle_set_dimse2
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimse2
+        int16_t dimse2
                 /*!< the second extension line suppressed value
                  * (\c dimse2) to be set for the symbol table. */
 )
@@ -2699,7 +2699,7 @@ dxf_dimstyle_set_dimse2
  *
  * \return the text above dimension line value (\c dimtad).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtad
 (
         DxfDimStyle *dimstyle
@@ -2738,7 +2738,7 @@ dxf_dimstyle_set_dimtad
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtad
+        int16_t dimtad
                 /*!< the text above dimension line value (\c dimtad) to
                  * be set for the symbol table. */
 )
@@ -2769,7 +2769,7 @@ dxf_dimstyle_set_dimtad
  * \return the zero suppression for "feet & inch" dimensions value
  * (\c dimzin).
  */
-int
+int16_t
 dxf_dimstyle_get_dimzin
 (
         DxfDimStyle *dimstyle
@@ -2808,7 +2808,7 @@ dxf_dimstyle_set_dimzin
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimzin
+        int16_t dimzin
                 /*!< the zero suppression for "feet & inch" dimensions
                  * value (\c dimzin) to be set for the symbol table. */
 )
@@ -3460,7 +3460,7 @@ dxf_dimstyle_set_dimgap
  *
  * \return the alternate unit dimensioning value (\c dimalt).
  */
-int
+int16_t
 dxf_dimstyle_get_dimalt
 (
         DxfDimStyle *dimstyle
@@ -3499,7 +3499,7 @@ dxf_dimstyle_set_dimalt
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimalt
+        int16_t dimalt
                 /*!< the alternate unit dimensioning value (\c dimalt)
                  * to be set for the symbol table. */
 )
@@ -3529,7 +3529,7 @@ dxf_dimstyle_set_dimalt
  *
  * \return the alternate unit decimal places value (\c dimaltd).
  */
-int
+int16_t
 dxf_dimstyle_get_dimaltd
 (
         DxfDimStyle *dimstyle
@@ -3568,7 +3568,7 @@ dxf_dimstyle_set_dimaltd
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimaltd
+        int16_t dimaltd
                 /*!< the alternate unit decimal places value
                  * (\c dimaltd) to be set for the symbol table. */
 )
@@ -3599,7 +3599,7 @@ dxf_dimstyle_set_dimaltd
  * \return the text outside extensions, force line extensions value
  * (\c dimtofl).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtofl
 (
         DxfDimStyle *dimstyle
@@ -3638,7 +3638,7 @@ dxf_dimstyle_set_dimtofl
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtofl
+        int16_t dimtofl
                 /*!< the text outside extensions, force line extensions
                  * value (\c dimtofl) to be set for the symbol table. */
 )
@@ -3668,7 +3668,7 @@ dxf_dimstyle_set_dimtofl
  *
  * \return the use separate arrow blocks value (\c dimsah).
  */
-int
+int16_t
 dxf_dimstyle_get_dimsah
 (
         DxfDimStyle *dimstyle
@@ -3707,7 +3707,7 @@ dxf_dimstyle_set_dimsah
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimsah
+        int16_t dimsah
                 /*!< the use separate arrow blocks value (\c dimsah) to
                  * be set for the symbol table. */
 )
@@ -3737,7 +3737,7 @@ dxf_dimstyle_set_dimsah
  *
  * \return the force text inside extensions value (\c dimtix).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtix
 (
         DxfDimStyle *dimstyle
@@ -3776,7 +3776,7 @@ dxf_dimstyle_set_dimtix
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtix
+        int16_t dimtix
                 /*!< the force text inside extensions value (\c dimtix)
                  * to be set for the symbol table. */
 )
@@ -3807,7 +3807,7 @@ dxf_dimstyle_set_dimtix
  * \return the suppress outside-extensions dimension lines value
  * (\c dimsoxd).
  */
-int
+int16_t
 dxf_dimstyle_get_dimsoxd
 (
         DxfDimStyle *dimstyle
@@ -3846,7 +3846,7 @@ dxf_dimstyle_set_dimsoxd
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimsoxd
+        int16_t dimsoxd
                 /*!< the suppress outside-extensions dimension lines
                  * value (\c dimsoxd) to be set for the symbol table. */
 )
@@ -3876,7 +3876,7 @@ dxf_dimstyle_set_dimsoxd
  *
  * \return the dimension line color value (\c dimclrd).
  */
-int
+int16_t
 dxf_dimstyle_get_dimclrd
 (
         DxfDimStyle *dimstyle
@@ -3915,7 +3915,7 @@ dxf_dimstyle_set_dimclrd
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimclrd
+        int16_t dimclrd
                 /*!< the dimension line color value (\c dimclrd) to be
                  * set for the symbol table. */
 )
@@ -3945,7 +3945,7 @@ dxf_dimstyle_set_dimclrd
  *
  * \return the dimension extension line color value (\c dimclre).
  */
-int
+int16_t
 dxf_dimstyle_get_dimclre
 (
         DxfDimStyle *dimstyle
@@ -3984,7 +3984,7 @@ dxf_dimstyle_set_dimclre
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimclre
+        int16_t dimclre
                 /*!< the dimension extension line color value
                  * (\c dimclre) to be set for the symbol table. */
 )
@@ -4014,7 +4014,7 @@ dxf_dimstyle_set_dimclre
  *
  * \return the dimension text color value (\c dimclrt).
  */
-int
+int16_t
 dxf_dimstyle_get_dimclrt
 (
         DxfDimStyle *dimstyle
@@ -4053,7 +4053,7 @@ dxf_dimstyle_set_dimclrt
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimclrt
+        int16_t dimclrt
                 /*!< the dimension text color value (\c dimclrt) to be
                  * set for the symbol table. */
 )
@@ -4083,7 +4083,7 @@ dxf_dimstyle_set_dimclrt
  *
  * \return the dimension units format value (\c dimunit).
  */
-int
+int16_t
 dxf_dimstyle_get_dimunit
 (
         DxfDimStyle *dimstyle
@@ -4134,7 +4134,7 @@ dxf_dimstyle_set_dimunit
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimunit
+        int16_t dimunit
                 /*!< the dimension units format value (\c dimunit) to be
                  * set for the symbol table. */
 )
@@ -4178,7 +4178,7 @@ dxf_dimstyle_set_dimunit
  * \return the number of decimal places for the tolerance values of a
  * primary units dimension value (\c dimdec).
  */
-int
+int16_t
 dxf_dimstyle_get_dimdec
 (
         DxfDimStyle *dimstyle
@@ -4218,7 +4218,7 @@ dxf_dimstyle_set_dimdec
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimdec
+        int16_t dimdec
                 /*!< the number of decimal places for the tolerance
                  * values of a primary units dimension value (\c dimdec)
                  * to be set for the symbol table. */
@@ -4251,7 +4251,7 @@ dxf_dimstyle_set_dimdec
  * \return the number of decimal places to display the tolerance
  * values (\c dimtdec).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtdec
 (
         DxfDimStyle *dimstyle
@@ -4291,7 +4291,7 @@ dxf_dimstyle_set_dimtdec
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtdec
+        int16_t dimtdec
                 /*!< the number of decimal places to display the
                  * tolerance values (\c dimtdec) to be set for the
                  * symbol table. */
@@ -4322,7 +4322,7 @@ dxf_dimstyle_set_dimtdec
  *
  * \return the units format for alternate units value (\c dimaltu).
  */
-int
+int16_t
 dxf_dimstyle_get_dimaltu
 (
         DxfDimStyle *dimstyle
@@ -4361,7 +4361,7 @@ dxf_dimstyle_set_dimaltu
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimaltu
+        int16_t dimaltu
                 /*!< the units format for alternate units value
                  * (\c dimaltu) to be set for the symbol table. */
 )
@@ -4393,7 +4393,7 @@ dxf_dimstyle_set_dimaltu
  * \return the number of decimal places for tolerance values of an
  * alternate units dimension value (\c dimalttd).
  */
-int
+int16_t
 dxf_dimstyle_get_dimalttd
 (
         DxfDimStyle *dimstyle
@@ -4433,7 +4433,7 @@ dxf_dimstyle_set_dimalttd
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimalttd
+        int16_t dimalttd
                 /*!< the number of decimal places for tolerance values
                  * of an alternate units dimension value (\c dimalttd)
                  * to be set for the symbol table. */
@@ -4465,7 +4465,7 @@ dxf_dimstyle_set_dimalttd
  * \return the angle format for angular dimensions value value
  * (\c dimaunit).
  */
-int
+int16_t
 dxf_dimstyle_get_dimaunit
 (
         DxfDimStyle *dimstyle
@@ -4516,7 +4516,7 @@ dxf_dimstyle_set_dimaunit
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimaunit
+        int16_t dimaunit
                 /*!< the angle format for angular dimensions value
                  * (\c dimaunit) to be set for the symbol table. */
 )
@@ -4558,7 +4558,7 @@ dxf_dimstyle_set_dimaunit
  *
  * \return the horizontal dimension text position value (\c dimjust).
  */
-int
+int16_t
 dxf_dimstyle_get_dimjust
 (
         DxfDimStyle *dimstyle
@@ -4609,7 +4609,7 @@ dxf_dimstyle_set_dimjust
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimjust
+        int16_t dimjust
                 /*!< the horizontal dimension text position value
                  * (\c dimjust) to be set for the symbol table. */
 )
@@ -4651,7 +4651,7 @@ dxf_dimstyle_set_dimjust
  *
  * \return the suppression of first extension line value (\c dimsd1).
  */
-int
+int16_t
 dxf_dimstyle_get_dimsd1
 (
         DxfDimStyle *dimstyle
@@ -4702,7 +4702,7 @@ dxf_dimstyle_set_dimsd1
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimsd1
+        int16_t dimsd1
                 /*!< the suppression of first extension line value
                  * (\c dimsd1) to be set for the symbol table. */
 )
@@ -4745,7 +4745,7 @@ dxf_dimstyle_set_dimsd1
  * \return the suppression of the second extension line value
  * (\c dimsd2).
  */
-int
+int16_t
 dxf_dimstyle_get_dimsd2
 (
         DxfDimStyle *dimstyle
@@ -4796,7 +4796,7 @@ dxf_dimstyle_set_dimsd2
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimsd2
+        int16_t dimsd2
                 /*!< the suppression of the second extension line value
                  * (\c dimsd2) to be set for the symbol table. */
 )
@@ -4838,7 +4838,7 @@ dxf_dimstyle_set_dimsd2
  *
  * \return the vertical justification for tolerance value (\c dimtolj).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtolj
 (
         DxfDimStyle *dimstyle
@@ -4889,7 +4889,7 @@ dxf_dimstyle_set_dimtolj
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtolj
+        int16_t dimtolj
                 /*!< the vertical justification for tolerance value
                  * (\c dimtolj) to be set for the symbol table. */
 )
@@ -4931,7 +4931,7 @@ dxf_dimstyle_set_dimtolj
  *
  * \return the suppression of zeros for tolerance value (\c dimtzin).
  */
-int
+int16_t
 dxf_dimstyle_get_dimtzin
 (
         DxfDimStyle *dimstyle
@@ -4982,7 +4982,7 @@ dxf_dimstyle_set_dimtzin
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimtzin
+        int16_t dimtzin
                 /*!< the suppression of zeros for tolerance value
                  * (\c dimtzin) to be set for the symbol table. */
 )
@@ -5026,7 +5026,7 @@ dxf_dimstyle_set_dimtzin
  * \return the toggle suppression of zeros for alternate unit dimension
  * value (\c dimaltz).
  */
-int
+int16_t
 dxf_dimstyle_get_dimaltz
 (
         DxfDimStyle *dimstyle
@@ -5078,7 +5078,7 @@ dxf_dimstyle_set_dimaltz
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimaltz
+        int16_t dimaltz
                 /*!< the toggle suppression of zeros for alternate unit
                  * dimension value (\c dimaltz) to be set for the symbol
                  * table. */
@@ -5123,7 +5123,7 @@ dxf_dimstyle_set_dimaltz
  * \return the toggle suppression of zeros for tolerance units value
  * (\c dimalttz).
  */
-int
+int16_t
 dxf_dimstyle_get_dimalttz
 (
         DxfDimStyle *dimstyle
@@ -5175,7 +5175,7 @@ dxf_dimstyle_set_dimalttz
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimalttz
+        int16_t dimalttz
                 /*!< the toggle suppression of zeros for tolerance units
                  * value (\c dimaltz) to be set for the symbol table. */
 )
@@ -5217,7 +5217,7 @@ dxf_dimstyle_set_dimalttz
  *
  * \return the placement of text and arrowheads value (\c dimfit).
  */
-int
+int16_t
 dxf_dimstyle_get_dimfit
 (
         DxfDimStyle *dimstyle
@@ -5268,7 +5268,7 @@ dxf_dimstyle_set_dimfit
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimfit
+        int16_t dimfit
                 /*!< the placement of text and arrowheads value
                  * (\c dimfit) to be set for the symbol table. */
 )
@@ -5311,7 +5311,7 @@ dxf_dimstyle_set_dimfit
  * \return the cursor functionality for user positioned text value
  * (\c dimupt).
  */
-int
+int16_t
 dxf_dimstyle_get_dimupt
 (
         DxfDimStyle *dimstyle
@@ -5362,7 +5362,7 @@ dxf_dimstyle_set_dimupt
         DxfDimStyle *dimstyle,
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
-        int dimupt
+        int16_t dimupt
                 /*!< the cursor functionality for user positioned text
                  * value (\c dimupt) to be set for the symbol table. */
 )

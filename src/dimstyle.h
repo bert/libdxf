@@ -1,7 +1,7 @@
 /*!
  * \file dimstyle.h
  *
- * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF dimension style table (\c DIMSTYLE).
@@ -102,7 +102,7 @@ dxf_dimstyle_struct
         double dimtm;
                 /*!< Minus tolerance.\n
                  * Group code = 48. */
-        int flag;
+        int16_t flag;
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF
                  * files, and need not be set by programs that write DXF
@@ -118,28 +118,28 @@ dxf_dimstyle_struct
                  *      was edited.</li>
                  * </ol>
                  * Group code = 70. */
-        int dimtol;
+        int16_t dimtol;
                 /*!< Dimension tolerances generated if nonzero.\n
                  * Group code = 71. */
-        int dimlim;
+        int16_t dimlim;
                 /*!< Dimension limits generated if nonzero.\n
                  * Group code = 72. */
-        int dimtih;
+        int16_t dimtih;
                 /*!< Text inside horizontal if nonzero.\n
                  * Group code = 73. */
-        int dimtoh;
+        int16_t dimtoh;
                 /*!< Text outside horizontal if nonzero.\n
                  * Group code = 74. */
-        int dimse1;
+        int16_t dimse1;
                 /*!< First extension line suppressed if nonzero.\n
                  * Group code = 75. */
-        int dimse2;
+        int16_t dimse2;
                 /*!< Second extension line suppressed if nonzero.\n
                  * Group code = 76. */
-        int dimtad;
+        int16_t dimtad;
                 /*!< Text above dimension line if nonzero.\n
                  * Group code = 77. */
-        int dimzin;
+        int16_t dimzin;
                 /*!< Zero suppression for "feet & inch" dimensions.\n
                  * Group code = 78. */
         int id_code;
@@ -171,36 +171,36 @@ dxf_dimstyle_struct
         double dimgap;
                 /*!< Dimension line gap.\n
                  * Group code = 147. */
-        int dimalt;
+        int16_t dimalt;
                 /*!< Alternate unit dimensioning performed if nonzero.\n
                  * Group code = 170. */
-        int dimaltd;
+        int16_t dimaltd;
                 /*!< Alternate unit decimal places.\n
                  * Group code = 171. */
-        int dimtofl;
+        int16_t dimtofl;
                 /*!< If text outside extensions, force line extensions
                  * between extensions if nonzero.\n
                  * Group code = 172. */
-        int dimsah;
+        int16_t dimsah;
                 /*!< Use separate arrow blocks if nonzero.\n
                  * Group code = 173. */
-        int dimtix;
+        int16_t dimtix;
                 /*!< Force text inside extensions if nonzero.\n
                  * Group code = 174. */
-        int dimsoxd;
+        int16_t dimsoxd;
                 /*!< Suppress outside-extensions dimension lines if
                  * nonzero.\n
                  * Group code = 175. */
-        int dimclrd;
+        int16_t dimclrd;
                 /*!< Dimension line color.\n
                  * Group code = 176. */
-        int dimclre;
+        int16_t dimclre;
                 /*!< Dimension extension line color.\n
                  * Group code = 177. */
-        int dimclrt;
+        int16_t dimclrt;
                 /*!< Dimension text color.\n
                  * Group code = 178. */
-        int dimunit;
+        int16_t dimunit;
                 /*!< Units format for all dimension style family members
                  * except angular:\n
                  * <ol>
@@ -210,15 +210,15 @@ dxf_dimstyle_struct
                  * <li value = "4"> Architectural.</li>
                  * </ol>
                  * Group code = 270. */
-        int dimdec;
+        int16_t dimdec;
                 /*!< Number of decimal places for the tolerance values
                  * of a primary units dimension.\n
                  * Group code = 271. */
-        int dimtdec;
+        int16_t dimtdec;
                 /*!< Number of decimal places to display the tolerance
                  * values.\n
                  * Group code = 272. */
-        int dimaltu;
+        int16_t dimaltu;
                 /*!< Units format for alternate units of all dimension
                  * style family members except angular:
                  * <ol>
@@ -228,11 +228,11 @@ dxf_dimstyle_struct
                  * <li value = "4"> Architectural.</li>
                  * </ol>
                  * Group code = 273. */
-        int dimalttd;
+        int16_t dimalttd;
                 /*!< Number of decimal places for tolerance values of an
                  * alternate units dimension.\n
                  * Group code = 274. */
-        int dimaunit;
+        int16_t dimaunit;
                 /*!< Angle format for angular dimensions:\n
                  * <ol>
                  * <li value = "0"> Decimal degrees,</li>
@@ -242,7 +242,7 @@ dxf_dimstyle_struct
                  * <li value = "4"> Surveyor's units.</li>
                  * </ol>
                  * Group code = 275. */
-        int dimjust;
+        int16_t dimjust;
                 /*!< Horizontal dimension text position:\n
                  * <ol>
                  * <li value = "0"> above dimension line and
@@ -257,21 +257,21 @@ dxf_dimstyle_struct
                  * extension line.</li>
                  * </ol>
                  * Group code = 280. */
-        int dimsd1;
+        int16_t dimsd1;
                 /*!< Suppression of first extension line:\n
                  * <ol>
                  * <li value = "0"> not suppressed,</li>
                  * <li value = "1"> suppressed.</li>
                  * </ol>
                  * Group code = 281. */
-        int dimsd2;
+        int16_t dimsd2;
                 /*!< Suppression of second extension line:\n
                  * <ol>
                  * <li value = "0"> not suppressed,</li>
                  * <li value = "1"> suppressed.</li>
                  * </ol>
                  * Group code = 282. */
-        int dimtolj;
+        int16_t dimtolj;
                 /*!< Vertical justification for tolerance values:\n
                  * <ol>
                  * <li value = "0"> Top,</li>
@@ -279,14 +279,14 @@ dxf_dimstyle_struct
                  * <li value = "2"> Bottom.</li>
                  * </ol>
                  * Group code = 283. */
-        int dimtzin;
+        int16_t dimtzin;
                 /*!< Suppression of zeros for tolerance values:\n
                  * <ol>
                  * <li value = "0"> not suppressed,</li>
                  * <li value = "1"> suppressed.</li>
                  * </ol>
                  * Group code = 284. */
-        int dimaltz;
+        int16_t dimaltz;
                 /*!< Toggles suppression of zeros for alternate unit
                  * dimension values:\n
                  * <ol>
@@ -294,19 +294,19 @@ dxf_dimstyle_struct
                  * <li value = "1"> zeros suppressed.</li>
                  * </ol>
                  * Group code = 285. */
-        int dimalttz;
+        int16_t dimalttz;
                 /*!< Toggles suppression of zeros for tolerance values:\n
                  * <ol>
                  * <li value = "0"> zeros not suppressed,</li>
                  * <li value = "1"> zeros suppressed.</li>
                  * </ol>
                  * Group code = 286. */
-        int dimfit;
+        int16_t dimfit;
                 /*!< Placement of text and arrowheads; Possible values:\n
                  * 0 through 3 (see appendix A, "System Variables," in
                  * the AutoCAD Command Reference).\n
                  * Group code = 287. */
-        int dimupt;
+        int16_t dimupt;
                 /*!< Cursor functionality for user positioned text:\n
                  * <ol>
                  * <li value = "0"> controls only the dimension line
@@ -372,24 +372,24 @@ double dxf_dimstyle_get_dimtp (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimtp (DxfDimStyle *dimstyle, double dimtp);
 double dxf_dimstyle_get_dimtm (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimtm (DxfDimStyle *dimstyle, double dimtm);
-int dxf_dimstyle_get_flag (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_flag (DxfDimStyle *dimstyle, int flag);
-int dxf_dimstyle_get_dimtol (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtol (DxfDimStyle *dimstyle, int dimtol);
-int dxf_dimstyle_get_dimlim (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimlim (DxfDimStyle *dimstyle, int dimlim);
-int dxf_dimstyle_get_dimtih (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtih (DxfDimStyle *dimstyle, int dimtih);
-int dxf_dimstyle_get_dimtoh (DxfDimStyle *dimstyle);
-DxfDimStyle * dxf_dimstyle_set_dimtoh (DxfDimStyle *dimstyle, int dimtoh);
-int dxf_dimstyle_get_dimse1 (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimse1 (DxfDimStyle *dimstyle, int dimse1);
-int dxf_dimstyle_get_dimse2 (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimse2 (DxfDimStyle *dimstyle, int dimse2);
-int dxf_dimstyle_get_dimtad (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtad (DxfDimStyle *dimstyle, int dimtad);
-int dxf_dimstyle_get_dimzin (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimzin (DxfDimStyle *dimstyle, int dimzin);
+int16_t dxf_dimstyle_get_flag (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_flag (DxfDimStyle *dimstyle, int16_t flag);
+int16_t dxf_dimstyle_get_dimtol (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtol (DxfDimStyle *dimstyle, int16_t dimtol);
+int16_t dxf_dimstyle_get_dimlim (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimlim (DxfDimStyle *dimstyle, int16_t dimlim);
+int16_t dxf_dimstyle_get_dimtih (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtih (DxfDimStyle *dimstyle, int16_t dimtih);
+int16_t dxf_dimstyle_get_dimtoh (DxfDimStyle *dimstyle);
+DxfDimStyle * dxf_dimstyle_set_dimtoh (DxfDimStyle *dimstyle, int16_t dimtoh);
+int16_t dxf_dimstyle_get_dimse1 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimse1 (DxfDimStyle *dimstyle, int16_t dimse1);
+int16_t dxf_dimstyle_get_dimse2 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimse2 (DxfDimStyle *dimstyle, int16_t dimse2);
+int16_t dxf_dimstyle_get_dimtad (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtad (DxfDimStyle *dimstyle, int16_t dimtad);
+int16_t dxf_dimstyle_get_dimzin (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimzin (DxfDimStyle *dimstyle, int16_t dimzin);
 int dxf_dimstyle_get_id_code (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_id_code (DxfDimStyle *dimstyle, int id_code);
 double dxf_dimstyle_get_dimtxt (DxfDimStyle *dimstyle);
@@ -408,54 +408,54 @@ double dxf_dimstyle_get_dimtfac (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimtfac (DxfDimStyle *dimstyle, double dimtfac);
 double dxf_dimstyle_get_dimgap (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dimgap (DxfDimStyle *dimstyle, double dimgap);
-int dxf_dimstyle_get_dimalt (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimalt (DxfDimStyle *dimstyle, int dimalt);
-int dxf_dimstyle_get_dimaltd (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimaltd (DxfDimStyle *dimstyle, int dimaltd);
-int dxf_dimstyle_get_dimtofl (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtofl (DxfDimStyle *dimstyle, int dimtofl);
-int dxf_dimstyle_get_dimsah (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimsah (DxfDimStyle *dimstyle, int dimsah);
-int dxf_dimstyle_get_dimtix (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtix (DxfDimStyle *dimstyle, int dimtix);
-int dxf_dimstyle_get_dimsoxd (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimsoxd (DxfDimStyle *dimstyle, int dimsoxd);
-int dxf_dimstyle_get_dimclrd (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimclrd (DxfDimStyle *dimstyle, int dimclrd);
-int dxf_dimstyle_get_dimclre (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimclre (DxfDimStyle *dimstyle, int dimclre);
-int dxf_dimstyle_get_dimclrt (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimclrt (DxfDimStyle *dimstyle, int dimclrt);
-int dxf_dimstyle_get_dimunit (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimunit (DxfDimStyle *dimstyle, int dimunit);
-int dxf_dimstyle_get_dimdec (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimdec (DxfDimStyle *dimstyle, int dimdec);
-int dxf_dimstyle_get_dimtdec (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtdec (DxfDimStyle *dimstyle, int dimtdec);
-int dxf_dimstyle_get_dimaltu (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimaltu (DxfDimStyle *dimstyle, int dimaltu);
-int dxf_dimstyle_get_dimalttd (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimalttd (DxfDimStyle *dimstyle, int dimalttd);
-int dxf_dimstyle_get_dimaunit (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimaunit (DxfDimStyle *dimstyle, int dimaunit);
-int dxf_dimstyle_get_dimjust (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimjust (DxfDimStyle *dimstyle, int dimjust);
-int dxf_dimstyle_get_dimsd1 (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimsd1 (DxfDimStyle *dimstyle, int dimsd1);
-int dxf_dimstyle_get_dimsd2 (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimsd2 (DxfDimStyle *dimstyle, int dimsd2);
-int dxf_dimstyle_get_dimtolj (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtolj (DxfDimStyle *dimstyle, int dimtolj);
-int dxf_dimstyle_get_dimtzin (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimtzin (DxfDimStyle *dimstyle, int dimtzin);
-int dxf_dimstyle_get_dimaltz (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimaltz (DxfDimStyle *dimstyle, int dimaltz);
-int dxf_dimstyle_get_dimalttz (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimalttz (DxfDimStyle *dimstyle, int dimalttz);
-int dxf_dimstyle_get_dimfit (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimfit (DxfDimStyle *dimstyle, int dimfit);
-int dxf_dimstyle_get_dimupt (DxfDimStyle *dimstyle);
-DxfDimStyle *dxf_dimstyle_set_dimupt (DxfDimStyle *dimstyle, int dimupt);
+int16_t dxf_dimstyle_get_dimalt (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimalt (DxfDimStyle *dimstyle, int16_t dimalt);
+int16_t dxf_dimstyle_get_dimaltd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaltd (DxfDimStyle *dimstyle, int16_t dimaltd);
+int16_t dxf_dimstyle_get_dimtofl (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtofl (DxfDimStyle *dimstyle, int16_t dimtofl);
+int16_t dxf_dimstyle_get_dimsah (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsah (DxfDimStyle *dimstyle, int16_t dimsah);
+int16_t dxf_dimstyle_get_dimtix (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtix (DxfDimStyle *dimstyle, int16_t dimtix);
+int16_t dxf_dimstyle_get_dimsoxd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsoxd (DxfDimStyle *dimstyle, int16_t dimsoxd);
+int16_t dxf_dimstyle_get_dimclrd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimclrd (DxfDimStyle *dimstyle, int16_t dimclrd);
+int16_t dxf_dimstyle_get_dimclre (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimclre (DxfDimStyle *dimstyle, int16_t dimclre);
+int16_t dxf_dimstyle_get_dimclrt (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimclrt (DxfDimStyle *dimstyle, int16_t dimclrt);
+int16_t dxf_dimstyle_get_dimunit (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimunit (DxfDimStyle *dimstyle, int16_t dimunit);
+int16_t dxf_dimstyle_get_dimdec (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimdec (DxfDimStyle *dimstyle, int16_t dimdec);
+int16_t dxf_dimstyle_get_dimtdec (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtdec (DxfDimStyle *dimstyle, int16_t dimtdec);
+int16_t dxf_dimstyle_get_dimaltu (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaltu (DxfDimStyle *dimstyle, int16_t dimaltu);
+int16_t dxf_dimstyle_get_dimalttd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimalttd (DxfDimStyle *dimstyle, int16_t dimalttd);
+int16_t dxf_dimstyle_get_dimaunit (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaunit (DxfDimStyle *dimstyle, int16_t dimaunit);
+int16_t dxf_dimstyle_get_dimjust (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimjust (DxfDimStyle *dimstyle, int16_t dimjust);
+int16_t dxf_dimstyle_get_dimsd1 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsd1 (DxfDimStyle *dimstyle, int16_t dimsd1);
+int16_t dxf_dimstyle_get_dimsd2 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsd2 (DxfDimStyle *dimstyle, int16_t dimsd2);
+int16_t dxf_dimstyle_get_dimtolj (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtolj (DxfDimStyle *dimstyle, int16_t dimtolj);
+int16_t dxf_dimstyle_get_dimtzin (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtzin (DxfDimStyle *dimstyle, int16_t dimtzin);
+int16_t dxf_dimstyle_get_dimaltz (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaltz (DxfDimStyle *dimstyle, int16_t dimaltz);
+int16_t dxf_dimstyle_get_dimalttz (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimalttz (DxfDimStyle *dimstyle, int16_t dimalttz);
+int16_t dxf_dimstyle_get_dimfit (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimfit (DxfDimStyle *dimstyle, int16_t dimfit);
+int16_t dxf_dimstyle_get_dimupt (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimupt (DxfDimStyle *dimstyle, int16_t dimupt);
 char *dxf_dimstyle_get_dictionary_owner_soft (DxfDimStyle *dimstyle);
 DxfDimStyle *dxf_dimstyle_set_dictionary_owner_soft (DxfDimStyle *dimstyle, char *dictionary_owner_soft);
 char *dxf_dimstyle_get_object_owner_soft (DxfDimStyle *dimstyle);
