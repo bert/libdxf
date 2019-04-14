@@ -1,8 +1,8 @@
 /*!
  * \file circle.c
  *
- * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017, 2018
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017, 2018,
+ * 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -294,21 +294,21 @@ dxf_circle_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &circle->color);
+                        fscanf (fp->fp, "%hd\n", &circle->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &circle->paperspace);
+                        fscanf (fp->fp, "%hd\n", &circle->paperspace);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &circle->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &circle->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -330,7 +330,7 @@ dxf_circle_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &circle->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &circle->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "284") == 0)
                 {
@@ -419,7 +419,7 @@ dxf_circle_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &circle->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &circle->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -433,7 +433,7 @@ dxf_circle_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &circle->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &circle->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -570,7 +570,7 @@ dxf_circle_write
         }
         if (circle->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", circle->layer);
         if (strcmp (circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -584,11 +584,11 @@ dxf_circle_write
         }
         if (circle->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", circle->color);
+                fprintf (fp->fp, " 62\n%hd\n", circle->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", circle->lineweight);
+                fprintf (fp->fp, "370\n%hd\n", circle->lineweight);
         }
         if (circle->linetype_scale != 1.0)
         {
@@ -596,14 +596,14 @@ dxf_circle_write
         }
         if (circle->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", circle->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", circle->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", circle->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", circle->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", circle->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", circle->graphics_data_size);
 #endif
                 if (circle->binary_graphics_data != NULL)
                 {
@@ -618,14 +618,14 @@ dxf_circle_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", circle->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", circle->color_value);
                 fprintf (fp->fp, "430\n%s\n", circle->color_name);
-                fprintf (fp->fp, "440\n%ld\n", circle->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", circle->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
                 fprintf (fp->fp, "390\n%s\n", circle->plot_style_name);
-                fprintf (fp->fp, "284\n%d\n", circle->shadow_mode);
+                fprintf (fp->fp, "284\n%hd\n", circle->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -1263,7 +1263,7 @@ dxf_circle_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_circle_get_color
 (
         DxfCircle *circle
@@ -1302,7 +1302,7 @@ dxf_circle_set_color
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1338,7 +1338,7 @@ dxf_circle_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_circle_get_paperspace
 (
         DxfCircle *circle
@@ -1383,7 +1383,7 @@ dxf_circle_set_paperspace
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1425,7 +1425,7 @@ dxf_circle_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_circle_get_graphics_data_size
 (
         DxfCircle *circle
@@ -1473,7 +1473,7 @@ dxf_circle_set_graphics_data_size
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2155,7 +2155,7 @@ dxf_circle_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_circle_get_color_value
 (
         DxfCircle *circle
@@ -2191,7 +2191,7 @@ dxf_circle_set_color_value
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2300,7 +2300,7 @@ dxf_circle_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_circle_get_transparency
 (
         DxfCircle *circle
@@ -2336,7 +2336,7 @@ dxf_circle_set_transparency
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {

@@ -2,7 +2,7 @@
  * \file circle.h
  *
  * \author Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -98,20 +98,20 @@ dxf_circle_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -182,7 +182,7 @@ dxf_circle_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -235,12 +235,12 @@ double dxf_circle_get_linetype_scale (DxfCircle *circle);
 DxfCircle *dxf_circle_set_linetype_scale (DxfCircle *circle, double linetype_scale);
 int16_t dxf_circle_get_visibility (DxfCircle *circle);
 DxfCircle *dxf_circle_set_visibility (DxfCircle *circle, int16_t visibility);
-int dxf_circle_get_color (DxfCircle *circle);
-DxfCircle *dxf_circle_set_color (DxfCircle *circle, int color);
-int dxf_circle_get_paperspace (DxfCircle *circle);
-DxfCircle *dxf_circle_set_paperspace (DxfCircle *circle, int paperspace);
-int dxf_circle_get_graphics_data_size (DxfCircle *circle);
-DxfCircle *dxf_circle_set_graphics_data_size (DxfCircle *circle, int graphics_data_size);
+int16_t dxf_circle_get_color (DxfCircle *circle);
+DxfCircle *dxf_circle_set_color (DxfCircle *circle, int16_t color);
+int16_t dxf_circle_get_paperspace (DxfCircle *circle);
+DxfCircle *dxf_circle_set_paperspace (DxfCircle *circle, int16_t paperspace);
+int32_t dxf_circle_get_graphics_data_size (DxfCircle *circle);
+DxfCircle *dxf_circle_set_graphics_data_size (DxfCircle *circle, int32_t graphics_data_size);
 int16_t dxf_circle_get_shadow_mode (DxfCircle *circle);
 DxfCircle *dxf_circle_set_shadow_mode (DxfCircle *circle, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_circle_get_binary_graphics_data (DxfCircle *circle);
@@ -257,12 +257,12 @@ int16_t dxf_circle_get_lineweight (DxfCircle *circle);
 DxfCircle *dxf_circle_set_lineweight (DxfCircle *circle, int16_t lineweight);
 char *dxf_circle_get_plot_style_name (DxfCircle *circle);
 DxfCircle *dxf_circle_set_plot_style_name (DxfCircle *circle, char *plot_style_name);
-long dxf_circle_get_color_value (DxfCircle *circle);
-DxfCircle *dxf_circle_set_color_value (DxfCircle *circle, long color_value);
+int32_t dxf_circle_get_color_value (DxfCircle *circle);
+DxfCircle *dxf_circle_set_color_value (DxfCircle *circle, int32_t color_value);
 char *dxf_circle_get_color_name (DxfCircle *circle);
 DxfCircle *dxf_circle_set_color_name (DxfCircle *circle, char *color_name);
-long dxf_circle_get_transparency (DxfCircle *circle);
-DxfCircle *dxf_circle_set_transparency (DxfCircle *circle, long transparency);
+int32_t dxf_circle_get_transparency (DxfCircle *circle);
+DxfCircle *dxf_circle_set_transparency (DxfCircle *circle, int32_t transparency);
 DxfPoint *dxf_circle_get_p0 (DxfCircle *circle);
 DxfCircle *dxf_circle_set_p0 (DxfCircle *circle, DxfPoint *point);
 double dxf_circle_get_x0 (DxfCircle *circle);
