@@ -1,7 +1,7 @@
 /*!
  * \file block_record.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF block record symbol table entry
@@ -211,26 +211,27 @@ dxf_block_record_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", block_record->block_name);
                 }
+/*! \todo Implement Group Code = 70 in a proper way. */
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &block_record->flag);
+                        fscanf (fp->fp, "%hd\n", &block_record->flag);
                 }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing the block
                          * explodability value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &block_record->explodability);
+                        fscanf (fp->fp, "%hd\n", &block_record->explodability);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing the block
                          * scalability value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &block_record->scalability);
+                        fscanf (fp->fp, "%hd\n", &block_record->scalability);
                 }
                 else if (strcmp (temp_string, "310") == 0)
                 {
@@ -306,6 +307,7 @@ dxf_block_record_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
+/*! \todo Implement Group Code = 1070 in a proper way. */
                 else
                 {
                         fprintf (stderr,
@@ -422,15 +424,15 @@ dxf_block_record_write
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", block_record->block_name);
-        fprintf (fp->fp, " 70\n%d\n", block_record->flag);
+        fprintf (fp->fp, " 70\n%hd\n", block_record->flag);
         if (fp->acad_version_number >= AutoCAD_2000)
         {
                 fprintf (fp->fp, "340\n%s\n", block_record->associated_layout_hard);
         }
         if (fp->acad_version_number >= AutoCAD_2007)
         {
-                fprintf (fp->fp, "280\n%d\n", block_record->explodability);
-                fprintf (fp->fp, "281\n%d\n", block_record->scalability);
+                fprintf (fp->fp, "280\n%hd\n", block_record->explodability);
+                fprintf (fp->fp, "281\n%hd\n", block_record->scalability);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
@@ -452,8 +454,8 @@ dxf_block_record_write
                 {
                         fprintf (fp->fp, "1000\n%s\n", block_record->xdata_string_data);
                         fprintf (fp->fp, "1002\n{\n");
-                        fprintf (fp->fp, "1070\n%d\n", block_record->design_center_version_number);
-                        fprintf (fp->fp, "1070\n%d\n", block_record->insert_units);
+                        fprintf (fp->fp, "1070\n%hd\n", block_record->design_center_version_number);
+                        fprintf (fp->fp, "1070\n%hd\n", block_record->insert_units);
                         fprintf (fp->fp, "1002\n}\n");
                 }
         }
@@ -705,7 +707,7 @@ dxf_block_record_set_block_name
  *
  * \return flag value.
  */
-int
+int16_t
 dxf_block_record_get_flag
 (
         DxfBlockRecord *block_record
@@ -753,7 +755,7 @@ dxf_block_record_set_flag
         DxfBlockRecord *block_record,
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
                  * entry. */
-        int flag
+        int16_t flag
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
                  * and need not be set by programs that write DXF files. */
@@ -897,7 +899,7 @@ dxf_block_record_is_referenced
  *
  * \return \c insertion_units value.
  */
-int
+int16_t
 dxf_block_record_get_insertion_units
 (
         DxfBlockRecord *block_record
@@ -945,7 +947,7 @@ dxf_block_record_set_insertion_units
         DxfBlockRecord *block_record,
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
                  * entry. */
-        int insertion_units
+        int16_t insertion_units
                 /*!< Block insertion units. */
 )
 {
@@ -990,7 +992,7 @@ dxf_block_record_set_insertion_units
  * \return \c explodability value: \c true if the block can be exploded
  * or \c false if it cannot.
  */
-int
+int16_t
 dxf_block_record_get_explodability
 (
         DxfBlockRecord *block_record
@@ -1038,7 +1040,7 @@ dxf_block_record_set_explodability
         DxfBlockRecord *block_record,
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
                  * entry. */
-        int explodability
+        int16_t explodability
                 /*!< Block explodability. */
 )
 {
@@ -1079,7 +1081,7 @@ dxf_block_record_set_explodability
  *
  * \return \c scalability value.
  */
-int
+int16_t
 dxf_block_record_get_scalability
 (
         DxfBlockRecord *block_record
@@ -1127,7 +1129,7 @@ dxf_block_record_set_scalability
         DxfBlockRecord *block_record,
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
                  * entry. */
-        int scalability
+        int16_t scalability
                 /*!< Block scalability. */
 )
 {
@@ -1701,7 +1703,7 @@ dxf_block_record_set_xdata_application_name
  *
  * \return \c design_center_version_number.
  */
-int
+int16_t
 dxf_block_record_get_design_center_version_number
 (
         DxfBlockRecord *block_record
@@ -1743,7 +1745,7 @@ dxf_block_record_set_design_center_version_number
         DxfBlockRecord *block_record,
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
                  * entry. */
-        int design_center_version_number
+        int16_t design_center_version_number
                 /*!< The \c design_center_version_number for the DXF
                  * \c BLOCK_RECORD symbol table entry. */
 )
@@ -1779,7 +1781,7 @@ dxf_block_record_set_design_center_version_number
  *
  * \return \c insert_units.
  */
-int
+int16_t
 dxf_block_record_get_insert_units
 (
         DxfBlockRecord *block_record
@@ -1827,7 +1829,7 @@ dxf_block_record_set_insert_units
         DxfBlockRecord *block_record,
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
                  * entry. */
-        int insert_units
+        int16_t insert_units
                 /*!< The \c insert_units for the DXF \c BLOCK_RECORD
                  * symbol table entry. */
 )

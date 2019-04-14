@@ -1,7 +1,7 @@
 /*!
  * \file block_record.h
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF block record symbol table entry
@@ -73,7 +73,7 @@ dxf_block_record_struct
         char *block_name;
                 /*!< Name of the block registered within the drawing.\n
                  * Group code = 2. */
-        int flag;
+        int16_t flag;
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
                  * and need not be set by programs that write DXF files.\n
@@ -89,13 +89,13 @@ dxf_block_record_struct
                  * last time the drawing was edited.</li>
                  * </ol>
                  * Group code = 70. */
-        int insertion_units;
+        int16_t insertion_units;
                  /*!< Block insertion units.\n
                   * Group code = 70. */
-        int explodability;
+        int16_t explodability;
                  /*!< Block explodability.\n
                   * Group code = 280. */
-        int scalability;
+        int16_t scalability;
                  /*!< Block scalability.\n
                   * Group code = 281. */
         DxfBinaryGraphicsData *binary_graphics_data;
@@ -124,10 +124,10 @@ dxf_block_record_struct
         char *xdata_application_name;
                 /*!< Xdata application name “ACAD” (optional).\n
                  * Group code = 1001. */
-        int design_center_version_number;
+        int16_t design_center_version_number;
                 /*!< Autodesk Design Center version number.\n
                  * Group code = 1070.*/
-        int insert_units;
+        int16_t insert_units;
                 /*!< Insert units:\n
                  * <ol>
                  *   <li value = "0" Unitless;</li>
@@ -169,17 +169,17 @@ int dxf_block_record_get_id_code (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_id_code (DxfBlockRecord *block_record, int id_code);
 char *dxf_block_record_get_block_name (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_block_name (DxfBlockRecord *block_record, char *block_name);
-int dxf_block_record_get_flag (DxfBlockRecord *block_record);
-DxfBlockRecord *dxf_block_record_set_flag (DxfBlockRecord *block_record, int flag);
+int16_t dxf_block_record_get_flag (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_flag (DxfBlockRecord *block_record, int16_t flag);
 int dxf_block_record_is_xreferenced (DxfBlockRecord *block_record);
 int dxf_block_record_is_xresolved (DxfBlockRecord *block_record);
 int dxf_block_record_is_referenced (DxfBlockRecord *block_record);
-int dxf_block_record_get_insertion_units (DxfBlockRecord *block_record);
-DxfBlockRecord *dxf_block_record_set_insertion_units (DxfBlockRecord *block_record, int insertion_units);
-int dxf_block_record_get_explodability (DxfBlockRecord *block_record);
-DxfBlockRecord *dxf_block_record_set_explodability (DxfBlockRecord *block_record, int explodability);
-int dxf_block_record_get_scalability (DxfBlockRecord *block_record);
-DxfBlockRecord *dxf_block_record_set_scalability (DxfBlockRecord *block_record, int scalability);
+int16_t dxf_block_record_get_insertion_units (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_insertion_units (DxfBlockRecord *block_record, int16_t insertion_units);
+int16_t dxf_block_record_get_explodability (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_explodability (DxfBlockRecord *block_record, int16_t explodability);
+int16_t dxf_block_record_get_scalability (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_scalability (DxfBlockRecord *block_record, int16_t scalability);
 DxfBinaryGraphicsData *dxf_block_record_get_binary_graphics_data (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_binary_graphics_data (DxfBlockRecord *block_record, DxfBinaryGraphicsData *data);
 char *dxf_block_record_get_dictionary_owner_soft (DxfBlockRecord *block_record);
@@ -193,10 +193,10 @@ char *dxf_block_record_get_xdata_string_data (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_xdata_string_data (DxfBlockRecord *block_record, char *xdata_string_data);
 char *dxf_block_record_get_xdata_application_name (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_xdata_application_name (DxfBlockRecord *block_record, char *xdata_application_name);
-int dxf_block_record_get_design_center_version_number (DxfBlockRecord *block_record);
-DxfBlockRecord *dxf_block_record_set_design_center_version_number (DxfBlockRecord *block_record, int design_center_version_number);
-int dxf_block_record_get_insert_units (DxfBlockRecord *block_record);
-DxfBlockRecord *dxf_block_record_set_insert_units (DxfBlockRecord *block_record, int insert_units);
+int16_t dxf_block_record_get_design_center_version_number (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_design_center_version_number (DxfBlockRecord *block_record, int16_t design_center_version_number);
+int16_t dxf_block_record_get_insert_units (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_insert_units (DxfBlockRecord *block_record, int16_t insert_units);
 DxfBlockRecord *dxf_block_record_get_next (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_next (DxfBlockRecord *block_record, DxfBlockRecord *next);
 DxfBlockRecord *dxf_block_record_get_last (DxfBlockRecord *block_record);
