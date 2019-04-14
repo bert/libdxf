@@ -1,7 +1,7 @@
 /*!
  * \file body.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF body entity (\c BODY).
@@ -270,19 +270,26 @@ dxf_body_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &body->thickness);
                 }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &body->visibility);
+                }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &body->color);
+                        fscanf (fp->fp, "%hd\n", &body->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &body->paperspace);
+                        fscanf (fp->fp, "%hd\n", &body->paperspace);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "70") == 0))
@@ -290,7 +297,14 @@ dxf_body_read
                         /* Now follows a string containing the modeler
                          * format version number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &body->modeler_format_version_number);
+                        fscanf (fp->fp, "%hd\n", &body->modeler_format_version_number);
+                }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%" PRIi32 "\n", &body->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -304,6 +318,20 @@ dxf_body_read
                                 fprintf (stderr, "Warning in dxf_body_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
                         }
+                }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &body->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &body->shadow_mode);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -323,12 +351,53 @@ dxf_body_read
                         }
                         iter330++;
                 }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", body->material);
+                }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", body->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &body->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", body->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &body->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", body->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &body->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -481,12 +550,17 @@ dxf_body_write
         }
         if (body->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", body->layer);
         if (strcmp (body->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", body->linetype);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (body->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", body->material);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
@@ -504,11 +578,40 @@ dxf_body_write
         }
         if (body->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", body->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", body->visibility);
         }
         if (body->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", body->color);
+                fprintf (fp->fp, " 62\n%hd\n", body->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", body->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", body->graphics_data_size);
+#endif
+                if (body->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) body->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", body->color_value);
+                fprintf (fp->fp, "430\n%s\n", body->color_name);
+                fprintf (fp->fp, "440\n%ld\n", body->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", body->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", body->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -516,7 +619,7 @@ dxf_body_write
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, " 70\n%d\n", body->modeler_format_version_number);
+                fprintf (fp->fp, " 70\n%hd\n", body->modeler_format_version_number);
         }
         iter = (DxfProprietaryData *) body->proprietary_data;
         additional_iter = (DxfProprietaryData *) body->additional_proprietary_data;
@@ -1162,7 +1265,7 @@ dxf_body_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_body_get_color
 (
         DxfBody *body
@@ -1201,7 +1304,7 @@ dxf_body_set_color
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1237,7 +1340,7 @@ dxf_body_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_body_get_paperspace
 (
         DxfBody *body
@@ -1282,7 +1385,7 @@ dxf_body_set_paperspace
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1325,7 +1428,7 @@ dxf_body_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_body_get_graphics_data_size
 (
         DxfBody *body
@@ -1373,7 +1476,7 @@ dxf_body_set_graphics_data_size
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2428,7 +2531,7 @@ dxf_body_set_additional_proprietary_data
  *
  * \return ID code.
  */
-int
+int16_t
 dxf_body_get_modeler_format_version_number
 (
         DxfBody *body
@@ -2468,7 +2571,7 @@ dxf_body_set_modeler_format_version_number
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        int modeler_format_version_number
+        int16_t modeler_format_version_number
                 /*!< Modeler format version number (currently = 1). */
 )
 {

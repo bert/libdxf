@@ -1,7 +1,7 @@
 /*!
  * \file body.h
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF body entity (\c BODY).
@@ -97,20 +97,20 @@ dxf_body_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -199,7 +199,7 @@ dxf_body_struct
                  * Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
                  * (optional).*/
-        int modeler_format_version_number;
+        int16_t modeler_format_version_number;
                 /*!< group code = 70\n
                  * Modeler format version number (currently = 1).\n */
         struct DxfBody *next;
@@ -228,12 +228,12 @@ double dxf_body_get_linetype_scale (DxfBody *body);
 DxfBody *dxf_body_set_linetype_scale (DxfBody *body, double linetype_scale);
 int16_t dxf_body_get_visibility (DxfBody *body);
 DxfBody *dxf_body_set_visibility (DxfBody *body, int16_t visibility);
-int dxf_body_get_color (DxfBody *body);
-DxfBody *dxf_body_set_color (DxfBody *body, int color);
-int dxf_body_get_paperspace (DxfBody *body);
-DxfBody *dxf_body_set_paperspace (DxfBody *body, int paperspace);
-int dxf_body_get_graphics_data_size (DxfBody *body);
-DxfBody *dxf_body_set_graphics_data_size (DxfBody *body, int graphics_data_size);
+int16_t dxf_body_get_color (DxfBody *body);
+DxfBody *dxf_body_set_color (DxfBody *body, int16_t color);
+int16_t dxf_body_get_paperspace (DxfBody *body);
+DxfBody *dxf_body_set_paperspace (DxfBody *body, int16_t paperspace);
+int32_t dxf_body_get_graphics_data_size (DxfBody *body);
+DxfBody *dxf_body_set_graphics_data_size (DxfBody *body, int32_t graphics_data_size);
 int16_t dxf_body_get_shadow_mode (DxfBody *body);
 DxfBody *dxf_body_set_shadow_mode (DxfBody *body, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_body_get_binary_graphics_data (DxfBody *body);
@@ -260,8 +260,8 @@ DxfProprietaryData *dxf_body_get_proprietary_data (DxfBody *body);
 DxfBody *dxf_body_set_proprietary_data (DxfBody *body, DxfProprietaryData *proprietary_data);
 DxfProprietaryData *dxf_body_get_additional_proprietary_data (DxfBody *body);
 DxfBody *dxf_body_set_additional_proprietary_data (DxfBody *body, DxfProprietaryData *additional_proprietary_data);
-int dxf_body_get_modeler_format_version_number (DxfBody *body);
-DxfBody *dxf_body_set_modeler_format_version_number (DxfBody *body, int modeler_format_version_number);
+int16_t dxf_body_get_modeler_format_version_number (DxfBody *body);
+DxfBody *dxf_body_set_modeler_format_version_number (DxfBody *body, int16_t modeler_format_version_number);
 DxfBody *dxf_body_get_next (DxfBody *body);
 DxfBody *dxf_body_set_next (DxfBody *body, DxfBody *next);
 DxfBody *dxf_body_get_last (DxfBody *body);
