@@ -2,7 +2,7 @@
  * \file block.c
  *
  * \author Copyright (C) 2008, 2009, 2010, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -264,7 +264,7 @@ dxf_block_read
                 {
                         /* Now follows a string containing the block
                          * type value. */
-                        fscanf (fp->fp, "%d\n", &block->block_type);
+                        fscanf (fp->fp, "%hd\n", &block->block_type);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -483,7 +483,7 @@ dxf_block_write
                 fprintf (fp->fp, "100\nAcDbBlockBegin\n");
         }
         fprintf (fp->fp, "  2\n%s\n", block->block_name);
-        fprintf (fp->fp, " 70\n%d\n", block->block_type);
+        fprintf (fp->fp, " 70\n%hd\n", block->block_type);
         fprintf (fp->fp, " 10\n%f\n", block->p0->x0);
         fprintf (fp->fp, " 20\n%f\n", block->p0->y0);
         fprintf (fp->fp, " 30\n%f\n", block->p0->z0);
@@ -1417,7 +1417,7 @@ dxf_block_set_z0
  *
  * \return block type.
  */
-int
+int16_t
 dxf_block_get_block_type
 (
         DxfBlock *block
@@ -1456,7 +1456,7 @@ dxf_block_set_block_type
 (
         DxfBlock *block,
                 /*!< a pointer to a DXF \c BLOCK entity. */
-        int block_type
+        int16_t block_type
                 /*!< block type for the entity.\n */
 )
 {

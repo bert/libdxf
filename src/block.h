@@ -2,7 +2,7 @@
  * \file block.h
  *
  * \author Copyright (C) 2008, 2009, 2010, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -103,7 +103,7 @@ dxf_block_struct
         DxfPoint *p0;
                 /*!< Base point.\n
                  * Group codes = 10, 20 and 30.*/
-        int block_type;
+        int16_t block_type;
                 /*!< Bit coded:\n
                  * <ol>
                  * <li value = "1"> this is an anonymous Block generated
@@ -170,8 +170,8 @@ double dxf_block_get_y0 (DxfBlock *block);
 DxfBlock *dxf_block_set_y0 (DxfBlock *block, double y0);
 double dxf_block_get_z0 (DxfBlock *block);
 DxfBlock *dxf_block_set_z0 (DxfBlock *block, double z0);
-int dxf_block_get_block_type (DxfBlock *block);
-DxfBlock *dxf_block_set_block_type (DxfBlock *block, int block_type);
+int16_t dxf_block_get_block_type (DxfBlock *block);
+DxfBlock *dxf_block_set_block_type (DxfBlock *block, int16_t block_type);
 int dxf_block_is_anonymous (DxfBlock *block);
 int dxf_block_has_attributes (DxfBlock *block);
 int dxf_block_is_xreferenced (DxfBlock *block);
