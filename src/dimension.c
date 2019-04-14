@@ -1,7 +1,7 @@
 /*!
  * \file dimension.c
  *
- * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension entity (\c DIMENSION).
@@ -546,42 +546,42 @@ dxf_dimension_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimension->color);
+                        fscanf (fp->fp, "%hd\n", &dimension->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimension->paperspace);
+                        fscanf (fp->fp, "%hd\n", &dimension->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing a flag
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimension->flag);
+                        fscanf (fp->fp, "%hd\n", &dimension->flag);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the attachment
                          * point value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimension->attachment_point);
+                        fscanf (fp->fp, "%hd\n", &dimension->attachment_point);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the text line
                          * spacing value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimension->text_line_spacing);
+                        fscanf (fp->fp, "%hd\n", &dimension->text_line_spacing);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimension->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &dimension->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -609,7 +609,7 @@ dxf_dimension_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimension->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &dimension->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
@@ -705,7 +705,7 @@ dxf_dimension_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &dimension->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &dimension->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -719,7 +719,7 @@ dxf_dimension_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &dimension->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &dimension->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -854,7 +854,7 @@ dxf_dimension_write
         }
         if (dimension->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", dimension->layer);
         if (strcmp (dimension->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -868,11 +868,11 @@ dxf_dimension_write
         }
         if (dimension->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dimension->color);
+                fprintf (fp->fp, " 62\n%hd\n", dimension->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", dimension->lineweight);
+                fprintf (fp->fp, "370\n%hd\n", dimension->lineweight);
         }
         if (dimension->linetype_scale != 1.0)
         {
@@ -880,14 +880,14 @@ dxf_dimension_write
         }
         if (dimension->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dimension->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", dimension->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", dimension->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", dimension->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", dimension->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", dimension->graphics_data_size);
 #endif
                 if (dimension->binary_graphics_data != NULL)
                 {
@@ -902,14 +902,14 @@ dxf_dimension_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", dimension->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", dimension->color_value);
                 fprintf (fp->fp, "430\n%s\n", dimension->color_name);
-                fprintf (fp->fp, "440\n%ld\n", dimension->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", dimension->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
                 fprintf (fp->fp, "390\n%s\n", dimension->plot_style_name);
-                fprintf (fp->fp, "284\n%d\n", dimension->shadow_mode);
+                fprintf (fp->fp, "284\n%hd\n", dimension->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -926,11 +926,11 @@ dxf_dimension_write
         fprintf (fp->fp, " 11\n%f\n", dimension->p1->x0);
         fprintf (fp->fp, " 21\n%f\n", dimension->p1->y0);
         fprintf (fp->fp, " 31\n%f\n", dimension->p1->z0);
-        fprintf (fp->fp, " 70\n%d\n", dimension->flag);
+        fprintf (fp->fp, " 70\n%hd\n", dimension->flag);
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 71\n%d\n", dimension->attachment_point);
-                fprintf (fp->fp, " 72\n%d\n", dimension->text_line_spacing);
+                fprintf (fp->fp, " 71\n%hd\n", dimension->attachment_point);
+                fprintf (fp->fp, " 72\n%hd\n", dimension->text_line_spacing);
                 fprintf (fp->fp, " 41\n%f\n", dimension->text_line_spacing_factor);
                 fprintf (fp->fp, " 42\n%f\n", dimension->actual_measurement);
         }
@@ -1706,7 +1706,7 @@ dxf_dimension_set_visibility
  *
  * \return \c color, or \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_dimension_get_color
 (
         DxfDimension *dimension
@@ -1748,7 +1748,7 @@ dxf_dimension_set_color
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1785,7 +1785,7 @@ dxf_dimension_set_color
  * \return \c paperspace flag value, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+int16_t
 dxf_dimension_get_paperspace
 (
         DxfDimension *dimension
@@ -1833,7 +1833,7 @@ dxf_dimension_set_paperspace
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1875,7 +1875,7 @@ dxf_dimension_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_dimension_get_graphics_data_size
 (
         DxfDimension *dimension
@@ -1923,7 +1923,7 @@ dxf_dimension_set_graphics_data_size
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2614,7 +2614,7 @@ dxf_dimension_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_dimension_get_color_value
 (
         DxfDimension *dimension
@@ -2650,7 +2650,7 @@ dxf_dimension_set_color_value
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2759,7 +2759,7 @@ dxf_dimension_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_dimension_get_transparency
 (
         DxfDimension *dimension
@@ -2795,7 +2795,7 @@ dxf_dimension_set_transparency
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
@@ -5794,7 +5794,7 @@ dxf_dimension_set_text_angle
  * \return The value of the \c flag, or \c DXF_ERROR when an error
  * occurred.
  */
-int
+int16_t
 dxf_dimension_get_flag
 (
         DxfDimension *dimension
@@ -5835,7 +5835,7 @@ dxf_dimension_set_flag
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        int flag
+        int16_t flag
                 /*!< the flag value to be set for the entity. */
 )
 {
@@ -5869,7 +5869,7 @@ dxf_dimension_set_flag
  *
  * \return The \c attachment_point, or \c DXF_ERROR when an error occurred.
  */
-int
+int16_t
 dxf_dimension_get_attachment_point
 (
         DxfDimension *dimension
@@ -5916,7 +5916,7 @@ dxf_dimension_set_attachment_point
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        int attachment_point
+        int16_t attachment_point
                 /*!< the attachment point to be set for the entity. */
 )
 {
@@ -5956,7 +5956,7 @@ dxf_dimension_set_attachment_point
  *
  * \return The \c text_line_spacing, or \c DXF_ERROR when an error occurred.
  */
-int
+int16_t
 dxf_dimension_get_text_line_spacing
 (
         DxfDimension *dimension
@@ -6003,7 +6003,7 @@ dxf_dimension_set_text_line_spacing
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        int text_line_spacing
+        int16_t text_line_spacing
                 /*!< the text line spacing to be set for the entity. */
 )
 {

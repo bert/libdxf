@@ -1,7 +1,7 @@
 /*!
  * \file dimension.h
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF dimension entity (\c DIMENSION).
@@ -96,20 +96,20 @@ dxf_dimension_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -160,7 +160,7 @@ dxf_dimension_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -180,7 +180,7 @@ dxf_dimension_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -272,7 +272,7 @@ dxf_dimension_struct
                  * the dimension text away from its default orientation
                  * (the direction of the dimension line).\n
                  * Group code = 53. */
-        int flag;
+        int16_t flag;
                 /*!< Dimension type.\n
                  * Values 0–6 are integer values that represent the
                  * dimension type.\n
@@ -298,7 +298,7 @@ dxf_dimension_struct
                  *       positioned at a user-defined location rather
                  *       than at the default location.\n
                  * Group code = 70. */
-        int attachment_point;
+        int16_t attachment_point;
                 /*!< Attachment point:\n
                  * 1 = Top left;\n
                  * 2 = Top center;\n
@@ -310,7 +310,7 @@ dxf_dimension_struct
                  * 8 = Bottom center;\n
                  * 9 = Bottom right.\n
                  * Group code = 71. */
-        int text_line_spacing;
+        int16_t text_line_spacing;
                 /*!< Dimension text line spacing style (optional):\n
                  * 1 (or missing) = At least (taller characters will
                  *   override);\n
@@ -359,12 +359,12 @@ double dxf_dimension_get_linetype_scale (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_linetype_scale (DxfDimension *dimension, double linetype_scale);
 int16_t dxf_dimension_get_visibility (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_visibility (DxfDimension *dimension, int16_t visibility);
-int dxf_dimension_get_color (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_color (DxfDimension *dimension, int color);
-int dxf_dimension_get_paperspace (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_paperspace (DxfDimension *dimension, int paperspace);
-int dxf_dimension_get_graphics_data_size (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_graphics_data_size (DxfDimension *dimension, int graphics_data_size);
+int16_t dxf_dimension_get_color (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_color (DxfDimension *dimension, int16_t color);
+int16_t dxf_dimension_get_paperspace (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_paperspace (DxfDimension *dimension, int16_t paperspace);
+int32_t dxf_dimension_get_graphics_data_size (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_graphics_data_size (DxfDimension *dimension, int32_t graphics_data_size);
 int16_t dxf_dimension_get_shadow_mode (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_shadow_mode (DxfDimension *dimension, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_dimension_get_binary_graphics_data (DxfDimension *dimension);
@@ -381,12 +381,12 @@ int16_t dxf_dimension_get_lineweight (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_lineweight (DxfDimension *dimension, int16_t lineweight);
 char *dxf_dimension_get_plot_style_name (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_plot_style_name (DxfDimension *dimension, char *plot_style_name);
-long dxf_dimension_get_color_value (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_color_value (DxfDimension *dimension, long color_value);
+int32_t dxf_dimension_get_color_value (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_color_value (DxfDimension *dimension, int32_t color_value);
 char *dxf_dimension_get_color_name (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_color_name (DxfDimension *dimension, char *color_name);
-long dxf_dimension_get_transparency (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_transparency (DxfDimension *dimension, long transparency);
+int32_t dxf_dimension_get_transparency (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_transparency (DxfDimension *dimension, int32_t transparency);
 char *dxf_dimension_get_dim_text (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_dim_text (DxfDimension *dimension, char *dim_text);
 char *dxf_dimension_get_dimblock_name (DxfDimension *dimension);
@@ -463,12 +463,12 @@ double dxf_dimension_get_obl_angle (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_obl_angle (DxfDimension *dimension, double obl_angle);
 double dxf_dimension_get_text_angle (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_text_angle (DxfDimension *dimension, double text_angle);
-int dxf_dimension_get_flag (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_flag (DxfDimension *dimension, int flag);
-int dxf_dimension_get_attachment_point (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_attachment_point (DxfDimension *dimension, int attachment_point);
-int dxf_dimension_get_text_line_spacing (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_text_line_spacing (DxfDimension *dimension, int text_line_spacing);
+int16_t dxf_dimension_get_flag (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_flag (DxfDimension *dimension, int16_t flag);
+int16_t dxf_dimension_get_attachment_point (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_attachment_point (DxfDimension *dimension, int16_t attachment_point);
+int16_t dxf_dimension_get_text_line_spacing (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_text_line_spacing (DxfDimension *dimension, int16_t text_line_spacing);
 double dxf_dimension_get_extr_x0 (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_extr_x0 (DxfDimension *dimension, double extr_x0);
 double dxf_dimension_get_extr_y0 (DxfDimension *dimension);
