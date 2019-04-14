@@ -2,7 +2,7 @@
  * \file class.h
  *
  * \author Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -82,7 +82,7 @@ dxf_class_struct
                  * Application name.\n
                  * Posted in Alert box when a class definition listed in
                  * this section is not currently loaded. */ 
-        int proxy_cap_flag;
+        int32_t proxy_cap_flag;
                 /*!< group code = 90.\n
                  * Proxy capabilities flag.\n
                  * Bit coded value that indicates the capabilities of
@@ -109,12 +109,12 @@ dxf_class_struct
                  * 1023 = All operations allowed (0x3FF),
                  *        introduced in R2002.\n
                  * 32768 = R13 format proxy (0x8000). */
-        int was_a_proxy_flag;
+        int16_t was_a_proxy_flag;
                 /*!< group code = 280.\n
                  * Was-a-proxy flag.\n
                  * Set to 1 if class was not loaded when this DXF file was
                  * created, and 0 otherwise. */
-        int is_an_entity_flag;
+        int16_t is_an_entity_flag;
                 /*!< group code = 281.\n
                  * Is-an-entity flag.\n
                  * Set to 1 if class was derived from the AcDbEntity class and
@@ -141,8 +141,8 @@ char *dxf_class_get_class_name (DxfClass *class);
 DxfClass *dxf_class_set_class_name (DxfClass *class, char *class_name);
 char *dxf_class_get_app_name (DxfClass *class);
 DxfClass *dxf_class_set_app_name (DxfClass *class, char *app_name);
-int dxf_class_get_proxy_cap_flag (DxfClass *class);
-DxfClass *dxf_class_set_proxy_cap_flag (DxfClass *class, int proxy_cap_flag);
+int32_t dxf_class_get_proxy_cap_flag (DxfClass *class);
+DxfClass *dxf_class_set_proxy_cap_flag (DxfClass *class, int32_t proxy_cap_flag);
 int dxf_class_is_editable (DxfClass *class);
 int dxf_class_erase_allowed (DxfClass *class);
 int dxf_class_transform_allowed (DxfClass *class);
@@ -155,10 +155,10 @@ int dxf_class_cloning_allowed (DxfClass *class);
 int dxf_class_lineweight_change_allowed (DxfClass *class);
 int dxf_class_plot_style_name_change_allowed (DxfClass *class);
 int dxf_class_is_R13_format_proxy (DxfClass *class);
-int dxf_class_get_was_a_proxy_flag (DxfClass *class);
-DxfClass * dxf_class_set_was_a_proxy_flag (DxfClass *class, int was_a_proxy_flag);
-int dxf_class_get_is_an_entity_flag (DxfClass *class);
-DxfClass *dxf_class_set_is_an_entity_flag (DxfClass *class, int is_an_entity_flag);
+int16_t dxf_class_get_was_a_proxy_flag (DxfClass *class);
+DxfClass * dxf_class_set_was_a_proxy_flag (DxfClass *class, int16_t was_a_proxy_flag);
+int16_t dxf_class_get_is_an_entity_flag (DxfClass *class);
+DxfClass *dxf_class_set_is_an_entity_flag (DxfClass *class, int16_t is_an_entity_flag);
 DxfClass *dxf_class_get_next (DxfClass *class);
 DxfClass *dxf_class_set_next (DxfClass *class, DxfClass *next);
 DxfClass *dxf_class_get_last (DxfClass *class);

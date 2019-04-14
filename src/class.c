@@ -2,7 +2,7 @@
  * \file class.c
  *
  * \author Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -223,21 +223,21 @@ dxf_class_read
                         /* Now follows a string containing the
                          * proxy cap flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &class->proxy_cap_flag);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &class->proxy_cap_flag);
                 }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing the
                          * was a proxy flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &class->was_a_proxy_flag);
+                        fscanf (fp->fp, "%hd\n", &class->was_a_proxy_flag);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing the
                          * is an entity flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &class->is_an_entity_flag);
+                        fscanf (fp->fp, "%hd\n", &class->is_an_entity_flag);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -372,9 +372,9 @@ dxf_class_write
         {
                 fprintf (fp->fp, "  3\n%s\n", class->app_name);
         }
-        fprintf (fp->fp, " 90\n%d\n", class->proxy_cap_flag);
-        fprintf (fp->fp, "280\n%d\n", class->was_a_proxy_flag);
-        fprintf (fp->fp, "281\n%d\n", class->is_an_entity_flag);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", class->proxy_cap_flag);
+        fprintf (fp->fp, "280\n%hd\n", class->was_a_proxy_flag);
+        fprintf (fp->fp, "281\n%hd\n", class->is_an_entity_flag);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -813,7 +813,7 @@ dxf_class_set_app_name
  *
  * \return proxy_cap_flag.
  */
-int
+int32_t
 dxf_class_get_proxy_cap_flag
 (
         DxfClass *class
@@ -856,7 +856,7 @@ dxf_class_set_proxy_cap_flag
 (
         DxfClass *class,
                 /*!< a pointer to a DXF \c CLASS entity. */
-        int proxy_cap_flag
+        int32_t proxy_cap_flag
                 /*!< Proxy capabilities flag. */
 )
 {
@@ -1322,7 +1322,7 @@ dxf_class_is_R13_format_proxy
  *
  * \return was_a_proxy_flag.
  */
-int
+int16_t
 dxf_class_get_was_a_proxy_flag
 (
         DxfClass *class
@@ -1372,7 +1372,7 @@ dxf_class_set_was_a_proxy_flag
 (
         DxfClass *class,
                 /*!< a pointer to a DXF \c CLASS entity. */
-        int was_a_proxy_flag
+        int16_t was_a_proxy_flag
                 /*!< Was-a-proxy flag. */
 )
 {
@@ -1414,7 +1414,7 @@ dxf_class_set_was_a_proxy_flag
  *
  * \return is_an_entity_flag value.
  */
-int
+int16_t
 dxf_class_get_is_an_entity_flag
 (
         DxfClass *class
@@ -1464,7 +1464,7 @@ dxf_class_set_is_an_entity_flag
 (
         DxfClass *class,
                 /*!< a pointer to a DXF \c CLASS entity. */
-        int is_an_entity_flag
+        int16_t is_an_entity_flag
                 /*!< Is-an-entity flag. */
 )
 {
