@@ -163,7 +163,7 @@ dxf_3dline_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -183,7 +183,7 @@ dxf_3dline_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -258,12 +258,12 @@ int16_t dxf_3dline_get_lineweight (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_lineweight (Dxf3dline *line, int16_t lineweight);
 char *dxf_3dline_get_plot_style_name (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_plot_style_name (Dxf3dline *line, char *plot_style_name);
-long dxf_3dline_get_color_value (Dxf3dline *line);
-Dxf3dline *dxf_3dline_set_color_value (Dxf3dline *line, long color_value);
+int32_t dxf_3dline_get_color_value (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_color_value (Dxf3dline *line, int32_t color_value);
 char *dxf_3dline_get_color_name (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_color_name (Dxf3dline *line, char *color_name);
-long dxf_3dline_get_transparency (Dxf3dline *line);
-Dxf3dline *dxf_3dline_set_transparency (Dxf3dline *line, long transparency);
+int32_t dxf_3dline_get_transparency (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_transparency (Dxf3dline *line, int32_t transparency);
 DxfPoint *dxf_3dline_get_p0 (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_p0 (Dxf3dline *line, DxfPoint *p0);
 double dxf_3dline_get_x0 (Dxf3dline *line);
