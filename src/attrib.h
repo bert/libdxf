@@ -158,7 +158,7 @@ dxf_attrib_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -178,7 +178,7 @@ dxf_attrib_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -333,12 +333,12 @@ int16_t dxf_attrib_get_lineweight (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_lineweight (DxfAttrib *attrib, int16_t lineweight);
 char *dxf_attrib_get_plot_style_name (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_plot_style_name (DxfAttrib *attrib, char *plot_style_name);
-long dxf_attrib_get_color_value (DxfAttrib *attrib);
-DxfAttrib *dxf_attrib_set_color_value (DxfAttrib *attrib, long color_value);
+int32_t dxf_attrib_get_color_value (DxfAttrib *attrib);
+DxfAttrib *dxf_attrib_set_color_value (DxfAttrib *attrib, int32_t color_value);
 char *dxf_attrib_get_color_name (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_color_name (DxfAttrib *attrib, char *color_name);
-long dxf_attrib_get_transparency (DxfAttrib *attrib);
-DxfAttrib *dxf_attrib_set_transparency (DxfAttrib *attrib, long transparency);
+int32_t dxf_attrib_get_transparency (DxfAttrib *attrib);
+DxfAttrib *dxf_attrib_set_transparency (DxfAttrib *attrib, int32_t transparency);
 char *dxf_attrib_get_default_value (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_default_value (DxfAttrib *attrib, char *default_value);
 char *dxf_attrib_get_tag_value (DxfAttrib *attrib);

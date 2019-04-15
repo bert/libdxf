@@ -543,7 +543,7 @@ dxf_attrib_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &attrib->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &attrib->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -557,7 +557,7 @@ dxf_attrib_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &attrib->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &attrib->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -794,9 +794,9 @@ dxf_attrib_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", attrib->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", attrib->color_value);
                 fprintf (fp->fp, "430\n%s\n", attrib->color_name);
-                fprintf (fp->fp, "440\n%ld\n", attrib->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", attrib->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
@@ -2388,7 +2388,7 @@ dxf_attrib_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_attrib_get_color_value
 (
         DxfAttrib *attrib
@@ -2424,7 +2424,7 @@ dxf_attrib_set_color_value
 (
         DxfAttrib *attrib,
                 /*!< a pointer to a DXF \c ATTRIB entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2533,7 +2533,7 @@ dxf_attrib_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_attrib_get_transparency
 (
         DxfAttrib *attrib
@@ -2569,7 +2569,7 @@ dxf_attrib_set_transparency
 (
         DxfAttrib *attrib,
                 /*!< a pointer to a DXF \c ATTRIB entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
