@@ -159,7 +159,7 @@ dxf_3dface_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -179,7 +179,7 @@ dxf_3dface_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -258,12 +258,12 @@ int16_t dxf_3dface_get_lineweight (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_lineweight (Dxf3dface *face, int16_t lineweight);
 char *dxf_3dface_get_plot_style_name (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_plot_style_name (Dxf3dface *face, char *plot_style_name);
-long dxf_3dface_get_color_value (Dxf3dface *face);
-Dxf3dface *dxf_3dface_set_color_value (Dxf3dface *face, long color_value);
+int32_t dxf_3dface_get_color_value (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_color_value (Dxf3dface *face, int32_t color_value);
 char *dxf_3dface_get_color_name (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_color_name (Dxf3dface *face, char *color_name);
-long dxf_3dface_get_transparency (Dxf3dface *face);
-Dxf3dface *dxf_3dface_set_transparency (Dxf3dface *face, long transparency);
+int32_t dxf_3dface_get_transparency (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_transparency (Dxf3dface *face, int32_t transparency);
 DxfPoint *dxf_3dface_get_p0 (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_p0 (Dxf3dface *face, DxfPoint *point);
 double dxf_3dface_get_x0 (Dxf3dface *face);

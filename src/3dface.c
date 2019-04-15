@@ -471,7 +471,7 @@ dxf_3dface_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &face->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &face->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -485,7 +485,7 @@ dxf_3dface_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &face->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &face->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -678,9 +678,9 @@ dxf_3dface_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", face->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", face->color_value);
                 fprintf (fp->fp, "430\n%s\n", face->color_name);
-                fprintf (fp->fp, "440\n%ld\n", face->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", face->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
@@ -2246,7 +2246,7 @@ dxf_3dface_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_3dface_get_color_value
 (
         Dxf3dface *face
@@ -2282,7 +2282,7 @@ dxf_3dface_set_color_value
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2391,7 +2391,7 @@ dxf_3dface_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_3dface_get_transparency
 (
         Dxf3dface *face
@@ -2427,7 +2427,7 @@ dxf_3dface_set_transparency
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
