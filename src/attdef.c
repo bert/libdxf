@@ -550,7 +550,7 @@ dxf_attdef_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &attdef->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &attdef->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -564,7 +564,7 @@ dxf_attdef_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &attdef->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &attdef->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -786,9 +786,9 @@ dxf_attdef_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", attdef->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", attdef->color_value);
                 fprintf (fp->fp, "430\n%s\n", attdef->color_name);
-                fprintf (fp->fp, "440\n%ld\n", attdef->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", attdef->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
@@ -2377,7 +2377,7 @@ dxf_attdef_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_attdef_get_color_value
 (
         DxfAttdef *attdef
@@ -2413,7 +2413,7 @@ dxf_attdef_set_color_value
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2522,7 +2522,7 @@ dxf_attdef_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_attdef_get_transparency
 (
         DxfAttdef *attdef
@@ -2558,7 +2558,7 @@ dxf_attdef_set_transparency
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
