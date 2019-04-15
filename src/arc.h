@@ -159,7 +159,7 @@ dxf_arc_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -179,7 +179,7 @@ dxf_arc_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -260,12 +260,12 @@ int16_t dxf_arc_get_lineweight (DxfArc *arc);
 DxfArc *dxf_arc_set_lineweight (DxfArc *arc, int16_t lineweight);
 char *dxf_arc_get_plot_style_name (DxfArc *arc);
 DxfArc *dxf_arc_set_plot_style_name (DxfArc *arc, char *plot_style_name);
-long dxf_arc_get_color_value (DxfArc *arc);
-DxfArc *dxf_arc_set_color_value (DxfArc *arc, long color_value);
+int32_t dxf_arc_get_color_value (DxfArc *arc);
+DxfArc *dxf_arc_set_color_value (DxfArc *arc, int32_t color_value);
 char *dxf_arc_get_color_name (DxfArc *arc);
 DxfArc *dxf_arc_set_color_name (DxfArc *arc, char *color_name);
-long dxf_arc_get_transparency (DxfArc *arc);
-DxfArc *dxf_arc_set_transparency (DxfArc *arc, long transparency);
+int32_t dxf_arc_get_transparency (DxfArc *arc);
+DxfArc *dxf_arc_set_transparency (DxfArc *arc, int32_t transparency);
 DxfPoint *dxf_arc_get_p0 (DxfArc *arc);
 DxfArc *dxf_arc_set_p0 (DxfArc *arc, DxfPoint *p0);
 double dxf_arc_get_x0 (DxfArc *arc);

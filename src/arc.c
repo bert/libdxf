@@ -435,7 +435,7 @@ dxf_arc_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &arc->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &arc->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -449,7 +449,7 @@ dxf_arc_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &arc->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &arc->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -698,9 +698,9 @@ dxf_arc_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", arc->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", arc->color_value);
                 fprintf (fp->fp, "430\n%s\n", arc->color_name);
-                fprintf (fp->fp, "440\n%ld\n", arc->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", arc->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
@@ -2274,7 +2274,7 @@ dxf_arc_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_arc_get_color_value
 (
         DxfArc *arc
@@ -2310,7 +2310,7 @@ dxf_arc_set_color_value
 (
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2419,7 +2419,7 @@ dxf_arc_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_arc_get_transparency
 (
         DxfArc *arc
@@ -2455,7 +2455,7 @@ dxf_arc_set_transparency
 (
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
