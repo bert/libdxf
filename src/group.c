@@ -1,7 +1,7 @@
 /*!
  * \file group.c
  *
- * \author Copyright (C) 2015, 2017, 2018
+ * \author Copyright (C) 2015, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF group object (\c GROUP).
@@ -200,14 +200,14 @@ dxf_group_read
                         /* Now follows a string containing the
                          * unnamed flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &group->unnamed_flag);
+                        fscanf (fp->fp, "%hd\n", &group->unnamed_flag);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * selectability flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &group->selectability_flag);
+                        fscanf (fp->fp, "%hd\n", &group->selectability_flag);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -782,7 +782,7 @@ dxf_group_set_dictionary_owner_hard
  *
  * \return unnamed flag.
  */
-int
+int16_t
 dxf_group_get_unnamed_flag
 (
         DxfGroup *group
@@ -827,7 +827,7 @@ dxf_group_set_unnamed_flag
 (
         DxfGroup *group,
                 /*!< a pointer to a DXF \c GROUP object. */
-        int unnamed_flag
+        int16_t unnamed_flag
                 /*!< the unnamed flag value to be set for the entity. */
 )
 {
@@ -861,7 +861,7 @@ dxf_group_set_unnamed_flag
  *
  * \return selectability flag.
  */
-int
+int16_t
 dxf_group_get_selectability_flag
 (
         DxfGroup *group
@@ -906,7 +906,7 @@ dxf_group_set_selectability_flag
 (
         DxfGroup *group,
                 /*!< a pointer to a DXF \c GROUP object. */
-        int selectability_flag
+        int16_t selectability_flag
                 /*!< the selectability flag value to be set for the entity. */
 )
 {

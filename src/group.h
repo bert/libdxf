@@ -1,7 +1,7 @@
 /*!
  * \file group.h
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF group object (\c GROUP).
@@ -78,7 +78,7 @@ dxf_group_struct
                  * Group code = 360.\n
                  * \since Introduced in version R14. */
         /* Specific members for a DXF group. */
-        int unnamed_flag;
+        int16_t unnamed_flag;
                 /*!< "Unnamed" flag.\n
                  * <ol>
                  * <li value = "0"> named.</li>
@@ -86,7 +86,7 @@ dxf_group_struct
                  * </ol>
                  * Group code = 70.
                  */
-        int selectability_flag;
+        int16_t selectability_flag;
                 /*!< Selectability flag.\n
                  * <ol>
                  * <li value = "0"> not selectable.</li>
@@ -119,10 +119,10 @@ char *dxf_group_get_object_owner_soft (DxfGroup *group);
 DxfGroup *dxf_group_set_object_owner_soft (DxfGroup *group, char *object_owner_soft);
 char *dxf_group_get_dictionary_owner_hard (DxfGroup *group);
 DxfGroup *dxf_group_set_dictionary_owner_hard (DxfGroup *group, char *dictionary_owner_hard);
-int dxf_group_get_unnamed_flag (DxfGroup *group);
-DxfGroup *dxf_group_set_unnamed_flag (DxfGroup *group, int unnamed_flag);
-int dxf_group_get_selectability_flag (DxfGroup *group);
-DxfGroup *dxf_group_set_selectability_flag (DxfGroup *group, int selectability_flag);
+int16_t dxf_group_get_unnamed_flag (DxfGroup *group);
+DxfGroup *dxf_group_set_unnamed_flag (DxfGroup *group, int16_t unnamed_flag);
+int16_t dxf_group_get_selectability_flag (DxfGroup *group);
+DxfGroup *dxf_group_set_selectability_flag (DxfGroup *group, int16_t selectability_flag);
 char *dxf_group_get_description (DxfGroup *group);
 DxfGroup *dxf_group_set_description (DxfGroup *group, char *description);
 char *dxf_group_get_handle_entity_in_group (DxfGroup *group);
