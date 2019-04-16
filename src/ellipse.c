@@ -2,7 +2,7 @@
  * \file ellipse.c
  *
  * \author Copyright (C) 2008, 2010, 2011, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -342,21 +342,21 @@ dxf_ellipse_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &ellipse->color);
+                        fscanf (fp->fp, "%hd\n", &ellipse->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &ellipse->paperspace);
+                        fscanf (fp->fp, "%hd\n", &ellipse->paperspace);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &ellipse->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &ellipse->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -381,7 +381,7 @@ dxf_ellipse_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &ellipse->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &ellipse->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
@@ -470,7 +470,7 @@ dxf_ellipse_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &ellipse->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &ellipse->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -484,7 +484,7 @@ dxf_ellipse_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &ellipse->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &ellipse->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -654,7 +654,7 @@ dxf_ellipse_write
         }
         if (ellipse->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", ellipse->layer);
         if (strcmp (ellipse->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -674,7 +674,7 @@ dxf_ellipse_write
         }
         if (ellipse->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", ellipse->color);
+                fprintf (fp->fp, " 62\n%hd\n", ellipse->color);
         }
         if (ellipse->linetype_scale != 1.0)
         {
@@ -682,14 +682,14 @@ dxf_ellipse_write
         }
         if (ellipse->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", ellipse->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", ellipse->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", ellipse->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", ellipse->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", ellipse->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", ellipse->graphics_data_size);
 #endif
                 if (ellipse->binary_graphics_data != NULL)
                 {
@@ -704,14 +704,14 @@ dxf_ellipse_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", ellipse->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", ellipse->color_value);
                 fprintf (fp->fp, "430\n%s\n", ellipse->color_name);
-                fprintf (fp->fp, "440\n%ld\n", ellipse->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", ellipse->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
                 fprintf (fp->fp, "390\n%s\n", ellipse->plot_style_name);
-                fprintf (fp->fp, "284\n%d\n", ellipse->shadow_mode);
+                fprintf (fp->fp, "284\n%hd\n", ellipse->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -1347,7 +1347,7 @@ dxf_ellipse_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_ellipse_get_color
 (
         DxfEllipse *ellipse
@@ -1386,7 +1386,7 @@ dxf_ellipse_set_color
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1422,7 +1422,7 @@ dxf_ellipse_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_ellipse_get_paperspace
 (
         DxfEllipse *ellipse
@@ -1467,7 +1467,7 @@ dxf_ellipse_set_paperspace
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1509,7 +1509,7 @@ dxf_ellipse_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_ellipse_get_graphics_data_size
 (
         DxfEllipse *ellipse
@@ -1558,7 +1558,7 @@ dxf_ellipse_set_graphics_data_size
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2236,7 +2236,7 @@ dxf_ellipse_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_ellipse_get_color_value
 (
         DxfEllipse *ellipse
@@ -2272,7 +2272,7 @@ dxf_ellipse_set_color_value
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2381,7 +2381,7 @@ dxf_ellipse_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_ellipse_get_transparency
 (
         DxfEllipse *ellipse
@@ -2417,7 +2417,7 @@ dxf_ellipse_set_transparency
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {

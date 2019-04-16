@@ -2,7 +2,7 @@
  * \file ellipse.h
  *
  * \author Copyright (C) 2008, 2010, 2011, 2012, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ellipse entity (\c ELLIPSE).
  *
@@ -97,20 +97,20 @@ dxf_ellipse_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -161,7 +161,7 @@ dxf_ellipse_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -181,7 +181,7 @@ dxf_ellipse_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -263,12 +263,12 @@ double dxf_ellipse_get_linetype_scale (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_linetype_scale (DxfEllipse *ellipse, double linetype_scale);
 int16_t dxf_ellipse_get_visibility (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_visibility (DxfEllipse *ellipse, int16_t visibility);
-int dxf_ellipse_get_color (DxfEllipse *ellipse);
-DxfEllipse *dxf_ellipse_set_color (DxfEllipse *ellipse, int color);
-int dxf_ellipse_get_paperspace (DxfEllipse *ellipse);
-DxfEllipse *dxf_ellipse_set_paperspace (DxfEllipse *ellipse, int paperspace);
-int dxf_ellipse_get_graphics_data_size (DxfEllipse *ellipse);
-DxfEllipse *dxf_ellipse_set_graphics_data_size (DxfEllipse *ellipse, int graphics_data_size);
+int16_t dxf_ellipse_get_color (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_color (DxfEllipse *ellipse, int16_t color);
+int16_t dxf_ellipse_get_paperspace (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_paperspace (DxfEllipse *ellipse, int16_t paperspace);
+int32_t dxf_ellipse_get_graphics_data_size (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_graphics_data_size (DxfEllipse *ellipse, int32_t graphics_data_size);
 int16_t dxf_ellipse_get_shadow_mode (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_shadow_mode (DxfEllipse *ellipse, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_ellipse_get_binary_graphics_data (DxfEllipse *ellipse);
@@ -285,12 +285,12 @@ int16_t dxf_ellipse_get_lineweight (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_lineweight (DxfEllipse *ellipse, int16_t lineweight);
 char *dxf_ellipse_get_plot_style_name (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_plot_style_name (DxfEllipse *ellipse, char *plot_style_name);
-long dxf_ellipse_get_color_value (DxfEllipse *ellipse);
-DxfEllipse *dxf_ellipse_set_color_value (DxfEllipse *ellipse, long color_value);
+int32_t dxf_ellipse_get_color_value (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_color_value (DxfEllipse *ellipse, int32_t color_value);
 char *dxf_ellipse_get_color_name (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_color_name (DxfEllipse *ellipse, char *color_name);
-long dxf_ellipse_get_transparency (DxfEllipse *ellipse);
-DxfEllipse *dxf_ellipse_set_transparency (DxfEllipse *ellipse, long transparency);
+int32_t dxf_ellipse_get_transparency (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_transparency (DxfEllipse *ellipse, int32_t transparency);
 DxfPoint *dxf_ellipse_get_p0 (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_p0 (DxfEllipse *ellipse, DxfPoint *p0);
 double dxf_ellipse_get_x0 (DxfEllipse *ellipse);
