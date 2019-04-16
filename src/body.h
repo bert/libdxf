@@ -161,7 +161,7 @@ dxf_body_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -181,7 +181,7 @@ dxf_body_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -250,12 +250,12 @@ int16_t dxf_body_get_lineweight (DxfBody *body);
 DxfBody *dxf_body_set_lineweight (DxfBody *body, int16_t lineweight);
 char *dxf_body_get_plot_style_name (DxfBody *body);
 DxfBody *dxf_body_set_plot_style_name (DxfBody *body, char *plot_style_name);
-long dxf_body_get_color_value (DxfBody *body);
-DxfBody *dxf_body_set_color_value (DxfBody *body, long color_value);
+int32_t dxf_body_get_color_value (DxfBody *body);
+DxfBody *dxf_body_set_color_value (DxfBody *body, int32_t color_value);
 char *dxf_body_get_color_name (DxfBody *body);
 DxfBody *dxf_body_set_color_name (DxfBody *body, char *color_name);
-long dxf_body_get_transparency (DxfBody *body);
-DxfBody *dxf_body_set_transparency (DxfBody *body, long transparency);
+int32_t dxf_body_get_transparency (DxfBody *body);
+DxfBody *dxf_body_set_transparency (DxfBody *body, int32_t transparency);
 DxfProprietaryData *dxf_body_get_proprietary_data (DxfBody *body);
 DxfBody *dxf_body_set_proprietary_data (DxfBody *body, DxfProprietaryData *proprietary_data);
 DxfProprietaryData *dxf_body_get_additional_proprietary_data (DxfBody *body);

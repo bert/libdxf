@@ -383,7 +383,7 @@ dxf_body_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &body->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &body->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -397,7 +397,7 @@ dxf_body_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &body->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &body->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -604,9 +604,9 @@ dxf_body_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", body->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", body->color_value);
                 fprintf (fp->fp, "430\n%s\n", body->color_name);
-                fprintf (fp->fp, "440\n%ld\n", body->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", body->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
@@ -2164,7 +2164,7 @@ dxf_body_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_body_get_color_value
 (
         DxfBody *body
@@ -2200,7 +2200,7 @@ dxf_body_set_color_value
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2309,7 +2309,7 @@ dxf_body_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_body_get_transparency
 (
         DxfBody *body
@@ -2345,7 +2345,7 @@ dxf_body_set_transparency
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
