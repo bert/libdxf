@@ -1,7 +1,7 @@
 /*!
  * \file dxf.h
  *
- * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief List of all libDXF header files for convenient inclusion.
