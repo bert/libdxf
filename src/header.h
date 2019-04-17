@@ -1244,82 +1244,18 @@ dxf_header_struct
 } DxfHeader;
 
 
-int
-dxf_header_acad_version_from_string
-(
-        const char * version_string
-);
-char *
-dxf_header_acad_version_to_string
-(
-        int version_number
-);
-DxfHeader *
-dxf_header_new ();
-DxfHeader *
-dxf_header_init
-(
-        DxfHeader *header,
-        int acad_version_number
-);
-DxfHeader *
-dxf_header_read
-(
-        DxfFile *fp,
-        DxfHeader *header
-);
-int
-dxf_header_read_parse_int
-(
-        DxfFile *fp,
-        const char *temp_string,
-        const char *header_var,
-        int *value,
-        int version_expression
-);
-int
-dxf_header_read_parse_n_double
-(
-        DxfFile *fp,
-        const char *temp_string,
-        const char *header_var,
-        int version_expression,
-        int quant,
-        ...
-);
-int
-dxf_header_read_parse_string
-(
-        DxfFile *fp,
-        const char *temp_string,
-        const char *header_var,
-        char **value_string,
-        int version_expression
-);
-int
-dxf_header_read_parser
-(
-        DxfFile *fp,
-        DxfHeader *header,
-        char * temp_string,
-        int acad_version_number
-);
-int
-dxf_header_write
-(
-        DxfFile *fp,
-        DxfHeader *header
-);
-int
-dxf_header_write_metric_new
-(
-        DxfFile *fp
-);
-DxfHeader *
-dxf_header_free
-(
-        DxfHeader *header
-);
+int dxf_header_acad_version_from_string (const char * version_string);
+char *dxf_header_acad_version_to_string (int version_number);
+DxfHeader *dxf_header_new ();
+DxfHeader *dxf_header_init (DxfHeader *header, int acad_version_number);
+DxfHeader *dxf_header_read (DxfFile *fp, DxfHeader *header);
+int dxf_header_read_parse_int (DxfFile *fp, const char *temp_string, const char *header_var, int *value, int version_expression);
+int dxf_header_read_parse_n_double (DxfFile *fp,const char *temp_string, const char *header_var, int version_expression, int quant, ... );
+int dxf_header_read_parse_string (DxfFile *fp, const char *temp_string, const char *header_var, char **value_string, int version_expression);
+int dxf_header_read_parser (DxfFile *fp, DxfHeader *header, char * temp_string, int acad_version_number);
+int dxf_header_write (DxfFile *fp, DxfHeader *header);
+int dxf_header_write_metric_new (DxfFile *fp);
+DxfHeader *dxf_header_free (DxfHeader *header);
 
 
 #ifdef __cplusplus
