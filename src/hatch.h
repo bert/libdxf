@@ -1,7 +1,7 @@
 /*!
  * \file hatch.h
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
@@ -82,7 +82,7 @@ dxf_hatch_boundary_path_edge_arc_struct
                 /*!< group code = 50. */
         double end_angle;
                 /*!< group code = 51. */
-        int is_ccw;
+        int16_t is_ccw;
                 /*!< Arc is counterclockwise flag.\n
                  * Group code = 73. */
         struct DxfHatchBoundaryPathEdgeArc *next;
@@ -123,7 +123,7 @@ dxf_hatch_boundary_path_edge_ellipse_struct
                 /*!< Group code = 50. */
         double end_angle;
                 /*!< Group code = 51. */
-        int is_ccw;
+        int16_t is_ccw;
                 /*!< Ellipse is counterclockwise flag.\n
                  * Group code = 73. */
         struct DxfHatchBoundaryPathEdgeEllipse *next;
@@ -196,20 +196,20 @@ dxf_hatch_boundary_path_edge_spline_struct
 {
         int id_code;
                 /*!< group code = 5. */
-        int degree;
+        int32_t degree;
                 /*!< group code = 94. */
-        int rational;
+        int16_t rational;
                 /*!< group code = 73. */
-        int periodic;
+        int16_t periodic;
                 /*!< group code = 74. */
-        int number_of_knots;
+        int32_t number_of_knots;
                 /*!< Number of knots.\n
                  * Group code = 95. */
         double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS];
                 /*!< Knot values control the shape of the curve as it
                  * passes through the control points.\n
                  * Group code = 40. */
-        int number_of_control_points;
+        int32_t number_of_control_points;
                 /*!< Number of control points.\n
                  * Group code = 96. */
         struct DxfHatchBoundaryPathEdgeSplineCp *control_points;
@@ -271,7 +271,7 @@ dxf_hatch_boundary_path_polyline_vertex_struct
         double bulge;
                 /*!< Optional, default = 0.\n
                  * Group code = 42. */
-        int has_bulge;
+        int16_t has_bulge;
                 /*!< The segment formed by previous vertex and current
                  * vertex has a bulge is set.\n
                  * The first vertex of a polyline has no bulge by
@@ -291,9 +291,9 @@ dxf_hatch_boundary_path_polyline_struct
 {
         int id_code;
                 /*!< Group code = 5. */
-        int is_closed;
+        int16_t is_closed;
                 /*!< Group code = 73. */
-        int number_of_vertices;
+        int32_t number_of_vertices;
                 /*!< Number of polyline vertices in
                  * DxfHatchBoundaryPathPolyline.\n
                  * Group code = 93. */
@@ -373,7 +373,7 @@ dxf_hatch_pattern_def_line_struct
         double y1;
                 /*!< Hatch pattern line offset point Y-value.\n
                  * Group code = 46. */
-        int number_of_dash_items;
+        int16_t number_of_dash_items;
                 /*!< Number of hatch pattern definition line dash items.\n
                  * Group code = 79. */
         struct DxfHatchPatternDefLineDash *dashes;
@@ -413,12 +413,12 @@ dxf_hatch_pattern_struct
 {
         int id_code;
                 /*!< group code = 5. */
-        int number_of_def_lines;
+        int16_t number_of_def_lines;
                 /*!< Number of hatch pattern definition lines.\n
                  * Group code = 78. */
         struct DxfHatchPatternDefLine *def_lines;
                 /*!< Pointer to the first \c DxfHatchPatterDefLine. */
-        int number_of_seed_points;
+        int32_t number_of_seed_points;
                 /*!< Number of seed points.\n
                  * Group code = 98. */
         struct DxfHatchPatternSeedPoint *seed_points;
@@ -468,20 +468,20 @@ dxf_hatch_struct
                  * <li value = "1"> Invisible</li>
                  * </ol>
                  * Group code = 60. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -532,7 +532,7 @@ dxf_hatch_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -552,7 +552,7 @@ dxf_hatch_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -574,36 +574,36 @@ dxf_hatch_struct
         double pattern_angle;
                 /*!< Pattern fill only.\n
                  * Group code 52. */
-        int solid_fill;
+        int16_t solid_fill;
                 /*!< 0 = pattern fill\n
                  * 1 = solid fill.\n
                  * Group code = 70. */
-        int associative;
+        int16_t associative;
                 /*!< 0 = non-associative\n
                  * 1 = associative.\n
                  * Group code = 71. */
-        int hatch_style;
+        int16_t hatch_style;
                 /*!< 0 = hatch "odd parity" area (Normal style)\n
                  * 1 = hatch outermost area only (Outer style)\n
                  * 2 = hatch through entire area (Ignore style).\n
                  * Group code = 75. */
-        int hatch_pattern_type;
+        int16_t hatch_pattern_type;
                 /*!< 0 = user defined\n
                  * 1 = predefined\n
                  * 2 = custom.\n
                  * Group code = 76. */
-        int pattern_double;
+        int16_t pattern_double;
                 /*!< Pattern fill only\n
                  * 0 = not double\n
                  * 1 = double.\n
                  * Group code = 77. */
-        int number_of_pattern_def_lines;
+        int16_t number_of_pattern_def_lines;
                 /*!< Number of pattern definition lines.\n
                  * Group code = 78. */
-        int number_of_boundary_paths;
+        int32_t number_of_boundary_paths;
                 /*!< Number of boundary paths (loops).\n
                  * Group code = 91. */
-        int number_of_seed_points;
+        int32_t number_of_seed_points;
                 /*!< Number of seed points.\n
                  * Group code = 98. */
         double extr_x0;
@@ -658,12 +658,12 @@ double dxf_hatch_get_linetype_scale (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_linetype_scale (DxfHatch *hatch, double linetype_scale);
 int16_t dxf_hatch_get_visibility (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_visibility (DxfHatch *hatch, int16_t visibility);
-int dxf_hatch_get_color (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_color (DxfHatch *hatch, int color);
-int dxf_hatch_get_paperspace (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_paperspace (DxfHatch *hatch, int paperspace);
-int dxf_hatch_get_graphics_data_size (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_graphics_data_size (DxfHatch *hatch, int graphics_data_size);
+int16_t dxf_hatch_get_color (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_color (DxfHatch *hatch, int16_t color);
+int16_t dxf_hatch_get_paperspace (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_paperspace (DxfHatch *hatch, int16_t paperspace);
+int32_t dxf_hatch_get_graphics_data_size (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_graphics_data_size (DxfHatch *hatch, int32_t graphics_data_size);
 DxfBinaryGraphicsData *dxf_hatch_get_binary_graphics_data (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_binary_graphics_data (DxfHatch *hatch, DxfBinaryGraphicsData *data);
 char *dxf_hatch_get_dictionary_owner_soft (DxfHatch *hatch);
@@ -678,12 +678,12 @@ int16_t dxf_hatch_get_lineweight (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_lineweight (DxfHatch *hatch, int16_t lineweight);
 char *dxf_hatch_get_plot_style_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_plot_style_name (DxfHatch *hatch, char *plot_style_name);
-long dxf_hatch_get_color_value (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_color_value (DxfHatch *hatch, long color_value);
+int32_t dxf_hatch_get_color_value (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_color_value (DxfHatch *hatch, int32_t color_value);
 char *dxf_hatch_get_color_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_color_name (DxfHatch *hatch, char *color_name);
-long dxf_hatch_get_transparency (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_transparency (DxfHatch *hatch, long transparency);
+int32_t dxf_hatch_get_transparency (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_transparency (DxfHatch *hatch, int32_t transparency);
 char *dxf_hatch_get_pattern_name (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_pattern_name (DxfHatch *hatch, char *pattern_name);
 DxfPoint *dxf_hatch_get_p0 (DxfHatch *hatch);
@@ -700,16 +700,16 @@ double dxf_hatch_get_pixel_size (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_pixel_size (DxfHatch *hatch, double pattern_scale);
 double dxf_hatch_get_pattern_angle (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_pattern_angle (DxfHatch *hatch, double pattern_angle);
-int dxf_hatch_get_solid_fill (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_solid_fill (DxfHatch *hatch, int solid_fill);
-int dxf_hatch_get_associative (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_associative (DxfHatch *hatch, int associative);
-int dxf_hatch_get_hatch_style (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_hatch_style (DxfHatch *hatch, int hatch_style);
-int dxf_hatch_get_hatch_pattern_type (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_hatch_pattern_type (DxfHatch *hatch, int hatch_pattern_type);
-int dxf_hatch_get_pattern_double (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_pattern_double (DxfHatch *hatch, int pattern_double);
+int16_t dxf_hatch_get_solid_fill (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_solid_fill (DxfHatch *hatch, int16_t solid_fill);
+int16_t dxf_hatch_get_associative (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_associative (DxfHatch *hatch, int16_t associative);
+int16_t dxf_hatch_get_hatch_style (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_hatch_style (DxfHatch *hatch, int16_t hatch_style);
+int16_t dxf_hatch_get_hatch_pattern_type (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_hatch_pattern_type (DxfHatch *hatch, int16_t hatch_pattern_type);
+int16_t dxf_hatch_get_pattern_double (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_pattern_double (DxfHatch *hatch, int16_t pattern_double);
 double dxf_hatch_get_extr_x0 (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_extr_x0 (DxfHatch *hatch, double extr_x0);
 double dxf_hatch_get_extr_y0 (DxfHatch *hatch);
@@ -730,12 +730,12 @@ int dxf_hatch_pattern_free (DxfHatchPattern *pattern);
 void dxf_hatch_pattern_free_list (DxfHatchPattern *patterns);
 int dxf_hatch_pattern_get_id_code (DxfHatchPattern *pattern);
 DxfHatchPattern *dxf_hatch_pattern_set_id_code (DxfHatchPattern *pattern, int id_code);
-int dxf_hatch_pattern_get_number_of_def_lines (DxfHatchPattern *pattern);
-DxfHatchPattern *dxf_hatch_pattern_set_number_of_def_lines (DxfHatchPattern *pattern, int number_of_def_lines);
+int16_t dxf_hatch_pattern_get_number_of_def_lines (DxfHatchPattern *pattern);
+DxfHatchPattern *dxf_hatch_pattern_set_number_of_def_lines (DxfHatchPattern *pattern, int16_t number_of_def_lines);
 DxfHatchPatternDefLine *dxf_hatch_pattern_get_def_lines (DxfHatchPattern *pattern);
 DxfHatchPattern *dxf_hatch_pattern_set_def_lines (DxfHatchPattern *pattern, DxfHatchPatternDefLine *def_lines);
-int dxf_hatch_pattern_get_number_of_seed_points (DxfHatchPattern *pattern);
-DxfHatchPattern *dxf_hatch_pattern_set_number_of_seed_points (DxfHatchPattern *pattern, int number_of_seed_points);
+int32_t dxf_hatch_pattern_get_number_of_seed_points (DxfHatchPattern *pattern);
+DxfHatchPattern *dxf_hatch_pattern_set_number_of_seed_points (DxfHatchPattern *pattern, int32_t number_of_seed_points);
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_get_seed_points (DxfHatchPattern *pattern);
 DxfHatchPattern *dxf_hatch_pattern_set_seed_points (DxfHatchPattern *pattern, DxfHatchPatternSeedPoint *seed_points);
 DxfHatchPattern *dxf_hatch_pattern_get_next (DxfHatchPattern *pattern);
@@ -769,8 +769,8 @@ double dxf_hatch_pattern_def_line_get_x1 (DxfHatchPatternDefLine *line);
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_x1 (DxfHatchPatternDefLine *line, double x1);
 double dxf_hatch_pattern_def_line_get_y1 (DxfHatchPatternDefLine *line);
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_y1 (DxfHatchPatternDefLine *line, double y1);
-int dxf_hatch_pattern_def_line_get_number_of_dash_items (DxfHatchPatternDefLine *line);
-DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_number_of_dash_items (DxfHatchPatternDefLine *line, int number_of_dash_items);
+int16_t dxf_hatch_pattern_def_line_get_number_of_dash_items (DxfHatchPatternDefLine *line);
+DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_number_of_dash_items (DxfHatchPatternDefLine *line, int16_t number_of_dash_items);
 DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_get_dashes (DxfHatchPatternDefLine *line);
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_dashes (DxfHatchPatternDefLine *line, DxfHatchPatternDefLineDash *dashes);
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_get_next (DxfHatchPatternDefLine *line);
@@ -814,10 +814,10 @@ int dxf_hatch_boundary_path_polyline_free (DxfHatchBoundaryPathPolyline *polylin
 void dxf_hatch_boundary_path_polyline_free_list (DxfHatchBoundaryPathPolyline *polylines);
 int dxf_hatch_boundary_path_polyline_get_id_code (DxfHatchBoundaryPathPolyline *polyline);
 DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_id_code (DxfHatchBoundaryPathPolyline *polyline, int id_code);
-int dxf_hatch_boundary_path_polyline_get_is_closed (DxfHatchBoundaryPathPolyline *polyline);
-DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_is_closed (DxfHatchBoundaryPathPolyline *polyline, int is_closed);
-int dxf_hatch_boundary_path_polyline_get_number_of_vertices (DxfHatchBoundaryPathPolyline *polyline);
-DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_number_of_vertices (DxfHatchBoundaryPathPolyline *polyline, int number_of_vertices);
+int16_t dxf_hatch_boundary_path_polyline_get_is_closed (DxfHatchBoundaryPathPolyline *polyline);
+DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_is_closed (DxfHatchBoundaryPathPolyline *polyline, int16_t is_closed);
+int32_t dxf_hatch_boundary_path_polyline_get_number_of_vertices (DxfHatchBoundaryPathPolyline *polyline);
+DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_number_of_vertices (DxfHatchBoundaryPathPolyline *polyline, int32_t number_of_vertices);
 DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_get_vertices (DxfHatchBoundaryPathPolyline *polyline);
 DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_vertices (DxfHatchBoundaryPathPolyline *polyline, DxfHatchBoundaryPathPolylineVertex *vertices);
 int dxf_hatch_boundary_path_polyline_close_polyline (DxfHatchBoundaryPathPolyline *polyline);
@@ -839,8 +839,8 @@ double dxf_hatch_boundary_path_polyline_vertex_get_y0 (DxfHatchBoundaryPathPolyl
 DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_set_y0 (DxfHatchBoundaryPathPolylineVertex *vertex, double y0);
 double dxf_hatch_boundary_path_polyline_vertex_get_bulge (DxfHatchBoundaryPathPolylineVertex *vertex);
 DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_set_bulge (DxfHatchBoundaryPathPolylineVertex *vertex, double bulge);
-int dxf_hatch_boundary_path_polyline_vertex_get_has_bulge (DxfHatchBoundaryPathPolylineVertex *vertex);
-DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_set_has_bulge (DxfHatchBoundaryPathPolylineVertex *vertex, int has_bulge);
+int16_t dxf_hatch_boundary_path_polyline_vertex_get_has_bulge (DxfHatchBoundaryPathPolylineVertex *vertex);
+DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_set_has_bulge (DxfHatchBoundaryPathPolylineVertex *vertex, int16_t has_bulge);
 double dxf_hatch_boundary_path_polyline_vertex_angle (DxfHatchBoundaryPathPolylineVertex *vertex_0, DxfHatchBoundaryPathPolylineVertex *vertex_1);
 DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_get_next (DxfHatchBoundaryPathPolylineVertex *vertex);
 DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_set_next (DxfHatchBoundaryPathPolylineVertex *vertex, DxfHatchBoundaryPathPolylineVertex *next);
@@ -882,8 +882,8 @@ double dxf_hatch_boundary_path_edge_arc_get_start_angle (DxfHatchBoundaryPathEdg
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_set_start_angle (DxfHatchBoundaryPathEdgeArc *arc, double start_angle);
 double dxf_hatch_boundary_path_edge_arc_get_end_angle (DxfHatchBoundaryPathEdgeArc *arc);
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_set_end_angle (DxfHatchBoundaryPathEdgeArc *arc, double end_angle);
-int dxf_hatch_boundary_path_edge_arc_get_is_ccw (DxfHatchBoundaryPathEdgeArc *arc);
-DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_set_is_ccw (DxfHatchBoundaryPathEdgeArc *arc, int is_ccw);
+int16_t dxf_hatch_boundary_path_edge_arc_get_is_ccw (DxfHatchBoundaryPathEdgeArc *arc);
+DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_set_is_ccw (DxfHatchBoundaryPathEdgeArc *arc, int16_t is_ccw);
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_get_next (DxfHatchBoundaryPathEdgeArc *arc);
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_set_next (DxfHatchBoundaryPathEdgeArc *arc, DxfHatchBoundaryPathEdgeArc *next);
 DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc_get_last (DxfHatchBoundaryPathEdgeArc *arc);
@@ -912,8 +912,8 @@ double dxf_hatch_boundary_path_edge_ellipse_get_start_angle (DxfHatchBoundaryPat
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_set_start_angle (DxfHatchBoundaryPathEdgeEllipse *ellipse, double start_angle);
 double dxf_hatch_boundary_path_edge_ellipse_get_end_angle (DxfHatchBoundaryPathEdgeEllipse *ellipse);
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_set_end_angle (DxfHatchBoundaryPathEdgeEllipse *ellipse, double end_angle);
-int dxf_hatch_boundary_path_edge_ellipse_get_is_ccw (DxfHatchBoundaryPathEdgeEllipse *ellipse);
-DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_set_is_ccw (DxfHatchBoundaryPathEdgeEllipse *ellipse, int is_ccw);
+int16_t dxf_hatch_boundary_path_edge_ellipse_get_is_ccw (DxfHatchBoundaryPathEdgeEllipse *ellipse);
+DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_set_is_ccw (DxfHatchBoundaryPathEdgeEllipse *ellipse, int16_t is_ccw);
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_get_next (DxfHatchBoundaryPathEdgeEllipse *ellipse);
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_set_next (DxfHatchBoundaryPathEdgeEllipse *ellipse, DxfHatchBoundaryPathEdgeEllipse *next);
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_get_last (DxfHatchBoundaryPathEdgeEllipse *ellipse);
@@ -946,18 +946,18 @@ int dxf_hatch_boundary_path_edge_spline_free (DxfHatchBoundaryPathEdgeSpline *sp
 void dxf_hatch_boundary_path_edge_spline_free_list (DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines);
 int dxf_hatch_boundary_path_edge_spline_get_id_code (DxfHatchBoundaryPathEdgeSpline *spline);
 DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_id_code (DxfHatchBoundaryPathEdgeSpline *spline, int id_code);
-int dxf_hatch_boundary_path_edge_spline_get_degree (DxfHatchBoundaryPathEdgeSpline *spline);
-DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_degree (DxfHatchBoundaryPathEdgeSpline *spline, int degree);
-int dxf_hatch_boundary_path_edge_spline_get_rational (DxfHatchBoundaryPathEdgeSpline *spline);
-DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_rational (DxfHatchBoundaryPathEdgeSpline *spline, int rational);
-int dxf_hatch_boundary_path_edge_spline_get_periodic (DxfHatchBoundaryPathEdgeSpline *spline);
-DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_periodic (DxfHatchBoundaryPathEdgeSpline *spline, int periodic);
-int dxf_hatch_boundary_path_edge_spline_get_number_of_knots (DxfHatchBoundaryPathEdgeSpline *spline);
-DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_number_of_knots (DxfHatchBoundaryPathEdgeSpline *spline, int number_of_knots);
+int32_t dxf_hatch_boundary_path_edge_spline_get_degree (DxfHatchBoundaryPathEdgeSpline *spline);
+DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_degree (DxfHatchBoundaryPathEdgeSpline *spline, int32_t degree);
+int16_t dxf_hatch_boundary_path_edge_spline_get_rational (DxfHatchBoundaryPathEdgeSpline *spline);
+DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_rational (DxfHatchBoundaryPathEdgeSpline *spline, int16_t rational);
+int16_t dxf_hatch_boundary_path_edge_spline_get_periodic (DxfHatchBoundaryPathEdgeSpline *spline);
+DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_periodic (DxfHatchBoundaryPathEdgeSpline *spline, int16_t periodic);
+int32_t dxf_hatch_boundary_path_edge_spline_get_number_of_knots (DxfHatchBoundaryPathEdgeSpline *spline);
+DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_number_of_knots (DxfHatchBoundaryPathEdgeSpline *spline, int32_t number_of_knots);
 int dxf_hatch_boundary_path_edge_spline_get_knots (DxfHatchBoundaryPathEdgeSpline *spline, double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]);
 DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_knots (DxfHatchBoundaryPathEdgeSpline *spline, double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]);
-int dxf_hatch_boundary_path_edge_spline_get_number_of_control_points (DxfHatchBoundaryPathEdgeSpline *spline);
-DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_number_of_control_points (DxfHatchBoundaryPathEdgeSpline *spline, int number_of_control_points);
+int32_t dxf_hatch_boundary_path_edge_spline_get_number_of_control_points (DxfHatchBoundaryPathEdgeSpline *spline);
+DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_number_of_control_points (DxfHatchBoundaryPathEdgeSpline *spline, int32_t number_of_control_points);
 DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_get_control_points (DxfHatchBoundaryPathEdgeSpline *spline);
 DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_set_control_points (DxfHatchBoundaryPathEdgeSpline *spline, DxfHatchBoundaryPathEdgeSplineCp *control_points);
 int dxf_hatch_boundary_path_edge_spline_append_control_point (DxfHatchBoundaryPathEdgeSpline *spline, DxfHatchBoundaryPathEdgeSplineCp *control_point);

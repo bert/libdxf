@@ -282,7 +282,7 @@ dxf_hatch_write
         }
         if (hatch->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", hatch->layer);
         if (strcmp (hatch->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -296,7 +296,7 @@ dxf_hatch_write
         }
         if (hatch->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", hatch->color);
+                fprintf (fp->fp, " 62\n%hd\n", hatch->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
@@ -318,14 +318,14 @@ dxf_hatch_write
         }
         if (hatch->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", hatch->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", hatch->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", hatch->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", hatch->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", hatch->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", hatch->graphics_data_size);
 #endif
                 if (hatch->binary_graphics_data != NULL)
                 {
@@ -340,14 +340,14 @@ dxf_hatch_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", hatch->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", hatch->color_value);
                 fprintf (fp->fp, "430\n%s\n", hatch->color_name);
-                fprintf (fp->fp, "440\n%ld\n", hatch->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", hatch->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
                 fprintf (fp->fp, "390\n%s\n", hatch->plot_style_name);
-                fprintf (fp->fp, "284\n%d\n", hatch->shadow_mode);
+                fprintf (fp->fp, "284\n%hd\n", hatch->shadow_mode);
         }
         fprintf (fp->fp, "100\nAcDbHatch\n");
         fprintf (fp->fp, " 10\n%f\n", hatch->p0->x0);
@@ -357,19 +357,19 @@ dxf_hatch_write
         fprintf (fp->fp, "220\n%f\n", hatch->extr_y0);
         fprintf (fp->fp, "230\n%f\n", hatch->extr_z0);
         fprintf (fp->fp, "  2\n%s\n", hatch->pattern_name);
-        fprintf (fp->fp, " 70\n%d\n", hatch->solid_fill);
-        fprintf (fp->fp, " 71\n%d\n", hatch->associative);
-        fprintf (fp->fp, " 91\n%d\n", hatch->number_of_boundary_paths);
+        fprintf (fp->fp, " 70\n%hd\n", hatch->solid_fill);
+        fprintf (fp->fp, " 71\n%hd\n", hatch->associative);
+        fprintf (fp->fp, " 91\n%" PRIi32 "\n", hatch->number_of_boundary_paths);
         dxf_hatch_boundary_path_write (fp, (DxfHatchBoundaryPath *) hatch->paths);
-        fprintf (fp->fp, " 75\n%d\n", hatch->hatch_style);
-        fprintf (fp->fp, " 76\n%d\n", hatch->hatch_pattern_type);
+        fprintf (fp->fp, " 75\n%hd\n", hatch->hatch_style);
+        fprintf (fp->fp, " 76\n%hd\n", hatch->hatch_pattern_type);
         if (!hatch->solid_fill)
         {
                 fprintf (fp->fp, " 52\n%f\n", hatch->pattern_angle);
                 fprintf (fp->fp, " 41\n%f\n", hatch->pattern_scale);
-                fprintf (fp->fp, " 77\n%d\n", hatch->pattern_double);
+                fprintf (fp->fp, " 77\n%hd\n", hatch->pattern_double);
         }
-        fprintf (fp->fp, " 78\n%d\n", hatch->number_of_pattern_def_lines);
+        fprintf (fp->fp, " 78\n%hd\n", hatch->number_of_pattern_def_lines);
         line = (DxfHatchPatternDefLine *) hatch->def_lines;
         while (line != NULL)
         {
@@ -377,7 +377,7 @@ dxf_hatch_write
                 line = (DxfHatchPatternDefLine *) line->next;
         }
         fprintf (fp->fp, " 47\n%f\n", hatch->pixel_size);
-        fprintf (fp->fp, " 98\n%d\n", hatch->number_of_seed_points);
+        fprintf (fp->fp, " 98\n%" PRIi32 "\n", hatch->number_of_seed_points);
         point = (DxfHatchPatternSeedPoint *) hatch->seed_points;
         while (point != NULL)
         {
@@ -1036,7 +1036,7 @@ dxf_hatch_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_hatch_get_color
 (
         DxfHatch *hatch
@@ -1078,7 +1078,7 @@ dxf_hatch_set_color
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1114,7 +1114,7 @@ dxf_hatch_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_hatch_get_paperspace
 (
         DxfHatch *hatch
@@ -1162,7 +1162,7 @@ dxf_hatch_set_paperspace
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1204,7 +1204,7 @@ dxf_hatch_set_paperspace
  *
  * \return graphics data size flag value.
  */
-int
+int32_t
 dxf_hatch_get_graphics_data_size
 (
         DxfHatch *hatch
@@ -1252,7 +1252,7 @@ dxf_hatch_set_graphics_data_size
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the graphics data size value to be set for the
                  * entity. */
 )
@@ -1852,7 +1852,7 @@ dxf_hatch_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_hatch_get_color_value
 (
         DxfHatch *hatch
@@ -1888,7 +1888,7 @@ dxf_hatch_set_color_value
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -1997,7 +1997,7 @@ dxf_hatch_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_hatch_get_transparency
 (
         DxfHatch *hatch
@@ -2033,7 +2033,7 @@ dxf_hatch_set_transparency
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
@@ -2634,7 +2634,7 @@ dxf_hatch_set_pattern_angle
  *
  * \return solid fill flag value.
  */
-int
+int16_t
 dxf_hatch_get_solid_fill
 (
         DxfHatch *hatch
@@ -2684,7 +2684,7 @@ dxf_hatch_set_solid_fill
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH pattern. */
-        int solid_fill
+        int16_t solid_fill
                 /*!< the solid fill flag value for the entity. */
 )
 {
@@ -2726,7 +2726,7 @@ dxf_hatch_set_solid_fill
  *
  * \return associative flag value.
  */
-int
+int16_t
 dxf_hatch_get_associative
 (
         DxfHatch *hatch
@@ -2776,7 +2776,7 @@ dxf_hatch_set_associative
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH pattern. */
-        int associative
+        int16_t associative
                 /*!< the associative flag value for the entity. */
 )
 {
@@ -2818,7 +2818,7 @@ dxf_hatch_set_associative
  *
  * \return hatch_style flag value.
  */
-int
+int16_t
 dxf_hatch_get_hatch_style
 (
         DxfHatch *hatch
@@ -2868,7 +2868,7 @@ dxf_hatch_set_hatch_style
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH pattern. */
-        int hatch_style
+        int16_t hatch_style
                 /*!< the hatch_style flag value for the entity. */
 )
 {
@@ -2910,7 +2910,7 @@ dxf_hatch_set_hatch_style
  *
  * \return hatch_pattern_type flag value.
  */
-int
+int16_t
 dxf_hatch_get_hatch_pattern_type
 (
         DxfHatch *hatch
@@ -2960,7 +2960,7 @@ dxf_hatch_set_hatch_pattern_type
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH pattern. */
-        int hatch_pattern_type
+        int16_t hatch_pattern_type
                 /*!< the hatch_pattern_type flag value for the entity. */
 )
 {
@@ -3002,7 +3002,7 @@ dxf_hatch_set_hatch_pattern_type
  *
  * \return pattern_double flag value.
  */
-int
+int16_t
 dxf_hatch_get_pattern_double
 (
         DxfHatch *hatch
@@ -3052,7 +3052,7 @@ dxf_hatch_set_pattern_double
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH pattern. */
-        int pattern_double
+        int16_t pattern_double
                 /*!< the pattern_double flag value for the entity. */
 )
 {
@@ -3815,7 +3815,7 @@ dxf_hatch_pattern_set_id_code
  *
  * \return Number of hatch pattern definition lines.
  */
-int
+int16_t
 dxf_hatch_pattern_get_number_of_def_lines
 (
         DxfHatchPattern *pattern
@@ -3859,7 +3859,7 @@ dxf_hatch_pattern_set_number_of_def_lines
 (
         DxfHatchPattern *pattern,
                 /*!< a pointer to a DXF \c HATCH pattern. */
-        int number_of_def_lines
+        int16_t number_of_def_lines
                 /*!< Number of hatch pattern definition lines. */
 )
 {
@@ -3970,7 +3970,7 @@ dxf_hatch_pattern_set_def_lines
  *
  * \return Number of hatch pattern seed points.
  */
-int
+int32_t
 dxf_hatch_pattern_get_number_of_seed_points
 (
         DxfHatchPattern *pattern
@@ -4014,7 +4014,7 @@ dxf_hatch_pattern_set_number_of_seed_points
 (
         DxfHatchPattern *pattern,
                 /*!< a pointer to a DXF \c HATCH pattern. */
-        int number_of_seed_points
+        int32_t number_of_seed_points
                 /*!< number of hatch pattern seed points. */
 )
 {
@@ -5245,7 +5245,7 @@ dxf_hatch_pattern_def_line_set_y1
  *
  * \return number of hatch pattern definition line dash items.
  */
-int
+int16_t
 dxf_hatch_pattern_def_line_get_number_of_dash_items
 (
         DxfHatchPatternDefLine *line
@@ -5289,7 +5289,7 @@ dxf_hatch_pattern_def_line_set_number_of_dash_items
 (
         DxfHatchPatternDefLine *line,
                 /*!< a pointer to a DXF \c HATCH pattern def line. */
-        int number_of_dash_items
+        int16_t number_of_dash_items
                 /*!< number of hatch pattern definition line dash items. */
 )
 {
@@ -6968,7 +6968,7 @@ dxf_hatch_boundary_path_polyline_set_id_code
  *
  * \return \c is_closed flag value.
  */
-int
+int16_t
 dxf_hatch_boundary_path_polyline_get_is_closed
 (
         DxfHatchBoundaryPathPolyline *polyline
@@ -7019,7 +7019,7 @@ dxf_hatch_boundary_path_polyline_set_is_closed
 (
         DxfHatchBoundaryPathPolyline *polyline,
                 /*!< a pointer to a DXF \c HATCH boundary path polyline. */
-        int is_closed
+        int16_t is_closed
                 /*!< \c is_closed flag value. */
 )
 {
@@ -7062,7 +7062,7 @@ dxf_hatch_boundary_path_polyline_set_is_closed
  *
  * \return \c number_of_vertices value.
  */
-int
+int32_t
 dxf_hatch_boundary_path_polyline_get_number_of_vertices
 (
         DxfHatchBoundaryPathPolyline *polyline
@@ -7106,7 +7106,7 @@ dxf_hatch_boundary_path_polyline_set_number_of_vertices
 (
         DxfHatchBoundaryPathPolyline *polyline,
                 /*!< a pointer to a DXF \c HATCH boundary path polyline. */
-        int number_of_vertices
+        int32_t number_of_vertices
                 /*!< \c number_of_vertices value. */
 )
 {
@@ -8049,7 +8049,7 @@ dxf_hatch_boundary_path_polyline_vertex_set_bulge
  *
  * \return has_bulge flag value.
  */
-int
+int16_t
 dxf_hatch_boundary_path_polyline_vertex_get_has_bulge
 (
         DxfHatchBoundaryPathPolylineVertex *vertex
@@ -8102,7 +8102,7 @@ dxf_hatch_boundary_path_polyline_vertex_set_has_bulge
         DxfHatchBoundaryPathPolylineVertex *vertex,
                 /*!< a pointer to a DXF \c HATCH boundary path polyline
                  * vertex. */
-        int has_bulge
+        int16_t has_bulge
                 /*!< has_bulge flag value. */
 )
 {
@@ -9759,7 +9759,7 @@ dxf_hatch_boundary_path_edge_arc_set_end_angle
  *
  * \return arc is ccw value.
  */
-int
+int16_t
 dxf_hatch_boundary_path_edge_arc_get_is_ccw
 (
         DxfHatchBoundaryPathEdgeArc *arc
@@ -9801,7 +9801,7 @@ dxf_hatch_boundary_path_edge_arc_set_is_ccw
 (
         DxfHatchBoundaryPathEdgeArc *arc,
                 /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
-        int is_ccw
+        int16_t is_ccw
                 /*!< the arc is ccw value to be set for the entity. */
 )
 {
@@ -10913,7 +10913,7 @@ dxf_hatch_boundary_path_edge_ellipse_set_end_angle
  *
  * \return is_ ccw value.
  */
-int
+int16_t
 dxf_hatch_boundary_path_edge_ellipse_get_is_ccw
 (
         DxfHatchBoundaryPathEdgeEllipse *ellipse
@@ -10958,7 +10958,7 @@ dxf_hatch_boundary_path_edge_ellipse_set_is_ccw
         DxfHatchBoundaryPathEdgeEllipse *ellipse,
                 /*!< a pointer to a DXF \c HATCH boundary path edge
                  * ellipse. */
-        int is_ccw
+        int16_t is_ccw
                 /*!< the is_ccw value to be set for the entity. */
 )
 {
@@ -12213,7 +12213,7 @@ dxf_hatch_boundary_path_edge_spline_set_id_code
  *
  * \return degree.
  */
-int
+int32_t
 dxf_hatch_boundary_path_edge_spline_get_degree
 (
         DxfHatchBoundaryPathEdgeSpline *spline
@@ -12258,7 +12258,7 @@ dxf_hatch_boundary_path_edge_spline_set_degree
         DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< a pointer to a DXF \c HATCH boundary path edge
                  * spline. */
-        int degree
+        int32_t degree
                 /*!< degree. */
 )
 {
@@ -12293,7 +12293,7 @@ dxf_hatch_boundary_path_edge_spline_set_degree
  *
  * \return rational.
  */
-int
+int16_t
 dxf_hatch_boundary_path_edge_spline_get_rational
 (
         DxfHatchBoundaryPathEdgeSpline *spline
@@ -12331,7 +12331,7 @@ dxf_hatch_boundary_path_edge_spline_set_rational
         DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< a pointer to a DXF \c HATCH boundary path edge
                  * spline. */
-        int rational
+        int16_t rational
                 /*!< rational. */
 )
 {
@@ -12359,7 +12359,7 @@ dxf_hatch_boundary_path_edge_spline_set_rational
  *
  * \return periodic.
  */
-int
+int16_t
 dxf_hatch_boundary_path_edge_spline_get_periodic
 (
         DxfHatchBoundaryPathEdgeSpline *spline
@@ -12397,7 +12397,7 @@ dxf_hatch_boundary_path_edge_spline_set_periodic
         DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< a pointer to a DXF \c HATCH boundary path edge
                  * spline. */
-        int periodic
+        int16_t periodic
                 /*!< periodic. */
 )
 {
@@ -12425,7 +12425,7 @@ dxf_hatch_boundary_path_edge_spline_set_periodic
  *
  * \return number_of_knots.
  */
-int
+int32_t
 dxf_hatch_boundary_path_edge_spline_get_number_of_knots
 (
         DxfHatchBoundaryPathEdgeSpline *spline
@@ -12470,7 +12470,7 @@ dxf_hatch_boundary_path_edge_spline_set_number_of_knots
         DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< a pointer to a DXF \c HATCH boundary path edge
                  * spline. */
-        int number_of_knots
+        int32_t number_of_knots
                 /*!< Number of knots. */
 )
 {
@@ -12591,7 +12591,7 @@ dxf_hatch_boundary_path_edge_spline_set_knots
  *
  * \return number_of_control_points.
  */
-int
+int32_t
 dxf_hatch_boundary_path_edge_spline_get_number_of_control_points
 (
         DxfHatchBoundaryPathEdgeSpline *spline
@@ -12637,7 +12637,7 @@ dxf_hatch_boundary_path_edge_spline_set_number_of_control_points
         DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< a pointer to a DXF \c HATCH boundary path edge
                  * spline. */
-        int number_of_control_points
+        int32_t number_of_control_points
                 /*!< Number of control points. */
 )
 {
