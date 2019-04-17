@@ -1,7 +1,7 @@
 /*!
  * \file helix.h
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF helix entity (\c HELIX).
@@ -86,20 +86,20 @@ dxf_helix_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -150,7 +150,7 @@ dxf_helix_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -170,7 +170,7 @@ dxf_helix_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -197,13 +197,13 @@ dxf_helix_struct
         double turn_height;
                 /*!< Turn height.\n
                  * Group code = 42. */
-        long major_release_number;
+        int32_t major_release_number;
                 /*!< Major release number.\n
                  * Group code = 90. */
-        long maintainance_release_number;
+        int32_t maintainance_release_number;
                 /*!< Maintainance release number.\n
                  * Group code = 91. */
-        int constraint_type;
+        int16_t constraint_type;
                 /*!< Constrain type:\n
                  * <ol>
                  * <li value = "0"> Constrain turn height.</li>
@@ -244,12 +244,12 @@ double dxf_helix_get_linetype_scale (DxfHelix *helix);
 DxfHelix *dxf_helix_set_linetype_scale (DxfHelix *helix, double linetype_scale);
 int16_t dxf_helix_get_visibility (DxfHelix *helix);
 DxfHelix *dxf_helix_set_visibility (DxfHelix *helix, int16_t visibility);
-int dxf_helix_get_color (DxfHelix *helix);
-DxfHelix *dxf_helix_set_color (DxfHelix *helix, int color);
-int dxf_helix_get_paperspace (DxfHelix *helix);
-DxfHelix *dxf_helix_set_paperspace (DxfHelix *helix, int paperspace);
-int dxf_helix_get_graphics_data_size (DxfHelix *helix);
-DxfHelix *dxf_helix_set_graphics_data_size (DxfHelix *helix, int graphics_data_size);
+int16_t dxf_helix_get_color (DxfHelix *helix);
+DxfHelix *dxf_helix_set_color (DxfHelix *helix, int16_t color);
+int16_t dxf_helix_get_paperspace (DxfHelix *helix);
+DxfHelix *dxf_helix_set_paperspace (DxfHelix *helix, int16_t paperspace);
+int32_t dxf_helix_get_graphics_data_size (DxfHelix *helix);
+DxfHelix *dxf_helix_set_graphics_data_size (DxfHelix *helix, int32_t graphics_data_size);
 int16_t dxf_helix_get_shadow_mode (DxfHelix *helix);
 DxfHelix *dxf_helix_set_shadow_mode (DxfHelix *helix, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_helix_get_binary_graphics_data (DxfHelix *helix);
@@ -266,12 +266,12 @@ int16_t dxf_helix_get_lineweight (DxfHelix *helix);
 DxfHelix *dxf_helix_set_lineweight (DxfHelix *helix, int16_t lineweight);
 char *dxf_helix_get_plot_style_name (DxfHelix *helix);
 DxfHelix *dxf_helix_set_plot_style_name (DxfHelix *helix, char *plot_style_name);
-long dxf_helix_get_color_value (DxfHelix *helix);
-DxfHelix *dxf_helix_set_color_value (DxfHelix *helix, long color_value);
+int32_t dxf_helix_get_color_value (DxfHelix *helix);
+DxfHelix *dxf_helix_set_color_value (DxfHelix *helix, int32_t color_value);
 char *dxf_helix_get_color_name (DxfHelix *helix);
 DxfHelix *dxf_helix_set_color_name (DxfHelix *helix, char *color_name);
-long dxf_helix_get_transparency (DxfHelix *helix);
-DxfHelix *dxf_helix_set_transparency (DxfHelix *helix, long transparency);
+int32_t dxf_helix_get_transparency (DxfHelix *helix);
+DxfHelix *dxf_helix_set_transparency (DxfHelix *helix, int32_t transparency);
 DxfPoint *dxf_helix_get_p0 (DxfHelix *helix);
 DxfHelix *dxf_helix_set_p0 (DxfHelix *helix, DxfPoint *p0);
 double dxf_helix_get_x0 (DxfHelix *helix);
@@ -302,12 +302,12 @@ double dxf_helix_get_number_of_turns (DxfHelix *helix);
 DxfHelix *dxf_helix_set_number_of_turns (DxfHelix *helix, double number_of_turns);
 double dxf_helix_get_turn_height (DxfHelix *helix);
 DxfHelix *dxf_helix_set_turn_height (DxfHelix *helix, double turn_height);
-long dxf_helix_get_major_release_number (DxfHelix *helix);
-DxfHelix *dxf_helix_set_major_release_number (DxfHelix *helix, long major_release_number);
-long dxf_helix_get_maintainance_release_number (DxfHelix *helix);
-DxfHelix *dxf_helix_set_maintainance_release_number (DxfHelix *helix, long maintainance_release_number);
-int dxf_helix_get_constraint_type (DxfHelix *helix);
-DxfHelix *dxf_helix_set_constraint_type (DxfHelix *helix, int constraint_type);
+int32_t dxf_helix_get_major_release_number (DxfHelix *helix);
+DxfHelix *dxf_helix_set_major_release_number (DxfHelix *helix, int32_t major_release_number);
+int32_t dxf_helix_get_maintainance_release_number (DxfHelix *helix);
+DxfHelix *dxf_helix_set_maintainance_release_number (DxfHelix *helix, int32_t maintainance_release_number);
+int16_t dxf_helix_get_constraint_type (DxfHelix *helix);
+DxfHelix *dxf_helix_set_constraint_type (DxfHelix *helix, int16_t constraint_type);
 int dxf_helix_get_handedness (DxfHelix *helix);
 DxfHelix *dxf_helix_set_handedness (DxfHelix *helix, int handedness);
 DxfSpline *dxf_helix_get_spline (DxfHelix *helix);

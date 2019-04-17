@@ -1,7 +1,7 @@
 /*!
  * \file helix.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF helix entity (\c HELIX).
@@ -338,28 +338,28 @@ dxf_helix_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &helix->color);
+                        fscanf (fp->fp, "%hd\n", &helix->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &helix->paperspace);
+                        fscanf (fp->fp, "%hd\n", &helix->paperspace);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing a major
                          * release number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &helix->major_release_number);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &helix->major_release_number);
                 }
                 else if (strcmp (temp_string, "91") == 0)
                 {
                         /* Now follows a string containing a maintenance
                          * release number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &helix->maintainance_release_number);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &helix->maintainance_release_number);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
@@ -391,14 +391,14 @@ dxf_helix_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &helix->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &helix->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing a constraint
                          * type value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &helix->constraint_type);
+                        fscanf (fp->fp, "%hd\n", &helix->constraint_type);
                 }
                 else if (strcmp (temp_string, "284") == 0)
                 {
@@ -462,7 +462,7 @@ dxf_helix_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &helix->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &helix->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -476,7 +476,7 @@ dxf_helix_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &helix->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &helix->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -608,7 +608,7 @@ dxf_helix_write
         fprintf (fp->fp, "100\nAcDbEntity\n");
         if (helix->paperspace != DXF_MODELSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", helix->layer);
         if (strcmp (helix->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -621,7 +621,7 @@ dxf_helix_write
         }
         if (helix->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", helix->color);
+                fprintf (fp->fp, " 62\n%hd\n", helix->color);
         }
         fprintf (fp->fp, "370\n%d\n", helix->lineweight);
         if (helix->thickness != 0.0)
@@ -634,12 +634,12 @@ dxf_helix_write
         }
         if (helix->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", helix->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", helix->visibility);
         }
 #ifdef BUILD_64
-        fprintf (fp->fp, "160\n%d\n", helix->graphics_data_size);
+        fprintf (fp->fp, "160\n%" PRIi32 "\n", helix->graphics_data_size);
 #else
-        fprintf (fp->fp, " 92\n%d\n", helix->graphics_data_size);
+        fprintf (fp->fp, " 92\n%" PRIi32 "\n", helix->graphics_data_size);
 #endif
         iter_310 = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
         while (iter_310 != NULL)
@@ -647,20 +647,20 @@ dxf_helix_write
                 fprintf (fp->fp, "310\n%s\n", iter_310->data_line);
                 iter_310 = (DxfBinaryGraphicsData *) iter_310->next;
         }
-        fprintf (fp->fp, "420\n%ld\n", helix->color_value);
+        fprintf (fp->fp, "420\n%" PRIi32 "\n", helix->color_value);
         fprintf (fp->fp, "430\n%s\n", helix->color_name);
-        fprintf (fp->fp, "440\n%ld\n", helix->transparency);
+        fprintf (fp->fp, "440\n%" PRIi32 "\n", helix->transparency);
         fprintf (fp->fp, "390\n%s\n", helix->plot_style_name);
-        fprintf (fp->fp, "284\n%d\n", helix->shadow_mode);
+        fprintf (fp->fp, "284\n%hd\n", helix->shadow_mode);
         /* Write a spline to a DxfFile. */
         helix->spline->flag = 0;
         helix->spline->degree = 3;
         fprintf (fp->fp, "100\nAcDbSpline\n");
-        fprintf (fp->fp, " 70\n%d\n", helix->spline->flag);
-        fprintf (fp->fp, " 71\n%d\n", helix->spline->degree);
-        fprintf (fp->fp, " 72\n%d\n", helix->spline->number_of_knots);
-        fprintf (fp->fp, " 73\n%d\n", helix->spline->number_of_control_points);
-        fprintf (fp->fp, " 74\n%d\n", helix->spline->number_of_fit_points);
+        fprintf (fp->fp, " 70\n%hd\n", helix->spline->flag);
+        fprintf (fp->fp, " 71\n%hd\n", helix->spline->degree);
+        fprintf (fp->fp, " 72\n%hd\n", helix->spline->number_of_knots);
+        fprintf (fp->fp, " 73\n%hd\n", helix->spline->number_of_control_points);
+        fprintf (fp->fp, " 74\n%hd\n", helix->spline->number_of_fit_points);
         fprintf (fp->fp, " 42\n%f\n", helix->spline->knot_tolerance);
         fprintf (fp->fp, " 43\n%f\n", helix->spline->control_point_tolerance);
         fprintf (fp->fp, " 12\n%f\n", helix->spline->p2->x0);
@@ -700,8 +700,8 @@ dxf_helix_write
         }
         /* Continue writing helix entity parameters. */
         fprintf (fp->fp, "100\nAcDbHelix\n");
-        fprintf (fp->fp, " 90\n%ld\n", helix->major_release_number);
-        fprintf (fp->fp, " 91\n%ld\n", helix->maintainance_release_number);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", helix->major_release_number);
+        fprintf (fp->fp, " 91\n%" PRIi32 "\n", helix->maintainance_release_number);
         fprintf (fp->fp, " 10\n%f\n", helix->p0->x0);
         fprintf (fp->fp, " 20\n%f\n", helix->p0->y0);
         fprintf (fp->fp, " 30\n%f\n", helix->p0->z0);
@@ -715,7 +715,7 @@ dxf_helix_write
         fprintf (fp->fp, " 41\n%f\n", helix->number_of_turns);
         fprintf (fp->fp, " 42\n%f\n", helix->turn_height);
         fprintf (fp->fp, "290\n%d\n", helix->handedness);
-        fprintf (fp->fp, "280\n%d\n", helix->constraint_type);
+        fprintf (fp->fp, "280\n%hd\n", helix->constraint_type);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -1295,7 +1295,7 @@ dxf_helix_set_visibility
  * \return \c color when successful, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+int16_t
 dxf_helix_get_color
 (
         DxfHelix *helix
@@ -1337,7 +1337,7 @@ dxf_helix_set_color
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
-        int color
+        int16_t color
                 /*!< the \c color to be set for the entity. */
 )
 {
@@ -1374,7 +1374,7 @@ dxf_helix_set_color
  * \return \c paperspace flag value when successful, or \c EXIT_FAILURE
  * when an error occurred.
  */
-int
+int16_t
 dxf_helix_get_paperspace
 (
         DxfHelix *helix
@@ -1422,7 +1422,7 @@ dxf_helix_set_paperspace
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the \c paperspace flag value to be set for the
                  * entity. */
 )
@@ -1464,7 +1464,7 @@ dxf_helix_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_helix_get_graphics_data_size
 (
         DxfHelix *helix
@@ -1512,7 +1512,7 @@ dxf_helix_set_graphics_data_size
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2201,7 +2201,7 @@ dxf_helix_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_helix_get_color_value
 (
         DxfHelix *helix
@@ -2237,7 +2237,7 @@ dxf_helix_set_color_value
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2346,7 +2346,7 @@ dxf_helix_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_helix_get_transparency
 (
         DxfHelix *helix
@@ -2382,7 +2382,7 @@ dxf_helix_set_transparency
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
@@ -3437,7 +3437,7 @@ dxf_helix_set_turn_height
  * \return \c major_release_number when successful, or \c EXIT_FAILURE
  * when an error occurred.
  */
-long
+int32_t
 dxf_helix_get_major_release_number
 (
         DxfHelix *helix
@@ -3473,7 +3473,7 @@ dxf_helix_set_major_release_number
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
-        long major_release_number
+        int32_t major_release_number
                 /*!< the \c major_release_number to be set for the
                  * entity. */
 )
@@ -3504,7 +3504,7 @@ dxf_helix_set_major_release_number
  * \return \c maintainance_release_number when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-long
+int32_t
 dxf_helix_get_maintainance_release_number
 (
         DxfHelix *helix
@@ -3540,7 +3540,7 @@ dxf_helix_set_maintainance_release_number
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
-        long maintainance_release_number
+        int32_t maintainance_release_number
                 /*!< the \c maintainance_release_number to be set for
                  * the entity. */
 )
@@ -3570,7 +3570,7 @@ dxf_helix_set_maintainance_release_number
  * \return \c constraint_type when successful, or \c EXIT_FAILURE when
  * an error occurred.
  */
-int
+int16_t
 dxf_helix_get_constraint_type
 (
         DxfHelix *helix
@@ -3618,7 +3618,7 @@ dxf_helix_set_constraint_type
 (
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
-        int constraint_type
+        int16_t constraint_type
                 /*!< the \c constraint_type to be set for the entity. */
 )
 {
