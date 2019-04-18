@@ -806,13 +806,20 @@ dxf_int32_free_list
 }
 
 
+/*!
+ * \brief Test for double type group codes.
+ */
 int
 dxf_read_is_double (int type)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (type >=10 && type < 60)
+        if ((type >= 10 && type < 60)
+          || (type >= 110 && type < 150)
+          || (type >= 210 && type < 240)
+          || (type >= 460 && type < 470)
+          || (type >= 1010 && type < 1060))
         {
 #if DEBUG
         DXF_DEBUG_END
