@@ -865,7 +865,12 @@ dxf_read_is_int16_t
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (type >= 60 && type < 80)
+        if ((type >= 60 && type < 80)
+          || (type >= 170 && type < 180)
+          || (type >= 270 && type < 290)
+          || (type >= 370 && type < 390)
+          || (type >= 400 && type < 410)
+          || (type >= 1060 && type < 1071))
         {
 #if DEBUG
         DXF_DEBUG_END
