@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
- * \author Copyright (C) 2010, 2012, 2015, 2017, 2018
+ * \author Copyright (C) 2010, 2012, 2015, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for libDXF coding utilities.
@@ -831,6 +831,36 @@ dxf_read_is_double (int type)
 
 int
 dxf_read_is_int (int type)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (type >= 60 && type < 80)
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+                return TRUE;
+        }
+        else
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+                return FALSE;
+        }
+}
+
+
+/*!
+ * \brief Test for int16_t type group codes.
+ */
+int
+dxf_read_is_int16_t
+(
+        int type
+                /*!< Group code. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN

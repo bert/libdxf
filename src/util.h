@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
- * \author Copyright (C) 2010, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2010, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for libDXF coding utilities.
@@ -86,6 +86,7 @@ int dxf_int32_free (DxfInt32 *i);
 int dxf_int32_free_list (DxfInt32 *ints);
 int dxf_read_is_double (int type);
 int dxf_read_is_int (int type);
+int dxf_read_is_int16_t (int type);
 int dxf_read_is_string (int type);
 int dxf_read_line (char * temp_string, DxfFile *fp);
 int dxf_read_scanf (DxfFile *fp, const char *template, ...);
