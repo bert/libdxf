@@ -919,6 +919,36 @@ dxf_read_is_int32_t
 }
 
 
+/*!
+ * \brief Test for int64_t type group codes.
+ */
+int
+dxf_read_is_int64_t
+(
+        int type
+                /*!< Group code. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (type >= 160 && type < 170)
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+                return TRUE;
+        }
+        else
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+                return FALSE;
+        }
+}
+
+
 int
 dxf_read_is_string (int type)
 {

@@ -88,6 +88,7 @@ int dxf_read_is_double (int type);
 int dxf_read_is_int (int type);
 int dxf_read_is_int16_t (int type);
 int dxf_read_is_int32_t (int type);
+int dxf_read_is_int64_t (int type);
 int dxf_read_is_string (int type);
 int dxf_read_line (char * temp_string, DxfFile *fp);
 int dxf_read_scanf (DxfFile *fp, const char *template, ...);
