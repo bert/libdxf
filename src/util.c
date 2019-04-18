@@ -829,13 +829,16 @@ dxf_read_is_double (int type)
 }
 
 
+/*!
+ * \brief Test for int type group codes (Boolean).
+ */
 int
 dxf_read_is_int (int type)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (type >= 60 && type < 80)
+        if (type >= 290 && type < 300)
         {
 #if DEBUG
         DXF_DEBUG_END
