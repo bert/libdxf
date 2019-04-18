@@ -887,6 +887,38 @@ dxf_read_is_int16_t
 }
 
 
+/*!
+ * \brief Test for int32_t type group codes.
+ */
+int
+dxf_read_is_int32_t
+(
+        int type
+                /*!< Group code. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if ((type >= 90 && type < 100)
+          || (type >= 420 && type < 430)
+          || (type = 1071))
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+                return TRUE;
+        }
+        else
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+                return FALSE;
+        }
+}
+
+
 int
 dxf_read_is_string (int type)
 {
