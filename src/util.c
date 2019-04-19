@@ -959,13 +959,29 @@ dxf_read_is_int64_t
 }
 
 
+/*!
+ * \brief Test for string type group codes.
+ */
 int
-dxf_read_is_string (int type)
+dxf_read_is_string
+(
+        int type
+                /*!< Group code. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (type >= 0 && type <= 9)
+        if ((type >= 0 && type < 10)
+          || (type >= 100)
+          || (type >= 102)
+          || (type >= 105)
+          || (type >= 300 && type < 370)
+          || (type >= 390 && type < 400)
+          || (type >= 410 && type < 420)
+          || (type >= 430 && type < 440)
+          || (type >= 470 && type < 482)
+          || (type >= 999 && type < 1010))
         {
 #if DEBUG
         DXF_DEBUG_END
