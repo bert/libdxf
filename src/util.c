@@ -840,7 +840,11 @@ dxf_read_is_double (int type)
  * \brief Test for int type group codes (Boolean).
  */
 int
-dxf_read_is_int (int type)
+dxf_read_is_int
+(
+        int type
+                /*!< Group code. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
