@@ -810,7 +810,11 @@ dxf_int32_free_list
  * \brief Test for double type group codes.
  */
 int
-dxf_read_is_double (int type)
+dxf_read_is_double
+(
+        int type
+                /*!< Group code. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
