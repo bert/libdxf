@@ -59,7 +59,7 @@ dxf_char_new ()
         if ((c = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfChar struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 c = NULL;
         }
