@@ -102,7 +102,7 @@ dxf_char_init
         if (c == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfChar struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
