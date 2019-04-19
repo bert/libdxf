@@ -214,7 +214,7 @@ dxf_double_new ()
         if ((d = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDouble struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 d = NULL;
         }
