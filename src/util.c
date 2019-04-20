@@ -1013,7 +1013,11 @@ dxf_read_is_string
  * 
  */
 DxfFile *
-dxf_read_init (const char *filename)
+dxf_read_init
+(
+        const char *filename
+                /*!< Filename. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
