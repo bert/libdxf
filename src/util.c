@@ -1060,7 +1060,11 @@ dxf_read_init
 
 
 void
-dxf_read_close (DxfFile *file)
+dxf_read_close
+(
+        DxfFile *file
+                /*!< DXF file pointer to an output file (or device). */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
