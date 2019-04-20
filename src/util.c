@@ -563,7 +563,7 @@ dxf_int16_init
         if (i == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfInt16 struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
