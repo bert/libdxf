@@ -367,7 +367,7 @@ dxf_int_new ()
         if ((i = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfInt struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 i = NULL;
         }
