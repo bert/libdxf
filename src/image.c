@@ -1,7 +1,7 @@
 /*!
  * \file image.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF image entity (\c IMAGE).
@@ -382,42 +382,42 @@ dxf_image_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->color);
+                        fscanf (fp->fp, "%hd\n", &image->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->paperspace);
+                        fscanf (fp->fp, "%hd\n", &image->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * image display properties. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->image_display_properties);
+                        fscanf (fp->fp, "%hd\n", &image->image_display_properties);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * clipping boundary type. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->clipping_boundary_type);
+                        fscanf (fp->fp, "%hd\n", &image->clipping_boundary_type);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the class
                          * version. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &image->class_version);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &image->class_version);
                 }
                 else if (strcmp (temp_string, "91") == 0)
                 {
                         /* Now follows a string containing the number of
                          * clip boundary vertices. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &image->number_of_clip_boundary_vertices);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &image->number_of_clip_boundary_vertices);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -439,28 +439,28 @@ dxf_image_read
                         /* Now follows a string containing the clipping
                          * state. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->clipping_state);
+                        fscanf (fp->fp, "%hd\n", &image->clipping_state);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing the
                          * brightness value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->brightness);
+                        fscanf (fp->fp, "%hd\n", &image->brightness);
                 }
                 else if (strcmp (temp_string, "282") == 0)
                 {
                         /* Now follows a string containing the contrast
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->contrast);
+                        fscanf (fp->fp, "%hd\n", &image->contrast);
                 }
                 else if (strcmp (temp_string, "283") == 0)
                 {
                         /* Now follows a string containing the fade
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &image->fade);
+                        fscanf (fp->fp, "%hd\n", &image->fade);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -617,7 +617,7 @@ dxf_image_write
         }
         if (dxf_image_get_paperspace (image) == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", dxf_image_get_layer (image));
         if (strcmp (dxf_image_get_linetype (image), DXF_DEFAULT_LINETYPE) != 0)
@@ -632,7 +632,7 @@ dxf_image_write
         }
         if (dxf_image_get_color (image) != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_image_get_color (image));
+                fprintf (fp->fp, " 62\n%hd\n", dxf_image_get_color (image));
         }
         if (dxf_image_get_linetype_scale (image) != 1.0)
         {
@@ -640,7 +640,7 @@ dxf_image_write
         }
         if (dxf_image_get_visibility (image) != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_image_get_visibility (image));
+                fprintf (fp->fp, " 60\n%hd\n", dxf_image_get_visibility (image));
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -650,7 +650,7 @@ dxf_image_write
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_image_get_thickness (image));
         }
-        fprintf (fp->fp, " 90\n%ld\n", dxf_image_get_class_version (image));
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", dxf_image_get_class_version (image));
         fprintf (fp->fp, " 10\n%f\n", dxf_image_get_x0 (image));
         fprintf (fp->fp, " 20\n%f\n", dxf_image_get_y0 (image));
         fprintf (fp->fp, " 30\n%f\n", dxf_image_get_z0 (image));
@@ -663,14 +663,14 @@ dxf_image_write
         fprintf (fp->fp, " 13\n%f\n", dxf_image_get_x3 (image));
         fprintf (fp->fp, " 23\n%f\n", dxf_image_get_y3 (image));
         fprintf (fp->fp, "340\n%s\n", dxf_image_get_imagedef_object (image));
-        fprintf (fp->fp, " 70\n%d\n", dxf_image_get_image_display_properties (image));
-        fprintf (fp->fp, "280\n%d\n", dxf_image_get_clipping_state (image));
-        fprintf (fp->fp, "281\n%d\n", dxf_image_get_brightness (image));
-        fprintf (fp->fp, "282\n%d\n", dxf_image_get_contrast (image));
-        fprintf (fp->fp, "283\n%d\n", dxf_image_get_fade (image));
+        fprintf (fp->fp, " 70\n%hd\n", dxf_image_get_image_display_properties (image));
+        fprintf (fp->fp, "280\n%hd\n", dxf_image_get_clipping_state (image));
+        fprintf (fp->fp, "281\n%hd\n", dxf_image_get_brightness (image));
+        fprintf (fp->fp, "282\n%hd\n", dxf_image_get_contrast (image));
+        fprintf (fp->fp, "283\n%hd\n", dxf_image_get_fade (image));
         fprintf (fp->fp, "360\n%s\n", dxf_image_get_imagedef_reactor_object (image));
-        fprintf (fp->fp, " 71\n%d\n", dxf_image_get_clipping_boundary_type (image));
-        fprintf (fp->fp, " 91\n%ld\n", dxf_image_get_number_of_clip_boundary_vertices (image));
+        fprintf (fp->fp, " 71\n%hd\n", dxf_image_get_clipping_boundary_type (image));
+        fprintf (fp->fp, " 91\n%" PRIi32 "\n", dxf_image_get_number_of_clip_boundary_vertices (image));
         /* Now follows a sinle linked list of points (vertices).
          * We do not keep track of the number of points (vertices),
          * we just traverse down until the first NULL pointer is found.  */
@@ -1337,7 +1337,7 @@ dxf_image_set_visibility
  * \return \c color when successful, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+int16_t
 dxf_image_get_color
 (
         DxfImage *image
@@ -1379,7 +1379,7 @@ dxf_image_set_color
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int color
+        int16_t color
                 /*!< the \c color to be set for the entity. */
 )
 {
@@ -1416,7 +1416,7 @@ dxf_image_set_color
  * \return \c paperspace flag value when successful, or \c EXIT_FAILURE
  * when an error occurred.
  */
-int
+int16_t
 dxf_image_get_paperspace
 (
         DxfImage *image
@@ -1464,7 +1464,7 @@ dxf_image_set_paperspace
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the \c paperspace flag value to be set for the
                  * entity. */
 )
@@ -1509,7 +1509,7 @@ dxf_image_set_paperspace
  * \return \c graphics_data_size flag value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_image_get_graphics_data_size
 (
         DxfImage *image
@@ -1557,7 +1557,7 @@ dxf_image_set_graphics_data_size
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2173,7 +2173,7 @@ dxf_image_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_image_get_color_value
 (
         DxfImage *image
@@ -2209,7 +2209,7 @@ dxf_image_set_color_value
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2318,7 +2318,7 @@ dxf_image_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_image_get_transparency
 (
         DxfImage *image
@@ -2354,7 +2354,7 @@ dxf_image_set_transparency
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
@@ -3845,7 +3845,7 @@ dxf_image_set_y4
  * \return \c graphics_data_size flag value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_image_get_image_display_properties
 (
         DxfImage *image
@@ -3894,7 +3894,7 @@ dxf_image_set_image_display_properties
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int image_display_properties
+        int16_t image_display_properties
                 /*!< the \c image_display_properties value to be set for the
                  * entity. */
 )
@@ -3939,7 +3939,7 @@ dxf_image_set_image_display_properties
  * \return \c clipping_boundary_type value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_image_get_clipping_boundary_type
 (
         DxfImage *image
@@ -3988,7 +3988,7 @@ dxf_image_set_clipping_boundary_type
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int clipping_boundary_type
+        int16_t clipping_boundary_type
                 /*!< the \c clipping_boundary_type value to be set for the
                  * entity. */
 )
@@ -4032,7 +4032,7 @@ dxf_image_set_clipping_boundary_type
  * \return \c class_version when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_image_get_class_version
 (
         DxfImage *image
@@ -4068,7 +4068,7 @@ dxf_image_set_class_version
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        long class_version
+        int32_t class_version
                 /*!< the \c class_version to be set for the entity. */
 )
 {
@@ -4098,7 +4098,7 @@ dxf_image_set_class_version
  * \return \c number_of_clip_boundary_vertices when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-long
+int32_t
 dxf_image_get_number_of_clip_boundary_vertices
 (
         DxfImage *image
@@ -4135,7 +4135,7 @@ dxf_image_set_number_of_clip_boundary_vertices
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        long number_of_clip_boundary_vertices
+        int32_t number_of_clip_boundary_vertices
                 /*!< the \c number_of_clip_boundary_vertices to be set
                  * for the entity. */
 )
@@ -4166,7 +4166,7 @@ dxf_image_set_number_of_clip_boundary_vertices
  * \return \c clipping_state flag value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_image_get_clipping_state
 (
         DxfImage *image
@@ -4215,7 +4215,7 @@ dxf_image_set_clipping_state
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int clipping_state
+        int16_t clipping_state
                 /*!< the \c clipping_state flag value to be set for the
                  * entity. */
 )
@@ -4259,7 +4259,7 @@ dxf_image_set_clipping_state
  * \return \c brightness value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_image_get_brightness
 (
         DxfImage *image
@@ -4307,7 +4307,7 @@ dxf_image_set_brightness
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int brightness
+        int16_t brightness
                 /*!< the \c brightness value to be set for the
                  * entity. */
 )
@@ -4351,7 +4351,7 @@ dxf_image_set_brightness
  * \return \c contrast value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_image_get_contrast
 (
         DxfImage *image
@@ -4399,7 +4399,7 @@ dxf_image_set_contrast
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int contrast
+        int16_t contrast
                 /*!< the \c contrast value to be set for the entity. */
 )
 {
@@ -4442,7 +4442,7 @@ dxf_image_set_contrast
  * \return \c fade value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_image_get_fade
 (
         DxfImage *image
@@ -4490,7 +4490,7 @@ dxf_image_set_fade
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        int fade
+        int16_t fade
                 /*!< the \c fade value to be set for the entity. */
 )
 {

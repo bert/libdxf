@@ -1,7 +1,7 @@
 /*!
  * \file image.h
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF image entity (\c IMAGE).
@@ -99,20 +99,20 @@ dxf_image_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -159,7 +159,7 @@ dxf_image_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -179,7 +179,7 @@ dxf_image_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -212,7 +212,7 @@ dxf_image_struct
                  * vertices must be specified.\n
                  * Group codes = 14 and 24.\n
                  * \note Polygonal vertices must be listed sequentially.*/
-        int image_display_properties;
+        int16_t image_display_properties;
                 /*!< Image display properties.\n
                  * bit coded:\n
                  * <ol>
@@ -222,29 +222,29 @@ dxf_image_struct
                  * <li value = "8"> Transparency is on.</li>
                  * </ol>\n
                  * Group code = 70. */
-        int clipping_boundary_type;
+        int16_t clipping_boundary_type;
                 /*!< Clipping boundary type.\n
                  * <ol>
                  * <li value = "1"> Rectangular.</li>
                  * <li value = "2"> Polygonal.</li>
                  * </ol>\n
                  * Group code = 71. */
-        long class_version;
+        int32_t class_version;
                 /*!< Class version.\n
                  * Group code = 90. */
-        long number_of_clip_boundary_vertices;
+        int32_t number_of_clip_boundary_vertices;
                 /*!< Number of clip boundary vertices that follow.\n
                  * Group code = 91. */
-        int clipping_state;
+        int16_t clipping_state;
                 /*!< Clipping state: 0 = off, 1 = on.\n
                  * Group code = 280. */
-        int brightness;
+        int16_t brightness;
                 /*!< Brightness value (0 ... 100; default = 50).\n
                  * Group code = 281. */
-        int contrast;
+        int16_t contrast;
                 /*!< Contrast value (0 ... 100; default = 50).\n
                  * Group code = 282. */
-        int fade;
+        int16_t fade;
                 /*!< Fade value (0 ... 100; default = 50).\n
                  * Group code = 283. */
         char *imagedef_object;
@@ -279,12 +279,12 @@ double dxf_image_get_linetype_scale (DxfImage *image);
 DxfImage *dxf_image_set_linetype_scale (DxfImage *image, double linetype_scale);
 int16_t dxf_image_get_visibility (DxfImage *image);
 DxfImage *dxf_image_set_visibility (DxfImage *image, int16_t visibility);
-int dxf_image_get_color (DxfImage *image);
-DxfImage *dxf_image_set_color (DxfImage *image, int color);
-int dxf_image_get_paperspace (DxfImage *image);
-DxfImage *dxf_image_set_paperspace (DxfImage *image, int paperspace);
-int dxf_image_get_graphics_data_size (DxfImage *image);
-DxfImage *dxf_image_set_graphics_data_size (DxfImage *spline, int graphics_data_size);
+int16_t dxf_image_get_color (DxfImage *image);
+DxfImage *dxf_image_set_color (DxfImage *image, int16_t color);
+int16_t dxf_image_get_paperspace (DxfImage *image);
+DxfImage *dxf_image_set_paperspace (DxfImage *image, int16_t paperspace);
+int32_t dxf_image_get_graphics_data_size (DxfImage *image);
+DxfImage *dxf_image_set_graphics_data_size (DxfImage *spline, int32_t graphics_data_size);
 int16_t dxf_image_get_shadow_mode (DxfImage *image);
 DxfImage *dxf_image_set_shadow_mode (DxfImage *image, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_image_get_binary_graphics_data (DxfImage *image);
@@ -299,12 +299,12 @@ int16_t dxf_image_get_lineweight (DxfImage *image);
 DxfImage *dxf_image_set_lineweight (DxfImage *image, int16_t lineweight);
 char *dxf_image_get_plot_style_name (DxfImage *image);
 DxfImage *dxf_image_set_plot_style_name (DxfImage *image, char *plot_style_name);
-long dxf_image_get_color_value (DxfImage *image);
-DxfImage *dxf_image_set_color_value (DxfImage *image, long color_value);
+int32_t dxf_image_get_color_value (DxfImage *image);
+DxfImage *dxf_image_set_color_value (DxfImage *image, int32_t color_value);
 char *dxf_image_get_color_name (DxfImage *image);
 DxfImage *dxf_image_set_color_name (DxfImage *image, char *color_name);
-long dxf_image_get_transparency (DxfImage *image);
-DxfImage *dxf_image_set_transparency (DxfImage *image, long transparency);
+int32_t dxf_image_get_transparency (DxfImage *image);
+DxfImage *dxf_image_set_transparency (DxfImage *image, int32_t transparency);
 DxfPoint *dxf_image_get_p0 (DxfImage *image);
 DxfImage *dxf_image_set_p0 (DxfImage *image, DxfPoint *p0);
 double dxf_image_get_x0 (DxfImage *image);
@@ -341,22 +341,22 @@ double dxf_image_get_x4 (DxfImage *image);
 DxfImage *dxf_image_set_x4 (DxfImage *image, double x4);
 double dxf_image_get_y4 (DxfImage *image);
 DxfImage *dxf_image_set_y4 (DxfImage *image, double y4);
-int dxf_image_get_image_display_properties (DxfImage *image);
-DxfImage *dxf_image_set_image_display_properties (DxfImage *image, int image_display_properties);
-int dxf_image_get_clipping_boundary_type (DxfImage *image);
-DxfImage *dxf_image_set_clipping_boundary_type (DxfImage *image, int clipping_boundary_type);
-long dxf_image_get_class_version (DxfImage *image);
-DxfImage *dxf_image_set_class_version (DxfImage *image, long class_version);
-long dxf_image_get_number_of_clip_boundary_vertices (DxfImage *image);
-DxfImage *dxf_image_set_number_of_clip_boundary_vertices (DxfImage *image, long number_of_clip_boundary_vertices);
-int dxf_image_get_clipping_state (DxfImage *image);
-DxfImage *dxf_image_set_clipping_state (DxfImage *image, int clipping_state);
-int dxf_image_get_brightness (DxfImage *image);
-DxfImage *dxf_image_set_brightness (DxfImage *image, int brightness);
-int dxf_image_get_contrast (DxfImage *image);
-DxfImage *dxf_image_set_contrast (DxfImage *image, int contrast);
-int dxf_image_get_fade (DxfImage *image);
-DxfImage *dxf_image_set_fade (DxfImage *image, int fade);
+int16_t dxf_image_get_image_display_properties (DxfImage *image);
+DxfImage *dxf_image_set_image_display_properties (DxfImage *image, int16_t image_display_properties);
+int16_t dxf_image_get_clipping_boundary_type (DxfImage *image);
+DxfImage *dxf_image_set_clipping_boundary_type (DxfImage *image, int16_t clipping_boundary_type);
+int32_t dxf_image_get_class_version (DxfImage *image);
+DxfImage *dxf_image_set_class_version (DxfImage *image, int32_t class_version);
+int32_t dxf_image_get_number_of_clip_boundary_vertices (DxfImage *image);
+DxfImage *dxf_image_set_number_of_clip_boundary_vertices (DxfImage *image, int32_t number_of_clip_boundary_vertices);
+int16_t dxf_image_get_clipping_state (DxfImage *image);
+DxfImage *dxf_image_set_clipping_state (DxfImage *image, int16_t clipping_state);
+int16_t dxf_image_get_brightness (DxfImage *image);
+DxfImage *dxf_image_set_brightness (DxfImage *image, int16_t brightness);
+int16_t dxf_image_get_contrast (DxfImage *image);
+DxfImage *dxf_image_set_contrast (DxfImage *image, int16_t contrast);
+int16_t dxf_image_get_fade (DxfImage *image);
+DxfImage *dxf_image_set_fade (DxfImage *image, int16_t fade);
 char *dxf_image_get_imagedef_object (DxfImage *image);
 DxfImage *dxf_image_set_imagedef_object (DxfImage *image, char *imagedef_object);
 char *dxf_image_get_imagedef_reactor_object (DxfImage *image);
