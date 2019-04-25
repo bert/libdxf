@@ -667,31 +667,31 @@ dxf_image_write
                   (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
         }
-        if (strcmp (dxf_image_get_linetype (image), "") == 0)
+        if (strcmp (image->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_image_get_id_code (image));
+                  __FUNCTION__, dxf_entity_name, image->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_image_set_linetype (image, strdup (DXF_DEFAULT_LINETYPE));
+                image->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_image_get_layer (image), "") == 0)
+        if (strcmp (image->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_image_get_id_code (image));
+                  __FUNCTION__, dxf_entity_name, image->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to default layer.\n")),
                   dxf_entity_name);
-                dxf_image_set_layer (image, DXF_DEFAULT_LAYER);
+                image->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_image_get_id_code (image) != -1)
+        if (image->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_image_get_id_code (image));
+                fprintf (fp->fp, "  5\n%x\n", image->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -703,18 +703,18 @@ dxf_image_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_image_get_dictionary_owner_soft (image), "") != 0)
+        if ((strcmp (image->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_image_get_dictionary_owner_soft (image));
+                fprintf (fp->fp, "330\n%s\n", image->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_image_get_dictionary_owner_hard (image), "") != 0)
+        if ((strcmp (image->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_image_get_dictionary_owner_hard (image));
+                fprintf (fp->fp, "360\n%s\n", image->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if ((strcmp (image->object_owner_soft, "") != 0)
@@ -726,14 +726,14 @@ dxf_image_write
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_image_get_paperspace (image) == DXF_PAPERSPACE)
+        if (image->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_image_get_layer (image));
-        if (strcmp (dxf_image_get_linetype (image), DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", image->layer);
+        if (strcmp (image->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_image_get_linetype (image));
+                fprintf (fp->fp, "  6\n%s\n", image->linetype);
         }
         if ((fp->acad_version_number >= AutoCAD_2008)
           && (strcmp (image->material, "") != 0))
@@ -742,25 +742,25 @@ dxf_image_write
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_image_get_elevation (image) != 0.0))
+          && (image->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_image_get_elevation (image));
+                fprintf (fp->fp, " 38\n%f\n", image->elevation);
         }
-        if (dxf_image_get_color (image) != DXF_COLOR_BYLAYER)
+        if (image->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%hd\n", dxf_image_get_color (image));
+                fprintf (fp->fp, " 62\n%hd\n", image->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
                 fprintf (fp->fp, "370\n%d\n", image->lineweight);
         }
-        if (dxf_image_get_linetype_scale (image) != 1.0)
+        if (image->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_image_get_linetype_scale (image));
+                fprintf (fp->fp, " 48\n%f\n", image->linetype_scale);
         }
-        if (dxf_image_get_visibility (image) != 0)
+        if (image->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%hd\n", dxf_image_get_visibility (image));
+                fprintf (fp->fp, " 60\n%hd\n", image->visibility);
         }        if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
@@ -794,35 +794,35 @@ dxf_image_write
         {
                 fprintf (fp->fp, "100\nAcDbRasterImage\n");
         }
-        if (dxf_image_get_thickness (image) != 0.0)
+        if (image->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_image_get_thickness (image));
+                fprintf (fp->fp, " 39\n%f\n", image->thickness);
         }
-        fprintf (fp->fp, " 90\n%" PRIi32 "\n", dxf_image_get_class_version (image));
-        fprintf (fp->fp, " 10\n%f\n", dxf_image_get_x0 (image));
-        fprintf (fp->fp, " 20\n%f\n", dxf_image_get_y0 (image));
-        fprintf (fp->fp, " 30\n%f\n", dxf_image_get_z0 (image));
-        fprintf (fp->fp, " 11\n%f\n", dxf_image_get_x1 (image));
-        fprintf (fp->fp, " 21\n%f\n", dxf_image_get_y1 (image));
-        fprintf (fp->fp, " 31\n%f\n", dxf_image_get_z1 (image));
-        fprintf (fp->fp, " 12\n%f\n", dxf_image_get_x2 (image));
-        fprintf (fp->fp, " 22\n%f\n", dxf_image_get_y2 (image));
-        fprintf (fp->fp, " 32\n%f\n", dxf_image_get_z2 (image));
-        fprintf (fp->fp, " 13\n%f\n", dxf_image_get_x3 (image));
-        fprintf (fp->fp, " 23\n%f\n", dxf_image_get_y3 (image));
-        fprintf (fp->fp, "340\n%s\n", dxf_image_get_imagedef_object (image));
-        fprintf (fp->fp, " 70\n%hd\n", dxf_image_get_image_display_properties (image));
-        fprintf (fp->fp, "280\n%hd\n", dxf_image_get_clipping_state (image));
-        fprintf (fp->fp, "281\n%hd\n", dxf_image_get_brightness (image));
-        fprintf (fp->fp, "282\n%hd\n", dxf_image_get_contrast (image));
-        fprintf (fp->fp, "283\n%hd\n", dxf_image_get_fade (image));
-        fprintf (fp->fp, "360\n%s\n", dxf_image_get_imagedef_reactor_object (image));
-        fprintf (fp->fp, " 71\n%hd\n", dxf_image_get_clipping_boundary_type (image));
-        fprintf (fp->fp, " 91\n%" PRIi32 "\n", dxf_image_get_number_of_clip_boundary_vertices (image));
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", image->class_version);
+        fprintf (fp->fp, " 10\n%f\n", image->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", image->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", image->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", image->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", image->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", image->p1->z0);
+        fprintf (fp->fp, " 12\n%f\n", image->p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", image->p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", image->p2->z0);
+        fprintf (fp->fp, " 13\n%f\n", image->p3->x0);
+        fprintf (fp->fp, " 23\n%f\n", image->p3->y0);
+        fprintf (fp->fp, "340\n%s\n", image->imagedef_object);
+        fprintf (fp->fp, " 70\n%hd\n", image->image_display_properties);
+        fprintf (fp->fp, "280\n%hd\n", image->clipping_state);
+        fprintf (fp->fp, "281\n%hd\n", image->brightness);
+        fprintf (fp->fp, "282\n%hd\n", image->contrast);
+        fprintf (fp->fp, "283\n%hd\n", image->fade);
+        fprintf (fp->fp, "360\n%s\n", image->imagedef_reactor_object);
+        fprintf (fp->fp, " 71\n%hd\n", image->clipping_boundary_type);
+        fprintf (fp->fp, " 91\n%" PRIi32 "\n", image->number_of_clip_boundary_vertices);
         /* Now follows a sinle linked list of points (vertices).
          * We do not keep track of the number of points (vertices),
          * we just traverse down until the first NULL pointer is found.  */
-        iter = (DxfPoint *) dxf_image_get_p4 (image);
+        iter = (DxfPoint *) image->p4;
         while (iter != NULL)
         {
                 fprintf (fp->fp, " 14\n%f\n", iter->x0);
