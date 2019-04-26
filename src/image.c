@@ -871,21 +871,22 @@ dxf_image_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_image_get_linetype (image));
-        free (dxf_image_get_layer (image));
-        dxf_binary_graphics_data_free_list (dxf_image_get_binary_graphics_data (image));
-        free (dxf_image_get_dictionary_owner_soft (image));
-        free (dxf_image_get_material (image));
-        free (dxf_image_get_dictionary_owner_hard (image));
-        free (dxf_image_get_plot_style_name (image));
-        free (dxf_image_get_color_name (image));
-        dxf_point_free (dxf_image_get_p0 (image));
-        dxf_point_free (dxf_image_get_p1 (image));
-        dxf_point_free (dxf_image_get_p2 (image));
-        dxf_point_free (dxf_image_get_p3 (image));
-        dxf_point_free_list (dxf_image_get_p4 (image));
-        free (dxf_image_get_imagedef_object (image));
-        free (dxf_image_get_imagedef_reactor_object (image));
+        free (image->linetype);
+        free (image->layer);
+        dxf_binary_graphics_data_free_list (image->binary_graphics_data);
+        free (image->dictionary_owner_soft);
+        free (image->material);
+        free (image->dictionary_owner_hard);
+        free (image->object_owner_soft);
+        free (image->plot_style_name);
+        free (image->color_name);
+        dxf_point_free (image->p0);
+        dxf_point_free (image->p1);
+        dxf_point_free (image->p2);
+        dxf_point_free (image->p3);
+        dxf_point_free_list (image->p4);
+        free (image->imagedef_object);
+        free (image->imagedef_reactor_object);
         free (image);
         image = NULL;
 #if DEBUG
