@@ -295,6 +295,7 @@ DxfBinaryGraphicsData *dxf_image_get_binary_graphics_data (DxfImage *image);
 DxfImage *dxf_image_set_binary_graphics_data (DxfImage *image, DxfBinaryGraphicsData *data);
 char *dxf_image_get_dictionary_owner_soft (DxfImage *image);
 DxfImage *dxf_image_set_dictionary_owner_soft (DxfImage *image, char *dictionary_owner_soft);
+char *dxf_image_get_object_owner_soft (DxfImage *image);
 char *dxf_image_get_material (DxfImage *image);
 DxfImage *dxf_image_set_material (DxfImage *image, char *material);
 char *dxf_image_get_dictionary_owner_hard (DxfImage *image);
