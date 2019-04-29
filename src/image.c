@@ -114,7 +114,7 @@ dxf_image_init
         if (image == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfImage struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
