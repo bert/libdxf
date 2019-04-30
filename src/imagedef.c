@@ -113,21 +113,21 @@ dxf_imagedef_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_imagedef_set_id_code (imagedef, 0);
-        dxf_imagedef_set_dictionary_owner_soft (imagedef, strdup (""));
-        dxf_imagedef_set_dictionary_owner_hard (imagedef, strdup (""));
-        dxf_imagedef_set_file_name (imagedef, strdup (""));
-        dxf_imagedef_set_x0 (imagedef, 0.0);
-        dxf_imagedef_set_y0 (imagedef, 0.0);
-        dxf_imagedef_set_x0 (imagedef, 0.0);
-        dxf_imagedef_set_y0 (imagedef, 0.0);
-        dxf_imagedef_set_class_version (imagedef, 0);
-        dxf_imagedef_set_image_is_loaded_flag (imagedef, 0);
-        dxf_imagedef_set_resolution_units (imagedef, 0);
-        dxf_imagedef_set_acad_image_dict_soft (imagedef, strdup (""));
-        dxf_imagedef_set_imagedef_reactor (imagedef, dxf_imagedef_reactor_new ());
-        dxf_imagedef_reactor_init ((DxfImagedefReactor *) dxf_imagedef_get_imagedef_reactor (imagedef)); 
-        dxf_imagedef_set_next (imagedef, NULL);
+        imagedef->id_code = 0;
+        imagedef->dictionary_owner_soft = strdup ("");
+        imagedef->dictionary_owner_hard = strdup ("");
+        imagedef->file_name = strdup ("");
+        imagedef->x0 = 0.0;
+        imagedef->y0 = 0.0;
+        imagedef->x0 = 0.0;
+        imagedef->y0 = 0.0;
+        imagedef->class_version = 0;
+        imagedef->image_is_loaded_flag = 0;
+        imagedef->resolution_units = 0;
+        imagedef->acad_image_dict_soft = strdup ("");
+        imagedef->imagedef_reactor = dxf_imagedef_reactor_new ();
+        imagedef->imagedef_reactor = dxf_imagedef_reactor_init ((DxfImagedefReactor *) imagedef->imagedef_reactor);
+        imagedef->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
