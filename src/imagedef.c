@@ -1,7 +1,7 @@
 /*!
  * \file imagedef.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF imagedef object (\c IMAGEDEF).
@@ -269,14 +269,14 @@ dxf_imagedef_read
                         /* Now follows a string containing the
                          * value of the image is loaded flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &imagedef->image_is_loaded_flag);
+                        fscanf (fp->fp, "%hd\n", &imagedef->image_is_loaded_flag);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing the
                          * value of the resolution units. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &imagedef->resolution_units);
+                        fscanf (fp->fp, "%hd\n", &imagedef->resolution_units);
                 }
                 else if ((strcmp (temp_string, "330") == 0)
                   && (i == 0))
@@ -426,14 +426,14 @@ dxf_imagedef_write
         {
                 fprintf (fp->fp, "100\nAcDbRasterImageDef\n");
         }
-        fprintf (fp->fp, " 90\n%d\n", dxf_imagedef_get_class_version (imagedef));
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", dxf_imagedef_get_class_version (imagedef));
         fprintf (fp->fp, "  1\n%s\n", dxf_imagedef_get_file_name (imagedef));
         fprintf (fp->fp, " 10\n%f\n", dxf_imagedef_get_x0 (imagedef));
         fprintf (fp->fp, " 20\n%f\n", dxf_imagedef_get_y0 (imagedef));
         fprintf (fp->fp, " 11\n%f\n", dxf_imagedef_get_x1 (imagedef));
         fprintf (fp->fp, " 12\n%f\n", dxf_imagedef_get_y1 (imagedef));
-        fprintf (fp->fp, "280\n%d\n", dxf_imagedef_get_image_is_loaded_flag (imagedef));
-        fprintf (fp->fp, "281\n%d\n", dxf_imagedef_get_resolution_units (imagedef));
+        fprintf (fp->fp, "280\n%hd\n", dxf_imagedef_get_image_is_loaded_flag (imagedef));
+        fprintf (fp->fp, "281\n%hd\n", dxf_imagedef_get_resolution_units (imagedef));
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -1439,7 +1439,7 @@ dxf_imagedef_set_class_version
  * \return \c image_is_loaded_flag when successful, or \c EXIT_FAILURE
  * when an error occurred.
  */
-int
+int16_t
 dxf_imagedef_get_image_is_loaded_flag
 (
         DxfImagedef *imagedef
@@ -1489,7 +1489,7 @@ dxf_imagedef_set_image_is_loaded_flag
 (
         DxfImagedef *imagedef,
                 /*!< a pointer to a DXF \c IMAGEDEF object. */
-        int image_is_loaded_flag
+        int16_t image_is_loaded_flag
                 /*!< \c image_is_loaded_flag. */
 )
 {
@@ -1532,7 +1532,7 @@ dxf_imagedef_set_image_is_loaded_flag
  * \return \c resolution_units when successful, or \c EXIT_FAILURE
  * when an error occurred.
  */
-int
+int16_t
 dxf_imagedef_get_resolution_units
 (
         DxfImagedef *imagedef
@@ -1582,7 +1582,7 @@ dxf_imagedef_set_resolution_units
 (
         DxfImagedef *imagedef,
                 /*!< a pointer to a DXF \c IMAGEDEF object. */
-        int resolution_units
+        int16_t resolution_units
                 /*!< \c resolution_units. */
 )
 {

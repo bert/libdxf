@@ -1,7 +1,7 @@
 /*!
  * \file imagedef.h
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF imagedef object (\c IMAGEDEF).
@@ -104,7 +104,7 @@ dxf_imagedef_struct
                 /*!< Class version.\n
                  * 0 = R14 version.\n
                  * Group code = 90. */
-        int image_is_loaded_flag;
+        int16_t image_is_loaded_flag;
                 /*!< Image-is-loaded flag.\n
                  * <ol>
                  * <li value = "0"> Unloaded.</li>
@@ -112,7 +112,7 @@ dxf_imagedef_struct
                  * </ol>
                  * Group code = 280.
                  */
-        int resolution_units;
+        int16_t resolution_units;
                 /*!< Resolution units.\n
                  * <ol>
                  * <li value = "0"> No units.</li>
@@ -167,10 +167,10 @@ double dxf_imagedef_get_y1 (DxfImagedef *imagedef);
 DxfImagedef *dxf_imagedef_set_y1 (DxfImagedef *imagedef, double y1);
 int32_t dxf_imagedef_get_class_version (DxfImagedef *imagedef);
 DxfImagedef *dxf_imagedef_set_class_version (DxfImagedef *imagedef, int32_t class_version);
-int dxf_imagedef_get_image_is_loaded_flag (DxfImagedef *imagedef);
-DxfImagedef *dxf_imagedef_set_image_is_loaded_flag (DxfImagedef *imagedef, int image_is_loaded_flag);
-int dxf_imagedef_get_resolution_units (DxfImagedef *imagedef);
-DxfImagedef *dxf_imagedef_set_resolution_units (DxfImagedef *imagedef, int resolution_units);
+int16_t dxf_imagedef_get_image_is_loaded_flag (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_image_is_loaded_flag (DxfImagedef *imagedef, int16_t image_is_loaded_flag);
+int16_t dxf_imagedef_get_resolution_units (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_resolution_units (DxfImagedef *imagedef, int16_t resolution_units);
 char *dxf_imagedef_get_acad_image_dict_soft (DxfImagedef *imagedef);
 DxfImagedef *dxf_imagedef_set_acad_image_dict_soft (DxfImagedef *imagedef, char *acad_image_dict_soft);
 DxfImagedefReactor *dxf_imagedef_get_imagedef_reactor (DxfImagedef *imagedef);
