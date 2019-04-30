@@ -1,7 +1,7 @@
 /*!
  * \file imagedef_reactor.c
  *
- * \author Copyright (C) 2015, 2017. 2018
+ * \author Copyright (C) 2015, 2017. 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
@@ -206,7 +206,7 @@ dxf_imagedef_reactor_read
                         /* Now follows a string containing the
                          * value of class version. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &imagedef_reactor->class_version);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &imagedef_reactor->class_version);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
