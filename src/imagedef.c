@@ -66,7 +66,7 @@ dxf_imagedef_new ()
         if ((imagedef = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfImagedef struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 imagedef = NULL;
         }
