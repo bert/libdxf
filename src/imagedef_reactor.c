@@ -67,7 +67,7 @@ dxf_imagedef_reactor_new ()
         if ((imagedef_reactor = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfImagedefReactor struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 imagedef_reactor = NULL;
         }
