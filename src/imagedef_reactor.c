@@ -354,7 +354,7 @@ dxf_imagedef_reactor_write
         {
                 fprintf (fp->fp, "100\nAcDbRasterImageDefReactor\n");
         }
-        fprintf (fp->fp, " 90\n%d\n", dxf_imagedef_reactor_get_class_version (imagedef_reactor));
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", dxf_imagedef_reactor_get_class_version (imagedef_reactor));
         fprintf (fp->fp, "330\n%s\n", dxf_imagedef_reactor_get_associated_image_object (imagedef_reactor));
         /* Clean up. */
         free (dxf_entity_name);
