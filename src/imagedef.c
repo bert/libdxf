@@ -383,9 +383,9 @@ dxf_imagedef_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_imagedef_get_id_code (imagedef) != -1)
+        if (imagedef->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_imagedef_get_id_code (imagedef));
+                fprintf (fp->fp, "  5\n%x\n", imagedef->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -401,12 +401,12 @@ dxf_imagedef_write
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_imagedef_get_dictionary_owner_soft (imagedef));
-                fprintf (fp->fp, "330\n%s\n", dxf_imagedef_get_acad_image_dict_soft (imagedef));
-                if (dxf_imagedef_get_imagedef_reactor (imagedef) != NULL)
+                fprintf (fp->fp, "330\n%s\n", imagedef->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", imagedef->acad_image_dict_soft);
+                if (imagedef->imagedef_reactor != NULL)
                 {
                         DxfImagedefReactor *iter;
-                        iter = dxf_imagedef_get_imagedef_reactor (imagedef);
+                        iter = imagedef->imagedef_reactor;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "330\n%s\n", dxf_imagedef_reactor_get_associated_image_object (iter));
@@ -419,21 +419,21 @@ dxf_imagedef_write
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_imagedef_get_dictionary_owner_hard (imagedef));
+                fprintf (fp->fp, "360\n%s\n", imagedef->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbRasterImageDef\n");
         }
-        fprintf (fp->fp, " 90\n%" PRIi32 "\n", dxf_imagedef_get_class_version (imagedef));
-        fprintf (fp->fp, "  1\n%s\n", dxf_imagedef_get_file_name (imagedef));
-        fprintf (fp->fp, " 10\n%f\n", dxf_imagedef_get_x0 (imagedef));
-        fprintf (fp->fp, " 20\n%f\n", dxf_imagedef_get_y0 (imagedef));
-        fprintf (fp->fp, " 11\n%f\n", dxf_imagedef_get_x1 (imagedef));
-        fprintf (fp->fp, " 12\n%f\n", dxf_imagedef_get_y1 (imagedef));
-        fprintf (fp->fp, "280\n%hd\n", dxf_imagedef_get_image_is_loaded_flag (imagedef));
-        fprintf (fp->fp, "281\n%hd\n", dxf_imagedef_get_resolution_units (imagedef));
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", imagedef->class_version);
+        fprintf (fp->fp, "  1\n%s\n", imagedef->file_name);
+        fprintf (fp->fp, " 10\n%f\n", imagedef->x0);
+        fprintf (fp->fp, " 20\n%f\n", imagedef->y0);
+        fprintf (fp->fp, " 11\n%f\n", imagedef->x1);
+        fprintf (fp->fp, " 12\n%f\n", imagedef->y1);
+        fprintf (fp->fp, "280\n%hd\n", imagedef->image_is_loaded_flag);
+        fprintf (fp->fp, "281\n%hd\n", imagedef->resolution_units);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
