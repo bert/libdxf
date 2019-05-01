@@ -110,7 +110,7 @@ dxf_imagedef_reactor_init
         if (imagedef_reactor == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfImagedefReactor struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
