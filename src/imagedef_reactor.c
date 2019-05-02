@@ -114,13 +114,13 @@ dxf_imagedef_reactor_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_imagedef_reactor_set_id_code (imagedef_reactor, 0);
-        dxf_imagedef_reactor_set_dictionary_owner_soft (imagedef_reactor, strdup (""));
-        dxf_imagedef_reactor_set_dictionary_owner_hard (imagedef_reactor, strdup (""));
-        dxf_imagedef_reactor_set_class_version (imagedef_reactor, 2);
-        dxf_imagedef_reactor_set_associated_image_object (imagedef_reactor, strdup (""));
-        dxf_imagedef_reactor_set_associated_image_object_length (imagedef_reactor, 0);
-        dxf_imagedef_reactor_set_next (imagedef_reactor, NULL);
+        imagedef_reactor->id_code = 0;
+        imagedef_reactor->dictionary_owner_soft = strdup ("");
+        imagedef_reactor->dictionary_owner_hard = strdup ("");
+        imagedef_reactor->class_version = 2;
+        imagedef_reactor->associated_image_object = strdup ("");
+        imagedef_reactor->associated_image_object_length = 0;
+        imagedef_reactor->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
