@@ -49,6 +49,9 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_new.png
  */
 DxfArc *
 dxf_arc_new ()
