@@ -856,6 +856,9 @@ dxf_arc_free_list
 /*!
  * \brief Get the \c id_code from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_id_code.png
+ *
  * \return \c id_code.
  */
 int
