@@ -895,6 +895,9 @@ dxf_arc_get_id_code
 /*!
  * \brief Set the \c id_code for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_id_code.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
