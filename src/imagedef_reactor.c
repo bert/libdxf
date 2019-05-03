@@ -314,17 +314,17 @@ dxf_imagedef_reactor_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_imagedef_reactor_get_id_code (imagedef_reactor));
+                  __FUNCTION__, dxf_entity_name, imagedef_reactor->id_code);
         }
         if (fp->acad_version_number == AutoCAD_14)
         {
-                dxf_imagedef_reactor_set_class_version (imagedef_reactor, 2);
+                imagedef_reactor->class_version = 2;
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_imagedef_reactor_get_id_code (imagedef_reactor) != -1)
+        if (imagedef_reactor->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_imagedef_reactor_get_id_code (imagedef_reactor));
+                fprintf (fp->fp, "  5\n%x\n", imagedef_reactor->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -336,26 +336,26 @@ dxf_imagedef_reactor_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_imagedef_reactor_get_dictionary_owner_soft (imagedef_reactor), "") != 0)
+        if ((strcmp (imagedef_reactor->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_imagedef_reactor_get_dictionary_owner_soft (imagedef_reactor));
+                fprintf (fp->fp, "330\n%s\n", imagedef_reactor->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_imagedef_reactor_get_dictionary_owner_hard (imagedef_reactor), "") != 0)
+        if ((strcmp (imagedef_reactor->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_imagedef_reactor_get_dictionary_owner_hard (imagedef_reactor));
+                fprintf (fp->fp, "360\n%s\n", imagedef_reactor->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbRasterImageDefReactor\n");
         }
-        fprintf (fp->fp, " 90\n%" PRIi32 "\n", dxf_imagedef_reactor_get_class_version (imagedef_reactor));
-        fprintf (fp->fp, "330\n%s\n", dxf_imagedef_reactor_get_associated_image_object (imagedef_reactor));
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", imagedef_reactor->class_version);
+        fprintf (fp->fp, "330\n%s\n", imagedef_reactor->associated_image_object);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
