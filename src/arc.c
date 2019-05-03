@@ -820,6 +820,9 @@ dxf_arc_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c ARC entities and all their data fields.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_free_list.png
  */
 void
 dxf_arc_free_list
