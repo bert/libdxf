@@ -118,6 +118,24 @@ dxf_arc_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        arc->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (arc->binary_graphics_data);
+        if (arc->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->p0 = dxf_point_init (arc->p0);
+        if (arc->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         arc->id_code = 0;
         arc->linetype = strdup (DXF_DEFAULT_LINETYPE);
         arc->layer = strdup (DXF_DEFAULT_LAYER);
@@ -129,8 +147,6 @@ dxf_arc_init
         arc->paperspace = DXF_MODELSPACE;
         arc->graphics_data_size = 0;
         arc->shadow_mode = 0;
-        arc->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        arc->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (arc->binary_graphics_data);
         arc->dictionary_owner_soft = strdup ("");
         arc->object_owner_soft = strdup ("");
         arc->material = strdup ("");
@@ -140,8 +156,6 @@ dxf_arc_init
         arc->color_value = 0;
         arc->color_name = strdup ("");
         arc->transparency = 0;
-        arc->p0 = dxf_point_new ();
-        arc->p0 = dxf_point_init (arc->p0);
         arc->p0->x0 = 0.0;
         arc->p0->y0 = 0.0;
         arc->p0->z0 = 0.0;
