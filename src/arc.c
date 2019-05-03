@@ -1022,6 +1022,9 @@ dxf_arc_set_linetype
 /*!
  * \brief Get the \c layer from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_layer.png
+ *
  * \return \c layer when successful, \c NULL when an error occurred.
  */
 char *
