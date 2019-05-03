@@ -940,6 +940,9 @@ dxf_arc_set_id_code
 /*!
  * \brief Get the \c linetype from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_linetype.png
+ *
  * \return \c linetype when successful, \c NULL when an error occurred.
  */
 char *
