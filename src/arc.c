@@ -215,7 +215,6 @@ dxf_arc_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                arc = dxf_arc_new ();
                 arc = dxf_arc_init (arc);
         }
         iter310 = (DxfBinaryGraphicsData *) arc->binary_graphics_data;
