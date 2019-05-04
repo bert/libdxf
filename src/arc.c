@@ -1103,6 +1103,9 @@ dxf_arc_set_layer
 /*!
  * \brief Get the \c elevation from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_elevation.png
+ *
  * \return \c elevation.
  */
 double
