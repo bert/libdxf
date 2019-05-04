@@ -1839,6 +1839,9 @@ dxf_arc_set_binary_graphics_data
  * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_dictionary_owner_soft.png
+ *
  * \return pointer to the \c dictionary_owner_soft.
  *
  * \warning No checks are performed on the returned pointer (string).
