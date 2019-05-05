@@ -2007,6 +2007,9 @@ dxf_arc_set_object_owner_soft
 /*!
  * \brief Get the pointer to the \c material from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_material.png
+ *
  * \return a pointer to \c material when successful, or \c NULL when an
  * error occurred.
  *
