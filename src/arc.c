@@ -2087,6 +2087,9 @@ dxf_arc_set_material
  * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_dictionary_owner_hard.png
+ *
  * \return pointer to the \c dictionary_owner_hard.
  *
  * \warning No checks are performed on the returned pointer (string).
