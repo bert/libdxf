@@ -1842,6 +1842,9 @@ dxf_arc_set_binary_graphics_data
  * <b>Flow diagram:</b>
  * \image html drakon/dxf_arc_get_dictionary_owner_soft.png
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_dictionary_owner_soft.png
+ *
  * \return pointer to the \c dictionary_owner_soft.
  *
  * \warning No checks are performed on the returned pointer (string).
