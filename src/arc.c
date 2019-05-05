@@ -2246,6 +2246,9 @@ dxf_arc_set_lineweight
 /*!
  * \brief Get the \c plot_style_name from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_plot_style_name.png
+ *
  * \return a pointer to \c plot_style_name when successful, or \c NULL
  * when an error occurred.
  */
