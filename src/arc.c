@@ -3451,6 +3451,9 @@ dxf_arc_set_extrusion_vector
  * \brief Get the pointer to the next \c ARC entity from a DXF
  * \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_next.png
+ *
  * \return pointer to the next \c ARC entity.
  *
  * \warning No checks are performed on the returned pointer.
