@@ -3530,6 +3530,9 @@ dxf_arc_set_next
  * \brief Get the pointer to the last \c ARC entity from a linked list
  * of DXF \c ARC entities.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_last.png
+ *
  * \return pointer to the last \c ARC entity.
  *
  * \warning No checks are performed on the returned pointer.
