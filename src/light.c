@@ -177,7 +177,6 @@ dxf_light_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -197,7 +196,6 @@ dxf_light_read
                 light = dxf_light_new ();
                 light = dxf_light_init (light);
         }
-        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
