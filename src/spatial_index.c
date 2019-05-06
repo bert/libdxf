@@ -99,7 +99,6 @@ dxf_spatial_index_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int JD;
         float fraction_day;
         time_t now;
 
@@ -123,6 +122,7 @@ dxf_spatial_index_init
         spatial_index->dictionary_owner_hard = strdup ("");
         if (time (&now) != (time_t)(-1))
         {
+                int JD;
                 struct tm *current_time = localtime (&now);
 
                 /* Transform the current local gregorian date in a julian date.*/
