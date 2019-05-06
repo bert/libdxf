@@ -1419,6 +1419,9 @@ dxf_arc_set_visibility
 /*!
  * \brief Get the \c color from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_color.png
+ *
  * \return color.
  */
 int16_t
