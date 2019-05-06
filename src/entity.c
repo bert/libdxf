@@ -52,10 +52,11 @@ dxf_entity_skip
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char answer;
         if (dxf_entity_name == NULL) return (EXIT_FAILURE);
         if (INTER_ACTIVE_PROMPT)
         {
+                char answer;
+
                 fprintf (stderr,
                   (_("    skip %s entity ? [Y/N]:\n")), dxf_entity_name);
                 answer = getchar ();
