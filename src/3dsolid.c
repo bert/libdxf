@@ -328,20 +328,8 @@ dxf_3dsolid_read
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
-                        if (strcmp (temp_string, "AcDbModelerGeometry") != 0)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
-                                  __FUNCTION__, fp->filename, fp->line_number);
-                        }
-                }
-                else if (strcmp (temp_string, "100") == 0)
-                {
-                        /* Now follows a string containing the
-                         * subclass marker value. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
-                        if (strcmp (temp_string, "AcDb3dSolid") != 0)
+                        if ((strcmp (temp_string, "AcDbModelerGeometry") != 0)
+                          || (strcmp (temp_string, "AcDb3dSolid") != 0))
                         {
                                 fprintf (stderr,
                                   (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
