@@ -1,7 +1,7 @@
 /*!
  * \file spatial_index.c
  *
- * \author Copyright (C) 2015, 2017, 2018
+ * \author Copyright (C) 2015, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF spatial_index object (\c SPATIAL_INDEX).
