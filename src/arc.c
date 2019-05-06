@@ -1255,6 +1255,9 @@ dxf_arc_set_thickness
 /*!
  * \brief Get the \c linetype_scale from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_linetype_scale.png
+ *
  * \return \c linetype_scale.
  */
 double
