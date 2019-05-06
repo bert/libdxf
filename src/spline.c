@@ -1,7 +1,7 @@
 /*!
  * \file spline.c
  * 
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF spline entity (\c SPLINE).
@@ -614,51 +614,51 @@ dxf_spline_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->color);
+                        fscanf (fp->fp, "%hd\n", &spline->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->paperspace);
+                        fscanf (fp->fp, "%hd\n", &spline->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a flag value (bit coded). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->flag);
+                        fscanf (fp->fp, "%hd\n", &spline->flag);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a degree of spline curve value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->degree);
+                        fscanf (fp->fp, "%hd\n", &spline->degree);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a number of knots value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->number_of_knots);
+                        fscanf (fp->fp, "%hd\n", &spline->number_of_knots);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a number of control points value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->number_of_control_points);
+                        fscanf (fp->fp, "%hd\n", &spline->number_of_control_points);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
                         /* Now follows a number of fit points value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->number_of_fit_points);
+                        fscanf (fp->fp, "%hd\n", &spline->number_of_fit_points);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &spline->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &spline->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "284") == 0)
                 {
@@ -715,7 +715,7 @@ dxf_spline_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &spline->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &spline->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -729,7 +729,7 @@ dxf_spline_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &spline->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &spline->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -875,7 +875,7 @@ dxf_spline_write
         }
         if (spline->paperspace != DXF_MODELSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", spline->layer);
         if (strcmp (spline->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -895,7 +895,7 @@ dxf_spline_write
         }
         if (spline->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", spline->color);
+                fprintf (fp->fp, " 62\n%hd\n", spline->color);
         }
         if (spline->thickness != 0.0)
         {
@@ -905,9 +905,9 @@ dxf_spline_write
         fprintf (fp->fp, " 48\n%f\n", spline->linetype_scale);
         if (spline->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", spline->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", spline->visibility);
         }
-        fprintf (fp->fp, " 92\n%d\n", spline->graphics_data_size);
+        fprintf (fp->fp, " 92\n%" PRIi32 "\n", spline->graphics_data_size);
         /*!
          * \todo On 64 bit machines use group code 160.
          */
@@ -916,11 +916,11 @@ dxf_spline_write
                 fprintf (fp->fp, "310\n%s\n", binary_graphics_data->data_line);
                 binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (binary_graphics_data);
         }
-        fprintf (fp->fp, "420\n%ld\n", spline->color_value);
+        fprintf (fp->fp, "420\n%" PRIi32 "\n", spline->color_value);
         fprintf (fp->fp, "430\n%s\n", spline->color_name);
-        fprintf (fp->fp, "440\n%ld\n", spline->transparency);
+        fprintf (fp->fp, "440\n%" PRIi32 "\n", spline->transparency);
         fprintf (fp->fp, "390\n%s\n", spline->plot_style_name);
-        fprintf (fp->fp, "284\n%d\n", spline->shadow_mode);
+        fprintf (fp->fp, "284\n%hd\n", spline->shadow_mode);
         fprintf (fp->fp, "100\nAcDbSpline\n");
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (spline->extr_x0 != 0.0)
@@ -931,11 +931,11 @@ dxf_spline_write
                 fprintf (fp->fp, "220\n%f\n", spline->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", spline->extr_z0);
         }
-        fprintf (fp->fp, " 70\n%d\n", spline->flag);
-        fprintf (fp->fp, " 71\n%d\n", spline->degree);
-        fprintf (fp->fp, " 72\n%d\n", spline->number_of_knots);
-        fprintf (fp->fp, " 73\n%d\n", spline->number_of_control_points);
-        fprintf (fp->fp, " 74\n%d\n", spline->number_of_fit_points);
+        fprintf (fp->fp, " 70\n%hd\n", spline->flag);
+        fprintf (fp->fp, " 71\n%hd\n", spline->degree);
+        fprintf (fp->fp, " 72\n%hd\n", spline->number_of_knots);
+        fprintf (fp->fp, " 73\n%hd\n", spline->number_of_control_points);
+        fprintf (fp->fp, " 74\n%hd\n", spline->number_of_fit_points);
         fprintf (fp->fp, " 42\n%f\n", spline->knot_tolerance);
         fprintf (fp->fp, " 43\n%f\n", spline->control_point_tolerance);
         fprintf (fp->fp, " 12\n%f\n", p2->x0);
@@ -1623,7 +1623,7 @@ dxf_spline_set_visibility
  * \return \c color when successful, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+int16_t
 dxf_spline_get_color
 (
         DxfSpline *spline
@@ -1665,7 +1665,7 @@ dxf_spline_set_color
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int color
+        int16_t color
                 /*!< the \c color to be set for the entity. */
 )
 {
@@ -1702,7 +1702,7 @@ dxf_spline_set_color
  * \return \c paperspace flag value when successful, or \c EXIT_FAILURE
  * when an error occurred.
  */
-int
+int16_t
 dxf_spline_get_paperspace
 (
         DxfSpline *spline
@@ -1750,7 +1750,7 @@ dxf_spline_set_paperspace
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the \c paperspace flag value to be set for the
                  * entity. */
 )
@@ -1794,7 +1794,7 @@ dxf_spline_set_paperspace
  * \return \c graphics_data_size flag value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_spline_get_graphics_data_size
 (
         DxfSpline *spline
@@ -1842,7 +1842,7 @@ dxf_spline_set_graphics_data_size
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2458,7 +2458,7 @@ dxf_spline_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_spline_get_color_value
 (
         DxfSpline *spline
@@ -2494,7 +2494,7 @@ dxf_spline_set_color_value
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2603,7 +2603,7 @@ dxf_spline_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_spline_get_transparency
 (
         DxfSpline *spline
@@ -2639,7 +2639,7 @@ dxf_spline_set_transparency
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
@@ -4176,7 +4176,7 @@ dxf_spline_set_fit_tolerance
  * \return \c flag when successful, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+int16_t
 dxf_spline_get_flag
 (
         DxfSpline *spline
@@ -4223,7 +4223,7 @@ dxf_spline_set_flag
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int flag
+        int16_t flag
                 /*!< The \c flag to be set for the entity. */
 )
 {
@@ -4264,7 +4264,7 @@ dxf_spline_set_flag
  * \return \c degree when successful, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+int16_t
 dxf_spline_get_degree
 (
         DxfSpline *spline
@@ -4305,7 +4305,7 @@ dxf_spline_set_degree
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int degree
+        int16_t degree
                 /*!< The \c degree to be set for the entity. */
 )
 {
@@ -4340,7 +4340,7 @@ dxf_spline_set_degree
  * \return \c number_of_knots when successful, or \c EXIT_FAILURE when
  * an error occurred.
  */
-int
+int16_t
 dxf_spline_get_number_of_knots
 (
         DxfSpline *spline
@@ -4381,7 +4381,7 @@ dxf_spline_set_number_of_knots
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int number_of_knots
+        int16_t number_of_knots
                 /*!< The \c number_of_knots to be set for the entity. */
 )
 {
@@ -4416,7 +4416,7 @@ dxf_spline_set_number_of_knots
  * \return \c number_of_control_points when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int16_t
 dxf_spline_get_number_of_control_points
 (
         DxfSpline *spline
@@ -4457,7 +4457,7 @@ dxf_spline_set_number_of_control_points
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int number_of_control_points
+        int16_t number_of_control_points
                 /*!< The \c number_of_control_points to be set for the
                  * entity. */
 )
@@ -4493,7 +4493,7 @@ dxf_spline_set_number_of_control_points
  * \return \c number_of_fit_points when successful, or \c EXIT_FAILURE
  * when an error occurred.
  */
-int
+int16_t
 dxf_spline_get_number_of_fit_points
 (
         DxfSpline *spline
@@ -4534,7 +4534,7 @@ dxf_spline_set_number_of_fit_points
 (
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
-        int number_of_fit_points
+        int16_t number_of_fit_points
                 /*!< The \c number_of_fit_points to be set for the
                  * entity. */
 )

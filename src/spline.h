@@ -1,7 +1,7 @@
 /*!
  * \file spline.h
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF spline entity (\c SPLINE).
@@ -98,19 +98,19 @@ dxf_spline_struct
                  * <li value = "1"> Invisible</li>
                  * </ol>
                  * Group code = 60. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -146,7 +146,7 @@ dxf_spline_struct
         char *plot_style_name;
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -164,7 +164,7 @@ dxf_spline_struct
                  * AcDbEntity, class-level color data and AcDbEntity,
                  * class-level transparency data.\n
                  * Group code = 430. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -202,7 +202,7 @@ dxf_spline_struct
         double fit_tolerance;
                 /*!< Fit tolerance (default = 0.0000000001).\n
                  * Group code = 44. */
-        int flag;
+        int16_t flag;
                 /*!< Spline flag (bit coded):\n
                  * <ol>
                  * <li value = "1"> Closed spline.</li>
@@ -212,16 +212,16 @@ dxf_spline_struct
                  * <li value = "16"> Linear (planar bit is also set).</li>
                  * </ol>\n
                  * Group code = 70. */
-        int degree;
+        int16_t degree;
                 /*!< Degree of the spline curve.\n
                  * Group code = 71. */
-        int number_of_knots;
+        int16_t number_of_knots;
                 /*!< Number of knots.\n
                  * Group code = 72. */
-        int number_of_control_points;
+        int16_t number_of_control_points;
                 /*!< Number of control points.\n
                  * Group code = 73. */
-        int number_of_fit_points;
+        int16_t number_of_fit_points;
                 /*!< group code = 74\n
                  * Number of fit points (if any).*/
         double extr_x0;
@@ -262,12 +262,12 @@ double dxf_spline_get_linetype_scale (DxfSpline *spline);
 DxfSpline *dxf_spline_set_linetype_scale (DxfSpline *spline, double linetype_scale);
 int16_t dxf_spline_get_visibility (DxfSpline *spline);
 DxfSpline *dxf_spline_set_visibility (DxfSpline *spline, int16_t visibility);
-int dxf_spline_get_color (DxfSpline *spline);
-DxfSpline *dxf_spline_set_color (DxfSpline *spline, int color);
-int dxf_spline_get_paperspace (DxfSpline *spline);
-DxfSpline *dxf_spline_set_paperspace (DxfSpline *spline, int paperspace);
-int dxf_spline_get_graphics_data_size (DxfSpline *spline);
-DxfSpline *dxf_spline_set_graphics_data_size (DxfSpline *spline, int graphics_data_size);
+int16_t dxf_spline_get_color (DxfSpline *spline);
+DxfSpline *dxf_spline_set_color (DxfSpline *spline, int16_t color);
+int16_t dxf_spline_get_paperspace (DxfSpline *spline);
+DxfSpline *dxf_spline_set_paperspace (DxfSpline *spline, int16_t paperspace);
+int32_t dxf_spline_get_graphics_data_size (DxfSpline *spline);
+DxfSpline *dxf_spline_set_graphics_data_size (DxfSpline *spline, int32_t graphics_data_size);
 int16_t dxf_spline_get_shadow_mode (DxfSpline *spline);
 DxfSpline *dxf_spline_set_shadow_mode (DxfSpline *spline, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_spline_get_binary_graphics_data (DxfSpline *spline);
@@ -282,12 +282,12 @@ int16_t dxf_spline_get_lineweight (DxfSpline *spline);
 DxfSpline *dxf_spline_set_lineweight (DxfSpline *spline, int16_t lineweight);
 char *dxf_spline_get_plot_style_name (DxfSpline *spline);
 DxfSpline *dxf_spline_set_plot_style_name (DxfSpline *spline, char *plot_style_name);
-long dxf_spline_get_color_value (DxfSpline *spline);
-DxfSpline *dxf_spline_set_color_value (DxfSpline *spline, long color_value);
+int32_t dxf_spline_get_color_value (DxfSpline *spline);
+DxfSpline *dxf_spline_set_color_value (DxfSpline *spline, int32_t color_value);
 char *dxf_spline_get_color_name (DxfSpline *spline);
 DxfSpline *dxf_spline_set_color_name (DxfSpline *spline, char *color_name);
-long dxf_spline_get_transparency (DxfSpline *spline);
-DxfSpline *dxf_spline_set_transparency (DxfSpline *spline, long transparency);
+int32_t dxf_spline_get_transparency (DxfSpline *spline);
+DxfSpline *dxf_spline_set_transparency (DxfSpline *spline, int32_t transparency);
 DxfPoint *dxf_spline_get_p0 (DxfSpline *spline);
 DxfSpline *dxf_spline_set_p0 (DxfSpline *spline, DxfPoint *p0);
 double dxf_spline_get_x0 (DxfSpline *spline);
@@ -326,16 +326,16 @@ double dxf_spline_get_control_point_tolerance (DxfSpline *spline);
 DxfSpline *dxf_spline_set_control_point_tolerance (DxfSpline *spline, double control_point_tolerance);
 double dxf_spline_get_fit_tolerance (DxfSpline *spline);
 DxfSpline *dxf_spline_set_fit_tolerance (DxfSpline *spline, double fit_tolerance);
-int dxf_spline_get_flag (DxfSpline *spline);
-DxfSpline *dxf_spline_set_flag (DxfSpline *spline, int flag);
-int dxf_spline_get_degree (DxfSpline *spline);
-DxfSpline *dxf_spline_set_degree (DxfSpline *spline, int degree);
-int dxf_spline_get_number_of_knots (DxfSpline *spline);
-DxfSpline *dxf_spline_set_number_of_knots (DxfSpline *spline, int number_of_knots);
-int dxf_spline_get_number_of_control_points (DxfSpline *spline);
-DxfSpline *dxf_spline_set_number_of_control_points (DxfSpline *spline, int number_of_control_points);
-int dxf_spline_get_number_of_fit_points (DxfSpline *spline);
-DxfSpline *dxf_spline_set_number_of_fit_points (DxfSpline *spline, int number_of_fit_points);
+int16_t dxf_spline_get_flag (DxfSpline *spline);
+DxfSpline *dxf_spline_set_flag (DxfSpline *spline, int16_t flag);
+int16_t dxf_spline_get_degree (DxfSpline *spline);
+DxfSpline *dxf_spline_set_degree (DxfSpline *spline, int16_t degree);
+int16_t dxf_spline_get_number_of_knots (DxfSpline *spline);
+DxfSpline *dxf_spline_set_number_of_knots (DxfSpline *spline, int16_t number_of_knots);
+int16_t dxf_spline_get_number_of_control_points (DxfSpline *spline);
+DxfSpline *dxf_spline_set_number_of_control_points (DxfSpline *spline, int16_t number_of_control_points);
+int16_t dxf_spline_get_number_of_fit_points (DxfSpline *spline);
+DxfSpline *dxf_spline_set_number_of_fit_points (DxfSpline *spline, int16_t number_of_fit_points);
 DxfPoint *dxf_spline_get_extrusion_vector_as_point (DxfSpline *spline);
 DxfSpline *dxf_spline_set_extrusion_vector_from_point (DxfSpline *spline, DxfPoint *point);
 DxfSpline *dxf_spline_set_extrusion_vector (DxfSpline *spline, double extr_x0, double extr_y0, double extr_z0);
