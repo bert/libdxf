@@ -1337,6 +1337,9 @@ dxf_arc_set_linetype_scale
 /*!
  * \brief Get the \c visibility from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_visibility.png
+ *
  * \return \c visibility.
  */
 int16_t
