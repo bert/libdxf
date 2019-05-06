@@ -3508,6 +3508,8 @@ dxf_arc_get_next
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
+ *
+ * \note the pointer to \c next is not freed.
  */
 DxfArc *
 dxf_arc_set_next
