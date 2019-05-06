@@ -1178,6 +1178,9 @@ dxf_arc_set_elevation
 /*!
  * \brief Get the \c thickness from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_thickness.png
+ *
  * \return \c thickness.
  */
 double
