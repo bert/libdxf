@@ -173,7 +173,6 @@ dxf_helix_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -193,7 +192,6 @@ dxf_helix_read
                 helix = dxf_helix_new ();
                 helix = dxf_helix_init (helix);
         }
-        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
