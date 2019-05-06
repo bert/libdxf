@@ -532,13 +532,6 @@ dxf_image_read
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
-                        /* Now follows a string containing a hard
-                         * reference to imagedef_reactor object. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", image->imagedef_reactor_object);
-                }
-                else if (strcmp (temp_string, "360") == 0)
-                {
                         if (iter360 == 0)
                         {
                                 /* Now follows a string containing a hard-pointer
