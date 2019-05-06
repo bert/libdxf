@@ -873,7 +873,7 @@ dxf_spline_write
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (spline->paperspace != DXF_MODELSPACE)
+        if (spline->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
         }
