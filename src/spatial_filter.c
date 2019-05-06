@@ -172,7 +172,6 @@ dxf_spatial_filter_read
 #endif
         char *temp_string = NULL;
         int i;
-        int j;
         int k;
         DxfPoint *iter_p0 = NULL;
 
@@ -201,7 +200,6 @@ dxf_spatial_filter_read
                 spatial_filter = dxf_spatial_filter_init (spatial_filter);
         }
         i = 0;
-        j = 0;
         k = 0;
         iter_p0 = (DxfPoint *) spatial_filter->p0;
         (fp->line_number)++;
