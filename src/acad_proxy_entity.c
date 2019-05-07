@@ -701,7 +701,7 @@ dxf_acad_proxy_entity_write
 #endif
                 if (acad_proxy_entity->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter310a = NULL;
+                        DxfBinaryGraphicsData *iter310a;
                         iter310a = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data;
                         while (iter310a != NULL)
                         {
@@ -712,7 +712,7 @@ dxf_acad_proxy_entity_write
                 fprintf (fp->fp, " 93\n%" PRIi32 "\n", acad_proxy_entity->entity_data_size);
                 if (acad_proxy_entity->binary_entity_data != NULL)
                 {
-                        DxfBinaryEntityData *iter310b = NULL;
+                        DxfBinaryEntityData *iter310b;
                         iter310b = (DxfBinaryEntityData *) acad_proxy_entity->binary_entity_data;
                         while (iter310b != NULL)
                         {
@@ -721,7 +721,7 @@ dxf_acad_proxy_entity_write
                         }
                 }
         }
-        DxfObjectId *iter330 = NULL;
+        DxfObjectId *iter330;
         iter330 = (DxfObjectId *) acad_proxy_entity->object_id;
         while (iter330)
         {
