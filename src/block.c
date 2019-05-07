@@ -492,8 +492,8 @@ dxf_block_write
                 fprintf (fp->fp, "  3\n%s\n", block->block_name);
         }
         if ((fp->acad_version_number >= AutoCAD_13)
-        && ((block->block_type && 4)
-        || (block->block_type && 32)))
+        && ((block->block_type & 4)
+        || (block->block_type & 32)))
         {
                 fprintf (fp->fp, "  1\n%s\n", block->xref_name);
         }
