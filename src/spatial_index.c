@@ -99,7 +99,6 @@ dxf_spatial_index_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        float fraction_day;
         time_t now;
 
         /* Do some basic checks. */
@@ -122,6 +121,7 @@ dxf_spatial_index_init
         spatial_index->dictionary_owner_hard = strdup ("");
         if (time (&now) != (time_t)(-1))
         {
+                float fraction_day;
                 int JD;
                 struct tm *current_time = localtime (&now);
 
