@@ -1,6 +1,8 @@
 # Makefile.am for autogenerating Doxygen developer documentation.
 
 EXTRA_DIST = \
+	drakon/*.png \
+	drakon/README.md \
 	create_libdxf_dox.sh \
 	libDXF.dox \
 	libDXF-64.png \
