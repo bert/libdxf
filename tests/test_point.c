@@ -1,7 +1,8 @@
 /*!
  * \file test_point.c
  *
- * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2019
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Testing program for a DXF point entity (\c POINT).
  *
@@ -50,7 +51,6 @@ test_point (int argc, char** argv)
 #endif
         char *filename;
         char temp_string[255];
-        int line_number;
         FILE *fp;
         DxfPoint *dxf_point_test_1;
         DxfPoint *dxf_point_test_2;
@@ -59,7 +59,6 @@ test_point (int argc, char** argv)
         dxf_point_init (dxf_point_test_1);
         dxf_point_test_2 = dxf_point_new ();
         dxf_point_init (dxf_point_test_2);
-        line_number = 1;
         filename = strdup ("dxf_point_test.dxf");
         fp = fopen (filename, "rw");
         if (!fp)
