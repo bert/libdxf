@@ -236,7 +236,7 @@ dxf_3dface_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", face->linetype);
+                        fscanf (fp->fp, "%254s\n", face->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
