@@ -1776,6 +1776,9 @@ dxf_arc_set_shadow_mode
  * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_binary_grapics_data.png
+ *
  * \return pointer to the \c binary_graphics_data.
  *
  * \warning No checks are performed on the returned pointer.
