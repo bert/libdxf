@@ -634,7 +634,6 @@ dxf_mesh_write
         if (mesh->p0 != NULL)
         {
                 DxfPoint *p0_iter;
-                p0_iter = dxf_point_new();
                 p0_iter = (DxfPoint *) mesh->p0;
                 while (p0_iter != NULL)
                 {
@@ -648,7 +647,6 @@ dxf_mesh_write
         if (mesh->face_list_item != NULL)
         {
                 DxfInt32 *face_list_item_iter;
-                face_list_item_iter = dxf_int32_new ();
                 face_list_item_iter = (DxfInt32 *) mesh->face_list_item;
                 while (face_list_item_iter != NULL)
                 {
@@ -660,7 +658,6 @@ dxf_mesh_write
         if (mesh->edge_vertex_index != NULL)
         {
                 DxfInt32 *edge_vertex_index_iter;
-                edge_vertex_index_iter = dxf_int32_new ();
                 edge_vertex_index_iter = (DxfInt32 *) mesh->edge_vertex_index;
                 while (edge_vertex_index_iter != NULL)
                 {
@@ -672,7 +669,6 @@ dxf_mesh_write
         if (mesh->edge_create_value != NULL)
         {
                 DxfDouble *edge_create_value_iter;
-                edge_create_value_iter = dxf_double_new ();
                 edge_create_value_iter = (DxfDouble *) mesh->edge_create_value;
                 while (edge_create_value_iter != NULL)
                 {
