@@ -178,7 +178,6 @@ dxf_block_record_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                block_record = dxf_block_record_new ();
                 block_record = dxf_block_record_init (block_record);
         }
         iter310 = (DxfBinaryGraphicsData *) block_record->binary_graphics_data;
