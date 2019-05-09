@@ -205,7 +205,6 @@ dxf_3dface_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                face = dxf_3dface_new ();
                 face = dxf_3dface_init (face);
         }
         iter310 = (DxfBinaryGraphicsData *) face->binary_graphics_data;
