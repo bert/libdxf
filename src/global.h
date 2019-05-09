@@ -424,11 +424,24 @@ dxf_int32_struct
          *
          * The maximum string length is 255 for DXF versions prior to
          * DXF release 2000 (also a MSDOS limit). */
+#  define DXF_MAX_STRING_FORMAT "%254s\n"
+        /*!< \brief The maximum string length format string.
+         *
+         * The maximum string length is 255 for DXF versions prior to
+         * DXF release 2000 (also a MSDOS limit).
+         *
+         * \note one (1) char is reserved for '\0'. */
 #else
 #  define DXF_MAX_STRING_LENGTH 2049
         /*!< \brief The maximum string length.
          *
          * The maximum string length is 2049, as per DXF release 2000. */
+#  define DXF_MAX_STRING_FORMAT "%2048s\n"
+        /*!< \brief The maximum string length format string.
+         *
+         * The maximum string length is 2049, as per DXF release 2000.
+         *
+         * \note one (1) char is reserved for '\0'. */
 #endif
 
 #define DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS 256
