@@ -183,7 +183,6 @@ dxf_block_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                block = dxf_block_new ();
                 block = dxf_block_init (block);
         }
         fscanf (fp->fp, "%[^\n]", temp_string);
