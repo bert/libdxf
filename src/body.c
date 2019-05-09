@@ -187,7 +187,6 @@ dxf_body_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                body = dxf_body_new ();
                 body = dxf_body_init (body);
         }
         if (fp->acad_version_number < AutoCAD_13)
