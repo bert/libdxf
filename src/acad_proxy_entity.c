@@ -249,14 +249,14 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing the layer
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->layer);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                   && DXF_FLATLAND
@@ -364,7 +364,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                           && ((strcmp (temp_string, "AcDbZombieEntity") != 0))
                           && ((strcmp (temp_string, "AcDbProxyEntity") != 0)))
@@ -386,7 +386,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
                         iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
@@ -397,14 +397,14 @@ dxf_acad_proxy_entity_read
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner dictionary. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", acad_proxy_entity->dictionary_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->dictionary_owner_soft);
                         }
                         if (iter330 == 1)
                         {
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner object. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", acad_proxy_entity->object_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->object_owner_soft);
                         }
                         iter330++;
                 }
@@ -418,7 +418,7 @@ dxf_acad_proxy_entity_read
                                 dxf_object_id_set_group_code (acad_proxy_entity->object_id, atoi (temp_string));
                                 /* Now follows a string containing an object id line of data. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", acad_proxy_entity->object_id->data);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->object_id->data);
                         }
                         else /* For following object_id's. */
                         {
@@ -427,7 +427,7 @@ dxf_acad_proxy_entity_read
                                 dxf_object_id_set_group_code (iter, atoi (temp_string));
                                 /* Now follows a string containing an object id line of data. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", iter->data);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter->data);
                         }
                         i++;
                 }
@@ -436,14 +436,14 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to material object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -457,7 +457,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing a plot style
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->plot_style_name);
                 }
                 else if (strcmp (temp_string, "420") == 0)
                 {
@@ -470,7 +470,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing a color
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->color_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, acad_proxy_entity->color_name);
                 }
                 else if (strcmp (temp_string, "440") == 0)
                 {
@@ -483,7 +483,7 @@ dxf_acad_proxy_entity_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
