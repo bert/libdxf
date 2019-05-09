@@ -206,7 +206,6 @@ dxf_attrib_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                attrib = dxf_attrib_new ();
                 attrib = dxf_attrib_init (attrib);
                 if (attrib == NULL)
                 {
