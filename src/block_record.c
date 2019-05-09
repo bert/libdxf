@@ -208,7 +208,7 @@ dxf_block_record_read
                         /* Now follows a string containing an application
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", block_record->block_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block_record->block_name);
                 }
 /*! \todo Implement Group Code = 70 in a proper way. */
                 else if (strcmp (temp_string, "70") == 0)
@@ -237,7 +237,7 @@ dxf_block_record_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
                         iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
@@ -248,14 +248,14 @@ dxf_block_record_read
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner dictionary. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", block_record->dictionary_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block_record->dictionary_owner_soft);
                         }
                         if (iter330 == 1)
                         {
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner object. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", block_record->object_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block_record->object_owner_soft);
                         }
                         iter330++;
                 }
@@ -264,20 +264,20 @@ dxf_block_record_read
                         /* Now follows a string containing Hard-pointer
                          * ID/handle to associated LAYOUT object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", block_record->associated_layout_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block_record->associated_layout_hard);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", block_record->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block_record->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "1000") == 0)
@@ -285,7 +285,7 @@ dxf_block_record_read
                         /* Now follows a string containing the Xdata
                          * string data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", block_record->xdata_string_data);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block_record->xdata_string_data);
                         if (strcmp (block_record->xdata_string_data, "DesignCenter Data") != 0)
                         {
                                 fprintf (stderr,
@@ -298,7 +298,7 @@ dxf_block_record_read
                         /* Now follows a string containing the Xdata
                          * application name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", block_record->xdata_application_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block_record->xdata_application_name);
                         if (strcmp (block_record->xdata_application_name, "ACAD") != 0)
                         {
                                 fprintf (stderr,
