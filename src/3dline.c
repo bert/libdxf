@@ -200,7 +200,6 @@ dxf_3dline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                line = dxf_3dline_new ();
                 line = dxf_3dline_init (line);
         }
         iter310 = (DxfBinaryGraphicsData *) line->binary_graphics_data;
