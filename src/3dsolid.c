@@ -228,7 +228,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->proprietary_data->line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->proprietary_data->line);
                         solid->proprietary_data->order = i;
                         i++;
                         dxf_proprietary_data_init ((DxfProprietaryData *) solid->proprietary_data->next);
@@ -239,7 +239,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->additional_proprietary_data->line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->additional_proprietary_data->line);
                         solid->additional_proprietary_data->order = i;
                         i++;
                         dxf_proprietary_data_init ((DxfProprietaryData *) solid->additional_proprietary_data->next);
@@ -257,13 +257,13 @@ dxf_3dsolid_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->layer);
                 }
                 else if (strcmp (temp_string, "38") == 0)
                 {
@@ -326,7 +326,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbModelerGeometry") != 0)
                           || (strcmp (temp_string, "AcDb3dSolid") != 0))
                         {
@@ -354,7 +354,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
                         iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
@@ -365,14 +365,14 @@ dxf_3dsolid_read
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner dictionary. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", solid->dictionary_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->dictionary_owner_soft);
                         }
                         if (iter330 == 1)
                         {
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner object. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", solid->object_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->object_owner_soft);
                         }
                         iter330++;
                 }
@@ -381,21 +381,21 @@ dxf_3dsolid_read
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to material object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->material);
                 }
                 else if (strcmp (temp_string, "350") == 0)
                 {
                         /* Now follows a string containing a handle to a
                          * history object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->history);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->history);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -409,7 +409,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing a plot style
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->plot_style_name);
                 }
                 else if (strcmp (temp_string, "420") == 0)
                 {
@@ -422,7 +422,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing a color
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->color_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->color_name);
                 }
                 else if (strcmp (temp_string, "440") == 0)
                 {
@@ -435,7 +435,7 @@ dxf_3dsolid_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
