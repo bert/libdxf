@@ -182,7 +182,6 @@ dxf_appid_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                appid = dxf_appid_new ();
                 appid = dxf_appid_init (appid);
         }
         iter330 = 0;
