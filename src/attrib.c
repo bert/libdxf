@@ -236,13 +236,13 @@ dxf_attrib_read
                         /* Now follows a string containing the attribute
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->default_value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->default_value);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a tag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->tag_value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->tag_value);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
@@ -256,19 +256,19 @@ dxf_attrib_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->linetype);
                 }
                 else if (strcmp (temp_string, "7") == 0)
                 {
                         /* Now follows a string containing a text style. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->text_style);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->text_style);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -438,7 +438,7 @@ dxf_attrib_read
                          * Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && (strcmp (temp_string, "AcDbText") != 0)
                         && (strcmp (temp_string, "AcDbAttribute") != 0))
@@ -488,7 +488,7 @@ dxf_attrib_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
                         iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
@@ -499,14 +499,14 @@ dxf_attrib_read
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner dictionary. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", attrib->dictionary_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->dictionary_owner_soft);
                         }
                         if (iter330 == 1)
                         {
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner object. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", attrib->object_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->object_owner_soft);
                         }
                         iter330++;
                 }
@@ -515,14 +515,14 @@ dxf_attrib_read
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to material object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -536,7 +536,7 @@ dxf_attrib_read
                         /* Now follows a string containing a plot style
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->plot_style_name);
                 }
                 else if (strcmp (temp_string, "420") == 0)
                 {
@@ -549,7 +549,7 @@ dxf_attrib_read
                         /* Now follows a string containing a color
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->color_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, attrib->color_name);
                 }
                 else if (strcmp (temp_string, "440") == 0)
                 {
@@ -562,7 +562,7 @@ dxf_attrib_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
