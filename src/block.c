@@ -202,22 +202,22 @@ dxf_block_read
                 {
                         /* Now follows a string containing a external
                          * reference name. */
-                        fscanf (fp->fp, "%s\n", block->xref_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block->xref_name);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        fscanf (fp->fp, "%s\n", block->block_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block->block_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        fscanf (fp->fp, "%s\n", block->block_name_additional);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block->block_name_additional);
                 }
                 else if (strcmp (temp_string, "4") == 0)
                 {
                         /* Now follows a string containing a description. */
-                        fscanf (fp->fp, "%s\n", block->description);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block->description);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
@@ -228,7 +228,7 @@ dxf_block_read
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        fscanf (fp->fp, "%s\n", block->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -270,7 +270,7 @@ dxf_block_read
                 {
                         /* Now follows a string containing the
                          * subclass marker value. */
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbBlockBegin") != 0)))
                         {
@@ -301,12 +301,12 @@ dxf_block_read
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        fscanf (fp->fp, "%s\n", block->object_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, block->object_owner_soft);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
