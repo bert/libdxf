@@ -218,7 +218,6 @@ dxf_acad_proxy_entity_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                acad_proxy_entity = dxf_acad_proxy_entity_new ();
                 acad_proxy_entity = dxf_acad_proxy_entity_init (acad_proxy_entity);
         }
         iter310 = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data;
