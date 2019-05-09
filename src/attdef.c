@@ -206,7 +206,6 @@ dxf_attdef_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                attdef = dxf_attdef_new ();
                 attdef = dxf_attdef_init (attdef);
                 if (attdef == NULL)
                 {
