@@ -202,7 +202,6 @@ dxf_3dsolid_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                solid = dxf_3dsolid_new ();
                 solid = dxf_3dsolid_init (solid);
         }
         iter310 = (DxfBinaryGraphicsData *) solid->binary_graphics_data;
