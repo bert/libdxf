@@ -166,7 +166,6 @@ dxf_endblk_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                endblk = dxf_endblk_new ();
                 endblk = dxf_endblk_init (endblk);
         }
         fscanf (fp->fp, "%[^\n]", temp_string);
