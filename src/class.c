@@ -168,7 +168,6 @@ dxf_class_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                class = dxf_class_new ();
                 class = dxf_class_init (class);
         }
         (fp->line_number)++;
