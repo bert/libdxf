@@ -203,7 +203,7 @@ dxf_imagedef_read
                 {
                         /* Now follows a string containing a file name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", imagedef->file_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, imagedef->file_name);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -255,7 +255,7 @@ dxf_imagedef_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "AcDbRasterImageDef") != 0)
                         {
                                 fprintf (stderr,
@@ -283,7 +283,7 @@ dxf_imagedef_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", imagedef->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, imagedef->dictionary_owner_soft);
                         i++;
                 }
                 else if ((strcmp (temp_string, "330") == 0)
@@ -292,7 +292,7 @@ dxf_imagedef_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", imagedef->acad_image_dict_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, imagedef->acad_image_dict_soft);
                         i++;
                         /*! \todo Check for overrun of array index. */
                 }
@@ -302,7 +302,7 @@ dxf_imagedef_read
                         /* Now follows a string containing a Soft
                          * pointer reference to entity. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", imagedef->imagedef_reactor_soft[i]);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, imagedef->imagedef_reactor_soft[i]);
                         i++;
                 }
                 else if (strcmp (temp_string, "360") == 0)
@@ -310,13 +310,13 @@ dxf_imagedef_read
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", imagedef->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, imagedef->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
