@@ -194,28 +194,28 @@ dxf_class_read
                          * read. See the while condition above.
                          */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", class->record_type);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, class->record_type);
                 }
                 else if (strcmp (temp_string, "1") == 0)
                 {
                         /* Now follows a string containing a record
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", class->record_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, class->record_name);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a class name.
                          */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", class->class_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, class->class_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing the
                          * application name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", class->app_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, class->app_name);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
@@ -242,7 +242,7 @@ dxf_class_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
