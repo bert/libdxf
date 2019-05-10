@@ -228,21 +228,21 @@ dxf_dimstyle_read
                         /* Now follows a string containing a dimension
                          * style name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dimstyle_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dimstyle_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a general
                          * dimensioning suffix. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dimpost);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dimpost);
                 }
                 else if (strcmp (temp_string, "4") == 0)
                 {
                         /* Now follows a string containing an alternate
                          * dimensioning suffix. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dimapost);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dimapost);
                 }
                 else if ((fp->acad_version_number < AutoCAD_2000)
                         && (strcmp (temp_string, "5") == 0))
@@ -250,7 +250,7 @@ dxf_dimstyle_read
                         /* Now follows a string containing an arrow
                          * block name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dimblk);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dimblk);
                 }
                 else if ((fp->acad_version_number < AutoCAD_2000)
                         && (strcmp (temp_string, "6") == 0))
@@ -258,7 +258,7 @@ dxf_dimstyle_read
                         /* Now follows a string containing a first arrow
                          * block name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dimblk1);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dimblk1);
                 }
 #if 0
 /*!
@@ -280,7 +280,7 @@ dxf_dimstyle_read
                         /* Now follows a string containing a first arrow
                          * block name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dimblk2);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dimblk2);
                 }
 #if 0
 /*!
@@ -428,7 +428,7 @@ dxf_dimstyle_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbSymbolTableRecord") != 0)
                         && (strcmp (temp_string, "AcDbDimStyleTableRecord") != 0))
                         {
@@ -682,14 +682,14 @@ dxf_dimstyle_read
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner dictionary. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", dimstyle->dictionary_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dictionary_owner_soft);
                         }
                         if (iter330 == 1)
                         {
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner object. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", dimstyle->object_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->object_owner_soft);
                         }
                         iter330++;
                 }
@@ -698,14 +698,14 @@ dxf_dimstyle_read
                         /* Now follows a string containing dimension
                          * text style. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dimtxsty);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dimtxsty);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dimstyle->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, dimstyle->dictionary_owner_hard);
                 }
         }
         /* Handle omitted members and/or illegal values. */
