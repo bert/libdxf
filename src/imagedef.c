@@ -182,7 +182,6 @@ dxf_imagedef_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                imagedef = dxf_imagedef_new ();
                 imagedef = dxf_imagedef_init (imagedef);
         }
         i = 0;
