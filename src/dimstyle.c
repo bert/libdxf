@@ -206,7 +206,6 @@ dxf_dimstyle_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dimstyle = dxf_dimstyle_new ();
                 dimstyle = dxf_dimstyle_init (dimstyle);
         }
         iter330 = 0;
