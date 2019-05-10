@@ -171,7 +171,6 @@ dxf_group_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                group = dxf_group_new ();
                 group = dxf_group_init (group);
         }
         (fp->line_number)++;
