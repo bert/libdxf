@@ -200,7 +200,6 @@ dxf_insert_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                insert = dxf_insert_new ();
                 insert = dxf_insert_init (insert);
         }
         (fp->line_number)++;
