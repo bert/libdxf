@@ -169,7 +169,6 @@ dxf_dictionaryvar_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dictionaryvar = dxf_dictionaryvar_new ();
                 dictionaryvar = dxf_dictionaryvar_init (dictionaryvar);
         }
         (fp->line_number)++;
