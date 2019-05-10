@@ -221,7 +221,7 @@ dxf_insert_read
                         /* Now follows a string containing a block name
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", insert->block_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, insert->block_name);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
@@ -235,13 +235,13 @@ dxf_insert_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", insert->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, insert->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", insert->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, insert->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -382,7 +382,7 @@ dxf_insert_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && (strcmp (temp_string, "AcDbBlockReference") != 0))
                         {
@@ -417,20 +417,20 @@ dxf_insert_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", insert->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, insert->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", insert->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, insert->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
