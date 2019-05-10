@@ -189,7 +189,6 @@ dxf_helix_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                helix = dxf_helix_new ();
                 helix = dxf_helix_init (helix);
         }
         (fp->line_number)++;
