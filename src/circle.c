@@ -192,7 +192,6 @@ dxf_circle_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                circle = dxf_circle_new ();
                 circle = dxf_circle_init (circle);
         }
         iter310 = (DxfBinaryGraphicsData *) circle->binary_graphics_data;
