@@ -214,7 +214,7 @@ dxf_group_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "AcDbGroup") != 0)
                         {
                                 fprintf (stderr,
@@ -226,34 +226,34 @@ dxf_group_read
                 {
                         /* Now follows a string containing a description. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", group->description);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, group->description);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", group->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, group->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "340") == 0)
                 {
                         /* Now follows a string containing a handle to an
                          * entry in group object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", group->handle_entity_in_group);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, group->handle_entity_in_group);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", group->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, group->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
