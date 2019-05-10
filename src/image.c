@@ -245,13 +245,13 @@ dxf_image_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", image->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", image->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -437,7 +437,7 @@ dxf_image_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbRasterImage") != 0)))
                         {
@@ -493,7 +493,7 @@ dxf_image_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter310->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
                         iter310 = (DxfBinaryGraphicsData *) iter310->next;
                 }
@@ -504,14 +504,14 @@ dxf_image_read
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner dictionary. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", image->dictionary_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->dictionary_owner_soft);
                         }
                         if (iter330 == 1)
                         {
                                 /* Now follows a string containing a soft-pointer
                                  * ID/handle to owner object. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", image->object_owner_soft);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->object_owner_soft);
                         }
                         iter330++;
                 }
@@ -520,14 +520,14 @@ dxf_image_read
                         /* Now follows a string containing a hard
                          * reference to imagedef object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", image->imagedef_object);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->imagedef_object);
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to material object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", image->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
@@ -536,14 +536,14 @@ dxf_image_read
                                 /* Now follows a string containing a hard-pointer
                                  * ID/handle to owner dictionary. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", image->dictionary_owner_hard);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->dictionary_owner_hard);
                         }
                         if (iter360 == 1)
                         {
                                 /* Now follows a string containing a hard
                                  * reference to imagedef_reactor object. */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%s\n", image->imagedef_reactor_object);
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->imagedef_reactor_object);
                         }
                         iter360++;
                 }
@@ -559,7 +559,7 @@ dxf_image_read
                         /* Now follows a string containing a plot style
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", image->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->plot_style_name);
                 }
                 else if (strcmp (temp_string, "420") == 0)
                 {
@@ -572,7 +572,7 @@ dxf_image_read
                         /* Now follows a string containing a color
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", image->color_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, image->color_name);
                 }
                 else if (strcmp (temp_string, "440") == 0)
                 {
@@ -585,7 +585,7 @@ dxf_image_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
