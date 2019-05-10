@@ -176,7 +176,6 @@ dxf_idbuffer_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                idbuffer = dxf_idbuffer_new ();
                 idbuffer = dxf_idbuffer_init (idbuffer);
         }
         i = 0;
