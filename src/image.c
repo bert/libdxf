@@ -212,7 +212,6 @@ dxf_image_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                image = dxf_image_new ();
                 image = dxf_image_init (image);
         }
         iter = (DxfPoint *) image->p4;
