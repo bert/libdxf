@@ -202,7 +202,6 @@ dxf_ellipse_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                ellipse = dxf_ellipse_new ();
                 ellipse = dxf_ellipse_init (ellipse);
         }
         iter310 = (DxfBinaryGraphicsData *) ellipse->binary_graphics_data;
