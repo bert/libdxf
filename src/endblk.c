@@ -190,18 +190,18 @@ dxf_endblk_read
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        fscanf (fp->fp, "%s\n", endblk->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, endblk->layer);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        fscanf (fp->fp, "%s\n", endblk->object_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, endblk->object_owner_soft);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
