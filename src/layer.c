@@ -196,14 +196,14 @@ dxf_layer_read
                         /* Now follows a string containing the layer
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer->layer_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer->layer_name);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer->linetype);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -225,7 +225,7 @@ dxf_layer_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbSymbolTable") != 0)
                         && ((strcmp (temp_string, "AcDbLayerTableRecord") != 0)))
                         {
@@ -246,20 +246,20 @@ dxf_layer_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing the material. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -273,13 +273,13 @@ dxf_layer_read
                         /* Now follows a string containing the plot style
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer->plot_style_name);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
