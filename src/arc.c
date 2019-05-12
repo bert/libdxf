@@ -182,6 +182,9 @@ dxf_arc_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c arc. \n
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_read.png
+ *
  * \return a pointer to \c arc.
  */
 DxfArc *
