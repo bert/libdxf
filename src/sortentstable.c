@@ -185,7 +185,6 @@ dxf_sortentstable_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                sortentstable = dxf_sortentstable_new ();
                 sortentstable = dxf_sortentstable_init (sortentstable);
         }
         i = 0;
