@@ -208,7 +208,7 @@ dxf_region_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter1->value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter1->value);
                         iter1->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter1->next);
                         iter1 = (DxfChar *) iter1->next;
                 }
@@ -217,7 +217,7 @@ dxf_region_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter2->value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter2->value);
                         iter2->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter2->next);
                         iter2 = (DxfChar *) iter2->next;
                 }
@@ -233,13 +233,13 @@ dxf_region_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", region->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, region->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", region->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, region->layer);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -299,7 +299,7 @@ dxf_region_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "AcDbModelerGeometry") != 0)
                         {
                                 fprintf (stderr, "Error in dxf_region_read () found a bad subclass marker in: %s in line: %d.\n",
@@ -311,20 +311,20 @@ dxf_region_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", region->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, region->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", region->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, region->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
