@@ -403,7 +403,6 @@ dxf_spline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                spline = dxf_spline_new ();
                 spline = dxf_spline_init (spline);
         }
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
