@@ -216,7 +216,7 @@ dxf_tolerance_read
                         /* Now follows a string containing the dimension
                          * style name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->dimstyle_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->dimstyle_name);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -230,13 +230,13 @@ dxf_tolerance_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -336,7 +336,7 @@ dxf_tolerance_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbFcf") != 0)))
                         {
@@ -385,7 +385,7 @@ dxf_tolerance_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->binary_graphics_data->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->binary_graphics_data->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) tolerance->binary_graphics_data->next);
                         tolerance->binary_graphics_data = (DxfBinaryGraphicsData *) tolerance->binary_graphics_data->next;
                 }
@@ -394,21 +394,21 @@ dxf_tolerance_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to material object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -422,7 +422,7 @@ dxf_tolerance_read
                         /* Now follows a string containing a plot style
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->plot_style_name);
                 }
                 else if (strcmp (temp_string, "420") == 0)
                 {
@@ -435,7 +435,7 @@ dxf_tolerance_read
                         /* Now follows a string containing a color
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", tolerance->color_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, tolerance->color_name);
                 }
                 else if (strcmp (temp_string, "440") == 0)
                 {
@@ -448,7 +448,7 @@ dxf_tolerance_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
