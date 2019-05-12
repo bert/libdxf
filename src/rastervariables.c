@@ -173,7 +173,6 @@ dxf_rastervariables_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                rastervariables = dxf_rastervariables_new ();
                 rastervariables = dxf_rastervariables_init (rastervariables);
         }
         i = 0;
