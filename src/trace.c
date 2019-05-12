@@ -196,7 +196,6 @@ dxf_trace_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                trace = dxf_trace_new ();
                 trace = dxf_trace_init (trace);
         }
         (fp->line_number)++;
