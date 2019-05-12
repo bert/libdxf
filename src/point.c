@@ -192,7 +192,6 @@ dxf_point_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                point = dxf_point_new ();
                 point = dxf_point_init (point);
         }
         (fp->line_number)++;
