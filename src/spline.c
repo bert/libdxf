@@ -438,13 +438,13 @@ dxf_spline_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, spline->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, spline->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -671,7 +671,7 @@ dxf_spline_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", binary_graphics_data->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, binary_graphics_data->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) binary_graphics_data->next);
                         binary_graphics_data = (DxfBinaryGraphicsData *) binary_graphics_data->next;
                 }
@@ -680,21 +680,21 @@ dxf_spline_read
                         /* Now follows a string containing a
                          * soft-pointer ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, spline->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to material object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, spline->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, spline->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -708,7 +708,7 @@ dxf_spline_read
                         /* Now follows a string containing a plot style
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, spline->plot_style_name);
                 }
                 else if (strcmp (temp_string, "420") == 0)
                 {
@@ -721,7 +721,7 @@ dxf_spline_read
                         /* Now follows a string containing a color
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->color_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, spline->color_name);
                 }
                 else if (strcmp (temp_string, "440") == 0)
                 {
@@ -734,7 +734,7 @@ dxf_spline_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
