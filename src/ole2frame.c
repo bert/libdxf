@@ -214,7 +214,7 @@ dxf_ole2frame_read
                         /* Now follows a string containing a End of Ole
                          * data marker. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "OLE") != 0)
                         {
                                 fprintf (stderr,
@@ -227,7 +227,7 @@ dxf_ole2frame_read
                         /* Now follows a string containing the length of
                          * binary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ole2frame->length_of_binary_data);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ole2frame->length_of_binary_data);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -241,13 +241,13 @@ dxf_ole2frame_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ole2frame->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ole2frame->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ole2frame->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ole2frame->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -368,7 +368,7 @@ dxf_ole2frame_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbOle2Frame") != 0)))
                         {
@@ -381,7 +381,7 @@ dxf_ole2frame_read
                 {
                         /* Now follows a string containing binary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter->value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter->value);
                         iter->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter->next);
                         iter = (DxfChar *) iter->next;
                 }
@@ -390,20 +390,20 @@ dxf_ole2frame_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ole2frame->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ole2frame->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ole2frame->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ole2frame->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
