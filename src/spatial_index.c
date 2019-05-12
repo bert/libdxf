@@ -186,7 +186,6 @@ dxf_spatial_index_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                spatial_index = dxf_spatial_index_new ();
                 spatial_index = dxf_spatial_index_init (spatial_index);
         }
         (fp->line_number)++;
