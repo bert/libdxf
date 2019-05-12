@@ -212,14 +212,14 @@ dxf_thumbnail_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", thumbnail->preview_image_data->value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, thumbnail->preview_image_data->value);
                         /*! \todo preview_image_data needs a proper implementation. */
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
