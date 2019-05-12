@@ -918,7 +918,6 @@ dxf_viewport_read
                                         /* Now follows a string containing a group code. */
                                         (fp->line_number)++;
                                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
-                                        iter->next = (DxfChar *) dxf_char_new ();
                                         iter->next = (DxfChar *) dxf_char_init ((DxfChar *) iter->next);
                                         iter = (DxfChar *) iter->next;
                                 }
