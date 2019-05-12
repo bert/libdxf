@@ -220,7 +220,7 @@ dxf_ucs_read
                         /* Now follows a string containing an UCS
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ucs->UCS_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ucs->UCS_name);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -355,7 +355,7 @@ dxf_ucs_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbSymbolTableRecord") != 0)
                         && ((strcmp (temp_string, "AcDbUCSTableRecord") != 0)))
                         {
@@ -376,7 +376,7 @@ dxf_ucs_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ucs->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ucs->dictionary_owner_soft);
                         i++;
                 }
                 else if (strcmp (temp_string, "330") == 0)
@@ -384,26 +384,26 @@ dxf_ucs_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to object owner. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ucs->object_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ucs->object_owner_soft);
                 }
                 else if (strcmp (temp_string, "346") == 0)
                 {
                         /* Now follows a string containing a base UCS. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ucs->base_UCS);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ucs->base_UCS);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ucs->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ucs->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
