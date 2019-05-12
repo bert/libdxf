@@ -230,7 +230,7 @@ dxf_sortentstable_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "AcDbSortentsTable") != 0)
                         {
                                 fprintf (stderr,
@@ -244,7 +244,7 @@ dxf_sortentstable_read
                         /* Now follows a string containing a soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", sortentstable->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, sortentstable->dictionary_owner_soft);
                         j++;
                 }
                 else if ((strcmp (temp_string, "330") == 0)
@@ -254,7 +254,7 @@ dxf_sortentstable_read
                          * ID/handle to owner (currently only the
                          * *MODEL_SPACE or *PAPER_SPACE blocks). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", sortentstable->block_owner);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, sortentstable->block_owner);
                         j++;
                         /*! \todo Check for overrun of array index. */
                 }
@@ -264,7 +264,7 @@ dxf_sortentstable_read
                          * ID/handle to an entity (zero or more entries
                          * may exist). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter_331->value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter_331->value);
                         iter_331->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter_331->next);
                         iter_331 = (DxfChar *) iter_331->next;
                 }
@@ -273,13 +273,13 @@ dxf_sortentstable_read
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", sortentstable->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, sortentstable->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
