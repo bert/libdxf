@@ -193,7 +193,6 @@ dxf_vertex_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                vertex = dxf_vertex_new ();
                 vertex = dxf_vertex_init (vertex);
         }
         (fp->line_number)++;
