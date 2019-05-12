@@ -193,7 +193,6 @@ dxf_ray_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                ray = dxf_ray_new ();
                 ray = dxf_ray_init (ray);
         }
         (fp->line_number)++;
