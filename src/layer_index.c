@@ -202,7 +202,6 @@ dxf_layer_index_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                layer_index = dxf_layer_index_new ();
                 layer_index = dxf_layer_index_init (layer_index);
         }
         i = 0;
