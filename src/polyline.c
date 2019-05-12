@@ -199,7 +199,6 @@ dxf_polyline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                polyline = dxf_polyline_new ();
                 polyline = dxf_polyline_init (polyline);
         }
         (fp->line_number)++;
