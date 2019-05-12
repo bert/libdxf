@@ -203,7 +203,6 @@ dxf_text_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                text = dxf_text_new ();
                 text = dxf_text_init (text);
         }
         (fp->line_number)++;
