@@ -211,7 +211,6 @@ dxf_solid_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                solid = dxf_solid_new ();
                 solid = dxf_solid_init (solid);
         }
         if (solid->p0 == NULL)
@@ -219,7 +218,6 @@ dxf_solid_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                solid->p0 = dxf_point_new ();
                 solid->p0 = dxf_point_init (solid->p0);
         }
         if (solid->p1 == NULL)
@@ -235,7 +233,6 @@ dxf_solid_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                solid->p2 = dxf_point_new ();
                 solid->p2 = dxf_point_init (solid->p2);
         }
         if (solid->p3== NULL)
@@ -243,7 +240,6 @@ dxf_solid_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                solid->p3 = dxf_point_new ();
                 solid->p3 = dxf_point_init (solid->p3);
         }
         /* Start reading and parsing. */
