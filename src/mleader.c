@@ -216,7 +216,6 @@ dxf_mleader_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                mleader = dxf_mleader_new ();
                 mleader = dxf_mleader_init (mleader);
         }
         iter310 = (DxfBinaryGraphicsData *) mleader->binary_graphics_data;
