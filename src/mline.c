@@ -216,7 +216,6 @@ dxf_mline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                mline = dxf_mline_new ();
                 mline = dxf_mline_init (mline);
         }
         l = 0;
