@@ -196,7 +196,6 @@ dxf_spatial_filter_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                spatial_filter = dxf_spatial_filter_new ();
                 spatial_filter = dxf_spatial_filter_init (spatial_filter);
         }
         i = 0;
