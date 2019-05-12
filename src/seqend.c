@@ -183,7 +183,6 @@ dxf_seqend_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                seqend = dxf_seqend_new ();
                 seqend = dxf_seqend_init (seqend);
         }
         (fp->line_number)++;
