@@ -337,7 +337,6 @@ dxf_image_read
                         (fp->line_number)++;
                         if (next_x4)
                         {
-                                iter->next = (struct DxfPoint *) dxf_point_new ();
                                 iter->next = (struct DxfPoint *) dxf_point_init ((DxfPoint *) iter->next);
                                 iter = (DxfPoint *) iter->next;
                                 next_x4 = 0;
