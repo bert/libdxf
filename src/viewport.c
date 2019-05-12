@@ -260,13 +260,13 @@ dxf_viewport_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -367,7 +367,7 @@ dxf_viewport_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "1001") == 0)
@@ -376,7 +376,7 @@ dxf_viewport_read
                         /* Now follows a string containing the appname,
                          * always "ACAD". */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->app_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->app_name);
                         if (strcmp (viewport->app_name, "ACAD") == 1)
                         {
                                 fprintf (stderr,
@@ -388,7 +388,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1000") == 1)
                         {
                                 fprintf (stderr,
@@ -401,7 +401,7 @@ dxf_viewport_read
                         /* Now follows a string containing the viewport
                          * data, always "MVIEW". */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->viewport_data);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->viewport_data);
                         if (strcmp (viewport->viewport_data, "MVIEW") == 1)
                         {
                                 fprintf (stderr,
@@ -413,7 +413,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr,
@@ -426,7 +426,7 @@ dxf_viewport_read
                         /* Now follows a string containing the window
                          * begin descriptor, always "{". */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->window_descriptor_begin);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->window_descriptor_begin);
                         if (strcmp (viewport->window_descriptor_begin, "{") == 1)
                         {
                                 fprintf (stderr,
@@ -437,7 +437,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -453,7 +453,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->extended_entity_data_version);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1010") == 1)
                         {
                                 fprintf (stderr,
@@ -468,7 +468,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->target->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1020") == 1)
                         {
                                 fprintf (stderr,
@@ -483,7 +483,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->target->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1030") == 1)
                         {
                                 fprintf (stderr,
@@ -498,7 +498,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->target->z0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1010") == 1)
                         {
                                 fprintf (stderr,
@@ -513,7 +513,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->direction->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1020") == 1)
                         {
                                 fprintf (stderr,
@@ -528,7 +528,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->direction->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1030") == 1)
                         {
                                 fprintf (stderr,
@@ -543,7 +543,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->direction->z0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -559,7 +559,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->view_twist_angle);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -575,7 +575,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->view_height);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -591,7 +591,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->view_center->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -607,7 +607,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->view_center->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -623,7 +623,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->perspective_lens_length);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -639,7 +639,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->front_plane_offset);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -655,7 +655,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->back_plane_offset);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -670,7 +670,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->view_mode);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -686,7 +686,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->circle_zoom_percent);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -702,7 +702,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->fast_zoom_setting);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -718,7 +718,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->UCSICON_setting);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -734,7 +734,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->snap_on);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -750,7 +750,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->grid_on);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -766,7 +766,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->snap_style);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -782,7 +782,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->snap_isopair);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -798,7 +798,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->snap_rotation_angle);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -814,7 +814,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->snap_base->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -830,7 +830,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->snap_base->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -846,7 +846,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->snap_spacing->x0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr,
@@ -862,7 +862,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%lf\n", &viewport->snap_spacing->y0);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr,
@@ -877,7 +877,7 @@ dxf_viewport_read
                         fscanf (fp->fp, "%d\n", &viewport->plot_flag);
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr,
@@ -890,7 +890,7 @@ dxf_viewport_read
                         /* Now follows a string containing the frozen
                          * layer list begin descriptor, always "{". */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->frozen_layer_list_begin);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->frozen_layer_list_begin);
                         if (strcmp (viewport->frozen_layer_list_begin, "{") == 1)
                         {
                                 fprintf (stderr,
@@ -903,7 +903,7 @@ dxf_viewport_read
                         /* Now follows a string containing a group code
                          * value of "1003". */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1003") == 0)
                         {
                                 /* Start a loop reading all frozen layer
@@ -914,10 +914,10 @@ dxf_viewport_read
                                 do
                                 {
                                         (fp->line_number)++;
-                                        fscanf (fp->fp, "%s\n", iter->value);
+                                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter->value);
                                         /* Now follows a string containing a group code. */
                                         (fp->line_number)++;
-                                        fscanf (fp->fp, "%s\n", temp_string);
+                                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                                         iter->next = (DxfChar *) dxf_char_new ();
                                         iter->next = (DxfChar *) dxf_char_init ((DxfChar *) iter->next);
                                         iter = (DxfChar *) iter->next;
@@ -955,7 +955,7 @@ dxf_viewport_read
                         /* Now follows a string containing the frozen
                          * layer list end descriptor, always "}". */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->frozen_layer_list_end);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->frozen_layer_list_end);
                         if (strcmp (viewport->frozen_layer_list_end, "}") == 1)
                         {
                                 fprintf (stderr,
@@ -967,7 +967,7 @@ dxf_viewport_read
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr,
@@ -980,7 +980,7 @@ dxf_viewport_read
                         /* Now follows a string containing the window
                          * end descriptor, always "}". */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", viewport->window_descriptor_end);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, viewport->window_descriptor_end);
                         if (strcmp (viewport->window_descriptor_end, "}") == 1)
                         {
                                 fprintf (stderr,
