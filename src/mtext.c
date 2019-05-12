@@ -224,13 +224,13 @@ dxf_mtext_read
                 {
                         /* Now follows a string containing a text value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mtext->text_value);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mtext->text_value);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a text value. */
                         (fp->line_number)++;
-                        //fscanf (fp->fp, "%s\n", mtext->text_additional_value[number_additional]);
+                        //fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mtext->text_additional_value[number_additional]);
                         //number_additional++;
                 }
                 /*!< I'm not sure this number_additional is correct.*/
@@ -246,20 +246,20 @@ dxf_mtext_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mtext->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mtext->linetype);
                 }
                 else if (strcmp (temp_string, "7") == 0)
                 {
                         /* Now follows a string containing a text style
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mtext->text_style);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mtext->text_style);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mtext->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mtext->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -460,7 +460,7 @@ dxf_mtext_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbMText") != 0)))
                         {
@@ -494,7 +494,7 @@ dxf_mtext_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
 
