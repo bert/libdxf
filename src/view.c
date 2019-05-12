@@ -186,7 +186,6 @@ dxf_view_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                view = dxf_view_new ();
                 view = dxf_view_init (view);
         }
         (fp->line_number)++;
