@@ -202,7 +202,6 @@ dxf_mesh_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                mesh = dxf_mesh_new ();
                 mesh = dxf_mesh_init (mesh);
         }
         iter310 = (DxfBinaryGraphicsData *) mesh->binary_graphics_data;
