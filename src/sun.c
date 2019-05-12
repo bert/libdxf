@@ -197,7 +197,6 @@ dxf_sun_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                sun = dxf_sun_new ();
                 sun = dxf_sun_init (sun);
         }
         iter92 = 0;
