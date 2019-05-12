@@ -211,7 +211,6 @@ dxf_leader_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                leader = dxf_leader_new ();
                 leader = dxf_leader_init (leader);
         }
         i = 0; /* Number of found vertices. */
