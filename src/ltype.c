@@ -180,7 +180,6 @@ dxf_ltype_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                ltype = dxf_ltype_new ();
                 ltype = dxf_ltype_init (ltype);
         }
         element = 0;
