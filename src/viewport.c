@@ -232,7 +232,6 @@ dxf_viewport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                viewport = dxf_viewport_new ();
                 viewport = dxf_viewport_init (viewport);
         }
         (fp->line_number)++;
