@@ -220,7 +220,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                vport = dxf_vport_new ();
                 vport = dxf_vport_init (vport);
         }
         if (vport->min == NULL)
@@ -228,7 +227,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                vport->min = dxf_point_new ();
                 vport->min = dxf_point_init (vport->min);
         }
         if (vport->max == NULL)
@@ -236,7 +234,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                vport->max = dxf_point_new ();
                 vport->max = dxf_point_init (vport->max);
         }
         if (vport->center == NULL)
@@ -244,7 +241,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                vport->center = dxf_point_new ();
                 vport->center = dxf_point_init (vport->center);
         }
         if (vport->snap_base == NULL)
@@ -252,7 +248,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                vport->snap_base = dxf_point_new ();
                 vport->snap_base = dxf_point_init (vport->snap_base);
         }
         if (vport->snap_spacing == NULL)
@@ -260,7 +255,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                vport->snap_spacing = dxf_point_new ();
                 vport->snap_spacing = dxf_point_init (vport->snap_spacing);
         }
         if (vport->grid_spacing == NULL)
@@ -268,7 +262,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                vport->grid_spacing = dxf_point_new ();
                 vport->grid_spacing = dxf_point_init (vport->grid_spacing);
         }
         if (vport->direction == NULL)
@@ -276,7 +269,6 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                vport->direction = dxf_point_new ();
                 vport->direction = dxf_point_init (vport->direction);
         }
         if (vport->target == NULL)
