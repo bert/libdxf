@@ -185,7 +185,6 @@ dxf_region_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                region = dxf_region_new ();
                 region = dxf_region_init (region);
         }
         iter1 = (DxfChar *) region->proprietary_data;
