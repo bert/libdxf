@@ -178,7 +178,6 @@ dxf_thumbnail_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                thumbnail = dxf_thumbnail_new ();
                 thumbnail = dxf_thumbnail_init (thumbnail);
         }
         if (fp->acad_version_number < AutoCAD_2000)
