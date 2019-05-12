@@ -187,7 +187,6 @@ dxf_mlinestyle_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                mlinestyle = dxf_mlinestyle_new ();
                 mlinestyle = dxf_mlinestyle_init (mlinestyle);
         }
         i = 0;
