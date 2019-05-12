@@ -171,7 +171,6 @@ dxf_object_ptr_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                object_ptr = dxf_object_ptr_new ();
                 object_ptr = dxf_object_ptr_init (object_ptr);
         }
         (fp->line_number)++;
