@@ -176,7 +176,6 @@ dxf_oleframe_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                oleframe = dxf_oleframe_new ();
                 oleframe = dxf_oleframe_init (oleframe);
         }
         iter = (DxfChar *) oleframe->binary_data;
