@@ -234,7 +234,7 @@ dxf_leader_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", leader->dimension_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, leader->dimension_style_name);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -248,13 +248,13 @@ dxf_leader_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", leader->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, leader->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", leader->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, leader->layer);
                 }
                 else if ((strcmp (temp_string, "10") == 0)
                   || (strcmp (temp_string, "20") == 0)
@@ -403,7 +403,7 @@ dxf_leader_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if (strcmp (temp_string, "AcDbLeader") != 0)
                         {
                                 fprintf (stderr,
@@ -509,7 +509,7 @@ dxf_leader_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", leader->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, leader->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "340") == 0)
                 {
@@ -517,20 +517,20 @@ dxf_leader_read
                          * reference to associated annotation (mtext,
                          * tolerance, or insert entity). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", leader->annotation_reference_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, leader->annotation_reference_hard);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", leader->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, leader->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
