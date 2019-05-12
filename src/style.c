@@ -180,7 +180,6 @@ dxf_style_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                style = dxf_style_new ();
                 style = dxf_style_init (style);
         }
         (fp->line_number)++;
