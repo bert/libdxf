@@ -246,7 +246,7 @@ dxf_mline_read
                          * up to 32 characters with the name of the
                          * style used for this mline. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mline->style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mline->style_name);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -260,13 +260,13 @@ dxf_mline_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mline->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mline->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mline->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mline->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -510,7 +510,7 @@ dxf_mline_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbMline") != 0)))
                         {
@@ -545,27 +545,27 @@ dxf_mline_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mline->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mline->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "340") == 0)
                 {
                         /* Now follows a string containing a
                          * Pointer-handle/ID of MLINESTYLE dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mline->mlinestyle_dictionary);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mline->mlinestyle_dictionary);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", mline->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, mline->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
