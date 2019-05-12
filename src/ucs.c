@@ -191,7 +191,6 @@ dxf_ucs_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                ucs = dxf_ucs_new ();
                 ucs = dxf_ucs_init (ucs);
         }
         i = 0;
