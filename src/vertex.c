@@ -221,13 +221,13 @@ dxf_vertex_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->linetype);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->layer);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -370,7 +370,7 @@ dxf_vertex_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && (strcmp (temp_string, "AcDbVertex") != 0)
                         && (strcmp (temp_string, "AcDb2dVertex") != 0)
@@ -400,7 +400,7 @@ dxf_vertex_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->binary_graphics_data->data_line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->binary_graphics_data->data_line);
                         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) vertex->binary_graphics_data->next);
                         vertex->binary_graphics_data = (DxfBinaryGraphicsData *) vertex->binary_graphics_data->next;
                 }
@@ -409,21 +409,21 @@ dxf_vertex_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing a
                          * hard-pointer ID/handle to material object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->material);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -437,7 +437,7 @@ dxf_vertex_read
                         /* Now follows a string containing a plot style
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->plot_style_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->plot_style_name);
                 }
                 else if (strcmp (temp_string, "420") == 0)
                 {
@@ -450,7 +450,7 @@ dxf_vertex_read
                         /* Now follows a string containing a color
                          * name value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", vertex->color_name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, vertex->color_name);
                 }
                 else if (strcmp (temp_string, "440") == 0)
                 {
@@ -463,7 +463,7 @@ dxf_vertex_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
