@@ -194,7 +194,6 @@ dxf_shape_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                shape = dxf_shape_new ();
                 shape = dxf_shape_init (shape);
         }
         (fp->line_number)++;
