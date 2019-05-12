@@ -1,7 +1,7 @@
 /*!
  * \file trace.c
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2017, 2018
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2017, 2018, 2019
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
