@@ -239,7 +239,7 @@ dxf_layer_index_read
                                 iter = (DxfLayerName *) iter->next;
                         }
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", iter->name);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter->name);
                         i++; /* Increase number of entries. */
                 }
                 if (strcmp (temp_string, "40") == 0)
@@ -263,7 +263,7 @@ dxf_layer_index_read
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         if ((strcmp (temp_string, "AcDbIndex") != 0)
                           && (strcmp (temp_string, "AcDbLayerIndex") != 0))
                         {
@@ -277,7 +277,7 @@ dxf_layer_index_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer_index->dictionary_owner_soft);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer_index->dictionary_owner_soft);
                 }
                 else if ((strcmp (temp_string, "360") == 0)
                   && (k == 0))
@@ -285,7 +285,7 @@ dxf_layer_index_read
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer_index->dictionary_owner_hard);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer_index->dictionary_owner_hard);
                         k++;
                 }
                 else if ((strcmp (temp_string, "360") == 0)
@@ -295,7 +295,7 @@ dxf_layer_index_read
                          * reference LAYER_INDEX (multiple entries may
                          * exist). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer_index->hard_owner_reference[k]);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer_index->hard_owner_reference[k]);
                         k++;
                         /*! \todo Check for overrun of array index. */
                 }
@@ -303,7 +303,7 @@ dxf_layer_index_read
                 {
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
                         fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
