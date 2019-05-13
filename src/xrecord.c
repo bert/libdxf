@@ -175,7 +175,6 @@ dxf_xrecord_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                xrecord = dxf_xrecord_new ();
                 xrecord = dxf_xrecord_init (xrecord);
         }
         (fp->line_number)++;
