@@ -1944,6 +1944,9 @@ dxf_arc_get_dictionary_owner_soft
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_dictionary_owner_soft.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
