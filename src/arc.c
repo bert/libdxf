@@ -2032,6 +2032,9 @@ dxf_arc_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c ARC entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_object_owner_soft.png
  */
 DxfArc *
 dxf_arc_set_object_owner_soft
