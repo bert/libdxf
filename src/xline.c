@@ -190,7 +190,6 @@ dxf_xline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                xline = dxf_xline_new ();
                 xline = dxf_xline_init (xline);
         }
         if (xline->p0 == NULL)
