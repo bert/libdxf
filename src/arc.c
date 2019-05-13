@@ -1570,6 +1570,9 @@ dxf_arc_get_paperspace
 /*!
  * \brief Set the \c paperspace flag for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_paperspace.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
