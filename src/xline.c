@@ -197,7 +197,6 @@ dxf_xline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                xline->p0 = dxf_point_new ();
                 xline->p0 = dxf_point_init (xline->p0);
         }
         if (xline->p1 == NULL)
@@ -205,7 +204,6 @@ dxf_xline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                xline->p1 = dxf_point_new ();
                 xline->p1 = dxf_point_init (xline->p1);
         }
         if (xline->binary_graphics_data == NULL)
@@ -213,7 +211,6 @@ dxf_xline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                xline->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
                 xline->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) xline->binary_graphics_data);
         }
         (fp->line_number)++;
