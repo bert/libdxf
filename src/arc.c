@@ -1856,7 +1856,7 @@ dxf_arc_get_binary_graphics_data
  * \c ARC entity.
  *
  * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_binary_grapics_data.png
+ * \image html drakon/dxf_arc_set_binary_graphics_data.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
