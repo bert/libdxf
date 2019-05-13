@@ -1525,6 +1525,9 @@ dxf_arc_set_color
 /*!
  * \brief Get the \c paperspace flag value from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_paperspace.png
+ *
  * \return \c paperspace flag value.
  */
 int16_t
