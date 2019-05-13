@@ -2118,6 +2118,9 @@ dxf_arc_get_material
 /*!
  * \brief Set the pointer to the \c material for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_material.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
