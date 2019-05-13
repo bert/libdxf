@@ -1813,7 +1813,7 @@ dxf_arc_set_shadow_mode
  * \c ARC entity.
  *
  * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_binary_grapics_data.png
+ * \image html drakon/dxf_arc_get_binary_graphics_data.png
  *
  * \return pointer to the \c binary_graphics_data.
  *
