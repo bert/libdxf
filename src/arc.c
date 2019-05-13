@@ -1666,6 +1666,9 @@ dxf_arc_get_graphics_data_size
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_graphics_data_size.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
