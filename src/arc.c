@@ -1306,6 +1306,9 @@ dxf_arc_get_linetype_scale
 /*!
  * \brief Set the \c linetype_scale for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_linetype_scale.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
