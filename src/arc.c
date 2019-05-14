@@ -2722,6 +2722,9 @@ dxf_arc_set_p0
  * \brief Get the X-value of the center point \c x0 of a DXF \c ARC
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_x0.png
+ *
  * \return the X-value of the center point \c x0.
  */
 double
