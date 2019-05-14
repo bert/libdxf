@@ -2677,6 +2677,9 @@ dxf_arc_get_p0
 /*!
  * \brief Set the center point \c p0 of a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_p0.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
