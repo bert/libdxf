@@ -2764,6 +2764,9 @@ dxf_arc_get_x0
  * \brief Set the X-value of the center point \c x0 of a DXF \c ARC
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_x0.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
