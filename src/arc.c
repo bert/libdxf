@@ -2364,6 +2364,9 @@ dxf_arc_get_plot_style_name
 /*!
  * \brief Set the \c plot_style_name for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_plot_style_name.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
