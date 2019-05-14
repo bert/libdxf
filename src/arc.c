@@ -2521,6 +2521,9 @@ dxf_arc_get_color_name
 /*!
  * \brief Set the \c color_name for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_color_name.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
