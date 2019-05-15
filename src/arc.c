@@ -3219,6 +3219,9 @@ dxf_arc_set_end_angle
 /*!
  * \brief Calculate the \c length of a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_length.png
+ *
  * \return the \c length.
  */
 double
