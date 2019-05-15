@@ -2898,6 +2898,9 @@ dxf_arc_set_y0
  * \brief Get the Z-value of the center point \c z0 of a DXF \c ARC
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_z0.png
+ *
  * \return the Z-value of the center point \c z0.
  */
 double
