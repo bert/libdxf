@@ -2985,6 +2985,9 @@ dxf_arc_set_z0
 /*!
  * \brief Get the \c radius from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_radius.png
+ *
  * \return \c radius.
  */
 double
