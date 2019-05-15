@@ -3030,6 +3030,9 @@ dxf_arc_get_radius
 /*!
  * \brief Set the \c radius for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_radius.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
