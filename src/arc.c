@@ -3079,6 +3079,9 @@ dxf_arc_set_radius
 /*!
  * \brief Get the \c start_angle from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_start_angle.png
+ *
  * \return \c start_angle.
  */
 double
