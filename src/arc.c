@@ -3149,6 +3149,9 @@ dxf_arc_set_start_angle
 /*!
  * \brief Get the \c end_angle from a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_end_angle.png
+ *
  * \return \c end_angle.
  */
 double
