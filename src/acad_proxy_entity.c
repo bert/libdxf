@@ -2697,12 +2697,6 @@ dxf_acad_proxy_entity_get_object_drawing_format
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (acad_proxy_entity->object_drawing_format < 0)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () an invalid value was passed.\n")),
-                  __FUNCTION__);
-        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
