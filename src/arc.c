@@ -3182,6 +3182,9 @@ dxf_arc_get_end_angle
 /*!
  * \brief Set the \c end_angle for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_end_angle.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
