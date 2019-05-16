@@ -3580,6 +3580,9 @@ dxf_arc_set_extrusion_vector_from_point
 /*!
  * \brief Set the extrusion vector for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_set_extrusion_vector.png
+ *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
  */
