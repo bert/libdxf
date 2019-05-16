@@ -3389,6 +3389,9 @@ dxf_arc_set_extr_x0
  * \brief Get the Y-value of the extrusion vector \c extr_y0 of a DXF
  * \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_get_extr_y0.png
+ *
  * \return the Y-value of the extrusion vector \c extr_y0.
  */
 double
