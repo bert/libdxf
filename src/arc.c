@@ -3316,7 +3316,7 @@ dxf_arc_get_extrusion_vector_as_point
  * \c ARC entity.
  *
  * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_x0.png
+ * \image html drakon/dxf_arc_get_extr_x0.png
  *
  * \return the X-value of the extrusion vector \c extr_x0.
  */
