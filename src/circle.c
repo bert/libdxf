@@ -47,6 +47,9 @@
 /*!
  * \brief Allocate memory for a DXF \c CIRCLE.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_new.png
+ *
  * Fill the memory contents with zeros.
  */
 DxfCircle *
