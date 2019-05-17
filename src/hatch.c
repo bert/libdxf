@@ -282,7 +282,7 @@ dxf_hatch_write
         }
         if (hatch->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", hatch->layer);
         if (strcmp (hatch->linetype, DXF_DEFAULT_LINETYPE) != 0)
