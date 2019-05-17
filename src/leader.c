@@ -676,7 +676,7 @@ dxf_leader_write
         }
         if (leader->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", leader->layer);
         if (strcmp (leader->linetype, DXF_DEFAULT_LINETYPE) != 0)
