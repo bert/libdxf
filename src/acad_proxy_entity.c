@@ -633,7 +633,7 @@ dxf_acad_proxy_entity_write
         }
         if (acad_proxy_entity->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", acad_proxy_entity->layer);
         if (strcmp (acad_proxy_entity->linetype, DXF_DEFAULT_LINETYPE) != 0)
