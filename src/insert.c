@@ -605,7 +605,7 @@ dxf_insert_write
         }
         if (dxf_insert_get_paperspace (insert) == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", dxf_insert_get_layer (insert));
         if (strcmp (dxf_insert_get_linetype (insert), DXF_DEFAULT_LINETYPE) != 0)
