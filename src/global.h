@@ -494,13 +494,13 @@ dxf_int32_struct
 #define DXF_MODELER_FORMAT_CURRENT_VERSION 1
         /*!< \brief The current modeler format version. */
 
-#define DXF_MODELSPACE 0
+#define DXF_MODELSPACE (int16_t) 0
         /*!< \brief Model space.
          *
          * This is where our hardware is going to live, default
          * value, can be ommitted in dxf output. */
 
-#define DXF_PAPERSPACE 1
+#define DXF_PAPERSPACE (int16_t) 1
         /*!< \brief Paper space.
          *
          * This is where your annotation (papersheet templates,
