@@ -605,7 +605,7 @@ dxf_helix_write
         fprintf (fp->fp, "100\nAcDbEntity\n");
         if (helix->paperspace != DXF_MODELSPACE)
         {
-                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", helix->layer);
         if (strcmp (helix->linetype, DXF_DEFAULT_LINETYPE) != 0)
