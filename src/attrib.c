@@ -735,7 +735,7 @@ dxf_attrib_write
         }
         if (attrib->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", attrib->layer);
         if (strcmp (attrib->linetype, DXF_DEFAULT_LINETYPE) != 0)
