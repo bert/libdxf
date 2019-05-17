@@ -672,6 +672,9 @@ dxf_circle_write
  * \brief Free the allocated memory for a DXF \c CIRCLE and all it's
  * data fields.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_free.png
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
