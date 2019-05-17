@@ -521,7 +521,7 @@ dxf_lwpolyline_write
         }
         if (lwpolyline->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", lwpolyline->layer);
         if (strcmp (lwpolyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
