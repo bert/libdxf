@@ -596,7 +596,7 @@ dxf_light_write
         fprintf (fp->fp, "100\nAcDbEntity\n");
         if (light->paperspace != DXF_MODELSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", light->layer);
         if (strcmp (light->linetype, DXF_DEFAULT_LINETYPE) != 0)
