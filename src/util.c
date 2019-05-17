@@ -981,9 +981,9 @@ dxf_read_is_string
         DXF_DEBUG_BEGIN
 #endif
         if ((type >= 0 && type < 10)
-          || (type >= 100)
-          || (type >= 102)
-          || (type >= 105)
+          || (type == 100)
+          || (type == 102)
+          || (type == 105)
           || (type >= 300 && type < 370)
           || (type >= 390 && type < 400)
           || (type >= 410 && type < 420)
