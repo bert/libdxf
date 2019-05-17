@@ -606,7 +606,7 @@ dxf_3dline_write
         if ((line->paperspace == DXF_PAPERSPACE)
           && (fp->acad_version_number >= AutoCAD_13))
         {
-                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", line->layer);
         if (strcmp (line->linetype, DXF_DEFAULT_LINETYPE) != 0)
