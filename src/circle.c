@@ -719,6 +719,9 @@ dxf_circle_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c CIRCLE entities and all their data fields.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_free_list.png
  */
 void
 dxf_circle_free_list
