@@ -666,7 +666,7 @@ dxf_arc_write
         }
         if (arc->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%hd\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", arc->layer);
         if (strcmp (arc->linetype, DXF_DEFAULT_LINETYPE) != 0)
