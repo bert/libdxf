@@ -495,7 +495,7 @@ dxf_seqend_write
         }
         if (seqend->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", seqend->layer);
         if (strcmp (seqend->linetype, DXF_DEFAULT_LINETYPE) != 0)
