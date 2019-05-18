@@ -455,7 +455,7 @@ dxf_oleframe_write
         }
         if (oleframe->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", oleframe->layer);
         if (strcmp (oleframe->linetype, DXF_DEFAULT_LINETYPE) != 0)
