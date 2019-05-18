@@ -411,7 +411,7 @@ dxf_ltype_write
         {
                 fprintf (stderr,
                   (_("Warning in %s (): empty linetype name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_ltype_get_id_code (ltype));
+                  __FUNCTION__, dxf_entity_name, ltype->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -421,9 +421,9 @@ dxf_ltype_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_ltype_get_id_code (ltype) != -1)
+        if (ltype->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_ltype_get_id_code (ltype));
+                fprintf (fp->fp, "  5\n%x\n", ltype->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -435,18 +435,18 @@ dxf_ltype_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_ltype_get_dictionary_owner_soft (ltype), "") != 0)
+        if ((strcmp (ltype->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_ltype_get_dictionary_owner_soft (ltype));
+                fprintf (fp->fp, "330\n%s\n", ltype->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_ltype_get_dictionary_owner_hard (ltype), "") != 0)
+        if ((strcmp (ltype->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_ltype_get_dictionary_owner_hard (ltype));
+                fprintf (fp->fp, "360\n%s\n", ltype->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_14)
@@ -454,20 +454,20 @@ dxf_ltype_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbLinetypeTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_ltype_get_linetype_name (ltype));
-        fprintf (fp->fp, " 70\n%d\n", dxf_ltype_get_flag (ltype));
+        fprintf (fp->fp, "  2\n%s\n", ltype->linetype_name);
+        fprintf (fp->fp, " 70\n%d\n", ltype->flag);
         if (ltype->description)
         {
-                fprintf (fp->fp, "  3\n%s\n", dxf_ltype_get_description (ltype));
+                fprintf (fp->fp, "  3\n%s\n", ltype->description);
         }
         else
         {
                 fprintf (fp->fp, "  3\n\n");
         }
-        fprintf (fp->fp, " 72\n%d\n", dxf_ltype_get_alignment (ltype));
-        fprintf (fp->fp, " 73\n%d\n", dxf_ltype_get_number_of_linetype_elements (ltype));
-        fprintf (fp->fp, " 40\n%f\n", dxf_ltype_get_total_pattern_length (ltype));
-        for ((i = 0); (i < dxf_ltype_get_number_of_linetype_elements (ltype)); i++)
+        fprintf (fp->fp, " 72\n%d\n", ltype->alignment);
+        fprintf (fp->fp, " 73\n%d\n", ltype->number_of_linetype_elements);
+        fprintf (fp->fp, " 40\n%f\n", ltype->total_pattern_length);
+        for ((i = 0); (i < ltype->number_of_linetype_elements); i++)
         {
                 fprintf (fp->fp, " 49\n%f\n", dxf_ltype_get_dash_length (ltype, i));
                 fprintf (fp->fp, " 74\n%d\n", dxf_ltype_get_complex_element (ltype, i));
@@ -541,7 +541,7 @@ dxf_ltype_write
                         default:
                                 fprintf (stderr,
                                   (_("Warning in %s (): unknown complex element code for the %s entity with id-code: %x\n")),
-                                  __FUNCTION__, dxf_entity_name, dxf_ltype_get_id_code (ltype));
+                                  __FUNCTION__, dxf_entity_name, ltype->id_code);
                                 break;
                 }
         }
