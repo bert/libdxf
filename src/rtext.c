@@ -592,7 +592,7 @@ dxf_rtext_write
         }
         if (rtext->paperspace == 1)
         {
-                fprintf (fp->fp, " 67\n%d\n", rtext->paperspace);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", rtext->layer);
         if (strcmp (rtext->linetype, DXF_DEFAULT_LINETYPE) != 0)
