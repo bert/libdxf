@@ -608,7 +608,7 @@ dxf_trace_write
         }
         if (trace->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", trace->layer);
         if (strcmp (trace->linetype, DXF_DEFAULT_LINETYPE) != 0)
