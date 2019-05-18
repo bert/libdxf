@@ -586,7 +586,7 @@ dxf_vertex_write
         }
         if (vertex->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", vertex->layer);
         if (strcmp (vertex->linetype, DXF_DEFAULT_LINETYPE) != 0)
