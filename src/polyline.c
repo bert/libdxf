@@ -561,7 +561,7 @@ dxf_polyline_write
         }
         if (dxf_polyline_get_paperspace (polyline) == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", dxf_polyline_get_layer (polyline));
         if (strcmp (dxf_polyline_get_linetype (polyline), DXF_DEFAULT_LINETYPE) != 0)
