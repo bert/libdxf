@@ -729,7 +729,7 @@ dxf_mline_write
         }
         if (dxf_mline_get_paperspace (mline) == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", dxf_mline_get_layer (mline));
         if (strcmp (dxf_mline_get_linetype (mline), DXF_DEFAULT_LINETYPE) != 0)
