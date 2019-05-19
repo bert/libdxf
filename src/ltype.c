@@ -111,11 +111,11 @@ dxf_ltype_init
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_ltype_set_id_code (ltype, 0);
-        dxf_ltype_set_linetype_name (ltype, strdup (""));
-        dxf_ltype_set_description (ltype, strdup (""));
-        dxf_ltype_set_total_pattern_length (ltype, 0.0);
-        dxf_ltype_set_number_of_linetype_elements (ltype, 0);
+        ltype->id_code = 0;
+        ltype->linetype_name = strdup ("");
+        ltype->description = strdup ("");
+        ltype->total_pattern_length = 0.0;
+        ltype->number_of_linetype_elements = 0;
         for ((i = 0); (i <= DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS); i++)
         {
                 dxf_ltype_set_complex_text_string (ltype, i, strdup (""));
@@ -128,10 +128,10 @@ dxf_ltype_init
                 dxf_ltype_set_complex_shape_number (ltype, i, 0);
                 dxf_ltype_set_complex_style_pointer (ltype, i, strdup (""));
         }
-        dxf_ltype_set_flag (ltype, 0);
-        dxf_ltype_set_alignment (ltype, 65);
-        dxf_ltype_set_dictionary_owner_soft (ltype, strdup (""));
-        dxf_ltype_set_dictionary_owner_hard (ltype, strdup (""));
+        ltype->flag = 0;
+        ltype->alignment = 65;
+        ltype->dictionary_owner_soft = strdup ("");
+        ltype->dictionary_owner_hard = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
