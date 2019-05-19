@@ -497,83 +497,83 @@ dxf_insert_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_insert_get_linetype (insert), "") == 0)
+        if (strcmp (insert->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_insert_get_id_code (insert));
+                  __FUNCTION__, dxf_entity_name, insert->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_insert_set_linetype (insert, strdup (DXF_DEFAULT_LINETYPE));
+                insert->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_insert_get_layer (insert), "") == 0)
+        if (strcmp (insert->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_insert_get_id_code (insert));
+                  __FUNCTION__, dxf_entity_name, insert->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0.\n")),
                   dxf_entity_name);
-                dxf_insert_set_layer (insert, strdup (DXF_DEFAULT_LAYER));
+                insert->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_insert_get_rel_x_scale (insert) == 0.0)
+        if (insert->rel_x_scale == 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_insert_get_id_code (insert));
+                  __FUNCTION__, dxf_entity_name, insert->id_code);
                 fprintf (stderr,
                   (_("\tdefault relative X-scale of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_insert_set_rel_x_scale (insert, 1.0);
+                insert->rel_x_scale = 1.0;
         }
-        if (dxf_insert_get_rel_y_scale (insert) == 0.0)
+        if (insert->rel_y_scale == 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () relative Y-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_insert_get_id_code (insert));
+                  __FUNCTION__, dxf_entity_name, insert->id_code);
                 fprintf (stderr,
                   (_("\tdefault relative Y-scale of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_insert_set_rel_y_scale (insert, 1.0);
+                insert->rel_y_scale = 1.0;
         }
-        if (dxf_insert_get_rel_z_scale (insert) == 0.0)
+        if (insert->rel_z_scale == 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () relative Z-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_insert_get_id_code (insert));
+                  __FUNCTION__, dxf_entity_name, insert->id_code);
                 fprintf (stderr,
                   (_("\tdefault relative Z-scale of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_insert_set_rel_z_scale (insert, 1.0);
+                insert->rel_z_scale = 1.0;
         }
-        if ((dxf_insert_get_columns (insert) > 1)
-          && (dxf_insert_get_column_spacing (insert) == 0.0))
+        if ((insert->columns > 1)
+          && (insert->column_spacing == 0.0))
         {
                 fprintf (stderr,
                   (_("Warning in %s () number of columns is greater than 1 and the column spacing has a value of 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_insert_get_id_code (insert));
+                  __FUNCTION__, dxf_entity_name, insert->id_code);
                 fprintf (stderr,
                   (_("\tdefault number of columns value of 1 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_insert_set_columns (insert, 1);
+                insert->columns = 1;
         }
-        if ((dxf_insert_get_rows (insert) > 1)
-          && (dxf_insert_get_row_spacing (insert) == 0.0))
+        if ((insert->rows > 1)
+          && (insert->row_spacing == 0.0))
         {
                 fprintf (stderr,
                   (_("Warning in %s () number of rows is greater than 1 and the row spacing has a value of 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_insert_get_id_code (insert));
+                  __FUNCTION__, dxf_entity_name, insert->id_code);
                 fprintf (stderr,
                   (_("\tdefault number of rows value of 1 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_insert_set_rows (insert, 1);
+                insert->rows = 1;
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_insert_get_id_code (insert) != -1)
+        if (insert->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_insert_get_id_code (insert));
+                fprintf (fp->fp, "  5\n%x\n", insert->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -585,111 +585,111 @@ dxf_insert_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_insert_get_dictionary_owner_soft (insert), "") != 0)
+        if ((strcmp (insert->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_insert_get_dictionary_owner_soft (insert));
+                fprintf (fp->fp, "330\n%s\n", insert->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_insert_get_dictionary_owner_hard (insert), "") != 0)
+        if ((strcmp (insert->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_insert_get_dictionary_owner_hard (insert));
+                fprintf (fp->fp, "360\n%s\n", insert->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_insert_get_paperspace (insert) == DXF_PAPERSPACE)
+        if (insert->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_insert_get_layer (insert));
-        if (strcmp (dxf_insert_get_linetype (insert), DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", insert->layer);
+        if (strcmp (insert->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_insert_get_linetype (insert));
+                fprintf (fp->fp, "  6\n%s\n", insert->linetype);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_insert_get_elevation (insert) != 0.0))
+          && (insert->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_insert_get_elevation (insert));
+                fprintf (fp->fp, " 38\n%f\n", insert->elevation);
         }
-        if (dxf_insert_get_thickness (insert) != 0.0)
+        if (insert->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_insert_get_thickness (insert));
+                fprintf (fp->fp, " 39\n%f\n", insert->thickness);
         }
-        if (dxf_insert_get_color (insert)!= DXF_COLOR_BYLAYER)
+        if (insert->color!= DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_insert_get_color (insert));
+                fprintf (fp->fp, " 62\n%d\n", insert->color);
         }
-        if (dxf_insert_get_linetype_scale (insert) != 1.0)
+        if (insert->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_insert_get_linetype_scale (insert));
+                fprintf (fp->fp, " 48\n%f\n", insert->linetype_scale);
         }
-        if (dxf_insert_get_visibility (insert) != 0)
+        if (insert->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_insert_get_visibility (insert));
+                fprintf (fp->fp, " 60\n%d\n", insert->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbBlockReference\n");
         }
-        if (dxf_insert_get_attributes_follow (insert) != 0)
+        if (insert->attributes_follow != 0)
         {
-                fprintf (fp->fp, " 66\n%d\n", dxf_insert_get_attributes_follow (insert));
+                fprintf (fp->fp, " 66\n%d\n", insert->attributes_follow);
                 /*!
                  * \todo After a set attributes_follow flag is
                  * detected, the writing of following entities should
                  * be implemented and an end of sequence
                  * marker (\c SEQEND) written. */
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_insert_get_block_name (insert));
-        fprintf (fp->fp, " 10\n%f\n", dxf_insert_get_x0 (insert));
-        fprintf (fp->fp, " 20\n%f\n", dxf_insert_get_y0 (insert));
-        fprintf (fp->fp, " 30\n%f\n", dxf_insert_get_z0 (insert));
-        if (dxf_insert_get_rel_x_scale (insert) != 1.0)
+        fprintf (fp->fp, "  2\n%s\n", insert->block_name);
+        fprintf (fp->fp, " 10\n%f\n", insert->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", insert->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", insert->p0->z0);
+        if (insert->rel_x_scale != 1.0)
         {
-                fprintf (fp->fp, " 41\n%f\n", dxf_insert_get_rel_x_scale (insert));
+                fprintf (fp->fp, " 41\n%f\n", insert->rel_x_scale);
         }
-        if (dxf_insert_get_rel_y_scale (insert) != 1.0)
+        if (insert->rel_y_scale != 1.0)
         {
-                fprintf (fp->fp, " 42\n%f\n", dxf_insert_get_rel_y_scale (insert));
+                fprintf (fp->fp, " 42\n%f\n", insert->rel_y_scale);
         }
-        if (dxf_insert_get_rel_z_scale (insert) != 1.0)
+        if (insert->rel_z_scale != 1.0)
         {
-                fprintf (fp->fp, " 43\n%f\n", dxf_insert_get_rel_z_scale (insert));
+                fprintf (fp->fp, " 43\n%f\n", insert->rel_z_scale);
         }
-        if (dxf_insert_get_rot_angle (insert) != 0.0)
+        if (insert->rot_angle != 0.0)
         {
-                fprintf (fp->fp, " 50\n%f\n", dxf_insert_get_rot_angle (insert));
+                fprintf (fp->fp, " 50\n%f\n", insert->rot_angle);
         }
-        if (dxf_insert_get_columns (insert) > 1)
+        if (insert->columns > 1)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_insert_get_columns (insert));
+                fprintf (fp->fp, " 70\n%d\n", insert->columns);
         }
-        if (dxf_insert_get_rows (insert) > 1)
+        if (insert->rows > 1)
         {
-                fprintf (fp->fp, " 71\n%d\n", dxf_insert_get_rows (insert));
+                fprintf (fp->fp, " 71\n%d\n", insert->rows);
         }
-        if ((dxf_insert_get_columns (insert) > 1)
-          && (dxf_insert_get_column_spacing (insert) > 0.0))
+        if ((insert->columns > 1)
+          && (insert->column_spacing > 0.0))
         {
-                fprintf (fp->fp, " 44\n%f\n", dxf_insert_get_column_spacing (insert));
+                fprintf (fp->fp, " 44\n%f\n", insert->column_spacing);
         }
-        if ((dxf_insert_get_rows (insert) > 1)
-          && (dxf_insert_get_row_spacing (insert) > 0.0))
+        if ((insert->rows > 1)
+          && (insert->row_spacing > 0.0))
         {
-                fprintf (fp->fp, " 45\n%f\n", dxf_insert_get_row_spacing (insert));
+                fprintf (fp->fp, " 45\n%f\n", insert->row_spacing);
         }
         if (fp->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp->fp, "210\n%f\n", dxf_insert_get_extr_x0 (insert));
-                fprintf (fp->fp, "220\n%f\n", dxf_insert_get_extr_y0 (insert));
-                fprintf (fp->fp, "230\n%f\n", dxf_insert_get_extr_z0 (insert));
+                fprintf (fp->fp, "210\n%f\n", insert->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", insert->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", insert->extr_z0);
         }
         /* Clean up. */
         free (dxf_entity_name);
