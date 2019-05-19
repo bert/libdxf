@@ -109,7 +109,7 @@ dxf_insert_init
         if (insert == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfInsert struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
