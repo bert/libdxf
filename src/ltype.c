@@ -589,15 +589,15 @@ dxf_ltype_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_ltype_get_linetype_name (ltype));
-        free (dxf_ltype_get_description (ltype));
+        free (ltype->linetype_name);
+        free (ltype->description);
         for ((i = 0); (i <= DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS); i++)
         {
                 free (dxf_ltype_get_complex_text_string (ltype, i));
                 free (dxf_ltype_get_complex_style_pointer (ltype, i));
         }
-        free (dxf_ltype_get_dictionary_owner_soft (ltype));
-        free (dxf_ltype_get_dictionary_owner_hard (ltype));
+        free (ltype->dictionary_owner_soft);
+        free (ltype->dictionary_owner_hard);
         free (ltype);
         ltype = NULL;
 #if DEBUG
