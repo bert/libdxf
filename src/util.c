@@ -1133,7 +1133,6 @@ dxf_read_scanf (DxfFile *fp, const char *template, ...)
         DXF_DEBUG_BEGIN
 #endif
         int ret;
-        char * search_result;
         va_list lst;
         va_start (lst, template);
         ret = vfscanf (fp->fp, template, lst);
@@ -1150,6 +1149,7 @@ dxf_read_scanf (DxfFile *fp, const char *template, ...)
                 /*
                  * we have to find each \n from the template to know how many lines will we read;
                  */
+                char * search_result;
                 search_result = (char *) template;
                 while (TRUE)
                 {
