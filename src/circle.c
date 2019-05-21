@@ -833,6 +833,9 @@ dxf_circle_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_linetype.png
+ *
  * \return linetype when sucessful, \c NULL when an error occurred.
  */
 char *
