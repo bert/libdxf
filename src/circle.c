@@ -755,6 +755,9 @@ dxf_circle_free_list
 /*!
  * \brief Get the ID code from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_id_code.png
+ *
  * \return ID code.
  */
 int
