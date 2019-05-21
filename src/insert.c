@@ -733,15 +733,15 @@ dxf_insert_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_insert_get_linetype (insert));
-        free (dxf_insert_get_layer (insert));
-        dxf_binary_graphics_data_free_list (dxf_insert_get_binary_graphics_data (insert));
-        free (dxf_insert_get_dictionary_owner_soft (insert));
-        free (dxf_insert_get_material (insert));
-        free (dxf_insert_get_dictionary_owner_hard (insert));
-        free (dxf_insert_get_plot_style_name (insert));
-        free (dxf_insert_get_color_name (insert));
-        free (dxf_insert_get_block_name (insert));
+        free (insert->linetype);
+        free (insert->layer);
+        dxf_binary_graphics_data_free_list (insert->binary_graphics_data);
+        free (insert->dictionary_owner_soft);
+        free (insert->material);
+        free (insert->dictionary_owner_hard);
+        free (insert->plot_style_name);
+        free (insert->color_name);
+        free (insert->block_name);
         free (insert);
         insert = NULL;
 #if DEBUG
