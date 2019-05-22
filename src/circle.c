@@ -165,6 +165,9 @@ dxf_circle_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c circle. \n
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_read.png
+ *
  * \return a pointer to \c circle.
  */
 DxfCircle *
