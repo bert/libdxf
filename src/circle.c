@@ -1062,6 +1062,9 @@ dxf_circle_set_elevation
 /*!
  * \brief Get the thickness from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_thickness.png
+ *
  * \return thickness.
  */
 double
