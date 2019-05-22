@@ -1138,6 +1138,9 @@ dxf_circle_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_linetype_scale.png
+ *
  * \return linetype scale.
  */
 double
