@@ -793,6 +793,9 @@ dxf_circle_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_id_code.png
  */
 DxfCircle *
 dxf_circle_set_id_code
