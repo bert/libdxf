@@ -995,6 +995,9 @@ dxf_circle_set_layer
 /*!
  * \brief Get the elevation from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_elevation.png
+ *
  * \return elevation.
  */
 double
