@@ -1258,6 +1258,9 @@ dxf_circle_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_visibility.png
  */
 DxfCircle *
 dxf_circle_set_visibility
