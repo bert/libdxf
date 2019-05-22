@@ -953,6 +953,9 @@ dxf_circle_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_layer.png
  */
 DxfCircle *
 dxf_circle_set_layer
