@@ -1027,6 +1027,9 @@ dxf_circle_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_elevation.png
  */
 DxfCircle *
 dxf_circle_set_elevation
