@@ -477,6 +477,9 @@ dxf_circle_read
 
 /*!
  * \brief Write DXF output to file for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_write.png
  */
 int
 dxf_circle_write
