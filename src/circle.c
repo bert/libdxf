@@ -1214,6 +1214,9 @@ dxf_circle_set_linetype_scale
 /*!
  * \brief Get the visibility from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_visibility.png
+ *
  * \return visibility.
  */
 int16_t
