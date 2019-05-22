@@ -914,6 +914,9 @@ dxf_circle_set_linetype
 /*!
  * \brief Get the layer from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_layer.png
+ *
  * \return layer when sucessful, \c NULL when an error occurred.
  */
 char *
