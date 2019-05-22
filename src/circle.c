@@ -1176,6 +1176,9 @@ dxf_circle_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_linetype_scale.png
  */
 DxfCircle *
 dxf_circle_set_linetype_scale
