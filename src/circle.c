@@ -1100,6 +1100,9 @@ dxf_circle_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_thickness.png
  */
 DxfCircle *
 dxf_circle_set_thickness
