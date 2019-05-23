@@ -2079,6 +2079,9 @@ dxf_circle_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_dictionary_owner_hard.png
  */
 DxfCircle *
 dxf_circle_set_dictionary_owner_hard
