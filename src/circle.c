@@ -2037,6 +2037,9 @@ dxf_circle_set_material
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_dictionary_owner_hard.png
+ *
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
