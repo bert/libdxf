@@ -2313,6 +2313,9 @@ dxf_circle_get_color_value
 /*!
  * \brief Set the \c color_value for a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_color_value.png
+ *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
  */
