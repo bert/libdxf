@@ -1539,6 +1539,9 @@ dxf_circle_get_graphics_data_size
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_graphics_data_size.png
+ *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
  */
