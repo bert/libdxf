@@ -1358,6 +1358,9 @@ dxf_circle_get_color
 
 /*!
  * \brief Set the color for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_color.png
  */
 DxfCircle *
 dxf_circle_set_color
@@ -1397,6 +1400,9 @@ dxf_circle_set_color
 
 /*!
  * \brief Get the paperspace flag value from a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_paperspace.png
  *
  * \return paperspace flag value.
  */
