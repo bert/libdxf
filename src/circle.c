@@ -1867,7 +1867,7 @@ dxf_circle_set_dictionary_owner_soft
  *
  * \return soft pointer to the object owner.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning no checks are performed on the returned pointer (string).
  */
 char *
 dxf_circle_get_object_owner_soft
