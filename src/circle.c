@@ -1733,6 +1733,8 @@ dxf_circle_get_binary_graphics_data
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
+ *
+ * \warning no copy is made of the contents of \c data.
  */
 DxfCircle *
 dxf_circle_set_binary_graphics_data
