@@ -1781,7 +1781,7 @@ dxf_circle_set_binary_graphics_data
  *
  * \return soft pointer to the dictionary owner.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning no checks are performed on the returned pointer (string).
  */
 char *
 dxf_circle_get_dictionary_owner_soft
