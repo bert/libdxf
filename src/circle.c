@@ -1635,6 +1635,9 @@ dxf_circle_get_shadow_mode
 /*!
  * \brief Set the \c shadow_mode for a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_shadow_mode.png
+ *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
  */
