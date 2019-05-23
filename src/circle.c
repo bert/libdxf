@@ -1320,6 +1320,9 @@ dxf_circle_set_visibility
 /*!
  * \brief Get the color from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_color.png
+ *
  * \return color.
  */
 int16_t
