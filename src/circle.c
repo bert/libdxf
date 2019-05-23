@@ -2470,6 +2470,9 @@ dxf_circle_get_transparency
 /*!
  * \brief Set the \c transparency for a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_transparency.png
+ *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
  */
