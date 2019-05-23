@@ -2193,6 +2193,9 @@ dxf_circle_set_lineweight
 /*!
  * \brief Get the \c plot_style_name from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_plot_style_name.png
+ *
  * \return \c plot_style_name when sucessful, or \c NULL when an error
  * occurred.
  */
