@@ -1904,6 +1904,9 @@ dxf_circle_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_object_owner_soft.png
  */
 DxfCircle *
 dxf_circle_set_object_owner_soft
