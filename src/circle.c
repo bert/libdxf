@@ -1991,6 +1991,9 @@ dxf_circle_get_material
 /*!
  * \brief Set the pointer to the \c material for a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_material.png
+ *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
  */
