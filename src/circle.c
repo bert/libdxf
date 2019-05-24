@@ -2547,6 +2547,9 @@ dxf_circle_get_p0
 /*!
  * \brief Set the base point \c p0 of a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_p0.png
+ *
  * \return a pointer to a DXF \c CIRCLE entity.
  */
 DxfCircle *
