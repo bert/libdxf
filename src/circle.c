@@ -3235,6 +3235,9 @@ dxf_circle_set_extr_z0
 /*!
  * \brief Get the \c area from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_area.png
+ *
  * \return \c area.
  *
  * \note a negative radius (!) will give a positive area.
