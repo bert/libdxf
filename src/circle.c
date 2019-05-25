@@ -2721,6 +2721,9 @@ dxf_circle_get_y0
  * \brief Set the Y-value of the base point \c y0 of a DXF \c CIRCLE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_y0.png
+ *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
  */
