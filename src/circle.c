@@ -2993,6 +2993,9 @@ dxf_circle_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_extrusion_vector.png
  */
 DxfCircle *
 dxf_circle_set_extrusion_vector
