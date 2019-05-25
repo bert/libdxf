@@ -3482,6 +3482,9 @@ dxf_circle_set_next
  * \brief Get the pointer to the last \c CIRCLE entity from a linked
  * list of DXF \c CIRCLE entities.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_last.png
+ *
  * \return pointer to the last \c CIRCLE entity.
  *
  * \warning No checks are performed on the returned pointer.
