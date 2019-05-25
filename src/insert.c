@@ -441,13 +441,13 @@ dxf_insert_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_insert_get_linetype (insert), "") == 0)
+        if (strcmp (insert->linetype, "") == 0)
         {
-                dxf_insert_set_linetype (insert, strdup (DXF_DEFAULT_LINETYPE));
+                insert->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_insert_get_layer (insert), "") == 0)
+        if (strcmp (insert->layer, "") == 0)
         {
-                dxf_insert_set_layer (insert, strdup (DXF_DEFAULT_LAYER));
+                insert->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Clean up. */
         free (temp_string);
