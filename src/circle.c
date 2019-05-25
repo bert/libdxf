@@ -3200,6 +3200,9 @@ dxf_circle_get_extr_z0
 
 /*!
  * \brief Set the \c extr_z0 for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_extr_z0.png
  */
 DxfCircle *
 dxf_circle_set_extr_z0
