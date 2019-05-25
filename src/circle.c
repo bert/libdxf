@@ -3168,6 +3168,9 @@ dxf_circle_set_extr_y0
 /*!
  * \brief Get the \c extr_z0 from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_extr_z0.png
+ *
  * \return \c extr_zo.
  */
 double
