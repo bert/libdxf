@@ -3133,6 +3133,9 @@ dxf_circle_get_extr_y0
 
 /*!
  * \brief Set the \c extr_y0 for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_extr_y0.png
  */
 DxfCircle *
 dxf_circle_set_extr_y0
