@@ -2946,6 +2946,9 @@ dxf_circle_set_radius
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_extrusion_vector_as_point.png
+ *
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
