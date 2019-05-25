@@ -2854,6 +2854,9 @@ dxf_circle_set_z0
 /*!
  * \brief Get the radius from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_radius.png
+ *
  * \return radius.
  */
 double
