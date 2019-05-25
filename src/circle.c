@@ -3282,6 +3282,9 @@ dxf_circle_get_area
 /*!
  * \brief Get the \c circumference from a DXF \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_circumference.png
+ *
  * \return \c circumference.
  *
  * \note the absolute value radius is used for the calculation.
