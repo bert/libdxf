@@ -3397,6 +3397,9 @@ dxf_circle_test_point_in_circle
  * \brief Get the pointer to the next \c CIRCLE entity from a DXF 
  * \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_next.png
+ *
  * \return pointer to the next \c CIRCLE entity.
  *
  * \warning No checks are performed on the returned pointer.
