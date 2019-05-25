@@ -2898,6 +2898,9 @@ dxf_circle_get_radius
 
 /*!
  * \brief Set the radius for a DXF \c CIRCLE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_set_radius.png
  */
 DxfCircle *
 dxf_circle_set_radius
