@@ -3330,6 +3330,9 @@ dxf_circle_get_circumference
  * \brief Test if a DXF \c POINT lies within, on top or outside a DXF
  * \c CIRCLE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_test_point_in_circle.png
+ *
  * \return \c INSIDE if the point lies inside the circle,
  * \c OUTSIDE if the point lies outside the circle,
  * \c ON_EDGE if the point lies on top the circle.
