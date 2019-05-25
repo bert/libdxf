@@ -2679,6 +2679,9 @@ dxf_circle_set_x0
  * \brief Get the Y-value of the base point \c y0 of a DXF \c CIRCLE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_circle_get_y0.png
+ *
  * \return the Y-value of the base point \c y0.
  */
 double
