@@ -508,6 +508,9 @@ dxf_arc_read
 /*!
  * \brief Write DXF output for a DXF \c ARC entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_arc_write.png
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
