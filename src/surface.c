@@ -63,7 +63,7 @@ dxf_surface_new ()
         size = sizeof (DxfSurface);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((surafce = malloc (size)) == NULL)
+        if ((surface = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),
