@@ -156,6 +156,8 @@ src/style.c
 src/style.h
 src/sun.c
 src/sun.h
+src/surface.c
+src/surface.h
 src/table.c
 src/table.h
 src/tables.c
