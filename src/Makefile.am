@@ -32,6 +32,8 @@ libdxf_la_SOURCES = \
   tables.c \
   table.h \
   table.c \
+  surface.h \
+  surface.c \
   sun.h \
   sun.c \
   style.h \
