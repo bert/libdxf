@@ -47,6 +47,7 @@
 #include "global.h"
 #include "point.h"
 #include "binary_graphics_data.h"
+#include "proprietary_data.h"
 
 
 #ifdef __cplusplus
@@ -189,6 +190,24 @@ dxf_surface_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF surface. */
+        DxfProprietaryData *proprietary_data;
+                /*!< Proprietary data (multiple lines < 255 characters
+                 * each).\n
+                 * Group code = 1. */
+        DxfProprietaryData *additional_proprietary_data;
+                /*!< Additional lines of proprietary data if previous
+                 * group 1 string is greater than 255 characters
+                 * (optional).\n
+                 * Group code = 3. */
+        int16_t modeler_format_version_number;
+                /*!< Modeler format version number (currently = 1).\n
+                 * Group code = 70. */
+        int16_t number_of_U_isolines;
+                /*!< Number of U isolines.\n
+                 * Group code = 71. */
+        int16_t number_of_V_isolines;
+                /*!< Number of V isolines.\n
+                 * Group code = 72. */
         struct DxfSurface *next;
                 /*!< pointer to the next DxfSurface.\n
                  * \c NULL in the last DxfSurface. */
