@@ -55,6 +55,15 @@ extern "C" {
 #endif
 
 
+typedef enum
+{
+        EXTRUDED,
+        LOFTED,
+        REVOLVED,
+        SWEPT
+} DXF_SURFACE_TYPE;
+
+
 /*!
  * \brief DXF definition of an AutoCAD surface entity.
  */
