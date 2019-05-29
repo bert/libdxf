@@ -217,6 +217,15 @@ dxf_surface_struct
         int16_t number_of_V_isolines;
                 /*!< Number of V isolines.\n
                  * Group code = 72. */
+        DXF_SURFACE_TYPE type;
+                /*!< Surface type:
+                 * <ol>
+                 * <li>EXTRUDED</li>
+                 * <li>LOFTED</li>
+                 * <li>REVOLVED</li>
+                 * <li>SWEPT</li>
+                 * </ol>
+                 * */
         struct DxfSurface *next;
                 /*!< pointer to the next DxfSurface.\n
                  * \c NULL in the last DxfSurface. */
