@@ -1,5 +1,5 @@
 /*!
- * \file suurface.c
+ * \file surface.c
  *
  * \author Copyright (C) 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
