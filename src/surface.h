@@ -241,6 +241,7 @@ DxfSurface *dxf_surface_set_linetype (DxfSurface *surface, char *linetype);
 char *dxf_surface_get_layer (DxfSurface *surface);
 DxfSurface *dxf_surface_set_layer (DxfSurface *surface, char *layer);
 double dxf_surface_get_elevation (DxfSurface *surface);
+DxfSurface *dxf_surface_set_elevation (DxfSurface *surface, double elevation);
 
 
 #ifdef __cplusplus

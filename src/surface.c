@@ -349,4 +349,38 @@ dxf_surface_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c SURFACE entity.
+ *
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSurface *
+dxf_surface_set_elevation
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */
