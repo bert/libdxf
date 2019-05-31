@@ -1213,9 +1213,14 @@ dxf_arc_get_thickness
         if (arc->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+        }
+        if (arc->thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("warning in %s () a value of zero was found.\n")),
+                  __FUNCTION__);
         }
 #if DEBUG
         DXF_DEBUG_END
