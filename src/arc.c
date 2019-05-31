@@ -1216,7 +1216,7 @@ dxf_arc_get_thickness
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        if (arc->thickness < 0.0)
+        if (arc->thickness == 0.0)
         {
                 fprintf (stderr,
                   (_("warning in %s () a value of zero was found.\n")),
