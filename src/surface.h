@@ -238,6 +238,7 @@ int dxf_surface_get_id_code (DxfSurface *surface);
 DxfSurface *dxf_surface_set_id_code (DxfSurface *surface, int id_code);
 char *dxf_surface_get_linetype (DxfSurface *surface);
 DxfSurface *dxf_surface_set_linetype (DxfSurface *surface, char *linetype);
+char *dxf_surface_get_layer (DxfSurface *surface);
 
 
 #ifdef __cplusplus
