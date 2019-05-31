@@ -409,9 +409,8 @@ dxf_surface_get_thickness
         if (surface->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (surface->thickness == 0.0)
         {
