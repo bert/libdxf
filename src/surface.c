@@ -513,4 +513,50 @@ dxf_surface_get_linetype_scale
 }
 
 
+/*!
+ * \brief Set the \c linetype_scale for a DXF \c SURFACE entity.
+ *
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSurface *
+dxf_surface_set_linetype_scale
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        double linetype_scale
+                /*!< the \c linetype_scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (linetype_scale == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
+        surface->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */
