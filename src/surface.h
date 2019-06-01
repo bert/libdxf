@@ -244,6 +244,7 @@ double dxf_surface_get_elevation (DxfSurface *surface);
 DxfSurface *dxf_surface_set_elevation (DxfSurface *surface, double elevation);
 double dxf_surface_get_thickness (DxfSurface *surface);
 DxfSurface *dxf_surface_set_thickness (DxfSurface *surface, double thickness);
+double dxf_surface_get_linetype_scale (DxfSurface *surface);
 
 
 #ifdef __cplusplus
