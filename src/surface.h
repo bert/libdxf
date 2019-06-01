@@ -248,6 +248,7 @@ double dxf_surface_get_linetype_scale (DxfSurface *surface);
 DxfSurface *dxf_surface_set_linetype_scale (DxfSurface *surface, double linetype_scale);
 int16_t dxf_surface_get_visibility (DxfSurface *surface);
 DxfSurface *dxf_surface_set_visibility (DxfSurface *surface, int16_t visibility);
+int16_t dxf_surface_get_color (DxfSurface *surface);
 
 
 #ifdef __cplusplus
