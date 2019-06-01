@@ -1310,6 +1310,12 @@ dxf_arc_get_linetype_scale
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        if (arc->linetype_scale == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
