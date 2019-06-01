@@ -250,6 +250,7 @@ int16_t dxf_surface_get_visibility (DxfSurface *surface);
 DxfSurface *dxf_surface_set_visibility (DxfSurface *surface, int16_t visibility);
 int16_t dxf_surface_get_color (DxfSurface *surface);
 DxfSurface *dxf_surface_set_color (DxfSurface *surface, int16_t color);
+int16_t dxf_surface_get_paperspace (DxfSurface *surface);
 
 
 #ifdef __cplusplus
