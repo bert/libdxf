@@ -559,4 +559,46 @@ dxf_surface_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the \c visibility from a DXF \c SURFACE entity.
+ *
+ * \return \c visibility.
+ */
+int16_t
+dxf_surface_get_visibility
+(
+        DxfSurface *surface
+                /*!< a pointer to a DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (surface->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (surface->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface->visibility);
+}
+
+
 /* EOF */
