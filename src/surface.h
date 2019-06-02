@@ -259,6 +259,7 @@ DxfSurface *dxf_surface_set_shadow_mode (DxfSurface *surface, int16_t shadow_mod
 DxfBinaryGraphicsData *dxf_surface_get_binary_graphics_data (DxfSurface *surface);
 DxfSurface *dxf_surface_set_binary_graphics_data (DxfSurface *surface, DxfBinaryGraphicsData *data);
 char *dxf_surface_get_dictionary_owner_soft (DxfSurface *surface);
+DxfSurface *dxf_surface_set_dictionary_owner_soft (DxfSurface *surface, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
