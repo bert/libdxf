@@ -120,8 +120,8 @@ dxf_surface_get_id_code
 /*!
  * \brief Set the \c id_code for a DXF \c SURFACE entity.
  *
- * \return a pointer to \c surface when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
  */
 DxfSurface *
 dxf_surface_set_id_code
@@ -199,8 +199,8 @@ dxf_surface_get_linetype
 /*!
  * \brief Set the \c linetype for a DXF \c SURFACE entity.
  *
- * \return a pointer to \c surface when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
  *
  * \note the pointer to \c linetype is not freed.
  */
@@ -280,8 +280,8 @@ dxf_surface_get_layer
 /*!
  * \brief Set the \c layer for a DXF \c SURFACE entity.
  *
- * \return a pointer to \c surface when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
  */
 DxfSurface *
 dxf_surface_set_layer
@@ -857,7 +857,8 @@ dxf_surface_get_graphics_data_size
 
 
 /*!
- * \brief Set the \c graphics_data_size value for a DXF \c SURFACE entity.
+ * \brief Set the \c graphics_data_size value for a DXF \c SURFACE
+ * entity.
  *
  * \return a pointer to \c surface when successful, or \c NULL when an
  * error occurred.
