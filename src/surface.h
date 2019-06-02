@@ -261,6 +261,7 @@ DxfSurface *dxf_surface_set_binary_graphics_data (DxfSurface *surface, DxfBinary
 char *dxf_surface_get_dictionary_owner_soft (DxfSurface *surface);
 DxfSurface *dxf_surface_set_dictionary_owner_soft (DxfSurface *surface, char *dictionary_owner_soft);
 char *dxf_surface_get_object_owner_soft (DxfSurface *surface);
+DxfSurface *dxf_surface_set_object_owner_soft (DxfSurface *surface, char *object_owner_soft);
 
 
 #ifdef __cplusplus
