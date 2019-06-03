@@ -3362,6 +3362,13 @@ dxf_circle_test_point_in_circle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (circle->radius < 0.0)
         {
                 fprintf (stderr,
