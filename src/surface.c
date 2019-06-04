@@ -1437,4 +1437,38 @@ dxf_surface_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c SURFACE entity.
+ *
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSurface *
+dxf_surface_set_lineweight
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */
