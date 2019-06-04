@@ -266,6 +266,7 @@ char *dxf_surface_get_material (DxfSurface *surface);
 DxfSurface *dxf_surface_set_material (DxfSurface *surface, char *material);
 char *dxf_surface_get_dictionary_owner_hard (DxfSurface *surface);
 DxfSurface *dxf_surface_set_dictionary_owner_hard (DxfSurface *surface, char *dictionary_owner_hard);
+int16_t dxf_surface_get_lineweight (DxfSurface *surface);
 
 
 #ifdef __cplusplus
