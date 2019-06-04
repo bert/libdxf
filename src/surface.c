@@ -1696,4 +1696,35 @@ dxf_surface_set_color_name
 }
 
 
+/*!
+ * \brief Get the \c transparency from a DXF \c SURFACE entity.
+ *
+ * \return \c transparency when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int32_t
+dxf_surface_get_transparency
+(
+        DxfSurface *surface
+                /*!< a pointer to a DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface->transparency);
+}
+
+
 /* EOF */
