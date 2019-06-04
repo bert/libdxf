@@ -271,6 +271,7 @@ char *dxf_surface_get_plot_style_name (DxfSurface *surface);
 DxfSurface *dxf_surface_set_plot_style_name (DxfSurface *surface, char *plot_style_name);
 int32_t dxf_surface_get_color_value (DxfSurface *surface);
 DxfSurface *dxf_surface_set_color_value (DxfSurface *surface, int32_t color_value);
+char *dxf_surface_get_color_name (DxfSurface *surface);
 
 
 #ifdef __cplusplus
