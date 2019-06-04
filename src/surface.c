@@ -1509,4 +1509,46 @@ dxf_surface_get_plot_style_name
 }
 
 
+/*!
+ * \brief Set the \c plot_style_name for a DXF \c SURFACE entity.
+ *
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSurface *
+dxf_surface_set_plot_style_name
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        char *plot_style_name
+                /*!< a string containing the \c plot_style_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->plot_style_name = strdup (plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */

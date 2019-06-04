@@ -268,6 +268,7 @@ char *dxf_surface_get_dictionary_owner_hard (DxfSurface *surface);
 DxfSurface *dxf_surface_set_dictionary_owner_hard (DxfSurface *surface, char *dictionary_owner_hard);
 int16_t dxf_surface_get_lineweight (DxfSurface *surface);
 char *dxf_surface_get_plot_style_name (DxfSurface *surface);
+DxfSurface *dxf_surface_set_plot_style_name (DxfSurface *surface, char *plot_style_name);
 
 
 #ifdef __cplusplus
