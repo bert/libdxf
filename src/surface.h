@@ -275,6 +275,7 @@ char *dxf_surface_get_color_name (DxfSurface *surface);
 DxfSurface *dxf_surface_set_color_name (DxfSurface *surface, char *color_name);
 int32_t dxf_surface_get_transparency (DxfSurface *surface);
 DxfSurface *dxf_surface_set_transparency (DxfSurface *surface, int32_t transparency);
+DxfProprietaryData *dxf_surface_get_proprietary_data (DxfSurface *surface);
 
 
 #ifdef __cplusplus
