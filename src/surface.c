@@ -1801,4 +1801,46 @@ dxf_surface_get_proprietary_data
 }
 
 
+/*!
+ * \brief Set the proprietary data for a DXF \c SURFACE entity.
+ *
+ * \return a pointer to \c surface when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSurface *
+dxf_surface_set_proprietary_data
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        DxfProprietaryData *proprietary_data
+                /*!< a pointer to a linked list containing the
+                 * \c proprietary_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->proprietary_data = proprietary_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */
