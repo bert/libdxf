@@ -2042,4 +2042,47 @@ dxf_surface_get_number_of_U_isolines
 }
 
 
+/*!
+ * \brief Set the number of U isolines for a DXF \c SURFACE entity.
+ */
+DxfSurface *
+dxf_surface_set_number_of_U_isolines
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        int16_t number_of_U_isolines
+                /*!< Number of U isolines. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_U_isolines < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (number_of_U_isolines == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
+        surface->number_of_U_isolines = number_of_U_isolines;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */
