@@ -280,6 +280,7 @@ DxfSurface *dxf_surface_set_proprietary_data (DxfSurface *surface, DxfProprietar
 DxfProprietaryData *dxf_surface_get_additional_proprietary_data (DxfSurface *surface);
 DxfSurface *dxf_surface_set_additional_proprietary_data (DxfSurface *surface, DxfProprietaryData *additional_proprietary_data);
 int16_t dxf_surface_get_modeler_format_version_number (DxfSurface *surface);
+DxfSurface *dxf_surface_set_modeler_format_version_number (DxfSurface *surface, int16_t modeler_format_version_number);
 
 
 #ifdef __cplusplus

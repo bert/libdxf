@@ -1961,4 +1961,43 @@ dxf_surface_get_modeler_format_version_number
 }
 
 
+/*!
+ * \brief Set the modeler format version number for a DXF \c SURFACE
+ * entity.
+ */
+DxfSurface *
+dxf_surface_set_modeler_format_version_number
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        int16_t modeler_format_version_number
+                /*!< Modeler format version number (currently = 1). */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (modeler_format_version_number != 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->modeler_format_version_number = modeler_format_version_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */
