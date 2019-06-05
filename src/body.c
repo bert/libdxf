@@ -2528,7 +2528,7 @@ dxf_body_set_additional_proprietary_data
 /*!
  * \brief Get the modeler format version number from a DXF \c BODY entity.
  *
- * \return ID code.
+ * \return \c modeler_format_version_number.
  */
 int16_t
 dxf_body_get_modeler_format_version_number
