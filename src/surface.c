@@ -1883,4 +1883,44 @@ dxf_surface_get_additional_proprietary_data
 }
 
 
+/*!
+ * \brief Set the pointer to the additional proprietary data for a DXF
+ * \c SURFACE entity.
+ */
+DxfSurface *
+dxf_surface_set_additional_proprietary_data
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        DxfProprietaryData *additional_proprietary_data
+                /*!< an array containing the additional proprietary data
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (additional_proprietary_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->additional_proprietary_data = additional_proprietary_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */

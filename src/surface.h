@@ -278,6 +278,7 @@ DxfSurface *dxf_surface_set_transparency (DxfSurface *surface, int32_t transpare
 DxfProprietaryData *dxf_surface_get_proprietary_data (DxfSurface *surface);
 DxfSurface *dxf_surface_set_proprietary_data (DxfSurface *surface, DxfProprietaryData *proprietary_data);
 DxfProprietaryData *dxf_surface_get_additional_proprietary_data (DxfSurface *surface);
+DxfSurface *dxf_surface_set_additional_proprietary_data (DxfSurface *surface, DxfProprietaryData *additional_proprietary_data);
 
 
 #ifdef __cplusplus
