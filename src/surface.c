@@ -1843,4 +1843,44 @@ dxf_surface_set_proprietary_data
 }
 
 
+/*!
+ * \brief Get the \c additional_proprietary_data from a DXF \c SURFACE
+ * entity.
+ *
+ * \return pointer to the \c additional_proprietary_data.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+DxfProprietaryData *
+dxf_surface_get_additional_proprietary_data
+(
+        DxfSurface *surface
+                /*!< a pointer to a DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (surface->additional_proprietary_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfProprietaryData *) surface->additional_proprietary_data);
+}
+
+
 /* EOF */
