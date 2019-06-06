@@ -283,6 +283,7 @@ int16_t dxf_surface_get_modeler_format_version_number (DxfSurface *surface);
 DxfSurface *dxf_surface_set_modeler_format_version_number (DxfSurface *surface, int16_t modeler_format_version_number);
 int16_t dxf_surface_get_number_of_U_isolines (DxfSurface *surface);
 DxfSurface *dxf_surface_set_number_of_U_isolines (DxfSurface *surface, int16_t number_of_U_isolines);
+int16_t dxf_surface_get_number_of_V_isolines (DxfSurface *surface);
 
 
 #ifdef __cplusplus

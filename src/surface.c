@@ -2085,4 +2085,46 @@ dxf_surface_set_number_of_U_isolines
 }
 
 
+/*!
+ * \brief Get the number of V isolines from a DXF \c SURFACE entity.
+ *
+ * \return \c number_of_V_isolines.
+ */
+int16_t
+dxf_surface_get_number_of_V_isolines
+(
+        DxfSurface *surface
+                /*!< a pointer to a DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (surface->number_of_V_isolines < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (surface->number_of_V_isolines == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface->number_of_V_isolines);
+}
+
+
 /* EOF */
