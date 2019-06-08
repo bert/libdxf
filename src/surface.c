@@ -2210,4 +2210,43 @@ dxf_surface_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c SURFACE for a DXF \c SURFACE
+ * entity.
+ */
+DxfSurface *
+dxf_surface_set_next
+(
+        DxfSurface *surface,
+                /*!< a pointer to a DXF \c SURFACE entity. */
+        DxfSurface *next
+                /*!< a pointer to the next \c SURFACE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->next = (struct DxfSurface *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
 /* EOF */
