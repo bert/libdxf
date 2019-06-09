@@ -2249,4 +2249,49 @@ dxf_surface_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c SURFACE entity from a linked list
+ * of DXF \c SURFACE entities.
+ *
+ * \return pointer to the last \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurface *
+dxf_surface_get_last
+(
+        DxfSurface *surface
+                /*!< a pointer to a DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfSurface *) surface);
+        }
+        DxfSurface *iter = (DxfSurface *) surface->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSurface *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurface *) iter);
+}
+
+
 /* EOF */
