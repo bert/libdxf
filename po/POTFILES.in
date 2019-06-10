@@ -16,6 +16,8 @@ src/attdef.c
 src/attdef.h
 src/attrib.c
 src/attrib.h
+src/binary_data.c
+src/binary_data.h
 src/binary_entity_data.c
 src/binary_entity_data.h
 src/binary_graphics_data.c

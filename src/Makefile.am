@@ -171,6 +171,8 @@ libdxf_la_SOURCES = \
   binary_graphics_data.c \
   binary_entity_data.h \
   binary_entity_data.c \
+  binary_data.h \
+  binary_data.c \
   attrib.h \
   attrib.c \
   attdef.h \
