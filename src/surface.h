@@ -46,6 +46,7 @@
 
 #include "global.h"
 #include "point.h"
+#include "binary_data.h"
 #include "binary_graphics_data.h"
 #include "proprietary_data.h"
 
@@ -231,6 +232,92 @@ dxf_surface_struct
                  * \c NULL in the last DxfSurface. */
 
 } DxfSurface;
+
+
+/*!
+ * \brief DXF definition of an AutoCAD extruded surface entity.
+ */
+typedef struct
+dxf_surface_extruded_struct
+{
+        DxfPoint *sweep_vector;
+                /*!< Sweep vector.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint *twist_control_vector;
+                /*!< Reference vector for controlling twist.\n
+                 * Group code = 11, 21 and 31. */
+        DxfDouble *transform_matrix;
+                /*!< Transform matrix of extruded entity
+                 * (16 reals; row major format; default = identity
+                 * matrix).\n
+                 * Group code = 40. */
+        double draft_angle;
+                /*!< Draft angle (in radians).\n
+                 * Group code = 42. */
+        double draft_start_distance;
+                /*!< Draft start distance.\n
+                 * Group code = 43. */
+        double draft_end_distance;
+                /*!< Draft end distance.\n
+                 * Group code = 44. */
+        double twist_angle;
+                /*!< Twist angle.\n
+                 * Group code = 45. */
+        DxfDouble sweep_matrix;
+                /*!< Transform matrix of sweep entity
+                 * (16 reals; row major format; default = identity
+                 * matrix).\n
+                 * Group code = 46. */
+        DxfDouble path_matrix;
+                /*!< Transform matrix of path entity
+                 * (16 reals; row major format; default = identity
+                 * matrix)\n
+                 * Group code = 47. */
+        double scale_factor;
+                /*!< Scale factor.\n
+                 * Group code = 48. */
+        double align_angle;
+                /*!< Align angle (in radians).\n
+                 * Group code = 49. */
+        int16_t sweep_alignment_option;
+                /*!< Sweep alignment option:
+                 * <ol>
+                 *   <li value = 0> No alignment.</li>
+                 *   <li value = 1> Align sweep entity to path.</li>
+                 *   <li value = 2> Translate sweep entity to path.</li>
+                 *   <li value = 3> Translate path to sweep entity.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int32_t class_ID;
+                /*!< Class ID.\n
+                 * Group code = 90. */
+        int32_t binary_data_size;
+                /*!< Size of binary data.\n
+                 * Group code = 90. */
+        int solid_flag;
+                /*!< Solid flag.\n
+                 * Group code = 290. */
+        int align_start_flag;
+                /*!< Align start flag.\n
+                 * Group code = 292. */
+        int bank_flag;
+                /*!< Bank flag.\n
+                 * Group code = 293. */
+        int base_point_set_flag;
+                /*!< Base point set flag.\n
+                 * Group code = 294. */
+        int sweep_transform_computed_flag;
+                /*!< Sweep entity transform computed flag.\n
+                 * Group code = 295. */
+        int path_transform_computed_flag;
+                /*!< Path entity transform computed flag.\n
+                 * Group code = 296. */
+        DxfBinaryData *binary_data;
+                /*!< Binary data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310. */
+} DxfSurfaceExtruded;
 
 
 DxfSurface *dxf_surface_new ();
