@@ -376,6 +376,9 @@ DxfSurface *dxf_surface_get_next (DxfSurface *surface);
 DxfSurface *dxf_surface_set_next (DxfSurface *surface, DxfSurface *next);
 DxfSurface *dxf_surface_get_last (DxfSurface *surface);
 
+/* Extruded surface functions. */
+DxfSurfaceExtruded *dxf_surface_extruded_new ();
+
 
 #ifdef __cplusplus
 }
