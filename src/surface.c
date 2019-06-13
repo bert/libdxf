@@ -82,6 +82,96 @@ dxf_surface_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c SURFACE
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurface *
+dxf_surface_init
+(
+        DxfSurface *surface
+                /*!< a pointer to the DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                surface = dxf_surface_new ();
+        }
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Initialize new structs for members. */
+        surface->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (surface->binary_graphics_data);
+        if (surface->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (surface->proprietary_data);
+        if (surface->proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        surface->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (surface->additional_proprietary_data);
+        if (surface->additional_proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
+        surface->id_code = 0;
+        surface->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        surface->layer = strdup (DXF_DEFAULT_LAYER);
+        surface->elevation = 0.0;
+        surface->thickness = 0.0;
+        surface->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        surface->visibility = DXF_DEFAULT_VISIBILITY;
+        surface->color = DXF_COLOR_BYLAYER;
+        surface->paperspace = DXF_MODELSPACE;
+        surface->graphics_data_size = 0;
+        surface->shadow_mode = 0;
+        surface->dictionary_owner_soft = strdup ("");
+        surface->object_owner_soft = strdup ("");
+        surface->material = strdup ("");
+        surface->dictionary_owner_hard = strdup ("");
+        surface->lineweight = 0;
+        surface->plot_style_name = strdup ("");
+        surface->color_value = 0;
+        surface->color_name = strdup ("");
+        surface->transparency = 0;
+        surface->modeler_format_version_number = 1;
+        surface->number_of_U_isolines = 0;
+        surface->number_of_V_isolines = 0;
+        surface->type = 0;
+        surface->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
+/*!
  * \brief Get the \c id_code from a DXF \c SURFACE entity.
  *
  * \return \c id_code.
