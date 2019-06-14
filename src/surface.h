@@ -58,6 +58,7 @@ extern "C" {
 
 typedef enum
 {
+        NO_TYPE,
         EXTRUDED,
         LOFTED,
         REVOLVED,
@@ -221,10 +222,11 @@ dxf_surface_struct
         DXF_SURFACE_TYPE type;
                 /*!< Surface type:
                  * <ol>
-                 * <li>EXTRUDED</li>
-                 * <li>LOFTED</li>
-                 * <li>REVOLVED</li>
-                 * <li>SWEPT</li>
+                 * <li value = 0>NO_TYPE</li>
+                 * <li value = 1>EXTRUDED</li>
+                 * <li value = 2>LOFTED</li>
+                 * <li value = 3>REVOLVED</li>
+                 * <li value = 4>SWEPT</li>
                  * </ol>
                  * */
         struct DxfSurface *next;
