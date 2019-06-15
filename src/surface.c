@@ -172,6 +172,58 @@ dxf_surface_init
 
 
 /*!
+ * \brief Free the allocated memory for a DXF \c SURFACE entity and all
+ * it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_surface_free
+(
+        DxfSurface *surface
+                /*!< a pointer to the memory occupied by the DXF
+                 * \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (surface->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (surface->linetype);
+        free (surface->layer);
+        free (surface->dictionary_owner_soft);
+        free (surface->object_owner_soft);
+        free (surface->material);
+        free (surface->dictionary_owner_hard);
+        free (surface->plot_style_name);
+        free (surface->color_name);
+        dxf_proprietary_data_free_list (surface->proprietary_data);
+        dxf_proprietary_data_free_list (surface->additional_proprietary_data);
+        free (surface);
+        surface = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Get the \c id_code from a DXF \c SURFACE entity.
  *
  * \return \c id_code.

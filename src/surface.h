@@ -324,6 +324,7 @@ dxf_surface_extruded_struct
 
 DxfSurface *dxf_surface_new ();
 DxfSurface *dxf_surface_init (DxfSurface *surface);
+int dxf_surface_free (DxfSurface *surface);
 int dxf_surface_get_id_code (DxfSurface *surface);
 DxfSurface *dxf_surface_set_id_code (DxfSurface *surface, int id_code);
 char *dxf_surface_get_linetype (DxfSurface *surface);
