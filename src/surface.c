@@ -2540,16 +2540,16 @@ dxf_surface_extruded_init
                 return (NULL);
         }
         /* Initialize new structs for members. */
-        extruded_surface->sweep_vector = (DxfPoint *) dxf_point_init (extruded_surface->sweep_vector);
-        if (extruded_surface->sweep_vector == NULL)
+        extruded_surface->p0 = (DxfPoint *) dxf_point_init (extruded_surface->p0);
+        if (extruded_surface->p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        extruded_surface->twist_control_vector = (DxfPoint *) dxf_point_init (extruded_surface->twist_control_vector);
-        if (extruded_surface->twist_control_vector == NULL)
+        extruded_surface->p1 = (DxfPoint *) dxf_point_init (extruded_surface->p1);
+        if (extruded_surface->p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),
@@ -2645,8 +2645,8 @@ dxf_surface_extruded_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        dxf_point_free (extruded_surface->sweep_vector);
-        dxf_point_free (extruded_surface->twist_control_vector);
+        dxf_point_free (extruded_surface->p0);
+        dxf_point_free (extruded_surface->p1);
         dxf_double_free (extruded_surface->transform_matrix);
         dxf_double_free (extruded_surface->sweep_matrix);
         dxf_double_free (extruded_surface->path_matrix);

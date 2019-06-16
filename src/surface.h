@@ -242,10 +242,10 @@ dxf_surface_struct
 typedef struct
 dxf_surface_extruded_struct
 {
-        DxfPoint *sweep_vector;
+        DxfPoint *p0;
                 /*!< Sweep vector.\n
                  * Group code = 10, 20 and 30. */
-        DxfPoint *twist_control_vector;
+        DxfPoint *p1;
                 /*!< Reference vector for controlling twist.\n
                  * Group code = 11, 21 and 31. */
         DxfDouble *transform_matrix;
