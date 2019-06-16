@@ -2507,4 +2507,109 @@ dxf_surface_extruded_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF
+ * extruded \c SURFACE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_init
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to the DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                extruded_surface = dxf_surface_extruded_new ();
+        }
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Initialize new structs for members. */
+        extruded_surface->sweep_vector = (DxfPoint *) dxf_point_init (extruded_surface->sweep_vector);
+        if (extruded_surface->sweep_vector == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->twist_control_vector = (DxfPoint *) dxf_point_init (extruded_surface->twist_control_vector);
+        if (extruded_surface->twist_control_vector == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->transform_matrix = (DxfDouble *) dxf_double_init (extruded_surface->transform_matrix);
+        if (extruded_surface->transform_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->sweep_matrix = (DxfDouble *) dxf_double_init (extruded_surface->sweep_matrix);
+        if (extruded_surface->sweep_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->path_matrix = (DxfDouble *) dxf_double_init (extruded_surface->path_matrix);
+        if (extruded_surface->path_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->binary_data = (DxfBinaryData *) dxf_binary_data_init (extruded_surface->binary_data);
+        if (extruded_surface->binary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
+        extruded_surface->draft_angle = 0.0;
+        extruded_surface->draft_start_distance = 0.0;
+        extruded_surface->draft_end_distance = 0.0;
+        extruded_surface->twist_angle = 0.0;
+        extruded_surface->scale_factor = 0.0;
+        extruded_surface->align_angle = 0.0;
+        extruded_surface->sweep_alignment_option = 0;
+        extruded_surface->class_ID = 0;
+        extruded_surface->binary_data_size = 0;
+        extruded_surface->solid_flag =0;
+        extruded_surface->align_start_flag = 0;
+        extruded_surface->bank_flag = 0;
+        extruded_surface->base_point_set_flag = 0;
+        extruded_surface->sweep_transform_computed_flag = 0;
+        extruded_surface->path_transform_computed_flag = 0;
+        extruded_surface->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */
