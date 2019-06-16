@@ -387,6 +387,7 @@ DxfSurface *dxf_surface_get_last (DxfSurface *surface);
 /* Extruded surface functions. */
 DxfSurfaceExtruded *dxf_surface_extruded_new ();
 DxfSurfaceExtruded *dxf_surface_extruded_init (DxfSurfaceExtruded *extruded_surface);
+int dxf_surface_extruded_free (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus
