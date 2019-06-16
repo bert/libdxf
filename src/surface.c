@@ -2647,9 +2647,9 @@ dxf_surface_extruded_free
         }
         dxf_point_free (extruded_surface->p0);
         dxf_point_free (extruded_surface->p1);
-        dxf_double_free (extruded_surface->transform_matrix);
-        dxf_double_free (extruded_surface->sweep_matrix);
-        dxf_double_free (extruded_surface->path_matrix);
+        dxf_double_free_list (extruded_surface->transform_matrix);
+        dxf_double_free_list (extruded_surface->sweep_matrix);
+        dxf_double_free_list (extruded_surface->path_matrix);
         dxf_binary_data_free_list (extruded_surface->binary_data);
         free (extruded_surface);
         extruded_surface = NULL;
