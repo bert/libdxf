@@ -233,7 +233,6 @@ dxf_surface_struct
         struct DxfSurface *next;
                 /*!< pointer to the next DxfSurface.\n
                  * \c NULL in the last DxfSurface. */
-
 } DxfSurface;
 
 
