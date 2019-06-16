@@ -319,6 +319,9 @@ dxf_surface_extruded_struct
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
                  * Group code = 310. */
+        struct DxfSurfaceExtruded *next;
+                /*!< pointer to the next DxfSurfaceExtruded.\n
+                 * \c NULL in the last DxfSurfaceExtruded. */
 } DxfSurfaceExtruded;
 
 
