@@ -224,6 +224,39 @@ dxf_surface_free
 
 
 /*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c SURFACE entities and all their data fields.
+ */
+void
+dxf_surface_free_list
+(
+        DxfSurface *surfaces
+                /*!< a pointer to the single linked list of DXF
+                 * \c SURFACE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (surfaces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (surfaces != NULL)
+        {
+                DxfSurface *iter = (DxfSurface *) surfaces->next;
+                dxf_surface_free (surfaces);
+                surfaces = (DxfSurface *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Get the \c id_code from a DXF \c SURFACE entity.
  *
  * \return \c id_code.
