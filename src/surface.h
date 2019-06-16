@@ -388,6 +388,7 @@ DxfSurface *dxf_surface_get_last (DxfSurface *surface);
 DxfSurfaceExtruded *dxf_surface_extruded_new ();
 DxfSurfaceExtruded *dxf_surface_extruded_init (DxfSurfaceExtruded *extruded_surface);
 int dxf_surface_extruded_free (DxfSurfaceExtruded *extruded_surface);
+void dxf_surface_extruded_free_list (DxfSurfaceExtruded *extruded_surfaces);
 
 
 #ifdef __cplusplus

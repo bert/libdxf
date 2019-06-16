@@ -2660,4 +2660,37 @@ dxf_surface_extruded_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * extruded \c SURFACE entities and all their data fields.
+ */
+void
+dxf_surface_extruded_free_list
+(
+        DxfSurfaceExtruded *extruded_surfaces
+                /*!< a pointer to the single linked list of DXF
+                 * extruded \c SURFACE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (extruded_surfaces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (extruded_surfaces != NULL)
+        {
+                DxfSurfaceExtruded *iter = (DxfSurfaceExtruded *) extruded_surfaces->next;
+                dxf_surface_extruded_free (extruded_surfaces);
+                extruded_surfaces = (DxfSurfaceExtruded *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
