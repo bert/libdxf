@@ -265,12 +265,12 @@ dxf_surface_extruded_struct
         double twist_angle;
                 /*!< Twist angle.\n
                  * Group code = 45. */
-        DxfDouble sweep_matrix;
+        DxfDouble *sweep_matrix;
                 /*!< Transform matrix of sweep entity
                  * (16 reals; row major format; default = identity
                  * matrix).\n
                  * Group code = 46. */
-        DxfDouble path_matrix;
+        DxfDouble *path_matrix;
                 /*!< Transform matrix of path entity
                  * (16 reals; row major format; default = identity
                  * matrix)\n
