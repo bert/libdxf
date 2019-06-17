@@ -390,6 +390,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_init (DxfSurfaceExtruded *extruded_surf
 int dxf_surface_extruded_free (DxfSurfaceExtruded *extruded_surface);
 void dxf_surface_extruded_free_list (DxfSurfaceExtruded *extruded_surfaces);
 DxfPoint *dxf_extruded_surfaces_get_p0 (DxfSurfaceExtruded *extruded_surfaces);
+DxfSurfaceExtruded *dxf_surface_extruded_set_p0 (DxfSurfaceExtruded *extruded_surface, DxfPoint *p0);
 
 
 #ifdef __cplusplus

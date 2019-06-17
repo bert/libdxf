@@ -2730,4 +2730,47 @@ dxf_extruded_surfaces_get_p0
 }
 
 
+/*!
+ * \brief Set the sweep vector \c p0 for a DXF extruded \c SURFACE
+ * entity.
+ *
+ * \return a pointer to \c extruded_surface when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_p0
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        DxfPoint *p0
+                /*!< the sweep vector \c p0 to be set for the entity.\n
+                 * This is the entry of a single linked list. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->p0 = (DxfPoint *) p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */
