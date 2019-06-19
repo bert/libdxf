@@ -2699,7 +2699,7 @@ dxf_surface_extruded_free_list
  * \return the sweep vector \c p0.
  */
 DxfPoint *
-dxf_extruded_surfaces_get_p0
+dxf_surface_extruded_get_p0
 (
         DxfSurfaceExtruded *extruded_surfaces
                 /*!< a pointer to a DXF extruded \c SURFACE entity. */

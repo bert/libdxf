@@ -389,7 +389,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_new ();
 DxfSurfaceExtruded *dxf_surface_extruded_init (DxfSurfaceExtruded *extruded_surface);
 int dxf_surface_extruded_free (DxfSurfaceExtruded *extruded_surface);
 void dxf_surface_extruded_free_list (DxfSurfaceExtruded *extruded_surfaces);
-DxfPoint *dxf_extruded_surfaces_get_p0 (DxfSurfaceExtruded *extruded_surfaces);
+DxfPoint *dxf_surface_extruded_get_p0 (DxfSurfaceExtruded *extruded_surfaces);
 DxfSurfaceExtruded *dxf_surface_extruded_set_p0 (DxfSurfaceExtruded *extruded_surface, DxfPoint *p0);
 double dxf_surface_extruded_get_x0 (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_x0 (DxfSurfaceExtruded *extruded_surface, double x0);
