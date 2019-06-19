@@ -2976,4 +2976,47 @@ dxf_surface_extruded_get_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the sweep vector \c z0 of a DXF extruded
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c extruded_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_z0
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        double z0
+                /*!< the Z-value of the sweep vector \c z0 of a DXF
+                 * extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (extruded_surface->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */

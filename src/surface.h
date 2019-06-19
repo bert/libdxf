@@ -396,6 +396,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_x0 (DxfSurfaceExtruded *extruded_su
 double dxf_surface_extruded_get_y0 (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_y0 (DxfSurfaceExtruded *extruded_surface, double y0);
 double dxf_surface_extruded_get_z0 (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_z0 (DxfSurfaceExtruded *extruded_surface, double z0);
 
 
 #ifdef __cplusplus
