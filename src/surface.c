@@ -2694,7 +2694,7 @@ dxf_surface_extruded_free_list
 
 
 /*!
- * \brief Get the base point of a DXF extruded \c SURFACE entity.
+ * \brief Get the sweep vector of a DXF extruded \c SURFACE entity.
  *
  * \return the sweep vector \c p0.
  */
