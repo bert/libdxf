@@ -3057,4 +3057,48 @@ dxf_surface_extruded_get_p1
 }
 
 
+/*!
+ * \brief Set the reference vector for controlling twist \c p1 for a DXF
+ * extruded \c SURFACE entity.
+ *
+ * \return a pointer to \c extruded_surface when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_p1
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        DxfPoint *p1
+                /*!< the reference vector for controlling twist \c p0 to
+                 * be set for the entity.\n
+                 * This is the entry of a single linked list. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->p1 = (DxfPoint *) p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */
