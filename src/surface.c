@@ -3020,7 +3020,7 @@ dxf_surface_extruded_set_z0
 
 
 /*!
- * \brief Get the Reference vector for controlling twist of a DXF
+ * \brief Get the reference vector for controlling twist of a DXF
  * extruded \c SURFACE entity.
  *
  * \return the reference vector for controlling twist \c p1.
