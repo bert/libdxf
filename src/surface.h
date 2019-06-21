@@ -400,6 +400,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_z0 (DxfSurfaceExtruded *extruded_su
 DxfPoint *dxf_surface_extruded_get_p1 (DxfSurfaceExtruded *extruded_surfaces);
 DxfSurfaceExtruded *dxf_surface_extruded_set_p1 (DxfSurfaceExtruded *extruded_surface, DxfPoint *p1);
 double dxf_surface_extruded_get_x1 (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_x1 (DxfSurfaceExtruded *extruded_surface, double x1);
 
 
 #ifdef __cplusplus
