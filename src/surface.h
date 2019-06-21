@@ -404,6 +404,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_x1 (DxfSurfaceExtruded *extruded_su
 double dxf_surface_extruded_get_y1 (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_y1 (DxfSurfaceExtruded *extruded_surface, double y1);
 double dxf_surface_extruded_get_z1 (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_z1 (DxfSurfaceExtruded *extruded_surface, double z1);
 
 
 #ifdef __cplusplus
