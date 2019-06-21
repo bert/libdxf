@@ -3184,4 +3184,44 @@ dxf_surface_extruded_set_x1
 }
 
 
+/*!
+ * \brief Get the Y-value of the reference vector for controlling twist
+ * \c y1 of a DXF extruded \c SURFACE entity.
+ *
+ * \return the Y-value of the reference vector for controlling twist
+ * \c y1.
+ */
+double
+dxf_surface_extruded_get_y1
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (extruded_surface->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->p1->y0);
+}
+
+
 /* EOF */
