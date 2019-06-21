@@ -3143,7 +3143,7 @@ dxf_surface_extruded_get_x1
 
 /*!
  * \brief Set the X-value of the reference vector for controlling twist
- * \c x0 of a DXF extruded \c SURFACE entity.
+ * \c x1 of a DXF extruded \c SURFACE entity.
  *
  * \return a pointer to \c extruded_surface when successful, or \c NULL
  * when an error occurred.
