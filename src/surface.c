@@ -3401,7 +3401,7 @@ dxf_surface_extruded_set_transform_matrix
 (
         DxfSurfaceExtruded *extruded_surface,
                 /*!< a pointer to a DXF extruded \c SURFACE entity. */
-        DxfDouble transform_matrix
+        DxfDouble *transform_matrix
                 /*!< the transform matrix \c transform_matrix of a DXF
                  * extruded \c SURFACE entity. */
 )
@@ -3424,7 +3424,7 @@ dxf_surface_extruded_set_transform_matrix
                   __FUNCTION__);
                 return (NULL);
         }
-        extruded_surface->transform_matrix = transform_matrix;
+        extruded_surface->transform_matrix = (DxfDouble *) transform_matrix;
 #if DEBUG
         DXF_DEBUG_END
 #endif

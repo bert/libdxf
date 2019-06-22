@@ -406,7 +406,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_y1 (DxfSurfaceExtruded *extruded_su
 double dxf_surface_extruded_get_z1 (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_z1 (DxfSurfaceExtruded *extruded_surface, double z1);
 DxfDouble *dxf_surface_extruded_get_transform_matrix (DxfSurfaceExtruded *extruded_surface);
-DxfSurfaceExtruded *dxf_surface_extruded_set_transform_matrix (DxfSurfaceExtruded *extruded_surface, DxfDouble transform_matrix);
+DxfSurfaceExtruded *dxf_surface_extruded_set_transform_matrix (DxfSurfaceExtruded *extruded_surface, DxfDouble *transform_matrix);
 double dxf_surface_extruded_get_transform_matrix_value (DxfSurfaceExtruded *extruded_surface);
 
 
