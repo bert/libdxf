@@ -3350,4 +3350,44 @@ dxf_surface_extruded_set_z1
 }
 
 
+/*!
+ * \brief Get the first value of the transform matrix of extruded entity
+ * \c transform_matrix of a DXF extruded \c SURFACE entity.
+ *
+ * \return the first value of the transform matrix of extruded entity
+ * \c transform_matrix.
+ */
+double
+dxf_surface_extruded_get_transform_matrix_value
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (extruded_surface->transform_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->transform_matrix->value);
+}
+
+
 /* EOF */
