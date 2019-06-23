@@ -406,7 +406,7 @@ dxf_double_set_next
                   __FUNCTION__);
                 return (NULL);
         }
-        d->next = (DxfDouble *) next;
+        d->next = (struct DxfDouble *) next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
