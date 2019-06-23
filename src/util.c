@@ -271,6 +271,36 @@ dxf_double_init
 
 
 /*!
+ * \brief Get the \c value of a \c DxfDouble object.
+ *
+ * \return the \c value.
+ */
+double
+dxf_double_get_value
+(
+        DxfDouble *d
+                /*!< a pointer to a \c DxfDouble object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (d == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((double) d->value);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfDouble object and all it's
  * data fields.
  *
