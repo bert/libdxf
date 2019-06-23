@@ -336,7 +336,7 @@ dxf_double_set_value
 
 /*!
  * \brief Get the \c next DxfDouble object of a \c DxfDouble object
- * (sngle linked list).
+ * (single linked list).
  *
  * \return the \c next DxfDouble object in a single linked list.
  */
@@ -356,7 +356,14 @@ dxf_double_get_next
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
+        }
+        if (d->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
