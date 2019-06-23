@@ -366,6 +366,48 @@ dxf_double_get_next
 
 
 /*!
+ * \brief Set the \c next DxfDouble object of a \c DxfDouble object
+ * (single linked list).
+ *
+ * \return a pointer to \c d when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfDouble *
+dxf_double_set_next
+(
+        DxfDouble *d,
+                /*!< a pointer to a \c DxfDouble object. */
+        DxfDouble *next
+                /*!< a pointer to a \c DxfDouble object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (d == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        d->next = (DxfDouble *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (d);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfDouble object and all it's
  * data fields.
  *
