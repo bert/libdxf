@@ -415,6 +415,51 @@ dxf_double_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c DxfDouble object from a linked
+ * list of DXF \c DxfDouble objects.
+ *
+ * \return pointer to the last \c DxfDouble object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfDouble *
+dxf_double_get_last
+(
+        DxfDouble *d
+                /*!< a pointer to a DXF \c DxfDouble object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (d == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (d->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfDouble *) d);
+        }
+        DxfDouble *iter = (DxfDouble *) d->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfDouble *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDouble *) iter);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfDouble object and all it's
  * data fields.
  *

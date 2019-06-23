@@ -74,6 +74,7 @@ double dxf_double_get_value (DxfDouble *d);
 DxfDouble *dxf_double_set_value (DxfDouble *d, double value);
 DxfDouble *dxf_double_get_next (DxfDouble *d);
 DxfDouble *dxf_double_set_next (DxfDouble *d, DxfDouble *next);
+DxfDouble *dxf_double_get_last (DxfDouble *d);
 int dxf_double_free (DxfDouble *d);
 int dxf_double_free_list (DxfDouble *doubles);
 DxfInt *dxf_int_new ();
