@@ -230,6 +230,52 @@ dxf_char_get_length
 
 
 /*!
+ * \brief Set the \c length of a \c DxfChar object.
+ *
+ * \return a pointer to \c c when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfChar *
+dxf_char_set_length
+(
+        DxfChar *c,
+                /*!< a pointer to a \c DxfDouble object. */
+        int length
+                /*!< \c length. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (length == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (length < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        c->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (c);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfChar object and all it's
  * data fields.
  *
