@@ -117,6 +117,36 @@ dxf_char_init
 
 
 /*!
+ * \brief Get the \c value of a \c DxfChar object.
+ *
+ * \return the \c value.
+ */
+char *
+dxf_char_get_value
+(
+        DxfChar *c
+                /*!< a pointer to a \c DxfChar object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (c->value));
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfChar object and all it's
  * data fields.
  *

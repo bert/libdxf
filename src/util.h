@@ -66,6 +66,7 @@ enum return_state { FAIL = 0, SUCCESS, FOUND };
 
 DxfChar *dxf_char_new ();
 DxfChar *dxf_char_init (DxfChar *c);
+char *dxf_char_get_value (DxfChar *c);
 int dxf_char_free (DxfChar *c);
 int dxf_char_free_list (DxfChar *chars);
 DxfDouble *dxf_double_new ();
