@@ -188,6 +188,48 @@ dxf_char_set_value
 
 
 /*!
+ * \brief Get the \c length of a \c DxfChar object.
+ *
+ * \return the \c length.
+ */
+int
+dxf_char_get_length
+(
+        DxfChar *c
+                /*!< a pointer to a \c DxfChar object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (c->length == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was found.\n")),
+                  __FUNCTION__);
+        }
+        if (c->length < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (c->length);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfChar object and all it's
  * data fields.
  *
