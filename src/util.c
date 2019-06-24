@@ -147,6 +147,47 @@ dxf_char_get_value
 
 
 /*!
+ * \brief Set the \c value of a \c DxfChar object.
+ *
+ * \return a pointer to \c c when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfChar *
+dxf_char_set_value
+(
+        DxfChar *c,
+                /*!< a pointer to a \c DxfDouble object. */
+        char *value
+                /*!< a pointer to a char \c value. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (value == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        c->value = strdup (value);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (c);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfChar object and all it's
  * data fields.
  *
