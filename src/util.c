@@ -276,6 +276,44 @@ dxf_char_set_length
 
 
 /*!
+ * \brief Get the \c next DxfChar object of a \c DxfChar object
+ * (single linked list).
+ *
+ * \return the \c next DxfChar object in a single linked list.
+ */
+DxfChar *
+dxf_char_get_next
+(
+        DxfChar *c
+                /*!< a pointer to a \c DxfChar object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (c->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfChar *) c->next);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfChar object and all it's
  * data fields.
  *

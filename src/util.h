@@ -70,6 +70,7 @@ char *dxf_char_get_value (DxfChar *c);
 DxfChar *dxf_char_set_value (DxfChar *c, char *value);
 int dxf_char_get_length (DxfChar *c);
 DxfChar *dxf_char_set_length (DxfChar *c, int length);
+DxfChar *dxf_char_get_next (DxfChar *c);
 int dxf_char_free (DxfChar *c);
 int dxf_char_free_list (DxfChar *chars);
 DxfDouble *dxf_double_new ();
