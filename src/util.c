@@ -314,6 +314,48 @@ dxf_char_get_next
 
 
 /*!
+ * \brief Set the \c next DxfChar object of a \c DxfChar object
+ * (single linked list).
+ *
+ * \return a pointer to \c c when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfChar *
+dxf_char_set_next
+(
+        DxfChar *c,
+                /*!< a pointer to a \c DxfChar object. */
+        DxfChar *next
+                /*!< a pointer to a \c DxfChar object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        c->next = (struct DxfChar *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (c);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfChar object and all it's
  * data fields.
  *
