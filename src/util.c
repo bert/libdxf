@@ -356,6 +356,51 @@ dxf_char_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c DxfChar object from a linked
+ * list of DXF \c DxfChar objects.
+ *
+ * \return pointer to the last \c DxfChar object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfChar *
+dxf_char_get_last
+(
+        DxfChar *c
+                /*!< a pointer to a DXF \c DxfChar object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (c->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfChar *) c);
+        }
+        DxfChar *iter = (DxfChar *) c->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfChar *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfChar *) iter);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfChar object and all it's
  * data fields.
  *
