@@ -897,6 +897,36 @@ dxf_int_init
 
 
 /*!
+ * \brief Get the \c value of a \c DxfInt object.
+ *
+ * \return the \c value.
+ */
+int
+dxf_int_get_value
+(
+        DxfInt *i
+                /*!< a pointer to a \c DxfInt object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((int) i->value);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfInt object and all it's
  * data fields.
  *
