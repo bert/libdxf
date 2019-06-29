@@ -999,6 +999,48 @@ dxf_int_get_next
 
 
 /*!
+ * \brief Set the \c next DxfInt object of a \c DxfInt object
+ * (single linked list).
+ *
+ * \return a pointer to \c i when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfInt *
+dxf_int_set_next
+(
+        DxfInt *i,
+                /*!< a pointer to a \c DxfInt object. */
+        DxfInt *next
+                /*!< a pointer to a \c DxfInt object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        i->next = (struct DxfInt *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (i);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfInt object and all it's
  * data fields.
  *
