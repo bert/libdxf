@@ -87,6 +87,7 @@ int dxf_double_free_list (DxfDouble *doubles);
 DxfInt *dxf_int_new ();
 DxfInt *dxf_int_init (DxfInt *i);
 int dxf_int_get_value (DxfInt *i);
+DxfInt *dxf_int_set_value (DxfInt *i, int value);
 int dxf_int_free (DxfInt *i);
 int dxf_int_free_list (DxfInt *ints);
 DxfInt16 *dxf_int16_new ();
