@@ -1041,6 +1041,51 @@ dxf_int_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c DxfInt object from a linked
+ * list of DXF \c DxfInt objects.
+ *
+ * \return pointer to the last \c DxfInt object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfInt *
+dxf_int_get_last
+(
+        DxfInt *i
+                /*!< a pointer to a DXF \c DxfInt object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfInt *) i);
+        }
+        DxfInt *iter = (DxfInt *) i->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfInt *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInt *) iter);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfInt object and all it's
  * data fields.
  *
