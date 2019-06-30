@@ -1239,6 +1239,36 @@ dxf_int16_init
 
 
 /*!
+ * \brief Get the \c value of a \c DxfInt16 object.
+ *
+ * \return the \c value.
+ */
+int16_t
+dxf_int16_get_value
+(
+        DxfInt16 *i
+                /*!< a pointer to a \c DxfInt16 object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((int16_t) i->value);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfInt16 object and all it's
  * data fields.
  *
