@@ -104,6 +104,7 @@ int dxf_int16_free (DxfInt16 *i);
 int dxf_int16_free_list (DxfInt16 *ints);
 DxfInt32 *dxf_int32_new ();
 DxfInt32 *dxf_int32_init (DxfInt32 *i);
+int32_t dxf_int32_get_value (DxfInt32 *i);
 int dxf_int32_free (DxfInt32 *i);
 int dxf_int32_free_list (DxfInt32 *ints);
 int dxf_read_is_double (int type);
