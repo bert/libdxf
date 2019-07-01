@@ -1383,6 +1383,51 @@ dxf_int16_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c DxfInt16 object from a linked
+ * list of DXF \c DxfInt16 objects.
+ *
+ * \return pointer to the last \c DxfInt16 object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfInt16 *
+dxf_int16_get_last
+(
+        DxfInt16 *i
+                /*!< a pointer to a DXF \c DxfInt16 object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfInt16 *) i);
+        }
+        DxfInt16 *iter = (DxfInt16 *) i->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfInt16 *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInt16 *) iter);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfInt16 object and all it's
  * data fields.
  *
