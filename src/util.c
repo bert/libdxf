@@ -1645,6 +1645,44 @@ dxf_int32_set_value
 
 
 /*!
+ * \brief Get the \c next DxfInt32 object of a \c DxfInt32 object
+ * (single linked list).
+ *
+ * \return the \c next DxfInt32 object in a single linked list.
+ */
+DxfInt32 *
+dxf_int32_get_next
+(
+        DxfInt32 *i
+                /*!< a pointer to a \c DxfInt32 object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInt32 *) i->next);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfInt32 object and all it's
  * data fields.
  *
