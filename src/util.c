@@ -1725,6 +1725,51 @@ dxf_int32_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c DxfInt32 object from a linked
+ * list of DXF \c DxfInt32 objects.
+ *
+ * \return pointer to the last \c DxfInt32 object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfInt32 *
+dxf_int32_get_last
+(
+        DxfInt32 *i
+                /*!< a pointer to a DXF \c DxfInt32 object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfInt32 *) i);
+        }
+        DxfInt32 *iter = (DxfInt32 *) i->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfInt32 *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInt32 *) iter);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DxfInt32 object and all it's
  * data fields.
  *
