@@ -1847,6 +1847,41 @@ dxf_int32_free_list
 
 
 /*!
+ * \brief Allocate memory for a \c DxfInt64.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfInt64 *
+dxf_int64_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfInt64 *i = NULL;
+        size_t size;
+
+        size = sizeof (DxfInt64);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((i = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                i = NULL;
+        }
+        else
+        {
+                memset (i, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (i);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
