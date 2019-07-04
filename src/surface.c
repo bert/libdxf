@@ -3516,4 +3516,35 @@ dxf_surface_extruded_set_transform_matrix_value
 }
 
 
+/*!
+ * \brief Get the draft angle \c draft_angle of a DXF extruded \c SURFACE entity.
+ *
+ * \return the draft angle \c draft_angle.
+ */
+double
+dxf_surface_extruded_get_draft_angle
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->draft_angle);
+}
+
+
 /* EOF */
