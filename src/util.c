@@ -1987,6 +1987,44 @@ dxf_int64_set_value
 
 
 /*!
+ * \brief Get the \c next DxfInt64 object of a \c DxfInt64 object
+ * (single linked list).
+ *
+ * \return the \c next DxfInt64 object in a single linked list.
+ */
+DxfInt64 *
+dxf_int64_get_next
+(
+        DxfInt64 *i
+                /*!< a pointer to a \c DxfInt64 object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInt64 *) i->next);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
