@@ -1923,6 +1923,36 @@ dxf_int64_init
 
 
 /*!
+ * \brief Get the \c value of a \c DxfInt64 object.
+ *
+ * \return the \c value.
+ */
+int64_t
+dxf_int64_get_value
+(
+        DxfInt64 *i
+                /*!< a pointer to a \c DxfInt64 object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((int64_t) i->value);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
