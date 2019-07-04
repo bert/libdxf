@@ -2067,6 +2067,51 @@ dxf_int64_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c DxfInt64 object from a linked
+ * list of DXF \c DxfInt64 objects.
+ *
+ * \return pointer to the last \c DxfInt64 object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfInt64 *
+dxf_int64_get_last
+(
+        DxfInt64 *i
+                /*!< a pointer to a DXF \c DxfInt64 object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfInt64 *) i);
+        }
+        DxfInt64 *iter = (DxfInt64 *) i->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfInt64 *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInt64 *) iter);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
