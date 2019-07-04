@@ -1882,6 +1882,47 @@ dxf_int64_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c DxfInt64
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfInt64 *
+dxf_int64_init
+(
+        DxfInt64 *i
+                /*!< a pointer to the DxfInt64 object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                i = dxf_int64_new ();
+        }
+        if (i == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        i->value = 0;
+        i->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (i);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
