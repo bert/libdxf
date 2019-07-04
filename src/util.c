@@ -1953,6 +1953,40 @@ dxf_int64_get_value
 
 
 /*!
+ * \brief Set the \c value of a \c DxfInt64 object.
+ *
+ * \return a pointer to \c i when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfInt64 *
+dxf_int64_set_value
+(
+        DxfInt64 *i,
+                /*!< a pointer to a \c DxfInt64 object. */
+        int64_t value
+                /*!< an int64_t \c value. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        i->value = (int64_t) value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (i);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
