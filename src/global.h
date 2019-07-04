@@ -285,7 +285,7 @@ dxf_int32_struct
  * \brief DXF definition of a single linked list of int64_t.
  */
 typedef struct
-dxf_int34_struct
+dxf_int64_struct
 {
     int64_t value;
         /*!< Store the int64_t value here. */
