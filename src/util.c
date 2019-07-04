@@ -1636,7 +1636,7 @@ dxf_int32_set_value
                   __FUNCTION__);
                 return (NULL);
         }
-        i->value = (int16_t) value;
+        i->value = (int32_t) value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
