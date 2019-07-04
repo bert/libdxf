@@ -116,6 +116,7 @@ DxfInt64 *dxf_int64_init (DxfInt64 *i);
 int64_t dxf_int64_get_value (DxfInt64 *i);
 DxfInt64 *dxf_int64_set_value (DxfInt64 *i, int64_t value);
 DxfInt64 *dxf_int64_get_next (DxfInt64 *i);
+DxfInt64 *dxf_int64_set_next (DxfInt64 *i, DxfInt64 *next);
 int dxf_read_is_double (int type);
 int dxf_read_is_int (int type);
 int dxf_read_is_int16_t (int type);

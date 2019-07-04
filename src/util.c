@@ -2025,6 +2025,48 @@ dxf_int64_get_next
 
 
 /*!
+ * \brief Set the \c next DxfInt64 object of a \c DxfInt64 object
+ * (single linked list).
+ *
+ * \return a pointer to \c i when successful, or \c NULL when an error
+ * occurred.
+ */
+DxfInt64 *
+dxf_int64_set_next
+(
+        DxfInt64 *i,
+                /*!< a pointer to a \c DxfInt64 object. */
+        DxfInt64 *next
+                /*!< a pointer to a \c DxfInt64 object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (i == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        i->next = (struct DxfInt64 *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (i);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
