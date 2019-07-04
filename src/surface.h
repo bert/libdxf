@@ -410,6 +410,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_transform_matrix (DxfSurfaceExtrude
 double dxf_surface_extruded_get_transform_matrix_value (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_transform_matrix_value (DxfSurfaceExtruded *extruded_surface, double value);
 double dxf_surface_extruded_get_draft_angle (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_draft_angle (DxfSurfaceExtruded *extruded_surface, double draft_angle);
 
 
 #ifdef __cplusplus
