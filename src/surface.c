@@ -3588,7 +3588,7 @@ dxf_surface_extruded_set_draft_angle
  * \brief Get the draft start distance \c draft_start_distance of a DXF
  * extruded \c SURFACE entity.
  *
- * \return the draft angle \c draft_start_distance.
+ * \return the draft start distance \c draft_start_distance.
  */
 double
 dxf_surface_extruded_get_draft_start_distance
