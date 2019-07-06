@@ -413,6 +413,7 @@ double dxf_surface_extruded_get_draft_angle (DxfSurfaceExtruded *extruded_surfac
 DxfSurfaceExtruded *dxf_surface_extruded_set_draft_angle (DxfSurfaceExtruded *extruded_surface, double draft_angle);
 double dxf_surface_extruded_get_draft_start_distance (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_draft_start_distance (DxfSurfaceExtruded *extruded_surface, double draft_start_distance);
+double dxf_surface_extruded_get_draft_end_distance (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus

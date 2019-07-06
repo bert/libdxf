@@ -3652,4 +3652,36 @@ dxf_surface_extruded_set_draft_start_distance
 }
 
 
+/*!
+ * \brief Get the draft end distance \c draft_end_distance of a DXF
+ * extruded \c SURFACE entity.
+ *
+ * \return the draft end distance \c draft_end_distance.
+ */
+double
+dxf_surface_extruded_get_draft_end_distance
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->draft_end_distance);
+}
+
+
 /* EOF */
