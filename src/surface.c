@@ -3517,7 +3517,8 @@ dxf_surface_extruded_set_transform_matrix_value
 
 
 /*!
- * \brief Get the draft angle \c draft_angle of a DXF extruded \c SURFACE entity.
+ * \brief Get the draft angle \c draft_angle of a DXF extruded
+ * \c SURFACE entity.
  *
  * \return the draft angle \c draft_angle.
  */
