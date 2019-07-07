@@ -3351,10 +3351,10 @@ dxf_surface_extruded_set_z1
 
 
 /*!
- * \brief Get the transform matrix of extruded entity
- * \c transform_matrix of a DXF extruded \c SURFACE entity.
+ * \brief Get the transform matrix \c transform_matrix of a DXF extruded
+ * \c SURFACE entity.
  *
- * \return the transform matrix of extruded entity \c transform_matrix.
+ * \return the transform matrix \c transform_matrix.
  */
 DxfDouble *
 dxf_surface_extruded_get_transform_matrix
