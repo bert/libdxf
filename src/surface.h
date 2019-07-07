@@ -407,7 +407,6 @@ double dxf_surface_extruded_get_z1 (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_z1 (DxfSurfaceExtruded *extruded_surface, double z1);
 DxfDouble *dxf_surface_extruded_get_transform_matrix (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_transform_matrix (DxfSurfaceExtruded *extruded_surface, DxfDouble *transform_matrix);
-DxfSurfaceExtruded *dxf_surface_extruded_set_transform_matrix_value (DxfSurfaceExtruded *extruded_surface, double value);
 double dxf_surface_extruded_get_draft_angle (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_draft_angle (DxfSurfaceExtruded *extruded_surface, double draft_angle);
 double dxf_surface_extruded_get_draft_start_distance (DxfSurfaceExtruded *extruded_surface);
