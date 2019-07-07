@@ -3720,4 +3720,36 @@ dxf_surface_extruded_set_draft_end_distance
 }
 
 
+/*!
+ * \brief Get the twist angle \c twist_angle of a DXF extruded
+ * \c SURFACE entity.
+ *
+ * \return the twist angle \c twist_angle.
+ */
+double
+dxf_surface_extruded_get_twist_angle
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->twist_angle);
+}
+
+
 /* EOF */
