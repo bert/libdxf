@@ -3774,7 +3774,7 @@ dxf_surface_extruded_set_sweep_matrix
         if (sweep_matrix == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
