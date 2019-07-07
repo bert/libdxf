@@ -3747,6 +3747,9 @@ dxf_surface_extruded_get_sweep_matrix
  * \brief Set the sweep matrix \c sweep_matrix of a DXF extruded
  * \c SURFACE entity.
  *
+ * \note \c sweep_matrix is a pointer to a single linked list of type
+ * \c DxfDouble.\n
+ *
  * \return a pointer to \c extruded_surface when successful, or \c NULL
  * when an error occurred.
  */
