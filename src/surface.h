@@ -417,6 +417,7 @@ double dxf_surface_extruded_get_draft_end_distance (DxfSurfaceExtruded *extruded
 DxfSurfaceExtruded *dxf_surface_extruded_set_draft_end_distance (DxfSurfaceExtruded *extruded_surface, double draft_end_distance);
 double dxf_surface_extruded_get_twist_angle (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_twist_angle (DxfSurfaceExtruded *extruded_surface, double twist_angle);
+DxfDouble *dxf_surface_extruded_get_sweep_matrix (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus

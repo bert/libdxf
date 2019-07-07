@@ -3788,4 +3788,43 @@ dxf_surface_extruded_set_twist_angle
 }
 
 
+/*!
+ * \brief Get the sweep matrix \c sweep_matrix of a DXF extruded
+ * \c SURFACE entity.
+ *
+ * \return the sweep matrix \c sweep_matrix.
+ */
+DxfDouble *
+dxf_surface_extruded_get_sweep_matrix
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (extruded_surface->sweep_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDouble *) extruded_surface->sweep_matrix);
+}
+
+
 /* EOF */
