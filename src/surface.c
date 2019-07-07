@@ -3752,4 +3752,40 @@ dxf_surface_extruded_get_twist_angle
 }
 
 
+/*!
+ * \brief Set the twist angle \c twist_angle of a DXF extruded
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c extruded_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_twist_angle
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        double twist_angle
+                /*!< the twist angle \c twist_angle of a DXF extruded
+                 * \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->twist_angle = twist_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */
