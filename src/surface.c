@@ -3417,10 +3417,10 @@ dxf_surface_extruded_set_transform_matrix
                   __FUNCTION__);
                 return (NULL);
         }
-        if (extruded_surface->transform_matrix == NULL)
+        if (transform_matrix == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
