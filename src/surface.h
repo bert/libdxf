@@ -417,6 +417,7 @@ double dxf_surface_extruded_get_twist_angle (DxfSurfaceExtruded *extruded_surfac
 DxfSurfaceExtruded *dxf_surface_extruded_set_twist_angle (DxfSurfaceExtruded *extruded_surface, double twist_angle);
 DxfDouble *dxf_surface_extruded_get_sweep_matrix (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_sweep_matrix (DxfSurfaceExtruded *extruded_surface, DxfDouble *sweep_matrix);
+DxfDouble *dxf_surface_extruded_get_path_matrix (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus

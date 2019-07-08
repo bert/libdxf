@@ -3792,4 +3792,46 @@ dxf_surface_extruded_set_sweep_matrix
 }
 
 
+/*!
+ * \brief Get the path matrix \c path_matrix of a DXF extruded
+ * \c SURFACE entity.
+ *
+ * \note \c path_matrix is a pointer to a single linked list of type
+ * \c DxfDouble.
+ *
+ * \return the path matrix \c path_matrix.
+ */
+DxfDouble *
+dxf_surface_extruded_get_path_matrix
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (extruded_surface->path_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDouble *) extruded_surface->path_matrix);
+}
+
+
 /* EOF */
