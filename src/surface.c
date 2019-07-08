@@ -3912,4 +3912,40 @@ dxf_surface_extruded_get_scale_factor
 }
 
 
+/*!
+ * \brief Set the scale factor \c scale_factor of a DXF extruded
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c extruded_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_scale_factor
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        double scale_factor
+                /*!< the scale factor \c scale_factor of a DXF extruded
+                 * \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->scale_factor = scale_factor;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */
