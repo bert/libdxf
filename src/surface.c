@@ -3709,7 +3709,7 @@ dxf_surface_extruded_set_twist_angle
  * \c SURFACE entity.
  *
  * \note \c sweep_matrix is a pointer to a single linked list of type
- * \c DxfDouble.\n
+ * \c DxfDouble.
  *
  * \return the sweep matrix \c sweep_matrix.
  */
