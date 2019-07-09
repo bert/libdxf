@@ -424,6 +424,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_scale_factor (DxfSurfaceExtruded *e
 double dxf_surface_extruded_get_align_angle (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_align_angle (DxfSurfaceExtruded *extruded_surface, double align_angle);
 int16_t dxf_surface_extruded_get_sweep_alignment_option (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_sweep_alignment_option (DxfSurfaceExtruded *extruded_surface, int16_t sweep_alignment_option);
 
 
 #ifdef __cplusplus
