@@ -421,6 +421,7 @@ DxfDouble *dxf_surface_extruded_get_path_matrix (DxfSurfaceExtruded *extruded_su
 DxfSurfaceExtruded *dxf_surface_extruded_set_path_matrix (DxfSurfaceExtruded *extruded_surface, DxfDouble *path_matrix);
 double dxf_surface_extruded_get_scale_factor (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_scale_factor (DxfSurfaceExtruded *extruded_surface, double scale_factor);
+double dxf_surface_extruded_get_align_angle (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus
