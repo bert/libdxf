@@ -4016,4 +4016,46 @@ dxf_surface_extruded_set_align_angle
 }
 
 
+/*!
+ * \brief Get the \c sweep_alignment_option from a DXF \c SURFACE entity.
+ *
+ * \return \c sweep_alignment_option.
+ */
+int16_t
+dxf_surface_extruded_get_sweep_alignment_option
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (extruded_surface->sweep_alignment_option < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (extruded_surface->sweep_alignment_option > 3)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->sweep_alignment_option);
+}
+
+
 /* EOF */
