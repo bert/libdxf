@@ -4111,7 +4111,7 @@ dxf_surface_extruded_set_sweep_alignment_option
  *
  * \return \c class_ID.
  */
-int16_t
+int32_t
 dxf_surface_extruded_get_class_ID
 (
         DxfSurfaceExtruded *extruded_surface
@@ -4147,7 +4147,7 @@ dxf_surface_extruded_set_class_ID
 (
         DxfSurfaceExtruded *extruded_surface,
                 /*!< a pointer to a DXF extruded \c SURFACE entity. */
-        int16_t class_ID
+        int32_t class_ID
                 /*!< the \c class_ID to be set for the entity. */
 )
 {
