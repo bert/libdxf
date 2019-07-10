@@ -4213,4 +4213,51 @@ dxf_surface_extruded_get_binary_data_size
 }
 
 
+/*!
+ * \brief Set the \c binary_data_size for a DXF extruded \c SURFACE
+ * entity.
+ *
+ * \return a pointer to \c extruded_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_binary_data_size
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        int32_t binary_data_size
+                /*!< the \c binary_data_size to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (binary_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (binary_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was found.\n")),
+                  __FUNCTION__);
+        }
+        extruded_surface->binary_data_size = binary_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */
