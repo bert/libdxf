@@ -426,6 +426,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_align_angle (DxfSurfaceExtruded *ex
 int16_t dxf_surface_extruded_get_sweep_alignment_option (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_sweep_alignment_option (DxfSurfaceExtruded *extruded_surface, int16_t sweep_alignment_option);
 int16_t dxf_surface_extruded_get_class_ID (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_class_ID (DxfSurfaceExtruded *extruded_surface, int16_t class_ID);
 
 
 #ifdef __cplusplus
