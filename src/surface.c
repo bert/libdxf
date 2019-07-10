@@ -4106,4 +4106,34 @@ dxf_surface_extruded_set_sweep_alignment_option
 }
 
 
+/*!
+ * \brief Get the \c class_ID from a DXF extruded \c SURFACE entity.
+ *
+ * \return \c class_ID.
+ */
+int16_t
+dxf_surface_extruded_get_class_ID
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->class_ID);
+}
+
+
 /* EOF */
