@@ -432,6 +432,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_binary_data_size (DxfSurfaceExtrude
 int dxf_surface_extruded_get_solid_flag (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_solid_flag (DxfSurfaceExtruded *extruded_surface, int solid_flag);
 int dxf_surface_extruded_get_align_start_flag (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_align_start_flag (DxfSurfaceExtruded *extruded_surface, int align_start_flag);
 
 
 #ifdef __cplusplus
