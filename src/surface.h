@@ -431,6 +431,7 @@ int32_t dxf_surface_extruded_get_binary_data_size (DxfSurfaceExtruded *extruded_
 DxfSurfaceExtruded *dxf_surface_extruded_set_binary_data_size (DxfSurfaceExtruded *extruded_surface, int32_t binary_data_size);
 int dxf_surface_extruded_get_solid_flag (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_solid_flag (DxfSurfaceExtruded *extruded_surface, int solid_flag);
+int dxf_surface_extruded_get_align_start_flag (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus
