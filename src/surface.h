@@ -429,6 +429,7 @@ int32_t dxf_surface_extruded_get_class_ID (DxfSurfaceExtruded *extruded_surface)
 DxfSurfaceExtruded *dxf_surface_extruded_set_class_ID (DxfSurfaceExtruded *extruded_surface, int32_t class_ID);
 int32_t dxf_surface_extruded_get_binary_data_size (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_binary_data_size (DxfSurfaceExtruded *extruded_surface, int32_t binary_data_size);
+int dxf_surface_extruded_get_solid_flag (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus

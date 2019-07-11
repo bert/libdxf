@@ -4260,4 +4260,34 @@ dxf_surface_extruded_set_binary_data_size
 }
 
 
+/*!
+ * \brief Get the \c solid_flag from a DXF extruded \c SURFACE entity.
+ *
+ * \return \c solid_flag.
+ */
+int
+dxf_surface_extruded_get_solid_flag
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface->solid_flag);
+}
+
+
 /* EOF */
