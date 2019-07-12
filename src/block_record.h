@@ -130,27 +130,27 @@ dxf_block_record_struct
         int16_t insert_units;
                 /*!< Insert units:\n
                  * <ol>
-                 *   <li value = "0" Unitless;</li>
-                 *   <li value = "1" Inches;</li>
-                 *   <li value = "2" Feet;</li>
-                 *   <li value = "3" Miles;</li>
-                 *   <li value = "4" Millimeters;</li>
-                 *   <li value = "5" Centimeters;</li>
-                 *   <li value = "6" Meters;</li>
-                 *   <li value = "7" Kilometers;</li>
-                 *   <li value = "8" Microinches;</li>
-                 *   <li value = "9" Mils;</li>
-                 *   <li value = "10" Yards;</li>
-                 *   <li value = "11" Angstroms;</li>
-                 *   <li value = "12" Nanometers;</li>
-                 *   <li value = "13" Microns;</li>
-                 *   <li value = "14" Decimeters;</li>
-                 *   <li value = "15" Decameters;</li>
-                 *   <li value = "16" Hectometers;</li>
-                 *   <li value = "17" Gigameters;</li>
-                 *   <li value = "18" Astronomical units;</li>
-                 *   <li value = "19" Light years;</li>
-                 *   <li value = "20" Parsecs.</li>
+                 *   <li value = "0"> Unitless,</li>
+                 *   <li value = "1"> Inches,</li>
+                 *   <li value = "2"> Feet,</li>
+                 *   <li value = "3"> Miles,</li>
+                 *   <li value = "4"> Millimeters,</li>
+                 *   <li value = "5"> Centimeters,</li>
+                 *   <li value = "6"> Meters,</li>
+                 *   <li value = "7"> Kilometers,</li>
+                 *   <li value = "8"> Microinches,</li>
+                 *   <li value = "9"> Mils,</li>
+                 *   <li value = "10"> Yards,</li>
+                 *   <li value = "11"> Angstroms,</li>
+                 *   <li value = "12"> Nanometers,</li>
+                 *   <li value = "13"> Microns,</li>
+                 *   <li value = "14"> Decimeters,</li>
+                 *   <li value = "15"> Decameters,</li>
+                 *   <li value = "16"> Hectometers,</li>
+                 *   <li value = "17"> Gigameters,</li>
+                 *   <li value = "18"> Astronomical units,</li>
+                 *   <li value = "19"> Light years,</li>
+                 *   <li value = "20"> Parsecs.</li>
                  * </ol>
                  * Group code = 1070.*/
         struct DxfBlockRecord *next;
