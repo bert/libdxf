@@ -437,6 +437,7 @@ int dxf_surface_extruded_get_align_bank_flag (DxfSurfaceExtruded *extruded_surfa
 DxfSurfaceExtruded *dxf_surface_extruded_set_bank_flag (DxfSurfaceExtruded *extruded_surface, int bank_flag);
 int dxf_surface_extruded_get_align_base_point_set_flag (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_base_point_set_flag (DxfSurfaceExtruded *extruded_surface, int base_point_set_flag);
+int dxf_surface_extruded_get_align_sweep_transform_computed_flag (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus
