@@ -4695,4 +4695,44 @@ dxf_surface_extruded_get_binary_data
 }
 
 
+/*!
+ * \brief Set the pointer to the \c binary_data for a DXF extruded
+ * \c SURFACE entity.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_binary_data
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        DxfBinaryData *data
+                /*!< a string containing the pointer to the
+                 * \c binary_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->binary_data = (DxfBinaryData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */

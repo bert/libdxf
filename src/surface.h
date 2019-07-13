@@ -442,6 +442,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_set_sweep_transform_computed_flag (DxfS
 int dxf_surface_extruded_get_align_path_transform_computed_flag (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_path_transform_computed_flag (DxfSurfaceExtruded *extruded_surface, int path_transform_computed_flag);
 DxfBinaryData *dxf_surface_extruded_get_binary_data (DxfSurfaceExtruded *extruded_surface);
+DxfSurfaceExtruded *dxf_surface_extruded_set_binary_data (DxfSurfaceExtruded *extruded_surface, DxfBinaryData *data);
 
 
 #ifdef __cplusplus
