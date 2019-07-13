@@ -4775,4 +4775,44 @@ dxf_surface_extruded_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next DXF extruded \c SURFACE for a DXF
+ * extruded \c SURFACE entity.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_set_next
+(
+        DxfSurfaceExtruded *extruded_surface,
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+        DxfSurfaceExtruded *next
+                /*!< a pointer to the next DXF extruded \c SURFACE for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        extruded_surface->next = (struct DxfSurfaceExtruded *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
 /* EOF */
