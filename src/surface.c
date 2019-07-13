@@ -4655,4 +4655,44 @@ dxf_surface_extruded_set_path_transform_computed_flag
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_data from a DXF extruded
+ * \c SURFACE entity.
+ *
+ * \return pointer to the \c binary_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryData *
+dxf_surface_extruded_get_binary_data
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (extruded_surface->binary_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryData *) extruded_surface->binary_data);
+}
+
+
 /* EOF */
