@@ -4735,4 +4735,44 @@ dxf_surface_extruded_set_binary_data
 }
 
 
+/*!
+ * \brief Get the pointer to the next DXF extruded \c SURFACE entity
+ * from a DXF  \c SURFACE entity.
+ *
+ * \return pointer to the next DXF extruded \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_get_next
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (extruded_surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurfaceExtruded *) extruded_surface->next);
+}
+
+
 /* EOF */
