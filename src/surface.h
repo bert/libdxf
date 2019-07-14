@@ -445,6 +445,7 @@ DxfBinaryData *dxf_surface_extruded_get_binary_data (DxfSurfaceExtruded *extrude
 DxfSurfaceExtruded *dxf_surface_extruded_set_binary_data (DxfSurfaceExtruded *extruded_surface, DxfBinaryData *data);
 DxfSurfaceExtruded *dxf_surface_extruded_get_next (DxfSurfaceExtruded *extruded_surface);
 DxfSurfaceExtruded *dxf_surface_extruded_set_next (DxfSurfaceExtruded *extruded_surface, DxfSurfaceExtruded *next);
+DxfSurfaceExtruded *dxf_surface_extruded_get_last (DxfSurfaceExtruded *extruded_surface);
 
 
 #ifdef __cplusplus

@@ -4815,4 +4815,49 @@ dxf_surface_extruded_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last DXF extruded \c SURFACE entity
+ * from a linked list of DXF extruded \c SURFACE entities.
+ *
+ * \return pointer to the last DXF extruded \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_get_last
+(
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (extruded_surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfSurfaceExtruded *) extruded_surface);
+        }
+        DxfSurfaceExtruded *iter = (DxfSurfaceExtruded *) extruded_surface->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSurfaceExtruded *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurfaceExtruded *) iter);
+}
+
+
 /* EOF */
