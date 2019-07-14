@@ -325,6 +325,67 @@ dxf_surface_extruded_struct
 } DxfSurfaceExtruded;
 
 
+/*!
+ * \brief DXF definition of a DXF lofted surface entity.
+ */
+typedef struct
+dxf_surface_lofted_struct
+{
+        DxfDouble *transform_matrix;
+                /*!< Transform matrix of extruded entity
+                 * (16 reals; row major format; default = identity
+                 * matrix).\n
+                 * Group code = 40. */
+        double start_draft_angle;
+                /*!< Start draft angle (in radians).\n
+                 * Group code = 41. */
+        double end_draft_angle;
+                /*!< End draft angle (in radians).\n
+                 * Group code = 42. */
+        double start_draft_magnitude;
+                /*!< Start draft magnitude.\n
+                 * Group code = 43. */
+        double end_draft_magnitude;
+                /*!< End draft magnitude.\n
+                 * Group code = 44. */
+        int16_t sweep_alignment_option;
+                /*!< Plane normal lofting type.\n
+                 * Group code = 70. */
+        int arc_length_parameterization_flag;
+                /*!< Arc length parameterization flag.\n
+                 * Group code = 290. */
+        int no_twist_flag;
+                /*!< No twist flag.\n
+                 * Group code = 291. */
+        int align_direction_flag;
+                /*!< Align direction flag.\n
+                 * Group code = 292. */
+        int create_simple_surfaces_flag;
+                /*!< Create simple surfaces flag.\n
+                 * Group code = 293. */
+        int create_closed_surface_flag;
+                /*!< Create closed surface flag.\n
+                 * Group code = 294. */
+        int solid_flag;
+                /*!< Solid flag.\n
+                 * Group code = 295. */
+        int create_ruled_surface_flag;
+                /*!< Create ruled surface flag.\n
+                 * Group code = 296. */
+        int virtual_guide_flag;
+                /*!< Virtual guide flag.\n
+                 * Group code = 297. */
+
+        /*! \todo Entity data for cross sections. */
+        /*! \todo Entity data for guide curves. */
+        /*! \todo Entity data for path curves. */
+        
+        struct DxfSurfaceLofted *next;
+                /*!< pointer to the next DxfSurfaceLofted.\n
+                 * \c NULL in the last DxfSurfaceLofted. */
+} DxfSurfaceLofted;
+
+
 DxfSurface *dxf_surface_new ();
 DxfSurface *dxf_surface_init (DxfSurface *surface);
 int dxf_surface_free (DxfSurface *surface);
