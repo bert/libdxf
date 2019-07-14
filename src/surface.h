@@ -508,6 +508,9 @@ DxfSurfaceExtruded *dxf_surface_extruded_get_next (DxfSurfaceExtruded *extruded_
 DxfSurfaceExtruded *dxf_surface_extruded_set_next (DxfSurfaceExtruded *extruded_surface, DxfSurfaceExtruded *next);
 DxfSurfaceExtruded *dxf_surface_extruded_get_last (DxfSurfaceExtruded *extruded_surface);
 
+/* Lofted surface functions. */
+DxfSurfaceLofted *dxf_surface_lofted_new ();
+
 
 #ifdef __cplusplus
 }

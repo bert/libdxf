@@ -4860,4 +4860,42 @@ dxf_surface_extruded_get_last
 }
 
 
+/*!
+ * \brief Allocate memory for a DXF lofted \c SURFACE entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfSurfaceLofted *lofted_surface = NULL;
+        size_t size;
+
+        size = sizeof (DxfSurfaceLofted);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((lofted_surface = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                lofted_surface = NULL;
+        }
+        else
+        {
+                memset (lofted_surface, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface);
+}
+
+
 /* EOF */
