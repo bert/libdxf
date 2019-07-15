@@ -4961,4 +4961,47 @@ dxf_surface_lofted_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF lofted \c SURFACE entity
+ * and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_surface_lofted_free
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to the memory occupied by the DXF
+                 * lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (lofted_surface->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dxf_double_free_list (lofted_surface->transform_matrix);
+        free (lofted_surface);
+        lofted_surface = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
