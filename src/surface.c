@@ -4898,4 +4898,67 @@ dxf_surface_lofted_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF lofted
+ * \c SURFACE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_init
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to the DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                lofted_surface = dxf_surface_lofted_new ();
+        }
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Initialize new structs for members. */
+        lofted_surface->transform_matrix = (DxfDouble *) dxf_double_init (lofted_surface->transform_matrix);
+        if (lofted_surface->transform_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
+        lofted_surface->start_draft_angle = 0.0;
+        lofted_surface->end_draft_angle = 0.0;
+        lofted_surface->start_draft_magnitude = 0.0;
+        lofted_surface->end_draft_magnitude = 0.0;
+        lofted_surface->sweep_alignment_option = 0;
+        lofted_surface->arc_length_parameterization_flag = 0;
+        lofted_surface->no_twist_flag = 0;
+        lofted_surface->align_direction_flag = 0;
+        lofted_surface->create_simple_surfaces_flag = 0;
+        lofted_surface->create_closed_surface_flag = 0;
+        lofted_surface->solid_flag = 0;
+        lofted_surface->create_ruled_surface_flag = 0;
+        lofted_surface->virtual_guide_flag = 0;
+        lofted_surface->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface);
+}
+
+
 /* EOF */
