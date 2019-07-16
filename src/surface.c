@@ -5037,4 +5037,43 @@ dxf_surface_lofted_free_list
 }
 
 
+/*!
+ * \brief Get the transform matrix \c transform_matrix of a DXF lofted
+ * \c SURFACE entity.
+ *
+ * \return the transform matrix \c transform_matrix.
+ */
+DxfDouble *
+dxf_surface_lofted_get_transform_matrix
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (lofted_surface->transform_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDouble *) lofted_surface->transform_matrix);
+}
+
+
 /* EOF */
