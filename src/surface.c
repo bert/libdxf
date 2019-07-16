@@ -5004,4 +5004,37 @@ dxf_surface_lofted_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * lofted \c SURFACE entities and all their data fields.
+ */
+void
+dxf_surface_lofted_free_list
+(
+        DxfSurfaceLofted *lofted_surfaces
+                /*!< a pointer to the single linked list of DXF
+                 * lofted \c SURFACE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (lofted_surfaces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (lofted_surfaces != NULL)
+        {
+                DxfSurfaceLofted *iter = (DxfSurfaceLofted *) lofted_surfaces->next;
+                dxf_surface_lofted_free (lofted_surfaces);
+                lofted_surfaces = (DxfSurfaceLofted *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
