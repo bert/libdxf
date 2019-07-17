@@ -515,6 +515,7 @@ int dxf_surface_lofted_free (DxfSurfaceLofted *lofted_surface);
 void dxf_surface_lofted_free_list (DxfSurfaceLofted *lofted_surfaces);
 DxfDouble *dxf_surface_lofted_get_transform_matrix (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_transform_matrix (DxfSurfaceLofted *lofted_surface, DxfDouble *transform_matrix);
+double dxf_surface_lofted_get_start_draft_angle (DxfSurfaceLofted *lofted_surface);
 
 
 #ifdef __cplusplus
