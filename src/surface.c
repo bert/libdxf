@@ -5255,4 +5255,36 @@ dxf_surface_lofted_set_end_draft_angle
 }
 
 
+/*!
+ * \brief Get the start draft magnitude \c start_draft_magnitude of a
+ * DXF lofted \c SURFACE entity.
+ *
+ * \return the start draft magnitude \c start_draft_magnitude.
+ */
+double
+dxf_surface_lofted_get_start_draft_magnitude
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface->start_draft_magnitude);
+}
+
+
 /* EOF */
