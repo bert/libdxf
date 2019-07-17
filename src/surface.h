@@ -518,6 +518,7 @@ DxfSurfaceLofted *dxf_surface_lofted_set_transform_matrix (DxfSurfaceLofted *lof
 double dxf_surface_lofted_get_start_draft_angle (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_start_draft_angle (DxfSurfaceLofted *lofted_surface, double start_draft_angle);
 double dxf_surface_lofted_get_end_draft_angle (DxfSurfaceLofted *lofted_surface);
+DxfSurfaceLofted *dxf_surface_lofted_set_end_draft_angle (DxfSurfaceLofted *lofted_surface, double end_draft_angle);
 
 
 #ifdef __cplusplus
