@@ -523,6 +523,7 @@ double dxf_surface_lofted_get_start_draft_magnitude (DxfSurfaceLofted *lofted_su
 DxfSurfaceLofted *dxf_surface_lofted_set_start_draft_magnitude (DxfSurfaceLofted *lofted_surface, double start_draft_magnitude);
 double dxf_surface_lofted_get_end_draft_magnitude (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_end_draft_magnitude (DxfSurfaceLofted *lofted_surface, double end_draft_magnitude);
+int16_t dxf_surface_lofted_get_plane_normal_lofting_type (DxfSurfaceLofted *lofted_surface);
 
 
 #ifdef __cplusplus
