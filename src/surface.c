@@ -4396,7 +4396,7 @@ dxf_surface_extruded_set_align_start_flag
  * \return \c bank_flag.
  */
 int
-dxf_surface_extruded_get_align_bank_flag
+dxf_surface_extruded_get_bank_flag
 (
         DxfSurfaceExtruded *extruded_surface
                 /*!< a pointer to a DXF extruded \c SURFACE entity. */
