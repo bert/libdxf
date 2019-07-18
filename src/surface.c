@@ -5355,4 +5355,40 @@ dxf_surface_lofted_get_end_draft_magnitude
 }
 
 
+/*!
+ * \brief Set the end draft magnitude \c end_draft_magnitude of a
+ * DXF lofted \c SURFACE entity.
+ *
+ * \return a pointer to \c lofted_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_set_end_draft_magnitude
+(
+        DxfSurfaceLofted *lofted_surface,
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+        double end_draft_magnitude
+                /*!< the end draft magnitude \c end_draft_magnitude
+                 * of a DXF lofted \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lofted_surface->end_draft_magnitude = end_draft_magnitude;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface);
+}
+
+
 /* EOF */

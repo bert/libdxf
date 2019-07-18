@@ -522,6 +522,7 @@ DxfSurfaceLofted *dxf_surface_lofted_set_end_draft_angle (DxfSurfaceLofted *loft
 double dxf_surface_lofted_get_start_draft_magnitude (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_start_draft_magnitude (DxfSurfaceLofted *lofted_surface, double start_draft_magnitude);
 double dxf_surface_lofted_get_end_draft_magnitude (DxfSurfaceLofted *lofted_surface);
+DxfSurfaceLofted *dxf_surface_lofted_set_end_draft_magnitude (DxfSurfaceLofted *lofted_surface, double end_draft_magnitude);
 
 
 #ifdef __cplusplus
