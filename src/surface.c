@@ -5422,4 +5422,40 @@ dxf_surface_lofted_get_plane_normal_lofting_type
 }
 
 
+/*!
+ * \brief Set the \c plane_normal_lofting_type for a DXF lofted
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c lofted_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_set_plane_normal_lofting_type
+(
+        DxfSurfaceLofted *lofted_surface,
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+        int16_t plane_normal_lofting_type
+                /*!< the \c plane_normal_lofting_type to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lofted_surface->plane_normal_lofting_type = plane_normal_lofting_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface);
+}
+
+
 /* EOF */
