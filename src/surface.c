@@ -5458,4 +5458,35 @@ dxf_surface_lofted_set_plane_normal_lofting_type
 }
 
 
+/*!
+ * \brief Get the \c arc_length_parameterization_flag from a DXF lofted
+ * \c SURFACE entity.
+ *
+ * \return \c arc_length_parameterization_flag.
+ */
+int
+dxf_surface_extruded_get_arc_length_parameterization_flag
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface->arc_length_parameterization_flag);
+}
+
+
 /* EOF */
