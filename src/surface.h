@@ -348,7 +348,7 @@ dxf_surface_lofted_struct
         double end_draft_magnitude;
                 /*!< End draft magnitude.\n
                  * Group code = 44. */
-        int16_t sweep_alignment_option;
+        int16_t plane_normal_lofting_type;
                 /*!< Plane normal lofting type.\n
                  * Group code = 70. */
         int arc_length_parameterization_flag;

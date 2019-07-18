@@ -4944,7 +4944,7 @@ dxf_surface_lofted_init
         lofted_surface->end_draft_angle = 0.0;
         lofted_surface->start_draft_magnitude = 0.0;
         lofted_surface->end_draft_magnitude = 0.0;
-        lofted_surface->sweep_alignment_option = 0;
+        lofted_surface->plane_normal_lofting_type = 0;
         lofted_surface->arc_length_parameterization_flag = 0;
         lofted_surface->no_twist_flag = 0;
         lofted_surface->align_direction_flag = 0;
