@@ -529,6 +529,7 @@ int dxf_surface_extruded_get_arc_length_parameterization_flag (DxfSurfaceLofted 
 DxfSurfaceLofted *dxf_surface_lofted_set_arc_length_parameterization_flag (DxfSurfaceLofted *lofted_surface, int arc_length_parameterization_flag);
 int dxf_surface_extruded_get_no_twist_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_no_twist_flag (DxfSurfaceLofted *lofted_surface, int no_twist_flag);
+int dxf_surface_extruded_get_align_direction_flag (DxfSurfaceLofted *lofted_surface);
 
 
 #ifdef __cplusplus

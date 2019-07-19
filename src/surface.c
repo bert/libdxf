@@ -5589,4 +5589,35 @@ dxf_surface_lofted_set_no_twist_flag
 }
 
 
+/*!
+ * \brief Get the \c align_direction_flag from a DXF lofted \c SURFACE
+ * entity.
+ *
+ * \return \c align_direction_flag.
+ */
+int
+dxf_surface_extruded_get_align_direction_flag
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface->align_direction_flag);
+}
+
+
 /* EOF */
