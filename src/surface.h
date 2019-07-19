@@ -527,6 +527,7 @@ int16_t dxf_surface_lofted_get_plane_normal_lofting_type (DxfSurfaceLofted *loft
 DxfSurfaceLofted *dxf_surface_lofted_set_plane_normal_lofting_type (DxfSurfaceLofted *lofted_surface, int16_t plane_normal_lofting_type);
 int dxf_surface_extruded_get_arc_length_parameterization_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_arc_length_parameterization_flag (DxfSurfaceLofted *lofted_surface, int arc_length_parameterization_flag);
+int dxf_surface_extruded_get_no_twist_flag (DxfSurfaceLofted *lofted_surface);
 
 
 #ifdef __cplusplus
