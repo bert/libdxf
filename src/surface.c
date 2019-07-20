@@ -5465,7 +5465,7 @@ dxf_surface_lofted_set_plane_normal_lofting_type
  * \return \c arc_length_parameterization_flag.
  */
 int
-dxf_surface_extruded_get_arc_length_parameterization_flag
+dxf_surface_lofted_get_arc_length_parameterization_flag
 (
         DxfSurfaceLofted *lofted_surface
                 /*!< a pointer to a DXF lofted \c SURFACE entity. */
@@ -5531,7 +5531,7 @@ dxf_surface_lofted_set_arc_length_parameterization_flag
  * \return \c no_twist_flag.
  */
 int
-dxf_surface_extruded_get_no_twist_flag
+dxf_surface_lofted_get_no_twist_flag
 (
         DxfSurfaceLofted *lofted_surface
                 /*!< a pointer to a DXF lofted \c SURFACE entity. */
@@ -5596,7 +5596,7 @@ dxf_surface_lofted_set_no_twist_flag
  * \return \c align_direction_flag.
  */
 int
-dxf_surface_extruded_get_align_direction_flag
+dxf_surface_lofted_get_align_direction_flag
 (
         DxfSurfaceLofted *lofted_surface
                 /*!< a pointer to a DXF lofted \c SURFACE entity. */
@@ -5663,7 +5663,7 @@ dxf_surface_lofted_set_align_direction_flag
  * \return \c create_simple_surfaces_flag.
  */
 int
-dxf_surface_extruded_get_create_simple_surfaces_flag
+dxf_surface_lofted_get_create_simple_surfaces_flag
 (
         DxfSurfaceLofted *lofted_surface
                 /*!< a pointer to a DXF lofted \c SURFACE entity. */
@@ -5730,7 +5730,7 @@ dxf_surface_lofted_set_create_simple_surfaces_flag
  * \return \c create_closed_surface_flag.
  */
 int
-dxf_surface_extruded_get_create_closed_surface_flag
+dxf_surface_lofted_get_create_closed_surface_flag
 (
         DxfSurfaceLofted *lofted_surface
                 /*!< a pointer to a DXF lofted \c SURFACE entity. */

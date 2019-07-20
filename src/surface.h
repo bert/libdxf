@@ -525,15 +525,15 @@ double dxf_surface_lofted_get_end_draft_magnitude (DxfSurfaceLofted *lofted_surf
 DxfSurfaceLofted *dxf_surface_lofted_set_end_draft_magnitude (DxfSurfaceLofted *lofted_surface, double end_draft_magnitude);
 int16_t dxf_surface_lofted_get_plane_normal_lofting_type (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_plane_normal_lofting_type (DxfSurfaceLofted *lofted_surface, int16_t plane_normal_lofting_type);
-int dxf_surface_extruded_get_arc_length_parameterization_flag (DxfSurfaceLofted *lofted_surface);
+int dxf_surface_lofted_get_arc_length_parameterization_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_arc_length_parameterization_flag (DxfSurfaceLofted *lofted_surface, int arc_length_parameterization_flag);
-int dxf_surface_extruded_get_no_twist_flag (DxfSurfaceLofted *lofted_surface);
+int dxf_surface_lofted_get_no_twist_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_no_twist_flag (DxfSurfaceLofted *lofted_surface, int no_twist_flag);
-int dxf_surface_extruded_get_align_direction_flag (DxfSurfaceLofted *lofted_surface);
+int dxf_surface_lofted_get_align_direction_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_align_direction_flag (DxfSurfaceLofted *lofted_surface, int align_direction_flag);
-int dxf_surface_extruded_get_create_simple_surfaces_flag (DxfSurfaceLofted *lofted_surface);
+int dxf_surface_lofted_get_create_simple_surfaces_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_create_simple_surfaces_flag (DxfSurfaceLofted *lofted_surface, int create_simple_surfaces_flag);
-int dxf_surface_extruded_get_create_closed_surface_flag (DxfSurfaceLofted *lofted_surface);
+int dxf_surface_lofted_get_create_closed_surface_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_create_closed_surface_flag (DxfSurfaceLofted *lofted_surface, int create_closed_surface_flag);
 int dxf_surface_lofted_get_solid_flag (DxfSurfaceLofted *lofted_surface);
 
