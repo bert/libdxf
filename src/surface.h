@@ -533,6 +533,7 @@ int dxf_surface_extruded_get_align_direction_flag (DxfSurfaceLofted *lofted_surf
 DxfSurfaceLofted *dxf_surface_lofted_set_align_direction_flag (DxfSurfaceLofted *lofted_surface, int align_direction_flag);
 int dxf_surface_extruded_get_create_simple_surfaces_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_create_simple_surfaces_flag (DxfSurfaceLofted *lofted_surface, int create_simple_surfaces_flag);
+int dxf_surface_extruded_get_create_closed_surface_flag (DxfSurfaceLofted *lofted_surface);
 
 
 #ifdef __cplusplus

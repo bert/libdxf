@@ -5723,4 +5723,35 @@ dxf_surface_lofted_set_create_simple_surfaces_flag
 }
 
 
+/*!
+ * \brief Get the \c create_closed_surface_flag from a DXF lofted \c SURFACE
+ * entity.
+ *
+ * \return \c create_closed_surface_flag.
+ */
+int
+dxf_surface_extruded_get_create_closed_surface_flag
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface->create_closed_surface_flag);
+}
+
+
 /* EOF */
