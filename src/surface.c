@@ -5885,4 +5885,40 @@ dxf_surface_lofted_get_create_ruled_surface_flag
 }
 
 
+/*!
+ * \brief Set the \c create_ruled_surface_flag for a DXF lofted
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c lofted_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_set_create_ruled_surface_flag
+(
+        DxfSurfaceLofted *lofted_surface,
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+        int create_ruled_surface_flag
+                /*!< the \c create_ruled_surface_flag to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lofted_surface->create_ruled_surface_flag = create_ruled_surface_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface);
+}
+
+
 /* EOF */
