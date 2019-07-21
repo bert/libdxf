@@ -5921,4 +5921,35 @@ dxf_surface_lofted_set_create_ruled_surface_flag
 }
 
 
+/*!
+ * \brief Get the \c virtual_guide_flag from a DXF lofted \c SURFACE
+ * entity.
+ *
+ * \return \c virtual_guide_flag.
+ */
+int
+dxf_surface_lofted_get_virtual_guide_flag
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface->virtual_guide_flag);
+}
+
+
 /* EOF */
