@@ -6027,4 +6027,44 @@ dxf_surface_lofted_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next DXF lofted \c SURFACE for a DXF
+ * lofted \c SURFACE entity.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_set_next
+(
+        DxfSurfaceLofted *lofted_surface,
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+        DxfSurfaceLofted *next
+                /*!< a pointer to the next DXF lofted \c SURFACE for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lofted_surface->next = (struct DxfSurfaceLofted *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface);
+}
+
+
 /* EOF */
