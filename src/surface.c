@@ -6067,4 +6067,49 @@ dxf_surface_lofted_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last DXF lofted \c SURFACE entity
+ * from a linked list of DXF lofted \c SURFACE entities.
+ *
+ * \return pointer to the last DXF lofted \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_get_last
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (lofted_surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfSurfaceLofted *) lofted_surface);
+        }
+        DxfSurfaceLofted *iter = (DxfSurfaceLofted *) lofted_surface->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSurfaceLofted *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurfaceLofted *) iter);
+}
+
+
 /* EOF */

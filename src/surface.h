@@ -543,6 +543,7 @@ int dxf_surface_lofted_get_virtual_guide_flag (DxfSurfaceLofted *lofted_surface)
 DxfSurfaceLofted *dxf_surface_lofted_set_virtual_guide_flag (DxfSurfaceLofted *lofted_surface, int virtual_guide_flag);
 DxfSurfaceLofted *dxf_surface_lofted_get_next (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_next (DxfSurfaceLofted *lofted_surface, DxfSurfaceLofted *next);
+DxfSurfaceLofted *dxf_surface_lofted_get_last (DxfSurfaceLofted *lofted_surface);
 
 
 #ifdef __cplusplus
