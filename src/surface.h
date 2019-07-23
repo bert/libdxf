@@ -541,6 +541,7 @@ int dxf_surface_lofted_get_create_ruled_surface_flag (DxfSurfaceLofted *lofted_s
 DxfSurfaceLofted *dxf_surface_lofted_set_create_ruled_surface_flag (DxfSurfaceLofted *lofted_surface, int create_ruled_surface_flag);
 int dxf_surface_lofted_get_virtual_guide_flag (DxfSurfaceLofted *lofted_surface);
 DxfSurfaceLofted *dxf_surface_lofted_set_virtual_guide_flag (DxfSurfaceLofted *lofted_surface, int virtual_guide_flag);
+DxfSurfaceLofted *dxf_surface_lofted_get_next (DxfSurfaceLofted *lofted_surface);
 
 
 #ifdef __cplusplus

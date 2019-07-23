@@ -5987,4 +5987,44 @@ dxf_surface_lofted_set_virtual_guide_flag
 }
 
 
+/*!
+ * \brief Get the pointer to the next DXF lofted \c SURFACE entity
+ * from a DXF  \c SURFACE entity.
+ *
+ * \return pointer to the next DXF lofted \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_get_next
+(
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (lofted_surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurfaceLofted *) lofted_surface->next);
+}
+
+
 /* EOF */
