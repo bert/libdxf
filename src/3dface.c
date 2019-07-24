@@ -781,6 +781,9 @@ dxf_3dface_free
 /*!
  * \brief Free the allocated memory for a single linked list of
  * DXF \c 3DFACE entities and all their data fields.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_free_list.png
  */
 void
 dxf_3dface_free_list
