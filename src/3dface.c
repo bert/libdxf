@@ -87,6 +87,9 @@ dxf_3dface_new ()
  * \brief Allocate memory and initialize data fields in a DXF \c 3DFACE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_init.png
+ *
  * \return \c NULL when an error occurred, a pointer to the initialized
  * memory when successful.
  */
