@@ -725,6 +725,9 @@ dxf_3dface_write
  * \brief Free the allocated memory for a DXF \c 3DFACE and all it's
  * data fields.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_free.png
+ *
  * \return \c NULL when successful, or pointer to \c face when an error
  * occurred.
  */
