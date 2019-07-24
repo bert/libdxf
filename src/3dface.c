@@ -177,6 +177,9 @@ dxf_3dface_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_read.png
+ *
  * \return a pointer to a DXF \c 3DFACE entity, or \c NULL when an error
  * occurred.
  */
