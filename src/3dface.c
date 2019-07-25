@@ -1377,6 +1377,9 @@ dxf_3dface_set_visibility
 /*!
  * \brief Get the \c color from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_color.png
+ *
  * \return \c color.
  */
 int16_t
