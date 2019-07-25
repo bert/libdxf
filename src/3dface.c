@@ -1210,6 +1210,9 @@ dxf_3dface_set_thickness
 /*!
  * \brief Get the \c linetype_scale from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_linetype_scale.png
+ *
  * \return \c linetype_scale.
  */
 double
