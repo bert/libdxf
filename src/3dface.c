@@ -983,6 +983,9 @@ dxf_3dface_set_linetype
 /*!
  * \brief Get the \c layer from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_layer.png
+ *
  * \return a pointer to \c layer when sucessful, \c NULL when an error
  * occurred.
  */
