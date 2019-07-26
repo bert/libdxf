@@ -1729,6 +1729,9 @@ dxf_3dface_set_shadow_mode
  * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_binary_graphics_data.png
+ *
  * \return pointer to the \c binary_graphics_data.
  *
  * \warning No checks are performed on the returned pointer.
