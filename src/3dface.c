@@ -1895,6 +1895,9 @@ dxf_3dface_set_dictionary_owner_soft
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_object_owner_soft.png
+ *
  * \return soft pointer to the object owner.
  *
  * \warning No checks are performed on the returned pointer (string).
