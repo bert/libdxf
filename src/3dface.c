@@ -1812,6 +1812,9 @@ dxf_3dface_set_binary_graphics_data
  * \brief Get the soft pointer to the \c dictionary_owner_soft from a
  * DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_dictionary_owner_soft.png
+ *
  * \return a pointer to the \c dictionary_owner_soft.
  *
  * \warning No checks are performed on the returned pointer.
