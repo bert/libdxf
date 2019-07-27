@@ -2216,6 +2216,9 @@ dxf_3dface_set_lineweight
 /*!
  * \brief Get the \c plot_style_name from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_plot_style_name.png
+ *
  * \return a pointer to \c plot_style_name when sucessful, or \c NULL
  * when an error occurred.
  */
