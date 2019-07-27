@@ -4240,6 +4240,9 @@ dxf_3dface_create_from_points
  * \brief Get the pointer to the next \c 3DFACE entity from a DXF 
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_next.png
+ *
  * \return pointer to the next \c 3DFACE entity.
  *
  * \warning No checks are performed on the returned pointer.
