@@ -2367,6 +2367,9 @@ dxf_3dface_set_color_value
 /*!
  * \brief Get the \c color_name from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_color_name.png
+ *
  * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.
  */
