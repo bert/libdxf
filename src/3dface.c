@@ -2148,6 +2148,9 @@ dxf_3dface_set_dictionary_owner_hard
 /*!
  * \brief Get the \c lineweight from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_lineweight.png
+ *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
