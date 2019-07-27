@@ -4328,6 +4328,9 @@ dxf_3dface_set_next
  * \brief Get the pointer to the last \c 3DFACE entity from a linked
  * list of DXF \c 3DFACE entities.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_last.png
+ *
  * \return pointer to the last \c 3DFACE entity.
  *
  * \warning No checks are performed on the returned pointer.
