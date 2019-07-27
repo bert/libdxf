@@ -1456,6 +1456,9 @@ dxf_3dface_set_color
 /*!
  * \brief Get the \c paperspace flag value from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_paperspace.png
+ *
  * \return \c paperspace flag value.
  */
 int16_t
