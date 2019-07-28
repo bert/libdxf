@@ -386,6 +386,64 @@ dxf_surface_lofted_struct
 } DxfSurfaceLofted;
 
 
+/*!
+ * \brief DXF definition of a DXF revolved surface entity.
+ */
+typedef struct
+dxf_surface_revolved_struct
+{
+        DxfPoint *p0;
+                /*!< Axis point.\n
+                 * Group code = 10, 20 and 30. */
+        DxfPoint *p1;
+                /*!< Axis vector.\n
+                 * Group code = 11, 21 and 31. */
+        double *revolve_angle;
+                /*!< Revolve angle (in radians).\n
+                 * Group code = 40. */
+        double *start_angle;
+                /*!< Start angle (in radians).\n
+                 * Group code = 41. */
+        DxfDouble *transform_matrix;
+                /*!< Transform matrix of revolved entity
+                 * (16 reals; row major format; default = identity
+                 * matrix).\n
+                 * Group code = 42. */
+        double *draft_angle;
+                /*!< Start angle (in radians).\n
+                 * Group code = 43. */
+        double *start_draft_distance;
+                /*!< Start draft distance.\n
+                 * Group code = 44. */
+        double *end_draft_distance;
+                /*!< End draft distance.\n
+                 * Group code = 45. */
+        double *twist_angle;
+                /*!< Twist angle (in radians).\n
+                 * Group code = 46. */
+        int32_t ID;
+                /*!< ID of revolve entity.\n
+                 * Group code = 90. */
+        int32_t binary_data_size;
+                /*!< Size of binary data.\n
+                 * Group code = 90. */
+        int solid_flag;
+                /*!< Solid flag.\n
+                 * Group code = 290. */
+        int close_to_axis_flag;
+                /*!< Close to axis flag.\n
+                 * Group code = 291. */
+        DxfBinaryData *binary_data;
+                /*!< Binary data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310. */
+        struct DxfSurfaceRevolved *next;
+                /*!< pointer to the next DxfSurfaceRevolved.\n
+                 * \c NULL in the last DxfSurfaceRevolved. */
+} DxfSurfaceRevolved;
+
+
 DxfSurface *dxf_surface_new ();
 DxfSurface *dxf_surface_init (DxfSurface *surface);
 int dxf_surface_free (DxfSurface *surface);
