@@ -6280,4 +6280,37 @@ dxf_surface_revolved_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * revolved \c SURFACE entities and all their data fields.
+ */
+void
+dxf_surface_revolved_free_list
+(
+        DxfSurfaceRevolved *revolved_surfaces
+                /*!< a pointer to the single linked list of DXF
+                 * revolved \c SURFACE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (revolved_surfaces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (revolved_surfaces != NULL)
+        {
+                DxfSurfaceRevolved *iter = (DxfSurfaceRevolved *) revolved_surfaces->next;
+                dxf_surface_revolved_free (revolved_surfaces);
+                revolved_surfaces = (DxfSurfaceRevolved *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
