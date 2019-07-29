@@ -6234,4 +6234,50 @@ dxf_surface_revolved_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF revolved \c SURFACE entity
+ * and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_surface_revolved_free
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to the memory occupied by the DXF
+                 * revolved \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (revolved_surface->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dxf_point_free (revolved_surface->p0);
+        dxf_point_free (revolved_surface->p1);
+        dxf_double_free_list (revolved_surface->transform_matrix);
+        dxf_binary_data_free_list (revolved_surface->binary_data);
+        free (revolved_surface);
+        revolved_surface = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
