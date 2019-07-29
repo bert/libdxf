@@ -398,10 +398,10 @@ dxf_surface_revolved_struct
         DxfPoint *p1;
                 /*!< Axis vector.\n
                  * Group code = 11, 21 and 31. */
-        double *revolve_angle;
+        double revolve_angle;
                 /*!< Revolve angle (in radians).\n
                  * Group code = 40. */
-        double *start_angle;
+        double start_angle;
                 /*!< Start angle (in radians).\n
                  * Group code = 41. */
         DxfDouble *transform_matrix;
@@ -409,16 +409,16 @@ dxf_surface_revolved_struct
                  * (16 reals; row major format; default = identity
                  * matrix).\n
                  * Group code = 42. */
-        double *draft_angle;
+        double draft_angle;
                 /*!< Start angle (in radians).\n
                  * Group code = 43. */
-        double *start_draft_distance;
+        double start_draft_distance;
                 /*!< Start draft distance.\n
                  * Group code = 44. */
-        double *end_draft_distance;
+        double end_draft_distance;
                 /*!< End draft distance.\n
                  * Group code = 45. */
-        double *twist_angle;
+        double twist_angle;
                 /*!< Twist angle (in radians).\n
                  * Group code = 46. */
         int32_t ID;
