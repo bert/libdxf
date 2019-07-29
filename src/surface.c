@@ -6150,4 +6150,88 @@ dxf_surface_revolved_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF
+ * revolved \c SURFACE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_init
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to the DXF revolved \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                revolved_surface = dxf_surface_revolved_new ();
+        }
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Initialize new structs for members. */
+        revolved_surface->p0 = (DxfPoint *) dxf_point_init (revolved_surface->p0);
+        if (revolved_surface->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->p1 = (DxfPoint *) dxf_point_init (revolved_surface->p1);
+        if (revolved_surface->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->transform_matrix = (DxfDouble *) dxf_double_init (revolved_surface->transform_matrix);
+        if (revolved_surface->transform_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->binary_data = (DxfBinaryData *) dxf_binary_data_init (revolved_surface->binary_data);
+        if (revolved_surface->binary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
+        revolved_surface->revolve_angle = 0.0;
+        revolved_surface->start_angle = 0.0;
+        revolved_surface->draft_angle = 0.0;
+        revolved_surface->start_draft_distance = 0.0;
+        revolved_surface->end_draft_distance = 0.0;
+        revolved_surface->twist_angle = 0.0;
+        revolved_surface->ID = 0;
+        revolved_surface->binary_data_size = 0;
+        revolved_surface->solid_flag =0;
+        revolved_surface->close_to_axis_flag = 0;
+        revolved_surface->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
 /* EOF */
