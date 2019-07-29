@@ -6112,4 +6112,42 @@ dxf_surface_lofted_get_last
 }
 
 
+/*!
+ * \brief Allocate memory for a DXF revolved \c SURFACE entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfSurfaceRevolved *revolved_surface = NULL;
+        size_t size;
+
+        size = sizeof (DxfSurfaceRevolved);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((revolved_surface = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                revolved_surface = NULL;
+        }
+        else
+        {
+                memset (revolved_surface, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
 /* EOF */

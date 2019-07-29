@@ -603,6 +603,9 @@ DxfSurfaceLofted *dxf_surface_lofted_get_next (DxfSurfaceLofted *lofted_surface)
 DxfSurfaceLofted *dxf_surface_lofted_set_next (DxfSurfaceLofted *lofted_surface, DxfSurfaceLofted *next);
 DxfSurfaceLofted *dxf_surface_lofted_get_last (DxfSurfaceLofted *lofted_surface);
 
+/* Revolved surface functions. */
+DxfSurfaceRevolved *dxf_surface_revolved_new ();
+
 
 #ifdef __cplusplus
 }
