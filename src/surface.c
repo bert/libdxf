@@ -6350,4 +6350,46 @@ dxf_surface_revolved_get_p0
 }
 
 
+/*!
+ * \brief Set the axis point \c p0 for a DXF revolved \c SURFACE
+ * entity.
+ *
+ * \return a pointer to \c revolved_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_set_p0
+(
+        DxfSurfaceRevolved *revolved_surface,
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+        DxfPoint *p0
+                /*!< the axis point \c p0 to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->p0 = (DxfPoint *) p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
 /* EOF */
