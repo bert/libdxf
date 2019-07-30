@@ -6313,4 +6313,41 @@ dxf_surface_revolved_free_list
 }
 
 
+/*!
+ * \brief Get the axis point of a DXF revolved \c SURFACE entity.
+ *
+ * \return the axis point \c p0.
+ */
+DxfPoint *
+dxf_surface_revolved_get_p0
+(
+        DxfSurfaceRevolved *revolved_surfaces
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surfaces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (revolved_surfaces->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surfaces->p0);
+}
+
+
 /* EOF */
