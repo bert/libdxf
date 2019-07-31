@@ -6474,4 +6474,43 @@ dxf_surface_revolved_set_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the axis point \c y0 of a DXF revolved
+ * \c SURFACE entity.
+ *
+ * \return the Y-value of the axis point \c y0.
+ */
+double
+dxf_surface_revolved_get_y0
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (revolved_surface->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface->p0->y0);
+}
+
+
 /* EOF */
