@@ -6717,4 +6717,43 @@ dxf_surface_revolved_set_p1
 }
 
 
+/*!
+ * \brief Get the X-value of the axis vector \c x1 of a DXF revolved
+ * \c SURFACE entity.
+ *
+ * \return the X-value of the axis vector \c x1.
+ */
+double
+dxf_surface_revolved_get_x1
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (revolved_surface->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface->p1->x0);
+}
+
+
 /* EOF */
