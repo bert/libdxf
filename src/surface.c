@@ -6838,4 +6838,47 @@ dxf_surface_revolved_get_y1
 }
 
 
+/*!
+ * \brief Set the Y-value of the axis vector \c y1 of a DXF revolved
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c revolved_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_set_y1
+(
+        DxfSurfaceRevolved *revolved_surface,
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+        double y1
+                /*!< the Y-value of the axis vector \c y1 of a DXF
+                 * revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (revolved_surface->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->p1->y0 = y1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
 /* EOF */

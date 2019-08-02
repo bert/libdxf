@@ -621,6 +621,7 @@ DxfSurfaceRevolved *dxf_surface_revolved_set_p1 (DxfSurfaceRevolved *revolved_su
 double dxf_surface_revolved_get_x1 (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_x1 (DxfSurfaceRevolved *revolved_surface, double x1);
 double dxf_surface_revolved_get_y1 (DxfSurfaceRevolved *revolved_surface);
+DxfSurfaceRevolved *dxf_surface_revolved_set_y1 (DxfSurfaceRevolved *revolved_surface, double y1);
 
 
 #ifdef __cplusplus
