@@ -6638,4 +6638,41 @@ dxf_surface_revolved_set_z0
 }
 
 
+/*!
+ * \brief Get the axis vector of a DXF revolved \c SURFACE entity.
+ *
+ * \return the axis vector \c p1.
+ */
+DxfPoint *
+dxf_surface_revolved_get_p1
+(
+        DxfSurfaceRevolved *revolved_surfaces
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surfaces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (revolved_surfaces->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surfaces->p1);
+}
+
+
 /* EOF */
