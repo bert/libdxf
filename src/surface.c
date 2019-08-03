@@ -7317,4 +7317,36 @@ dxf_surface_revolved_set_start_draft_distance
 }
 
 
+/*!
+ * \brief Get the end draft distance \c end_draft_distance of a DXF
+ * revolved \c SURFACE entity.
+ *
+ * \return the end draft distance \c end_draft_distance.
+ */
+double
+dxf_surface_revolved_get_end_draft_distance
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface->end_draft_distance);
+}
+
+
 /* EOF */

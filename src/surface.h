@@ -634,6 +634,7 @@ double dxf_surface_revolved_get_draft_angle (DxfSurfaceRevolved *revolved_surfac
 DxfSurfaceRevolved *dxf_surface_revolved_set_draft_angle (DxfSurfaceRevolved *revolved_surface, double draft_angle);
 double dxf_surface_revolved_get_start_draft_distance (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_start_draft_distance (DxfSurfaceRevolved *revolved_surface, double start_draft_distance);
+double dxf_surface_revolved_get_end_draft_distance (DxfSurfaceRevolved *revolved_surface);
 
 
 #ifdef __cplusplus
