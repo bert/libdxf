@@ -7138,4 +7138,47 @@ dxf_surface_revolved_get_transform_matrix
 }
 
 
+/*!
+ * \brief Set the transform matrix \c transform_matrix of a DXF revolved
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c revolved_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_set_transform_matrix
+(
+        DxfSurfaceRevolved *revolved_surface,
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+        DxfDouble *transform_matrix
+                /*!< the transform matrix \c transform_matrix of a DXF
+                 * revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (transform_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->transform_matrix = (DxfDouble *) transform_matrix;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
 /* EOF */
