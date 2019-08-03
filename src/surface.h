@@ -631,6 +631,7 @@ DxfSurfaceRevolved *dxf_surface_revolved_set_start_angle (DxfSurfaceRevolved *re
 DxfDouble *dxf_surface_revolved_get_transform_matrix (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_transform_matrix (DxfSurfaceRevolved *revolved_surface, DxfDouble *transform_matrix);
 double dxf_surface_revolved_get_draft_angle (DxfSurfaceRevolved *revolved_surface);
+DxfSurfaceRevolved *dxf_surface_revolved_set_draft_angle (DxfSurfaceRevolved *revolved_surface, double draft_angle);
 
 
 #ifdef __cplusplus

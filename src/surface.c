@@ -7213,4 +7213,40 @@ dxf_surface_revolved_get_draft_angle
 }
 
 
+/*!
+ * \brief Set the draft angle \c draft_angle of a DXF revolved
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c revolved_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_set_draft_angle
+(
+        DxfSurfaceRevolved *revolved_surface,
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+        double draft_angle
+                /*!< the draft angle \c draft_angle of a DXF
+                 * revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->draft_angle = draft_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
 /* EOF */
