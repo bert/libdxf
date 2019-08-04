@@ -7385,4 +7385,36 @@ dxf_surface_revolved_set_end_draft_distance
 }
 
 
+/*!
+ * \brief Get the twist angle \c twist_angle of a DXF revolved
+ * \c SURFACE entity.
+ *
+ * \return the twist angle \c twist_angle.
+ */
+double
+dxf_surface_revolved_get_twist_angle
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface->twist_angle);
+}
+
+
 /* EOF */
