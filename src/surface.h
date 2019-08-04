@@ -639,6 +639,7 @@ DxfSurfaceRevolved *dxf_surface_revolved_set_end_draft_distance (DxfSurfaceRevol
 double dxf_surface_revolved_get_twist_angle (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_twist_angle (DxfSurfaceRevolved *revolved_surface, double twist_angle);
 int32_t dxf_surface_revolved_get_ID (DxfSurfaceRevolved *revolved_surface);
+DxfSurfaceRevolved *dxf_surface_revolved_set_ID (DxfSurfaceRevolved *revolved_surface, int32_t ID);
 
 
 #ifdef __cplusplus

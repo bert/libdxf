@@ -7483,4 +7483,38 @@ dxf_surface_revolved_get_ID
 }
 
 
+/*!
+ * \brief Set the \c ID for a DXF revolved \c SURFACE entity.
+ *
+ * \return a pointer to \c revolved_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_set_ID
+(
+        DxfSurfaceRevolved *revolved_surface,
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+        int32_t ID
+                /*!< the \c ID to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        revolved_surface->ID = ID;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
 /* EOF */
