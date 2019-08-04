@@ -7453,4 +7453,34 @@ dxf_surface_revolved_set_twist_angle
 }
 
 
+/*!
+ * \brief Get the \c ID from a DXF revolved \c SURFACE entity.
+ *
+ * \return \c ID.
+ */
+int32_t
+dxf_surface_revolved_get_ID
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface->ID);
+}
+
+
 /* EOF */
