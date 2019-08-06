@@ -7583,4 +7583,34 @@ dxf_surface_revolved_set_binary_data_size
 }
 
 
+/*!
+ * \brief Get the \c solid_flag from a DXF revolved \c SURFACE entity.
+ *
+ * \return \c solid_flag.
+ */
+int
+dxf_surface_revolved_get_solid_flag
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface->solid_flag);
+}
+
+
 /* EOF */

@@ -642,6 +642,7 @@ int32_t dxf_surface_revolved_get_ID (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_ID (DxfSurfaceRevolved *revolved_surface, int32_t ID);
 int32_t dxf_surface_revolved_get_binary_data_size (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_binary_data_size (DxfSurfaceRevolved *revolved_surface, int32_t binary_data_size);
+int dxf_surface_revolved_get_solid_flag (DxfSurfaceRevolved *revolved_surface);
 
 
 #ifdef __cplusplus
