@@ -4595,7 +4595,7 @@ dxf_surface_extruded_set_sweep_transform_computed_flag
  * \return \c path_transform_computed_flag.
  */
 int
-dxf_surface_extruded_get_align_path_transform_computed_flag
+dxf_surface_extruded_get_path_transform_computed_flag
 (
         DxfSurfaceExtruded *extruded_surface
                 /*!< a pointer to a DXF extruded \c SURFACE entity. */
