@@ -7713,4 +7713,44 @@ dxf_surface_revolved_set_close_to_axis_flag
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_data from a DXF revolved
+ * \c SURFACE entity.
+ *
+ * \return pointer to the \c binary_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryData *
+dxf_surface_revolved_get_binary_data
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (revolved_surface->binary_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryData *) revolved_surface->binary_data);
+}
+
+
 /* EOF */
