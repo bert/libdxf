@@ -650,6 +650,7 @@ DxfBinaryData *dxf_surface_revolved_get_binary_data (DxfSurfaceRevolved *revolve
 DxfSurfaceRevolved *dxf_surface_revolved_set_binary_data (DxfSurfaceRevolved *revolved_surface, DxfBinaryData *data);
 DxfSurfaceRevolved *dxf_surface_revolved_get_next (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_next (DxfSurfaceRevolved *revolved_surface, DxfSurfaceRevolved *next);
+DxfSurfaceRevolved *dxf_surface_revolved_get_last (DxfSurfaceRevolved *revolved_surface);
 
 
 #ifdef __cplusplus
