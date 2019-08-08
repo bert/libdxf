@@ -7795,7 +7795,7 @@ dxf_surface_revolved_set_binary_data
 
 /*!
  * \brief Get the pointer to the next DXF revolved \c SURFACE entity
- * from a DXF  \c SURFACE entity.
+ * from a DXF revolved \c SURFACE entity.
  *
  * \return pointer to the next DXF revolved \c SURFACE entity.
  *
