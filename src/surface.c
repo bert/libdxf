@@ -7793,4 +7793,44 @@ dxf_surface_revolved_set_binary_data
 }
 
 
+/*!
+ * \brief Get the pointer to the next DXF revolved \c SURFACE entity
+ * from a DXF  \c SURFACE entity.
+ *
+ * \return pointer to the next DXF revolved \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_get_next
+(
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (revolved_surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurfaceRevolved *) revolved_surface->next);
+}
+
+
 /* EOF */

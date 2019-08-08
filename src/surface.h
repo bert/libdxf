@@ -648,6 +648,7 @@ int dxf_surface_revolved_get_close_to_axis_flag (DxfSurfaceRevolved *revolved_su
 DxfSurfaceRevolved *dxf_surface_revolved_set_close_to_axis_flag (DxfSurfaceRevolved *revolved_surface, int close_to_axis_flag);
 DxfBinaryData *dxf_surface_revolved_get_binary_data (DxfSurfaceRevolved *revolved_surface);
 DxfSurfaceRevolved *dxf_surface_revolved_set_binary_data (DxfSurfaceRevolved *revolved_surface, DxfBinaryData *data);
+DxfSurfaceRevolved *dxf_surface_revolved_get_next (DxfSurfaceRevolved *revolved_surface);
 
 
 #ifdef __cplusplus
