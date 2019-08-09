@@ -1,11 +1,15 @@
 
 ACLOCAL_AMFLAGS = `-I m4` 
 
-SUBDIRS = \
+DIRS = \
 	doc \
 	po \
 	src \
 	tests
+	
+SUBDIRS= ${DIRS} @DOC@
+
+DIST_SUBDIRS= ${DIRS} doc
 	
 libdxfdocdir = ${prefix}/doc
 
@@ -23,6 +27,14 @@ libdxfdoc_DATA = \
 	README
 	
 EXTRA_DIST = $(libdxfdoc_DATA)
+
+INTLTOOL_FILES = intltool-extract.in intltool-merge.in  intltool-update.in
+
+DISTCLEANFILES= configure.lineno intltool-extract intltool-merge intltool-update po/.intltool-merge-cache
+
+MAINTAINERCLEANFILES= $(INTLTOOL_FILES)
+
+DISTCHECK_CONFIGURE_FLAGS := ${DISTCHECK_CONFIGURE_FLAGS} --disable-update-mime-database --disable-update-desktop-database
 
 # Copy all the spec files. Of cource, only one is actually used.
 dist-hook:
