@@ -14,7 +14,7 @@ AC_HEADER_STDC
 
 # See if we are supposed to build the Doxygen docs.
 
-docs_yesno=yes
+docs_yesno=no
 AC_MSG_CHECKING([if the Doxygen developer documentation should be built])
 AC_ARG_ENABLE([doc],
 [  --enable-doc            Build and install the Doxygen developer documentation [[default=yes]]],
