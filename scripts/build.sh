@@ -5,3 +5,4 @@ make
 make -C po update-po
 make -C po libdxf.pot
 make dist
+make distcheck
