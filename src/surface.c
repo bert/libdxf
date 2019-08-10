@@ -7956,4 +7956,109 @@ dxf_surface_swept_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF swept
+ * \c SURFACE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_init
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to the DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                swept_surface = dxf_surface_swept_new ();
+        }
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Initialize new structs for members. */
+        swept_surface->p1 = (DxfPoint *) dxf_point_init (swept_surface->p1);
+        if (swept_surface->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->transform_sweep_matrix = (DxfDouble *) dxf_double_init (swept_surface->transform_sweep_matrix);
+        if (swept_surface->transform_sweep_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->transform_path_matrix = (DxfDouble *) dxf_double_init (swept_surface->transform_path_matrix);
+        if (swept_surface->transform_path_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->transform_sweep_matrix2 = (DxfDouble *) dxf_double_init (swept_surface->transform_sweep_matrix2);
+        if (swept_surface->transform_sweep_matrix2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->transform_path_matrix2 = (DxfDouble *) dxf_double_init (swept_surface->transform_path_matrix2);
+        if (swept_surface->transform_path_matrix2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->binary_data = (DxfBinaryData *) dxf_binary_data_init (swept_surface->binary_data);
+        if (swept_surface->binary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
+        swept_surface->draft_angle = 0.0;
+        swept_surface->start_draft_distance = 0.0;
+        swept_surface->end_draft_distance = 0.0;
+        swept_surface->twist_angle = 0.0;
+        swept_surface->scale_factor = 1.0;
+        swept_surface->align_angle = 0.0;
+        swept_surface->sweep_alignment_option = 0;
+        swept_surface->ID = 0;
+        swept_surface->binary_data_size = 0;
+        swept_surface->solid_flag = 0;
+        swept_surface->align_start_flag = 0;
+        swept_surface->bank_flag = 0;
+        swept_surface->base_point_set_flag = 0;
+        swept_surface->sweep_transform_computed_flag = 0;
+        swept_surface->path_transform_computed_flag = 0;
+        swept_surface->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */
