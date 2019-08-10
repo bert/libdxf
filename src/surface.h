@@ -754,6 +754,7 @@ double dxf_surface_swept_get_x1 (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_x1 (DxfSurfaceSwept *swept_surface, double x1);
 double dxf_surface_swept_get_y1 (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_y1 (DxfSurfaceSwept *swept_surface, double y1);
+double dxf_surface_swept_get_z1 (DxfSurfaceSwept *swept_surface);
 
 
 #ifdef __cplusplus
