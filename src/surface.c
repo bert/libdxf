@@ -8061,4 +8061,52 @@ dxf_surface_swept_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF swept \c SURFACE entity
+ * and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_surface_swept_free
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to the memory occupied by the DXF swept
+                 * \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (swept_surface->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dxf_point_free (swept_surface->p1);
+        dxf_double_free_list (swept_surface->transform_sweep_matrix);
+        dxf_double_free_list (swept_surface->transform_path_matrix);
+        dxf_double_free_list (swept_surface->transform_sweep_matrix2);
+        dxf_double_free_list (swept_surface->transform_path_matrix2);
+        dxf_binary_data_free_list (swept_surface->binary_data);
+        free (swept_surface);
+        swept_surface = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
