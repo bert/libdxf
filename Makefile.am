@@ -34,7 +34,7 @@ DISTCLEANFILES= configure.lineno intltool-extract intltool-merge intltool-update
 
 MAINTAINERCLEANFILES= $(INTLTOOL_FILES)
 
-DISTCHECK_CONFIGURE_FLAGS := ${DISTCHECK_CONFIGURE_FLAGS} --disable-update-mime-database --disable-update-desktop-database
+DISTCHECK_CONFIGURE_FLAGS := ${DISTCHECK_CONFIGURE_FLAGS}
 
 # Copy all the spec files. Of cource, only one is actually used.
 dist-hook:
