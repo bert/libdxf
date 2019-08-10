@@ -8426,4 +8426,47 @@ dxf_surface_swept_get_z1
 }
 
 
+/*!
+ * \brief Set the Z-value of the reference vector for twist \c z1 of a
+ * DXF swept \c SURFACE entity.
+ *
+ * \return a pointer to \c swept_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_set_z1
+(
+        DxfSurfaceSwept *swept_surface,
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+        double z1
+                /*!< the Z-value of the reference vector for twist \c z1
+                 * of a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surface->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->p1->z0 = z1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */
