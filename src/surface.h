@@ -749,6 +749,7 @@ DxfSurfaceSwept *dxf_surface_swept_init (DxfSurfaceSwept *swept_surface);
 int dxf_surface_swept_free (DxfSurfaceSwept *swept_surface);
 void dxf_surface_swept_free_list (DxfSurfaceSwept *swept_surfaces);
 DxfPoint *dxf_surface_swept_get_p1 (DxfSurfaceSwept *swept_surfaces);
+DxfSurfaceSwept *dxf_surface_swept_set_p1 (DxfSurfaceSwept *swept_surface, DxfPoint *p1);
 
 
 #ifdef __cplusplus
