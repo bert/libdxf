@@ -8142,4 +8142,42 @@ dxf_surface_swept_free_list
 }
 
 
+/*!
+ * \brief Get the reference vector for twist of a DXF swept \c SURFACE
+ * entity.
+ *
+ * \return the reference vector for twist \c p1.
+ */
+DxfPoint *
+dxf_surface_swept_get_p1
+(
+        DxfSurfaceSwept *swept_surfaces
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surfaces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surfaces->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surfaces->p1);
+}
+
+
 /* EOF */
