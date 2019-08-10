@@ -7918,4 +7918,42 @@ dxf_surface_revolved_get_last
 }
 
 
+/*!
+ * \brief Allocate memory for a DXF swept \c SURFACE entity.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfSurfaceSwept *swept_surface = NULL;
+        size_t size;
+
+        size = sizeof (DxfSurfaceSwept);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((swept_surface = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                swept_surface = NULL;
+        }
+        else
+        {
+                memset (swept_surface, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */

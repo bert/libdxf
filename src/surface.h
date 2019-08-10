@@ -743,6 +743,9 @@ DxfSurfaceRevolved *dxf_surface_revolved_get_next (DxfSurfaceRevolved *revolved_
 DxfSurfaceRevolved *dxf_surface_revolved_set_next (DxfSurfaceRevolved *revolved_surface, DxfSurfaceRevolved *next);
 DxfSurfaceRevolved *dxf_surface_revolved_get_last (DxfSurfaceRevolved *revolved_surface);
 
+/* Swept surface functions. */
+DxfSurfaceSwept *dxf_surface_swept_new ();
+
 
 #ifdef __cplusplus
 }
