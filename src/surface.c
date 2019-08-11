@@ -8469,4 +8469,43 @@ dxf_surface_swept_set_z1
 }
 
 
+/*!
+ * \brief Get the transform sweep matrix \c transform_sweep_matrix of a
+ * DXF swept \c SURFACE entity.
+ *
+ * \return the transform sweep matrix \c transform_sweep_matrix.
+ */
+DxfDouble *
+dxf_surface_swept_get_transform_sweep_matrix
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surface->transform_sweep_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDouble *) swept_surface->transform_sweep_matrix);
+}
+
+
 /* EOF */
