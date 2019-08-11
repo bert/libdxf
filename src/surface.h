@@ -757,6 +757,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_y1 (DxfSurfaceSwept *swept_surface, doubl
 double dxf_surface_swept_get_z1 (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_z1 (DxfSurfaceSwept *swept_surface, double z1);
 DxfDouble *dxf_surface_swept_get_transform_sweep_matrix (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_transform_sweep_matrix (DxfSurfaceSwept *swept_surface, DxfDouble *transform_sweep_matrix);
 
 
 #ifdef __cplusplus
