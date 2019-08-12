@@ -8591,4 +8591,47 @@ dxf_surface_swept_get_transform_path_matrix
 }
 
 
+/*!
+ * \brief Set the transform path matrix \c transform_path_matrix of a
+ * DXF swept \c SURFACE entity.
+ *
+ * \return a pointer to \c swept_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_set_transform_path_matrix
+(
+        DxfSurfaceSwept *swept_surface,
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+        DxfDouble *transform_path_matrix
+                /*!< the transform path matrix \c transform_path_matrix
+                 * of a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (transform_path_matrix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->transform_path_matrix = (DxfDouble *) transform_path_matrix;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */
