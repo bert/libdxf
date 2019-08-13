@@ -8634,4 +8634,36 @@ dxf_surface_swept_set_transform_path_matrix
 }
 
 
+/*!
+ * \brief Get the draft angle \c draft_angle of a DXF swept
+ * \c SURFACE entity.
+ *
+ * \return the draft angle \c draft_angle.
+ */
+double
+dxf_surface_swept_get_draft_angle
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->draft_angle);
+}
+
+
 /* EOF */
