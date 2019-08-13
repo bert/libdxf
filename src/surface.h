@@ -762,6 +762,7 @@ DxfDouble *dxf_surface_swept_get_transform_path_matrix (DxfSurfaceSwept *swept_s
 DxfSurfaceSwept *dxf_surface_swept_set_transform_path_matrix (DxfSurfaceSwept *swept_surface, DxfDouble *transform_path_matrix);
 double dxf_surface_swept_get_draft_angle (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_draft_angle (DxfSurfaceSwept *swept_surface, double draft_angle);
+double dxf_surface_swept_get_start_draft_distance (DxfSurfaceSwept *swept_surface);
 
 
 #ifdef __cplusplus

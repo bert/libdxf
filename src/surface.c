@@ -8702,4 +8702,36 @@ dxf_surface_swept_set_draft_angle
 }
 
 
+/*!
+ * \brief Get the start draft distance \c start_draft_distance of a DXF
+ * swept \c SURFACE entity.
+ *
+ * \return the start draft distance \c start_draft_distance.
+ */
+double
+dxf_surface_swept_get_start_draft_distance
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->start_draft_distance);
+}
+
+
 /* EOF */
