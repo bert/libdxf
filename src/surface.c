@@ -8770,4 +8770,36 @@ dxf_surface_swept_set_start_draft_distance
 }
 
 
+/*!
+ * \brief Get the end draft distance \c end_draft_distance of a DXF
+ * swept \c SURFACE entity.
+ *
+ * \return the end draft distance \c end_draft_distance.
+ */
+double
+dxf_surface_swept_get_end_draft_distance
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->end_draft_distance);
+}
+
+
 /* EOF */
