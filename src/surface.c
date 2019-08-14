@@ -8838,4 +8838,36 @@ dxf_surface_swept_set_end_draft_distance
 }
 
 
+/*!
+ * \brief Get the twist angle \c twist_angle of a DXF swept \c SURFACE
+ * entity.
+ *
+ * \return the twist angle \c twist_angle.
+ */
+double
+dxf_surface_swept_get_twist_angle
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->twist_angle);
+}
+
+
 /* EOF */
