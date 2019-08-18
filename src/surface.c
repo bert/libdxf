@@ -8989,4 +8989,43 @@ dxf_surface_swept_set_transform_sweep_matrix2
 }
 
 
+/*!
+ * \brief Get the second transform path matrix \c transform_path_matrix2
+ * of a DXF swept \c SURFACE entity.
+ *
+ * \return the transform path matrix2 \c transform_path_matrix2.
+ */
+DxfDouble *
+dxf_surface_swept_get_transform_path_matrix2
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surface->transform_path_matrix2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDouble *) swept_surface->transform_path_matrix2);
+}
+
+
 /* EOF */
