@@ -9072,4 +9072,36 @@ dxf_surface_swept_set_transform_path_matrix2
 }
 
 
+/*!
+ * \brief Get the scale factor \c scale_factor of a DXF swept \c SURFACE
+ * entity.
+ *
+ * \return the twist angle \c scale_factor.
+ */
+double
+dxf_surface_swept_get_scale_factor
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->scale_factor);
+}
+
+
 /* EOF */
