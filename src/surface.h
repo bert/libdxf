@@ -771,6 +771,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_twist_angle (DxfSurfaceSwept *swept_surfa
 DxfDouble *dxf_surface_swept_get_transform_sweep_matrix2 (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_transform_sweep_matrix2 (DxfSurfaceSwept *swept_surface, DxfDouble *transform_sweep_matrix2);
 DxfDouble *dxf_surface_swept_get_transform_path_matrix2 (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_transform_path_matrix2 (DxfSurfaceSwept *swept_surface, DxfDouble *transform_path_matrix2);
 
 
 #ifdef __cplusplus
