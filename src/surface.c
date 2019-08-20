@@ -9172,4 +9172,40 @@ dxf_surface_swept_get_align_angle
 }
 
 
+/*!
+ * \brief Set the align angle \c align_angle of a DXF swept \c SURFACE
+ * entity.
+ *
+ * \return a pointer to \c swept_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_set_align_angle
+(
+        DxfSurfaceSwept *swept_surface,
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+        double align_angle
+                /*!< the align angle \c align_angle of a DXF swept
+                 * \c SURFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->align_angle = align_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */

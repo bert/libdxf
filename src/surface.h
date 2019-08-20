@@ -775,6 +775,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_transform_path_matrix2 (DxfSurfaceSwept *
 double dxf_surface_swept_get_scale_factor (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_scale_factor (DxfSurfaceSwept *swept_surface, double scale_factor);
 double dxf_surface_swept_get_align_angle (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_align_angle (DxfSurfaceSwept *swept_surface, double align_angle);
 
 
 #ifdef __cplusplus
