@@ -9076,7 +9076,7 @@ dxf_surface_swept_set_transform_path_matrix2
  * \brief Get the scale factor \c scale_factor of a DXF swept \c SURFACE
  * entity.
  *
- * \return the twist angle \c scale_factor.
+ * \return the scale factor \c scale_factor.
  */
 double
 dxf_surface_swept_get_scale_factor
