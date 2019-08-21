@@ -9427,4 +9427,34 @@ dxf_surface_swept_set_binary_data_size
 }
 
 
+/*!
+ * \brief Get the \c solid_flag from a DXF swept \c SURFACE entity.
+ *
+ * \return \c solid_flag.
+ */
+int
+dxf_surface_swept_get_solid_flag
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->solid_flag);
+}
+
+
 /* EOF */
