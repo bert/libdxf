@@ -780,6 +780,7 @@ int16_t dxf_surface_swept_get_sweep_alignment_option (DxfSurfaceSwept *swept_sur
 DxfSurfaceSwept *dxf_surface_swept_set_sweep_alignment_option (DxfSurfaceSwept *swept_surface, int16_t sweep_alignment_option);
 int32_t dxf_surface_swept_get_ID (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_ID (DxfSurfaceSwept *swept_surface, int32_t ID);
+int32_t dxf_surface_swept_get_binary_data_size (DxfSurfaceSwept *swept_surface);
 
 
 #ifdef __cplusplus
