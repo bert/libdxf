@@ -778,6 +778,8 @@ double dxf_surface_swept_get_align_angle (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_align_angle (DxfSurfaceSwept *swept_surface, double align_angle);
 int16_t dxf_surface_swept_get_sweep_alignment_option (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_sweep_alignment_option (DxfSurfaceSwept *swept_surface, int16_t sweep_alignment_option);
+int32_t dxf_surface_swept_get_ID (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_ID (DxfSurfaceSwept *swept_surface, int32_t ID);
 
 
 #ifdef __cplusplus
