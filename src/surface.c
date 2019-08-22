@@ -9457,4 +9457,38 @@ dxf_surface_swept_get_solid_flag
 }
 
 
+/*!
+ * \brief Set the \c solid_flag for a DXF swept \c SURFACE entity.
+ *
+ * \return a pointer to \c swept_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_set_solid_flag
+(
+        DxfSurfaceSwept *swept_surface,
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+        int solid_flag
+                /*!< the \c solid_flag to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->solid_flag = solid_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */
