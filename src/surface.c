@@ -9621,4 +9621,35 @@ dxf_surface_swept_set_bank_flag
 }
 
 
+/*!
+ * \brief Get the \c base_point_set_flag from a DXF swept \c SURFACE
+ * entity.
+ *
+ * \return \c base_point_set_flag.
+ */
+int
+dxf_surface_swept_get_base_point_set_flag
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->base_point_set_flag);
+}
+
+
 /* EOF */
