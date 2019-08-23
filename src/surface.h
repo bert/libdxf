@@ -786,6 +786,7 @@ int dxf_surface_swept_get_solid_flag (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_solid_flag (DxfSurfaceSwept *swept_surface, int solid_flag);
 int dxf_surface_swept_get_align_start_flag (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_align_start_flag (DxfSurfaceSwept *swept_surface, int align_start_flag);
+int dxf_surface_swept_get_bank_flag (DxfSurfaceSwept *swept_surface);
 
 
 #ifdef __cplusplus
