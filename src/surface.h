@@ -789,6 +789,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_align_start_flag (DxfSurfaceSwept *swept_
 int dxf_surface_swept_get_bank_flag (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_bank_flag (DxfSurfaceSwept *swept_surface, int bank_flag);
 int dxf_surface_swept_get_base_point_set_flag (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_base_point_set_flag (DxfSurfaceSwept *swept_surface, int base_point_set_flag);
 
 
 #ifdef __cplusplus
