@@ -9687,4 +9687,71 @@ dxf_surface_swept_set_base_point_set_flag
 }
 
 
+/*!
+ * \brief Get the \c sweep_transform_computed_flag from a DXF swept
+ * \c SURFACE entity.
+ *
+ * \return \c sweep_transform_computed_flag.
+ */
+int
+dxf_surface_swept_get_sweep_transform_computed_flag
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->sweep_transform_computed_flag);
+}
+
+
+/*!
+ * \brief Set the \c sweep_transform_computed_flag for a DXF swept
+ * \c SURFACE entity.
+ *
+ * \return a pointer to \c swept_surface when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_set_sweep_transform_computed_flag
+(
+        DxfSurfaceSwept *swept_surface,
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+        int sweep_transform_computed_flag
+                /*!< the \c sweep_transform_computed_flag to be set for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->sweep_transform_computed_flag = sweep_transform_computed_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */
