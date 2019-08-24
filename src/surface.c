@@ -9834,4 +9834,44 @@ dxf_surface_swept_set_binary_data
 }
 
 
+/*!
+ * \brief Get the pointer to the next DXF sept \c SURFACE entity
+ * from a DXF swept \c SURFACE entity.
+ *
+ * \return pointer to the next DXF swept \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_get_next
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurfaceSwept *) swept_surface->next);
+}
+
+
 /* EOF */
