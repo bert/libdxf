@@ -9794,4 +9794,44 @@ dxf_surface_swept_get_binary_data
 }
 
 
+/*!
+ * \brief Set the pointer to the \c binary_data for a DXF swept
+ * \c SURFACE entity.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_set_binary_data
+(
+        DxfSurfaceSwept *swept_surface,
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+        DxfBinaryData *data
+                /*!< a string containing the pointer to the
+                 * \c binary_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->binary_data = (DxfBinaryData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
 /* EOF */
