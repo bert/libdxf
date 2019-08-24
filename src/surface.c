@@ -9754,4 +9754,44 @@ dxf_surface_swept_set_sweep_transform_computed_flag
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_data from a DXF swept
+ * \c SURFACE entity.
+ *
+ * \return pointer to the \c binary_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryData *
+dxf_surface_swept_get_binary_data
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surface->binary_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryData *) swept_surface->binary_data);
+}
+
+
 /* EOF */
