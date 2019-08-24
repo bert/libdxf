@@ -795,6 +795,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_sweep_transform_computed_flag (DxfSurface
 DxfBinaryData *dxf_surface_swept_get_binary_data (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_binary_data (DxfSurfaceSwept *swept_surface, DxfBinaryData *data);
 DxfSurfaceSwept *dxf_surface_swept_get_next (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_get_last (DxfSurfaceSwept *swept_surface);
 
 
 #ifdef __cplusplus

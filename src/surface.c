@@ -9874,4 +9874,49 @@ dxf_surface_swept_get_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last DXF swept \c SURFACE entity
+ * from a linked list of DXF swept \c SURFACE entities.
+ *
+ * \return pointer to the last DXF swept \c SURFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_get_last
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surface->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfSurfaceSwept *) swept_surface);
+        }
+        DxfSurfaceSwept *iter = (DxfSurfaceSwept *) swept_surface->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfSurfaceSwept *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfSurfaceSwept *) iter);
+}
+
+
 /* EOF */
