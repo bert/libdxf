@@ -229,7 +229,7 @@ dxf_surface_struct
                  * <li value = 3>REVOLVED</li>
                  * <li value = 4>SWEPT</li>
                  * </ol>
-                 * */
+                 */
         struct DxfSurface *next;
                 /*!< pointer to the next DxfSurface.\n
                  * \c NULL in the last DxfSurface. */
