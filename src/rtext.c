@@ -539,7 +539,8 @@ dxf_rtext_write
                 fprintf (stderr,
                   (_("Warning in %s () text style string is empty for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, rtext->id_code);
-                rtext->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);        }
+                rtext->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+        }
         if (strcmp (rtext->layer, "") == 0)
         {
                 fprintf (stderr,
