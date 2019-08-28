@@ -537,6 +537,7 @@ dxf_surface_swept_struct
 
 DxfSurface *dxf_surface_new ();
 DxfSurface *dxf_surface_init (DxfSurface *surface);
+int dxf_surface_write (DxfFile *fp, DxfSurface *surface);
 int dxf_surface_free (DxfSurface *surface);
 void dxf_surface_free_list (DxfSurface *surfaces);
 int dxf_surface_get_id_code (DxfSurface *surface);
