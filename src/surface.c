@@ -329,6 +329,26 @@ dxf_surface_write
         {
                 fprintf (fp->fp, " 70\n%hd\n", surface->modeler_format_version_number);
         }
+        if (surface->proprietary_data != NULL)
+        {
+                DxfProprietaryData *iter1a;
+                iter1a = (DxfProprietaryData *) surface->proprietary_data;
+                while (iter1a != NULL)
+                {
+                        fprintf (fp->fp, "  1\n%s\n", iter1a->line);
+                        iter1a = (DxfProprietaryData *) iter1a->next;
+                }
+        }
+        if (surface->additional_proprietary_data != NULL)
+        {
+                DxfProprietaryData *iter3a;
+                iter3a = (DxfProprietaryData *) surface->additional_proprietary_data;
+                while (iter3a != NULL)
+                {
+                        fprintf (fp->fp, "  3\n%s\n", iter3a->line);
+                        iter3a = (DxfProprietaryData *) iter3a->next;
+                }
+        }
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
