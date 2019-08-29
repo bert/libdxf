@@ -325,6 +325,10 @@ dxf_surface_write
         {
                 fprintf (fp->fp, " 39\n%f\n", surface->thickness);
         }
+        if (surface->modeler_format_version_number != 0)
+        {
+                fprintf (fp->fp, " 70\n%hd\n", surface->modeler_format_version_number);
+        }
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
