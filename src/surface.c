@@ -349,6 +349,15 @@ dxf_surface_write
                         iter3a = (DxfProprietaryData *) iter3a->next;
                 }
         }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSurface\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, " 71\n%hd\n", surface->number_of_U_isolines);
+                fprintf (fp->fp, " 72\n%hd\n", surface->number_of_V_isolines);
+        }
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
