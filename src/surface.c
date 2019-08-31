@@ -2809,6 +2809,64 @@ dxf_surface_extruded_init
 
 
 /*!
+ * \brief Write DXF output to \c fp for a extruded DXF \c SURFACE entity.
+ */
+int
+dxf_surface_extruded_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to the extruded DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbExtrudedSurface\n");
+        }
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", extruded_surface->class_ID);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", extruded_surface->binary_data_size);
+        if (extruded_surface->binary_data != NULL)
+        {
+                DxfBinaryData *iter;
+                iter = (DxfBinaryData *) extruded_surface->binary_data;
+                while (iter != NULL)
+                {
+                        fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                        iter = (DxfBinaryData *) iter->next;
+                }
+        }
+        fprintf (fp->fp, " 10\n%f\n", extruded_surface->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", extruded_surface->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", extruded_surface->p0->z0);
+
+
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF extruded \c SURFACE entity
  * and all it's data fields.
  *
