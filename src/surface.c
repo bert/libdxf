@@ -5260,6 +5260,61 @@ dxf_surface_lofted_init
 
 
 /*!
+ * \brief Write DXF output to \c fp for a lofted DXF \c SURFACE entity.
+ */
+int
+dxf_surface_lofted_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to the lofted DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbLoftedSurface\n");
+        }
+        if (lofted_surface->transform_matrix != NULL)
+        {
+                DxfDouble *iter40;
+                iter40 = (DxfDouble *) lofted_surface->transform_matrix;
+                while (iter40 != NULL)
+                {
+                        fprintf (fp->fp, " 40\n%f\n", iter40->value);
+                        iter40 = (DxfDouble *) iter40->next;
+                }
+        }
+        /*! \todo add Entity data for cross sections. */
+        /*! \todo add Entity data for guide curves. */
+        /*! \todo add Entity data for path curves. */
+
+
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+/*!
  * \brief Free the allocated memory for a DXF lofted \c SURFACE entity
  * and all it's data fields.
  *
