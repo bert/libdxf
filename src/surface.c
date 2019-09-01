@@ -2846,19 +2846,63 @@ dxf_surface_extruded_write
         fprintf (fp->fp, " 90\n%" PRIi32 "\n", extruded_surface->binary_data_size);
         if (extruded_surface->binary_data != NULL)
         {
-                DxfBinaryData *iter;
-                iter = (DxfBinaryData *) extruded_surface->binary_data;
-                while (iter != NULL)
+                DxfBinaryData *iter310;
+                iter310 = (DxfBinaryData *) extruded_surface->binary_data;
+                while (iter310 != NULL)
                 {
-                        fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                        iter = (DxfBinaryData *) iter->next;
+                        fprintf (fp->fp, "310\n%s\n", iter310->data_line);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
         }
         fprintf (fp->fp, " 10\n%f\n", extruded_surface->p0->x0);
         fprintf (fp->fp, " 20\n%f\n", extruded_surface->p0->y0);
         fprintf (fp->fp, " 30\n%f\n", extruded_surface->p0->z0);
-
-
+        if (extruded_surface->transform_matrix != NULL)
+        {
+                DxfDouble *iter40;
+                iter40 = (DxfDouble *) extruded_surface->transform_matrix;
+                while (iter40 != NULL)
+                {
+                        fprintf (fp->fp, " 40\n%f\n", iter40->value);
+                        iter40 = (DxfDouble *) iter40->next;
+                }
+        }
+        fprintf (fp->fp, " 42\n%f\n", extruded_surface->draft_angle);
+        fprintf (fp->fp, " 43\n%f\n", extruded_surface->draft_start_distance);
+        fprintf (fp->fp, " 44\n%f\n", extruded_surface->draft_end_distance);
+        fprintf (fp->fp, " 45\n%f\n", extruded_surface->twist_angle);
+        fprintf (fp->fp, " 48\n%f\n", extruded_surface->scale_factor);
+        fprintf (fp->fp, " 49\n%f\n", extruded_surface->align_angle);
+        if (extruded_surface->sweep_matrix != NULL)
+        {
+                DxfDouble *iter46;
+                iter46 = (DxfDouble *) extruded_surface->sweep_matrix;
+                while (iter46 != NULL)
+                {
+                        fprintf (fp->fp, " 46\n%f\n", iter46->value);
+                        iter46 = (DxfDouble *) iter46->next;
+                }
+        }
+        if (extruded_surface->path_matrix != NULL)
+        {
+                DxfDouble *iter47;
+                iter47 = (DxfDouble *) extruded_surface->path_matrix;
+                while (iter47 != NULL)
+                {
+                        fprintf (fp->fp, " 47\n%f\n", iter47->value);
+                        iter47 = (DxfDouble *) iter47->next;
+                }
+        }
+        fprintf (fp->fp, "290\n%d\n", extruded_surface->solid_flag);
+        fprintf (fp->fp, " 70\n%hd\n", extruded_surface->sweep_alignment_option);
+        fprintf (fp->fp, "292\n%d\n", extruded_surface->align_start_flag);
+        fprintf (fp->fp, "293\n%d\n", extruded_surface->bank_flag);
+        fprintf (fp->fp, "294\n%d\n", extruded_surface->base_point_set_flag);
+        fprintf (fp->fp, "295\n%d\n", extruded_surface->sweep_transform_computed_flag);
+        fprintf (fp->fp, "296\n%d\n", extruded_surface->path_transform_computed_flag);
+        fprintf (fp->fp, " 11\n%f\n", extruded_surface->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", extruded_surface->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", extruded_surface->p1->z0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
