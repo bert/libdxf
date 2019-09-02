@@ -5306,8 +5306,19 @@ dxf_surface_lofted_write
         /*! \todo add Entity data for cross sections. */
         /*! \todo add Entity data for guide curves. */
         /*! \todo add Entity data for path curves. */
-
-
+        fprintf (fp->fp, " 70\n%hd\n", lofted_surface->plane_normal_lofting_type);
+        fprintf (fp->fp, " 41\n%f\n", lofted_surface->start_draft_angle);
+        fprintf (fp->fp, " 42\n%f\n", lofted_surface->end_draft_angle);
+        fprintf (fp->fp, " 43\n%f\n", lofted_surface->start_draft_magnitude);
+        fprintf (fp->fp, " 44\n%f\n", lofted_surface->end_draft_magnitude);
+        fprintf (fp->fp, "290\n%d\n", lofted_surface->arc_length_parameterization_flag);
+        fprintf (fp->fp, "291\n%d\n", lofted_surface->no_twist_flag);
+        fprintf (fp->fp, "292\n%d\n", lofted_surface->align_direction_flag);
+        fprintf (fp->fp, "293\n%d\n", lofted_surface->create_simple_surfaces_flag);
+        fprintf (fp->fp, "294\n%d\n", lofted_surface->create_closed_surface_flag);
+        fprintf (fp->fp, "295\n%d\n", lofted_surface->solid_flag);
+        fprintf (fp->fp, "296\n%d\n", lofted_surface->create_ruled_surface_flag);
+        fprintf (fp->fp, "297\n%d\n", lofted_surface->virtual_guide_flag);
 #if DEBUG
         DXF_DEBUG_END
 #endif
