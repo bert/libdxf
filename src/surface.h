@@ -700,6 +700,7 @@ DxfSurfaceLofted *dxf_surface_lofted_get_last (DxfSurfaceLofted *lofted_surface)
 /* Revolved surface functions. */
 DxfSurfaceRevolved *dxf_surface_revolved_new ();
 DxfSurfaceRevolved *dxf_surface_revolved_init (DxfSurfaceRevolved *revolved_surface);
+int dxf_surface_revolved_write (DxfFile *fp, DxfSurfaceRevolved *revolved_surface);
 int dxf_surface_revolved_free (DxfSurfaceRevolved *revolved_surface);
 void dxf_surface_revolved_free_list (DxfSurfaceRevolved *revolved_surfaces);
 DxfPoint *dxf_surface_revolved_get_p0 (DxfSurfaceRevolved *revolved_surfaces);
