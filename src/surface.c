@@ -8478,6 +8478,14 @@ dxf_surface_swept_init
                   __FUNCTION__);
                 return (NULL);
         }
+        swept_surface->path_binary_data = (DxfBinaryData *) dxf_binary_data_init (swept_surface->path_binary_data);
+        if (swept_surface->path_binary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         /* Assign initial values to members. */
         swept_surface->draft_angle = 0.0;
         swept_surface->start_draft_distance = 0.0;
@@ -8488,6 +8496,8 @@ dxf_surface_swept_init
         swept_surface->sweep_alignment_option = 0;
         swept_surface->ID = 0;
         swept_surface->binary_data_size = 0;
+        swept_surface->path_ID = 0;
+        swept_surface->path_binary_data_size = 0;
         swept_surface->solid_flag = 0;
         swept_surface->align_start_flag = 0;
         swept_surface->bank_flag = 0;
