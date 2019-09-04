@@ -8546,6 +8546,18 @@ dxf_surface_swept_write
         {
                 fprintf (fp->fp, "100\nAcDbSweptSurface\n");
         }
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->ID);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->binary_data_size);
+        if (swept_surface->binary_data != NULL)
+        {
+                DxfBinaryData *iter310;
+                iter310 = (DxfBinaryData *) swept_surface->binary_data;
+                while (iter310 != NULL)
+                {
+                        fprintf (fp->fp, "310\n%s\n", iter310->data_line);
+                        iter310 = (DxfBinaryData *) iter310->next;
+                }
+        }
 
 
 #if DEBUG
