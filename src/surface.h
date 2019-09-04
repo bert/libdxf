@@ -506,6 +506,12 @@ dxf_surface_swept_struct
         int32_t binary_data_size;
                 /*!< Size of binary data.\n
                  * Group code = 90. */
+        int32_t path_ID;
+                /*!< ID of path entity.\n
+                 * Group code = 90. */
+        int32_t path_binary_data_size;
+                /*!< Size of binary data for path entity.\n
+                 * Group code = 90. */
         int solid_flag;
                 /*!< Solid flag.\n
                  * Group code = 290. */
@@ -526,6 +532,11 @@ dxf_surface_swept_struct
                  * Group code = 296. */
         DxfBinaryData *binary_data;
                 /*!< Binary data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310. */
+        DxfBinaryData *path_binary_data;
+                /*!< Binary data for path entity.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
                  * Group code = 310. */
