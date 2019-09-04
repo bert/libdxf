@@ -6628,6 +6628,46 @@ dxf_surface_revolved_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbRevolvedSurface\n");
+        }
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", revolved_surface->ID);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", revolved_surface->binary_data_size);
+        if (revolved_surface->binary_data != NULL)
+        {
+                DxfBinaryData *iter310;
+                iter310 = (DxfBinaryData *) revolved_surface->binary_data;
+                while (iter310 != NULL)
+                {
+                        fprintf (fp->fp, "310\n%s\n", iter310->data_line);
+                        iter310 = (DxfBinaryData *) iter310->next;
+                }
+        }
+        fprintf (fp->fp, " 10\n%f\n", revolved_surface->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", revolved_surface->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", revolved_surface->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", revolved_surface->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", revolved_surface->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", revolved_surface->p1->z0);
+        fprintf (fp->fp, " 40\n%f\n", revolved_surface->revolve_angle);
+        fprintf (fp->fp, " 41\n%f\n", revolved_surface->start_angle);
+        if (revolved_surface->transform_matrix != NULL)
+        {
+                DxfDouble *iter42;
+                iter42 = (DxfDouble *) revolved_surface->transform_matrix;
+                while (iter42 != NULL)
+                {
+                        fprintf (fp->fp, " 40\n%f\n", iter42->value);
+                        iter42 = (DxfDouble *) iter42->next;
+                }
+        }
+        fprintf (fp->fp, " 43\n%f\n", revolved_surface->draft_angle);
+        fprintf (fp->fp, " 44\n%f\n", revolved_surface->start_draft_distance);
+        fprintf (fp->fp, " 45\n%f\n", revolved_surface->end_draft_distance);
+        fprintf (fp->fp, " 46\n%f\n", revolved_surface->twist_angle);
+        fprintf (fp->fp, "290\n%d\n", revolved_surface->solid_flag);
+        fprintf (fp->fp, "291\n%d\n", revolved_surface->close_to_axis_flag);
 #if DEBUG
         DXF_DEBUG_END
 #endif
