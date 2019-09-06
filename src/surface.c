@@ -9998,6 +9998,37 @@ dxf_surface_swept_set_path_ID
 
 
 /*!
+ * \brief Get the \c path_binary_data_size from a DXF swept \c SURFACE
+ * entity.
+ *
+ * \return \c path_binary_data_size.
+ */
+int32_t
+dxf_surface_swept_get_path_binary_data_size
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface->path_binary_data_size);
+}
+
+
+/*!
  * \brief Get the \c solid_flag from a DXF swept \c SURFACE entity.
  *
  * \return \c solid_flag.
