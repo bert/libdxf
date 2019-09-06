@@ -10471,6 +10471,46 @@ dxf_surface_swept_set_binary_data
 
 
 /*!
+ * \brief Get the pointer to the \c path_binary_data from a DXF swept
+ * \c SURFACE entity.
+ *
+ * \return pointer to the \c path_binary_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryData *
+dxf_surface_swept_get_path_binary_data
+(
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (swept_surface->path_binary_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryData *) swept_surface->path_binary_data);
+}
+
+
+/*!
  * \brief Get the pointer to the next DXF sept \c SURFACE entity
  * from a DXF swept \c SURFACE entity.
  *
