@@ -801,6 +801,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_binary_data_size (DxfSurfaceSwept *swept_
 int32_t dxf_surface_swept_get_path_ID (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_path_ID (DxfSurfaceSwept *swept_surface, int32_t path_ID);
 int32_t dxf_surface_swept_get_path_binary_data_size (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_path_binary_data_size (DxfSurfaceSwept *swept_surface, int32_t path_binary_data_size);
 int dxf_surface_swept_get_solid_flag (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_solid_flag (DxfSurfaceSwept *swept_surface, int solid_flag);
 int dxf_surface_swept_get_align_start_flag (DxfSurfaceSwept *swept_surface);
