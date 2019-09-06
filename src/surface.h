@@ -817,6 +817,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_binary_data (DxfSurfaceSwept *swept_surfa
 DxfBinaryData *dxf_surface_swept_get_path_binary_data (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_path_binary_data (DxfSurfaceSwept *swept_surface, DxfBinaryData *path_binary_data);
 DxfSurfaceSwept *dxf_surface_swept_get_next (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_next (DxfSurfaceSwept *swept_surface, DxfSurfaceSwept *next);
 DxfSurfaceSwept *dxf_surface_swept_get_last (DxfSurfaceSwept *swept_surface);
 
 

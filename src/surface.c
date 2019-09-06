@@ -10591,6 +10591,46 @@ dxf_surface_swept_get_next
 
 
 /*!
+ * \brief Set the pointer to the next DXF swept \c SURFACE for a DXF
+ * swept \c SURFACE entity.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_set_next
+(
+        DxfSurfaceSwept *swept_surface,
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+        DxfSurfaceSwept *next
+                /*!< a pointer to the next DXF swept \c SURFACE for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        swept_surface->next = (struct DxfSurfaceSwept *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
+/*!
  * \brief Get the pointer to the last DXF swept \c SURFACE entity
  * from a linked list of DXF swept \c SURFACE entities.
  *
