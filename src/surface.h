@@ -500,7 +500,7 @@ dxf_surface_swept_struct
                  *   <li value = 3> Translate path to sweep entity.</li>
                  * </ol>
                  * Group code = 70. */
-        int32_t ID;
+        int32_t sweep_ID;
                 /*!< ID of sweep entity.\n
                  * Group code = 90. */
         int32_t binary_data_size;
@@ -794,8 +794,8 @@ double dxf_surface_swept_get_align_angle (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_align_angle (DxfSurfaceSwept *swept_surface, double align_angle);
 int16_t dxf_surface_swept_get_sweep_alignment_option (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_sweep_alignment_option (DxfSurfaceSwept *swept_surface, int16_t sweep_alignment_option);
-int32_t dxf_surface_swept_get_ID (DxfSurfaceSwept *swept_surface);
-DxfSurfaceSwept *dxf_surface_swept_set_ID (DxfSurfaceSwept *swept_surface, int32_t ID);
+int32_t dxf_surface_swept_get_sweep_ID (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_set_sweep_ID (DxfSurfaceSwept *swept_surface, int32_t ID);
 int32_t dxf_surface_swept_get_binary_data_size (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_binary_data_size (DxfSurfaceSwept *swept_surface, int32_t binary_data_size);
 int32_t dxf_surface_swept_get_path_ID (DxfSurfaceSwept *swept_surface);

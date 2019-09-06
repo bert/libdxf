@@ -8494,7 +8494,7 @@ dxf_surface_swept_init
         swept_surface->scale_factor = 1.0;
         swept_surface->align_angle = 0.0;
         swept_surface->sweep_alignment_option = 0;
-        swept_surface->ID = 0;
+        swept_surface->sweep_ID = 0;
         swept_surface->binary_data_size = 0;
         swept_surface->path_ID = 0;
         swept_surface->path_binary_data_size = 0;
@@ -8546,7 +8546,7 @@ dxf_surface_swept_write
         {
                 fprintf (fp->fp, "100\nAcDbSweptSurface\n");
         }
-        fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->ID);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->sweep_ID);
         fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->binary_data_size);
         if (swept_surface->binary_data != NULL)
         {
@@ -9806,12 +9806,12 @@ dxf_surface_swept_set_sweep_alignment_option
 
 
 /*!
- * \brief Get the \c ID from a DXF swept \c SURFACE entity.
+ * \brief Get the \c sweep_ID from a DXF swept \c SURFACE entity.
  *
- * \return \c ID.
+ * \return \c sweep_ID.
  */
 int32_t
-dxf_surface_swept_get_ID
+dxf_surface_swept_get_sweep_ID
 (
         DxfSurfaceSwept *swept_surface
                 /*!< a pointer to a DXF swept \c SURFACE entity. */
@@ -9831,23 +9831,23 @@ dxf_surface_swept_get_ID
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (swept_surface->ID);
+        return (swept_surface->sweep_ID);
 }
 
 
 /*!
- * \brief Set the \c ID for a DXF swept \c SURFACE entity.
+ * \brief Set the \c sweep_ID for a DXF swept \c SURFACE entity.
  *
  * \return a pointer to \c swept_surface when successful, or \c NULL
  * when an error occurred.
  */
 DxfSurfaceSwept *
-dxf_surface_swept_set_ID
+dxf_surface_swept_set_sweep_ID
 (
         DxfSurfaceSwept *swept_surface,
                 /*!< a pointer to a DXF swept \c SURFACE entity. */
-        int32_t ID
-                /*!< the \c ID to be set for the entity. */
+        int32_t sweep_ID
+                /*!< the \c sweep_ID to be set for the entity. */
 )
 {
 #if DEBUG
@@ -9861,7 +9861,7 @@ dxf_surface_swept_set_ID
                   __FUNCTION__);
                 return (NULL);
         }
-        swept_surface->ID = ID;
+        swept_surface->sweep_ID = sweep_ID;
 #if DEBUG
         DXF_DEBUG_END
 #endif
