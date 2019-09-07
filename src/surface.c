@@ -8470,8 +8470,8 @@ dxf_surface_swept_init
                   __FUNCTION__);
                 return (NULL);
         }
-        swept_surface->binary_data = (DxfBinaryData *) dxf_binary_data_init (swept_surface->binary_data);
-        if (swept_surface->binary_data == NULL)
+        swept_surface->sweep_binary_data = (DxfBinaryData *) dxf_binary_data_init (swept_surface->sweep_binary_data);
+        if (swept_surface->sweep_binary_data == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),
@@ -8548,10 +8548,10 @@ dxf_surface_swept_write
         }
         fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->sweep_ID);
         fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->sweep_binary_data_size);
-        if (swept_surface->binary_data != NULL)
+        if (swept_surface->sweep_binary_data != NULL)
         {
                 DxfBinaryData *iter310;
-                iter310 = (DxfBinaryData *) swept_surface->binary_data;
+                iter310 = (DxfBinaryData *) swept_surface->sweep_binary_data;
                 while (iter310 != NULL)
                 {
                         fprintf (fp->fp, "310\n%s\n", iter310->data_line);
@@ -8605,7 +8605,7 @@ dxf_surface_swept_free
         dxf_double_free_list (swept_surface->transform_path_matrix);
         dxf_double_free_list (swept_surface->transform_sweep_matrix2);
         dxf_double_free_list (swept_surface->transform_path_matrix2);
-        dxf_binary_data_free_list (swept_surface->binary_data);
+        dxf_binary_data_free_list (swept_surface->sweep_binary_data);
         free (swept_surface);
         swept_surface = NULL;
 #if DEBUG
@@ -10393,15 +10393,15 @@ dxf_surface_swept_set_sweep_transform_computed_flag
 
 
 /*!
- * \brief Get the pointer to the \c binary_data from a DXF swept
+ * \brief Get the pointer to the \c sweep_binary_data from a DXF swept
  * \c SURFACE entity.
  *
- * \return pointer to the \c binary_data.
+ * \return pointer to the \c sweep_binary_data.
  *
  * \warning No checks are performed on the returned pointer.
  */
 DxfBinaryData *
-dxf_surface_swept_get_binary_data
+dxf_surface_swept_get_sweep_binary_data
 (
         DxfSurfaceSwept *swept_surface
                 /*!< a pointer to a DXF swept \c SURFACE entity. */
@@ -10418,7 +10418,7 @@ dxf_surface_swept_get_binary_data
                   __FUNCTION__);
                 return (NULL);
         }
-        if (swept_surface->binary_data ==  NULL)
+        if (swept_surface->sweep_binary_data ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -10428,22 +10428,22 @@ dxf_surface_swept_get_binary_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryData *) swept_surface->binary_data);
+        return ((DxfBinaryData *) swept_surface->sweep_binary_data);
 }
 
 
 /*!
- * \brief Set the pointer to the \c binary_data for a DXF swept
+ * \brief Set the pointer to the \c sweep_binary_data for a DXF swept
  * \c SURFACE entity.
  */
 DxfSurfaceSwept *
-dxf_surface_swept_set_binary_data
+dxf_surface_swept_set_sweep_binary_data
 (
         DxfSurfaceSwept *swept_surface,
                 /*!< a pointer to a DXF swept \c SURFACE entity. */
-        DxfBinaryData *data
+        DxfBinaryData *sweep_binary_data
                 /*!< a string containing the pointer to the
-                 * \c binary_data for the entity. */
+                 * \c sweep_binary_data for the entity. */
 )
 {
 #if DEBUG
@@ -10457,14 +10457,14 @@ dxf_surface_swept_set_binary_data
                   __FUNCTION__);
                 return (NULL);
         }
-        if (data == NULL)
+        if (sweep_binary_data == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        swept_surface->binary_data = (DxfBinaryData *) data;
+        swept_surface->sweep_binary_data = (DxfBinaryData *) sweep_binary_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
