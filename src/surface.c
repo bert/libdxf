@@ -8495,7 +8495,7 @@ dxf_surface_swept_init
         swept_surface->align_angle = 0.0;
         swept_surface->sweep_alignment_option = 0;
         swept_surface->sweep_ID = 0;
-        swept_surface->binary_data_size = 0;
+        swept_surface->sweep_binary_data_size = 0;
         swept_surface->path_ID = 0;
         swept_surface->path_binary_data_size = 0;
         swept_surface->solid_flag = 0;
@@ -8547,7 +8547,7 @@ dxf_surface_swept_write
                 fprintf (fp->fp, "100\nAcDbSweptSurface\n");
         }
         fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->sweep_ID);
-        fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->binary_data_size);
+        fprintf (fp->fp, " 90\n%" PRIi32 "\n", swept_surface->sweep_binary_data_size);
         if (swept_surface->binary_data != NULL)
         {
                 DxfBinaryData *iter310;
@@ -9870,12 +9870,13 @@ dxf_surface_swept_set_sweep_ID
 
 
 /*!
- * \brief Get the \c binary_data_size from a DXF swept \c SURFACE entity.
+ * \brief Get the \c sweep_binary_data_size from a DXF swept \c SURFACE
+ * entity.
  *
- * \return \c binary_data_size.
+ * \return \c sweep_binary_data_size.
  */
 int32_t
-dxf_surface_swept_get_binary_data_size
+dxf_surface_swept_get_sweep_binary_data_size
 (
         DxfSurfaceSwept *swept_surface
                 /*!< a pointer to a DXF swept \c SURFACE entity. */
@@ -9895,23 +9896,24 @@ dxf_surface_swept_get_binary_data_size
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (swept_surface->binary_data_size);
+        return (swept_surface->sweep_binary_data_size);
 }
 
 
 /*!
- * \brief Set the \c binary_data_size for a DXF swept \c SURFACE entity.
+ * \brief Set the \c sweep_binary_data_size for a DXF swept \c SURFACE
+ * entity.
  *
  * \return a pointer to \c swept_surface when successful, or \c NULL
  * when an error occurred.
  */
 DxfSurfaceSwept *
-dxf_surface_swept_set_binary_data_size
+dxf_surface_swept_set_sweep_binary_data_size
 (
         DxfSurfaceSwept *swept_surface,
                 /*!< a pointer to a DXF swept \c SURFACE entity. */
-        int32_t binary_data_size
-                /*!< the \c binary_data_size to be set for the entity. */
+        int32_t sweep_binary_data_size
+                /*!< the \c sweep_binary_data_size to be set for the entity. */
 )
 {
 #if DEBUG
@@ -9925,7 +9927,7 @@ dxf_surface_swept_set_binary_data_size
                   __FUNCTION__);
                 return (NULL);
         }
-        swept_surface->binary_data_size = binary_data_size;
+        swept_surface->sweep_binary_data_size = sweep_binary_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
