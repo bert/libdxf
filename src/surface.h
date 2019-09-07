@@ -230,6 +230,10 @@ dxf_surface_struct
                  * <li value = 4>SWEPT</li>
                  * </ol>
                  */
+        struct DxfSurfaceExtruded *extruded_surface;
+        struct DxfSurfaceLofted *lofted_surface;
+        struct DxfSurfaceRevolved * revolved_surface;
+        struct DxfSurfaceSwept *swept_surface;
         struct DxfSurface *next;
                 /*!< pointer to the next DxfSurface.\n
                  * \c NULL in the last DxfSurface. */
