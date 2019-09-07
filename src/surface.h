@@ -795,7 +795,7 @@ DxfSurfaceSwept *dxf_surface_swept_set_align_angle (DxfSurfaceSwept *swept_surfa
 int16_t dxf_surface_swept_get_sweep_alignment_option (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_sweep_alignment_option (DxfSurfaceSwept *swept_surface, int16_t sweep_alignment_option);
 int32_t dxf_surface_swept_get_sweep_ID (DxfSurfaceSwept *swept_surface);
-DxfSurfaceSwept *dxf_surface_swept_set_sweep_ID (DxfSurfaceSwept *swept_surface, int32_t ID);
+DxfSurfaceSwept *dxf_surface_swept_set_sweep_ID (DxfSurfaceSwept *swept_surface, int32_t sweep_ID);
 int32_t dxf_surface_swept_get_sweep_binary_data_size (DxfSurfaceSwept *swept_surface);
 DxfSurfaceSwept *dxf_surface_swept_set_sweep_binary_data_size (DxfSurfaceSwept *swept_surface, int32_t sweep_binary_data_size);
 int32_t dxf_surface_swept_get_path_ID (DxfSurfaceSwept *swept_surface);
