@@ -358,6 +358,34 @@ dxf_surface_write
                 fprintf (fp->fp, " 71\n%hd\n", surface->number_of_U_isolines);
                 fprintf (fp->fp, " 72\n%hd\n", surface->number_of_V_isolines);
         }
+        if (surface->type == EXTRUDED)
+        {
+                dxf_surface_extruded_write (fp, (DxfSurfaceExtruded *) surface->extruded_surface);
+        }
+        else if (surface->type == LOFTED)
+        {
+                dxf_surface_lofted_write (fp, (DxfSurfaceLofted *) surface->lofted_surface);
+        }
+        else if (surface->type == REVOLVED)
+        {
+                dxf_surface_revolved_write (fp, (DxfSurfaceRevolved *) surface->revolved_surface);
+        }
+        else if (surface->type == SWEPT)
+        {
+                dxf_surface_swept_write (fp, (DxfSurfaceSwept *) surface->swept_surface);
+        }
+        else if (surface->type == NO_TYPE)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NO_TYPE value was passed.\n")),
+                  __FUNCTION__);
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an unknown type value was passed.\n")),
+                  __FUNCTION__);
+        }
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
