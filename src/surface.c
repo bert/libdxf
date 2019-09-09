@@ -172,6 +172,321 @@ dxf_surface_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c SURFACE entity.
+ *
+ * The last line read from file contained the string "SURFACE". \n
+ * Now follows some data for the \c SURFACE, to be terminated with a
+ * "  0" string announcing the following entity, or the end of the
+ * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c solid. \n
+ *
+ * \return \c a pointer to \c surface.
+ */
+DxfSurface *
+dxf_surface_read
+(
+        DxfFile *fp,
+                /*!< a DXF file pointer to an input file (or device). */
+        DxfSurface *surface
+                /*!< a pointer to a DXF \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        DxfBinaryGraphicsData *iter310 = NULL;
+        int iter330;
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                surface = dxf_surface_init (surface);
+        }
+        iter310 = (DxfBinaryGraphicsData *) surface->binary_graphics_data;
+        iter330 = 0;
+        i = 1;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                else if (strcmp (temp_string, "  1") == 0)
+                {
+                        /* Now follows a string containing proprietary
+                         * data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->proprietary_data->line);
+                        surface->proprietary_data->order = i;
+                        i++;
+                        dxf_proprietary_data_init ((DxfProprietaryData *) surface->proprietary_data->next);
+                        surface->proprietary_data = (DxfProprietaryData *) surface->proprietary_data->next;
+                }
+                else if (strcmp (temp_string, "  3") == 0)
+                {
+                        /* Now follows a string containing additional
+                         * proprietary data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->additional_proprietary_data->line);
+                        surface->additional_proprietary_data->order = i;
+                        i++;
+                        dxf_proprietary_data_init ((DxfProprietaryData *) surface->additional_proprietary_data->next);
+                        surface->additional_proprietary_data = (DxfProprietaryData *) surface->additional_proprietary_data->next;
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &surface->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->layer);
+                }
+                else if (strcmp (temp_string, "38") == 0)
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &surface->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &surface->thickness);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &surface->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->visibility);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->paperspace);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the modeler
+                         * format version number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->modeler_format_version_number);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the modeler
+                         * format version number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->number_of_U_isolines);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the modeler
+                         * format version number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->number_of_V_isolines);
+                }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%" PRIi32 "\n", &surface->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "100") == 0)
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
+                        if ((strcmp (temp_string, "AcDbModelerGeometry") != 0)
+                          || (strcmp (temp_string, "AcDbSurface") != 0))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * graphics data size value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%" PRIi32 "\n", &surface->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->shadow_mode);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
+                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->dictionary_owner_soft);
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->object_owner_soft);
+                        }
+                        iter330++;
+                }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->material);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &surface->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%" PRIi32 "\n", &surface->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, surface->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%" PRIi32 "\n", &surface->transparency);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
+                        fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (surface->linetype, "") == 0)
+        {
+                surface->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (surface->layer, "") == 0)
+        {
+                surface->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (surface);
+}
+
+
+/*!
  * \brief Write DXF output to \c fp for a DXF \c SURFACE entity.
  */
 int
