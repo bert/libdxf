@@ -357,12 +357,38 @@ dxf_surface_read
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
-                        if ((strcmp (temp_string, "AcDbModelerGeometry") != 0)
-                          || (strcmp (temp_string, "AcDbSurface") != 0))
+                        if ((strcmp (temp_string, "AcDbModelerGeometry") == 0)
+                          || (strcmp (temp_string, "AcDbSurface") == 0))
                         {
+                                /* Do nothing. */
+                        }
+                        else if ((strcmp (temp_string, "AcDbExtrudedSurface") == 0))
+                        {
+                                surface->type = EXTRUDED;
+                                return (surface);
+                        }
+                        else if ((strcmp (temp_string, "AcDbLoftedSurface") == 0))
+                        {
+                                surface->type = LOFTED;
+                                return (surface);
+                        }
+                        else if ((strcmp (temp_string, "AcDbRevolvedSurface") == 0))
+                        {
+                                surface->type = REVOLVED;
+                                return (surface);
+                        }
+                        else if ((strcmp (temp_string, "AcDbSweptSurface") == 0))
+                        {
+                                surface->type = SWEPT;
+                                return (surface);
+                        }
+                        else
+                        {
+                                surface->type = NO_TYPE;
                                 fprintf (stderr,
                                   (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
+                                return (surface);
                         }
                 }
                 else if (strcmp (temp_string, "160") == 0)
