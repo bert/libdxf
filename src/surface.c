@@ -178,9 +178,9 @@ dxf_surface_init
  * Now follows some data for the \c SURFACE, to be terminated with a
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c solid. \n
+ * While parsing the DXF file store data in \c surface. \n
  *
- * \return \c a pointer to \c surface.
+ * \return a pointer to \c surface.
  */
 DxfSurface *
 dxf_surface_read
