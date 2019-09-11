@@ -365,21 +365,41 @@ dxf_surface_read
                         else if ((strcmp (temp_string, "AcDbExtrudedSurface") == 0))
                         {
                                 surface->type = EXTRUDED;
+                                if (surface->extruded_surface == NULL)
+                                {
+                                        surface->extruded_surface = (struct DxfSurfaceExtruded *) dxf_surface_extruded_new ();
+                                }
+//                                surface->extruded_surface = dxf_surface_extruded_read (fp, surface->extruded_surface);
                                 return (surface);
                         }
                         else if ((strcmp (temp_string, "AcDbLoftedSurface") == 0))
                         {
                                 surface->type = LOFTED;
+                                if (surface->lofted_surface == NULL)
+                                {
+                                        surface->lofted_surface = (struct DxfSurfaceLofted *) dxf_surface_lofted_new ();
+                                }
+//                                surface->lofted_surface = dxf_surface_lofted_read (fp, surface->lofted_surface);
                                 return (surface);
                         }
                         else if ((strcmp (temp_string, "AcDbRevolvedSurface") == 0))
                         {
                                 surface->type = REVOLVED;
+                                if (surface->revolved_surface == NULL)
+                                {
+                                        surface->revolved_surface = (struct DxfSurfaceRevolved *) dxf_surface_revolved_new ();
+                                }
+//                                surface->revolved_surface = dxf_surface_revolved_read (fp, surface->revolved_surface);
                                 return (surface);
                         }
                         else if ((strcmp (temp_string, "AcDbSweptSurface") == 0))
                         {
                                 surface->type = SWEPT;
+                                if (surface->swept_surface == NULL)
+                                {
+                                        surface->swept_surface = (struct DxfSurfaceSwept *) dxf_surface_swept_new ();
+                                }
+//                                surface->swept_surface = dxf_surface_swept_read (fp, surface->swept_surface);
                                 return (surface);
                         }
                         else
