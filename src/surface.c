@@ -3286,6 +3286,72 @@ dxf_surface_extruded_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &extruded_surface->p0->z0);
                 }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the reference vector for
+                         * controlling twist. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->p1->x0);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the reference vector for
+                         * controlling twist. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->p1->y0);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the reference vector for
+                         * controlling twist. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->p1->z0);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the
+                         * draft angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->draft_angle);
+                }
+                else if (strcmp (temp_string, "43") == 0)
+                {
+                        /* Now follows a string containing the
+                         * draft start distance. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->draft_start_distance);
+                }
+                else if (strcmp (temp_string, "44") == 0)
+                {
+                        /* Now follows a string containing the
+                         * draft end distance. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->draft_end_distance);
+                }
+                else if (strcmp (temp_string, "45") == 0)
+                {
+                        /* Now follows a string containing the
+                         * twist angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->twist_angle);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the
+                         * scale factor. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->scale_factor);
+                }
+                else if (strcmp (temp_string, "49") == 0)
+                {
+                        /* Now follows a string containing the
+                         * align angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->align_angle);
+                }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         if (iter90 == 0)
