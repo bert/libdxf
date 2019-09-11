@@ -3198,6 +3198,130 @@ dxf_surface_extruded_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF extruded \c SURFACE
+ * entity.
+ * 
+ * The last line read from file contained the string
+ * "AcDbExtrudedSurface". \n
+ * Now follows some data for the extruded \c SURFACE, to be terminated
+ * with a "  0" string announcing the following entity, or the end of
+ * the * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c extruded_surface. \n
+ *
+ * \return a pointer to \c extruded_surface.
+ */
+DxfSurfaceExtruded *
+dxf_surface_extruded_read
+(
+        DxfFile *fp,
+                /*!< a DXF file pointer to an input file (or device). */
+        DxfSurfaceExtruded *extruded_surface
+                /*!< a pointer to a DXF extruded \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        int iter90;
+        DxfBinaryData *iter310 = NULL;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (extruded_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                extruded_surface = dxf_surface_extruded_init (extruded_surface);
+        }
+        iter90 = 0;
+        iter310 = (DxfBinaryData *) extruded_surface->binary_data;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the sweep vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->p0->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the sweep vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->p0->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the sweep vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &extruded_surface->p0->z0);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        if (iter90 == 0)
+                        {
+                                /* Now follows a string containing the
+                                 * class ID value. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &extruded_surface->class_ID);
+                        }
+                        if (iter90 == 1)
+                        {
+                                /* Now follows a string containing the
+                                 * class ID value. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &extruded_surface->binary_data_size);
+                        }
+                        iter90++;
+
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
+                }
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (extruded_surface);
+}
+
+
+/*!
  * \brief Write DXF output to \c fp for a extruded DXF \c SURFACE entity.
  */
 int
