@@ -3224,6 +3224,8 @@ dxf_surface_extruded_read
 #endif
         char *temp_string = NULL;
         DxfDouble *iter40 = NULL;
+        DxfDouble *iter46 = NULL;
+        DxfDouble *iter47 = NULL;
         int iter90;
         DxfBinaryData *iter310 = NULL;
 
@@ -3251,6 +3253,8 @@ dxf_surface_extruded_read
                 extruded_surface = dxf_surface_extruded_init (extruded_surface);
         }
         iter40 = (DxfDouble *) extruded_surface->transform_matrix;
+        iter46 = (DxfDouble *) extruded_surface->sweep_matrix;
+        iter47 = (DxfDouble *) extruded_surface->path_matrix;
         iter90 = 0;
         iter310 = (DxfBinaryData *) extruded_surface->binary_data;
         (fp->line_number)++;
@@ -3348,6 +3352,24 @@ dxf_surface_extruded_read
                          * twist angle. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &extruded_surface->twist_angle);
+                }
+                else if (strcmp (temp_string, "46") == 0)
+                {
+                        /* Now follows a string containing a sweep
+                         * matrix value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter46->value);
+                        iter46->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter46->next);
+                        iter46 = (DxfDouble *) iter46->next;
+                }
+                else if (strcmp (temp_string, "47") == 0)
+                {
+                        /* Now follows a string containing a path
+                         * matrix value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter47->value);
+                        iter47->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter47->next);
+                        iter47 = (DxfDouble *) iter47->next;
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
