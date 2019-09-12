@@ -3223,6 +3223,7 @@ dxf_surface_extruded_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfDouble *iter40 = NULL;
         int iter90;
         DxfBinaryData *iter310 = NULL;
 
@@ -3249,6 +3250,7 @@ dxf_surface_extruded_read
                   __FUNCTION__);
                 extruded_surface = dxf_surface_extruded_init (extruded_surface);
         }
+        iter40 = (DxfDouble *) extruded_surface->transform_matrix;
         iter90 = 0;
         iter310 = (DxfBinaryData *) extruded_surface->binary_data;
         (fp->line_number)++;
@@ -3310,6 +3312,15 @@ dxf_surface_extruded_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &extruded_surface->p1->z0);
                 }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * transform matrix value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter40->value);
+                        iter40->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter40->next);
+                        iter40 = (DxfDouble *) iter40->next;
+                }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
@@ -3352,6 +3363,13 @@ dxf_surface_extruded_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &extruded_surface->align_angle);
                 }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the sweep
+                         * alignment option number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &extruded_surface->sweep_alignment_option);
+                }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         if (iter90 == 0)
@@ -3378,6 +3396,19 @@ dxf_surface_extruded_read
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
                         dxf_binary_data_init ((DxfBinaryData *) iter310->next);
                         iter310 = (DxfBinaryData *) iter310->next;
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, temp_string);
+                        fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
