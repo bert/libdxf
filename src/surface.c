@@ -3411,6 +3411,47 @@ dxf_surface_extruded_read
                         iter90++;
 
                 }
+                else if (strcmp (temp_string, "290") == 0)
+                {
+                        /* Now follows a string containing the solid
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &extruded_surface->solid_flag);
+                }
+                else if (strcmp (temp_string, "292") == 0)
+                {
+                        /* Now follows a string containing the align
+                         * start fla. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &extruded_surface->align_start_flag);
+                }
+                else if (strcmp (temp_string, "293") == 0)
+                {
+                        /* Now follows a string containing the bank flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &extruded_surface->bank_flag);
+                }
+                else if (strcmp (temp_string, "294") == 0)
+                {
+                        /* Now follows a string containing the base
+                         * point set flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &extruded_surface->base_point_set_flag);
+                }
+                else if (strcmp (temp_string, "295") == 0)
+                {
+                        /* Now follows a string containing the sweep
+                         * entity transform computed flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &extruded_surface->sweep_transform_computed_flag);
+                }
+                else if (strcmp (temp_string, "296") == 0)
+                {
+                        /* Now follows a string containing the path
+                         * entity transform computed flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &extruded_surface->path_transform_computed_flag);
+                }
                 else if (strcmp (temp_string, "310") == 0)
                 {
                         /* Now follows a string containing binary data. */
