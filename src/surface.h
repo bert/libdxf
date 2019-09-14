@@ -679,6 +679,7 @@ DxfSurfaceExtruded *dxf_surface_extruded_get_last (DxfSurfaceExtruded *extruded_
 /* Lofted surface functions. */
 DxfSurfaceLofted *dxf_surface_lofted_new ();
 DxfSurfaceLofted *dxf_surface_lofted_init (DxfSurfaceLofted *lofted_surface);
+DxfSurfaceLofted *dxf_surface_lofted_read (DxfFile *fp, DxfSurfaceLofted *lofted_surface);
 int dxf_surface_lofted_write (DxfFile *fp, DxfSurfaceLofted *lofted_surface);
 int dxf_surface_lofted_free (DxfSurfaceLofted *lofted_surface);
 void dxf_surface_lofted_free_list (DxfSurfaceLofted *lofted_surfaces);

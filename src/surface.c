@@ -5933,6 +5933,80 @@ dxf_surface_lofted_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF lofted \c SURFACE
+ * entity.
+ * 
+ * The last line read from file contained the string
+ * "AcDbLoftedSurface". \n
+ * Now follows some data for the lofted \c SURFACE, to be terminated
+ * with a "  0" string announcing the following entity, or the end of
+ * the * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c lofted_surface. \n
+ *
+ * \return a pointer to \c lofted_surface.
+ */
+DxfSurfaceLofted *
+dxf_surface_lofted_read
+(
+        DxfFile *fp,
+                /*!< a DXF file pointer to an input file (or device). */
+        DxfSurfaceLofted *lofted_surface
+                /*!< a pointer to a DXF lofted \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (lofted_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                lofted_surface = dxf_surface_lofted_init (lofted_surface);
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lofted_surface);
+}
+
+
+/*!
  * \brief Write DXF output to \c fp for a lofted DXF \c SURFACE entity.
  */
 int
