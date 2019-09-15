@@ -3474,6 +3474,8 @@ dxf_surface_extruded_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
