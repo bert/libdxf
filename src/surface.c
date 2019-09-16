@@ -5960,6 +5960,7 @@ dxf_surface_lofted_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfDouble *iter40 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -5984,6 +5985,7 @@ dxf_surface_lofted_read
                   __FUNCTION__);
                 lofted_surface = dxf_surface_lofted_init (lofted_surface);
         }
+        iter40 = (DxfDouble *) lofted_surface->transform_matrix;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -5997,6 +5999,50 @@ dxf_surface_lofted_read
                         free (temp_string);
                         fclose (fp->fp);
                         return (NULL);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * transform matrix value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter40->value);
+                        iter40->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter40->next);
+                        iter40 = (DxfDouble *) iter40->next;
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the start
+                         * draft angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &lofted_surface->start_draft_angle);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the end
+                         * draft angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &lofted_surface->end_draft_angle);
+                }
+                else if (strcmp (temp_string, "43") == 0)
+                {
+                        /* Now follows a string containing the start
+                         * draft magnitude. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &lofted_surface->start_draft_magnitude);
+                }
+                else if (strcmp (temp_string, "44") == 0)
+                {
+                        /* Now follows a string containing the end
+                         * draft magnitude. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &lofted_surface->end_draft_magnitude);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the plane
+                         * normal lofting type. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &lofted_surface->plane_normal_lofting_type);
                 }
         }
         /* Clean up. */
