@@ -6044,6 +6044,62 @@ dxf_surface_lofted_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%hd\n", &lofted_surface->plane_normal_lofting_type);
                 }
+                else if (strcmp (temp_string, "290") == 0)
+                {
+                        /* Now follows a string containing the arc
+                         * length parameterization flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->arc_length_parameterization_flag);
+                }
+                else if (strcmp (temp_string, "291") == 0)
+                {
+                        /* Now follows a string containing the no twist
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->no_twist_flag);
+                }
+                else if (strcmp (temp_string, "292") == 0)
+                {
+                        /* Now follows a string containing the align
+                         * direction flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->align_direction_flag);
+                }
+                else if (strcmp (temp_string, "293") == 0)
+                {
+                        /* Now follows a string containing the create
+                         * simple surfaces flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->create_simple_surfaces_flag);
+                }
+                else if (strcmp (temp_string, "294") == 0)
+                {
+                        /* Now follows a string containing the create
+                         * closed surface flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->create_closed_surface_flag);
+                }
+                else if (strcmp (temp_string, "295") == 0)
+                {
+                        /* Now follows a string containing the solid
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->solid_flag);
+                }
+                else if (strcmp (temp_string, "296") == 0)
+                {
+                        /* Now follows a string containing the create
+                         * ruled surface flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->create_ruled_surface_flag);
+                }
+                else if (strcmp (temp_string, "297") == 0)
+                {
+                        /* Now follows a string containing the virtual
+                         * guide flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &lofted_surface->virtual_guide_flag);
+                }
         }
         /* Clean up. */
         free (temp_string);
