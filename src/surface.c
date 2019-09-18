@@ -7450,6 +7450,191 @@ dxf_surface_revolved_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF revolved \c SURFACE
+ * entity.
+ * 
+ * The last line read from file contained the string
+ * "AcDbRevolvedSurface". \n
+ * Now follows some data for the revolved \c SURFACE, to be terminated
+ * with a "  0" string announcing the following entity, or the end of
+ * the * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c revolved_surface. \n
+ *
+ * \return a pointer to \c revolved_surface.
+ */
+DxfSurfaceRevolved *
+dxf_surface_revolved_read
+(
+        DxfFile *fp,
+                /*!< a DXF file pointer to an input file (or device). */
+        DxfSurfaceRevolved *revolved_surface
+                /*!< a pointer to a DXF revolved \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        DxfDouble *iter42 = NULL;
+        int iter90;
+        DxfBinaryData *iter310 = NULL;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (revolved_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                revolved_surface = dxf_surface_revolved_init (revolved_surface);
+        }
+        iter42 = (DxfDouble *) revolved_surface->transform_matrix;
+        iter90 = 0;
+        iter310 = (DxfBinaryData *) revolved_surface->binary_data;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the axis point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->p0->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the axis point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->p0->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the axis point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->p0->z0);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the axis vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->p1->x0);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the axis vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->p1->y0);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the axis vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->p1->z0);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the revolve
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->revolve_angle);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the start
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->start_angle);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the
+                         * transform matrix value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter42->value);
+                        iter42->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter42->next);
+                        iter42 = (DxfDouble *) iter42->next;
+                }
+                else if (strcmp (temp_string, "43") == 0)
+                {
+                        /* Now follows a string containing the draft
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->draft_angle);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        if (iter90 == 0)
+                        {
+                                /* Now follows a string containing the
+                                 * ID of the revolve entity. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &revolved_surface->ID);
+                        }
+                        if (iter90 == 1)
+                        {
+                                /* Now follows a string containing the
+                                 * binary data size. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &revolved_surface->binary_data_size);
+                        }
+                        iter90++;
+                }
+                else if (strcmp (temp_string, "290") == 0)
+                {
+                        /* Now follows a string containing the solid
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &revolved_surface->solid_flag);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
+                }
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (revolved_surface);
+}
+
+
+/*!
  * \brief Write DXF output to \c fp for a revolved DXF \c SURFACE entity.
  */
 int
