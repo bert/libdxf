@@ -7591,6 +7591,27 @@ dxf_surface_revolved_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &revolved_surface->draft_angle);
                 }
+                else if (strcmp (temp_string, "44") == 0)
+                {
+                        /* Now follows a string containing the start
+                         * draft distance. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->start_draft_distance);
+                }
+                else if (strcmp (temp_string, "45") == 0)
+                {
+                        /* Now follows a string containing the end draft
+                         * distance. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->end_draft_distance);
+                }
+                else if (strcmp (temp_string, "46") == 0)
+                {
+                        /* Now follows a string containing the twist
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &revolved_surface->twist_angle);
+                }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         if (iter90 == 0)
@@ -7615,6 +7636,13 @@ dxf_surface_revolved_read
                          * flag. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &revolved_surface->solid_flag);
+                }
+                else if (strcmp (temp_string, "291") == 0)
+                {
+                        /* Now follows a string containing the close to
+                         * axis flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &revolved_surface->close_to_axis_flag);
                 }
                 else if (strcmp (temp_string, "310") == 0)
                 {
