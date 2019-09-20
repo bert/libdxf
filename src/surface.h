@@ -769,6 +769,7 @@ DxfSurfaceRevolved *dxf_surface_revolved_get_last (DxfSurfaceRevolved *revolved_
 /* Swept surface functions. */
 DxfSurfaceSwept *dxf_surface_swept_new ();
 DxfSurfaceSwept *dxf_surface_swept_init (DxfSurfaceSwept *swept_surface);
+DxfSurfaceSwept *dxf_surface_swept_read (DxfFile *fp, DxfSurfaceSwept *swept_surface);
 int dxf_surface_swept_write (DxfFile *fp, DxfSurfaceSwept *swept_surface);
 int dxf_surface_swept_free (DxfSurfaceSwept *swept_surface);
 void dxf_surface_swept_free_list (DxfSurfaceSwept *swept_surfaces);

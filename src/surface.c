@@ -9577,6 +9577,284 @@ dxf_surface_swept_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF swept \c SURFACE
+ * entity.
+ * 
+ * The last line read from file contained the string
+ * "AcDbSweptSurface". \n
+ * Now follows some data for the swept \c SURFACE, to be terminated
+ * with a "  0" string announcing the following entity, or the end of
+ * the * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c swept_surface. \n
+ *
+ * \return a pointer to \c swept_surface.
+ */
+DxfSurfaceSwept *
+dxf_surface_swept_read
+(
+        DxfFile *fp,
+                /*!< a DXF file pointer to an input file (or device). */
+        DxfSurfaceSwept *swept_surface
+                /*!< a pointer to a DXF swept \c SURFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        DxfDouble *iter40 = NULL;
+        DxfDouble *iter41 = NULL;
+        DxfDouble *iter46 = NULL;
+        DxfDouble *iter47 = NULL;
+        int iter90;
+        DxfBinaryData *iter310 = NULL;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (swept_surface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                swept_surface = dxf_surface_swept_init (swept_surface);
+        }
+        iter40 = (DxfDouble *) swept_surface->transform_sweep_matrix;
+        iter41 = (DxfDouble *) swept_surface->transform_path_matrix;
+        iter46 = (DxfDouble *) swept_surface->transform_sweep_matrix2;
+        iter47 = (DxfDouble *) swept_surface->transform_path_matrix2;
+        iter90 = 0;
+        iter310 = (DxfBinaryData *) swept_surface->sweep_binary_data;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the reference vector for
+                         * controling twist. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->p1->x0);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the reference vector for
+                         * controling twist. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->p1->y0);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the reference vector for
+                         * controling twist. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->p1->z0);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * transform sweep matrix value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter40->value);
+                        iter40->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter40->next);
+                        iter40 = (DxfDouble *) iter40->next;
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the
+                         * transform path matrix value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter41->value);
+                        iter41->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter41->next);
+                        iter41 = (DxfDouble *) iter41->next;
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the draft
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->draft_angle);
+                }
+                else if (strcmp (temp_string, "43") == 0)
+                {
+                        /* Now follows a string containing the start
+                         * draft distance. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->start_draft_distance);
+                }
+                else if (strcmp (temp_string, "44") == 0)
+                {
+                        /* Now follows a string containing the end draft
+                         * distance. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->end_draft_distance);
+                }
+                else if (strcmp (temp_string, "45") == 0)
+                {
+                        /* Now follows a string containing the twist
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->twist_angle);
+                }
+                else if (strcmp (temp_string, "46") == 0)
+                {
+                        /* Now follows a string containing the
+                         * transform sweep matrix 2 value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter46->value);
+                        iter46->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter46->next);
+                        iter46 = (DxfDouble *) iter46->next;
+                }
+                else if (strcmp (temp_string, "47") == 0)
+                {
+                        /* Now follows a string containing the
+                         * transform path matrix 2 value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter47->value);
+                        iter47->next = (struct DxfDouble *) dxf_double_init ((DxfDouble *) iter47->next);
+                        iter47 = (DxfDouble *) iter47->next;
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the scale
+                         * factor. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->scale_factor);
+                }
+                else if (strcmp (temp_string, "49") == 0)
+                {
+                        /* Now follows a string containing the align
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &swept_surface->align_angle);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the sweep
+                         * alignment option number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &swept_surface->sweep_alignment_option);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        if (iter90 == 0)
+                        {
+                                /* Now follows a string containing the
+                                 * ID of the sweep entity. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &swept_surface->sweep_ID);
+                        }
+                        if (iter90 == 1)
+                        {
+                                /* Now follows a string containing the
+                                 * sweep binary data size. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &swept_surface->sweep_binary_data_size);
+                        }
+                        if (iter90 == 2)
+                        {
+                                /* Now follows a string containing the
+                                 * ID of the path entity. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &swept_surface->path_ID);
+                        }
+                        if (iter90 == 3)
+                        {
+                                /* Now follows a string containing the
+                                 * path binary data size. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%" PRIi32 "\n", &swept_surface->path_binary_data_size);
+                        }
+                        iter90++;
+                }
+                else if (strcmp (temp_string, "290") == 0)
+                {
+                        /* Now follows a string containing the solid
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &swept_surface->solid_flag);
+                }
+                else if (strcmp (temp_string, "292") == 0)
+                {
+                        /* Now follows a string containing the align
+                         * start flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &swept_surface->align_start_flag);
+                }
+                else if (strcmp (temp_string, "293") == 0)
+                {
+                        /* Now follows a string containing the bank
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &swept_surface->bank_flag);
+                }
+                else if (strcmp (temp_string, "294") == 0)
+                {
+                        /* Now follows a string containing the base
+                         * point set flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &swept_surface->base_point_set_flag);
+                }
+                else if (strcmp (temp_string, "295") == 0)
+                {
+                        /* Now follows a string containing the sweep
+                         * transform computed flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &swept_surface->sweep_transform_computed_flag);
+                }
+                else if (strcmp (temp_string, "296") == 0)
+                {
+                        /* Now follows a string containing the path
+                         * transform completed flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &swept_surface->path_transform_computed_flag);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /*! \todo Fix the parsing of binary data. */
+                        /* Now follows a string containing binary data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
+                }
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (swept_surface);
+}
+
+
+/*!
  * \brief Write DXF output to \c fp for a swept DXF \c SURFACE entity.
  */
 int
