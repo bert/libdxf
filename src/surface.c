@@ -114,7 +114,7 @@ dxf_surface_init
                 return (NULL);
         }
         /* Initialize new structs for members. */
-        surface->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (surface->binary_graphics_data);
+        surface->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (surface->binary_graphics_data);
         if (surface->binary_graphics_data == NULL)
         {
                 fprintf (stderr,
@@ -195,7 +195,7 @@ dxf_surface_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
         int i;
 
@@ -222,7 +222,7 @@ dxf_surface_read
                   __FUNCTION__);
                 surface = dxf_surface_init (surface);
         }
-        iter310 = (DxfBinaryGraphicsData *) surface->binary_graphics_data;
+        iter310 = (DxfBinaryData *) surface->binary_graphics_data;
         iter330 = 0;
         i = 1;
         (fp->line_number)++;
@@ -431,8 +431,8 @@ dxf_surface_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -658,12 +658,12 @@ dxf_surface_write
 #endif
                 if (surface->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
+                        DxfBinaryData *iter;
                         iter = surface->binary_graphics_data;
                         while (iter != NULL)
                         {
-                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
-                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_data_get_data_line (iter));
+                                iter = (DxfBinaryData *) dxf_binary_data_get_next (iter);
                         }
                 }
         }
@@ -1761,7 +1761,7 @@ dxf_surface_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_surface_get_binary_graphics_data
 (
         DxfSurface *surface
@@ -1789,7 +1789,7 @@ dxf_surface_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) surface->binary_graphics_data);
+        return ((DxfBinaryData *) surface->binary_graphics_data);
 }
 
 
@@ -1805,7 +1805,7 @@ dxf_surface_set_binary_graphics_data
 (
         DxfSurface *surface,
                 /*!< a pointer to a DXF \c SURFACE entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1828,7 +1828,7 @@ dxf_surface_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        surface->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        surface->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

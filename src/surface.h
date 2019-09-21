@@ -141,7 +141,7 @@ dxf_surface_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -578,8 +578,8 @@ int32_t dxf_surface_get_graphics_data_size (DxfSurface *surface);
 DxfSurface *dxf_surface_set_graphics_data_size (DxfSurface *surface, int32_t graphics_data_size);
 int16_t dxf_surface_get_shadow_mode (DxfSurface *surface);
 DxfSurface *dxf_surface_set_shadow_mode (DxfSurface *surface, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_surface_get_binary_graphics_data (DxfSurface *surface);
-DxfSurface *dxf_surface_set_binary_graphics_data (DxfSurface *surface, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_surface_get_binary_graphics_data (DxfSurface *surface);
+DxfSurface *dxf_surface_set_binary_graphics_data (DxfSurface *surface, DxfBinaryData *data);
 char *dxf_surface_get_dictionary_owner_soft (DxfSurface *surface);
 DxfSurface *dxf_surface_set_dictionary_owner_soft (DxfSurface *surface, char *dictionary_owner_soft);
 char *dxf_surface_get_object_owner_soft (DxfSurface *surface);
