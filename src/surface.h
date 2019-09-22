@@ -48,7 +48,6 @@
 #include "util.h"
 #include "point.h"
 #include "binary_data.h"
-#include "binary_graphics_data.h"
 #include "proprietary_data.h"
 
 
