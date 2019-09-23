@@ -129,8 +129,8 @@ dxf_3dface_init
         face->paperspace = DXF_MODELSPACE;
         face->graphics_data_size = 0;
         face->shadow_mode = 0;
-        face->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        face->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (face->binary_graphics_data);
+        face->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
+        face->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (face->binary_graphics_data);
         face->dictionary_owner_soft = strdup ("");
         face->object_owner_soft = strdup ("");
         face->material = strdup ("");
@@ -196,7 +196,7 @@ dxf_3dface_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -216,7 +216,7 @@ dxf_3dface_read
                   __FUNCTION__);
                 face = dxf_3dface_init (face);
         }
-        iter310 = (DxfBinaryGraphicsData *) face->binary_graphics_data;
+        iter310 = (DxfBinaryData *) face->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -426,8 +426,8 @@ dxf_3dface_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -758,7 +758,7 @@ dxf_3dface_free
         }
         free (face->linetype);
         free (face->layer);
-        dxf_binary_graphics_data_free_list (face->binary_graphics_data);
+        dxf_binary_data_free_list (face->binary_graphics_data);
         free (face->dictionary_owner_soft);
         free (face->object_owner_soft);
         free (face->material);
@@ -1739,7 +1739,7 @@ dxf_3dface_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_3dface_get_binary_graphics_data
 (
         Dxf3dface *face
@@ -1767,7 +1767,7 @@ dxf_3dface_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) face->binary_graphics_data);
+        return ((DxfBinaryData *) face->binary_graphics_data);
 }
 
 
@@ -1780,7 +1780,7 @@ dxf_3dface_set_binary_graphics_data
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1803,7 +1803,7 @@ dxf_3dface_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        face->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        face->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
