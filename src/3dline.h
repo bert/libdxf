@@ -48,7 +48,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -131,7 +131,7 @@ dxf_3dline_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -244,8 +244,8 @@ int32_t dxf_3dline_get_graphics_data_size (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_graphics_data_size (Dxf3dline *line, int32_t graphics_data_size);
 int16_t dxf_3dline_get_shadow_mode (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_shadow_mode (Dxf3dline *line, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_3dline_get_binary_graphics_data (Dxf3dline *line);
-Dxf3dline *dxf_3dline_set_binary_graphics_data (Dxf3dline *line, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_3dline_get_binary_graphics_data (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_binary_graphics_data (Dxf3dline *line, DxfBinaryData *data);
 char *dxf_3dline_get_dictionary_owner_soft (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_dictionary_owner_soft (Dxf3dline *line, char *dictionary_owner_soft);
 char *dxf_3dline_get_object_owner_soft (Dxf3dline *line);
