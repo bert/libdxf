@@ -129,8 +129,8 @@ dxf_3dsolid_init
         solid->paperspace = DXF_MODELSPACE;
         solid->graphics_data_size = 0;
         solid->shadow_mode = 0;
-        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (solid->binary_graphics_data);
+        solid->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
+        solid->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (solid->binary_graphics_data);
         solid->dictionary_owner_soft = strdup ("");
         solid->object_owner_soft = strdup ("");
         solid->material = strdup ("");
@@ -176,7 +176,7 @@ dxf_3dsolid_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         int i;
@@ -204,7 +204,7 @@ dxf_3dsolid_read
                   __FUNCTION__);
                 solid = dxf_3dsolid_init (solid);
         }
-        iter310 = (DxfBinaryGraphicsData *) solid->binary_graphics_data;
+        iter310 = (DxfBinaryData *) solid->binary_graphics_data;
         i = 1;
         solid->proprietary_data->order = 0;
         solid->additional_proprietary_data->order = 0;
@@ -355,8 +355,8 @@ dxf_3dsolid_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -620,12 +620,12 @@ dxf_3dsolid_write
 #endif
                 if (solid->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) solid->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) solid->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -726,7 +726,7 @@ dxf_3dsolid_free
         }
         free (solid->linetype);
         free (solid->layer);
-        dxf_binary_graphics_data_free_list (solid->binary_graphics_data);
+        dxf_binary_data_free_list (solid->binary_graphics_data);
         free (solid->dictionary_owner_soft);
         free (solid->object_owner_soft);
         free (solid->material);
@@ -1640,7 +1640,7 @@ dxf_3dsolid_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_3dsolid_get_binary_graphics_data
 (
         Dxf3dsolid *solid
@@ -1668,7 +1668,7 @@ dxf_3dsolid_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) solid->binary_graphics_data);
+        return ((DxfBinaryData *) solid->binary_graphics_data);
 }
 
 
@@ -1684,7 +1684,7 @@ dxf_3dsolid_set_binary_graphics_data
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1707,7 +1707,7 @@ dxf_3dsolid_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        solid->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        solid->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

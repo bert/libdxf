@@ -46,7 +46,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "proprietary_data.h"
 
 
@@ -129,7 +129,7 @@ dxf_3dsolid_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -240,8 +240,8 @@ int32_t dxf_3dsolid_get_graphics_data_size (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_graphics_data_size (Dxf3dsolid *solid, int32_t graphics_data_size);
 int16_t dxf_3dsolid_get_shadow_mode (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_shadow_mode (Dxf3dsolid *solid, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_3dsolid_get_binary_graphics_data (Dxf3dsolid *solid);
-Dxf3dsolid *dxf_3dsolid_set_binary_graphics_data (Dxf3dsolid *solid, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_3dsolid_get_binary_graphics_data (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_binary_graphics_data (Dxf3dsolid *solid, DxfBinaryData *data);
 char *dxf_3dsolid_get_dictionary_owner_soft (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_dictionary_owner_soft (Dxf3dsolid *solid, char *dictionary_owner_soft);
 char *dxf_3dsolid_get_object_owner_soft (Dxf3dsolid *solid);
