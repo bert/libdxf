@@ -51,6 +51,9 @@ extern "C" {
 typedef struct
 dxf_binary_data_struct
 {
+        int order;
+                /*!< Incremental counter for storing order of data
+                 * lines. */
         char *data_line;
                 /*!< Binary entity data.\n
                  * Multiple lines of 256 characters maximum per line

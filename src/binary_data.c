@@ -103,6 +103,7 @@ dxf_binary_data_init
                   __FUNCTION__);
                 return (NULL);
         }
+        data->order = 0;
         data->data_line = strdup ("");
         data->length = 0;
         data->next = NULL;
