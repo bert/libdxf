@@ -72,6 +72,7 @@ DxfBinaryData *dxf_binary_data_init (DxfBinaryData *data);
 int dxf_binary_data_write (DxfFile *fp, DxfBinaryData *data);
 int dxf_binary_data_free (DxfBinaryData *data);
 void dxf_binary_data_free_list (DxfBinaryData *data);
+int dxf_binary_data_get_order (DxfBinaryData *data);
 char *dxf_binary_data_get_data_line (DxfBinaryData *data);
 DxfBinaryData *dxf_binary_data_set_data_line (DxfBinaryData *data, char *data_line);
 int dxf_binary_data_get_length (DxfBinaryData *data);
