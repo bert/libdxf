@@ -263,6 +263,46 @@ dxf_binary_data_get_order
 
 
 /*!
+ * \brief Set the \c order for a binary data object.
+ *
+ * \return a pointer to \c data when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfBinaryData *
+dxf_binary_data_set_order
+(
+        DxfBinaryData *data,
+                /*!< a pointer to a binary data object. */
+        int order
+                /*!< \c order to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (order < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        data->order = order;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
+/*!
  * \brief Get the data_line from a binary data object.
  *
  * \return \c data_line when sucessful, \c NULL when an error occurred.
