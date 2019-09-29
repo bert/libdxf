@@ -140,8 +140,8 @@ dxf_3dsolid_init
         solid->color_value = 0;
         solid->color_name = strdup ("");
         solid->transparency = 0;
-        solid->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (solid->proprietary_data);
-        solid->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (solid->additional_proprietary_data);
+        solid->proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->proprietary_data);
+        solid->additional_proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->additional_proprietary_data);
         solid->modeler_format_version_number = 1;
         solid->history = strdup ("");
         solid->next = NULL;
@@ -228,22 +228,22 @@ dxf_3dsolid_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->proprietary_data->line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->proprietary_data->data_line);
                         solid->proprietary_data->order = i;
                         i++;
-                        dxf_proprietary_data_init ((DxfProprietaryData *) solid->proprietary_data->next);
-                        solid->proprietary_data = (DxfProprietaryData *) solid->proprietary_data->next;
+                        dxf_binary_data_init ((DxfBinaryData *) solid->proprietary_data->next);
+                        solid->proprietary_data = (DxfBinaryData *) solid->proprietary_data->next;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
                 {
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->additional_proprietary_data->line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, solid->additional_proprietary_data->data_line);
                         solid->additional_proprietary_data->order = i;
                         i++;
-                        dxf_proprietary_data_init ((DxfProprietaryData *) solid->additional_proprietary_data->next);
-                        solid->additional_proprietary_data = (DxfProprietaryData *) solid->additional_proprietary_data->next;
+                        dxf_binary_data_init ((DxfBinaryData *) solid->additional_proprietary_data->next);
+                        solid->additional_proprietary_data = (DxfBinaryData *) solid->additional_proprietary_data->next;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -482,8 +482,8 @@ dxf_3dsolid_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("3DSOLID");
-        DxfProprietaryData *iter = NULL;
-        DxfProprietaryData *additional_iter = NULL;
+        DxfBinaryData *iter = NULL;
+        DxfBinaryData *additional_iter = NULL;
         int i;
 
         /* Do some basic checks. */
@@ -654,20 +654,20 @@ dxf_3dsolid_write
         }
         if ((solid->proprietary_data != NULL) || (solid->additional_proprietary_data != NULL))
         {
-                iter = (DxfProprietaryData *) solid->proprietary_data;
-                additional_iter = (DxfProprietaryData *) solid->additional_proprietary_data;
+                iter = (DxfBinaryData *) solid->proprietary_data;
+                additional_iter = (DxfBinaryData *) solid->additional_proprietary_data;
                 while ((iter != NULL) || (additional_iter != NULL))
                 {
                         if (iter->order == i)
                         {
-                                fprintf (fp->fp, "  1\n%s\n", iter->line);
-                                iter = (DxfProprietaryData *) iter->next;
+                                fprintf (fp->fp, "  1\n%s\n", iter->data_line);
+                                iter = (DxfBinaryData *) iter->next;
                                 i++;
                         }
                         if (additional_iter->order == i)
                         {
-                                fprintf (fp->fp, "  3\n%s\n", additional_iter->line);
-                                additional_iter = (DxfProprietaryData *) additional_iter->next;
+                                fprintf (fp->fp, "  3\n%s\n", additional_iter->data_line);
+                                additional_iter = (DxfBinaryData *) additional_iter->next;
                                 i++;
                         }
                 }
@@ -733,8 +733,8 @@ dxf_3dsolid_free
         free (solid->dictionary_owner_hard);
         free (solid->plot_style_name);
         free (solid->color_name);
-        dxf_proprietary_data_free_list (solid->proprietary_data);
-        dxf_proprietary_data_free_list (solid->additional_proprietary_data);
+        dxf_binary_data_free_list (solid->proprietary_data);
+        dxf_binary_data_free_list (solid->additional_proprietary_data);
         free (solid->history);
         free (solid);
         solid = NULL;
@@ -2401,7 +2401,7 @@ dxf_3dsolid_set_transparency
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfProprietaryData *
+DxfBinaryData *
 dxf_3dsolid_get_proprietary_data
 (
         Dxf3dsolid *solid
@@ -2429,7 +2429,7 @@ dxf_3dsolid_get_proprietary_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfProprietaryData *) solid->proprietary_data);
+        return ((DxfBinaryData *) solid->proprietary_data);
 }
 
 
@@ -2441,7 +2441,7 @@ dxf_3dsolid_set_proprietary_data
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
-        DxfProprietaryData *proprietary_data
+        DxfBinaryData *proprietary_data
                 /*!< the \c proprietary_data to be set for the entity. */
 )
 {
@@ -2479,7 +2479,7 @@ dxf_3dsolid_set_proprietary_data
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfProprietaryData *
+DxfBinaryData *
 dxf_3dsolid_get_additional_proprietary_data
 (
         Dxf3dsolid *solid
@@ -2507,7 +2507,7 @@ dxf_3dsolid_get_additional_proprietary_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfProprietaryData *) solid->additional_proprietary_data);
+        return ((DxfBinaryData *) solid->additional_proprietary_data);
 }
 
 
@@ -2520,7 +2520,7 @@ dxf_3dsolid_set_additional_proprietary_data
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
-        DxfProprietaryData *additional_proprietary_data
+        DxfBinaryData *additional_proprietary_data
                 /*!< the \c additional_proprietary_data to be set for the entity. */
 )
 {

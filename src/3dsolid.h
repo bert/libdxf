@@ -47,7 +47,6 @@
 
 #include "global.h"
 #include "binary_data.h"
-#include "proprietary_data.h"
 
 
 #ifdef __cplusplus
@@ -190,11 +189,11 @@ dxf_3dsolid_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF 3D solid. */
-        DxfProprietaryData *proprietary_data;
+        DxfBinaryData *proprietary_data;
                 /*!< Proprietary data (multiple lines < 255 characters
                  * each).\n
                  * Group code = 1. */
-        DxfProprietaryData *additional_proprietary_data;
+        DxfBinaryData *additional_proprietary_data;
                 /*!< Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
                  * (optional).\n
@@ -260,10 +259,10 @@ char *dxf_3dsolid_get_color_name (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_color_name (Dxf3dsolid *solid, char *color_name);
 int32_t dxf_3dsolid_get_transparency (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_transparency (Dxf3dsolid *solid, int32_t transparency);
-DxfProprietaryData *dxf_3dsolid_get_proprietary_data (Dxf3dsolid *solid);
-Dxf3dsolid *dxf_3dsolid_set_proprietary_data (Dxf3dsolid *solid, DxfProprietaryData *proprietary_data);
-DxfProprietaryData *dxf_3dsolid_get_additional_proprietary_data (Dxf3dsolid *solid);
-Dxf3dsolid *dxf_3dsolid_set_additional_proprietary_data (Dxf3dsolid *solid, DxfProprietaryData *additional_proprietary_data);
+DxfBinaryData *dxf_3dsolid_get_proprietary_data (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_proprietary_data (Dxf3dsolid *solid, DxfBinaryData *proprietary_data);
+DxfBinaryData *dxf_3dsolid_get_additional_proprietary_data (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_additional_proprietary_data (Dxf3dsolid *solid, DxfBinaryData *additional_proprietary_data);
 int16_t dxf_3dsolid_get_modeler_format_version_number (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_modeler_format_version_number (Dxf3dsolid *solid, int16_t modeler_format_version_number);
 char *dxf_3dsolid_get_history (Dxf3dsolid *solid);
