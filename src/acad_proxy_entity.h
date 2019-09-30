@@ -52,7 +52,7 @@
 
 #include "global.h"
 #include "binary_entity_data.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "object_id.h"
 
 
@@ -216,7 +216,7 @@ dxf_acad_proxy_entity_struct
                  * High word is MaintenanceReleaseVersion.
                  * Group code = 95.\n
                  * \since Introduced in version R2000. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -293,8 +293,8 @@ int32_t dxf_acad_proxy_entity_get_entity_data_size (DxfAcadProxyEntity *acad_pro
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_entity_data_size (DxfAcadProxyEntity *acad_proxy_entity, int32_t entity_data_size);
 uint32_t dxf_acad_proxy_entity_get_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity);
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity, uint32_t object_drawing_format);
-DxfBinaryGraphicsData *dxf_acad_proxy_entity_get_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity);
-DxfAcadProxyEntity *dxf_acad_proxy_entity_set_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_acad_proxy_entity_get_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity, DxfBinaryData *data);
 DxfBinaryEntityData *dxf_acad_proxy_entity_get_binary_entity_data (DxfAcadProxyEntity *acad_proxy_entity);
 DxfAcadProxyEntity *dxf_acad_proxy_entity_set_binary_entity_data (DxfAcadProxyEntity *acad_proxy_entity, DxfBinaryEntityData *data);
 DxfObjectId *dxf_acad_proxy_entity_get_object_id (DxfAcadProxyEntity *acad_proxy_entity);
