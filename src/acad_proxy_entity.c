@@ -151,8 +151,7 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->entity_data_size = 0;
         acad_proxy_entity->object_drawing_format = 0;
         acad_proxy_entity->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_graphics_data);
-        acad_proxy_entity->binary_entity_data = (DxfBinaryEntityData *) dxf_binary_entity_data_new ();
-        acad_proxy_entity->binary_entity_data = (DxfBinaryEntityData *) dxf_binary_entity_data_init (acad_proxy_entity->binary_entity_data);
+        acad_proxy_entity->binary_entity_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_entity_data);
         acad_proxy_entity->object_id = dxf_object_id_new ();
         acad_proxy_entity->object_id = dxf_object_id_init (acad_proxy_entity->object_id);
         acad_proxy_entity->object_id->group_code = 0;
@@ -710,12 +709,12 @@ dxf_acad_proxy_entity_write
                 fprintf (fp->fp, " 93\n%" PRIi32 "\n", acad_proxy_entity->entity_data_size);
                 if (acad_proxy_entity->binary_entity_data != NULL)
                 {
-                        DxfBinaryEntityData *iter310b;
-                        iter310b = (DxfBinaryEntityData *) acad_proxy_entity->binary_entity_data;
+                        DxfBinaryData *iter310b;
+                        iter310b = (DxfBinaryData *) acad_proxy_entity->binary_entity_data;
                         while (iter310b != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter310b->data_line);
-                                iter310b = (DxfBinaryEntityData *) iter310b->next;
+                                iter310b = (DxfBinaryData *) iter310b->next;
                         }
                 }
         }
@@ -785,7 +784,7 @@ dxf_acad_proxy_entity_free
         free (acad_proxy_entity->plot_style_name);
         free (acad_proxy_entity->color_name);
         dxf_binary_data_free_list (acad_proxy_entity->binary_graphics_data);
-        dxf_binary_entity_data_free_list (acad_proxy_entity->binary_entity_data);
+        dxf_binary_data_free_list (acad_proxy_entity->binary_entity_data);
         dxf_object_id_free_list (acad_proxy_entity->object_id);
         free (acad_proxy_entity);
         acad_proxy_entity = NULL;
@@ -2824,7 +2823,7 @@ dxf_acad_proxy_entity_set_binary_graphics_data
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryEntityData *
+DxfBinaryData *
 dxf_acad_proxy_entity_get_binary_entity_data
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -2852,7 +2851,7 @@ dxf_acad_proxy_entity_get_binary_entity_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryEntityData *) acad_proxy_entity->binary_entity_data);
+        return ((DxfBinaryData *) acad_proxy_entity->binary_entity_data);
 }
 
 
@@ -2865,7 +2864,7 @@ dxf_acad_proxy_entity_set_binary_entity_data
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        DxfBinaryEntityData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_entity_data for the entity. */
 )
@@ -2888,7 +2887,7 @@ dxf_acad_proxy_entity_set_binary_entity_data
                   __FUNCTION__);
                 return (NULL);
         }
-        acad_proxy_entity->binary_entity_data = (DxfBinaryEntityData *) data;
+        acad_proxy_entity->binary_entity_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
