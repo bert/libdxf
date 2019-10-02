@@ -39,7 +39,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -127,7 +127,7 @@ dxf_arc_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -246,8 +246,8 @@ int32_t dxf_arc_get_graphics_data_size (DxfArc *arc);
 DxfArc *dxf_arc_set_graphics_data_size (DxfArc *arc, int32_t graphics_data_size);
 int16_t dxf_arc_get_shadow_mode (DxfArc *arc);
 DxfArc *dxf_arc_set_shadow_mode (DxfArc *arc, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_arc_get_binary_graphics_data (DxfArc *arc);
-DxfArc *dxf_arc_set_binary_graphics_data (DxfArc *arc, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_arc_get_binary_graphics_data (DxfArc *arc);
+DxfArc *dxf_arc_set_binary_graphics_data (DxfArc *arc, DxfBinaryData *data);
 char *dxf_arc_get_dictionary_owner_soft (DxfArc *arc);
 DxfArc *dxf_arc_set_dictionary_owner_soft (DxfArc *arc, char *dictionary_owner_soft);
 char *dxf_arc_get_object_owner_soft (DxfArc *arc);

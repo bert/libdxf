@@ -119,7 +119,7 @@ dxf_arc_init
                 return (NULL);
         }
         /* Initialize new structs for members. */
-        arc->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (arc->binary_graphics_data);
+        arc->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (arc->binary_graphics_data);
         if (arc->binary_graphics_data == NULL)
         {
                 fprintf (stderr,
@@ -806,6 +806,7 @@ dxf_arc_free
         }
         free (arc->linetype);
         free (arc->layer);
+        dxf_binary_data_free (arc->binary_graphics_data);
         free (arc->dictionary_owner_soft);
         free (arc->object_owner_soft);
         free (arc->material);
@@ -1845,7 +1846,7 @@ dxf_arc_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_arc_get_binary_graphics_data
 (
         DxfArc *arc
@@ -1873,7 +1874,7 @@ dxf_arc_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) arc->binary_graphics_data);
+        return ((DxfBinaryData *) arc->binary_graphics_data);
 }
 
 
@@ -1892,7 +1893,7 @@ dxf_arc_set_binary_graphics_data
 (
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1915,7 +1916,7 @@ dxf_arc_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        arc->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        arc->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
