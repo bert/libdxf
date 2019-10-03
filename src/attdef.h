@@ -41,7 +41,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifndef LIBDXF_SRC_ATTDEF_H
@@ -126,7 +126,7 @@ dxf_attdef_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -321,8 +321,8 @@ int32_t dxf_attdef_get_graphics_data_size (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_graphics_data_size (DxfAttdef *attdef, int32_t graphics_data_size);
 int16_t dxf_attdef_get_shadow_mode (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_shadow_mode (DxfAttdef *attdef, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_attdef_get_binary_graphics_data (DxfAttdef *attdef);
-DxfAttdef *dxf_attdef_set_binary_graphics_data (DxfAttdef *attdef, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_attdef_get_binary_graphics_data (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_binary_graphics_data (DxfAttdef *attdef, DxfBinaryData *data);
 char *dxf_attdef_get_dictionary_owner_soft (DxfAttdef *attdef);
 DxfAttdef *dxf_attdef_set_dictionary_owner_soft (DxfAttdef *attdef, char *dictionary_owner_soft);
 char *dxf_attdef_get_object_owner_soft (DxfAttdef *attdef);
