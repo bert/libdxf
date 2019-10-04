@@ -121,8 +121,7 @@ dxf_attrib_init
         attrib->paperspace = DXF_MODELSPACE;
         attrib->graphics_data_size = 0;
         attrib->shadow_mode = 0;
-        attrib->binary_graphics_data = dxf_binary_graphics_data_new ();
-        attrib->binary_graphics_data = dxf_binary_graphics_data_new (attrib->binary_graphics_data);
+        attrib->binary_graphics_data = dxf_binary_data_new (attrib->binary_graphics_data);
         attrib->dictionary_owner_soft = strdup("");
         attrib->object_owner_soft = strdup("");
         attrib->material = strdup("");
@@ -188,7 +187,7 @@ dxf_attrib_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -215,7 +214,7 @@ dxf_attrib_read
                         return (NULL);
                 }
         }
-        iter310 = (DxfBinaryGraphicsData *) attrib->binary_graphics_data;
+        iter310 = (DxfBinaryData *) attrib->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -489,8 +488,8 @@ dxf_attrib_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -782,12 +781,12 @@ dxf_attrib_write
 #endif
                 if (attrib->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) attrib->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) attrib->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -922,7 +921,7 @@ dxf_attrib_free
         }
         free (attrib->linetype);
         free (attrib->layer);
-        dxf_binary_graphics_data_free_list (attrib->binary_graphics_data);
+        dxf_binary_data_free_list (attrib->binary_graphics_data);
         free (attrib->dictionary_owner_soft);
         free (attrib->object_owner_soft);
         free (attrib->material);
@@ -1842,7 +1841,7 @@ dxf_attrib_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_attrib_get_binary_graphics_data
 (
         DxfAttrib *attrib
@@ -1870,7 +1869,7 @@ dxf_attrib_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) attrib->binary_graphics_data);
+        return ((DxfBinaryData *) attrib->binary_graphics_data);
 }
 
 
@@ -1883,7 +1882,7 @@ dxf_attrib_set_binary_graphics_data
 (
         DxfAttrib *attrib,
                 /*!< a pointer to a DXF \c ATTRIB entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1906,7 +1905,7 @@ dxf_attrib_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        attrib->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        attrib->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

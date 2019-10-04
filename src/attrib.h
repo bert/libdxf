@@ -41,7 +41,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifndef LIBDXF_SRC_ATTRIB_H
@@ -126,7 +126,7 @@ dxf_attrib_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -319,8 +319,8 @@ int32_t dxf_attrib_get_graphics_data_size (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_graphics_data_size (DxfAttrib *attrib, int32_t graphics_data_size);
 int16_t dxf_attrib_get_shadow_mode (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_shadow_mode (DxfAttrib *attrib, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_attrib_get_binary_graphics_data (DxfAttrib *attrib);
-DxfAttrib *dxf_attrib_set_binary_graphics_data (DxfAttrib *attrib, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_attrib_get_binary_graphics_data (DxfAttrib *attrib);
+DxfAttrib *dxf_attrib_set_binary_graphics_data (DxfAttrib *attrib, DxfBinaryData *data);
 char *dxf_attrib_get_dictionary_owner_soft (DxfAttrib *attrib);
 DxfAttrib *dxf_attrib_set_dictionary_owner_soft (DxfAttrib *attrib, char *dictionary_owner_soft);
 char *dxf_attrib_get_object_owner_soft (DxfAttrib *attrib);
