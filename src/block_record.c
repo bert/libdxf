@@ -118,8 +118,7 @@ dxf_block_record_init
         block_record->insert_units = 0;
         block_record->explodability = 0;
         block_record->scalability = 0;
-        block_record->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        block_record->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (block_record->binary_graphics_data);
+        block_record->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (block_record->binary_graphics_data);
         block_record->dictionary_owner_soft = strdup ("");
         block_record->object_owner_soft = strdup ("");
         block_record->dictionary_owner_hard = strdup ("");
@@ -160,7 +159,7 @@ dxf_block_record_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -180,7 +179,7 @@ dxf_block_record_read
                   __FUNCTION__);
                 block_record = dxf_block_record_init (block_record);
         }
-        iter310 = (DxfBinaryGraphicsData *) block_record->binary_graphics_data;
+        iter310 = (DxfBinaryData *) block_record->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -238,8 +237,8 @@ dxf_block_record_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -437,12 +436,12 @@ dxf_block_record_write
         {
                 if (block_record->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) block_record->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) block_record->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
                 if (block_record->xdata_application_name != NULL)
@@ -499,6 +498,7 @@ dxf_block_record_free
                 return (EXIT_FAILURE);
         }
         free (block_record->block_name);
+        dxf_binary_data_free_list (block_record->binary_graphics_data);
         free (block_record->dictionary_owner_soft);
         free (block_record->dictionary_owner_hard);
         free (block_record);
@@ -1171,7 +1171,7 @@ dxf_block_record_set_scalability
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_block_record_get_binary_graphics_data
 (
         DxfBlockRecord *block_record
@@ -1200,7 +1200,7 @@ dxf_block_record_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) block_record->binary_graphics_data);
+        return ((DxfBinaryData *) block_record->binary_graphics_data);
 }
 
 
@@ -1214,7 +1214,7 @@ dxf_block_record_set_binary_graphics_data
         DxfBlockRecord *block_record,
                 /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
                  * entry. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1237,7 +1237,7 @@ dxf_block_record_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        block_record->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        block_record->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

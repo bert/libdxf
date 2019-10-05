@@ -47,7 +47,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -98,7 +98,7 @@ dxf_block_record_struct
         int16_t scalability;
                  /*!< Block scalability.\n
                   * Group code = 281. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Binary data for bitmap preview (optional).\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -180,8 +180,8 @@ int16_t dxf_block_record_get_explodability (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_explodability (DxfBlockRecord *block_record, int16_t explodability);
 int16_t dxf_block_record_get_scalability (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_scalability (DxfBlockRecord *block_record, int16_t scalability);
-DxfBinaryGraphicsData *dxf_block_record_get_binary_graphics_data (DxfBlockRecord *block_record);
-DxfBlockRecord *dxf_block_record_set_binary_graphics_data (DxfBlockRecord *block_record, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_block_record_get_binary_graphics_data (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_binary_graphics_data (DxfBlockRecord *block_record, DxfBinaryData *data);
 char *dxf_block_record_get_dictionary_owner_soft (DxfBlockRecord *block_record);
 DxfBlockRecord *dxf_block_record_set_dictionary_owner_soft (DxfBlockRecord *block_record, char *dictionary_owner_soft);
 char *dxf_block_record_get_object_owner_soft (DxfBlockRecord *block_record);
