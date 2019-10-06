@@ -44,7 +44,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "proprietary_data.h"
 
 
@@ -129,7 +129,7 @@ dxf_body_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -236,8 +236,8 @@ int32_t dxf_body_get_graphics_data_size (DxfBody *body);
 DxfBody *dxf_body_set_graphics_data_size (DxfBody *body, int32_t graphics_data_size);
 int16_t dxf_body_get_shadow_mode (DxfBody *body);
 DxfBody *dxf_body_set_shadow_mode (DxfBody *body, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_body_get_binary_graphics_data (DxfBody *body);
-DxfBody *dxf_body_set_binary_graphics_data (DxfBody *body, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_body_get_binary_graphics_data (DxfBody *body);
+DxfBody *dxf_body_set_binary_graphics_data (DxfBody *body, DxfBinaryData *data);
 char *dxf_body_get_dictionary_owner_soft (DxfBody *body);
 DxfBody *dxf_body_set_dictionary_owner_soft (DxfBody *body, char *dictionary_owner_soft);
 char *dxf_body_get_object_owner_soft (DxfBody *body);

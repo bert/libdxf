@@ -122,8 +122,7 @@ dxf_body_init
         body->paperspace = DXF_MODELSPACE;
         body->graphics_data_size = 0;
         body->shadow_mode = 0;
-        body->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        body->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (body->binary_graphics_data);
+        body->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (body->binary_graphics_data);
         body->dictionary_owner_soft = strdup ("");
         body->object_owner_soft = strdup ("");
         body->material = strdup ("");
@@ -332,6 +331,7 @@ dxf_body_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%hd\n", &body->shadow_mode);
                 }
+                /*! \todo Read binary graphics data. */
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         if (iter330 == 0)
@@ -592,12 +592,12 @@ dxf_body_write
 #endif
                 if (body->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) body->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) body->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -681,7 +681,7 @@ dxf_body_free
         }
         free (body->linetype);
         free (body->layer);
-        dxf_binary_graphics_data_free_list (body->binary_graphics_data);
+        dxf_binary_data_free_list (body->binary_graphics_data);
         free (body->dictionary_owner_soft);
         free (body->object_owner_soft);
         free (body->material);
@@ -1614,7 +1614,7 @@ dxf_body_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_body_get_binary_graphics_data
 (
         DxfBody *body
@@ -1642,7 +1642,7 @@ dxf_body_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) body->binary_graphics_data);
+        return ((DxfBinaryData *) body->binary_graphics_data);
 }
 
 
@@ -1658,7 +1658,7 @@ dxf_body_set_binary_graphics_data
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1681,7 +1681,7 @@ dxf_body_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        body->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        body->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
