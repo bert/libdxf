@@ -169,6 +169,7 @@ dxf_body_read
 #endif
         char *temp_string = NULL;
         int i;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -195,6 +196,7 @@ dxf_body_read
                   __FUNCTION__);
         }
         i = 0;
+        iter310 = (DxfBinaryData *) body->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -331,7 +333,15 @@ dxf_body_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%hd\n", &body->shadow_mode);
                 }
-                /*! \todo Read binary graphics data. */
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
+                }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         if (iter330 == 0)
