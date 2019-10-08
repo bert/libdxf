@@ -190,11 +190,11 @@ dxf_body_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF body. */
-        DxfProprietaryData *proprietary_data;
+        DxfBinaryData *proprietary_data;
                 /*!< group code = 1\n
                  * Proprietary data (multiple lines < 255 characters
                  * each).*/
-        DxfProprietaryData *additional_proprietary_data;
+        DxfBinaryData *additional_proprietary_data;
                 /*!< group code = 3\n
                  * Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
@@ -256,10 +256,10 @@ char *dxf_body_get_color_name (DxfBody *body);
 DxfBody *dxf_body_set_color_name (DxfBody *body, char *color_name);
 int32_t dxf_body_get_transparency (DxfBody *body);
 DxfBody *dxf_body_set_transparency (DxfBody *body, int32_t transparency);
-DxfProprietaryData *dxf_body_get_proprietary_data (DxfBody *body);
-DxfBody *dxf_body_set_proprietary_data (DxfBody *body, DxfProprietaryData *proprietary_data);
-DxfProprietaryData *dxf_body_get_additional_proprietary_data (DxfBody *body);
-DxfBody *dxf_body_set_additional_proprietary_data (DxfBody *body, DxfProprietaryData *additional_proprietary_data);
+DxfBinaryData *dxf_body_get_proprietary_data (DxfBody *body);
+DxfBody *dxf_body_set_proprietary_data (DxfBody *body, DxfBinaryData *proprietary_data);
+DxfBinaryData *dxf_body_get_additional_proprietary_data (DxfBody *body);
+DxfBody *dxf_body_set_additional_proprietary_data (DxfBody *body, DxfBinaryData *additional_proprietary_data);
 int16_t dxf_body_get_modeler_format_version_number (DxfBody *body);
 DxfBody *dxf_body_set_modeler_format_version_number (DxfBody *body, int16_t modeler_format_version_number);
 DxfBody *dxf_body_get_next (DxfBody *body);

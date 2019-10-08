@@ -131,10 +131,8 @@ dxf_body_init
         body->color_value = 0;
         body->color_name = strdup ("");
         body->transparency = 0;
-        body->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_new ();
-        body->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (body->proprietary_data);
-        body->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_new ();
-        body->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (body->additional_proprietary_data);
+        body->proprietary_data = (DxfBinaryData *) dxf_binary_data_init (body->proprietary_data);
+        body->additional_proprietary_data = (DxfBinaryData *) dxf_binary_data_init (body->additional_proprietary_data);
         body->modeler_format_version_number = 1;
         body->next = NULL;
 #if DEBUG
@@ -217,22 +215,22 @@ dxf_body_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, body->proprietary_data->line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, body->proprietary_data->data_line);
                         body->proprietary_data->order = i;
                         i++;
-                        dxf_proprietary_data_init ((DxfProprietaryData *) body->proprietary_data->next);
-                        body->proprietary_data = (DxfProprietaryData *) body->proprietary_data->next;
+                        dxf_binary_data_init ((DxfBinaryData *) body->proprietary_data->next);
+                        body->proprietary_data = (DxfBinaryData *) body->proprietary_data->next;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
                 {
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, body->additional_proprietary_data->line);
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, body->additional_proprietary_data->data_line);
                         body->additional_proprietary_data->order = i;
                         i++;
-                        dxf_proprietary_data_init ((DxfProprietaryData *) body->additional_proprietary_data->next);
-                        body->additional_proprietary_data = (DxfProprietaryData *) body->additional_proprietary_data->next;
+                        dxf_binary_data_init ((DxfBinaryData *) body->additional_proprietary_data->next);
+                        body->additional_proprietary_data = (DxfBinaryData *) body->additional_proprietary_data->next;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -698,8 +696,8 @@ dxf_body_free
         free (body->dictionary_owner_hard);
         free (body->plot_style_name);
         free (body->color_name);
-        dxf_proprietary_data_free_list (body->proprietary_data);
-        dxf_proprietary_data_free_list (body->additional_proprietary_data);
+        dxf_binary_data_free_list (body->proprietary_data);
+        dxf_binary_data_free_list (body->additional_proprietary_data);
         free (body);
         body = NULL;
 #if DEBUG
@@ -2385,7 +2383,7 @@ dxf_body_set_transparency
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfProprietaryData *
+DxfBinaryData *
 dxf_body_get_proprietary_data
 (
         DxfBody *body
@@ -2413,7 +2411,7 @@ dxf_body_get_proprietary_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfProprietaryData *) body->proprietary_data);
+        return ((DxfBinaryData *) body->proprietary_data);
 }
 
 
@@ -2425,7 +2423,7 @@ dxf_body_set_proprietary_data
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        DxfProprietaryData *proprietary_data
+        DxfBinaryData *proprietary_data
                 /*!< a pointer to a linked list containing the
                  * \c proprietary_data for the entity. */
 )
@@ -2463,7 +2461,7 @@ dxf_body_set_proprietary_data
  *
  * \warning No checks are performed on the returned pointer (string).
  */
-DxfProprietaryData *
+DxfBinaryData *
 dxf_body_get_additional_proprietary_data
 (
         DxfBody *body
@@ -2491,7 +2489,7 @@ dxf_body_get_additional_proprietary_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfProprietaryData *) body->additional_proprietary_data);
+        return ((DxfBinaryData *) body->additional_proprietary_data);
 }
 
 
@@ -2504,7 +2502,7 @@ dxf_body_set_additional_proprietary_data
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        DxfProprietaryData *additional_proprietary_data
+        DxfBinaryData *additional_proprietary_data
                 /*!< an array containing the additional proprietary data
                  * for the entity. */
 )
