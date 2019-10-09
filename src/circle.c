@@ -128,8 +128,7 @@ dxf_circle_init
         circle->paperspace = DXF_MODELSPACE;
         circle->graphics_data_size = 0;
         circle->shadow_mode = 0;
-        circle->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        circle->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (circle->binary_graphics_data);
+        circle->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (circle->binary_graphics_data);
         circle->dictionary_owner_soft = strdup ("");
         circle->object_owner_soft = strdup ("");
         circle->material = strdup ("");
@@ -183,7 +182,7 @@ dxf_circle_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -203,7 +202,7 @@ dxf_circle_read
                   __FUNCTION__);
                 circle = dxf_circle_init (circle);
         }
-        iter310 = (DxfBinaryGraphicsData *) circle->binary_graphics_data;
+        iter310 = (DxfBinaryData *) circle->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -374,8 +373,8 @@ dxf_circle_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -618,12 +617,12 @@ dxf_circle_write
 #endif
                 if (circle->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) circle->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) circle->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -711,6 +710,7 @@ dxf_circle_free
         }
         free (circle->linetype);
         free (circle->layer);
+        dxf_binary_data_free (circle->binary_graphics_data);
         free (circle->dictionary_owner_soft);
         free (circle->dictionary_owner_hard);
         free (circle);
@@ -1692,7 +1692,7 @@ dxf_circle_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_circle_get_binary_graphics_data
 (
         DxfCircle *circle
@@ -1720,7 +1720,7 @@ dxf_circle_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) circle->binary_graphics_data);
+        return ((DxfBinaryData *) circle->binary_graphics_data);
 }
 
 
@@ -1741,7 +1741,7 @@ dxf_circle_set_binary_graphics_data
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1764,7 +1764,7 @@ dxf_circle_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        circle->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        circle->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
