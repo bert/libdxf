@@ -46,7 +46,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -128,7 +128,7 @@ dxf_dimension_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -367,8 +367,8 @@ int32_t dxf_dimension_get_graphics_data_size (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_graphics_data_size (DxfDimension *dimension, int32_t graphics_data_size);
 int16_t dxf_dimension_get_shadow_mode (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_shadow_mode (DxfDimension *dimension, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_dimension_get_binary_graphics_data (DxfDimension *dimension);
-DxfDimension *dxf_dimension_set_binary_graphics_data (DxfDimension *dimension, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_dimension_get_binary_graphics_data (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_binary_graphics_data (DxfDimension *dimension, DxfBinaryData *data);
 char *dxf_dimension_get_dictionary_owner_soft (DxfDimension *dimension);
 DxfDimension *dxf_dimension_set_dictionary_owner_soft (DxfDimension *dimension, char *dictionary_owner_soft);
 char *dxf_dimension_get_object_owner_soft (DxfDimension *dimension);

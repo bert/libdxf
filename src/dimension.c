@@ -125,8 +125,7 @@ dxf_dimension_init
         dimension->paperspace = DXF_PAPERSPACE;
         dimension->graphics_data_size = 0;
         dimension->shadow_mode = 0;
-        dimension->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        dimension->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (dimension->binary_graphics_data);
+        dimension->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (dimension->binary_graphics_data);
         dimension->dictionary_owner_soft = strdup ("");
         dimension->object_owner_soft = strdup ("");
         dimension->material = strdup ("");
@@ -220,7 +219,7 @@ dxf_dimension_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -240,7 +239,7 @@ dxf_dimension_read
                   __FUNCTION__);
                 dimension = dxf_dimension_init (dimension);
         }
-        iter310 = (DxfBinaryGraphicsData *) dimension->binary_graphics_data;
+        iter310 = (DxfBinaryData *) dimension->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -651,8 +650,8 @@ dxf_dimension_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -890,12 +889,12 @@ dxf_dimension_write
 #endif
                 if (dimension->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) dimension->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) dimension->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -1107,7 +1106,7 @@ dxf_dimension_free
         }
         free (dimension->linetype);
         free (dimension->layer);
-        dxf_binary_graphics_data_free_list (dimension->binary_graphics_data);
+        dxf_binary_data_free_list (dimension->binary_graphics_data);
         free (dimension->dim_text);
         free (dimension->dimblock_name);
         free (dimension->dimstyle_name);
@@ -2056,7 +2055,7 @@ dxf_dimension_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_dimension_get_binary_graphics_data
 (
         DxfDimension *dimension
@@ -2084,7 +2083,7 @@ dxf_dimension_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) dimension->binary_graphics_data);
+        return ((DxfBinaryData *) dimension->binary_graphics_data);
 }
 
 
@@ -2100,7 +2099,7 @@ dxf_dimension_set_binary_graphics_data
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -2123,7 +2122,7 @@ dxf_dimension_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        dimension->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        dimension->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
