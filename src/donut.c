@@ -130,7 +130,7 @@ dxf_donut_init
         dxf_donut_set_paperspace (donut, DXF_MODELSPACE);
         dxf_donut_set_graphics_data_size (donut, 0);
         dxf_donut_set_shadow_mode (donut, 0);
-        dxf_donut_set_binary_graphics_data (donut, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        donut->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (donut->binary_graphics_data);
         dxf_donut_set_dictionary_owner_soft (donut, strdup (""));
         dxf_donut_set_material (donut, strdup (""));
         dxf_donut_set_dictionary_owner_hard (donut, strdup (""));
@@ -1309,7 +1309,7 @@ dxf_donut_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_donut_get_binary_graphics_data
 (
         DxfDonut *donut
@@ -1337,7 +1337,7 @@ dxf_donut_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) donut->binary_graphics_data);
+        return ((DxfBinaryData *) donut->binary_graphics_data);
 }
 
 
@@ -1350,7 +1350,7 @@ dxf_donut_set_binary_graphics_data
 (
         DxfDonut *donut,
                 /*!< a pointer to a libDXF \c donut entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1373,7 +1373,7 @@ dxf_donut_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        donut->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        donut->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
