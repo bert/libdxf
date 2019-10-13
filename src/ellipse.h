@@ -45,7 +45,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -129,7 +129,7 @@ dxf_ellipse_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -271,8 +271,8 @@ int32_t dxf_ellipse_get_graphics_data_size (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_graphics_data_size (DxfEllipse *ellipse, int32_t graphics_data_size);
 int16_t dxf_ellipse_get_shadow_mode (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_shadow_mode (DxfEllipse *ellipse, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_ellipse_get_binary_graphics_data (DxfEllipse *ellipse);
-DxfEllipse *dxf_ellipse_set_binary_graphics_data (DxfEllipse *ellipse, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_ellipse_get_binary_graphics_data (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_binary_graphics_data (DxfEllipse *ellipse, DxfBinaryData *data);
 char *dxf_ellipse_get_dictionary_owner_soft (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_dictionary_owner_soft (DxfEllipse *ellipse, char *dictionary_owner_soft);
 char *dxf_ellipse_get_object_owner_soft (DxfEllipse *ellipse);
