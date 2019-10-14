@@ -47,7 +47,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -500,7 +500,7 @@ dxf_hatch_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -664,8 +664,8 @@ int16_t dxf_hatch_get_paperspace (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_paperspace (DxfHatch *hatch, int16_t paperspace);
 int32_t dxf_hatch_get_graphics_data_size (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_graphics_data_size (DxfHatch *hatch, int32_t graphics_data_size);
-DxfBinaryGraphicsData *dxf_hatch_get_binary_graphics_data (DxfHatch *hatch);
-DxfHatch *dxf_hatch_set_binary_graphics_data (DxfHatch *hatch, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_hatch_get_binary_graphics_data (DxfHatch *hatch);
+DxfHatch *dxf_hatch_set_binary_graphics_data (DxfHatch *hatch, DxfBinaryData *data);
 char *dxf_hatch_get_dictionary_owner_soft (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_dictionary_owner_soft (DxfHatch *hatch, char *dictionary_owner_soft);
 char *dxf_hatch_get_object_owner_soft (DxfHatch *hatch);

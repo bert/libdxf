@@ -122,8 +122,7 @@ dxf_hatch_init
         hatch->paperspace = DXF_MODELSPACE;
         hatch->graphics_data_size = 0;
         hatch->shadow_mode = 0;
-        hatch->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        hatch->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (hatch->binary_graphics_data);
+        hatch->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (hatch->binary_graphics_data);
         hatch->dictionary_owner_soft = strdup ("");
         hatch->object_owner_soft = strdup ("");
         hatch->material = strdup ("");
@@ -329,12 +328,12 @@ dxf_hatch_write
 #endif
                 if (hatch->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) hatch->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) hatch->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -430,7 +429,7 @@ dxf_hatch_free
         }
         free (hatch->linetype);
         free (hatch->layer);
-        dxf_binary_graphics_data_free_list ((DxfBinaryGraphicsData *) hatch->binary_graphics_data);
+        dxf_binary_data_free_list ((DxfBinaryData *) hatch->binary_graphics_data);
         free (hatch->dictionary_owner_soft);
         free (hatch->material);
         free (hatch->dictionary_owner_hard);
@@ -1298,7 +1297,7 @@ dxf_hatch_set_graphics_data_size
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_hatch_get_binary_graphics_data
 (
         DxfHatch *hatch
@@ -1308,8 +1307,6 @@ dxf_hatch_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBinaryGraphicsData *result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -1325,11 +1322,10 @@ dxf_hatch_get_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBinaryGraphicsData *) hatch->binary_graphics_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBinaryData *) hatch->binary_graphics_data);
 }
 
 
@@ -1342,7 +1338,7 @@ dxf_hatch_set_binary_graphics_data
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1365,7 +1361,7 @@ dxf_hatch_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        hatch->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        hatch->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
