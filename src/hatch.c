@@ -2500,8 +2500,6 @@ dxf_hatch_get_pixel_size
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -2510,11 +2508,10 @@ dxf_hatch_get_pixel_size
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->pixel_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->pixel_size);
 }
 
 
