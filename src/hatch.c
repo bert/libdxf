@@ -2561,8 +2561,6 @@ dxf_hatch_get_pattern_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -2571,11 +2569,10 @@ dxf_hatch_get_pattern_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->pattern_angle;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->pattern_angle);
 }
 
 
