@@ -2622,8 +2622,6 @@ dxf_hatch_get_solid_fill
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -2646,11 +2644,10 @@ dxf_hatch_get_solid_fill
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->solid_fill;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->solid_fill);
 }
 
 
