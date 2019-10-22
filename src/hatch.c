@@ -2711,8 +2711,6 @@ dxf_hatch_get_associative
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -2735,11 +2733,10 @@ dxf_hatch_get_associative
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->associative;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->associative);
 }
 
 
