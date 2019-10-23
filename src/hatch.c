@@ -2800,8 +2800,6 @@ dxf_hatch_get_hatch_style
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -2824,11 +2822,10 @@ dxf_hatch_get_hatch_style
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->hatch_style;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->hatch_style);
 }
 
 
