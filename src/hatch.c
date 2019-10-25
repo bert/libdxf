@@ -2978,8 +2978,6 @@ dxf_hatch_get_pattern_double
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -3002,11 +3000,10 @@ dxf_hatch_get_pattern_double
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->pattern_double;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->pattern_double);
 }
 
 
