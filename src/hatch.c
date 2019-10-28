@@ -3189,8 +3189,6 @@ dxf_hatch_get_extr_z0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -3199,11 +3197,10 @@ dxf_hatch_get_extr_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->extr_z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->extr_z0);
 }
 
 
