@@ -3252,8 +3252,6 @@ dxf_hatch_get_boundary_paths
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPath *result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -3269,11 +3267,10 @@ dxf_hatch_get_boundary_paths
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPath *) hatch->paths;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPath *) hatch->paths);
 }
 
 
