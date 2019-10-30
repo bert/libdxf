@@ -3329,8 +3329,6 @@ dxf_hatch_get_patterns
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPattern *result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -3346,11 +3344,10 @@ dxf_hatch_get_patterns
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchPattern *) hatch->patterns;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchPattern *) hatch->patterns);
 }
 
 
