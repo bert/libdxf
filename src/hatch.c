@@ -3407,8 +3407,6 @@ dxf_hatch_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatch *result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -3424,11 +3422,10 @@ dxf_hatch_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatch *) hatch->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatch *) hatch->next);
 }
 
 
