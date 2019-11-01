@@ -3689,8 +3689,6 @@ dxf_hatch_pattern_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (pattern == NULL)
         {
@@ -3706,11 +3704,10 @@ dxf_hatch_pattern_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = pattern->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (pattern->id_code);
 }
 
 
