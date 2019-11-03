@@ -3846,8 +3846,6 @@ dxf_hatch_pattern_get_def_lines
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPatternDefLine *result;
-
         /* Do some basic checks. */
         if (pattern == NULL)
         {
@@ -3856,11 +3854,10 @@ dxf_hatch_pattern_get_def_lines
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchPatternDefLine *) pattern->def_lines;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchPatternDefLine *) pattern->def_lines);
 }
 
 
