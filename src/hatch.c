@@ -3916,8 +3916,6 @@ dxf_hatch_pattern_get_number_of_seed_points
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (pattern == NULL)
         {
@@ -3933,11 +3931,10 @@ dxf_hatch_pattern_get_number_of_seed_points
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = pattern->number_of_seed_points;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (pattern->number_of_seed_points);
 }
 
 
