@@ -4067,8 +4067,6 @@ dxf_hatch_pattern_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPattern *result;
-
         /* Do some basic checks. */
         if (pattern == NULL)
         {
@@ -4084,11 +4082,10 @@ dxf_hatch_pattern_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchPattern *) pattern->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchPattern *) pattern->next);
 }
 
 
