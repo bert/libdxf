@@ -4339,8 +4339,6 @@ dxf_hatch_pattern_def_line_dash_get_length
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dash == NULL)
         {
@@ -4349,11 +4347,10 @@ dxf_hatch_pattern_def_line_dash_get_length
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dash->length;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dash->length);
 }
 
 
