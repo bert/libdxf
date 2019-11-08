@@ -4403,8 +4403,6 @@ dxf_hatch_pattern_def_line_dash_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPatternDefLineDash *result;
-
         /* Do some basic checks. */
         if (dash == NULL)
         {
@@ -4420,11 +4418,10 @@ dxf_hatch_pattern_def_line_dash_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchPatternDefLineDash *) dash->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchPatternDefLineDash *) dash->next);
 }
 
 
