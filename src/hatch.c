@@ -4908,8 +4908,6 @@ dxf_hatch_pattern_def_line_get_x0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -4918,11 +4916,10 @@ dxf_hatch_pattern_def_line_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->x0);
 }
 
 
