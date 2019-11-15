@@ -5158,8 +5158,6 @@ dxf_hatch_pattern_def_line_get_number_of_dash_items
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -5175,11 +5173,10 @@ dxf_hatch_pattern_def_line_get_number_of_dash_items
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->number_of_dash_items;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->number_of_dash_items);
 }
 
 
