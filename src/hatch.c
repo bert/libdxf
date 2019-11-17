@@ -5309,8 +5309,6 @@ dxf_hatch_pattern_def_line_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPatternDefLine *result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -5326,11 +5324,10 @@ dxf_hatch_pattern_def_line_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchPatternDefLine *) line->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchPatternDefLine *) line->next);
 }
 
 
