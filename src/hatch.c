@@ -5631,8 +5631,6 @@ dxf_hatch_pattern_seedpoint_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -5648,11 +5646,10 @@ dxf_hatch_pattern_seedpoint_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = point->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->id_code);
 }
 
 
