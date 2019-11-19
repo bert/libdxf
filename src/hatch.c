@@ -5708,8 +5708,6 @@ dxf_hatch_pattern_seedpoint_get_x0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -5718,11 +5716,10 @@ dxf_hatch_pattern_seedpoint_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = point->x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->x0);
 }
 
 
