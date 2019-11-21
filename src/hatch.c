@@ -576,8 +576,6 @@ dxf_hatch_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -593,11 +591,10 @@ dxf_hatch_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (hatch->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (hatch->linetype));
 }
 
 
