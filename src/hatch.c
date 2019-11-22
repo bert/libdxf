@@ -651,8 +651,6 @@ dxf_hatch_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -668,11 +666,10 @@ dxf_hatch_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (hatch->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (hatch->layer));
 }
 
 
