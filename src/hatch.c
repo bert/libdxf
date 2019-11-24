@@ -6985,8 +6985,6 @@ dxf_hatch_boundary_path_polyline_get_vertices
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathPolylineVertex *result;
-
         /* Do some basic checks. */
         if (polyline == NULL)
         {
@@ -6995,11 +6993,10 @@ dxf_hatch_boundary_path_polyline_get_vertices
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathPolylineVertex *) polyline->vertices);
 }
 
 
