@@ -6247,8 +6247,6 @@ dxf_hatch_boundary_path_get_edges
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdge *result;
-
         /* Do some basic checks. */
         if (path == NULL)
         {
@@ -6257,11 +6255,10 @@ dxf_hatch_boundary_path_get_edges
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathEdge *) path->edges;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdge *) path->edges);
 }
 
 
