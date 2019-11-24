@@ -1186,8 +1186,6 @@ dxf_hatch_get_graphics_data_size
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -1208,11 +1206,10 @@ dxf_hatch_get_graphics_data_size
                   (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
                   __FUNCTION__);
         }
-        result = hatch->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->graphics_data_size);
 }
 
 
