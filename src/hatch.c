@@ -6906,8 +6906,6 @@ dxf_hatch_boundary_path_polyline_get_number_of_vertices
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (polyline == NULL)
         {
@@ -6923,11 +6921,10 @@ dxf_hatch_boundary_path_polyline_get_number_of_vertices
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = polyline->number_of_vertices;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (polyline->number_of_vertices);
 }
 
 
