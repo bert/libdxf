@@ -860,8 +860,6 @@ dxf_hatch_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -877,11 +875,10 @@ dxf_hatch_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = hatch->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (hatch->linetype_scale);
 }
 
 
