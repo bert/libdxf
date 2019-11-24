@@ -7267,8 +7267,6 @@ dxf_hatch_boundary_path_polyline_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathPolyline *result;
-
         /* Do some basic checks. */
         if (polyline == NULL)
         {
@@ -7284,11 +7282,10 @@ dxf_hatch_boundary_path_polyline_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathPolyline *) polyline->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathPolyline *) polyline->next);
 }
 
 
