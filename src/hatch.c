@@ -6388,8 +6388,6 @@ dxf_hatch_boundary_path_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPath *result;
-
         /* Do some basic checks. */
         if (path == NULL)
         {
@@ -6405,11 +6403,10 @@ dxf_hatch_boundary_path_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPath *) path->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPath *) path->next);
 }
 
 
