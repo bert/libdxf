@@ -6317,8 +6317,6 @@ dxf_hatch_boundary_path_get_polylines
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathPolyline *result;
-
         /* Do some basic checks. */
         if (path == NULL)
         {
@@ -6327,11 +6325,10 @@ dxf_hatch_boundary_path_get_polylines
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathPolyline *) path->polylines;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathPolyline *) path->polylines);
 }
 
 
