@@ -5803,8 +5803,6 @@ dxf_hatch_pattern_seedpoint_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPatternSeedPoint *result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -5820,11 +5818,10 @@ dxf_hatch_pattern_seedpoint_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchPatternSeedPoint *) point->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchPatternSeedPoint *) point->next);
 }
 
 
