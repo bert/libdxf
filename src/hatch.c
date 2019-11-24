@@ -6168,8 +6168,6 @@ dxf_hatch_boundary_path_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (path == NULL)
         {
@@ -6185,11 +6183,10 @@ dxf_hatch_boundary_path_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = path->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (path->id_code);
 }
 
 
