@@ -6815,8 +6815,6 @@ dxf_hatch_boundary_path_polyline_get_is_closed
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (polyline == NULL)
         {
@@ -6839,11 +6837,10 @@ dxf_hatch_boundary_path_polyline_get_is_closed
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = polyline->is_closed;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (polyline->is_closed);
 }
 
 
