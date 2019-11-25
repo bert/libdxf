@@ -7808,8 +7808,6 @@ dxf_hatch_boundary_path_polyline_vertex_get_bulge
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (vertex == NULL)
         {
@@ -7818,11 +7816,10 @@ dxf_hatch_boundary_path_polyline_vertex_get_bulge
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = vertex->bulge;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (vertex->bulge);
 }
 
 
