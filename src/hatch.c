@@ -8403,8 +8403,6 @@ dxf_hatch_boundary_path_edge_get_arcs
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeArc *result = NULL;
-
         /* Do some basic checks. */
         if (edge == NULL)
         {
@@ -8420,19 +8418,10 @@ dxf_hatch_boundary_path_edge_get_arcs
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_hatch_boundary_path_edge_arc_new (result);
-        if (result == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () can not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = (DxfHatchBoundaryPathEdgeArc *) edge->arcs;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdgeArc *) edge->arcs);
 }
 
 
