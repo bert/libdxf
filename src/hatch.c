@@ -7595,8 +7595,6 @@ dxf_hatch_boundary_path_polyline_vertex_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (vertex == NULL)
         {
@@ -7612,11 +7610,10 @@ dxf_hatch_boundary_path_polyline_vertex_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = vertex->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (vertex->id_code);
 }
 
 
