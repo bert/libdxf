@@ -8038,8 +8038,6 @@ dxf_hatch_boundary_path_polyline_vertex_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathPolylineVertex *result;
-
         /* Do some basic checks. */
         if (vertex == NULL)
         {
@@ -8055,11 +8053,10 @@ dxf_hatch_boundary_path_polyline_vertex_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathPolylineVertex *) vertex->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathPolylineVertex *) vertex->next);
 }
 
 
