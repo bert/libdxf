@@ -8637,8 +8637,6 @@ dxf_hatch_boundary_path_edge_get_splines
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeSpline *result = NULL;
-
         /* Do some basic checks. */
         if (edge == NULL)
         {
@@ -8654,19 +8652,10 @@ dxf_hatch_boundary_path_edge_get_splines
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_hatch_boundary_path_edge_spline_new (result);
-        if (result == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () can not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = (DxfHatchBoundaryPathEdgeSpline *) edge->splines;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdgeSpline *) edge->splines);
 }
 
 
