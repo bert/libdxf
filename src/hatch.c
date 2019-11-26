@@ -9140,8 +9140,6 @@ dxf_hatch_boundary_path_edge_arc_get_y0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -9150,11 +9148,10 @@ dxf_hatch_boundary_path_edge_arc_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = arc->y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (arc->y0);
 }
 
 
