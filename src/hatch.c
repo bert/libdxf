@@ -8559,8 +8559,6 @@ dxf_hatch_boundary_path_edge_get_lines
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeLine *result = NULL;
-
         /* Do some basic checks. */
         if (edge == NULL)
         {
@@ -8576,19 +8574,10 @@ dxf_hatch_boundary_path_edge_get_lines
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_hatch_boundary_path_edge_line_new (result);
-        if (result == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () can not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = (DxfHatchBoundaryPathEdgeLine *) edge->lines;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdgeLine *) edge->lines);
 }
 
 
