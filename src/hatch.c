@@ -8717,8 +8717,6 @@ dxf_hatch_boundary_path_edge_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdge *result;
-
         /* Do some basic checks. */
         if (edge == NULL)
         {
@@ -8734,11 +8732,10 @@ dxf_hatch_boundary_path_edge_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathEdge *) edge->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdge *) edge->next);
 }
 
 
