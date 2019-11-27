@@ -9584,8 +9584,6 @@ dxf_hatch_boundary_path_edge_arc_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeArc *result;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -9601,11 +9599,10 @@ dxf_hatch_boundary_path_edge_arc_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathEdgeArc *) arc->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdgeArc *) arc->next);
 }
 
 
