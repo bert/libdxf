@@ -9508,8 +9508,6 @@ dxf_hatch_boundary_path_edge_arc_get_is_ccw
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -9524,11 +9522,10 @@ dxf_hatch_boundary_path_edge_arc_get_is_ccw
                   (_("Warning in %s () a negative value was found in the is_ccw member.\n")),
                   __FUNCTION__);
         }
-        result = arc->is_ccw;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (arc->is_ccw);
 }
 
 
