@@ -9950,8 +9950,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_x0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -9960,11 +9958,10 @@ dxf_hatch_boundary_path_edge_ellipse_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->x0);
 }
 
 
