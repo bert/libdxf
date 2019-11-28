@@ -10410,8 +10410,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_ratio
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -10434,11 +10432,10 @@ dxf_hatch_boundary_path_edge_ellipse_get_ratio
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->ratio;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->ratio);
 }
 
 
