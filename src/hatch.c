@@ -10633,8 +10633,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_is_ccw
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -10649,11 +10647,10 @@ dxf_hatch_boundary_path_edge_ellipse_get_is_ccw
                   (_("Warning in %s () a negative value was found in the is_ccw member.\n")),
                   __FUNCTION__);
         }
-        result = ellipse->is_ccw;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->is_ccw);
 }
 
 
