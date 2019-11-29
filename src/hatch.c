@@ -10712,8 +10712,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeEllipse *result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -10729,11 +10727,10 @@ dxf_hatch_boundary_path_edge_ellipse_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathEdgeEllipse *) ellipse->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdgeEllipse *) ellipse->next);
 }
 
 
