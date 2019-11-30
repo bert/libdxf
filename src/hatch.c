@@ -11139,8 +11139,6 @@ dxf_hatch_boundary_path_edge_line_get_y0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -11149,11 +11147,10 @@ dxf_hatch_boundary_path_edge_line_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->y0);
 }
 
 
