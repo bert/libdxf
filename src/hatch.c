@@ -11906,8 +11906,6 @@ dxf_hatch_boundary_path_edge_spline_get_degree
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -11923,11 +11921,10 @@ dxf_hatch_boundary_path_edge_spline_get_degree
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->degree;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->degree);
 }
 
 
