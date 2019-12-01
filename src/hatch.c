@@ -12046,8 +12046,6 @@ dxf_hatch_boundary_path_edge_spline_get_periodic
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -12056,11 +12054,10 @@ dxf_hatch_boundary_path_edge_spline_get_periodic
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->periodic;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->periodic);
 }
 
 
