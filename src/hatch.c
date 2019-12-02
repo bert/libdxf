@@ -12272,8 +12272,6 @@ dxf_hatch_boundary_path_edge_spline_get_number_of_control_points
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -12289,11 +12287,10 @@ dxf_hatch_boundary_path_edge_spline_get_number_of_control_points
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->number_of_control_points;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->number_of_control_points);
 }
 
 
