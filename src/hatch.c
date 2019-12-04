@@ -1230,16 +1230,14 @@ dxf_hatch_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a negative graphics_data_size value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a zero graphics_data_size value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         hatch->graphics_data_size = graphics_data_size;
 #if DEBUG
