@@ -14045,8 +14045,6 @@ dxf_hatch_boundary_path_edge_spline_cp_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (control_point == NULL)
         {
@@ -14062,11 +14060,10 @@ dxf_hatch_boundary_path_edge_spline_cp_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = control_point->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (control_point->id_code);
 }
 
 
