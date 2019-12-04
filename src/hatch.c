@@ -2030,7 +2030,7 @@ dxf_hatch_get_pattern_name
         if (hatch->pattern_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the pattern_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
