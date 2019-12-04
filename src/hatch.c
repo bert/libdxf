@@ -2633,16 +2633,14 @@ dxf_hatch_set_solid_fill
         if (solid_fill < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative solid_fill value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (solid_fill > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range solid_fill value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         hatch->solid_fill = solid_fill;
 #if DEBUG
