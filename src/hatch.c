@@ -2718,16 +2718,14 @@ dxf_hatch_set_associative
         if (associative < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative associative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (associative > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range associative value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         hatch->associative = associative;
 #if DEBUG
