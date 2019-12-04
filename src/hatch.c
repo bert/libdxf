@@ -14428,8 +14428,6 @@ dxf_hatch_boundary_path_edge_spline_cp_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeSplineCp *result;
-
         /* Do some basic checks. */
         if (control_point == NULL)
         {
@@ -14445,11 +14443,10 @@ dxf_hatch_boundary_path_edge_spline_cp_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHatchBoundaryPathEdgeSplineCp *) control_point->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHatchBoundaryPathEdgeSplineCp *) control_point->next);
 }
 
 
