@@ -14192,8 +14192,6 @@ dxf_hatch_boundary_path_edge_spline_cp_get_y0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (control_point == NULL)
         {
@@ -14202,11 +14200,10 @@ dxf_hatch_boundary_path_edge_spline_cp_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = control_point->y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (control_point->y0);
 }
 
 
