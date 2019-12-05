@@ -2888,16 +2888,14 @@ dxf_hatch_set_hatch_pattern_type
         if (hatch_pattern_type < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative hatch_pattern_type value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (hatch_pattern_type > 2)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range hatch_pattern_type value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         hatch->hatch_pattern_type = hatch_pattern_type;
 #if DEBUG
