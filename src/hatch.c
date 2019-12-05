@@ -3278,7 +3278,7 @@ dxf_hatch_get_patterns
         if (hatch->patterns == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the patterns member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
