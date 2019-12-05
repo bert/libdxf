@@ -3201,7 +3201,7 @@ dxf_hatch_get_boundary_paths
         if (hatch->paths == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the paths member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
