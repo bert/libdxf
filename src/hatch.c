@@ -2973,16 +2973,14 @@ dxf_hatch_set_pattern_double
         if (pattern_double < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative pattern_double value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (pattern_double > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range pattern_double value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         hatch->pattern_double = pattern_double;
 #if DEBUG
