@@ -2931,16 +2931,14 @@ dxf_hatch_get_pattern_double
         if (hatch->pattern_double < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the pattern_double member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (hatch->pattern_double > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the pattern_double member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
