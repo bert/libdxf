@@ -3638,7 +3638,7 @@ dxf_hatch_pattern_get_id_code
         if (pattern->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
