@@ -3435,7 +3435,7 @@ dxf_hatch_get_last
         if (hatch->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfHatch *) hatch);
         }
