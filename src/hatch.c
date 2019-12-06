@@ -3517,7 +3517,7 @@ dxf_hatch_pattern_init
         if (pattern == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchPattern struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
