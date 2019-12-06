@@ -64,7 +64,7 @@ dxf_hatch_new ()
         if ((hatch = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatch struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 hatch = NULL;
         }
