@@ -4090,7 +4090,7 @@ dxf_hatch_pattern_get_last
         if (pattern->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfHatchPattern *) pattern);
         }
