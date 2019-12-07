@@ -4129,7 +4129,7 @@ dxf_hatch_pattern_def_line_dash_new ()
         if ((dash = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLineDash struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 dash = NULL;
         }
