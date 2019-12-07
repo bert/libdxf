@@ -3861,9 +3861,8 @@ dxf_hatch_pattern_get_number_of_seed_points
         if (pattern->number_of_seed_points < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the number_of_seed_points member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
