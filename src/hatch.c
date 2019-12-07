@@ -3751,9 +3751,8 @@ dxf_hatch_pattern_set_number_of_def_lines
         if (number_of_def_lines < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative number_of_def_lines value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         pattern->number_of_def_lines = number_of_def_lines;
 #if DEBUG
