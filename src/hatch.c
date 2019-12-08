@@ -5099,9 +5099,8 @@ dxf_hatch_pattern_def_line_get_number_of_dash_items
         if (line->number_of_dash_items < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the dash_items member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
