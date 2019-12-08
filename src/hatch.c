@@ -5136,9 +5136,8 @@ dxf_hatch_pattern_def_line_set_number_of_dash_items
         if (number_of_dash_items < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative dash_items value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         line->number_of_dash_items = number_of_dash_items;
 #if DEBUG
