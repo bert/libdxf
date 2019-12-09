@@ -5770,7 +5770,7 @@ dxf_hatch_pattern_seedpoint_get_next
         if (point->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
