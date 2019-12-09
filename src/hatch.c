@@ -6209,6 +6209,13 @@ dxf_hatch_boundary_path_get_edges
                   __FUNCTION__);
                 return (NULL);
         }
+        if (path->edges == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
