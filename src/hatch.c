@@ -5366,7 +5366,7 @@ dxf_hatch_pattern_seedpoint_new ()
         if ((seedpoint = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 seedpoint = NULL;
         }
