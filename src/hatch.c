@@ -6879,9 +6879,8 @@ dxf_hatch_boundary_path_polyline_get_number_of_vertices
         if (polyline->number_of_vertices < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the is_closed member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
