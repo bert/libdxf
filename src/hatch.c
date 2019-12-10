@@ -6835,16 +6835,14 @@ dxf_hatch_boundary_path_polyline_set_is_closed
         if (is_closed < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (is_closed > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         polyline->is_closed = is_closed;
 #if DEBUG
