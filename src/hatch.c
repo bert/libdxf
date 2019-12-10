@@ -6916,9 +6916,8 @@ dxf_hatch_boundary_path_polyline_set_number_of_vertices
         if (number_of_vertices < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         polyline->number_of_vertices = number_of_vertices;
 #if DEBUG
