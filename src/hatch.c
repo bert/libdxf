@@ -7156,14 +7156,14 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         if (polyline == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () invalid pointer to polyline (NULL).\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (point == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () invalid pointer to point (NULL).\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
