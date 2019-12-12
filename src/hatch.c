@@ -7893,16 +7893,14 @@ dxf_hatch_boundary_path_polyline_vertex_set_has_bulge
         if (has_bulge < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative has_bulge flag value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (has_bulge > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range has_bulge flag value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         vertex->has_bulge = has_bulge;
 #if DEBUG
