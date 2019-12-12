@@ -7849,16 +7849,14 @@ dxf_hatch_boundary_path_polyline_vertex_get_has_bulge
         if (vertex->has_bulge < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the has_bulge member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (vertex->has_bulge > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the has_bulge member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
