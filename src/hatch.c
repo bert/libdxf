@@ -9440,6 +9440,7 @@ dxf_hatch_boundary_path_edge_arc_set_end_angle
                   __FUNCTION__);
                 return (NULL);
         }
+        /*! \todo Add a test for a normalized \c end_angle.*/
         arc->end_angle = end_angle;
 #if DEBUG
         DXF_DEBUG_END
