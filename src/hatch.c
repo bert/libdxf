@@ -9877,9 +9877,8 @@ dxf_hatch_boundary_path_edge_ellipse_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         ellipse->id_code = id_code;
 #if DEBUG
