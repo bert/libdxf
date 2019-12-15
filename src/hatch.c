@@ -9377,6 +9377,7 @@ dxf_hatch_boundary_path_edge_arc_set_start_angle
                   __FUNCTION__);
                 return (NULL);
         }
+        /*! \todo Add a test for normalized \c start_angle.*/
         arc->start_angle = start_angle;
 #if DEBUG
         DXF_DEBUG_END
