@@ -9476,7 +9476,7 @@ dxf_hatch_boundary_path_edge_arc_get_is_ccw
         if (arc->is_ccw < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the is_ccw member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
