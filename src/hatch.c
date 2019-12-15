@@ -9713,7 +9713,7 @@ dxf_hatch_boundary_path_edge_ellipse_init
         if (ellipse == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
