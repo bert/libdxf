@@ -10462,6 +10462,7 @@ dxf_hatch_boundary_path_edge_ellipse_get_start_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        /*! \todo Add a test for a normalized \c start_angle.*/
 #if DEBUG
         DXF_DEBUG_END
 #endif
