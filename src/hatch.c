@@ -9306,16 +9306,14 @@ dxf_hatch_boundary_path_edge_arc_set_radius
         if (radius < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative radius value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (radius == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was passed.\n")),
+                  (_("Warning in %s () a value of zero was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         arc->radius = radius;
 #if DEBUG
