@@ -10420,16 +10420,14 @@ dxf_hatch_boundary_path_edge_ellipse_set_ratio
         if (ratio < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative ratio value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (ratio == 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a value of zero was passed.\n")),
+                  (_("Warning in %s () a value of zero was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         ellipse->ratio = ratio;
 #if DEBUG
