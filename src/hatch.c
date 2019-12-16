@@ -10562,6 +10562,7 @@ dxf_hatch_boundary_path_edge_ellipse_set_end_angle
                   __FUNCTION__);
                 return (NULL);
         }
+        /*! \todo Add a test for a normalized \c end_angle.*/
         ellipse->end_angle = end_angle;
 #if DEBUG
         DXF_DEBUG_END
