@@ -10637,7 +10637,7 @@ dxf_hatch_boundary_path_edge_ellipse_set_is_ccw
         if (is_ccw < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative is_ccw value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         ellipse->is_ccw = is_ccw;
