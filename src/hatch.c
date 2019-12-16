@@ -10761,7 +10761,7 @@ dxf_hatch_boundary_path_edge_ellipse_get_last
         if (ellipse->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfHatchBoundaryPathEdgeEllipse *) ellipse);
         }
