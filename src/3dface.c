@@ -856,6 +856,9 @@ dxf_3dface_get_id_code
 /*!
  * \brief Set the \c id_code for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_id_code.png
+ *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
  */
