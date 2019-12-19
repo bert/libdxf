@@ -1185,6 +1185,9 @@ dxf_3dface_get_thickness
 /*!
  * \brief Set the \c thickness for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_thickness.png
+ *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
  */
