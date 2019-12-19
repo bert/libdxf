@@ -1146,6 +1146,9 @@ dxf_3dface_set_elevation
 /*!
  * \brief Get the \c thickness from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_thickness.png
+ *
  * \return \c thickness.
  */
 double
