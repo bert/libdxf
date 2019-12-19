@@ -1109,6 +1109,9 @@ dxf_3dface_get_elevation
 /*!
  * \brief Set the \c elevation for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_elevation.png
+ *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
  */
