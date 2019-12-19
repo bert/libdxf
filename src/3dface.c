@@ -942,6 +942,9 @@ dxf_3dface_get_linetype
 /*!
  * \brief Set the \c linetype for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_linetype.png
+ *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
  *
