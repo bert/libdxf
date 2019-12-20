@@ -1718,6 +1718,9 @@ dxf_3dface_get_shadow_mode
 /*!
  * \brief Set the \c shadow_mode for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_shadow_mode.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
