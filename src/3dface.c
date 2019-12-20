@@ -1621,6 +1621,9 @@ dxf_3dface_get_graphics_data_size
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_graphics_data_size.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
