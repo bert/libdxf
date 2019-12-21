@@ -1896,6 +1896,9 @@ dxf_3dface_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c 3DFACE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_dictionary_owner_soft.png
  */
 Dxf3dface *
 dxf_3dface_set_dictionary_owner_soft
