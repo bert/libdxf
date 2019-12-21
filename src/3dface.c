@@ -1810,6 +1810,9 @@ dxf_3dface_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c 3DFACE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_binary_graphics_data.png
  */
 Dxf3dface *
 dxf_3dface_set_binary_graphics_data
