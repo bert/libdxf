@@ -1982,6 +1982,9 @@ dxf_3dface_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c 3DFACE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_object_owner_soft.png
  */
 Dxf3dface *
 dxf_3dface_set_object_owner_soft
