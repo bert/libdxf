@@ -2157,6 +2157,9 @@ dxf_3dface_get_dictionary_owner_hard
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_dictionary_owner_hard.png
+ *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
  */
