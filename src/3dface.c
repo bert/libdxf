@@ -2516,6 +2516,9 @@ dxf_3dface_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_transparency.png
+ *
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
