@@ -2914,6 +2914,9 @@ dxf_3dface_set_z0
 /*!
  * \brief Get the first alignment point \c p1 of a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_p1.png
+ *
  * \return the first alignment point \c p1.
  */
 DxfPoint *
