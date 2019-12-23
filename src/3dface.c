@@ -3244,6 +3244,9 @@ dxf_3dface_set_z1
 /*!
  * \brief Get the second alignment point \c p2 of a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_p2.png
+ *
  * \return the second alignment point \c p2.
  */
 DxfPoint *
