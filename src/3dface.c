@@ -2624,6 +2624,9 @@ dxf_3dface_get_p0
 /*!
  * \brief Set the base point \c p0 of a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_p0.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
