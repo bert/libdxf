@@ -1352,6 +1352,9 @@ dxf_3dface_get_visibility
 /*!
  * \brief Set the \c visibility for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_visibility.png
+ *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
  */
