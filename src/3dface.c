@@ -3614,6 +3614,9 @@ dxf_3dface_get_p3
 /*!
  * \brief Set the third alignment point \c p3 of a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_p3.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
