@@ -4376,6 +4376,9 @@ dxf_3dface_get_next
  * \brief Set the pointer to the next \c 3DFACE for a DXF \c 3DFACE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_next.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
