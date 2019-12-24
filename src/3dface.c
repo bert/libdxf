@@ -2553,6 +2553,9 @@ dxf_3dface_get_transparency
 /*!
  * \brief Set the \c transparency for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_transparency.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
