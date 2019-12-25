@@ -2845,6 +2845,9 @@ dxf_3dface_set_y0
  * \brief Get the Z-value of the base point \c z0 of a DXF \c 3DFACE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_z0.png
+ *
  * \return the Z-value of the base point \c z0.
  */
 double
