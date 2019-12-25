@@ -2893,6 +2893,9 @@ dxf_3dface_get_z0
  * \brief Set the Z-value of the base point \c z0 of a DXF \c 3DFACE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_z0.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
