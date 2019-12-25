@@ -2675,6 +2675,9 @@ dxf_3dface_set_p0
  * \brief Get the X-value of the base point \c x0 of a DXF \c 3DFACE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_x0.png
+ *
  * \return the X-value of the base point \c x0.
  */
 double
