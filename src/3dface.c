@@ -3023,6 +3023,9 @@ dxf_3dface_set_p1
  * \brief Get the X-value of the first alignment point \c x1 of a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_x1.png
+ *
  * \return the X-value of the first alignment point \c x1.
  */
 double
