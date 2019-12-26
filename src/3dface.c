@@ -3156,6 +3156,9 @@ dxf_3dface_get_y1
  * \brief Set the Y-value of the first alignment point \c y1 of a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_y1.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
