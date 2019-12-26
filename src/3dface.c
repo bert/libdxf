@@ -1310,6 +1310,9 @@ dxf_3dface_set_linetype_scale
 /*!
  * \brief Get the \c visibility from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_visibility.png
+ *
  * \return \c visibility.
  */
 int16_t
