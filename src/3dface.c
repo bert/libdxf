@@ -3462,6 +3462,9 @@ dxf_3dface_set_x2
  * \brief Get the Y-value of the second alignment point \c y2 of a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_y2.png
+ *
  * \return the Y-value of the second alignment point \c y2.
  */
 double
