@@ -3244,6 +3244,9 @@ dxf_3dface_get_z1
  * \brief Set the Z-value of the first alignment point \c z1 of a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_z1.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
