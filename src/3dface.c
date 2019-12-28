@@ -3764,6 +3764,9 @@ dxf_3dface_get_x3
  * \brief Set the X-value of the third alignment point \c x3 of a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_x3.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
