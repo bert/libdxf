@@ -4032,6 +4032,9 @@ dxf_3dface_get_flag
 /*!
  * \brief Set the flag value for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_flag.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
