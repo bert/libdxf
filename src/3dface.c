@@ -4213,6 +4213,9 @@ dxf_3dface_is_fourth_edge_invisible
  * \brief Create a DXF \c 3DFACE by means of at least three valid DXF
  * \c POINT entities.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_create_from_points.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
