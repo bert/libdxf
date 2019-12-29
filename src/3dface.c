@@ -4076,8 +4076,11 @@ dxf_3dface_set_flag
 /*!
  * \brief Test if the first edge of a DXF \c 3DFACE is invisible.
  *
- * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
- * visible.
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_is_first_edge_invisible.png
+ *
+ * \return \c TRUE when the edge is invisible, or \c FALSE when the edge
+ * is visible.
  */
 int
 dxf_3dface_is_first_edge_invisible
