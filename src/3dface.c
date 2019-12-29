@@ -3940,6 +3940,9 @@ dxf_3dface_get_z3
  * \brief Set the Z-value of the third alignment point \c z3 of a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_set_z3.png
+ *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
