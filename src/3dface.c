@@ -3985,6 +3985,9 @@ dxf_3dface_set_z3
 /*!
  * \brief Get the \c flag value from a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_flag.png
+ *
  * \return \c flag value.
  */
 int
