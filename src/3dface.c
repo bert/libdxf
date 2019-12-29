@@ -3898,6 +3898,9 @@ dxf_3dface_set_y3
  * \brief Get the Z-value of the third alignment point \c z3 of a DXF
  * \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_z3.png
+ *
  * \return the Z-value of the third alignment point \c z3.
  */
 double
