@@ -291,14 +291,14 @@ dxf_point_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &point->color);
+                        fscanf (fp->fp, "%hd\n", &point->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &point->paperspace);
+                        fscanf (fp->fp, "%hd\n", &point->paperspace);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -493,7 +493,7 @@ dxf_point_write
         }
         if (point->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", point->color);
+                fprintf (fp->fp, " 62\n%hd\n", point->color);
         }
         if (point->linetype_scale != 1.0)
         {
@@ -501,7 +501,7 @@ dxf_point_write
         }
         if (point->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", point->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", point->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -1186,7 +1186,7 @@ dxf_point_set_visibility
  *
  * \return \c color.
  */
-int
+int16_t
 dxf_point_get_color
 (
         DxfPoint *point
@@ -1231,7 +1231,7 @@ dxf_point_set_color
 (
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
-        int color
+        int16_t color
                 /*!< the \c color to be set for the entity. */
 )
 {
@@ -1267,7 +1267,7 @@ dxf_point_set_color
  *
  * \return \c paperspace flag value.
  */
-int
+int16_t
 dxf_point_get_paperspace
 (
         DxfPoint *point
@@ -1318,7 +1318,7 @@ dxf_point_set_paperspace
 (
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the \c paperspace flag value to be set for the entity. */
 )
 {
@@ -1361,7 +1361,7 @@ dxf_point_set_paperspace
  * \return \c graphics_data_size flag value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_point_get_graphics_data_size
 (
         DxfPoint *point
@@ -1412,7 +1412,7 @@ dxf_point_set_graphics_data_size
 (
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2047,7 +2047,7 @@ dxf_point_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_point_get_color_value
 (
         DxfPoint *point
@@ -2086,7 +2086,7 @@ dxf_point_set_color_value
 (
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2198,7 +2198,7 @@ dxf_point_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_point_get_transparency
 (
         DxfPoint *point
@@ -2237,7 +2237,7 @@ dxf_point_set_transparency
 (
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {

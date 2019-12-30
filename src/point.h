@@ -100,19 +100,19 @@ dxf_point_struct
         int16_t visibility;
                 /*!< group code = 60\n
                  * Object visibility (optional): 0 = Visible; 1 = Invisible. */
-        int color;
+        int16_t color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< group code = 67\n
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -152,7 +152,7 @@ dxf_point_struct
         char *plot_style_name;
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -170,7 +170,7 @@ dxf_point_struct
                  * AcDbEntity, class-level color data and AcDbEntity,
                  * class-level transparency data.\n
                  * Group code = 430. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -227,12 +227,12 @@ double dxf_point_get_linetype_scale (DxfPoint *point);
 DxfPoint *dxf_point_set_linetype_scale (DxfPoint *point, double linetype_scale);
 int16_t dxf_point_get_visibility (DxfPoint *point);
 DxfPoint *dxf_point_set_visibility (DxfPoint *point, int16_t visibility);
-int dxf_point_get_color (DxfPoint *point);
-DxfPoint *dxf_point_set_color (DxfPoint *point, int color);
-int dxf_point_get_paperspace (DxfPoint *point);
-DxfPoint *dxf_point_set_paperspace (DxfPoint *point, int paperspace);
-int dxf_point_get_graphics_data_size (DxfPoint *point);
-DxfPoint *dxf_point_set_graphics_data_size (DxfPoint *point, int graphics_data_size);
+int16_t dxf_point_get_color (DxfPoint *point);
+DxfPoint *dxf_point_set_color (DxfPoint *point, int16_t color);
+int16_t dxf_point_get_paperspace (DxfPoint *point);
+DxfPoint *dxf_point_set_paperspace (DxfPoint *point, int16_t paperspace);
+int32_t dxf_point_get_graphics_data_size (DxfPoint *point);
+DxfPoint *dxf_point_set_graphics_data_size (DxfPoint *point, int32_t graphics_data_size);
 int16_t dxf_point_get_shadow_mode (DxfPoint *point);
 DxfPoint *dxf_point_set_shadow_mode (DxfPoint *point, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_point_get_binary_graphics_data (DxfPoint *point);
@@ -247,12 +247,12 @@ int16_t dxf_point_get_lineweight (DxfPoint *point);
 DxfPoint *dxf_point_set_lineweight (DxfPoint *point, int16_t lineweight);
 char *dxf_point_get_plot_style_name (DxfPoint *point);
 DxfPoint *dxf_point_set_plot_style_name (DxfPoint *point, char *plot_style_name);
-long dxf_point_get_color_value (DxfPoint *point);
-DxfPoint *dxf_point_set_color_value (DxfPoint *point, long color_value);
+int32_t dxf_point_get_color_value (DxfPoint *point);
+DxfPoint *dxf_point_set_color_value (DxfPoint *point, int32_t color_value);
 char *dxf_point_get_color_name (DxfPoint *point);
 DxfPoint *dxf_point_set_color_name (DxfPoint *point, char *color_name);
-long dxf_point_get_transparency (DxfPoint *point);
-DxfPoint *dxf_point_set_transparency (DxfPoint *point, long transparency);
+int32_t dxf_point_get_transparency (DxfPoint *point);
+DxfPoint *dxf_point_set_transparency (DxfPoint *point, int32_t transparency);
 double dxf_point_get_x0 (DxfPoint *point);
 DxfPoint *dxf_point_set_x0 (DxfPoint *point, double x0);
 double dxf_point_get_y0 (DxfPoint *point);
