@@ -134,6 +134,10 @@ dxf_point_struct
         char *dictionary_owner_soft;
                 /*!< group code = 330\n
                  * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *object_owner_soft;
+                /*!< Soft-pointer ID/handle  to owner BLOCK_RECORD object.\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R2000. */
         char *material;
                 /*!< Hard-pointer ID/handle to material object (present if
                  * not BYLAYER).\n
