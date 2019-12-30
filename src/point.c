@@ -575,12 +575,25 @@ dxf_point_write
         }
         if (point->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", point->layer);
         if (strcmp (point->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", point->linetype);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (point->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", point->material);
+        }
+        if (point->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%hd\n", point->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", point->lineweight);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
@@ -588,9 +601,9 @@ dxf_point_write
         {
                 fprintf (fp->fp, " 38\n%f\n", point->elevation);
         }
-        if (point->color != DXF_COLOR_BYLAYER)
+        if (point->thickness != 0.0)
         {
-                fprintf (fp->fp, " 62\n%hd\n", point->color);
+                fprintf (fp->fp, " 39\n%f\n", point->thickness);
         }
         if (point->linetype_scale != 1.0)
         {
@@ -600,6 +613,35 @@ dxf_point_write
         {
                 fprintf (fp->fp, " 60\n%hd\n", point->visibility);
         }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", point->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", point->graphics_data_size);
+#endif
+                if (point->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = (DxfBinaryGraphicsData *) point->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryGraphicsData *) iter->next;
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", point->color_value);
+                fprintf (fp->fp, "430\n%s\n", point->color_name);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", point->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", point->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", point->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbPoint\n");
@@ -607,10 +649,6 @@ dxf_point_write
         fprintf (fp->fp, " 10\n%f\n", point->x0);
         fprintf (fp->fp, " 20\n%f\n", point->y0);
         fprintf (fp->fp, " 30\n%f\n", point->z0);
-        if (point->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", point->thickness);
-        }
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (point->extr_x0 != 0.0)
                 && (point->extr_y0 != 0.0)
