@@ -3889,6 +3889,13 @@ dxf_hatch_pattern_get_def_lines
                   __FUNCTION__);
                 return (NULL);
         }
+        if (pattern->def_lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
