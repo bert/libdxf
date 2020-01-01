@@ -2,7 +2,7 @@
  * \file point.c
  *
  * \author Copyright (C) 2008, 2009, 2010, 2012, 2014, 2015, 2016, 2017,
- * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -775,9 +775,8 @@ dxf_point_get_id_code
         if (point->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         result = point->id_code;
 #if DEBUG
