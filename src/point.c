@@ -1321,8 +1321,6 @@ dxf_point_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1334,14 +1332,13 @@ dxf_point_get_color
         if (point->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        result = point->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->color);
 }
 
 
