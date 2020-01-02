@@ -1136,8 +1136,6 @@ dxf_point_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1152,11 +1150,10 @@ dxf_point_get_linetype_scale
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        result = point->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->linetype_scale);
 }
 
 
