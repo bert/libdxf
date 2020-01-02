@@ -1205,9 +1205,8 @@ dxf_point_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         point->linetype_scale = linetype_scale;
 #if DEBUG
