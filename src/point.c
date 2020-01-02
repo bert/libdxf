@@ -1060,8 +1060,6 @@ dxf_point_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1076,11 +1074,10 @@ dxf_point_get_thickness
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        result = point->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->thickness);
 }
 
 
