@@ -1127,7 +1127,6 @@ dxf_point_set_thickness
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         point->thickness = thickness;
 #if DEBUG
