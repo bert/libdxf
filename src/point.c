@@ -1212,8 +1212,6 @@ dxf_point_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1234,11 +1232,10 @@ dxf_point_get_visibility
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
-        result = point->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->visibility);
 }
 
 
