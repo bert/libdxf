@@ -996,8 +996,6 @@ dxf_point_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1006,11 +1004,10 @@ dxf_point_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = point->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->elevation);
 }
 
 
