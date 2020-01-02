@@ -1243,16 +1243,14 @@ dxf_point_get_visibility
         if (point->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (point->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         result = point->visibility;
 #if DEBUG
