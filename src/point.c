@@ -762,8 +762,6 @@ dxf_point_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -778,11 +776,10 @@ dxf_point_get_id_code
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        result = point->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->id_code);
 }
 
 
