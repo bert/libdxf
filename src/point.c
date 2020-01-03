@@ -1467,8 +1467,6 @@ dxf_point_get_graphics_data_size
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1489,11 +1487,10 @@ dxf_point_get_graphics_data_size
                   (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
-        result = point->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->graphics_data_size);
 }
 
 
