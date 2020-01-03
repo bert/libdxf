@@ -1557,8 +1557,6 @@ dxf_point_get_shadow_mode
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1570,22 +1568,19 @@ dxf_point_get_shadow_mode
         if (point->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (point->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
-        result = point->shadow_mode;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->shadow_mode);
 }
 
 
