@@ -1649,8 +1649,6 @@ dxf_point_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBinaryGraphicsData *result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1662,15 +1660,14 @@ dxf_point_get_binary_graphics_data
         if (point->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBinaryGraphicsData *) point->binary_graphics_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBinaryGraphicsData *) point->binary_graphics_data);
 }
 
 
