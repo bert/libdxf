@@ -1978,8 +1978,6 @@ dxf_point_get_lineweight
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1988,11 +1986,10 @@ dxf_point_get_lineweight
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = point->lineweight;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->lineweight);
 }
 
 
