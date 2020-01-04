@@ -2043,8 +2043,6 @@ dxf_point_get_plot_style_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -2056,15 +2054,14 @@ dxf_point_get_plot_style_name
         if (point->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (point->plot_style_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (point->plot_style_name));
 }
 
 
