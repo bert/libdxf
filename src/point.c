@@ -1815,8 +1815,6 @@ dxf_point_get_material
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -1828,15 +1826,14 @@ dxf_point_get_material
         if (point->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (point->material);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (point->material));
 }
 
 
