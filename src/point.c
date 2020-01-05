@@ -2188,8 +2188,6 @@ dxf_point_get_color_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -2201,15 +2199,14 @@ dxf_point_get_color_name
         if (point->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (point->color_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (point->color_name));
 }
 
 
