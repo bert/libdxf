@@ -651,12 +651,12 @@ dxf_3dline_write
 #endif
                 if (line->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter310;
-                        iter310 = (DxfBinaryGraphicsData *) line->binary_graphics_data;
+                        DxfBinaryData *iter310;
+                        iter310 = (DxfBinaryData *) line->binary_graphics_data;
                         while (iter310 != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter310->data_line);
-                                iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                                iter310 = (DxfBinaryData *) iter310->next;
                         }
                 }
         }
