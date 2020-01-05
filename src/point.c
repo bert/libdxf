@@ -2123,8 +2123,6 @@ dxf_point_get_color_value
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        long result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -2133,11 +2131,10 @@ dxf_point_get_color_value
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = point->color_value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->color_value);
 }
 
 
