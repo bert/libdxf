@@ -2,7 +2,7 @@
  * \file line.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF line entity (\c LINE).
  *
@@ -126,7 +126,7 @@ dxf_line_init
         dxf_line_set_paperspace (line, DXF_MODELSPACE);
         dxf_line_set_graphics_data_size (line, 0);
         dxf_line_set_shadow_mode (line, 0);
-        dxf_line_set_binary_graphics_data (line, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new());
+        line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
         dxf_line_set_dictionary_owner_soft (line, strdup (""));
         dxf_line_set_material (line, strdup (""));
         dxf_line_set_dictionary_owner_hard (line, strdup (""));
@@ -378,8 +378,8 @@ dxf_line_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, line->binary_graphics_data->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) line->binary_graphics_data->next);
-                        line->binary_graphics_data = (DxfBinaryGraphicsData *) line->binary_graphics_data->next;
+                        dxf_binary_data_init ((DxfBinaryData *) line->binary_graphics_data->next);
+                        line->binary_graphics_data = (DxfBinaryData *) line->binary_graphics_data->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -621,14 +621,14 @@ dxf_line_write
 #else
                 fprintf (fp->fp, " 92\n%d\n", dxf_line_get_graphics_data_size (line));
 #endif
-                if (dxf_line_get_binary_graphics_data (line) != NULL)
+                if (line->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = dxf_line_get_binary_graphics_data (line);
+                        DxfBinaryData *iter;
+                        iter = line->binary_graphics_data;
                         while (iter != NULL)
                         {
-                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
-                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_data_get_data_line (iter));
+                                iter = (DxfBinaryData *) dxf_binary_data_get_next (iter);
                         }
                 }
         }
@@ -706,7 +706,7 @@ dxf_line_free
         }
         free (dxf_line_get_linetype (line));
         free (dxf_line_get_layer (line));
-        dxf_binary_graphics_data_free_list (dxf_line_get_binary_graphics_data (line));
+        dxf_binary_data_free_list (line->binary_graphics_data);
         free (dxf_line_get_dictionary_owner_soft (line));
         free (dxf_line_get_material (line));
         free (dxf_line_get_dictionary_owner_hard (line));
@@ -1639,7 +1639,7 @@ dxf_line_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_line_get_binary_graphics_data
 (
         DxfLine *line
@@ -1667,7 +1667,7 @@ dxf_line_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) line->binary_graphics_data);
+        return ((DxfBinaryData *) line->binary_graphics_data);
 }
 
 
@@ -1680,7 +1680,7 @@ dxf_line_set_binary_graphics_data
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1703,7 +1703,7 @@ dxf_line_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        line->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        line->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

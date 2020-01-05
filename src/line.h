@@ -2,7 +2,7 @@
  * \file line.h
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF line entity (\c LINE).
  *
@@ -44,7 +44,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "point.h"
 
 
@@ -127,7 +127,7 @@ dxf_line_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -236,8 +236,8 @@ int dxf_line_get_graphics_data_size (DxfLine *line);
 DxfLine *dxf_line_set_graphics_data_size (DxfLine *line, int graphics_data_size);
 int16_t dxf_line_get_shadow_mode (DxfLine *line);
 DxfLine *dxf_line_set_shadow_mode (DxfLine *line, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_line_get_binary_graphics_data (DxfLine *line);
-DxfLine *dxf_line_set_binary_graphics_data (DxfLine *line, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_line_get_binary_graphics_data (DxfLine *line);
+DxfLine *dxf_line_set_binary_graphics_data (DxfLine *line, DxfBinaryData *data);
 char *dxf_line_get_dictionary_owner_soft (DxfLine *line);
 DxfLine *dxf_line_set_dictionary_owner_soft (DxfLine *line, char *dictionary_owner_soft);
 char *dxf_line_get_material (DxfLine *line);
