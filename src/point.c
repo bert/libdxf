@@ -136,8 +136,8 @@ dxf_point_init
         point->paperspace = DXF_MODELSPACE;
         point->graphics_data_size = 0;
         point->shadow_mode = 0;
-        point->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        point->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (point->binary_graphics_data);
+        point->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
+        point->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (point->binary_graphics_data);
         point->dictionary_owner_soft = strdup ("");
         point->object_owner_soft = strdup ("");
         point->material = strdup ("");
@@ -187,7 +187,7 @@ dxf_point_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -207,7 +207,7 @@ dxf_point_read
                   __FUNCTION__);
                 point = dxf_point_init (point);
         }
-        iter310 = (DxfBinaryGraphicsData *) point->binary_graphics_data;
+        iter310 = (DxfBinaryData *) point->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -378,8 +378,8 @@ dxf_point_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -622,12 +622,12 @@ dxf_point_write
 #endif
                 if (point->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) point->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) point->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -1639,7 +1639,7 @@ dxf_point_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_point_get_binary_graphics_data
 (
         DxfPoint *point
@@ -1667,7 +1667,7 @@ dxf_point_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) point->binary_graphics_data);
+        return ((DxfBinaryData *) point->binary_graphics_data);
 }
 
 
@@ -1683,7 +1683,7 @@ dxf_point_set_binary_graphics_data
 (
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1706,7 +1706,7 @@ dxf_point_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        point->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        point->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

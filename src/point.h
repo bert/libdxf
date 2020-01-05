@@ -2,7 +2,7 @@
  * \file point.h
  *
  * \author Copyright (C) 2008, 2009, 2010, 2012, 2014, 2015, 2016, 2017,
- * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -39,7 +39,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -126,7 +126,7 @@ dxf_point_struct
                  * <li value = "3"> Ignores shadows.</li>
                  * </ol>\n
                  * Group code = 284. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -235,8 +235,8 @@ int32_t dxf_point_get_graphics_data_size (DxfPoint *point);
 DxfPoint *dxf_point_set_graphics_data_size (DxfPoint *point, int32_t graphics_data_size);
 int16_t dxf_point_get_shadow_mode (DxfPoint *point);
 DxfPoint *dxf_point_set_shadow_mode (DxfPoint *point, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_point_get_binary_graphics_data (DxfPoint *point);
-DxfPoint *dxf_point_set_binary_graphics_data (DxfPoint *point, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_point_get_binary_graphics_data (DxfPoint *point);
+DxfPoint *dxf_point_set_binary_graphics_data (DxfPoint *point, DxfBinaryData *data);
 char *dxf_point_get_dictionary_owner_soft (DxfPoint *point);
 DxfPoint *dxf_point_set_dictionary_owner_soft (DxfPoint *point, char *dictionary_owner_soft);
 char *dxf_point_get_material (DxfPoint *point);
