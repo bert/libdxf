@@ -2,7 +2,7 @@
  * \file 3dface.c
  *
  * \author Copyright (C) 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018,
- * 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
@@ -675,12 +675,12 @@ dxf_3dface_write
 #endif
                 if (face->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) face->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) face->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
