@@ -2462,8 +2462,6 @@ dxf_point_get_z0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -2472,11 +2470,10 @@ dxf_point_get_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = point->z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->z0);
 }
 
 
