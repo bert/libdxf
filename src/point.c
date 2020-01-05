@@ -2680,8 +2680,6 @@ dxf_point_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -2697,11 +2695,10 @@ dxf_point_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfPoint *) point->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfPoint *) point->next);
 }
 
 
