@@ -2527,8 +2527,6 @@ dxf_point_get_angle_to_X
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (point == NULL)
         {
@@ -2537,11 +2535,10 @@ dxf_point_get_angle_to_X
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = point->angle_to_X;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (point->angle_to_X);
 }
 
 
