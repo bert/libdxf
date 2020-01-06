@@ -111,44 +111,63 @@ dxf_line_init
         if (line == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfLine struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_line_set_id_code (line, 0);
-        dxf_line_set_linetype (line, strdup (DXF_DEFAULT_LINETYPE));
-        dxf_line_set_layer (line, strdup (DXF_DEFAULT_LAYER));
-        dxf_line_set_elevation (line, 0.0);
-        dxf_line_set_thickness (line, 0.0);
-        dxf_line_set_linetype_scale (line, DXF_DEFAULT_LINETYPE_SCALE);
-        dxf_line_set_visibility (line, DXF_DEFAULT_VISIBILITY);
-        dxf_line_set_color (line, DXF_COLOR_BYLAYER);
-        dxf_line_set_paperspace (line, DXF_MODELSPACE);
-        dxf_line_set_graphics_data_size (line, 0);
-        dxf_line_set_shadow_mode (line, 0);
-        line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
-        dxf_line_set_dictionary_owner_soft (line, strdup (""));
-        dxf_line_set_material (line, strdup (""));
-        dxf_line_set_dictionary_owner_hard (line, strdup (""));
-        dxf_line_set_lineweight (line, 0);
-        dxf_line_set_plot_style_name (line, strdup (""));
-        dxf_line_set_color_value (line, 0);
-        dxf_line_set_color_name (line, strdup (""));
-        dxf_line_set_transparency (line, 0);
-        dxf_line_set_p0 (line, (DxfPoint *) dxf_point_new());
-        dxf_point_init ((DxfPoint *) dxf_line_get_p0 (line));
-        dxf_line_set_x0 (line, 0.0);
-        dxf_line_set_y0 (line, 0.0);
-        dxf_line_set_z0 (line, 0.0);
-        dxf_line_set_p1 (line, (DxfPoint *) dxf_point_new());
-        dxf_point_init ((DxfPoint *) dxf_line_get_p0 (line));
-        dxf_line_set_x1 (line, 0.0);
-        dxf_line_set_y1 (line, 0.0);
-        dxf_line_set_z1 (line, 0.0);
-        dxf_line_set_extr_x0 (line, 0.0);
-        dxf_line_set_extr_y0 (line, 0.0);
-        dxf_line_set_extr_z0 (line, 0.0);
-        dxf_line_set_next (line, NULL);
+        line->id_code = 0;
+        line->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        line->layer = strdup (DXF_DEFAULT_LAYER);
+        line->elevation = 0.0;
+        line->thickness = 0.0;
+        line->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        line->visibility = DXF_DEFAULT_VISIBILITY;
+        line->color = DXF_COLOR_BYLAYER;
+        line->paperspace = DXF_MODELSPACE;
+        line->graphics_data_size = 0;
+        line->shadow_mode = 0;
+        line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (line->binary_graphics_data);
+        if (line->binary_graphics_data == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        line->dictionary_owner_soft = strdup ("");
+        line->material = strdup ("");
+        line->dictionary_owner_hard = strdup ("");
+        line->lineweight = 0;
+        line->plot_style_name = strdup ("");
+        line->color_value = 0;
+        line->color_name = strdup ("");
+        line->transparency = 0;
+        line->p0 = (DxfPoint *) dxf_point_init (line->p0);
+        if (line->p0 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        line->p0->x0 = 0.0;
+        line->p0->y0 = 0.0;
+        line->p0->z0 = 0.0;
+        line->p1 = (DxfPoint *) dxf_point_init (line->p1);
+        if (line->p1 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        line->p1->x0 = 0.0;
+        line->p1->y0 = 0.0;
+        line->p1->z0 = 0.0;
+        line->extr_x0 = 0.0;
+        line->extr_y0 = 0.0;
+        line->extr_z0 = 0.0;
+        line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
