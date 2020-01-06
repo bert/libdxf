@@ -68,7 +68,7 @@ dxf_line_new ()
         if ((line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfLine struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 line = NULL;
         }
