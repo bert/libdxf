@@ -201,6 +201,8 @@ dxf_line_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfBinaryData *iter310 = NULL;
+        int iter330;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -219,6 +221,8 @@ dxf_line_read
                   __FUNCTION__);
                 line = dxf_line_init (line);
         }
+        iter310 = (DxfBinaryData *) line->binary_graphics_data;
+        iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -398,16 +402,27 @@ dxf_line_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, line->binary_graphics_data->data_line);
-                        dxf_binary_data_init ((DxfBinaryData *) line->binary_graphics_data->next);
-                        line->binary_graphics_data = (DxfBinaryData *) line->binary_graphics_data->next;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
-                        /* Now follows a string containing Soft-pointer
-                         * ID/handle to owner dictionary. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, line->dictionary_owner_soft);
+                        if (iter330 == 0)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner dictionary. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, line->dictionary_owner_soft);
+                        }
+                        if (iter330 == 1)
+                        {
+                                /* Now follows a string containing a soft-pointer
+                                 * ID/handle to owner object. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, DXF_MAX_STRING_FORMAT, line->object_owner_soft);
+                        }
+                        iter330++;
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
