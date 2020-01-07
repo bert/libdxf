@@ -606,6 +606,11 @@ dxf_line_write
                 fprintf (fp->fp, "360\n%s\n", dxf_line_get_dictionary_owner_hard (line));
                 fprintf (fp->fp, "102\n}\n");
         }
+        if ((strcmp (line->object_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "330\n%s\n", line->object_owner_soft);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
@@ -661,11 +666,11 @@ dxf_line_write
                 if (line->binary_graphics_data != NULL)
                 {
                         DxfBinaryData *iter;
-                        iter = line->binary_graphics_data;
+                        iter = (DxfBinaryData *) line->binary_graphics_data;
                         while (iter != NULL)
                         {
-                                fprintf (fp->fp, "310\n%s\n", dxf_binary_data_get_data_line (iter));
-                                iter = (DxfBinaryData *) dxf_binary_data_get_next (iter);
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
