@@ -153,6 +153,7 @@ dxf_line_init
         line->graphics_data_size = 0;
         line->shadow_mode = 0;
         line->dictionary_owner_soft = strdup ("");
+        line->object_owner_soft = strdup ("");
         line->material = strdup ("");
         line->dictionary_owner_hard = strdup ("");
         line->lineweight = 0;
