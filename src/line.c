@@ -746,16 +746,17 @@ dxf_line_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_line_get_linetype (line));
-        free (dxf_line_get_layer (line));
+        free (line->linetype);
+        free (line->layer);
         dxf_binary_data_free_list (line->binary_graphics_data);
-        free (dxf_line_get_dictionary_owner_soft (line));
-        free (dxf_line_get_material (line));
-        free (dxf_line_get_dictionary_owner_hard (line));
-        free (dxf_line_get_plot_style_name (line));
-        free (dxf_line_get_color_name (line));
-        dxf_point_free (dxf_line_get_p0 (line));
-        dxf_point_free (dxf_line_get_p1 (line));
+        free (line->dictionary_owner_soft);
+        free (line->object_owner_soft);
+        free (line->material);
+        free (line->dictionary_owner_hard);
+        free (line->plot_style_name);
+        free (line->color_name);
+        dxf_point_free (line->p0);
+        dxf_point_free (line->p1);
         free (line);
         line = NULL;
 #if DEBUG
