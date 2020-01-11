@@ -1504,13 +1504,13 @@ dxf_line_get_graphics_data_size
         if (line->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (line->graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
