@@ -368,7 +368,7 @@ dxf_arc_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &arc->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &arc->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
