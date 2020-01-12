@@ -3403,12 +3403,12 @@ dxf_line_get_last
 
 
 /*!
- * \brief Calculate the mid point of a DXF \c LINE entity.
+ * \brief Get the mid point of a DXF \c LINE entity.
  *
  * \return the mid point.
  */
 DxfPoint *
-dxf_line_calculate_mid_point
+dxf_line_get_mid_point
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
