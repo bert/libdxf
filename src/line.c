@@ -3618,14 +3618,14 @@ dxf_line_create_from_points
         if (line == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfLine struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
         if (id_code < 0)
         {
               fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                 __FUNCTION__);
         }
         line->id_code = id_code;
