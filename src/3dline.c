@@ -630,7 +630,7 @@ dxf_3dline_write
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", line->lineweight);
+                fprintf (fp->fp, "370\n%hd\n", line->lineweight);
         }
         if ((line->linetype_scale != 1.0)
           && (fp->acad_version_number >= AutoCAD_13))
@@ -640,7 +640,7 @@ dxf_3dline_write
         if ((line->visibility != 0)
           && (fp->acad_version_number >= AutoCAD_13))
         {
-                fprintf (fp->fp, " 60\n%d\n", line->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", line->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
@@ -669,7 +669,7 @@ dxf_3dline_write
         if (fp->acad_version_number >= AutoCAD_2009)
         {
                 fprintf (fp->fp, "390\n%s\n", line->plot_style_name);
-                fprintf (fp->fp, "284\n%d\n", line->shadow_mode);
+                fprintf (fp->fp, "284\n%hd\n", line->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
