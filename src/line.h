@@ -286,7 +286,7 @@ DxfLine *dxf_line_get_next (DxfLine *line);
 DxfLine *dxf_line_set_next (DxfLine *line, DxfLine *next);
 DxfLine *dxf_line_get_last (DxfLine *line);
 DxfPoint *dxf_line_get_mid_point (DxfLine *line, int id_code, int inheritance);
-double dxf_line_calculate_length (DxfLine *line);
+double dxf_line_get_length (DxfLine *line);
 DxfLine *dxf_line_create_from_points (DxfPoint *p1, DxfPoint *p2, int id_code, int inheritance);
 
 

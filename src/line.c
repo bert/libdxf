@@ -3516,7 +3516,7 @@ dxf_line_get_mid_point
  * \return the length of the \c line in drawing units.
  */
 double
-dxf_line_calculate_length
+dxf_line_get_length
 (
         DxfLine *line
                 /*!< a pointer to a DXF \c LINE entity. */
