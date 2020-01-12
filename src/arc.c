@@ -693,7 +693,7 @@ dxf_arc_write
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", arc->lineweight);
+                fprintf (fp->fp, "370\n%hd\n", arc->lineweight);
         }
         if (arc->linetype_scale != 1.0)
         {
@@ -730,7 +730,7 @@ dxf_arc_write
         if (fp->acad_version_number >= AutoCAD_2009)
         {
                 fprintf (fp->fp, "390\n%s\n", arc->plot_style_name);
-                fprintf (fp->fp, "284\n%d\n", arc->shadow_mode);
+                fprintf (fp->fp, "284\n%hd\n", arc->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
