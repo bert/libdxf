@@ -333,21 +333,21 @@ dxf_line_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->color);
+                        fscanf (fp->fp, "%hd\n", &line->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->paperspace);
+                        fscanf (fp->fp, "%hd\n", &line->paperspace);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &line->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "100") == 0)
                 {
@@ -368,7 +368,7 @@ dxf_line_read
                         /* Now follows a string containing the
                          * graphics data size value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &line->graphics_data_size);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &line->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
@@ -457,7 +457,7 @@ dxf_line_read
                 {
                         /* Now follows a string containing a color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &line->color_value);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &line->color_value);
                 }
                 else if (strcmp (temp_string, "430") == 0)
                 {
@@ -471,7 +471,7 @@ dxf_line_read
                         /* Now follows a string containing a transparency
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &line->transparency);
+                        fscanf (fp->fp, "%" PRIi32 "\n", &line->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -617,7 +617,7 @@ dxf_line_write
         }
         if (line->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", line->layer);
         if (strcmp (line->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -631,11 +631,11 @@ dxf_line_write
         }
         if (line->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", line->color);
+                fprintf (fp->fp, " 62\n%hd\n", line->color);
         }
         if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, "370\n%d\n", line->lineweight);
+                fprintf (fp->fp, "370\n%hd\n", line->lineweight);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
@@ -653,15 +653,15 @@ dxf_line_write
         }
         if (line->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", line->visibility);
+                fprintf (fp->fp, " 60\n%hd\n", line->visibility);
         }
         if ((fp->acad_version_number >= AutoCAD_2000)
           && (line->graphics_data_size > 0))
         {
 #ifdef BUILD_64
-                fprintf (fp->fp, "160\n%d\n", line->graphics_data_size);
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", line->graphics_data_size);
 #else
-                fprintf (fp->fp, " 92\n%d\n", line->graphics_data_size);
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", line->graphics_data_size);
 #endif
                 if (line->binary_graphics_data != NULL)
                 {
@@ -676,14 +676,14 @@ dxf_line_write
         }
         if (fp->acad_version_number >= AutoCAD_2004)
         {
-                fprintf (fp->fp, "420\n%ld\n", line->color_value);
+                fprintf (fp->fp, "420\n%" PRIi32 "\n", line->color_value);
                 fprintf (fp->fp, "430\n%s\n", line->color_name);
-                fprintf (fp->fp, "440\n%ld\n", line->transparency);
+                fprintf (fp->fp, "440\n%" PRIi32 "\n", line->transparency);
         }
         if (fp->acad_version_number >= AutoCAD_2009)
         {
                 fprintf (fp->fp, "390\n%s\n", line->plot_style_name);
-                fprintf (fp->fp, "284\n%d\n", line->shadow_mode);
+                fprintf (fp->fp, "284\n%hd\n", line->shadow_mode);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -1321,7 +1321,7 @@ dxf_line_set_visibility
  *
  * \return color.
  */
-int
+int16_t
 dxf_line_get_color
 (
         DxfLine *line
@@ -1360,7 +1360,7 @@ dxf_line_set_color
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
-        int color
+        int16_t color
                 /*!< the color to be set for the entity. */
 )
 {
@@ -1396,7 +1396,7 @@ dxf_line_set_color
  *
  * \return paperspace flag value.
  */
-int
+int16_t
 dxf_line_get_paperspace
 (
         DxfLine *line
@@ -1441,7 +1441,7 @@ dxf_line_set_paperspace
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the paperspace flag value to be set for the entity. */
 )
 {
@@ -1483,7 +1483,7 @@ dxf_line_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_line_get_graphics_data_size
 (
         DxfLine *line
@@ -1532,7 +1532,7 @@ dxf_line_set_graphics_data_size
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2132,7 +2132,7 @@ dxf_line_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_line_get_color_value
 (
         DxfLine *line
@@ -2168,7 +2168,7 @@ dxf_line_set_color_value
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2277,7 +2277,7 @@ dxf_line_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_line_get_transparency
 (
         DxfLine *line
@@ -2313,7 +2313,7 @@ dxf_line_set_transparency
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {

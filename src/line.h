@@ -95,20 +95,20 @@ dxf_line_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -159,7 +159,7 @@ dxf_line_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -179,7 +179,7 @@ dxf_line_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -232,12 +232,12 @@ double dxf_line_get_linetype_scale (DxfLine *line);
 DxfLine *dxf_line_set_linetype_scale (DxfLine *line, double linetype_scale);
 int16_t dxf_line_get_visibility (DxfLine *line);
 DxfLine *dxf_line_set_visibility (DxfLine *line, int16_t visibility);
-int dxf_line_get_color (DxfLine *line);
-DxfLine *dxf_line_set_color (DxfLine *line, int color);
-int dxf_line_get_paperspace (DxfLine *line);
-DxfLine *dxf_line_set_paperspace (DxfLine *line, int paperspace);
-int dxf_line_get_graphics_data_size (DxfLine *line);
-DxfLine *dxf_line_set_graphics_data_size (DxfLine *line, int graphics_data_size);
+int16_t dxf_line_get_color (DxfLine *line);
+DxfLine *dxf_line_set_color (DxfLine *line, int16_t color);
+int16_t dxf_line_get_paperspace (DxfLine *line);
+DxfLine *dxf_line_set_paperspace (DxfLine *line, int16_t paperspace);
+int32_t dxf_line_get_graphics_data_size (DxfLine *line);
+DxfLine *dxf_line_set_graphics_data_size (DxfLine *line, int32_t graphics_data_size);
 int16_t dxf_line_get_shadow_mode (DxfLine *line);
 DxfLine *dxf_line_set_shadow_mode (DxfLine *line, int16_t shadow_mode);
 DxfBinaryData *dxf_line_get_binary_graphics_data (DxfLine *line);
@@ -252,12 +252,12 @@ int16_t dxf_line_get_lineweight (DxfLine *line);
 DxfLine *dxf_line_set_lineweight (DxfLine *line, int16_t lineweight);
 char *dxf_line_get_plot_style_name (DxfLine *line);
 DxfLine *dxf_line_set_plot_style_name (DxfLine *line, char *plot_style_name);
-long dxf_line_get_color_value (DxfLine *line);
-DxfLine *dxf_line_set_color_value (DxfLine *line, long color_value);
+int32_t dxf_line_get_color_value (DxfLine *line);
+DxfLine *dxf_line_set_color_value (DxfLine *line, int32_t color_value);
 char *dxf_line_get_color_name (DxfLine *line);
 DxfLine *dxf_line_set_color_name (DxfLine *line, char *color_name);
-long dxf_line_get_transparency (DxfLine *line);
-DxfLine *dxf_line_set_transparency (DxfLine *line, long transparency);
+int32_t dxf_line_get_transparency (DxfLine *line);
+DxfLine *dxf_line_set_transparency (DxfLine *line, int32_t transparency);
 DxfPoint *dxf_line_get_p0 (DxfLine *line);
 DxfLine *dxf_line_set_p0 (DxfLine *line, DxfPoint *p0);
 double dxf_line_get_x0 (DxfLine *line);
