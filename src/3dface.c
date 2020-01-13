@@ -4366,8 +4366,9 @@ dxf_3dface_create_from_points
                         face->visibility = p0->visibility;
                         face->color = p0->color;
                         face->paperspace = p0->paperspace;
-                        face->graphics_data_size = p0->graphics_data_size;
+                        /*! \todo Add graphics_data_size. */
                         face->shadow_mode = p0->shadow_mode;
+                        /*! \todo Add binary_graphics_data. */
                         if (p0->dictionary_owner_soft == NULL)
                         {
                                 fprintf (stderr,
@@ -4377,6 +4378,16 @@ dxf_3dface_create_from_points
                         else
                         {
                                 face->dictionary_owner_soft = strdup (p0->dictionary_owner_soft);
+                        }
+                        if (p0->object_owner_soft == NULL)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () a NULL pointer was found.\n")),
+                                  __FUNCTION__);
+                        }
+                        else
+                        {
+                                face->object_owner_soft = strdup (p0->object_owner_soft);
                         }
                         if (p0->material == NULL)
                         {
@@ -4456,8 +4467,9 @@ dxf_3dface_create_from_points
                         face->visibility = p1->visibility;
                         face->color = p1->color;
                         face->paperspace = p1->paperspace;
-                        face->graphics_data_size = p1->graphics_data_size;
+                        /*! \todo Add graphics_data_size. */
                         face->shadow_mode = p1->shadow_mode;
+                        /*! \todo Add binary_graphics_data. */
                         if (p1->dictionary_owner_soft == NULL)
                         {
                                 fprintf (stderr,
@@ -4467,6 +4479,16 @@ dxf_3dface_create_from_points
                         else
                         {
                                 face->dictionary_owner_soft = strdup (p1->dictionary_owner_soft);
+                        }
+                        if (p1->object_owner_soft == NULL)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () a NULL pointer was found.\n")),
+                                  __FUNCTION__);
+                        }
+                        else
+                        {
+                                face->object_owner_soft = strdup (p1->object_owner_soft);
                         }
                         if (p1->material == NULL)
                         {
@@ -4546,8 +4568,9 @@ dxf_3dface_create_from_points
                         face->visibility = p2->visibility;
                         face->color = p2->color;
                         face->paperspace = p2->paperspace;
-                        face->graphics_data_size = p2->graphics_data_size;
+                        /*! \todo Add graphics_data_size. */
                         face->shadow_mode = p2->shadow_mode;
+                        /*! \todo Add binary_graphics_data. */
                         if (p2->dictionary_owner_soft == NULL)
                         {
                                 fprintf (stderr,
@@ -4557,6 +4580,16 @@ dxf_3dface_create_from_points
                         else
                         {
                                 face->dictionary_owner_soft = strdup (p2->dictionary_owner_soft);
+                        }
+                        if (p2->object_owner_soft == NULL)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () a NULL pointer was found.\n")),
+                                  __FUNCTION__);
+                        }
+                        else
+                        {
+                                face->object_owner_soft = strdup (p2->object_owner_soft);
                         }
                         if (p2->material == NULL)
                         {
@@ -4636,8 +4669,9 @@ dxf_3dface_create_from_points
                         face->visibility = p3->visibility;
                         face->color = p3->color;
                         face->paperspace = p3->paperspace;
-                        face->graphics_data_size = p3->graphics_data_size;
+                        /*! \todo Add graphics_data_size. */
                         face->shadow_mode = p3->shadow_mode;
+                        /*! \todo Add binary_graphics_data. */
                         if (p3->dictionary_owner_soft == NULL)
                         {
                                 fprintf (stderr,
@@ -4647,6 +4681,16 @@ dxf_3dface_create_from_points
                         else
                         {
                                 face->dictionary_owner_soft = strdup (p3->dictionary_owner_soft);
+                        }
+                        if (p3->object_owner_soft == NULL)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () a NULL pointer was found.\n")),
+                                  __FUNCTION__);
+                        }
+                        else
+                        {
+                                face->object_owner_soft = strdup (p3->object_owner_soft);
                         }
                         if (p3->material == NULL)
                         {
