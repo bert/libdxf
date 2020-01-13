@@ -3658,19 +3658,42 @@ dxf_3dline_create_from_points
                         {
                                 line->layer = p0->layer;
                         }
+                        line->elevation = p0->elevation;
                         line->thickness = p0->thickness;
                         line->linetype_scale = p0->linetype_scale;
                         line->visibility = p0->visibility;
                         line->color = p0->color;
                         line->paperspace = p0->paperspace;
+                        /*! \todo Add graphics_data_size. */
+                        line->shadow_mode = p0->shadow_mode;
+                        /*! \todo Add binary_graphics_data. */
                         if (p0->dictionary_owner_soft != NULL)
                         {
                                 line->dictionary_owner_soft = strdup (p0->dictionary_owner_soft);
+                        }
+                        if (p0->object_owner_soft != NULL)
+                        {
+                                line->object_owner_soft = strdup (p0->object_owner_soft);
+                        }
+                        if (p0->material != NULL)
+                        {
+                                line->material = strdup (p0->material);
                         }
                         if (p0->dictionary_owner_hard != NULL)
                         {
                                 line->dictionary_owner_hard = strdup (p0->dictionary_owner_hard);
                         }
+                        line->lineweight = p0->lineweight;
+                        if (p0->plot_style_name != NULL)
+                        {
+                                line->plot_style_name = strdup (p0->plot_style_name);
+                        }
+                        line->color_value = p0->color_value;
+                        if (p0->color_name != NULL)
+                        {
+                                line->color_name = strdup (p0->color_name);
+                        }
+                        line->transparency = p0->transparency;
                         break;
                 case 2:
                         if (p1->linetype != NULL)
@@ -3681,19 +3704,42 @@ dxf_3dline_create_from_points
                         {
                                 line->layer = p1->layer;
                         }
+                        line->elevation = p1->elevation;
                         line->thickness = p1->thickness;
                         line->linetype_scale = p1->linetype_scale;
                         line->visibility = p1->visibility;
                         line->color = p1->color;
                         line->paperspace = p1->paperspace;
+                        /*! \todo Add graphics_data_size. */
+                        line->shadow_mode = p1->shadow_mode;
+                        /*! \todo Add binary_graphics_data. */
                         if (p1->dictionary_owner_soft != NULL)
                         {
                                 line->dictionary_owner_soft = strdup (p1->dictionary_owner_soft);
+                        }
+                        if (p1->object_owner_soft != NULL)
+                        {
+                                line->object_owner_soft = strdup (p1->object_owner_soft);
+                        }
+                        if (p1->material != NULL)
+                        {
+                                line->material = strdup (p1->material);
                         }
                         if (p1->dictionary_owner_hard != NULL)
                         {
                                 line->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
                         }
+                        line->lineweight = p1->lineweight;
+                        if (p1->plot_style_name != NULL)
+                        {
+                                line->plot_style_name = strdup (p1->plot_style_name);
+                        }
+                        line->color_value = p1->color_value;
+                        if (p1->color_name != NULL)
+                        {
+                                line->color_name = strdup (p1->color_name);
+                        }
+                        line->transparency = p1->transparency;
                         break;
                 default:
                         fprintf (stderr,
