@@ -3470,19 +3470,42 @@ dxf_3dline_get_mid_point
                         {
                                 point->layer = strdup (line->layer);
                         }
+                        point->elevation = line->elevation;
                         point->thickness = line->thickness;
                         point->linetype_scale = line->linetype_scale;
                         point->visibility = line->visibility;
                         point->color = line->color;
                         point->paperspace = line->paperspace;
+                        /*! \todo Add graphics_data_size. */
+                        point->shadow_mode = line->shadow_mode;
+                        /*! \todo Add binary_graphics_data. */
                         if (line->dictionary_owner_soft != NULL)
                         {
                                 point->dictionary_owner_soft = strdup (line->dictionary_owner_soft);
+                        }
+                        if (line->object_owner_soft != NULL)
+                        {
+                                point->object_owner_soft = strdup (line->object_owner_soft);
+                        }
+                        if (line->material != NULL)
+                        {
+                                point->material = strdup (line->material);
                         }
                         if (line->dictionary_owner_hard != NULL)
                         {
                                 point->dictionary_owner_hard = strdup (line->dictionary_owner_hard);
                         }
+                        point->lineweight = line->lineweight;
+                        if (line->plot_style_name != NULL)
+                        {
+                                point->plot_style_name = strdup (line->plot_style_name);
+                        }
+                        point->color_value = line->color_value;
+                        if (line->color_name != NULL)
+                        {
+                                point->color_name = strdup (line->color_name);
+                        }
+                        point->transparency = line->transparency;
                         break;
                 default:
                         fprintf (stderr,
