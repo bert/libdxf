@@ -2,7 +2,7 @@
  * \file 3dface.h
  *
  * \author Copyright (C) 2010, 2012, 2013, 2014, 2015 2016, 2017, 2018,
- * 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
  *
@@ -200,7 +200,7 @@ dxf_3dface_struct
         DxfPoint *p3;
                 /*!< Third alignment point.\n
                  * Group codes = 13, 23 and 33. */
-        int flag;
+        int16_t flag;
                 /*!< Optional, defaults to 0.\n
                  * Bit coded:\n
                  * <ol>
@@ -296,8 +296,8 @@ double dxf_3dface_get_y3 (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_y3 (Dxf3dface *face, double y3);
 double dxf_3dface_get_z3 (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_z3 (Dxf3dface *face, double z3);
-int dxf_3dface_get_flag (Dxf3dface *face);
-Dxf3dface *dxf_3dface_set_flag (Dxf3dface *face, int flag);
+int16_t dxf_3dface_get_flag (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_flag (Dxf3dface *face, int16_t flag);
 int dxf_3dface_is_first_edge_invisible (Dxf3dface *face);
 int dxf_3dface_is_second_edge_invisible (Dxf3dface *face);
 int dxf_3dface_is_third_edge_invisible (Dxf3dface *face);

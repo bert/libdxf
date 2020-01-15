@@ -383,7 +383,7 @@ dxf_3dface_read
                         /* Now follows a string containing the
                          * value of edge visibility flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &face->flag);
+                        fscanf (fp->fp, "%hd\n", &face->flag);
                 }
                 else if (strcmp (temp_string, "92") == 0)
                 {
@@ -711,7 +711,7 @@ dxf_3dface_write
         fprintf (fp->fp, " 13\n%f\n", face->p3->x0);
         fprintf (fp->fp, " 23\n%f\n", face->p3->y0);
         fprintf (fp->fp, " 33\n%f\n", face->p3->z0);
-        fprintf (fp->fp, " 70\n%d\n", face->flag);
+        fprintf (fp->fp, " 70\n%hd\n", face->flag);
         /* Clean up. */
         free (dxf_entity_name);
 #ifdef DEBUG
@@ -3990,7 +3990,7 @@ dxf_3dface_set_z3
  *
  * \return \c flag value.
  */
-int
+int16_t
 dxf_3dface_get_flag
 (
         Dxf3dface *face
@@ -4043,7 +4043,7 @@ dxf_3dface_set_flag
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
-        int flag
+        int16_t flag
                 /*!< \c flag value for the entity. */
 )
 {
