@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF acad_proxy_entity entity
@@ -125,6 +125,32 @@ dxf_acad_proxy_entity_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        acad_proxy_entity->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_graphics_data);
+        if (acad_proxy_entity->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->binary_entity_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_entity_data);
+        if (acad_proxy_entity->binary_entity_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->object_id = dxf_object_id_init (acad_proxy_entity->object_id);
+        if (acad_proxy_entity->object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         acad_proxy_entity->id_code = 0;
         acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
         acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
@@ -150,10 +176,6 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->graphics_data_size = 0;
         acad_proxy_entity->entity_data_size = 0;
         acad_proxy_entity->object_drawing_format = 0;
-        acad_proxy_entity->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_graphics_data);
-        acad_proxy_entity->binary_entity_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_entity_data);
-        acad_proxy_entity->object_id = dxf_object_id_new ();
-        acad_proxy_entity->object_id = dxf_object_id_init (acad_proxy_entity->object_id);
         acad_proxy_entity->object_id->group_code = 0;
         acad_proxy_entity->object_id->data = strdup ("");
         acad_proxy_entity->object_id->length = 0;
