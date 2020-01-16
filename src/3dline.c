@@ -115,6 +115,32 @@ dxf_3dline_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Initialize new structs for members. */
+        line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (line->binary_graphics_data);
+        if (line->binary_graphics_data == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        line->p0 = dxf_point_init (line->p0);
+        if (line->p0 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        line->p1 = dxf_point_init (line->p1);
+        if (line->p1 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        /* Assign initial values to members. */
         line->id_code = 0;
         line->linetype = strdup (DXF_DEFAULT_LINETYPE);
         line->layer = strdup (DXF_DEFAULT_LAYER);
@@ -126,15 +152,6 @@ dxf_3dline_init
         line->paperspace = DXF_MODELSPACE;
         line->graphics_data_size = 0;
         line->shadow_mode = 0;
-        line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
-        line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (line->binary_graphics_data);
-        if (line->binary_graphics_data == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         line->dictionary_owner_soft = strdup ("");
         line->object_owner_soft = strdup ("");
         line->material = strdup ("");
@@ -144,27 +161,9 @@ dxf_3dline_init
         line->color_value = 0;
         line->color_name = strdup ("");
         line->transparency = 0;
-        line->p0 = dxf_point_new ();
-        line->p0 = dxf_point_init (line->p0);
-        if (line->p0 == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         line->p0->x0 = 0.0;
         line->p0->y0 = 0.0;
         line->p0->z0 = 0.0;
-        line->p1 = dxf_point_new ();
-        line->p1 = dxf_point_init (line->p1);
-        if (line->p1 == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         line->p1->x0 = 0.0;
         line->p1->y0 = 0.0;
         line->p1->z0 = 0.0;
