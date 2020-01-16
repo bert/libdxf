@@ -1,8 +1,8 @@
 /*!
  * \file 3dsolid.c
  *
- * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+ * 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -118,6 +118,32 @@ dxf_3dsolid_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        solid->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (solid->binary_graphics_data);
+        if (solid->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->proprietary_data);
+        if (solid->proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->additional_proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->additional_proprietary_data);
+        if (solid->additional_proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         solid->id_code = 0;
         solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         solid->layer = strdup (DXF_DEFAULT_LAYER);
@@ -129,8 +155,6 @@ dxf_3dsolid_init
         solid->paperspace = DXF_MODELSPACE;
         solid->graphics_data_size = 0;
         solid->shadow_mode = 0;
-        solid->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
-        solid->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (solid->binary_graphics_data);
         solid->dictionary_owner_soft = strdup ("");
         solid->object_owner_soft = strdup ("");
         solid->material = strdup ("");
@@ -140,8 +164,6 @@ dxf_3dsolid_init
         solid->color_value = 0;
         solid->color_name = strdup ("");
         solid->transparency = 0;
-        solid->proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->proprietary_data);
-        solid->additional_proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->additional_proprietary_data);
         solid->modeler_format_version_number = 1;
         solid->history = strdup ("");
         solid->next = NULL;
