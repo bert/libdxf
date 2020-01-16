@@ -118,6 +118,48 @@ dxf_3dface_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        face->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (face->binary_graphics_data);
+        if (face->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->p0 = dxf_point_init (face->p0);
+        if (face->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->p1 = dxf_point_init (face->p1);
+        if (face->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->p2 = dxf_point_init (face->p2);
+        if (face->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->p3 = dxf_point_init (face->p3);
+        if (face->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         face->id_code = 0;
         face->linetype = strdup (DXF_DEFAULT_LINETYPE);
         face->layer = strdup (DXF_DEFAULT_LAYER);
@@ -129,15 +171,6 @@ dxf_3dface_init
         face->paperspace = DXF_MODELSPACE;
         face->graphics_data_size = 0;
         face->shadow_mode = 0;
-        face->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
-        face->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (face->binary_graphics_data);
-        if (face->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         face->dictionary_owner_soft = strdup ("");
         face->object_owner_soft = strdup ("");
         face->material = strdup ("");
@@ -147,51 +180,15 @@ dxf_3dface_init
         face->color_value = 0;
         face->color_name = strdup ("");
         face->transparency = 0;
-        face->p0 = dxf_point_new ();
-        face->p0 = dxf_point_init (face->p0);
-        if (face->p0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         face->p0->x0 = 0.0;
         face->p0->y0 = 0.0;
         face->p0->z0 = 0.0;
-        face->p1 = dxf_point_new ();
-        face->p1 = dxf_point_init (face->p1);
-        if (face->p1 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         face->p1->x0 = 0.0;
         face->p1->y0 = 0.0;
         face->p1->z0 = 0.0;
-        face->p2 = dxf_point_new ();
-        face->p2 = dxf_point_init (face->p2);
-        if (face->p2 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         face->p2->x0 = 0.0;
         face->p2->y0 = 0.0;
         face->p2->z0 = 0.0;
-        face->p3 = dxf_point_new ();
-        face->p3 = dxf_point_init (face->p3);
-        if (face->p3 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         face->p3->x0 = 0.0;
         face->p3->y0 = 0.0;
         face->p3->z0 = 0.0;
