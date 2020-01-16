@@ -128,6 +128,13 @@ dxf_3dline_init
         line->shadow_mode = 0;
         line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_new ();
         line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (line->binary_graphics_data);
+        if (line->binary_graphics_data == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         line->dictionary_owner_soft = strdup ("");
         line->object_owner_soft = strdup ("");
         line->material = strdup ("");
@@ -139,11 +146,25 @@ dxf_3dline_init
         line->transparency = 0;
         line->p0 = dxf_point_new ();
         line->p0 = dxf_point_init (line->p0);
+        if (line->p0 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         line->p0->x0 = 0.0;
         line->p0->y0 = 0.0;
         line->p0->z0 = 0.0;
         line->p1 = dxf_point_new ();
         line->p1 = dxf_point_init (line->p1);
+        if (line->p1 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         line->p1->x0 = 0.0;
         line->p1->y0 = 0.0;
         line->p1->z0 = 0.0;
