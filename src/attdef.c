@@ -2,7 +2,7 @@
  * \file attdef.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF attribute definition entity (\c ATTDEF).
  *
@@ -108,6 +108,32 @@ dxf_attdef_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Initialize new structs for members. */
+        attdef->binary_graphics_data = dxf_binary_data_init (attdef->binary_graphics_data);
+        if (attdef->binary_graphics_data == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        attdef->p0 = dxf_point_init (attdef->p0);
+        if (attdef->p0 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        attdef->p1 = dxf_point_init (attdef->p1);
+        if (attdef->p1 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        /* Assign initial values to members. */
         attdef->id_code = 0;
         attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
         attdef->layer = strdup (DXF_DEFAULT_LAYER);
@@ -119,7 +145,6 @@ dxf_attdef_init
         attdef->paperspace = DXF_MODELSPACE;
         attdef->graphics_data_size = 0;
         attdef->shadow_mode = 0;
-        attdef->binary_graphics_data = dxf_binary_data_init (attdef->binary_graphics_data);
         attdef->dictionary_owner_soft = strdup ("");
         attdef->object_owner_soft = strdup ("");
         attdef->material = strdup ("");
@@ -133,13 +158,9 @@ dxf_attdef_init
         attdef->tag_value = strdup ("");
         attdef->prompt_value = strdup ("");
         attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
-        attdef->p0 = dxf_point_new ();
-        attdef->p0 = dxf_point_init (attdef->p0);
         attdef->p0->x0 = 0.0;
         attdef->p0->y0 = 0.0;
         attdef->p0->z0 = 0.0;
-        attdef->p1 = dxf_point_new ();
-        attdef->p1 = dxf_point_init (attdef->p1);
         attdef->p1->x0 = 0.0;
         attdef->p1->y0 = 0.0;
         attdef->p1->z0 = 0.0;
