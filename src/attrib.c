@@ -109,6 +109,32 @@ dxf_attrib_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        attrib->binary_graphics_data = dxf_binary_data_init (attrib->binary_graphics_data);
+        if (attrib->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->p0 = dxf_point_init (attrib->p0);
+        if (attrib->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->p1 = dxf_point_init (attrib->p1);
+        if (attrib->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         attrib->id_code = 0;
         attrib->linetype = strdup (DXF_DEFAULT_LINETYPE);
         attrib->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
@@ -121,7 +147,6 @@ dxf_attrib_init
         attrib->paperspace = DXF_MODELSPACE;
         attrib->graphics_data_size = 0;
         attrib->shadow_mode = 0;
-        attrib->binary_graphics_data = dxf_binary_data_new (attrib->binary_graphics_data);
         attrib->dictionary_owner_soft = strdup("");
         attrib->object_owner_soft = strdup("");
         attrib->material = strdup("");
@@ -133,13 +158,9 @@ dxf_attrib_init
         attrib->transparency = 0;
         attrib->default_value = strdup ("");
         attrib->tag_value = strdup ("");
-        attrib->p0 = dxf_point_new ();
-        attrib->p0 = dxf_point_init (attrib->p0);
         attrib->p0->x0 = 0.0;
         attrib->p0->y0 = 0.0;
         attrib->p0->z0 = 0.0;
-        attrib->p1 = dxf_point_new ();
-        attrib->p1 = dxf_point_init (attrib->p1);
         attrib->p1->x0 = 0.0;
         attrib->p1->y0 = 0.0;
         attrib->p1->z0 = 0.0;
