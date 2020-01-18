@@ -1,7 +1,7 @@
 /*!
  * \file block_record.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF block record symbol table entry
