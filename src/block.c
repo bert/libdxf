@@ -112,14 +112,22 @@ dxf_block_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        block->p0 = dxf_point_init (block->p0);
+        if (block->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         block->xref_name = strdup ("");
         block->block_name = strdup ("");
         block->block_name_additional = strdup ("");
         block->description = strdup ("");
         block->id_code = 0;
         block->layer = strdup (DXF_DEFAULT_LAYER);
-        block->p0 = dxf_point_new ();
-        block->p0 = dxf_point_init (block->p0);
         block->p0->x0 = 0.0;
         block->p0->y0 = 0.0;
         block->p0->z0 = 0.0;
