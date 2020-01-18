@@ -112,13 +112,22 @@ dxf_block_record_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        block_record->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (block_record->binary_graphics_data);
+        if (block_record->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         block_record->id_code = 0;
         block_record->block_name = strdup ("");
         block_record->flag = 0;
         block_record->insert_units = 0;
         block_record->explodability = 0;
         block_record->scalability = 0;
-        block_record->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (block_record->binary_graphics_data);
         block_record->dictionary_owner_soft = strdup ("");
         block_record->object_owner_soft = strdup ("");
         block_record->dictionary_owner_hard = strdup ("");
