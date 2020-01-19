@@ -296,11 +296,11 @@ dxf_dictionary_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_dictionary_get_entry_name (dictionary), "") == 0)
+        if (strcmp (dictionary->entry_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty entry name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_dictionary_get_id_code (dictionary));
+                  __FUNCTION__, dxf_entity_name, dictionary->id_code);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
@@ -309,13 +309,13 @@ dxf_dictionary_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_dictionary_get_id_code (dictionary));
+                  __FUNCTION__, dxf_entity_name, dictionary->id_code);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_dictionary_get_id_code (dictionary) != -1)
+        if (dictionary->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_dictionary_get_id_code (dictionary));
+                fprintf (fp->fp, "  5\n%x\n", dictionary->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -327,26 +327,26 @@ dxf_dictionary_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_dictionary_get_dictionary_owner_soft (dictionary), "") != 0)
+        if ((strcmp (dictionary->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_dictionary_get_dictionary_owner_soft (dictionary));
+                fprintf (fp->fp, "330\n%s\n", dictionary->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
         if ((strcmp (dictionary->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_dictionary_get_dictionary_owner_hard (dictionary));
+                fprintf (fp->fp, "360\n%s\n", dictionary->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbDictionary\n");
         }
-        fprintf (fp->fp, "  3\n%s\n", dxf_dictionary_get_entry_name (dictionary));
-        fprintf (fp->fp, "350\n%s\n", dxf_dictionary_get_entry_object_handle (dictionary));
+        fprintf (fp->fp, "  3\n%s\n", dictionary->entry_name);
+        fprintf (fp->fp, "350\n%s\n", dictionary->entry_object_handle);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
