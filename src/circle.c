@@ -117,6 +117,24 @@ dxf_circle_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Initialize new structs for members. */
+        circle->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (circle->binary_graphics_data);
+        if (circle->binary_graphics_data == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        circle->p0 = dxf_point_init (circle->p0);
+        if (circle->p0 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        /* Assign initial values to members. */
         circle->id_code = 0;
         circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
         circle->layer = strdup (DXF_DEFAULT_LAYER);
@@ -128,7 +146,6 @@ dxf_circle_init
         circle->paperspace = DXF_MODELSPACE;
         circle->graphics_data_size = 0;
         circle->shadow_mode = 0;
-        circle->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (circle->binary_graphics_data);
         circle->dictionary_owner_soft = strdup ("");
         circle->object_owner_soft = strdup ("");
         circle->material = strdup ("");
@@ -138,8 +155,6 @@ dxf_circle_init
         circle->color_value = 0;
         circle->color_name = strdup ("");
         circle->transparency = 0;
-        circle->p0 = dxf_point_new ();
-        circle->p0 = dxf_point_init (circle->p0);
         circle->p0->x0 = 0.0;
         circle->p0->y0 = 0.0;
         circle->p0->z0 = 0.0;
