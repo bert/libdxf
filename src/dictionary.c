@@ -107,16 +107,16 @@ dxf_dictionary_init
         if (dictionary == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDictionary struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_dictionary_set_id_code (dictionary, 0);
-        dxf_dictionary_set_dictionary_owner_soft (dictionary,  strdup (""));
-        dxf_dictionary_set_dictionary_owner_hard (dictionary,  strdup (""));
-        dxf_dictionary_set_entry_name (dictionary,  strdup (""));
-        dxf_dictionary_set_entry_object_handle (dictionary,  strdup (""));
-        dxf_dictionary_set_next (dictionary,  NULL);
+        dictionary->id_code = 0;
+        dictionary->dictionary_owner_soft = strdup ("");
+        dictionary->dictionary_owner_hard = strdup ("");
+        dictionary->entry_name = strdup ("");
+        dictionary->entry_object_handle = strdup ("");
+        dictionary->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
