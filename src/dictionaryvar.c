@@ -699,7 +699,7 @@ dxf_dictionaryvar_get_value
         if (dictionaryvar->value ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the value member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
