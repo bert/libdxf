@@ -771,7 +771,7 @@ dxf_dictionary_get_entry_object_handle
         if (dictionary->entry_object_handle ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the entry_object_handle member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
