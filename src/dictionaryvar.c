@@ -107,7 +107,7 @@ dxf_dictionaryvar_init
         if (dictionaryvar == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
