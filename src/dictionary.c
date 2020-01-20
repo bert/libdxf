@@ -930,7 +930,7 @@ dxf_dictionary_get_last
         if (dictionary->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfDictionary *) dictionary);
         }
