@@ -64,7 +64,7 @@ dxf_dictionaryvar_new ()
         if ((dictionaryvar = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 dictionaryvar = NULL;
         }
