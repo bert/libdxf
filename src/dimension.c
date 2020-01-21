@@ -846,11 +846,10 @@ dxf_dimension_write
           || (dimension->flag < 0))
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range flag value was detected.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 /* Clean up. */
                 free (dxf_entity_name);
-                return (EXIT_FAILURE);
         }
         if (strcmp (dimension->layer, "") == 0)
         {
