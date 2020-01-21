@@ -114,6 +114,72 @@ dxf_dimension_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Initialize new structs for members. */
+        dimension->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (dimension->binary_graphics_data);
+        if (dimension->binary_graphics_data == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dimension->p0 = dxf_point_init (dimension->p0);
+        if (dimension->p0 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dimension->p1 = dxf_point_init (dimension->p1);
+        if (dimension->p1 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dimension->p2 = dxf_point_init (dimension->p2);
+        if (dimension->p2 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dimension->p3 = dxf_point_init (dimension->p3);
+        if (dimension->p3 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dimension->p4 = dxf_point_init (dimension->p4);
+        if (dimension->p4 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dimension->p5 = dxf_point_init (dimension->p5);
+        if (dimension->p5 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dimension->p6 = dxf_point_init (dimension->p6);
+        if (dimension->p6 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        /* Assign initial values to members. */
         dimension->id_code = 0;
         dimension->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dimension->layer = strdup (DXF_DEFAULT_LAYER);
@@ -125,7 +191,6 @@ dxf_dimension_init
         dimension->paperspace = DXF_PAPERSPACE;
         dimension->graphics_data_size = 0;
         dimension->shadow_mode = 0;
-        dimension->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (dimension->binary_graphics_data);
         dimension->dictionary_owner_soft = strdup ("");
         dimension->object_owner_soft = strdup ("");
         dimension->material = strdup ("");
@@ -138,38 +203,24 @@ dxf_dimension_init
         dimension->dim_text = strdup ("");
         dimension->dimblock_name = strdup ("");
         dimension->dimstyle_name = strdup ("");
-        dimension->p0 = dxf_point_new ();
-        dimension->p0 = dxf_point_init (dimension->p0);
         dimension->p0->x0 = 0.0;
         dimension->p0->y0 = 0.0;
         dimension->p0->z0 = 0.0;
-        dimension->p1 = dxf_point_new ();
-        dimension->p1 = dxf_point_init (dimension->p1);
         dimension->p1->x0 = 0.0;
         dimension->p1->y0 = 0.0;
         dimension->p1->z0 = 0.0;
-        dimension->p2 = dxf_point_new ();
-        dimension->p2 = dxf_point_init (dimension->p2);
         dimension->p2->x0 = 0.0;
         dimension->p2->y0 = 0.0;
         dimension->p2->z0 = 0.0;
-        dimension->p3 = dxf_point_new ();
-        dimension->p3 = dxf_point_init (dimension->p3);
         dimension->p3->x0 = 0.0;
         dimension->p3->y0 = 0.0;
         dimension->p3->z0 = 0.0;
-        dimension->p4 = dxf_point_new ();
-        dimension->p4 = dxf_point_init (dimension->p4);
         dimension->p4->x0 = 0.0;
         dimension->p4->y0 = 0.0;
         dimension->p4->z0 = 0.0;
-        dimension->p5 = dxf_point_new ();
-        dimension->p5 = dxf_point_init (dimension->p6);
         dimension->p5->x0 = 0.0;
         dimension->p5->y0 = 0.0;
         dimension->p5->z0 = 0.0;
-        dimension->p6 = dxf_point_new ();
-        dimension->p6 = dxf_point_init (dimension->p6);
         dimension->p6->x0 = 0.0;
         dimension->p6->y0 = 0.0;
         dimension->p6->z0 = 0.0;
