@@ -776,7 +776,7 @@ dxf_dictionaryvar_get_object_schema_number
         if (dictionaryvar->object_schema_number ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the object_schema_number member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
