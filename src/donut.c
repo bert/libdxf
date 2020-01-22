@@ -114,10 +114,20 @@ dxf_donut_init
         if (donut == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDonut struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        donut->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (donut->binary_graphics_data);
+        if (donut->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         /* Members common for all DXF drawable entities. */
         donut->id_code = 0;
         donut->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -130,7 +140,6 @@ dxf_donut_init
         donut->paperspace = DXF_MODELSPACE;
         donut->graphics_data_size = 0;
         donut->shadow_mode = 0;
-        donut->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (donut->binary_graphics_data);
         donut->dictionary_owner_soft = strdup ("");
         donut->material = strdup ("");
         donut->dictionary_owner_hard = strdup ("");
