@@ -474,7 +474,7 @@ dxf_donut_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         donut->id_code = id_code;
