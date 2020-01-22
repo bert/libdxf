@@ -1235,9 +1235,8 @@ dxf_dimension_get_id_code
         if (dimension->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (DXF_ERROR);
         }
 #if DEBUG
         DXF_DEBUG_END
