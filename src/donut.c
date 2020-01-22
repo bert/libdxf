@@ -853,7 +853,7 @@ dxf_donut_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative linetype_scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         donut->linetype_scale = linetype_scale;
