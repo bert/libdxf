@@ -777,7 +777,7 @@ dxf_donut_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative thickness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         donut->thickness = thickness;
