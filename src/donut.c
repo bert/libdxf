@@ -1057,13 +1057,13 @@ dxf_donut_get_paperspace
         if (donut->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (donut->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
