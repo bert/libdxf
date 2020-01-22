@@ -71,7 +71,7 @@ dxf_donut_new ()
         if ((donut = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDonut struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 donut = NULL;
         }
