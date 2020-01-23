@@ -2548,7 +2548,7 @@ dxf_donut_get_last
         if (donut->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfDonut *) donut);
         }
