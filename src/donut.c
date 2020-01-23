@@ -957,7 +957,7 @@ dxf_donut_set_visibility
  *
  * \return \c color.
  */
-int
+int16_t
 dxf_donut_get_color
 (
         DxfDonut *donut
@@ -999,7 +999,7 @@ dxf_donut_set_color
 (
         DxfDonut *donut,
                 /*!< a pointer to a libDXF \c donut entity. */
-        int color
+        int16_t color
                 /*!< the \c color to be set for the entity. */
 )
 {
@@ -1036,7 +1036,7 @@ dxf_donut_set_color
  *
  * \return \c paperspace flag value.
  */
-int
+int16_t
 dxf_donut_get_paperspace
 (
         DxfDonut *donut
@@ -1084,7 +1084,7 @@ dxf_donut_set_paperspace
 (
         DxfDonut *donut,
                 /*!< a pointer to a libDXF \c donut entity. */
-        int paperspace
+        int16_t paperspace
                 /*!< the \c paperspace flag value to be set for the entity. */
 )
 {
@@ -1126,7 +1126,7 @@ dxf_donut_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_donut_get_graphics_data_size
 (
         DxfDonut *donut
@@ -1174,7 +1174,7 @@ dxf_donut_set_graphics_data_size
 (
         DxfDonut *donut,
                 /*!< a pointer to a libDXF \c donut entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -1777,7 +1777,7 @@ dxf_donut_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_donut_get_color_value
 (
         DxfDonut *donut
@@ -1813,7 +1813,7 @@ dxf_donut_set_color_value
 (
         DxfDonut *donut,
                 /*!< a pointer to a libDXF \c donut entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -1922,7 +1922,7 @@ dxf_donut_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_donut_get_transparency
 (
         DxfDonut *donut
@@ -1958,7 +1958,7 @@ dxf_donut_set_transparency
 (
         DxfDonut *donut,
                 /*!< a pointer to a libDXF \c donut entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {

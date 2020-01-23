@@ -1,8 +1,8 @@
 /*!
  * \file donut.h
  *
- * \author Copyright (C) 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018,
+ * 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a libDXF donut entity.
  *
@@ -104,20 +104,20 @@ dxf_donut_struct
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
-        int color;
+        int16_t color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity.\n
                  * Group code = 62. */
-        int paperspace;
+        int16_t paperspace;
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
                  * binary chunk records (optional).\n
@@ -164,7 +164,7 @@ dxf_donut_struct
                 /*!< Hard pointer ID / handle of PlotStyleName object.\n
                  * Group code = 390.\n
                  * \since Introduced in version R2009. */
-        long color_value;
+        int32_t color_value;
                 /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
@@ -184,7 +184,7 @@ dxf_donut_struct
                  * class-level transparency data.\n
                  * Group code = 430.\n
                  * \since Introduced in version R2004. */
-        long transparency;
+        int32_t transparency;
                 /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
@@ -225,12 +225,12 @@ double dxf_donut_get_linetype_scale (DxfDonut *donut);
 DxfDonut *dxf_donut_set_linetype_scale (DxfDonut *donut, double linetype_scale);
 int16_t dxf_donut_get_visibility (DxfDonut *donut);
 DxfDonut *dxf_donut_set_visibility (DxfDonut *donut, int16_t visibility);
-int dxf_donut_get_color (DxfDonut *donut);
-DxfDonut *dxf_donut_set_color (DxfDonut *donut, int color);
-int dxf_donut_get_paperspace (DxfDonut *donut);
-DxfDonut *dxf_donut_set_paperspace (DxfDonut *donut, int paperspace);
-int dxf_donut_get_graphics_data_size (DxfDonut *donut);
-DxfDonut *dxf_donut_set_graphics_data_size (DxfDonut *donut, int graphics_data_size);
+int16_t dxf_donut_get_color (DxfDonut *donut);
+DxfDonut *dxf_donut_set_color (DxfDonut *donut, int16_t color);
+int16_t dxf_donut_get_paperspace (DxfDonut *donut);
+DxfDonut *dxf_donut_set_paperspace (DxfDonut *donut, int16_t paperspace);
+int32_t dxf_donut_get_graphics_data_size (DxfDonut *donut);
+DxfDonut *dxf_donut_set_graphics_data_size (DxfDonut *donut, int32_t graphics_data_size);
 int16_t dxf_donut_get_shadow_mode (DxfDonut *donut);
 DxfDonut *dxf_donut_set_shadow_mode (DxfDonut *donut, int16_t shadow_mode);
 DxfBinaryData *dxf_donut_get_binary_graphics_data (DxfDonut *donut);
@@ -245,12 +245,12 @@ int16_t dxf_donut_get_lineweight (DxfDonut *donut);
 DxfDonut *dxf_donut_set_lineweight (DxfDonut *donut, int16_t lineweight);
 char *dxf_donut_get_plot_style_name (DxfDonut *donut);
 DxfDonut *dxf_donut_set_plot_style_name (DxfDonut *donut, char *plot_style_name);
-long dxf_donut_get_color_value (DxfDonut *donut);
-DxfDonut *dxf_donut_set_color_value (DxfDonut *donut, long color_value);
+int32_t dxf_donut_get_color_value (DxfDonut *donut);
+DxfDonut *dxf_donut_set_color_value (DxfDonut *donut, int32_t color_value);
 char *dxf_donut_get_color_name (DxfDonut *donut);
 DxfDonut *dxf_donut_set_color_name (DxfDonut *donut, char *color_name);
-long dxf_donut_get_transparency (DxfDonut *donut);
-DxfDonut *dxf_donut_set_transparency (DxfDonut *donut, long transparency);
+int32_t dxf_donut_get_transparency (DxfDonut *donut);
+DxfDonut *dxf_donut_set_transparency (DxfDonut *donut, int32_t transparency);
 DxfPoint *dxf_donut_get_p0 (DxfDonut *donut);
 DxfDonut *dxf_donut_set_p0 (DxfDonut *donut, DxfPoint *p0);
 double dxf_donut_get_x0 (DxfDonut *donut);
