@@ -1489,7 +1489,7 @@ dxf_donut_get_material
         if (donut->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
