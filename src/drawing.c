@@ -1,7 +1,8 @@
 /*!
  * \file drawing.c
  *
- * \author Copyright (C) 2016, 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2018, 2020
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a libDXF drawing.
  *
