@@ -403,7 +403,7 @@ dxf_drawing_get_tables_list
         if (drawing->tables_list ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the tables_list member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
