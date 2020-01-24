@@ -59,7 +59,7 @@ dxf_drawing_new ()
         if ((drawing = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfDrawing struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 drawing = NULL;
         }
