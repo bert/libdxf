@@ -568,7 +568,7 @@ dxf_drawing_get_entities_list
         if (drawing->entities_list ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the entities_list member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
