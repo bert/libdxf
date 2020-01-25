@@ -733,7 +733,7 @@ dxf_drawing_get_thumbnail
         if (drawing->thumbnail ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the thumbnail member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
