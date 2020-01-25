@@ -651,7 +651,7 @@ dxf_drawing_get_object_list
         if (drawing->object_list ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the object_list member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
