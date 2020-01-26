@@ -110,6 +110,24 @@ dxf_helix_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Initialize new structs for members. */
+        helix->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (helix->binary_graphics_data);
+        if (helix->binary_graphics_data == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        helix->spline = (DxfSpline *) dxf_spline_init (helix->spline);
+        if (helix->spline == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        /* Assign initial values to members. */
         helix->id_code = 0;
         helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
         helix->layer = strdup (DXF_DEFAULT_LAYER);
@@ -130,7 +148,6 @@ dxf_helix_init
         helix->constraint_type = 0;
         helix->shadow_mode = 0;
         helix->handedness = 0;
-        helix->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (helix->binary_graphics_data);
         helix->dictionary_owner_hard = strdup ("");
         helix->material = strdup ("");
         helix->dictionary_owner_soft = strdup ("");
@@ -139,7 +156,6 @@ dxf_helix_init
         helix->color_value = 0;
         helix->color_name = strdup ("");
         helix->transparency = 0;
-        helix->spline = (DxfSpline *) dxf_spline_init (helix->spline);
         helix->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
