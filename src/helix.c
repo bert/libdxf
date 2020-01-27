@@ -119,6 +119,30 @@ dxf_helix_init
                 __FUNCTION__);
               return (NULL);
         }
+        helix->p0 = dxf_point_init (helix->p0);
+        if (helix->p0 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        helix->p1 = dxf_point_init (helix->p1);
+        if (helix->p1 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        helix->p2 = dxf_point_init (helix->p2);
+        if (helix->p2 == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         helix->spline = (DxfSpline *) dxf_spline_init (helix->spline);
         if (helix->spline == NULL)
         {
@@ -131,9 +155,6 @@ dxf_helix_init
         helix->id_code = 0;
         helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
         helix->layer = strdup (DXF_DEFAULT_LAYER);
-        helix->p0 = dxf_point_init (helix->p0);
-        helix->p1 = dxf_point_init (helix->p1);
-        helix->p2 = dxf_point_init (helix->p2);
         helix->thickness = 0.0;
         helix->radius = 0.0;
         helix->number_of_turns = 0.0;
