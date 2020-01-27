@@ -3720,7 +3720,7 @@ dxf_helix_get_handedness
         if (helix->handedness > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an invalid value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
