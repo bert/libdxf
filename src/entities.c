@@ -122,48 +122,294 @@ dxf_entities_init
                 __FUNCTION__);
               return (NULL);
         }
-        entities->dface_list = NULL;
-        entities->dsolid_list = NULL;
-        entities->acad_proxy_entity_list = NULL;
-        entities->arc_list = NULL;
-        entities->attdef_list = NULL;
-        entities->attrib_list = NULL;
-        entities->body_list = NULL;
-        entities->circle_list = NULL;
-        entities->dimension_list = NULL;
-        entities->ellipse_list = NULL;
-        entities->hatch_list = NULL;
-        entities->helix_list = NULL;
-        entities->image_list = NULL;
-        entities->insert_list = NULL;
-        entities->leader_list = NULL;
-        entities->light_list = NULL;
-        entities->line_list = NULL;
-        entities->lw_polyline_list = NULL;
+        /* Initialize new structs for members. */
+        entities->dface_list = dxf_3dface_init (entities->dface_list);
+        if (entities->dface_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->dsolid_list = dxf_3dsolid_init (entities->dsolid_list);
+        if (entities->dsolid_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->acad_proxy_entity_list = dxf_acad_proxy_entity_init (entities->acad_proxy_entity_list);
+        if (entities->acad_proxy_entity_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->arc_list = dxf_arc_init (entities->arc_list);
+        if (entities->arc_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->attdef_list = dxf_attdef_init (entities->attdef_list);
+        if (entities->attdef_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->attrib_list = dxf_attrib_init (entities->attrib_list);
+        if (entities->attrib_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->body_list = dxf_body_init (entities->body_list);
+        if (entities->body_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->circle_list = dxf_circle_init (entities->circle_list);
+        if (entities->circle_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->dimension_list = dxf_dimension_init (entities->dimension_list);
+        if (entities->dimension_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->ellipse_list = dxf_ellipse_init (entities->ellipse_list);
+        if (entities->ellipse_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->hatch_list = dxf_hatch_init (entities->hatch_list);
+        if (entities->hatch_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->helix_list = dxf_helix_init (entities->helix_list);
+        if (entities->helix_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->image_list = dxf_image_init (entities->image_list);
+        if (entities->image_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->insert_list = dxf_insert_init (entities->insert_list);
+        if (entities->insert_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->leader_list = dxf_leader_init (entities->leader_list);
+        if (entities->leader_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->light_list = dxf_light_init (entities->light_list);
+        if (entities->light_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->line_list = dxf_line_init (entities->line_list);
+        if (entities->line_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->lw_polyline_list = dxf_lwpolyline_init (entities->lw_polyline_list);
+        if (entities->lw_polyline_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         //entities->mesh_list = NULL;
-        entities->mline_list = NULL;
+        entities->mline_list = dxf_mline_init (entities->mline_list);
+        if (entities->mline_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         //entities->mleader_list = NULL;
         //entities->mleaderstyle_list = NULL;
-        entities->mtext_list = NULL;
-        entities->oleframe_list = NULL;
-        entities->ole2frame_list = NULL;
-        entities->point_list = NULL;
-        entities->polyline_list = NULL;
-        entities->ray_list = NULL;
-        entities->region_list = NULL;
+        entities->mtext_list = dxf_mtext_init (entities->mtext_list);
+        if (entities->mtext_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->oleframe_list = dxf_oleframe_init (entities->oleframe_list);
+        if (entities->oleframe_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->ole2frame_list = dxf_ole2frame_init (entities->ole2frame_list);
+        if (entities->ole2frame_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->point_list = dxf_point_init (entities->point_list);
+        if (entities->point_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->polyline_list = dxf_polyline_init (entities->polyline_list);
+        if (entities->polyline_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->ray_list = dxf_ray_init (entities->ray_list);
+        if (entities->ray_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->region_list = dxf_region_init (entities->region_list);
+        if (entities->region_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         //entities->section_list = NULL;
-        entities->shape_list = NULL;
-        entities->solid_list = NULL;
-        entities->spline_list = NULL;
+        entities->shape_list = dxf_shape_init (entities->shape_list);
+        if (entities->shape_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->solid_list = dxf_solid_init (entities->solid_list);
+        if (entities->solid_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->spline_list = dxf_spline_init (entities->spline_list);
+        if (entities->spline_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         //entities->sun_list = NULL;
         //entities->surface_list = NULL;
-        entities->table_list = NULL;
-        entities->text_list = NULL;
-        entities->tolerance_list = NULL;
-        entities->trace_list = NULL;
+        entities->table_list = dxf_table_init (entities->table_list);
+        if (entities->table_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->text_list = dxf_text_init (entities->text_list);
+        if (entities->text_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->tolerance_list = dxf_tolerance_init (entities->tolerance_list);
+        if (entities->tolerance_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->trace_list = dxf_trace_init (entities->trace_list);
+        if (entities->trace_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         //entities->underlay_list = NULL;
-        entities->vertex_list = NULL;
-        entities->viewport_list = NULL;
+        entities->vertex_list = dxf_vertex_init (entities->vertex_list);
+        if (entities->vertex_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        entities->viewport_list = dxf_viewport_init (entities->viewport_list);
+        if (entities->viewport_list == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
         //entities->wipeout_list = NULL;
         //entities->xline_list = NULL;
 #if DEBUG
