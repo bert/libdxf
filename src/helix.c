@@ -3676,7 +3676,7 @@ dxf_helix_set_constraint_type
         if (constraint_type > 2)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an invalid value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
         }
         helix->constraint_type = constraint_type;
