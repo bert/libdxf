@@ -547,7 +547,7 @@ dxf_hatch_get_id_code
         if (hatch->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the id_code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
