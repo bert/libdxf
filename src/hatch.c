@@ -979,13 +979,13 @@ dxf_hatch_get_visibility
         if (hatch->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the visibility member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (hatch->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
