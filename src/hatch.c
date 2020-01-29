@@ -942,7 +942,7 @@ dxf_hatch_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative linetype scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         hatch->linetype_scale = linetype_scale;
