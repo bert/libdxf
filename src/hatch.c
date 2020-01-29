@@ -906,7 +906,7 @@ dxf_hatch_get_linetype_scale
         if (hatch->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
