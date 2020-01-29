@@ -1181,13 +1181,13 @@ dxf_hatch_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative paperspace value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range paperspace value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
         }
         hatch->paperspace = paperspace;
