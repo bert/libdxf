@@ -1100,7 +1100,7 @@ dxf_hatch_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("\teffectively turning this entity it's visibility off.\n")));
