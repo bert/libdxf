@@ -1139,13 +1139,13 @@ dxf_hatch_get_paperspace
         if (hatch->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (hatch->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
