@@ -1755,6 +1755,18 @@ dxf_hatch_set_lineweight
                   __FUNCTION__);
                 return (NULL);
         }
+        if (lineweight < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (lineweight == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
         hatch->lineweight = lineweight;
 #if DEBUG
         DXF_DEBUG_END
