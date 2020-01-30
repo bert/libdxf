@@ -2569,6 +2569,18 @@ dxf_hatch_set_pixel_size
                   __FUNCTION__);
                 return (NULL);
         }
+        if (pixel_size < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (pixel_size == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+        }
         hatch->pixel_size = pixel_size;
 #if DEBUG
         DXF_DEBUG_END
