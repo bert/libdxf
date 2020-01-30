@@ -1710,6 +1710,18 @@ dxf_hatch_get_lineweight
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (hatch->lineweight < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (hatch->lineweight == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a value of zero was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
