@@ -3664,7 +3664,7 @@ dxf_hatch_pattern_free
         if (pattern->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
