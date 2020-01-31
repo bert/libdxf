@@ -3606,11 +3606,27 @@ dxf_hatch_pattern_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
+        dxf_hatch_pattern_def_line_init ((DxfHatchPatternDefLine *) pattern->def_lines);
+        if (pattern->def_lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_hatch_pattern_seedpoint_init ((DxfHatchPatternSeedPoint *) pattern->seed_points);
+        if (pattern->seed_points == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Assign initial values to members. */
         pattern->id_code = 0;
         pattern->number_of_def_lines = 0;
-        dxf_hatch_pattern_def_line_init ((DxfHatchPatternDefLine *) pattern->def_lines);
         pattern->number_of_seed_points = 0;
-        dxf_hatch_pattern_seedpoint_init ((DxfHatchPatternSeedPoint *) pattern->seed_points);
         pattern->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
