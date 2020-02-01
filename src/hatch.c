@@ -4043,6 +4043,13 @@ dxf_hatch_pattern_get_seed_points
                   __FUNCTION__);
                 return (NULL);
         }
+        if (pattern->seed_points == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
