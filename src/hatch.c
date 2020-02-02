@@ -4285,6 +4285,7 @@ dxf_hatch_pattern_def_line_dash_init
                   __FUNCTION__);
                 dash = dxf_hatch_pattern_def_line_dash_new ();
         }
+        /* Assign initial values to members. */
         dash->length = 0.0;
         dash->next = NULL;
 #if DEBUG
