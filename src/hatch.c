@@ -5288,6 +5288,13 @@ dxf_hatch_pattern_def_line_get_dashes
                   __FUNCTION__);
                 return (NULL);
         }
+        if (line->dashes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
