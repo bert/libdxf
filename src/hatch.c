@@ -4939,6 +4939,7 @@ dxf_hatch_pattern_def_line_set_angle
                   __FUNCTION__);
                 return (NULL);
         }
+        /*! \todo Normalize the angle. */
         line->angle = angle;
 #if DEBUG
         DXF_DEBUG_END
