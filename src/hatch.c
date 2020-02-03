@@ -7571,6 +7571,7 @@ dxf_hatch_boundary_path_polyline_vertex_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
         vertex->id_code = 0;
         vertex->x0 = 0.0;
         vertex->y0 = 0.0;
