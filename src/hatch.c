@@ -7618,7 +7618,7 @@ dxf_hatch_boundary_path_polyline_vertex_write
         }
         fprintf (fp->fp, " 10\n%f\n", vertex->x0);
         fprintf (fp->fp, " 20\n%f\n", vertex->y0);
-        fprintf (fp->fp, " 72\n%d\n", vertex->has_bulge);
+        fprintf (fp->fp, " 72\n%hd\n", vertex->has_bulge);
         if (vertex->has_bulge)
         {
                 fprintf (fp->fp, " 42\n%f\n", vertex->bulge);
