@@ -5547,6 +5547,7 @@ dxf_hatch_pattern_seedpoint_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Initialize new structs for members. */
         seedpoint->id_code = 0;
         seedpoint->x0 = 0.0;
         seedpoint->y0 = 0.0;
