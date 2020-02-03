@@ -6739,8 +6739,8 @@ dxf_hatch_boundary_path_polyline_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp->fp, " 73\n%d\n", polyline->is_closed);
-        fprintf (fp->fp, " 93\n%d\n", polyline->number_of_vertices);
+        fprintf (fp->fp, " 73\n%hd\n", polyline->is_closed);
+        fprintf (fp->fp, " 93\n%" PRIi32 "\n", polyline->number_of_vertices);
         /* draw hatch boundary vertices. */
         iter = dxf_hatch_boundary_path_polyline_vertex_new ();
         iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
