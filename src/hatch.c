@@ -8339,6 +8339,7 @@ dxf_hatch_boundary_path_edge_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         edge->id_code = 0;
         edge->arcs = NULL;
         edge->ellipses = NULL;
