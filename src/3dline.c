@@ -736,6 +736,9 @@ dxf_3dline_write
  * \brief Free the allocated memory for a DXF \c 3DLINE entity and all
  * it's data fields.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_free.png
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
