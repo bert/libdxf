@@ -1698,6 +1698,9 @@ dxf_3dline_set_shadow_mode
  * \brief Get the pointer to the binary graphics data from a DXF 
  * \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_binary_graphics_data.png
+ *
  * \return pointer to the binary graphics data.
  *
  * \warning No checks are performed on the returned pointer.
