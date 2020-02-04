@@ -111,47 +111,6 @@ dxf_hatch_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        hatch->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (hatch->binary_graphics_data);
-        if (hatch->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_hatch_boundary_path_init ((DxfHatchBoundaryPath *) hatch->paths);
-        if (hatch->paths == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_hatch_pattern_init ((DxfHatchPattern *) hatch->patterns);
-        if (hatch->patterns == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_hatch_pattern_def_line_init ((DxfHatchPatternDefLine *) hatch->def_lines);
-        if (hatch->def_lines == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_hatch_pattern_seedpoint_init ((DxfHatchPatternSeedPoint *) hatch->seed_points);
-        if (hatch->seed_points == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         hatch->id_code = 0;
         hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -194,6 +153,13 @@ dxf_hatch_init
         hatch->extr_y0 = 0.0;
         hatch->extr_z0 = 0.0;
         hatch->next = NULL;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        hatch->binary_graphics_data = NULL;
+        hatch->paths = NULL;
+        hatch->patterns = NULL;
+        hatch->def_lines = NULL;
+        hatch->seed_points = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
