@@ -193,6 +193,9 @@ dxf_3dline_init
  * \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c line.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_read.png
+ *
  * \return a pointer to \c line.
  */
 Dxf3dline *
