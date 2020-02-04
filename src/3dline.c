@@ -90,6 +90,9 @@ dxf_3dline_new ()
  * \brief Allocate memory and initialize data fields in a DXF \c 3DLINE
  * entity.
  * 
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_init.png
+ *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
