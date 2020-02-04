@@ -790,6 +790,9 @@ dxf_3dline_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c 3DLINE entities and all their data fields.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_free_list.png
  */
 void
 dxf_3dline_free_list
