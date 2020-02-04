@@ -50,6 +50,9 @@
  *
  * Fill the memory contents with zeros.
  * 
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_new.png
+ *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
