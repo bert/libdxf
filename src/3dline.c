@@ -1355,7 +1355,10 @@ dxf_3dline_set_visibility
 /*!
  * \brief Get the color from a DXF \c 3DLINE entity.
  *
- * \return color.
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_color.png
+ *
+ * \return \c color.
  */
 int16_t
 dxf_3dline_get_color
