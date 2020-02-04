@@ -2029,6 +2029,9 @@ dxf_3dline_set_material
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_dictionary_owner_hard.png
+ *
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
