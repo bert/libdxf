@@ -1523,6 +1523,9 @@ dxf_3dline_set_paperspace
  * \brief Get the \c graphics_data_size value from a DXF \c 3DLINE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_graphics_data_size.png
+ *
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
