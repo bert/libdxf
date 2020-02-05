@@ -904,7 +904,10 @@ dxf_3dline_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DLINE entity.
  *
- * \return linetype when sucessful, \c NULL when an error occurred.
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_linetype.png
+ *
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
  */
 char *
 dxf_3dline_get_linetype
