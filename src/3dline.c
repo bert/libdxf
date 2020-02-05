@@ -1197,7 +1197,10 @@ dxf_3dline_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c 3DLINE entity.
  *
- * \return linetype scale.
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_linetype_scale.png
+ *
+ * \return \c linetype_scale.
  *
  * \note The linetype scale was added in DXF R13 and is included for
  * forward compatibility.
