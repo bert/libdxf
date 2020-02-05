@@ -1202,8 +1202,7 @@ dxf_3dline_set_thickness
  *
  * \return \c linetype_scale.
  *
- * \note The linetype scale was added in DXF R13 and is included for
- * forward compatibility.
+ * \since The linetype scale was added in DXF R13.
  */
 double
 dxf_3dline_get_linetype_scale
