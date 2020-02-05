@@ -1238,8 +1238,7 @@ dxf_3dline_get_linetype_scale
 /*!
  * \brief Set the linetype scale for a DXF \c 3DLINE entity.
  *
- * \note The linetype scale was added in DXF R13 and is included for
- * forward compatibility.
+ * \since The linetype scale was added in DXF R13.
  */
 Dxf3dline *
 dxf_3dline_set_linetype_scale
