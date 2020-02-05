@@ -979,6 +979,9 @@ dxf_3dline_set_linetype
 /*!
  * \brief Get the layer from a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_layer.png
+ *
  * \return layer when sucessful, \c NULL when an error occurred.
  */
 char *
