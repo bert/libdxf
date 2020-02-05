@@ -3931,6 +3931,9 @@ dxf_3dline_create_from_points
  * \brief Get the pointer to the next \c 3DLINE entity from a DXF 
  * \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_next.png
+ *
  * \return pointer to the next \c 3DLINE entity.
  *
  * \warning No checks are performed on the returned pointer.
