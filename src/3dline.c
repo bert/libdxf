@@ -826,7 +826,10 @@ dxf_3dline_free_list
 /*!
  * \brief Get the ID code from a DXF \c 3DLINE entity.
  *
- * \return ID code.
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_id_code.png
+ *
+ * \return \c id_code.
  */
 int
 dxf_3dline_get_id_code
