@@ -1787,6 +1787,9 @@ dxf_3dline_set_binary_graphics_data
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_dictionary_owner_soft.png
+ *
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
