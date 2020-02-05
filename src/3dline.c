@@ -1051,6 +1051,9 @@ dxf_3dline_set_layer
 /*!
  * \brief Get the elevation from a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_elevation.png
+ *
  * \return elevation.
  */
 double
