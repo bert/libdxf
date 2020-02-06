@@ -2500,6 +2500,9 @@ dxf_3dline_set_transparency
 /*!
  * \brief Get the start point \c p0 of a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_p0.png
+ *
  * \return the start point \c p0.
  */
 DxfPoint *
