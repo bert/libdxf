@@ -7508,6 +7508,8 @@ dxf_hatch_boundary_path_polyline_vertex_init
         vertex->y0 = 0.0;
         vertex->bulge = 0.0;
         vertex->has_bulge = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         vertex->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
