@@ -5499,6 +5499,8 @@ dxf_hatch_pattern_seedpoint_init
         seedpoint->id_code = 0;
         seedpoint->x0 = 0.0;
         seedpoint->y0 = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         seedpoint->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
