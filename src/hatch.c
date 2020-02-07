@@ -6020,25 +6020,12 @@ dxf_hatch_boundary_path_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        dxf_hatch_boundary_path_edge_init ((DxfHatchBoundaryPathEdge *) path->edges);
-        if (path->edges == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_hatch_boundary_path_polyline_init ((DxfHatchBoundaryPathPolyline *) path->polylines);
-        if (path->polylines == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         path->id_code = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        path->edges = NULL;
+        path->polylines = NULL;
         path->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
