@@ -4581,14 +4581,6 @@ dxf_hatch_pattern_def_line_init
                 return (NULL);
         }
         /* Initialize new structs for members. */
-        line->dashes = dxf_hatch_pattern_def_line_dash_init ((DxfHatchPatternDefLineDash *) line->dashes);
-        if (line->dashes == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         line->id_code = 0;
         line->angle = 0.0;
@@ -4597,6 +4589,9 @@ dxf_hatch_pattern_def_line_init
         line->x1 = 0.0;
         line->y1 = 0.0;
         line->number_of_dash_items = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        line->dashes = NULL;
         line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
