@@ -6620,19 +6620,13 @@ dxf_hatch_boundary_path_polyline_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        polyline->vertices = dxf_hatch_boundary_path_polyline_vertex_init ((DxfHatchBoundaryPathPolylineVertex *) polyline->vertices);
-        if (polyline->vertices == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         polyline->id_code = 0;
         polyline->is_closed = 0;
         polyline->number_of_vertices = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        polyline->vertices = NULL;
         polyline->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
