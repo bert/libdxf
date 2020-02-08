@@ -10949,11 +10949,14 @@ dxf_hatch_boundary_path_edge_line_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         line->id_code = 0;
         line->x0 = 0.0;
         line->y0 = 0.0;
         line->x1 = 0.0;
         line->y1 = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
