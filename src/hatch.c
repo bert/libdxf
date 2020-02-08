@@ -8274,6 +8274,8 @@ dxf_hatch_boundary_path_edge_init
         }
         /* Assign initial values to members. */
         edge->id_code = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         edge->arcs = NULL;
         edge->ellipses = NULL;
         edge->lines = NULL;
