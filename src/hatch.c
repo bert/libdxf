@@ -8949,6 +8949,7 @@ dxf_hatch_boundary_path_edge_arc_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         arc->id_code = 0;
         arc->x0 = 0.0;
         arc->y0 = 0.0;
@@ -8956,6 +8957,8 @@ dxf_hatch_boundary_path_edge_arc_init
         arc->start_angle = 0.0;
         arc->end_angle = 0.0;
         arc->is_ccw = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         arc->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
