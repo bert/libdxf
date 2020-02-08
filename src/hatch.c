@@ -14121,7 +14121,7 @@ dxf_hatch_boundary_path_edge_spline_cp_get_id_code
         if (control_point->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
