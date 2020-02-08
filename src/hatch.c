@@ -11774,6 +11774,7 @@ dxf_hatch_boundary_path_edge_spline_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         spline->id_code = 0;
         spline->degree = 0;
         spline->rational = 0;
@@ -11784,6 +11785,8 @@ dxf_hatch_boundary_path_edge_spline_init
                 spline->knots[i] = 0.0;
         }
         spline->number_of_control_points = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         spline->control_points = NULL;
         spline->next = NULL;
 #if DEBUG
