@@ -9817,6 +9817,7 @@ dxf_hatch_boundary_path_edge_ellipse_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         ellipse->id_code = 0;
         ellipse->x0 = 0.0;
         ellipse->y0 = 0.0;
@@ -9826,6 +9827,8 @@ dxf_hatch_boundary_path_edge_ellipse_init
         ellipse->start_angle = 0.0;
         ellipse->end_angle = 0.0;
         ellipse->is_ccw = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         ellipse->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
