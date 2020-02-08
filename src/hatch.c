@@ -14001,10 +14001,13 @@ dxf_hatch_boundary_path_edge_spline_control_point_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         control_point->id_code = 0;
         control_point->x0 = 0.0;
         control_point->y0 = 0.0;
         control_point->weight = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         control_point->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
