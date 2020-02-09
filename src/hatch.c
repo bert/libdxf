@@ -12014,9 +12014,8 @@ dxf_hatch_boundary_path_edge_spline_set_degree
         if (degree < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative degree value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         spline->degree = degree;
 #if DEBUG
