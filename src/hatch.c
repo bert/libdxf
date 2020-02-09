@@ -12295,13 +12295,16 @@ dxf_hatch_boundary_path_edge_spline_set_knots
                   __FUNCTION__);
                 return (NULL);
         }
+        /*! \todo Do a proper implementation of spline knots. */
         for (i = 1; i < DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS; i++)
         {
                 if (&knots[i] ==  NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () a NULL pointer was found in the knots array at element %d.\n")),
-                          __FUNCTION__, i);
+                          (_("Error in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                         fprintf (stderr,
+                          (_("Knots array at element %d\n")), i);
                         return (NULL);
                 }
                 spline->knots[i] = knots[i];
