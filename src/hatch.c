@@ -12256,6 +12256,7 @@ dxf_hatch_boundary_path_edge_spline_get_knots
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        /*! \todo Do a proper implementation of spline knots. */
         for (i = 1; i < DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS; i++)
         {
                 knots[i] = spline->knots[i];
