@@ -12215,9 +12215,8 @@ dxf_hatch_boundary_path_edge_spline_set_number_of_knots
         if (number_of_knots < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative number_of_knots value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         spline->number_of_knots = number_of_knots;
 #if DEBUG
