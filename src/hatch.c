@@ -12418,6 +12418,13 @@ dxf_hatch_boundary_path_edge_spline_get_control_points
                   __FUNCTION__);
                 return (NULL);
         }
+        if (spline->control_points == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
