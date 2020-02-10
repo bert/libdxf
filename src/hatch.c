@@ -12551,14 +12551,14 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
         if (spline == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (control_point == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
