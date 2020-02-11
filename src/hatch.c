@@ -12894,7 +12894,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
         if (spline->number_of_control_points <= position)
         {
                 fprintf (stderr,
-                  (_("Error in %s () position is greater than the number of control points.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
