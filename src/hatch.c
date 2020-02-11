@@ -13183,28 +13183,28 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
         if (spline == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (position <= 0)
+        if (position < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received an invalid value in position.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (position >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (spline->number_of_control_points <= position)
         {
                 fprintf (stderr,
-                  (_("Error in %s () position is greater than the number of control points.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
