@@ -13455,14 +13455,14 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
         if (spline == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if ((spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (("Error in %s () resulted in a array pointer overflow.\n")),
+                  (("Error in %s () a array pointer overflow occurred.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
