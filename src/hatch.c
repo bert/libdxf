@@ -13615,14 +13615,21 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
         if (spline == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (position <= 0)
+        if (position < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received an invalid value in position.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a value of zero was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
