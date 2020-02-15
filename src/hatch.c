@@ -14399,7 +14399,7 @@ dxf_hatch_boundary_path_edge_spline_cp_get_point
         if (id_code < 0)
         {
               fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                 __FUNCTION__);
         }
         p1->id_code = id_code;
