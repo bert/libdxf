@@ -13888,7 +13888,7 @@ dxf_hatch_boundary_path_edge_spline_get_next
         if (spline->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
