@@ -14392,7 +14392,7 @@ dxf_hatch_boundary_path_edge_spline_cp_get_point
         if (p1 == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
