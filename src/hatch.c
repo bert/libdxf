@@ -14512,7 +14512,7 @@ dxf_hatch_boundary_path_edge_spline_cp_set_weight
         if (control_point == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
