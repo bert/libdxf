@@ -152,7 +152,6 @@ dxf_hatch_init
         hatch->extr_x0 = 0.0;
         hatch->extr_y0 = 0.0;
         hatch->extr_z0 = 0.0;
-        hatch->next = NULL;
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
         hatch->binary_graphics_data = NULL;
@@ -160,6 +159,7 @@ dxf_hatch_init
         hatch->patterns = NULL;
         hatch->def_lines = NULL;
         hatch->seed_points = NULL;
+        hatch->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
