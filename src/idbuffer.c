@@ -114,11 +114,14 @@ dxf_idbuffer_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         idbuffer->id_code = 0;
         idbuffer->dictionary_owner_soft = strdup ("");
         idbuffer->object_owner_soft = strdup ("");
         idbuffer->dictionary_owner_hard = strdup ("");
-        idbuffer->entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_entity_pointer_init (idbuffer->entity_pointer);
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        idbuffer->entity_pointer = NULL;
         idbuffer->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
