@@ -1176,7 +1176,7 @@ dxf_idbuffer_entity_pointer_get_soft_pointer
         if (entity_pointer->soft_pointer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the soft_pointer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
