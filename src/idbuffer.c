@@ -1057,7 +1057,7 @@ dxf_idbuffer_entity_pointer_init
         if (entity_pointer == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfIdbufferEntityPointer struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
