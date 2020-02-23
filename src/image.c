@@ -1,7 +1,7 @@
 /*!
  * \file image.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF image entity (\c IMAGE).
@@ -118,6 +118,7 @@ dxf_image_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Assign initial values to members. */
         image->id_code = 0;
         image->linetype = strdup (DXF_DEFAULT_LINETYPE);
         image->layer = strdup (DXF_DEFAULT_LAYER);
@@ -129,8 +130,6 @@ dxf_image_init
         image->paperspace = DXF_MODELSPACE;
         image->graphics_data_size = 0;
         image->shadow_mode = 0;
-        image->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        image->binary_graphics_data = dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) image->binary_graphics_data);
         image->dictionary_owner_soft = strdup ("");
         image->material = strdup ("");
         image->dictionary_owner_hard = strdup ("");
@@ -139,16 +138,6 @@ dxf_image_init
         image->color_value = 0;
         image->color_name = strdup ("");
         image->transparency = 0;
-        image->p0 = (DxfPoint *) dxf_point_new ();
-        image->p0 = dxf_point_init ((DxfPoint *) image->p0);
-        image->p1 = (DxfPoint *) dxf_point_new ();
-        image->p1 = dxf_point_init ((DxfPoint *) image->p1);
-        image->p2 = (DxfPoint *) dxf_point_new ();
-        image->p2 = dxf_point_init ((DxfPoint *) image->p2);
-        image->p3 = (DxfPoint *) dxf_point_new ();
-        image->p3 = dxf_point_init ((DxfPoint *) image->p3);
-        image->p4 = (DxfPoint *) dxf_point_new ();
-        image->p4 = dxf_point_init ((DxfPoint *) image->p4);
         image->image_display_properties = 0;
         image->clipping_boundary_type = 0;
         image->class_version = 0;
@@ -159,6 +148,14 @@ dxf_image_init
         image->fade = 50;
         image->imagedef_object = strdup ("");
         image->imagedef_reactor_object = strdup ("");
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        image->p0 = NULL;
+        image->p1 = NULL;
+        image->p2 = NULL;
+        image->p3 = NULL;
+        image->p4 = NULL;
+        image->binary_graphics_data = NULL;
         image->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -193,7 +190,7 @@ dxf_image_read
         char *temp_string = NULL;
         DxfPoint *iter = NULL;
         int next_x4;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
         int iter360;
 
@@ -216,7 +213,7 @@ dxf_image_read
         }
         iter = (DxfPoint *) image->p4;
         next_x4 = 0;
-        iter310 = (DxfBinaryGraphicsData *) image->binary_graphics_data;
+        iter310 = (DxfBinaryData *) image->binary_graphics_data;
         iter330 = 0;
         iter360 = 0;
         (fp->line_number)++;
@@ -493,8 +490,8 @@ dxf_image_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -761,12 +758,12 @@ dxf_image_write
 #endif
                 if (image->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) image->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) image->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -864,7 +861,7 @@ dxf_image_free
         }
         free (image->linetype);
         free (image->layer);
-        dxf_binary_graphics_data_free_list (image->binary_graphics_data);
+        dxf_binary_data_free_list (image->binary_graphics_data);
         free (image->dictionary_owner_soft);
         free (image->material);
         free (image->dictionary_owner_hard);
@@ -1837,7 +1834,7 @@ dxf_image_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_image_get_binary_graphics_data
 (
         DxfImage *image
@@ -1865,7 +1862,7 @@ dxf_image_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) image->binary_graphics_data);
+        return ((DxfBinaryData *) image->binary_graphics_data);
 }
 
 
@@ -1881,7 +1878,7 @@ dxf_image_set_binary_graphics_data
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1904,7 +1901,7 @@ dxf_image_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        image->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        image->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
