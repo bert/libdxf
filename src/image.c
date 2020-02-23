@@ -1244,7 +1244,7 @@ dxf_image_get_thickness
         if (image->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the thickness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
