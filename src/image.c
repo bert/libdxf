@@ -4159,13 +4159,13 @@ dxf_image_get_clipping_boundary_type
         if (image->clipping_boundary_type < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the clipping_boundary_type member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->clipping_boundary_type > 2)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the clipping_boundary_type member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
