@@ -4067,13 +4067,13 @@ dxf_image_get_image_display_properties
         if (image->image_display_properties < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the image_display_properties member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->image_display_properties > 15)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the image_display_properties member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
