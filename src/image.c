@@ -4114,16 +4114,14 @@ dxf_image_set_image_display_properties
         if (image_display_properties < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative image_display_properties value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (image_display_properties > 15)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range image_display_properties value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->image_display_properties = image_display_properties;
 #if DEBUG
