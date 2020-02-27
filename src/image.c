@@ -4384,13 +4384,13 @@ dxf_image_get_clipping_state
         if (image->clipping_state < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the clipping_state member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->clipping_state > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the clipping_state member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
