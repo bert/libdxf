@@ -4610,16 +4610,14 @@ dxf_image_set_contrast
         if (contrast < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative contrast value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (contrast > 100)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range contrast value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->contrast = contrast;
 #if DEBUG
