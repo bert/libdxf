@@ -4521,16 +4521,14 @@ dxf_image_set_brightness
         if (brightness < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative brightness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (brightness > 100)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range brightness value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->brightness = brightness;
 #if DEBUG
