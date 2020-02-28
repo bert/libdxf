@@ -4475,13 +4475,13 @@ dxf_image_get_brightness
         if (image->brightness < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the brightness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->brightness > 100)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the brightness member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
