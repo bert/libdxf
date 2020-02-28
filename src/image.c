@@ -4431,16 +4431,14 @@ dxf_image_set_clipping_state
         if (clipping_state < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative clipping_state value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (clipping_state > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range clipping_state value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->clipping_state = clipping_state;
 #if DEBUG
