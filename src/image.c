@@ -4743,7 +4743,7 @@ dxf_image_get_imagedef_object
         if (image->imagedef_object ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the imagedef_object member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
