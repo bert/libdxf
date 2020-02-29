@@ -4699,16 +4699,14 @@ dxf_image_set_fade
         if (fade < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative fade value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (fade > 100)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range fade value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->fade = fade;
 #if DEBUG
