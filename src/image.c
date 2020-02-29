@@ -4823,7 +4823,7 @@ dxf_image_get_imagedef_reactor_object
         if (image->imagedef_reactor_object ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the imagedef_reactor_object member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
