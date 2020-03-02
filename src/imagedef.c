@@ -1,7 +1,7 @@
 /*!
  * \file imagedef.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF imagedef object (\c IMAGEDEF).
@@ -109,7 +109,7 @@ dxf_imagedef_init
         if (imagedef == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfImagedef struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
