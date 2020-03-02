@@ -113,6 +113,7 @@ dxf_imagedef_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         imagedef->id_code = 0;
         imagedef->dictionary_owner_soft = strdup ("");
         imagedef->dictionary_owner_hard = strdup ("");
@@ -125,8 +126,9 @@ dxf_imagedef_init
         imagedef->image_is_loaded_flag = 0;
         imagedef->resolution_units = 0;
         imagedef->acad_image_dict_soft = strdup ("");
-        imagedef->imagedef_reactor = dxf_imagedef_reactor_new ();
-        imagedef->imagedef_reactor = dxf_imagedef_reactor_init ((DxfImagedefReactor *) imagedef->imagedef_reactor);
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        imagedef->imagedef_reactor = NULL;
         imagedef->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
