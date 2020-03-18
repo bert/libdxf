@@ -110,47 +110,6 @@ dxf_helix_init
                 __FUNCTION__);
               return (NULL);
         }
-        /* Initialize new structs for members. */
-        helix->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (helix->binary_graphics_data);
-        if (helix->binary_graphics_data == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        helix->p0 = dxf_point_init (helix->p0);
-        if (helix->p0 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        helix->p1 = dxf_point_init (helix->p1);
-        if (helix->p1 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        helix->p2 = dxf_point_init (helix->p2);
-        if (helix->p2 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        helix->spline = (DxfSpline *) dxf_spline_init (helix->spline);
-        if (helix->spline == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         /* Assign initial values to members. */
         helix->id_code = 0;
         helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -177,6 +136,13 @@ dxf_helix_init
         helix->color_value = 0;
         helix->color_name = strdup ("");
         helix->transparency = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        helix->binary_graphics_data = NULL;
+        helix->p0 = NULL;
+        helix->p1 = NULL;
+        helix->p2 = NULL;
+        helix->spline = NULL;
         helix->next = NULL;
 #if DEBUG
         DXF_DEBUG_END

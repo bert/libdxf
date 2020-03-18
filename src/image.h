@@ -1,7 +1,7 @@
 /*!
  * \file image.h
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF image entity (\c IMAGE).
@@ -50,7 +50,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "point.h"
 
 
@@ -131,7 +131,7 @@ dxf_image_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -291,8 +291,8 @@ int32_t dxf_image_get_graphics_data_size (DxfImage *image);
 DxfImage *dxf_image_set_graphics_data_size (DxfImage *spline, int32_t graphics_data_size);
 int16_t dxf_image_get_shadow_mode (DxfImage *image);
 DxfImage *dxf_image_set_shadow_mode (DxfImage *image, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_image_get_binary_graphics_data (DxfImage *image);
-DxfImage *dxf_image_set_binary_graphics_data (DxfImage *image, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_image_get_binary_graphics_data (DxfImage *image);
+DxfImage *dxf_image_set_binary_graphics_data (DxfImage *image, DxfBinaryData *data);
 char *dxf_image_get_dictionary_owner_soft (DxfImage *image);
 DxfImage *dxf_image_set_dictionary_owner_soft (DxfImage *image, char *dictionary_owner_soft);
 char *dxf_image_get_object_owner_soft (DxfImage *image);

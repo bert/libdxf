@@ -1,7 +1,7 @@
 /*!
  * \file image.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF image entity (\c IMAGE).
@@ -118,6 +118,7 @@ dxf_image_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Assign initial values to members. */
         image->id_code = 0;
         image->linetype = strdup (DXF_DEFAULT_LINETYPE);
         image->layer = strdup (DXF_DEFAULT_LAYER);
@@ -129,8 +130,6 @@ dxf_image_init
         image->paperspace = DXF_MODELSPACE;
         image->graphics_data_size = 0;
         image->shadow_mode = 0;
-        image->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        image->binary_graphics_data = dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) image->binary_graphics_data);
         image->dictionary_owner_soft = strdup ("");
         image->material = strdup ("");
         image->dictionary_owner_hard = strdup ("");
@@ -139,16 +138,6 @@ dxf_image_init
         image->color_value = 0;
         image->color_name = strdup ("");
         image->transparency = 0;
-        image->p0 = (DxfPoint *) dxf_point_new ();
-        image->p0 = dxf_point_init ((DxfPoint *) image->p0);
-        image->p1 = (DxfPoint *) dxf_point_new ();
-        image->p1 = dxf_point_init ((DxfPoint *) image->p1);
-        image->p2 = (DxfPoint *) dxf_point_new ();
-        image->p2 = dxf_point_init ((DxfPoint *) image->p2);
-        image->p3 = (DxfPoint *) dxf_point_new ();
-        image->p3 = dxf_point_init ((DxfPoint *) image->p3);
-        image->p4 = (DxfPoint *) dxf_point_new ();
-        image->p4 = dxf_point_init ((DxfPoint *) image->p4);
         image->image_display_properties = 0;
         image->clipping_boundary_type = 0;
         image->class_version = 0;
@@ -159,6 +148,14 @@ dxf_image_init
         image->fade = 50;
         image->imagedef_object = strdup ("");
         image->imagedef_reactor_object = strdup ("");
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        image->p0 = NULL;
+        image->p1 = NULL;
+        image->p2 = NULL;
+        image->p3 = NULL;
+        image->p4 = NULL;
+        image->binary_graphics_data = NULL;
         image->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -193,7 +190,7 @@ dxf_image_read
         char *temp_string = NULL;
         DxfPoint *iter = NULL;
         int next_x4;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
         int iter360;
 
@@ -216,7 +213,7 @@ dxf_image_read
         }
         iter = (DxfPoint *) image->p4;
         next_x4 = 0;
-        iter310 = (DxfBinaryGraphicsData *) image->binary_graphics_data;
+        iter310 = (DxfBinaryData *) image->binary_graphics_data;
         iter330 = 0;
         iter360 = 0;
         (fp->line_number)++;
@@ -493,8 +490,8 @@ dxf_image_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -761,12 +758,12 @@ dxf_image_write
 #endif
                 if (image->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) image->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) image->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -864,7 +861,7 @@ dxf_image_free
         }
         free (image->linetype);
         free (image->layer);
-        dxf_binary_graphics_data_free_list (image->binary_graphics_data);
+        dxf_binary_data_free_list (image->binary_graphics_data);
         free (image->dictionary_owner_soft);
         free (image->material);
         free (image->dictionary_owner_hard);
@@ -947,9 +944,8 @@ dxf_image_get_id_code
         if (image->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -989,9 +985,8 @@ dxf_image_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->id_code = id_code;
 #if DEBUG
@@ -1027,7 +1022,7 @@ dxf_image_get_linetype
         if (image->linetype ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1105,7 +1100,7 @@ dxf_image_get_layer
         if (image->layer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1249,7 +1244,7 @@ dxf_image_get_thickness
         if (image->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the thickness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1288,7 +1283,7 @@ dxf_image_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative thickness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         image->thickness = thickness;
@@ -1326,9 +1321,8 @@ dxf_image_get_linetype_scale
         if (image->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1366,9 +1360,8 @@ dxf_image_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->linetype_scale = linetype_scale;
 #if DEBUG
@@ -1405,16 +1398,14 @@ dxf_image_get_visibility
         if (image->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (image->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1452,16 +1443,14 @@ dxf_image_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->visibility = visibility;
 #if DEBUG
@@ -1498,7 +1487,7 @@ dxf_image_get_color
         if (image->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1537,7 +1526,7 @@ dxf_image_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("\teffectively turning this entity it's visibility off.\n")));
@@ -1577,13 +1566,13 @@ dxf_image_get_paperspace
         if (image->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1623,16 +1612,14 @@ dxf_image_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->paperspace = paperspace;
 #if DEBUG
@@ -1670,13 +1657,13 @@ dxf_image_get_graphics_data_size
         if (image->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1716,16 +1703,14 @@ dxf_image_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a zero value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->graphics_data_size = graphics_data_size;
 #if DEBUG
@@ -1762,16 +1747,14 @@ dxf_image_get_shadow_mode
         if (image->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (image->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1809,16 +1792,14 @@ dxf_image_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->shadow_mode = shadow_mode;
 #if DEBUG
@@ -1837,7 +1818,7 @@ dxf_image_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_image_get_binary_graphics_data
 (
         DxfImage *image
@@ -1858,14 +1839,14 @@ dxf_image_get_binary_graphics_data
         if (image->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) image->binary_graphics_data);
+        return ((DxfBinaryData *) image->binary_graphics_data);
 }
 
 
@@ -1881,7 +1862,7 @@ dxf_image_set_binary_graphics_data
 (
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1904,7 +1885,7 @@ dxf_image_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        image->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        image->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1942,7 +1923,7 @@ dxf_image_get_dictionary_owner_soft
         if (image->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2105,7 +2086,7 @@ dxf_image_get_material
         if (image->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2188,7 +2169,7 @@ dxf_image_get_dictionary_owner_hard
         if (image->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2334,7 +2315,7 @@ dxf_image_get_plot_style_name
         if (image->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2479,7 +2460,7 @@ dxf_image_get_color_name
         if (image->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4086,13 +4067,13 @@ dxf_image_get_image_display_properties
         if (image->image_display_properties < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the image_display_properties member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->image_display_properties > 15)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the image_display_properties member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -4133,16 +4114,14 @@ dxf_image_set_image_display_properties
         if (image_display_properties < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative image_display_properties value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (image_display_properties > 15)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range image_display_properties value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->image_display_properties = image_display_properties;
 #if DEBUG
@@ -4180,13 +4159,13 @@ dxf_image_get_clipping_boundary_type
         if (image->clipping_boundary_type < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the clipping_boundary_type member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->clipping_boundary_type > 2)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the clipping_boundary_type member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -4227,16 +4206,14 @@ dxf_image_set_clipping_boundary_type
         if (clipping_boundary_type < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative clipping_boundary_type value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (clipping_boundary_type > 2)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range clipping_boundary_type value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->clipping_boundary_type = clipping_boundary_type;
 #if DEBUG
@@ -4407,13 +4384,13 @@ dxf_image_get_clipping_state
         if (image->clipping_state < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the clipping_state member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->clipping_state > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the clipping_state member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -4454,16 +4431,14 @@ dxf_image_set_clipping_state
         if (clipping_state < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative clipping_state value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (clipping_state > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range clipping_state value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->clipping_state = clipping_state;
 #if DEBUG
@@ -4500,13 +4475,13 @@ dxf_image_get_brightness
         if (image->brightness < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the brightness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->brightness > 100)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the brightness member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -4546,16 +4521,14 @@ dxf_image_set_brightness
         if (brightness < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative brightness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (brightness > 100)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range brightness value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->brightness = brightness;
 #if DEBUG
@@ -4592,13 +4565,13 @@ dxf_image_get_contrast
         if (image->contrast < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the contrast member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->contrast > 100)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the contrast member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -4637,16 +4610,14 @@ dxf_image_set_contrast
         if (contrast < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative contrast value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (contrast > 100)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range contrast value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->contrast = contrast;
 #if DEBUG
@@ -4683,13 +4654,13 @@ dxf_image_get_fade
         if (image->fade < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the fade member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (image->fade > 100)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the fade member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -4728,16 +4699,14 @@ dxf_image_set_fade
         if (fade < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative fade value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (fade > 100)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range fade value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         image->fade = fade;
 #if DEBUG
@@ -4774,7 +4743,7 @@ dxf_image_get_imagedef_object
         if (image->imagedef_object ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the imagedef_object member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4854,7 +4823,7 @@ dxf_image_get_imagedef_reactor_object
         if (image->imagedef_reactor_object ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the imagedef_reactor_object member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4936,7 +4905,7 @@ dxf_image_get_next
         if (image->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -5015,7 +4984,7 @@ dxf_image_get_last
         if (image->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfImage *) image);
         }

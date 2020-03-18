@@ -1,7 +1,7 @@
 /*!
  * \file idbuffer.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF idbuffer object (\c IDBUFFER).
@@ -114,11 +114,14 @@ dxf_idbuffer_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         idbuffer->id_code = 0;
         idbuffer->dictionary_owner_soft = strdup ("");
         idbuffer->object_owner_soft = strdup ("");
         idbuffer->dictionary_owner_hard = strdup ("");
-        idbuffer->entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_entity_pointer_init (idbuffer->entity_pointer);
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        idbuffer->entity_pointer = NULL;
         idbuffer->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -1011,7 +1014,7 @@ dxf_idbuffer_entity_pointer_new ()
         if ((entity_pointer = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfIdbufferEntityPointer struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 entity_pointer = NULL;
         }
@@ -1054,7 +1057,7 @@ dxf_idbuffer_entity_pointer_init
         if (entity_pointer == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfIdbufferEntityPointer struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1173,7 +1176,7 @@ dxf_idbuffer_entity_pointer_get_soft_pointer
         if (entity_pointer->soft_pointer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the soft_pointer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1256,7 +1259,7 @@ dxf_idbuffer_entity_pointer_get_next
         if (entity_pointer->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1341,7 +1344,7 @@ dxf_idbuffer_entity_pointer_get_last
         if (entity_pointer->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfIdbufferEntityPointer *) entity_pointer);
         }
