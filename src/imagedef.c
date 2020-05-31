@@ -1449,16 +1449,14 @@ dxf_imagedef_set_class_version
         if (class_version < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative class_version value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (class_version > 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range class_version value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         imagedef->class_version = class_version;
 #if DEBUG
