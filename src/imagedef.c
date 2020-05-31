@@ -1493,16 +1493,14 @@ dxf_imagedef_get_image_is_loaded_flag
         if (imagedef->image_is_loaded_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the image_is_loaded_flag member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (imagedef->image_is_loaded_flag > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the image_is_loaded_flag member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
