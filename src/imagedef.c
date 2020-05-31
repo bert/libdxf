@@ -1404,16 +1404,14 @@ dxf_imagedef_get_class_version
         if (imagedef->class_version < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the class_version member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (imagedef->class_version > 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the class_version member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
