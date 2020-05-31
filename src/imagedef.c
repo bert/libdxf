@@ -1009,13 +1009,13 @@ dxf_imagedef_set_x0
                 fprintf (stderr,
                   (_("Initializing a DxfPoint.\n")));
                 imagedef->p0 = dxf_point_init (imagedef->p0);
-        }
-        if (imagedef->p0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
+                if (imagedef->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         imagedef->p0->x0 = x0;
 #if DEBUG
