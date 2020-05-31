@@ -551,6 +551,10 @@ dxf_int64_struct
 #define DXF_MAX_LAYERS 2048
         /*!< \brief The maximum number of layers in a dxf drawing file. */
 
+#define DXF_IMAGEDEF_RESOLUTION_UNITS_MAX 5
+
+#define DXF_IMAGEDEF_RESOLUTION_UNITS_MIN 0
+
 #define DXF_VIEWPORT_APP_NAME "ACAD"
         /*!< \brief Application name.
          *
