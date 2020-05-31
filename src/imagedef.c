@@ -1624,19 +1624,17 @@ dxf_imagedef_set_resolution_units
                   __FUNCTION__);
                 return (NULL);
         }
-        if (resolution_units < 0)
+        if (resolution_units < DXF_IMAGEDEF_RESOLUTION_UNITS_MIN)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative resolution_units value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
-        if (resolution_units > 5)
+        if (resolution_units > DXF_IMAGEDEF_RESOLUTION_UNITS_MAX)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range resolution_units value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         imagedef->resolution_units = resolution_units;
 #if DEBUG
