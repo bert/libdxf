@@ -1538,16 +1538,14 @@ dxf_imagedef_set_image_is_loaded_flag
         if (image_is_loaded_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative image_is_loaded_flag value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (image_is_loaded_flag > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range image_is_loaded_flag value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         imagedef->image_is_loaded_flag = image_is_loaded_flag;
 #if DEBUG
