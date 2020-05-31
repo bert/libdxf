@@ -1579,13 +1579,13 @@ dxf_imagedef_get_resolution_units
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (imagedef->resolution_units < 0)
+        if (imagedef->resolution_units < DXF_IMAGEDEF_RESOLUTION_UNITS_MIN)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
-        if (imagedef->resolution_units > 5)
+        if (imagedef->resolution_units > DXF_IMAGEDEF_RESOLUTION_UNITS_MAX)
         {
                 fprintf (stderr,
                   (_("Warning in %s () an out of range value was found.\n")),
