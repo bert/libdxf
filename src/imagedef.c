@@ -120,14 +120,16 @@ dxf_imagedef_init
         imagedef->file_name = strdup ("");
         imagedef->x0 = 0.0;
         imagedef->y0 = 0.0;
-        imagedef->x0 = 0.0;
-        imagedef->y0 = 0.0;
+        imagedef->x1 = 0.0;
+        imagedef->y1 = 0.0;
         imagedef->class_version = 0;
         imagedef->image_is_loaded_flag = 0;
         imagedef->resolution_units = 0;
         imagedef->acad_image_dict_soft = strdup ("");
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
+        imagedef->p0 = NULL;
+        imagedef->p1 = NULL;
         imagedef->imagedef_reactor = NULL;
         imagedef->next = NULL;
 #if DEBUG
