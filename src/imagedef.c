@@ -118,10 +118,6 @@ dxf_imagedef_init
         imagedef->dictionary_owner_soft = strdup ("");
         imagedef->dictionary_owner_hard = strdup ("");
         imagedef->file_name = strdup ("");
-        imagedef->x0 = 0.0;
-        imagedef->y0 = 0.0;
-        imagedef->x1 = 0.0;
-        imagedef->y1 = 0.0;
         imagedef->class_version = 0;
         imagedef->image_is_loaded_flag = 0;
         imagedef->resolution_units = 0;
@@ -188,6 +184,20 @@ dxf_imagedef_read
                   __FUNCTION__);
                 imagedef = dxf_imagedef_init (imagedef);
         }
+        if (imagedef->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                imagedef->p0 = dxf_point_init (imagedef->p0);
+        }
+        if (imagedef->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                imagedef->p1 = dxf_point_init (imagedef->p0);
+        }
         i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -221,14 +231,14 @@ dxf_imagedef_read
                         /* Now follows a string containing the
                          * U-value of the image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->x0);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * V-value of the image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->y0);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p0->y0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -236,7 +246,7 @@ dxf_imagedef_read
                          * U-value of the default size of one pixel in
                          * AutoCAD units. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->x1);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p1->x0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
@@ -244,7 +254,7 @@ dxf_imagedef_read
                          * V-value of the default size of one pixel in
                          * AutoCAD units. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->y1);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p1->y0);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
@@ -378,6 +388,24 @@ dxf_imagedef_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (imagedef->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (imagedef->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_14)
         {
                 fprintf (stderr,
@@ -431,10 +459,10 @@ dxf_imagedef_write
         }
         fprintf (fp->fp, " 90\n%" PRIi32 "\n", imagedef->class_version);
         fprintf (fp->fp, "  1\n%s\n", imagedef->file_name);
-        fprintf (fp->fp, " 10\n%f\n", imagedef->x0);
-        fprintf (fp->fp, " 20\n%f\n", imagedef->y0);
-        fprintf (fp->fp, " 11\n%f\n", imagedef->x1);
-        fprintf (fp->fp, " 12\n%f\n", imagedef->y1);
+        fprintf (fp->fp, " 10\n%f\n", imagedef->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", imagedef->p0->y0);
+        fprintf (fp->fp, " 11\n%f\n", imagedef->p1->x0);
+        fprintf (fp->fp, " 12\n%f\n", imagedef->p1->y0);
         fprintf (fp->fp, "280\n%hd\n", imagedef->image_is_loaded_flag);
         fprintf (fp->fp, "281\n%hd\n", imagedef->resolution_units);
         /* Clean up. */
