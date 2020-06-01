@@ -1674,7 +1674,7 @@ dxf_imagedef_get_acad_image_dict_soft
         if (imagedef->acad_image_dict_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the acad_image_dict_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
