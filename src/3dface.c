@@ -118,47 +118,6 @@ dxf_3dface_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        face->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (face->binary_graphics_data);
-        if (face->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p0 = dxf_point_init (face->p0);
-        if (face->p0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p1 = dxf_point_init (face->p1);
-        if (face->p1 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p2 = dxf_point_init (face->p2);
-        if (face->p2 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p3 = dxf_point_init (face->p3);
-        if (face->p3 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         face->id_code = 0;
         face->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -193,6 +152,13 @@ dxf_3dface_init
         face->p3->y0 = 0.0;
         face->p3->z0 = 0.0;
         face->flag = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        face->binary_graphics_data = NULL;
+        face->p0 = NULL;
+        face->p1 = NULL;
+        face->p2 = NULL;
+        face->p3 = NULL;
         face->next = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
