@@ -118,47 +118,6 @@ dxf_3dface_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        face->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (face->binary_graphics_data);
-        if (face->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p0 = dxf_point_init (face->p0);
-        if (face->p0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p1 = dxf_point_init (face->p1);
-        if (face->p1 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p2 = dxf_point_init (face->p2);
-        if (face->p2 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->p3 = dxf_point_init (face->p3);
-        if (face->p3 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         face->id_code = 0;
         face->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -193,6 +152,13 @@ dxf_3dface_init
         face->p3->y0 = 0.0;
         face->p3->z0 = 0.0;
         face->flag = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        face->binary_graphics_data = NULL;
+        face->p0 = NULL;
+        face->p1 = NULL;
+        face->p2 = NULL;
+        face->p3 = NULL;
         face->next = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
@@ -247,6 +213,86 @@ dxf_3dface_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 face = dxf_3dface_init (face);
+        }
+        if (face->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                face->binary_graphics_data = dxf_binary_data_init (face->binary_graphics_data);
+                if (face->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (face->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                face->p0 = dxf_point_init (face->p0);
+                if (face->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (face->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                face->p1 = dxf_point_init (face->p1);
+                if (face->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (face->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                face->p2 = dxf_point_init (face->p2);
+                if (face->p2 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (face->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                face->p3 = dxf_point_init (face->p3);
+                if (face->p3 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         iter310 = (DxfBinaryData *) face->binary_graphics_data;
         iter330 = 0;
@@ -698,7 +744,8 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, " 60\n%d\n", face->visibility);
         }
-        if (fp->acad_version_number >= AutoCAD_2000)
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (face->binary_graphics_data != NULL))
         {
 #ifdef BUILD_64
                 fprintf (fp->fp, "160\n%" PRIi32 "\n", face->graphics_data_size);
@@ -731,18 +778,30 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, "100\nAcDbFace\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", face->p0->x0);
-        fprintf (fp->fp, " 20\n%f\n", face->p0->y0);
-        fprintf (fp->fp, " 30\n%f\n", face->p0->z0);
-        fprintf (fp->fp, " 11\n%f\n", face->p1->x0);
-        fprintf (fp->fp, " 21\n%f\n", face->p1->y0);
-        fprintf (fp->fp, " 31\n%f\n", face->p1->z0);
-        fprintf (fp->fp, " 12\n%f\n", face->p2->x0);
-        fprintf (fp->fp, " 22\n%f\n", face->p2->y0);
-        fprintf (fp->fp, " 32\n%f\n", face->p2->z0);
-        fprintf (fp->fp, " 13\n%f\n", face->p3->x0);
-        fprintf (fp->fp, " 23\n%f\n", face->p3->y0);
-        fprintf (fp->fp, " 33\n%f\n", face->p3->z0);
+        if (face->p0 != NULL)
+        {
+                fprintf (fp->fp, " 10\n%f\n", face->p0->x0);
+                fprintf (fp->fp, " 20\n%f\n", face->p0->y0);
+                fprintf (fp->fp, " 30\n%f\n", face->p0->z0);
+        }
+        if (face->p1 != NULL)
+        {
+                fprintf (fp->fp, " 11\n%f\n", face->p1->x0);
+                fprintf (fp->fp, " 21\n%f\n", face->p1->y0);
+                fprintf (fp->fp, " 31\n%f\n", face->p1->z0);
+        }
+        if (face->p2 != NULL)
+        {
+                fprintf (fp->fp, " 12\n%f\n", face->p2->x0);
+                fprintf (fp->fp, " 22\n%f\n", face->p2->y0);
+                fprintf (fp->fp, " 32\n%f\n", face->p2->z0);
+        }
+        if (face->p3)
+        {
+                fprintf (fp->fp, " 13\n%f\n", face->p3->x0);
+                fprintf (fp->fp, " 23\n%f\n", face->p3->y0);
+                fprintf (fp->fp, " 33\n%f\n", face->p3->z0);
+        }
         fprintf (fp->fp, " 70\n%hd\n", face->flag);
         /* Clean up. */
         free (dxf_entity_name);
@@ -1873,6 +1932,22 @@ dxf_3dface_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
+        if (face->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                face->binary_graphics_data = dxf_binary_data_init (face->binary_graphics_data);
+                if (face->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         if (data == NULL)
         {
                 fprintf (stderr,
@@ -2782,9 +2857,18 @@ dxf_3dface_set_x0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                face->p0 = dxf_point_init (face->p0);
+                if (face->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         face->p0->x0 = x0;
 #if DEBUG
@@ -2870,9 +2954,18 @@ dxf_3dface_set_y0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                face->p0 = dxf_point_init (face->p0);
+                if (face->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         face->p0->y0 = y0;
 #if DEBUG
@@ -2958,9 +3051,18 @@ dxf_3dface_set_z0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                face->p0 = dxf_point_init (face->p0);
+                if (face->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         face->p0->z0 = z0;
 #if DEBUG

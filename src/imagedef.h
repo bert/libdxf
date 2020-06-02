@@ -1,7 +1,7 @@
 /*!
  * \file imagedef.h
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF imagedef object (\c IMAGEDEF).
@@ -86,20 +86,6 @@ dxf_imagedef_struct
                 /*!< Default size of one pixel in AutoCAD units (U and V
                  * values).\n
                  * Group codes = 11 and 21.*/
-        double x0;
-                /*!< Image size in pixels. DXF: U value; APP: 2D point
-                 * (U and V values).\n
-                 * Group code = 10. */
-        double y0;
-                /*!< DXF: V value of image size in pixels.\n
-                 * Group code = 20. */
-        double x1;
-                /*!< Default size of one pixel in AutoCAD units.\n
-                 * DXF: U value; APP: 2D point (U and V values).\n
-                 * Group code = 11. */
-        double y1;
-                /*!< DXF: V value of pixel size.\n
-                 * Group code = 12. */
         int32_t class_version;
                 /*!< Class version.\n
                  * 0 = R14 version.\n

@@ -118,16 +118,14 @@ dxf_imagedef_init
         imagedef->dictionary_owner_soft = strdup ("");
         imagedef->dictionary_owner_hard = strdup ("");
         imagedef->file_name = strdup ("");
-        imagedef->x0 = 0.0;
-        imagedef->y0 = 0.0;
-        imagedef->x0 = 0.0;
-        imagedef->y0 = 0.0;
         imagedef->class_version = 0;
         imagedef->image_is_loaded_flag = 0;
         imagedef->resolution_units = 0;
         imagedef->acad_image_dict_soft = strdup ("");
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
+        imagedef->p0 = NULL;
+        imagedef->p1 = NULL;
         imagedef->imagedef_reactor = NULL;
         imagedef->next = NULL;
 #if DEBUG
@@ -186,6 +184,20 @@ dxf_imagedef_read
                   __FUNCTION__);
                 imagedef = dxf_imagedef_init (imagedef);
         }
+        if (imagedef->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                imagedef->p0 = dxf_point_init (imagedef->p0);
+        }
+        if (imagedef->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                imagedef->p1 = dxf_point_init (imagedef->p0);
+        }
         i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -219,14 +231,14 @@ dxf_imagedef_read
                         /* Now follows a string containing the
                          * U-value of the image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->x0);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * V-value of the image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->y0);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p0->y0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -234,7 +246,7 @@ dxf_imagedef_read
                          * U-value of the default size of one pixel in
                          * AutoCAD units. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->x1);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p1->x0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
@@ -242,7 +254,7 @@ dxf_imagedef_read
                          * V-value of the default size of one pixel in
                          * AutoCAD units. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &imagedef->y1);
+                        fscanf (fp->fp, "%lf\n", &imagedef->p1->y0);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
@@ -376,6 +388,24 @@ dxf_imagedef_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (imagedef->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (imagedef->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_14)
         {
                 fprintf (stderr,
@@ -429,10 +459,10 @@ dxf_imagedef_write
         }
         fprintf (fp->fp, " 90\n%" PRIi32 "\n", imagedef->class_version);
         fprintf (fp->fp, "  1\n%s\n", imagedef->file_name);
-        fprintf (fp->fp, " 10\n%f\n", imagedef->x0);
-        fprintf (fp->fp, " 20\n%f\n", imagedef->y0);
-        fprintf (fp->fp, " 11\n%f\n", imagedef->x1);
-        fprintf (fp->fp, " 12\n%f\n", imagedef->y1);
+        fprintf (fp->fp, " 10\n%f\n", imagedef->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", imagedef->p0->y0);
+        fprintf (fp->fp, " 11\n%f\n", imagedef->p1->x0);
+        fprintf (fp->fp, " 12\n%f\n", imagedef->p1->y0);
         fprintf (fp->fp, "280\n%hd\n", imagedef->image_is_loaded_flag);
         fprintf (fp->fp, "281\n%hd\n", imagedef->resolution_units);
         /* Clean up. */
@@ -556,9 +586,8 @@ dxf_imagedef_get_id_code
         if (imagedef->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -598,9 +627,8 @@ dxf_imagedef_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         imagedef->id_code = id_code;
 #if DEBUG
@@ -640,7 +668,7 @@ dxf_imagedef_get_dictionary_owner_soft
         if (imagedef->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -724,7 +752,7 @@ dxf_imagedef_get_dictionary_owner_hard
         if (imagedef->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -804,7 +832,7 @@ dxf_imagedef_get_file_name
         if (imagedef->file_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the file_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1004,9 +1032,18 @@ dxf_imagedef_set_x0
         if (imagedef->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                imagedef->p0 = dxf_point_init (imagedef->p0);
+                if (imagedef->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         imagedef->p0->x0 = x0;
 #if DEBUG
@@ -1086,9 +1123,18 @@ dxf_imagedef_set_y0
         if (imagedef->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                imagedef->p0 = dxf_point_init (imagedef->p0);
+                if (imagedef->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         imagedef->p0->y0 = y0;
 #if DEBUG
@@ -1247,9 +1293,18 @@ dxf_imagedef_set_x1
         if (imagedef->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                imagedef->p1 = dxf_point_init (imagedef->p1);
+                if (imagedef->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         imagedef->p1->x0 = x1;
 #if DEBUG
@@ -1329,9 +1384,18 @@ dxf_imagedef_set_y1
         if (imagedef->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                imagedef->p1 = dxf_point_init (imagedef->p1);
+                if (imagedef->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         imagedef->p1->y0 = y1;
 #if DEBUG
@@ -1368,16 +1432,14 @@ dxf_imagedef_get_class_version
         if (imagedef->class_version < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the class_version member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (imagedef->class_version > 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the class_version member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1415,16 +1477,14 @@ dxf_imagedef_set_class_version
         if (class_version < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative class_version value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (class_version > 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range class_version value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         imagedef->class_version = class_version;
 #if DEBUG
@@ -1461,16 +1521,14 @@ dxf_imagedef_get_image_is_loaded_flag
         if (imagedef->image_is_loaded_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the image_is_loaded_flag member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (imagedef->image_is_loaded_flag > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the image_is_loaded_flag member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1508,16 +1566,14 @@ dxf_imagedef_set_image_is_loaded_flag
         if (image_is_loaded_flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative image_is_loaded_flag value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (image_is_loaded_flag > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range image_is_loaded_flag value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         imagedef->image_is_loaded_flag = image_is_loaded_flag;
 #if DEBUG
@@ -1551,19 +1607,17 @@ dxf_imagedef_get_resolution_units
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (imagedef->resolution_units < 0)
+        if (imagedef->resolution_units < DXF_IMAGEDEF_RESOLUTION_UNITS_MIN)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the resolution_units member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
-        if (imagedef->resolution_units > 5)
+        if (imagedef->resolution_units > DXF_IMAGEDEF_RESOLUTION_UNITS_MAX)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the resolution_units member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1598,19 +1652,17 @@ dxf_imagedef_set_resolution_units
                   __FUNCTION__);
                 return (NULL);
         }
-        if (resolution_units < 0)
+        if (resolution_units < DXF_IMAGEDEF_RESOLUTION_UNITS_MIN)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative resolution_units value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
-        if (resolution_units > 5)
+        if (resolution_units > DXF_IMAGEDEF_RESOLUTION_UNITS_MAX)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range resolution_units value was passed.\n")),
+                  (_("Warning in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         imagedef->resolution_units = resolution_units;
 #if DEBUG
@@ -1650,7 +1702,7 @@ dxf_imagedef_get_acad_image_dict_soft
         if (imagedef->acad_image_dict_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the acad_image_dict_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1733,7 +1785,7 @@ dxf_imagedef_get_imagedef_reactor
         if (imagedef->imagedef_reactor == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the imagedef_reactor member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1772,9 +1824,18 @@ dxf_imagedef_set_imagedef_reactor
         if (imagedef_reactor == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfImageReactor.\n")));
+                imagedef->imagedef_reactor = dxf_imagedef_reactor_init (imagedef->imagedef_reactor);
+                if (imagedef->imagedef_reactor == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         imagedef->imagedef_reactor = (DxfImagedefReactor *) imagedef_reactor;
 #if DEBUG
@@ -1813,7 +1874,7 @@ dxf_imagedef_get_next
         if (imagedef->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1892,7 +1953,7 @@ dxf_imagedef_get_last
         if (imagedef->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfImagedef *) imagedef);
         }
