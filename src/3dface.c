@@ -744,7 +744,8 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, " 60\n%d\n", face->visibility);
         }
-        if (fp->acad_version_number >= AutoCAD_2000)
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (face->binary_graphics_data != NULL))
         {
 #ifdef BUILD_64
                 fprintf (fp->fp, "160\n%" PRIi32 "\n", face->graphics_data_size);
@@ -777,18 +778,30 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, "100\nAcDbFace\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", face->p0->x0);
-        fprintf (fp->fp, " 20\n%f\n", face->p0->y0);
-        fprintf (fp->fp, " 30\n%f\n", face->p0->z0);
-        fprintf (fp->fp, " 11\n%f\n", face->p1->x0);
-        fprintf (fp->fp, " 21\n%f\n", face->p1->y0);
-        fprintf (fp->fp, " 31\n%f\n", face->p1->z0);
-        fprintf (fp->fp, " 12\n%f\n", face->p2->x0);
-        fprintf (fp->fp, " 22\n%f\n", face->p2->y0);
-        fprintf (fp->fp, " 32\n%f\n", face->p2->z0);
-        fprintf (fp->fp, " 13\n%f\n", face->p3->x0);
-        fprintf (fp->fp, " 23\n%f\n", face->p3->y0);
-        fprintf (fp->fp, " 33\n%f\n", face->p3->z0);
+        if (face->p0 != NULL)
+        {
+                fprintf (fp->fp, " 10\n%f\n", face->p0->x0);
+                fprintf (fp->fp, " 20\n%f\n", face->p0->y0);
+                fprintf (fp->fp, " 30\n%f\n", face->p0->z0);
+        }
+        if (face->p1 != NULL)
+        {
+                fprintf (fp->fp, " 11\n%f\n", face->p1->x0);
+                fprintf (fp->fp, " 21\n%f\n", face->p1->y0);
+                fprintf (fp->fp, " 31\n%f\n", face->p1->z0);
+        }
+        if (face->p2 != NULL)
+        {
+                fprintf (fp->fp, " 12\n%f\n", face->p2->x0);
+                fprintf (fp->fp, " 22\n%f\n", face->p2->y0);
+                fprintf (fp->fp, " 32\n%f\n", face->p2->z0);
+        }
+        if (face->p3)
+        {
+                fprintf (fp->fp, " 13\n%f\n", face->p3->x0);
+                fprintf (fp->fp, " 23\n%f\n", face->p3->y0);
+                fprintf (fp->fp, " 33\n%f\n", face->p3->z0);
+        }
         fprintf (fp->fp, " 70\n%hd\n", face->flag);
         /* Clean up. */
         free (dxf_entity_name);
