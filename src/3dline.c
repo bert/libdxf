@@ -121,31 +121,6 @@ dxf_3dline_init
                 __FUNCTION__);
               return (NULL);
         }
-        /* Initialize new structs for members. */
-        line->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (line->binary_graphics_data);
-        if (line->binary_graphics_data == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        line->p0 = dxf_point_init (line->p0);
-        if (line->p0 == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        line->p1 = dxf_point_init (line->p1);
-        if (line->p1 == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         /* Assign initial values to members. */
         line->id_code = 0;
         line->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -176,6 +151,11 @@ dxf_3dline_init
         line->extr_x0 = 0.0;
         line->extr_y0 = 0.0;
         line->extr_z0 = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        line->binary_graphics_data = NULL;
+        line->p0 = NULL;
+        line->p1 = NULL;
         line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
