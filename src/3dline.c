@@ -142,12 +142,6 @@ dxf_3dline_init
         line->color_value = 0;
         line->color_name = strdup ("");
         line->transparency = 0;
-        line->p0->x0 = 0.0;
-        line->p0->y0 = 0.0;
-        line->p0->z0 = 0.0;
-        line->p1->x0 = 0.0;
-        line->p1->y0 = 0.0;
-        line->p1->z0 = 0.0;
         line->extr_x0 = 0.0;
         line->extr_y0 = 0.0;
         line->extr_z0 = 0.0;
