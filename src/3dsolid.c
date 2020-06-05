@@ -118,31 +118,6 @@ dxf_3dsolid_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        solid->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (solid->binary_graphics_data);
-        if (solid->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        solid->proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->proprietary_data);
-        if (solid->proprietary_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        solid->additional_proprietary_data = (DxfBinaryData *) dxf_binary_data_init (solid->additional_proprietary_data);
-        if (solid->additional_proprietary_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         solid->id_code = 0;
         solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -166,6 +141,11 @@ dxf_3dsolid_init
         solid->transparency = 0;
         solid->modeler_format_version_number = 1;
         solid->history = strdup ("");
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        solid->binary_graphics_data = NULL;
+        solid->proprietary_data = NULL;
+        solid->additional_proprietary_data = NULL;
         solid->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
