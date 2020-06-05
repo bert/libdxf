@@ -1932,6 +1932,13 @@ dxf_3dface_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (face->binary_graphics_data == NULL)
         {
                 fprintf (stderr,
@@ -1947,13 +1954,6 @@ dxf_3dface_set_binary_graphics_data
                           __FUNCTION__);
                         return (NULL);
                 }
-        }
-        if (data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
         }
         face->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
