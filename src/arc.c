@@ -207,6 +207,38 @@ dxf_arc_read
                   __FUNCTION__);
                 arc = dxf_arc_init (arc);
         }
+        if (arc->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                arc->binary_graphics_data = dxf_binary_data_init (arc->binary_graphics_data);
+                if (arc->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (arc->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                arc->p0 = dxf_point_init (arc->p0);
+                if (arc->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter310 = (DxfBinaryData *) arc->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
