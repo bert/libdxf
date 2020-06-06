@@ -220,6 +220,38 @@ dxf_acad_proxy_entity_read
                   __FUNCTION__);
                 acad_proxy_entity = dxf_acad_proxy_entity_init (acad_proxy_entity);
         }
+        if (acad_proxy_entity->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                acad_proxy_entity->binary_graphics_data = dxf_binary_data_init (acad_proxy_entity->binary_graphics_data);
+                if (acad_proxy_entity->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (acad_proxy_entity->binary_entity_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                acad_proxy_entity->binary_entity_data = dxf_binary_data_init (acad_proxy_entity->binary_entity_data);
+                if (acad_proxy_entity->binary_entity_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter310 = (DxfBinaryData *) acad_proxy_entity->binary_graphics_data;
         iter330 = 0;
         i = 0;
