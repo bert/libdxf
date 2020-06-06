@@ -118,23 +118,6 @@ dxf_arc_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        arc->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (arc->binary_graphics_data);
-        if (arc->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        arc->p0 = dxf_point_init (arc->p0);
-        if (arc->p0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         arc->id_code = 0;
         arc->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -165,6 +148,10 @@ dxf_arc_init
         arc->extr_x0 = 0.0;
         arc->extr_y0 = 0.0;
         arc->extr_z0 = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        arc->binary_graphics_data = NULL;
+        arc->p0 = NULL;
         arc->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
