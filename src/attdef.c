@@ -108,31 +108,6 @@ dxf_attdef_init
                 __FUNCTION__);
               return (NULL);
         }
-        /* Initialize new structs for members. */
-        attdef->binary_graphics_data = dxf_binary_data_init (attdef->binary_graphics_data);
-        if (attdef->binary_graphics_data == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        attdef->p0 = dxf_point_init (attdef->p0);
-        if (attdef->p0 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        attdef->p1 = dxf_point_init (attdef->p1);
-        if (attdef->p1 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         /* Assign initial values to members. */
         attdef->id_code = 0;
         attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -176,6 +151,11 @@ dxf_attdef_init
         attdef->extr_x0 = 0.0;
         attdef->extr_y0 = 0.0;
         attdef->extr_z0 = 1.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        attdef->binary_graphics_data = NULL;
+        attdef->p0 = NULL;
+        attdef->p1 = NULL;
         attdef->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
