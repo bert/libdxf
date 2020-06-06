@@ -125,31 +125,6 @@ dxf_acad_proxy_entity_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        acad_proxy_entity->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_graphics_data);
-        if (acad_proxy_entity->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        acad_proxy_entity->binary_entity_data = (DxfBinaryData *) dxf_binary_data_init (acad_proxy_entity->binary_entity_data);
-        if (acad_proxy_entity->binary_entity_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        acad_proxy_entity->object_id = dxf_object_id_init (acad_proxy_entity->object_id);
-        if (acad_proxy_entity->object_id == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         acad_proxy_entity->id_code = 0;
         acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -179,6 +154,11 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->object_id->group_code = 0;
         acad_proxy_entity->object_id->data = strdup ("");
         acad_proxy_entity->object_id->length = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        acad_proxy_entity->binary_graphics_data = NULL;
+        acad_proxy_entity->binary_entity_data = NULL;
+        acad_proxy_entity->object_id = NULL;
         acad_proxy_entity->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
