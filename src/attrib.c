@@ -109,31 +109,6 @@ dxf_attrib_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        attrib->binary_graphics_data = dxf_binary_data_init (attrib->binary_graphics_data);
-        if (attrib->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        attrib->p0 = dxf_point_init (attrib->p0);
-        if (attrib->p0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        attrib->p1 = dxf_point_init (attrib->p1);
-        if (attrib->p1 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         attrib->id_code = 0;
         attrib->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -176,6 +151,11 @@ dxf_attrib_init
         attrib->extr_x0 = 0.0;
         attrib->extr_y0 = 0.0;
         attrib->extr_z0 = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        attrib->binary_graphics_data = NULL;
+        attrib->p0 = NULL;
+        attrib->p1 = NULL;
         attrib->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
