@@ -3218,9 +3218,18 @@ dxf_attrib_set_z0
         if (attrib->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                attrib->p0 = dxf_point_init (attrib->p0);
+                if (attrib->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         attrib->p0->z0 = z0;
 #if DEBUG
