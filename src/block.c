@@ -112,15 +112,6 @@ dxf_block_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        block->p0 = dxf_point_init (block->p0);
-        if (block->p0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         block->xref_name = strdup ("");
         block->block_name = strdup ("");
@@ -137,6 +128,9 @@ dxf_block_init
         block->extr_z0 = 0.0;
         block->object_owner_soft = strdup ("");
         block->endblk = (struct DxfEndblk *) dxf_endblk_new ();
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        block->p0 = NULL;
         block->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
