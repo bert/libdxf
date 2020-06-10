@@ -2171,6 +2171,22 @@ dxf_block_set_endblk
                   __FUNCTION__);
                 return (NULL);
         }
+        if (block->endblk == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfEndblk.\n")));
+                block->endblk = (DxfEndblk *) dxf_endblk_init ((DxfEndblk *) block->endblk);
+                if (block->endblk == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         block->endblk = (struct DxfEndblk *) endblk;
 #if DEBUG
         DXF_DEBUG_END
