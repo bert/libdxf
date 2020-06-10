@@ -203,7 +203,22 @@ dxf_block_read
                         return (NULL);
                 }
         }
-        /*! \todo Test for a valid pointer to a DxfEndblk struct. */
+        if (block->endblk == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfEndblk.\n")));
+                block->endblk = (DxfEndblk *) dxf_endblk_init ((DxfEndblk *) block->endblk);
+                if (block->endblk == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
