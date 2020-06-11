@@ -189,6 +189,54 @@ dxf_body_read
                   __FUNCTION__);
                 body = dxf_body_init (body);
         }
+        if (body->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                body->binary_graphics_data = dxf_binary_data_init (body->binary_graphics_data);
+                if (body->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (body->proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                body->proprietary_data = dxf_binary_data_init (body->proprietary_data);
+                if (body->proprietary_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (body->additional_proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                body->additional_proprietary_data = dxf_binary_data_init (body->additional_proprietary_data);
+                if (body->additional_proprietary_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         if (fp->acad_version_number < AutoCAD_13)
         {
                 fprintf (stderr,
