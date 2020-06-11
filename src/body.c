@@ -111,31 +111,6 @@ dxf_body_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        body->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (body->binary_graphics_data);
-        if (body->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        body->proprietary_data = (DxfBinaryData *) dxf_binary_data_init (body->proprietary_data);
-        if (body->proprietary_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        body->additional_proprietary_data = (DxfBinaryData *) dxf_binary_data_init (body->additional_proprietary_data);
-        if (body->additional_proprietary_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         body->id_code = 0;
         body->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -157,6 +132,10 @@ dxf_body_init
         body->color_name = strdup ("");
         body->transparency = 0;
         body->modeler_format_version_number = 1;
+        /* Initialize new structs for members. */
+        body->binary_graphics_data = NULL;
+        body->proprietary_data = NULL;
+        body->additional_proprietary_data = NULL;
         body->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
