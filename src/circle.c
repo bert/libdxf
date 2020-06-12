@@ -117,23 +117,6 @@ dxf_circle_init
                 __FUNCTION__);
               return (NULL);
         }
-        /* Initialize new structs for members. */
-        circle->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (circle->binary_graphics_data);
-        if (circle->binary_graphics_data == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        circle->p0 = dxf_point_init (circle->p0);
-        if (circle->p0 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         /* Assign initial values to members. */
         circle->id_code = 0;
         circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -162,6 +145,10 @@ dxf_circle_init
         circle->extr_x0 = 0.0;
         circle->extr_y0 = 0.0;
         circle->extr_z0 = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        circle->binary_graphics_data = NULL;
+        circle->p0 = NULL;
         circle->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
