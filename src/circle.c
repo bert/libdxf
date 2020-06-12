@@ -204,6 +204,38 @@ dxf_circle_read
                   __FUNCTION__);
                 circle = dxf_circle_init (circle);
         }
+        if (circle->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                circle->binary_graphics_data = dxf_binary_data_init (circle->binary_graphics_data);
+                if (circle->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (circle->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                circle->p0 = dxf_point_init (circle->p0);
+                if (circle->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter310 = (DxfBinaryData *) circle->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
