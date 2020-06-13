@@ -235,6 +235,134 @@ dxf_dimension_read
                   __FUNCTION__);
                 dimension = dxf_dimension_init (dimension);
         }
+        if (dimension->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                dimension->binary_graphics_data = dxf_binary_data_init (dimension->binary_graphics_data);
+                if (dimension->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (dimension->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p0 = dxf_point_init (dimension->p0);
+                if (dimension->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (dimension->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p1 = dxf_point_init (dimension->p1);
+                if (dimension->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (dimension->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p2 = dxf_point_init (dimension->p2);
+                if (dimension->p2 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (dimension->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p3 = dxf_point_init (dimension->p3);
+                if (dimension->p3 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (dimension->p4 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p4 = dxf_point_init (dimension->p4);
+                if (dimension->p4 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (dimension->p5 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p5 = dxf_point_init (dimension->p5);
+                if (dimension->p5 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (dimension->p6 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p6 = dxf_point_init (dimension->p6);
+                if (dimension->p6 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter310 = (DxfBinaryData *) dimension->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
