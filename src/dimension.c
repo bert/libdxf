@@ -114,71 +114,6 @@ dxf_dimension_init
                 __FUNCTION__);
               return (NULL);
         }
-        /* Initialize new structs for members. */
-        dimension->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (dimension->binary_graphics_data);
-        if (dimension->binary_graphics_data == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        dimension->p0 = dxf_point_init (dimension->p0);
-        if (dimension->p0 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        dimension->p1 = dxf_point_init (dimension->p1);
-        if (dimension->p1 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        dimension->p2 = dxf_point_init (dimension->p2);
-        if (dimension->p2 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        dimension->p3 = dxf_point_init (dimension->p3);
-        if (dimension->p3 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        dimension->p4 = dxf_point_init (dimension->p4);
-        if (dimension->p4 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        dimension->p5 = dxf_point_init (dimension->p5);
-        if (dimension->p5 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        dimension->p6 = dxf_point_init (dimension->p6);
-        if (dimension->p6 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         /* Assign initial values to members. */
         dimension->id_code = 0;
         dimension->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -238,6 +173,16 @@ dxf_dimension_init
         dimension->extr_y0 = 0.0;
         dimension->extr_z0 = 0.0;
         dimension->version_number = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        dimension->binary_graphics_data = NULL;
+        dimension->p0 = NULL;
+        dimension->p1 = NULL;
+        dimension->p2 = NULL;
+        dimension->p3 = NULL;
+        dimension->p4 = NULL;
+        dimension->p5 = NULL;
+        dimension->p6 = NULL;
         dimension->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
