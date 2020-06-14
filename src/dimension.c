@@ -4396,9 +4396,18 @@ dxf_dimension_set_x3
         if (dimension->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p3 = dxf_point_init (dimension->p3);
+                if (dimension->p3 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         dimension->p3->x0 = x3;
 #if DEBUG
