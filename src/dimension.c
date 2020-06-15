@@ -5280,9 +5280,18 @@ dxf_dimension_set_z5
         if (dimension->p5 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                dimension->p5 = dxf_point_init (dimension->p5);
+                if (dimension->p5 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         dimension->p5->z0 = z5;
 #if DEBUG
