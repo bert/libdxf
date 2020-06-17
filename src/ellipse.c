@@ -114,31 +114,6 @@ dxf_ellipse_init
                 __FUNCTION__);
               return (NULL);
         }
-        /* Initialize new structs for members. */
-        ellipse->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (ellipse->binary_graphics_data);
-        if (ellipse->binary_graphics_data == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        ellipse->p0 = dxf_point_init (ellipse->p0);
-        if (ellipse->p0 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        ellipse->p1 = dxf_point_init (ellipse->p1);
-        if (ellipse->p1 == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
         /* Assign initial values to members. */
         ellipse->id_code = 0;
         ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -160,18 +135,17 @@ dxf_ellipse_init
         ellipse->color_value = 0;
         ellipse->color_name = strdup ("");
         ellipse->transparency = 0;
-        ellipse->p0->x0 = 0.0;
-        ellipse->p0->y0 = 0.0;
-        ellipse->p0->z0 = 0.0;
-        ellipse->p0->x0 = 0.0;
-        ellipse->p0->y0 = 0.0;
-        ellipse->p0->z0 = 0.0;
         ellipse->extr_x0 = 0.0;
         ellipse->extr_y0 = 0.0;
         ellipse->extr_z0 = 0.0;
         ellipse->ratio = 0.0;
         ellipse->start_angle = 0.0;
         ellipse->end_angle = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        ellipse->binary_graphics_data = NULL;
+        ellipse->p0 = NULL;
+        ellipse->p1 = NULL;
         ellipse->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
