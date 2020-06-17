@@ -133,12 +133,6 @@ dxf_attdef_init
         attdef->tag_value = strdup ("");
         attdef->prompt_value = strdup ("");
         attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
-        attdef->p0->x0 = 0.0;
-        attdef->p0->y0 = 0.0;
-        attdef->p0->z0 = 0.0;
-        attdef->p1->x0 = 0.0;
-        attdef->p1->y0 = 0.0;
-        attdef->p1->z0 = 0.0;
         attdef->height = 0.0;
         attdef->rel_x_scale = 0.0;
         attdef->rot_angle = 0.0;
