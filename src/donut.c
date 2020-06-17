@@ -118,15 +118,6 @@ dxf_donut_init
                   __FUNCTION__);
                 return (NULL);
         }
-        /* Initialize new structs for members. */
-        donut->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (donut->binary_graphics_data);
-        if (donut->binary_graphics_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         /* Assign initial values to members. */
         /* Members common for all DXF drawable entities. */
         donut->id_code = 0;
@@ -154,6 +145,9 @@ dxf_donut_init
         donut->p0->z0 = 0.0;
         donut->outside_diameter = 0.0;
         donut->inside_diameter = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        donut->binary_graphics_data = NULL;
         donut->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
