@@ -139,18 +139,6 @@ dxf_3dface_init
         face->color_value = 0;
         face->color_name = strdup ("");
         face->transparency = 0;
-        face->p0->x0 = 0.0;
-        face->p0->y0 = 0.0;
-        face->p0->z0 = 0.0;
-        face->p1->x0 = 0.0;
-        face->p1->y0 = 0.0;
-        face->p1->z0 = 0.0;
-        face->p2->x0 = 0.0;
-        face->p2->y0 = 0.0;
-        face->p2->z0 = 0.0;
-        face->p3->x0 = 0.0;
-        face->p3->y0 = 0.0;
-        face->p3->z0 = 0.0;
         face->flag = 0;
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
