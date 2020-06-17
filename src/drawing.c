@@ -99,62 +99,22 @@ dxf_drawing_init
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 drawing = dxf_drawing_new ();
+                if (drawing == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
-        if (drawing == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_header_init ((DxfHeader *) drawing->header, acad_version_number);
-        if (drawing->header == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_class_init ((DxfClass *) drawing->class_list);
-        if (drawing->class_list == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_block_init ((DxfBlock *) drawing->block_list);
-        if (drawing->block_list == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_entities_init ((DxfEntities *) drawing->entities_list);
-        if (drawing->entities_list == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_object_init ((DxfObject *) drawing->object_list);
-        if (drawing->object_list == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        dxf_thumbnail_init ((DxfThumbnail *) drawing->thumbnail);
-        if (drawing->thumbnail == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        drawing->header = NULL;
+        drawing->class_list = NULL;
+        drawing->block_list = NULL;
+        drawing->entities_list = NULL;
+        drawing->object_list = NULL;
+        drawing->thumbnail = NULL;
         drawing->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
