@@ -133,12 +133,6 @@ dxf_attrib_init
         attrib->transparency = 0;
         attrib->default_value = strdup ("");
         attrib->tag_value = strdup ("");
-        attrib->p0->x0 = 0.0;
-        attrib->p0->y0 = 0.0;
-        attrib->p0->z0 = 0.0;
-        attrib->p1->x0 = 0.0;
-        attrib->p1->y0 = 0.0;
-        attrib->p1->z0 = 0.0;
         attrib->height = 0.0;
         attrib->rel_x_scale = 0.0;
         attrib->rot_angle = 0.0;
