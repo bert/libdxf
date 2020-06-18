@@ -2988,9 +2988,18 @@ dxf_ellipse_set_x1
         if (ellipse->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                ellipse->p1 = dxf_point_init (ellipse->p1);
+                if (ellipse->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         ellipse->p1->x0 = x1;
 #if DEBUG
