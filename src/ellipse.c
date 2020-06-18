@@ -198,6 +198,54 @@ dxf_ellipse_read
                   __FUNCTION__);
                 ellipse = dxf_ellipse_init (ellipse);
         }
+        if (ellipse->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                ellipse->binary_graphics_data = dxf_binary_data_init (ellipse->binary_graphics_data);
+                if (ellipse->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (ellipse->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                ellipse->p0 = dxf_point_init (ellipse->p0);
+                if (ellipse->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (ellipse->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                ellipse->p1 = dxf_point_init (ellipse->p1);
+                if (ellipse->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter310 = (DxfBinaryData *) ellipse->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
