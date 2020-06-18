@@ -133,11 +133,6 @@ dxf_hatch_init
         hatch->color_name = strdup ("");
         hatch->transparency = 0;
         hatch->pattern_name = strdup ("");
-        hatch->p0 = dxf_point_new ();
-        hatch->p0 = dxf_point_init (hatch->p0);
-        hatch->p0->x0 = 0.0;
-        hatch->p0->y0 = 0.0;
-        hatch->p0->z0 = 0.0;
         hatch->pattern_scale = 1.0;
         hatch->pixel_size = 1.0;
         hatch->pattern_angle = 0.0;
@@ -155,6 +150,7 @@ dxf_hatch_init
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
         hatch->binary_graphics_data = NULL;
+        hatch->p0 = NULL;
         hatch->paths = NULL;
         hatch->patterns = NULL;
         hatch->def_lines = NULL;
