@@ -2937,22 +2937,6 @@ dxf_acad_proxy_entity_set_binary_entity_data
                   __FUNCTION__);
                 return (NULL);
         }
-        if (acad_proxy_entity->binary_entity_data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found.\n")),
-                  __FUNCTION__);
-                fprintf (stderr,
-                  (_("Initializing a DxfBinaryData struct.\n")));
-                acad_proxy_entity->binary_entity_data = dxf_binary_data_init (acad_proxy_entity->binary_entity_data);
-                if (acad_proxy_entity->binary_entity_data == NULL)
-                {
-                        fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
-                          __FUNCTION__);
-                        return (NULL);
-                }
-        }
         acad_proxy_entity->binary_entity_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
