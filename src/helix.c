@@ -3012,6 +3012,22 @@ dxf_helix_set_y1
                   __FUNCTION__);
                 return (NULL);
         }
+        if (helix->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                helix->p1 = dxf_point_init (helix->p1);
+                if (helix->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         helix->p1->y0 = y1;
 #if DEBUG
         DXF_DEBUG_END
