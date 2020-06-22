@@ -3525,9 +3525,18 @@ dxf_image_set_x2
         if (image->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                image->p2 = dxf_point_init (image->p2);
+                if (image->p2 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         image->p2->x0 = x2;
 #if DEBUG
