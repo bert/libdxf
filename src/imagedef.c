@@ -1842,18 +1842,9 @@ dxf_imagedef_set_imagedef_reactor
         if (imagedef_reactor == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                fprintf (stderr,
-                  (_("Initializing a DxfImageReactor.\n")));
-                imagedef->imagedef_reactor = dxf_imagedef_reactor_init (imagedef->imagedef_reactor);
-                if (imagedef->imagedef_reactor == NULL)
-                {
-                        fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
-                          __FUNCTION__);
-                        return (NULL);
-                }
+                return (NULL);
         }
         imagedef->imagedef_reactor = (DxfImagedefReactor *) imagedef_reactor;
 #if DEBUG
