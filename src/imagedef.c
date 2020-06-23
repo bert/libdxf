@@ -189,14 +189,32 @@ dxf_imagedef_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
                 imagedef->p0 = dxf_point_init (imagedef->p0);
+                if (imagedef->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         if (imagedef->p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                imagedef->p1 = dxf_point_init (imagedef->p0);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                imagedef->p1 = dxf_point_init (imagedef->p1);
+                if (imagedef->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         i = 0;
         (fp->line_number)++;
