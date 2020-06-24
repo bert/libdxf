@@ -1,8 +1,8 @@
 /*!
  * \file insert.c
  *
- * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2017, 2018, 2019
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2017, 2018, 2019,
+ * 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF insert entity (\c INSERT).
  *
@@ -152,6 +152,8 @@ dxf_insert_init
         insert->extr_x0 = 0.0;
         insert->extr_y0 = 0.0;
         insert->extr_z0 = 0.0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         insert->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
