@@ -120,6 +120,8 @@ dxf_imagedef_reactor_init
         imagedef_reactor->class_version = 2;
         imagedef_reactor->associated_image_object = strdup ("");
         imagedef_reactor->associated_image_object_length = 0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         imagedef_reactor->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
