@@ -206,7 +206,7 @@ dxf_insert_read
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("Initializing a DxfBinaryData struct.\n")));
-                insert->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (insert->binary_graphics_data);
+                insert->binary_graphics_data = (DxfBinaryData *) dxf_binary_data_init (insert->binary_graphics_data);
                 if (insert->binary_graphics_data == NULL)
                 {
                         fprintf (stderr,
@@ -764,7 +764,7 @@ dxf_insert_free
         }
         free (insert->linetype);
         free (insert->layer);
-        dxf_binary_graphics_data_free_list (insert->binary_graphics_data);
+        dxf_binary_data_free_list (insert->binary_graphics_data);
         free (insert->dictionary_owner_soft);
         free (insert->material);
         free (insert->dictionary_owner_hard);
@@ -1696,7 +1696,7 @@ dxf_insert_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_insert_get_binary_graphics_data
 (
         DxfInsert *insert
@@ -1724,7 +1724,7 @@ dxf_insert_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) insert->binary_graphics_data);
+        return ((DxfBinaryData *) insert->binary_graphics_data);
 }
 
 
@@ -1737,7 +1737,7 @@ dxf_insert_set_binary_graphics_data
 (
         DxfInsert *insert,
                 /*!< a pointer to a DXF \c INSERT entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1760,7 +1760,7 @@ dxf_insert_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        insert->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        insert->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

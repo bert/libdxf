@@ -50,7 +50,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 
 
 #ifdef __cplusplus
@@ -133,7 +133,7 @@ dxf_insert_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -281,8 +281,8 @@ int dxf_insert_get_graphics_data_size (DxfInsert *insert);
 DxfInsert *dxf_insert_set_graphics_data_size (DxfInsert *insert, int graphics_data_size);
 int16_t dxf_insert_get_shadow_mode (DxfInsert *insert);
 DxfInsert *dxf_insert_set_shadow_mode (DxfInsert *insert, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_insert_get_binary_graphics_data (DxfInsert *insert);
-DxfInsert *dxf_insert_set_binary_graphics_data (DxfInsert *insert, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_insert_get_binary_graphics_data (DxfInsert *insert);
+DxfInsert *dxf_insert_set_binary_graphics_data (DxfInsert *insert, DxfBinaryData *data);
 char *dxf_insert_get_dictionary_owner_soft (DxfInsert *insert);
 DxfInsert *dxf_insert_set_dictionary_owner_soft (DxfInsert *insert, char *dictionary_owner_soft);
 char *dxf_insert_get_material (DxfInsert *insert);
