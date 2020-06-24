@@ -124,8 +124,6 @@ dxf_insert_init
         insert->paperspace = DXF_MODELSPACE;
         insert->graphics_data_size = 0;
         insert->shadow_mode = 0;
-        insert->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        insert->binary_graphics_data = dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_insert_get_binary_graphics_data (insert));
         insert->dictionary_owner_soft = strdup ("");
         insert->material = strdup ("");
         insert->dictionary_owner_hard = strdup ("");
@@ -135,11 +133,6 @@ dxf_insert_init
         insert->color_name = strdup ("");
         insert->transparency = 0;
         insert->block_name = strdup ("");
-        insert->p0 = dxf_point_new ();
-        insert->p0 = (DxfPoint *) dxf_point_init (insert->p0);
-        insert->p0->x0 = 0.0;
-        insert->p0->y0 = 0.0;
-        insert->p0->z0 = 0.0;
         insert->rel_x_scale = 1.0;
         insert->rel_y_scale = 1.0;
         insert->rel_z_scale = 1.0;
@@ -154,6 +147,8 @@ dxf_insert_init
         insert->extr_z0 = 0.0;
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
+        insert->binary_graphics_data = NULL;
+        insert->p0 = NULL;
         insert->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
