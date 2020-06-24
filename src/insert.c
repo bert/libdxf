@@ -771,6 +771,7 @@ dxf_insert_free
         free (insert->plot_style_name);
         free (insert->color_name);
         free (insert->block_name);
+        dxf_point_free_list (insert->p0);
         free (insert);
         insert = NULL;
 #if DEBUG
