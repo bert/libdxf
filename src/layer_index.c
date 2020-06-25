@@ -144,6 +144,8 @@ dxf_layer_index_init
                 layer_index->number_of_entries[i] = 0;
                 layer_index->hard_owner_reference[i] = strdup ("");
         }
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         layer_index->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
