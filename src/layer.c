@@ -127,6 +127,8 @@ dxf_layer_init
         dxf_layer_set_dictionary_owner_hard (layer, strdup (""));
         dxf_layer_set_lineweight (layer, 0);
         dxf_layer_set_plot_style_name (layer, strdup (""));
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
         dxf_layer_set_next (layer, NULL);
 #if DEBUG
         DXF_DEBUG_END
