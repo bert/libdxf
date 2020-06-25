@@ -1,8 +1,8 @@
 /*!
  * \file layer.c
  *
- * \author Copyright (C) 2008, 2012, 2013, 2014, 2015, 2017, 2018, 2019
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2012, 2013, 2014, 2015, 2017, 2018, 2019,
+ * 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF layer table (\c LAYER).
  *
