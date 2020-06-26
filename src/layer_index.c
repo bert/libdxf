@@ -139,6 +139,8 @@ dxf_layer_index_init
         layer_index->layer_name = (DxfLayerName *) dxf_layer_name_new ();
         layer_index->layer_name = (DxfLayerName *) dxf_layer_name_init (layer_index->layer_name);
         layer_index->layer_name->name = strdup ("");
+        /*! \todo Proper implementation \c number_of_entries and
+         * \c hard_owner_reference required. */ 
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 layer_index->number_of_entries[i] = 0;
