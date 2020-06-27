@@ -115,8 +115,6 @@ dxf_layer_index_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (layer_index == NULL)
         {
@@ -136,18 +134,13 @@ dxf_layer_index_init
         layer_index->dictionary_owner_soft = strdup ("");
         layer_index->dictionary_owner_hard = strdup ("");
         layer_index->time_stamp = 0;
-        layer_index->layer_name = (DxfLayerName *) dxf_layer_name_new ();
-        layer_index->layer_name = (DxfLayerName *) dxf_layer_name_init (layer_index->layer_name);
-        layer_index->layer_name->name = strdup ("");
-        /*! \todo Proper implementation \c number_of_entries and
-         * \c hard_owner_reference required. */ 
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                layer_index->number_of_entries[i] = 0;
-                layer_index->hard_owner_reference[i] = strdup ("");
-        }
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
+        /*! \todo Proper implementation \c number_of_entries and
+         * \c hard_owner_reference required. */ 
+        layer_index->layer_name = NULL;
+        layer_index->number_of_entries = NULL;
+        layer_index->hard_owner_reference = NULL;
         layer_index->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -166,6 +159,9 @@ dxf_layer_index_init
  * While parsing the DXF file store data in \c layer_index. \n
  *
  * \return a pointer to \c layer_index.
+ *
+ * \todo Proper implementation \c number_of_entries and
+ * \c hard_owner_reference required.
  */
 DxfLayerIndex *
 dxf_layer_index_read
@@ -258,8 +254,10 @@ dxf_layer_index_read
                          * entries in the LAYER_INDEX list (multiple
                          * entries may exist). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &layer_index->number_of_entries[j]);
-                        j++;
+                        /*! \todo Implement reading of \c number_of_entries
+                         * properly.
+                        fscanf (fp->fp, "%d\n", &layer_index->number_of_entries);
+                         */
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -299,9 +297,10 @@ dxf_layer_index_read
                          * reference LAYER_INDEX (multiple entries may
                          * exist). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer_index->hard_owner_reference[k]);
-                        k++;
-                        /*! \todo Check for overrun of array index. */
+                        /*! \todo Implement reading of \c hard_owner_reference
+                         * properly.
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, layer_index->hard_owner_reference);
+                         */
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -331,6 +330,9 @@ dxf_layer_index_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \todo Proper implementation \c number_of_entries and
+ * \c hard_owner_reference required.
  */
 int
 dxf_layer_index_write
@@ -417,13 +419,14 @@ dxf_layer_index_write
                 i++;
         }
         i = 0;
+        /*! \todo Implement reading of \c hard_owner_reference and
+         * \c number_of_entries  properly.
         while (strlen (layer_index->layer_name->name) > 0)
         {
-                fprintf (fp->fp, "360\n%s\n", layer_index->hard_owner_reference[i]);
-                fprintf (fp->fp, " 90\n%d\n", layer_index->number_of_entries[i]);
-                i++;
-                /*! \todo Check for overrun of array index. */
+                fprintf (fp->fp, "360\n%s\n", layer_index->hard_owner_reference);
+                fprintf (fp->fp, " 90\n%d\n", layer_index->number_of_entries);
         }
+         */
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -451,8 +454,6 @@ dxf_layer_index_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (layer_index == NULL)
         {
@@ -470,11 +471,8 @@ dxf_layer_index_free
         }
         free (layer_index->dictionary_owner_soft);
         free (layer_index->dictionary_owner_hard);
-        dxf_layer_name_free_list (layer_index->layer_name);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (layer_index->hard_owner_reference[i]);
-        }
+        dxf_char_free_list (layer_index->layer_name);
+        dxf_char_free_list (layer_index->hard_owner_reference);
         free (layer_index);
         layer_index = NULL;
 #if DEBUG
