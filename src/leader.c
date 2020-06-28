@@ -123,13 +123,18 @@ dxf_leader_init
         leader->visibility = DXF_DEFAULT_VISIBILITY;
         leader->color = DXF_COLOR_BYLAYER;
         leader->paperspace = DXF_MODELSPACE;
+        leader->graphics_data_size = 0;
+        leader->shadow_mode = 0;
         leader->dictionary_owner_soft = strdup ("");
+        leader->object_owner_soft = strdup ("");
+        leader->material = strdup ("");
         leader->dictionary_owner_hard = strdup ("");
+        leader->lineweight = 0;
+        leader->plot_style_name = strdup ("");
+        leader->color_value = 0;
+        leader->color_name = strdup ("");
+        leader->transparency = 0;
         leader->dimension_style_name = strdup ("");
-        leader->p0 = dxf_point_new ();
-        leader->p0->x0 = 0.0;
-        leader->p0->y0 = 0.0;
-        leader->p0->z0 = 0.0;
         leader->text_annotation_height = 0.0;
         leader->text_annotation_width = 0.0;
         leader->arrow_head_flag = 0;
@@ -142,19 +147,14 @@ dxf_leader_init
         leader->extr_x0 = 0.0;
         leader->extr_y0 = 0.0;
         leader->extr_z0 = 0.0;
-        leader->p1 = dxf_point_new ();
-        leader->p1->x0 = 0.0;
-        leader->p1->y0 = 0.0;
-        leader->p1->z0 = 0.0;
-        leader->p2 = dxf_point_new ();
-        leader->p2->x0 = 0.0;
-        leader->p2->y0 = 0.0;
-        leader->p2->z0 = 0.0;
-        leader->p3 = dxf_point_new ();
-        leader->p3->x0 = 0.0;
-        leader->p3->y0 = 0.0;
-        leader->p3->z0 = 0.0;
         leader->annotation_reference_hard = strdup ("");
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        leader->binary_graphics_data = NULL;
+        leader->p0 = NULL;
+        leader->p1 = NULL;
+        leader->p2 = NULL;
+        leader->p3 = NULL;
         leader->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
