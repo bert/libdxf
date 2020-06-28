@@ -676,7 +676,7 @@ dxf_leader_write
         }
         if (leader->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp->fp, " 67\n%d\n", (int16_t) DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%hd\n", (int16_t) DXF_PAPERSPACE);
         }
         fprintf (fp->fp, "  8\n%s\n", leader->layer);
         if (strcmp (leader->linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -685,7 +685,7 @@ dxf_leader_write
         }
         if (leader->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", leader->color);
+                fprintf (fp->fp, " 62\n%hd\n", leader->color);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
