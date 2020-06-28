@@ -212,6 +212,105 @@ dxf_leader_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 leader = dxf_leader_init (leader);
+                if (leader == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+        }
+        if (leader->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                leader->binary_graphics_data = dxf_binary_data_init (leader->binary_graphics_data);
+                if (leader->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+        }
+        if (leader->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                leader->p0 = dxf_point_init (leader->p0);
+                if (leader->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+        }
+        if (leader->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                leader->p1 = dxf_point_init (leader->p1);
+                if (leader->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+        }
+        if (leader->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                leader->p2 = dxf_point_init (leader->p2);
+                if (leader->p2 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+        }
+        if (leader->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                leader->p3 = dxf_point_init (leader->p3);
+                if (leader->p3 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
         }
         i = 0; /* Number of found vertices. */
         iter = (DxfPoint *) leader->p0; /* Pointer to first vertex */
