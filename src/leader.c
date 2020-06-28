@@ -1,7 +1,7 @@
 /*!
  * \file leader.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF leader entity (\c LEADER).
@@ -340,14 +340,14 @@ dxf_leader_read
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &leader->color);
+                        fscanf (fp->fp, "%hd\n", &leader->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &leader->paperspace);
+                        fscanf (fp->fp, "%hd\n", &leader->paperspace);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
