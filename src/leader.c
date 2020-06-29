@@ -3316,9 +3316,18 @@ dxf_leader_set_x1
         if (leader->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                leader->p1 = dxf_point_init (leader->p1);
+                if (leader->p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         leader->p1->x0 = x1;
 #if DEBUG
