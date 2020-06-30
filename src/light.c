@@ -100,14 +100,15 @@ dxf_light_init
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 light = dxf_light_new ();
+                if (light == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
-        if (light == NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
+        /* Assign initial values to members. */
         light->id_code = 0;
         light->linetype = strdup (DXF_DEFAULT_LINETYPE);
         light->layer = strdup (DXF_DEFAULT_LAYER);
@@ -118,7 +119,6 @@ dxf_light_init
         light->paperspace = DXF_MODELSPACE;
         light->graphics_data_size = 0;
         light->shadow_mode = 0;
-        light->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (light->binary_graphics_data);
         light->dictionary_owner_hard = strdup ("");
         light->material = strdup ("");
         light->dictionary_owner_soft = strdup ("");
@@ -128,8 +128,6 @@ dxf_light_init
         light->color_name = strdup ("");
         light->transparency = 0;
         light->light_name = strdup ("");
-        light->p0 = dxf_point_init (light->p0);
-        light->p1 = dxf_point_init (light->p1);
         light->intensity = 0.0;
         light->attenuation_start_limit = 0.0;
         light->attenuation_end_limit = 0.0;
@@ -145,6 +143,11 @@ dxf_light_init
         light->plot_glyph = 0;
         light->use_attenuation_limits = 0;
         light->cast_shadows =0;
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        light->binary_graphics_data = NULL;
+        light->p0 = NULL;
+        light->p1 = NULL;
         light->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
