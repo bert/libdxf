@@ -433,8 +433,8 @@ dxf_light_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, light->binary_graphics_data->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) light->binary_graphics_data->next);
-                        light->binary_graphics_data = (DxfBinaryGraphicsData *) light->binary_graphics_data->next;
+                        dxf_binary_data_init ((DxfBinaryData *) light->binary_graphics_data->next);
+                        light->binary_graphics_data = (DxfBinaryData *) light->binary_graphics_data->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -542,7 +542,7 @@ dxf_light_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("LIGHT");
-        DxfBinaryGraphicsData *iter_310 = NULL;
+        DxfBinaryData *iter_310 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -632,11 +632,11 @@ dxf_light_write
 #else
         fprintf (fp->fp, " 92\n%d\n", light->graphics_data_size);
 #endif
-        iter_310 = (DxfBinaryGraphicsData *) light->binary_graphics_data;
+        iter_310 = (DxfBinaryData *) light->binary_graphics_data;
         while (iter_310 != NULL)
         {
                 fprintf (fp->fp, "310\n%s\n", iter_310->data_line);
-                iter_310 = (DxfBinaryGraphicsData *) iter_310->next;
+                iter_310 = (DxfBinaryData *) iter_310->next;
         }
         fprintf (fp->fp, "420\n%ld\n", light->color_value);
         fprintf (fp->fp, "430\n%s\n", light->color_name);
@@ -710,7 +710,7 @@ dxf_light_free
         }
         free (light->linetype);
         free (light->layer);
-        dxf_binary_graphics_data_free_list ((DxfBinaryGraphicsData *) light->binary_graphics_data);
+        dxf_binary_data_free_list ((DxfBinaryData *) light->binary_graphics_data);
         free (light->dictionary_owner_hard);
         free (light->material);
         free (light->dictionary_owner_soft);
@@ -1595,7 +1595,7 @@ dxf_light_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_light_get_binary_graphics_data
 (
         DxfLight *light
@@ -1623,7 +1623,7 @@ dxf_light_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) light->binary_graphics_data);
+        return ((DxfBinaryData *) light->binary_graphics_data);
 }
 
 
@@ -1639,7 +1639,7 @@ dxf_light_set_binary_graphics_data
 (
         DxfLight *light,
                 /*!< a pointer to a DXF \c LIGHT entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * binary_graphics_data for the entity. */
 )
@@ -1662,7 +1662,7 @@ dxf_light_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        light->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        light->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

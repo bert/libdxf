@@ -1,7 +1,8 @@
 /*!
  * \file light.h
  *
- * \author Copyright (C) 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2018, 2020
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF light entity (\c LIGHT).
  *
@@ -39,7 +40,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "point.h"
 
 
@@ -122,7 +123,7 @@ dxf_light_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -283,8 +284,8 @@ int dxf_light_get_graphics_data_size (DxfLight *light);
 DxfLight *dxf_light_set_graphics_data_size (DxfLight *light, int graphics_data_size);
 int16_t dxf_light_get_shadow_mode (DxfLight *light);
 DxfLight *dxf_light_set_shadow_mode (DxfLight *light, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_light_get_binary_graphics_data (DxfLight *light);
-DxfLight *dxf_light_set_binary_graphics_data (DxfLight *light, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_light_get_binary_graphics_data (DxfLight *light);
+DxfLight *dxf_light_set_binary_graphics_data (DxfLight *light, DxfBinaryData *data);
 char *dxf_light_get_dictionary_owner_soft (DxfLight *light);
 DxfLight *dxf_light_set_dictionary_owner_soft (DxfLight *light, char *dictionary_owner_soft);
 char *dxf_light_get_object_owner_soft (DxfLight *light);
