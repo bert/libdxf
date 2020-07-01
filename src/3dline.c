@@ -274,7 +274,7 @@ dxf_3dline_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &line->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &line->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
