@@ -218,7 +218,7 @@ dxf_light_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &light->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &light->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
