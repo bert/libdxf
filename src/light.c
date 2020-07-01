@@ -644,7 +644,7 @@ dxf_light_write
         fprintf (fp->fp, "390\n%s\n", light->plot_style_name);
         fprintf (fp->fp, "284\n%d\n", light->shadow_mode);
         fprintf (fp->fp, "100\nAcDbLight\n");
-        fprintf (fp->fp, " 90\n%hi\n", light->version_number);
+        fprintf (fp->fp, " 90\n%i\n", light->version_number);
         fprintf (fp->fp, "  1\n%s\n", light->light_name);
         fprintf (fp->fp, " 70\n%hi\n", light->light_type);
         fprintf (fp->fp, "290\n%d\n", light->status);
@@ -664,7 +664,7 @@ dxf_light_write
         fprintf (fp->fp, " 51\n%f\n", light->falloff_angle);
         fprintf (fp->fp, "293\n%d\n", light->cast_shadows);
         fprintf (fp->fp, " 73\n%hi\n", light->shadow_type);
-        fprintf (fp->fp, " 91\n%hi\n", light->shadow_map_size);
+        fprintf (fp->fp, " 91\n%i\n", light->shadow_map_size);
         fprintf (fp->fp, "280\n%d\n", light->shadow_map_softness);
         /* Clean up. */
         free (dxf_entity_name);
