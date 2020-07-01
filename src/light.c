@@ -2646,9 +2646,18 @@ dxf_light_set_y0
         if (light->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                light->p0 = dxf_point_init (light->p0);
+                if (light->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         light->p0->y0 = y0;
 #if DEBUG
