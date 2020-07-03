@@ -47,7 +47,7 @@
 
 #include "global.h"
 #include "point.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "vertex.h"
 
 
@@ -130,7 +130,7 @@ dxf_lwpolyline_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -260,8 +260,8 @@ int32_t dxf_lwpolyline_get_graphics_data_size (DxfLWPolyline *lwpolyline);
 DxfLWPolyline *dxf_lwpolyline_set_graphics_data_size (DxfLWPolyline *lwpolyline, int32_t graphics_data_size);
 int16_t dxf_lwpolyline_get_shadow_mode (DxfLWPolyline *lwpolyline);
 DxfLWPolyline *dxf_lwpolyline_set_shadow_mode (DxfLWPolyline *lwpolyline, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_lwpolyline_get_binary_graphics_data (DxfLWPolyline *lwpolyline);
-DxfLWPolyline *dxf_lwpolyline_set_binary_graphics_data (DxfLWPolyline *lwpolyline, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_lwpolyline_get_binary_graphics_data (DxfLWPolyline *lwpolyline);
+DxfLWPolyline *dxf_lwpolyline_set_binary_graphics_data (DxfLWPolyline *lwpolyline, DxfBinaryData *data);
 char *dxf_lwpolyline_get_dictionary_owner_soft (DxfLWPolyline *lwpolyline);
 DxfLWPolyline *dxf_lwpolyline_set_dictionary_owner_soft (DxfLWPolyline *lwpolyline, char *dictionary_owner_soft);
 char *dxf_lwpolyline_get_material (DxfLWPolyline *lwpolyline);

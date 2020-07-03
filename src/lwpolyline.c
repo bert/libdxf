@@ -1557,7 +1557,7 @@ dxf_lwpolyline_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_lwpolyline_get_binary_graphics_data
 (
         DxfLWPolyline *lwpolyline
@@ -1585,7 +1585,7 @@ dxf_lwpolyline_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) lwpolyline->binary_graphics_data);
+        return ((DxfBinaryData *) lwpolyline->binary_graphics_data);
 }
 
 
@@ -1598,7 +1598,7 @@ dxf_lwpolyline_set_binary_graphics_data
 (
         DxfLWPolyline *lwpolyline,
                 /*!< a pointer to a DXF \c LWPOLYLINE entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1621,7 +1621,7 @@ dxf_lwpolyline_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        lwpolyline->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        lwpolyline->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
