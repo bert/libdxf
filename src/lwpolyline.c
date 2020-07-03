@@ -126,13 +126,23 @@ dxf_lwpolyline_init
         lwpolyline->constant_width = 0.0;
         lwpolyline->color = DXF_COLOR_BYLAYER;
         lwpolyline->paperspace = DXF_MODELSPACE;
+        lwpolyline->graphics_data_size = 0;
+        lwpolyline->shadow_mode = 0;
+        lwpolyline->dictionary_owner_soft = strdup ("");
+        lwpolyline->object_owner_soft = strdup ("");
+        lwpolyline->material = strdup ("");
+        lwpolyline->dictionary_owner_hard = strdup ("");
+        lwpolyline->lineweight = 0;
+        lwpolyline->plot_style_name = strdup ("");
+        lwpolyline->color_value = 0;
+        lwpolyline->color_name = strdup ("");
+        lwpolyline->transparency = 0;
+        lwpolyline->constant_width = 0.0;
         lwpolyline->flag = 0;
         lwpolyline->number_vertices = 0;
         lwpolyline->extr_x0 = 0.0;
         lwpolyline->extr_y0 = 0.0;
         lwpolyline->extr_z0 = 0.0;
-        lwpolyline->dictionary_owner_soft = strdup ("");
-        lwpolyline->dictionary_owner_hard = strdup ("");
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
         lwpolyline->binary_graphics_data = NULL;
