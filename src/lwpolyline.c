@@ -115,6 +115,7 @@ dxf_lwpolyline_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Assign initial values to members. */
         lwpolyline->id_code = 0;
         lwpolyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
         lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
@@ -132,7 +133,10 @@ dxf_lwpolyline_init
         lwpolyline->extr_z0 = 0.0;
         lwpolyline->dictionary_owner_soft = strdup ("");
         lwpolyline->dictionary_owner_hard = strdup ("");
-        lwpolyline->vertices = (struct DxfVertex *) dxf_vertex_new ();
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        lwpolyline->binary_graphics_data = NULL;
+        lwpolyline->vertices = NULL;
         lwpolyline->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
