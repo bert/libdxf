@@ -1360,7 +1360,7 @@ dxf_lwpolyline_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int
+int32_t
 dxf_lwpolyline_get_graphics_data_size
 (
         DxfLWPolyline *lwpolyline
@@ -1409,7 +1409,7 @@ dxf_lwpolyline_set_graphics_data_size
 (
         DxfLWPolyline *lwpolyline,
                 /*!< a pointer to a DXF \c LWPOLYLINE entity. */
-        int graphics_data_size
+        int32_t graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
@@ -2013,7 +2013,7 @@ dxf_lwpolyline_set_plot_style_name
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_lwpolyline_get_color_value
 (
         DxfLWPolyline *lwpolyline
@@ -2049,7 +2049,7 @@ dxf_lwpolyline_set_color_value
 (
         DxfLWPolyline *lwpolyline,
                 /*!< a pointer to a DXF \c LWPOLYLINE entity. */
-        long color_value
+        int32_t color_value
                 /*!< the \c color_value to be set for the entity. */
 )
 {
@@ -2158,7 +2158,7 @@ dxf_lwpolyline_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-long
+int32_t
 dxf_lwpolyline_get_transparency
 (
         DxfLWPolyline *lwpolyline
@@ -2194,7 +2194,7 @@ dxf_lwpolyline_set_transparency
 (
         DxfLWPolyline *lwpolyline,
                 /*!< a pointer to a DXF \c LWPOLYLINE entity. */
-        long transparency
+        int32_t transparency
                 /*!< the \c transparency to be set for the entity. */
 )
 {
