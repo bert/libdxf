@@ -111,6 +111,7 @@ dxf_ltype_init
                 __FUNCTION__);
               return (NULL);
         }
+        /* Assign initial values to members. */
         ltype->id_code = 0;
         ltype->linetype_name = strdup ("");
         ltype->description = strdup ("");
@@ -132,6 +133,9 @@ dxf_ltype_init
         ltype->alignment = 65;
         ltype->dictionary_owner_soft = strdup ("");
         ltype->dictionary_owner_hard = strdup ("");
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        ltype->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
