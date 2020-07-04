@@ -214,6 +214,22 @@ dxf_lwpolyline_read
                         return (NULL);
                 }
         }
+        if (lwpolyline->vertices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfVertex struct.\n")));
+                lwpolyline->vertices = (struct DxfVertex *) dxf_vertex_init ((DxfVertex *) lwpolyline->vertices);
+                if (lwpolyline->vertices == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter = (DxfVertex *) lwpolyline->vertices;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
