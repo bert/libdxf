@@ -198,6 +198,22 @@ dxf_lwpolyline_read
                   __FUNCTION__);
                 lwpolyline = dxf_lwpolyline_init (lwpolyline);
         }
+        if (lwpolyline->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                lwpolyline->binary_graphics_data = dxf_binary_data_init (lwpolyline->binary_graphics_data);
+                if (lwpolyline->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter = (DxfVertex *) lwpolyline->vertices;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
