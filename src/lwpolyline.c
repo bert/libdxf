@@ -497,6 +497,15 @@ dxf_lwpolyline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (lwpolyline->vertices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         if ((fp->acad_version_number < AutoCAD_14)
           && (fp->follow_strict_version_rules))
         {
