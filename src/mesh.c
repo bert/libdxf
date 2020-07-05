@@ -1,7 +1,7 @@
 /*!
  * \file mesh.c
  *
- * \author Copyright (C) 2018, 2019
+ * \author Copyright (C) 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mesh entity (\c MESH).
@@ -108,6 +108,7 @@ dxf_mesh_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         mesh->id_code = 0;
         mesh->linetype = strdup (DXF_DEFAULT_LINETYPE);
         mesh->layer = strdup (DXF_DEFAULT_LAYER);
@@ -119,8 +120,6 @@ dxf_mesh_init
         mesh->paperspace = DXF_MODELSPACE;
         mesh->graphics_data_size = 0;
         mesh->shadow_mode = 0;
-        mesh->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
-        mesh->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (mesh->binary_graphics_data);
         mesh->dictionary_owner_soft = strdup ("");
         mesh->object_owner_soft = strdup ("");
         mesh->material = strdup ("");
@@ -152,6 +151,9 @@ dxf_mesh_init
         mesh->edge_crease_count_level_0 = 0;
         mesh->edge_create_value = dxf_double_new ();
         mesh->edge_create_value = dxf_double_init (mesh->edge_create_value);
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        mesh->binary_graphics_data = NULL;
         mesh->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -184,7 +186,7 @@ dxf_mesh_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        DxfBinaryGraphicsData *iter310 = NULL;
+        DxfBinaryData *iter310 = NULL;
         int iter330;
 
         /* Do some basic checks. */
@@ -204,7 +206,7 @@ dxf_mesh_read
                   __FUNCTION__);
                 mesh = dxf_mesh_init (mesh);
         }
-        iter310 = (DxfBinaryGraphicsData *) mesh->binary_graphics_data;
+        iter310 = (DxfBinaryData *) mesh->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -346,8 +348,8 @@ dxf_mesh_read
                          * graphics data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) iter310->next);
-                        iter310 = (DxfBinaryGraphicsData *) iter310->next;
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -599,12 +601,12 @@ dxf_mesh_write
 #endif
                 if (mesh->binary_graphics_data != NULL)
                 {
-                        DxfBinaryGraphicsData *iter;
-                        iter = (DxfBinaryGraphicsData *) mesh->binary_graphics_data;
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) mesh->binary_graphics_data;
                         while (iter != NULL)
                         {
                                 fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryGraphicsData *) iter->next;
+                                iter = (DxfBinaryData *) iter->next;
                         }
                 }
         }
@@ -724,7 +726,7 @@ dxf_mesh_free
         }
         free (mesh->linetype);
         free (mesh->layer);
-        dxf_binary_graphics_data_free_list (mesh->binary_graphics_data);
+        dxf_binary_data_free_list (mesh->binary_graphics_data);
         free (mesh->dictionary_owner_soft);
         free (mesh->object_owner_soft);
         free (mesh->material);
@@ -1670,7 +1672,7 @@ dxf_mesh_set_shadow_mode
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryGraphicsData *
+DxfBinaryData *
 dxf_mesh_get_binary_graphics_data
 (
         DxfMesh *mesh
@@ -1698,7 +1700,7 @@ dxf_mesh_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryGraphicsData *) mesh->binary_graphics_data);
+        return ((DxfBinaryData *) mesh->binary_graphics_data);
 }
 
 
@@ -1714,7 +1716,7 @@ dxf_mesh_set_binary_graphics_data
 (
         DxfMesh *mesh,
                 /*!< a pointer to a DXF \c MESH entity. */
-        DxfBinaryGraphicsData *data
+        DxfBinaryData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
@@ -1737,7 +1739,7 @@ dxf_mesh_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        mesh->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+        mesh->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif

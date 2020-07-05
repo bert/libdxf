@@ -1,7 +1,8 @@
 /*!
  * \file mesh.h
  *
- * \author Copyright (C) 2018 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2018, 2020
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF mesh entity (\c MESH).
  *
@@ -39,7 +40,7 @@
 
 
 #include "global.h"
-#include "binary_graphics_data.h"
+#include "binary_data.h"
 #include "point.h"
 #include "util.h"
 
@@ -123,7 +124,7 @@ dxf_mesh_struct
                  * </ol>\n
                  * Group code = 284.\n
                  * \since Introduced in version R2009. */
-        DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -279,8 +280,8 @@ int dxf_mesh_get_graphics_data_size (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_graphics_data_size (DxfMesh *mesh, int graphics_data_size);
 int16_t dxf_mesh_get_shadow_mode (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_shadow_mode (DxfMesh *mesh, int16_t shadow_mode);
-DxfBinaryGraphicsData *dxf_mesh_get_binary_graphics_data (DxfMesh *mesh);
-DxfMesh *dxf_mesh_set_binary_graphics_data (DxfMesh *mesh, DxfBinaryGraphicsData *data);
+DxfBinaryData *dxf_mesh_get_binary_graphics_data (DxfMesh *mesh);
+DxfMesh *dxf_mesh_set_binary_graphics_data (DxfMesh *mesh, DxfBinaryData *data);
 char *dxf_mesh_get_dictionary_owner_soft (DxfMesh *mesh);
 DxfMesh *dxf_mesh_set_dictionary_owner_soft (DxfMesh *mesh, char *dictionary_owner_soft);
 char *dxf_mesh_get_object_owner_soft (DxfMesh *mesh);
