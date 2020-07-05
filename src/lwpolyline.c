@@ -269,6 +269,7 @@ dxf_lwpolyline_read
                         * X-coordinate of a vertex. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &iter->p0->x0);
+                        /*! \todo Create a pointer to the next DxfVertex if and when required. */
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
@@ -276,6 +277,7 @@ dxf_lwpolyline_read
                         * Y-coordinate of a vertex. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &iter->p0->y0);
+                        /*! \todo Create a pointer to the next DxfVertex if and when required. */
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
