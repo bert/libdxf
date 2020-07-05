@@ -614,6 +614,13 @@ dxf_lwpolyline_write
         iter = (DxfVertex *) lwpolyline->vertices;
         while (iter != NULL)
         {
+                if (iter->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
                 fprintf (fp->fp, " 10\n%f\n", iter->p0->x0);
                 fprintf (fp->fp, " 20\n%f\n", iter->p0->y0);
                 if ((iter->start_width != lwpolyline->constant_width)
