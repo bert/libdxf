@@ -206,6 +206,38 @@ dxf_mesh_read
                   __FUNCTION__);
                 mesh = dxf_mesh_init (mesh);
         }
+        if (mesh->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfBinaryData struct.\n")));
+                mesh->binary_graphics_data = dxf_binary_data_init (mesh->binary_graphics_data);
+                if (mesh->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        if (mesh->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("Initializing a DxfPoint.\n")));
+                mesh->p0 = dxf_point_init (mesh->p0);
+                if (mesh->p0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
         iter310 = (DxfBinaryData *) mesh->binary_graphics_data;
         iter330 = 0;
         (fp->line_number)++;
