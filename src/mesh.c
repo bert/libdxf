@@ -219,6 +219,8 @@ dxf_mesh_read
                         fprintf (stderr,
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
         }
@@ -235,6 +237,8 @@ dxf_mesh_read
                         fprintf (stderr,
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
         }
