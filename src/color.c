@@ -1,7 +1,7 @@
 /*!
  * \file color.c
  *
- * \author Copyright (C) 2012, 2014, 2015, 2017, 2018
+ * \author Copyright (C) 2012, 2014, 2015, 2017, 2018, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF colors.
@@ -98,52 +98,73 @@ dxf_RGB_color_set
         char *name = NULL;
 
         RGB_color = dxf_RGB_color_new ();
-        if ((red <= 255) || (red >= 0))
+        if (red < 0)
+        {
+                fprintf (stderr,
+                  (_("Error red color value in %s () is negative.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        else if (red > 255)
+        {
+                fprintf (stderr,
+                  (_("Error red color value in %s () is out of range.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        else
         {
                 RGB_color->r = red;
         }
-        else
+        if (green < 0)
         {
                 fprintf (stderr,
-                  (_("Error red color value in %s () out of range.\n")),
+                  (_("Error green color value in %s () is negative.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((green <= 255) || (green >= 0))
+        else if (green > 255)
+        {
+                fprintf (stderr,
+                  (_("Error green color value in %s () is out of range.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        else
         {
                 RGB_color->g = green;
         }
-        else
+        if (blue < 0)
         {
                 fprintf (stderr,
-                  (_("Error green color value in %s () out of range.\n")),
+                  (_("Error blue color value in %s () is negative.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((blue <= 255) || (blue >= 0))
+        else if (blue > 255)
+        {
+                fprintf (stderr,
+                  (_("Error blue color value in %s () is out of range.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        else
         {
                 RGB_color->b = blue;
         }
-        else
-        {
-                fprintf (stderr,
-                  (_("Error blue color value in %s () out of range.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         triplet = dxf_RGB_to_triplet (red, green, blue);
         name = dxf_RGB_color_get_name (triplet);
-        if (name != NULL)
-        {
-                RGB_color->name = strdup (name);
-                free (name);
-        }
-        else
+        if (name == NULL)
         {
                 fprintf (stderr,
                   (_("Error name value in %s () contains a NULL pointer.\n")),
                   __FUNCTION__);
                 return (NULL);
+        }
+        else
+        {
+                RGB_color->name = strdup (name);
+                free (name);
         }
 #if DEBUG
         DXF_DEBUG_END
