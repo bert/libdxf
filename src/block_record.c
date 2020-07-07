@@ -219,7 +219,7 @@ dxf_block_record_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &block_record->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &block_record->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
