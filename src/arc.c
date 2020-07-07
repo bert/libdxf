@@ -260,7 +260,7 @@ dxf_arc_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &arc->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &arc->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
