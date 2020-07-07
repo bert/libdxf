@@ -274,7 +274,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &acad_proxy_entity->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &acad_proxy_entity->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
