@@ -257,7 +257,7 @@ dxf_block_read
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        fscanf (fp->fp, "%x\n", &block->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &block->id_code);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
