@@ -487,38 +487,59 @@ dxf_RGB_to_triplet
 #endif
         int triplet;
 
-        if ((red <= 255) || (red >= 0))
+        if (red < 0)
+        {
+                fprintf (stderr,
+                  (_("Error color value in %s () is negative.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        else if (red > 255)
+        {
+                fprintf (stderr,
+                  (_("Error color value in %s () is out of range.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        else
         {
                 triplet = red * 65536;
         }
-        else
+        if (green < 0)
         {
                 fprintf (stderr,
-                  (_("Error red color value in %s () out of range.\n")),
+                  (_("Error color value in %s () is negative.\n")),
                   __FUNCTION__);
-                return (-1);
+                return (EXIT_FAILURE);
         }
-        if ((green <= 255) || (green >= 0))
+        else if (green > 255)
+        {
+                fprintf (stderr,
+                  (_("Error color value in %s () is out of range.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        else
         {
                 triplet += green * 256;
         }
-        else
+        if (blue < 0)
         {
                 fprintf (stderr,
-                  (_("Error green color value in %s () out of range.\n")),
+                  (_("Error color value in %s () is negative.\n")),
                   __FUNCTION__);
-                return (-2);
+                return (EXIT_FAILURE);
         }
-        if ((blue <= 255) || (blue >= 0))
+        else if (blue > 255)
+        {
+                fprintf (stderr,
+                  (_("Error color value in %s () is out of range.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        else
         {
                 triplet += blue;
-        }
-        else
-        {
-                fprintf (stderr,
-                  (_("Error blue color value in %s () out of range.\n")),
-                  __FUNCTION__);
-                return (-3);
         }
 #if DEBUG
         DXF_DEBUG_END
