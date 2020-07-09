@@ -197,7 +197,7 @@ dxf_dictionaryvar_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dictionaryvar->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &dictionaryvar->id_code);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
