@@ -203,7 +203,7 @@ dxf_idbuffer_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &idbuffer->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &idbuffer->id_code);
                 }
                 else if (strcmp (temp_string, "100") == 0)
                 {
