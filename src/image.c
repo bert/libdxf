@@ -331,7 +331,7 @@ dxf_image_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &image->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &image->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
