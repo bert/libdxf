@@ -277,7 +277,7 @@ dxf_helix_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &helix->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &helix->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
