@@ -200,7 +200,7 @@ dxf_imagedef_reactor_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &imagedef_reactor->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &imagedef_reactor->id_code);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
