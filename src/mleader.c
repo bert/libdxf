@@ -1,7 +1,8 @@
 /*!
  * \file mleader.c
  *
- * \author Copyright (C) 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2018, 2019, 2020
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mleader entity (\c MLEADER).
  *
@@ -240,7 +241,7 @@ dxf_mleader_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &mleader->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &mleader->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
