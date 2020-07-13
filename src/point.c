@@ -228,7 +228,7 @@ dxf_point_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &point->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &point->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
