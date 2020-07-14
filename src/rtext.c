@@ -1,7 +1,8 @@
 /*!
  * \file rtext.c
  *
- * \author Copyright (C) 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2019, 2020
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF rtext entity (\c RTEXT).
  *
@@ -219,7 +220,7 @@ dxf_rtext_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &rtext->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &rtext->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
