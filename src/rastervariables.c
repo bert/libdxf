@@ -1,7 +1,7 @@
 /*!
  * \file rastervariables.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF rastervariables object (\c RASTERVARIABLES).
@@ -195,7 +195,7 @@ dxf_rastervariables_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &rastervariables->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &rastervariables->id_code);
                 }
                 if (strcmp (temp_string, "70") == 0)
                 {
