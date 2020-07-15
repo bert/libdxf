@@ -1,7 +1,7 @@
 /*!
  * \file spatial_index.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF spatial_index object (\c SPATIAL_INDEX).
@@ -207,7 +207,7 @@ dxf_spatial_index_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &spatial_index->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &spatial_index->id_code);
                 }
                 if (strcmp (temp_string, "40") == 0)
                 {
