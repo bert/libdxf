@@ -1,7 +1,7 @@
 /*!
  * \file spline.c
  * 
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF spline entity (\c SPLINE).
@@ -431,7 +431,7 @@ dxf_spline_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &spline->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &spline->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
