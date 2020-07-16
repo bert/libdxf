@@ -1,7 +1,7 @@
 /*!
  * \file sun.c
  *
- * \author Copyright (C) 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF sun entity (\c SUN).
  *
@@ -221,7 +221,7 @@ dxf_sun_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &sun->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &sun->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
