@@ -1,7 +1,7 @@
 /*!
  * \file ucs.c
  *
- * \author Copyright (C) 2014, 2015, 2017, 2018, 2019
+ * \author Copyright (C) 2014, 2015, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF User Coordinate System entity (\c UCS).
@@ -213,7 +213,7 @@ dxf_ucs_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &ucs->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &ucs->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
