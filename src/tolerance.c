@@ -1,7 +1,7 @@
 /*!
  * \file tolerance.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF tolerance entity (\c TOLERANCE).
@@ -223,7 +223,7 @@ dxf_tolerance_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &tolerance->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &tolerance->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
