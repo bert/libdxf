@@ -1,7 +1,7 @@
 /*!
  * \file viewport.c
  *
- * \author Copyright (C) 2010, 2012, 2015, 2017, 2018, 2019
+ * \author Copyright (C) 2010, 2012, 2015, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF viewport entity (\c VIEWPORT).
@@ -253,7 +253,7 @@ dxf_viewport_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &viewport->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &viewport->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
