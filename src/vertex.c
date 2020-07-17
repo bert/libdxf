@@ -2,7 +2,7 @@
  * \file vertex.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2017, 2018,
- * 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -214,7 +214,7 @@ dxf_vertex_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &vertex->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &vertex->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
