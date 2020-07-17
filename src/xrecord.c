@@ -1,7 +1,7 @@
 /*!
  * \file xrecord.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF xrecord object (\c XRECORD).
@@ -196,7 +196,7 @@ dxf_xrecord_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &xrecord->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &xrecord->id_code);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
