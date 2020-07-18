@@ -1,7 +1,7 @@
 /*!
  * \file table.c
  *
- * \author Copyright (C) 2009, 2010, 2011, 2014, 2015, 2017, 2018
+ * \author Copyright (C) 2009, 2010, 2011, 2014, 2015, 2017, 2018, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
@@ -371,7 +371,7 @@ dxf_table_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &table->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &table->id_code);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
