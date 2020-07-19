@@ -1,7 +1,7 @@
 /*!
  * \file ltype.h
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015 2016, 2017, 2018
+ * \author Copyright (C) 2008, 2012, 2014, 2015 2016, 2017, 2018, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ltype symbol table entry (\c LTYPE).
@@ -44,6 +44,7 @@
 
 
 #include "global.h"
+#include "util.h"
 
 
 #ifdef __cplusplus
@@ -67,7 +68,7 @@ dxf_ltype_struct
         char *description;
                 /*!< Descriptive text for linetype.\n
                  * Group code = 3. */
-        char *complex_text_string[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+        DxfChar *complex_text_string;
                 /*!< Text string (one per element if code 74 = 2).\n
                  * Group code = 9. */
         double total_pattern_length;
@@ -165,8 +166,8 @@ char *dxf_ltype_get_linetype_name (DxfLType *ltype);
 DxfLType *dxf_ltype_set_linetype_name (DxfLType *ltype, char *linetype_name);
 char *dxf_ltype_get_description (DxfLType *ltype);
 DxfLType *dxf_ltype_set_description (DxfLType *ltype, char *description);
-char *dxf_ltype_get_complex_text_string (DxfLType *ltype, int i);
-DxfLType *dxf_ltype_set_complex_text_string (DxfLType *ltype, int i, char *complex_text_string);
+DxfChar *dxf_ltype_get_complex_text_string (DxfLType *ltype);
+DxfLType *dxf_ltype_set_complex_text_string (DxfLType *ltype,DxfChar *complex_text_string);
 double dxf_ltype_get_total_pattern_length (DxfLType *ltype);
 DxfLType *dxf_ltype_set_total_pattern_length (DxfLType *ltype, double total_pattern_length);
 double dxf_ltype_get_complex_x_offset (DxfLType *ltype, int i);

@@ -94,8 +94,6 @@ dxf_ltype_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (ltype == NULL)
         {
@@ -117,24 +115,13 @@ dxf_ltype_init
         ltype->description = strdup ("");
         ltype->total_pattern_length = 0.0;
         ltype->number_of_linetype_elements = 0;
-        for ((i = 0); (i <= DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS); i++)
-        {
-                dxf_ltype_set_complex_text_string (ltype, i, strdup (""));
-                dxf_ltype_set_complex_x_offset (ltype, i, 0.0);
-                dxf_ltype_set_complex_y_offset (ltype, i, 0.0);
-                dxf_ltype_set_complex_scale (ltype, i, 0.0);
-                dxf_ltype_set_dash_length (ltype, i, 0.0);
-                dxf_ltype_set_complex_rotation (ltype, i, 0.0);
-                dxf_ltype_set_complex_element (ltype, i, 1);
-                dxf_ltype_set_complex_shape_number (ltype, i, 0);
-                dxf_ltype_set_complex_style_pointer (ltype, i, strdup (""));
-        }
         ltype->flag = 0;
         ltype->alignment = 65;
         ltype->dictionary_owner_soft = strdup ("");
         ltype->dictionary_owner_hard = strdup ("");
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
+        ltype->complex_text_string = NULL;
         ltype->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -226,7 +213,8 @@ dxf_ltype_read
                         /* Now follows a string containing a complex
                          * text string (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ltype->complex_text_string[element]);
+                        /*! \todo add code. */
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ltype->complex_text_string->value);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -497,7 +485,8 @@ dxf_ltype_write
                                  * The complex is a text string.
                                  * Use a relative rotation angle.
                                  */
-                                fprintf (fp->fp, "  9\n%s\n", dxf_ltype_get_complex_text_string (ltype, i));
+                                /*! \todo modify code. */
+//                                fprintf (fp->fp, "  9\n%s\n", ltype->get_complex_text_string->value;
                                 fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
@@ -510,7 +499,8 @@ dxf_ltype_write
                                  * The complex is a text string.
                                  * Use an absolute rotation angle.
                                  */
-                                fprintf (fp->fp, "  9\n%s\n", dxf_ltype_get_complex_text_string (ltype, i));
+                                /*! \todo modify code. */
+//                                fprintf (fp->fp, "  9\n%s\n", ltype->get_complex_text_string->value;
                                 fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
@@ -576,8 +566,6 @@ dxf_ltype_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (ltype == NULL)
         {
@@ -595,11 +583,8 @@ dxf_ltype_free
         }
         free (ltype->linetype_name);
         free (ltype->description);
-        for ((i = 0); (i <= DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS); i++)
-        {
-                free (dxf_ltype_get_complex_text_string (ltype, i));
-                free (dxf_ltype_get_complex_style_pointer (ltype, i));
-        }
+        dxf_char_free (ltype->complex_text_string);
+        free (ltype->complex_style_pointer);
         free (ltype->dictionary_owner_soft);
         free (ltype->dictionary_owner_hard);
         free (ltype);
@@ -882,13 +867,11 @@ dxf_ltype_set_description
  * \return \c complex_text_string when sucessful, \c NULL when an error
  * occurred.
  */
-char *
+DxfChar *
 dxf_ltype_get_complex_text_string
 (
-        DxfLType *ltype,
+        DxfLType *ltype
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i
-                /*!< index. */
 )
 {
 #if DEBUG
@@ -902,21 +885,7 @@ dxf_ltype_get_complex_text_string
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (ltype->complex_text_string[i] ==  NULL)
+        if (ltype->complex_text_string == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -926,7 +895,7 @@ dxf_ltype_get_complex_text_string
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (ltype->complex_text_string[i]));
+        return (ltype->complex_text_string);
 }
 
 
@@ -939,9 +908,7 @@ dxf_ltype_set_complex_text_string
 (
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i,
-                /*!< index. */
-        char *complex_text_string
+        DxfChar *complex_text_string
                 /*!< a string containing the \c complex_text_string for
                  * index \c i of the entity. */
 )
@@ -957,20 +924,6 @@ dxf_ltype_set_complex_text_string
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         if (complex_text_string == NULL)
         {
                 fprintf (stderr,
@@ -978,7 +931,21 @@ dxf_ltype_set_complex_text_string
                   __FUNCTION__);
                 return (NULL);
         }
-        ltype->complex_text_string[i] = strdup (complex_text_string);
+        if (ltype->complex_text_string == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                ltype->complex_text_string = dxf_char_init (ltype->complex_text_string);
+                if (ltype->complex_text_string == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory for a DxfChar struct.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
+        }
+        /*! \todo add code. */
 #if DEBUG
         DXF_DEBUG_END
 #endif
