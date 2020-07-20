@@ -122,6 +122,7 @@ dxf_ltype_init
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
         ltype->complex_text_string = NULL;
+        ltype->complex_x_offset = NULL;
         ltype->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -200,6 +201,7 @@ dxf_ltype_read
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
+                        /*! \todo add code for proper implementation. */
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ltype->linetype_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
@@ -213,7 +215,7 @@ dxf_ltype_read
                         /* Now follows a string containing a complex
                          * text string (multiple entries possible). */
                         (fp->line_number)++;
-                        /*! \todo add code. */
+                        /*! \todo add code for proper implementation. */
                         fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ltype->complex_text_string->value);
                 }
                 else if (strcmp (temp_string, "40") == 0)
@@ -228,7 +230,8 @@ dxf_ltype_read
                         /* Now follows a string containing a complex
                          * x offset value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ltype->complex_x_offset[element]);
+                        /*! \todo add code for proper implementation. */
+//                        fscanf (fp->fp, "%lf\n", ltype->complex_x_offset);
                 }
                 else if (strcmp (temp_string, "45") == 0)
                 {
@@ -467,14 +470,16 @@ dxf_ltype_write
                 {
                         case 0:
                                 /* No embedded shape/text. */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                /*! \todo add code for a proper implementation. */
+//                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
                                 break;
                         case 1:
                                 /* Specify an absolute rotation. */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                /*! \todo add code for a proper implementation. */
+//                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
@@ -485,9 +490,9 @@ dxf_ltype_write
                                  * The complex is a text string.
                                  * Use a relative rotation angle.
                                  */
-                                /*! \todo modify code. */
+                                /*! \todo add code for a proper implementation. */
 //                                fprintf (fp->fp, "  9\n%s\n", ltype->get_complex_text_string->value;
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+//                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
@@ -499,9 +504,9 @@ dxf_ltype_write
                                  * The complex is a text string.
                                  * Use an absolute rotation angle.
                                  */
-                                /*! \todo modify code. */
+                                /*! \todo add code for a proper implementation. */
 //                                fprintf (fp->fp, "  9\n%s\n", ltype->get_complex_text_string->value;
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+//                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
@@ -513,7 +518,8 @@ dxf_ltype_write
                                  * The complex is a shape.
                                  * Use a relative rotation angle.
                                  */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                /*! \todo add code for a proper implementation. */
+//                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
@@ -525,7 +531,8 @@ dxf_ltype_write
                                  * The complex is a shape.
                                  * Use an absolute rotation angle.
                                  */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                /*! \todo add code for a proper implementation. */
+//                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
                                 fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
                                 fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
@@ -1021,13 +1028,11 @@ dxf_ltype_set_total_pattern_length
  *
  * \return \c complex_x_offset when sucessful.
  */
-double
+DxfDouble *
 dxf_ltype_get_complex_x_offset
 (
-        DxfLType *ltype,
+        DxfLType *ltype
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i
-                /*!< index. */
 )
 {
 #if DEBUG
@@ -1039,26 +1044,12 @@ dxf_ltype_get_complex_x_offset
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (i < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (ltype->complex_x_offset[i]);
+        return (ltype->complex_x_offset);
 }
 
 
@@ -1071,9 +1062,7 @@ dxf_ltype_set_complex_x_offset
 (
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i,
-                /*!< index. */
-        double complex_x_offset
+        DxfDouble *complex_x_offset
                 /*!< a double containing the \c complex_x_offset for
                  * index \c i of the entity. */
 )
@@ -1089,21 +1078,7 @@ dxf_ltype_set_complex_x_offset
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        ltype->complex_x_offset[i] = complex_x_offset;
+        ltype->complex_x_offset = complex_x_offset;
 #if DEBUG
         DXF_DEBUG_END
 #endif

@@ -74,7 +74,7 @@ dxf_ltype_struct
         double total_pattern_length;
                 /*!< Total pattern length.\n
                  * Group code = 40. */
-        double complex_x_offset[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+        DxfDouble *complex_x_offset;
                 /*!< X offset value (optional).\n
                  * Multiple entries can exist.\n
                  * Group code = 44. */
@@ -170,8 +170,8 @@ DxfChar *dxf_ltype_get_complex_text_string (DxfLType *ltype);
 DxfLType *dxf_ltype_set_complex_text_string (DxfLType *ltype,DxfChar *complex_text_string);
 double dxf_ltype_get_total_pattern_length (DxfLType *ltype);
 DxfLType *dxf_ltype_set_total_pattern_length (DxfLType *ltype, double total_pattern_length);
-double dxf_ltype_get_complex_x_offset (DxfLType *ltype, int i);
-DxfLType *dxf_ltype_set_complex_x_offset (DxfLType *ltype, int i, double complex_x_offset);
+DxfDouble *dxf_ltype_get_complex_x_offset (DxfLType *ltype);
+DxfLType *dxf_ltype_set_complex_x_offset (DxfLType *ltype, DxfDouble *complex_x_offset);
 double dxf_ltype_get_complex_y_offset (DxfLType *ltype, int i);
 DxfLType *dxf_ltype_set_complex_y_offset (DxfLType *ltype, int i, double complex_y_offset);
 double dxf_ltype_get_complex_scale (DxfLType *ltype, int i);
