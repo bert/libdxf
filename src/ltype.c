@@ -1050,6 +1050,13 @@ dxf_ltype_get_complex_x_offset
                   __FUNCTION__);
                 return (NULL);
         }
+        if (ltype->complex_x_offset == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was foundd.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
