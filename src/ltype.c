@@ -1082,6 +1082,13 @@ dxf_ltype_set_complex_x_offset
                   __FUNCTION__);
                 return (NULL);
         }
+        if (complex_x_offset == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         ltype->complex_x_offset = complex_x_offset;
 #if DEBUG
         DXF_DEBUG_END
