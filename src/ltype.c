@@ -125,6 +125,7 @@ dxf_ltype_init
         ltype->complex_x_offset = NULL;
         ltype->complex_y_offset = NULL;
         ltype->complex_scale = NULL;
+        ltype->dash_length = NULL;
         ltype->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -256,8 +257,9 @@ dxf_ltype_read
                         /* Now follows a string containing a dash length
                          * value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ltype->dash_length[element]);
-                        element++;
+                        /*! \todo add code for proper implementation. */
+//                        fscanf (fp->fp, "%lf\n", &ltype->dash_length);
+//                        element++;
                         /*! \todo We are assuming that 49 is the first
                          * group code that is encountered for each
                          * element in the linetype definition.\n
@@ -468,7 +470,8 @@ dxf_ltype_write
         fprintf (fp->fp, " 40\n%f\n", ltype->total_pattern_length);
         for ((i = 0); (i < ltype->number_of_linetype_elements); i++)
         {
-                fprintf (fp->fp, " 49\n%f\n", dxf_ltype_get_dash_length (ltype, i));
+                                /*! \todo add code for a proper implementation. */
+//                fprintf (fp->fp, " 49\n%f\n", dxf_ltype_get_dash_length (ltype, i));
                 fprintf (fp->fp, " 74\n%d\n", dxf_ltype_get_complex_element (ltype, i));
                 switch (dxf_ltype_get_complex_element (ltype, i))
                 {
@@ -601,6 +604,7 @@ dxf_ltype_free
         dxf_double_free_list (ltype->complex_x_offset);
         dxf_double_free_list (ltype->complex_y_offset);
         dxf_double_free_list (ltype->complex_scale);
+        dxf_double_free_list (ltype->dash_length);
         free (ltype);
         ltype = NULL;
 #if DEBUG
@@ -1264,18 +1268,16 @@ dxf_ltype_set_complex_scale
 
 
 /*!
- * \brief Get the \c dash_length indexed by \c i from a DXF
- * \c LTYPE entity.
+ * \brief Get a pointer to a linked list of \c dash_length values from a
+ * DXF \c LTYPE entity.
  *
  * \return \c dash_length when sucessful.
  */
-double
+DxfDouble *
 dxf_ltype_get_dash_length
 (
-        DxfLType *ltype,
+        DxfLType *ltype
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i
-                /*!< index. */
 )
 {
 #if DEBUG
@@ -1287,41 +1289,32 @@ dxf_ltype_get_dash_length
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
-        if (i < 0)
+        if (ltype->dash_length == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (ltype->dash_length[i]);
+        return (ltype->dash_length);
 }
 
 
 /*!
- * \brief Set the \c dash_length for index \c i for a DXF
- * \c LTYPE entity.
+ * \brief Set a pointer to a linked list of \c dash_length values for a
+ * DXF \c LTYPE entity.
  */
 DxfLType *
 dxf_ltype_set_dash_length
 (
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i,
-                /*!< index. */
-        double dash_length
+        DxfDouble *dash_length
                 /*!< a double containing the \c dash_length for
                  * index \c i of the entity. */
 )
@@ -1337,21 +1330,14 @@ dxf_ltype_set_dash_length
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
+        if (dash_length == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        ltype->dash_length[i] = dash_length;
+        ltype->dash_length = dash_length;
 #if DEBUG
         DXF_DEBUG_END
 #endif
