@@ -126,6 +126,7 @@ dxf_ltype_init
         ltype->complex_y_offset = NULL;
         ltype->complex_scale = NULL;
         ltype->dash_length = NULL;
+        ltype->complex_rotation = NULL;
         ltype->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -273,7 +274,8 @@ dxf_ltype_read
                         /* Now follows a string containing a complex
                          * rotation value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ltype->complex_rotation[element]);
+                        /*! \todo add code for proper implementation. */
+//                        fscanf (fp->fp, "%lf\n", &ltype->complex_rotation);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
@@ -502,7 +504,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
 //                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
+//                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
                                 fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
@@ -516,7 +518,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
 //                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
+//                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
                                 fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
@@ -529,7 +531,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
 //                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
+//                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n%d\n", dxf_ltype_get_complex_shape_number (ltype, i));
                                 fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
@@ -542,7 +544,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
 //                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
+//                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n%d\n", dxf_ltype_get_complex_shape_number (ltype, i));
                                 fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
@@ -605,6 +607,7 @@ dxf_ltype_free
         dxf_double_free_list (ltype->complex_y_offset);
         dxf_double_free_list (ltype->complex_scale);
         dxf_double_free_list (ltype->dash_length);
+        dxf_double_free_list (ltype->complex_rotation);
         free (ltype);
         ltype = NULL;
 #if DEBUG
@@ -1346,18 +1349,16 @@ dxf_ltype_set_dash_length
 
 
 /*!
- * \brief Get the \c complex_rotation indexed by \c i from a DXF
- * \c LTYPE entity.
+ * \brief Get a pointer to a linked list of \c complex_rotation values
+ * of a DXF \c LTYPE entity.
  *
  * \return \c complex_rotation when sucessful.
  */
-double
+DxfDouble *
 dxf_ltype_get_complex_rotation
 (
-        DxfLType *ltype,
+        DxfLType *ltype
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i
-                /*!< index. */
 )
 {
 #if DEBUG
@@ -1369,43 +1370,34 @@ dxf_ltype_get_complex_rotation
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
-        if (i < 0)
+        if (ltype->complex_rotation == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (ltype->complex_rotation[i]);
+        return (ltype->complex_rotation);
 }
 
 
 /*!
- * \brief Set the \c complex_rotation for index \c i for a DXF
- * \c LTYPE entity.
+ * \brief Set a pointer of a linked list of \c complex_rotation values
+ * for a DXF \c LTYPE entity.
  */
 DxfLType *
 dxf_ltype_set_complex_rotation
 (
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i,
-                /*!< index. */
-        double complex_rotation
-                /*!< a double containing the \c complex_rotation for
-                 * index \c i of the entity. */
+        DxfDouble *complex_rotation
+                /*!< a pointer to a linked list containing
+                 * \c complex_rotation values of a \c LTYPE entity. */
 )
 {
 #if DEBUG
@@ -1419,21 +1411,14 @@ dxf_ltype_set_complex_rotation
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
+        if (complex_rotation == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        ltype->complex_rotation[i] = complex_rotation;
+        ltype->complex_rotation = complex_rotation;
 #if DEBUG
         DXF_DEBUG_END
 #endif

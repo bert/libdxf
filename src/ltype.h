@@ -89,7 +89,7 @@ dxf_ltype_struct
         DxfDouble *dash_length;
                 /*!< Dash, dot or space length (one entry per element).\n
                  * Group code = 49. */
-        double complex_rotation[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+        DxfDouble *complex_rotation;
                 /*!< \n
                  * R = (relative) or A = (absolute) rotation value in radians
                  * of embedded shape or text.\n
@@ -178,8 +178,8 @@ DxfDouble *dxf_ltype_get_complex_scale (DxfLType *ltype);
 DxfLType *dxf_ltype_set_complex_scale (DxfLType *ltype, DxfDouble *complex_scale);
 DxfDouble *dxf_ltype_get_dash_length (DxfLType *ltype);
 DxfLType *dxf_ltype_set_dash_length (DxfLType *ltype, DxfDouble *dash_length);
-double dxf_ltype_get_complex_rotation (DxfLType *ltype, int i);
-DxfLType *dxf_ltype_set_complex_rotation (DxfLType *ltype, int i, double complex_rotation);
+DxfDouble *dxf_ltype_get_complex_rotation (DxfLType *ltype);
+DxfLType *dxf_ltype_set_complex_rotation (DxfLType *ltype, DxfDouble *complex_rotation);
 int dxf_ltype_get_flag (DxfLType *ltype);
 DxfLType *dxf_ltype_set_flag (DxfLType *ltype, int flag);
 int dxf_ltype_is_xreferenced (DxfLType *ltype);
