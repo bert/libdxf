@@ -141,7 +141,7 @@ dxf_ltype_struct
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330. */
-        char *complex_style_pointer[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+        DxfChar *complex_style_pointer;
                 /*!< group code = 340.Pointer to \c STYLE object.\n
                  * One per element if group code 74 > 0.\n
                  * Group code = 340. */
@@ -195,8 +195,8 @@ int dxf_ltype_get_complex_shape_number (DxfLType *ltype, int i);
 DxfLType *dxf_ltype_set_complex_shape_number (DxfLType *ltype, int i, int complex_shape_number);
 char *dxf_ltype_get_dictionary_owner_soft (DxfLType *ltype);
 DxfLType *dxf_ltype_set_dictionary_owner_soft (DxfLType *ltype, char *dictionary_owner_soft);
-char *dxf_ltype_get_complex_style_pointer (DxfLType *ltype, int i);
-DxfLType *dxf_ltype_set_complex_style_pointer (DxfLType *ltype, int i, char *complex_style_pointer);
+DxfChar *dxf_ltype_get_complex_style_pointer (DxfLType *ltype);
+DxfLType *dxf_ltype_set_complex_style_pointer (DxfLType *ltype, DxfChar *complex_style_pointer);
 char *dxf_ltype_get_dictionary_owner_hard (DxfLType *ltype);
 DxfLType *dxf_ltype_set_dictionary_owner_hard (DxfLType *ltype, char *dictionary_owner_hard);
 DxfLType *dxf_ltype_get_next (DxfLType *ltype);

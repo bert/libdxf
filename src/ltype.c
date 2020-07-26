@@ -127,6 +127,7 @@ dxf_ltype_init
         ltype->complex_scale = NULL;
         ltype->dash_length = NULL;
         ltype->complex_rotation = NULL;
+        ltype->complex_style_pointer = NULL;
         ltype->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -324,7 +325,8 @@ dxf_ltype_read
                         /* Now follows a string containing a complex
                          * style pointer string (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ltype->complex_style_pointer[element]);
+                        /*! \todo add code for proper implementation. */
+//                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, ltype->complex_style_pointer[element]);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
@@ -492,7 +494,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
+//                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 2:
                                 /*
@@ -506,7 +508,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
 //                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
+//                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 3:
                                 /*
@@ -520,7 +522,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
 //                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
+//                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 4:
                                 /*
@@ -533,7 +535,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
 //                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n%d\n", dxf_ltype_get_complex_shape_number (ltype, i));
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
+//                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 5:
                                 /*
@@ -546,7 +548,7 @@ dxf_ltype_write
 //                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
 //                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n%d\n", dxf_ltype_get_complex_shape_number (ltype, i));
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
+//                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         default:
                                 fprintf (stderr,
@@ -608,6 +610,7 @@ dxf_ltype_free
         dxf_double_free_list (ltype->complex_scale);
         dxf_double_free_list (ltype->dash_length);
         dxf_double_free_list (ltype->complex_rotation);
+        dxf_char_free_list (ltype->complex_style_pointer);
         free (ltype);
         ltype = NULL;
 #if DEBUG
@@ -2022,19 +2025,17 @@ dxf_ltype_set_dictionary_owner_soft
 
 
 /*!
- * \brief Get the \c complex_style_pointer indexed by \c i from a DXF
- * \c LTYPE entity.
+ * \brief Get a pointer to a linked list of \c complex_style_pointer
+ * from a DXF \c LTYPE entity.
  *
  * \return \c complex_style_pointer when sucessful, \c NULL when an
  * error occurred.
  */
-char *
+DxfChar *
 dxf_ltype_get_complex_style_pointer
 (
-        DxfLType *ltype,
+        DxfLType *ltype
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i
-                /*!< index. */
 )
 {
 #if DEBUG
@@ -2048,21 +2049,7 @@ dxf_ltype_get_complex_style_pointer
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (ltype->complex_style_pointer[i] ==  NULL)
+        if (ltype->complex_style_pointer ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
@@ -2072,22 +2059,20 @@ dxf_ltype_get_complex_style_pointer
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (ltype->complex_style_pointer[i]));
+        return (ltype->complex_style_pointer);
 }
 
 
 /*!
- * \brief Set the \c complex_style_pointer for index \c i for a DXF
- * \c LTYPE entity.
+ * \brief Set a pointer to a linked list of \c complex_style_pointer for
+ * a DXF \c LTYPE entity.
  */
 DxfLType *
 dxf_ltype_set_complex_style_pointer
 (
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i,
-                /*!< index. */
-        char *complex_style_pointer
+        DxfChar *complex_style_pointer
                 /*!< a string containing the \c complex_style_pointer
                  * for index \c i of the entity. */
 )
@@ -2103,20 +2088,6 @@ dxf_ltype_set_complex_style_pointer
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         if (complex_style_pointer == NULL)
         {
                 fprintf (stderr,
@@ -2124,7 +2095,7 @@ dxf_ltype_set_complex_style_pointer
                   __FUNCTION__);
                 return (NULL);
         }
-        ltype->complex_style_pointer[i] = strdup (complex_style_pointer);
+        ltype->complex_style_pointer = complex_style_pointer;
 #if DEBUG
         DXF_DEBUG_END
 #endif
