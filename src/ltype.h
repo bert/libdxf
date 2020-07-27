@@ -119,7 +119,7 @@ dxf_ltype_struct
         int number_of_linetype_elements;
                 /*!< The number of linetype elements.\n
                  * Group code = 73. */
-        int complex_element[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+        DxfInt16 *complex_element;
                 /*!< Complex linetype element type (one per element).\n
                  * Default is 0 (no embedded shape/text).\n
                  * The following codes are bit values:\n
@@ -189,8 +189,8 @@ int dxf_ltype_get_alignment (DxfLType *ltype);
 DxfLType *dxf_ltype_set_alignment (DxfLType *ltype, int alignment);
 int dxf_ltype_get_number_of_linetype_elements (DxfLType *ltype);
 DxfLType *dxf_ltype_set_number_of_linetype_elements (DxfLType *ltype, int number_of_linetype_elements);
-int dxf_ltype_get_complex_element (DxfLType *ltype, int i);
-DxfLType *dxf_ltype_set_complex_element (DxfLType *ltype, int i, int complex_element);
+DxfInt16 *dxf_ltype_get_complex_element (DxfLType *ltype);
+DxfLType *dxf_ltype_set_complex_element (DxfLType *ltype, DxfInt16 *complex_element);
 int dxf_ltype_get_complex_shape_number (DxfLType *ltype, int i);
 DxfLType *dxf_ltype_set_complex_shape_number (DxfLType *ltype, int i, int complex_shape_number);
 char *dxf_ltype_get_dictionary_owner_soft (DxfLType *ltype);

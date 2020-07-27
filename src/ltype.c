@@ -127,6 +127,7 @@ dxf_ltype_init
         ltype->complex_scale = NULL;
         ltype->dash_length = NULL;
         ltype->complex_rotation = NULL;
+        ltype->complex_element = NULL;
         ltype->complex_style_pointer = NULL;
         ltype->next = NULL;
 #if DEBUG
@@ -304,7 +305,8 @@ dxf_ltype_read
                         /* Now follows a string containing a complex
                          * element value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &ltype->complex_element[element]);
+                        /*! \todo add code for proper implementation. */
+//                        fscanf (fp->fp, "%d\n", &ltype->complex_element);
                 }
                 else if (strcmp (temp_string, "75") == 0)
                 {
@@ -476,8 +478,8 @@ dxf_ltype_write
         {
                                 /*! \todo add code for a proper implementation. */
 //                fprintf (fp->fp, " 49\n%f\n", dxf_ltype_get_dash_length (ltype, i));
-                fprintf (fp->fp, " 74\n%d\n", dxf_ltype_get_complex_element (ltype, i));
-                switch (dxf_ltype_get_complex_element (ltype, i))
+//                fprintf (fp->fp, " 74\n%d\n", dxf_ltype_get_complex_element (ltype, i));
+                switch (ltype->complex_element->value)
                 {
                         case 0:
                                 /* No embedded shape/text. */
@@ -610,6 +612,7 @@ dxf_ltype_free
         dxf_double_free_list (ltype->complex_scale);
         dxf_double_free_list (ltype->dash_length);
         dxf_double_free_list (ltype->complex_rotation);
+        dxf_int16_free_list (ltype->complex_element);
         dxf_char_free_list (ltype->complex_style_pointer);
         free (ltype);
         ltype = NULL;
@@ -1753,18 +1756,16 @@ dxf_ltype_set_number_of_linetype_elements
 
 
 /*!
- * \brief Get the \c complex_element indexed by \c i from a DXF
- * \c LTYPE entity.
+ * \brief Get the pointer to a linked list of \c complex_element from a
+ * DXF \c LTYPE entity.
  *
  * \return \c complex_element when sucessful.
  */
-int
+DxfInt16 *
 dxf_ltype_get_complex_element
 (
-        DxfLType *ltype,
+        DxfLType *ltype
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i
-                /*!< index. */
 )
 {
 #if DEBUG
@@ -1776,31 +1777,24 @@ dxf_ltype_get_complex_element
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
-        if (i < 0)
+        if (ltype->complex_element == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (ltype->complex_element[i]);
+        return (ltype->complex_element);
 }
 
 
 /*!
- * \brief Set the \c complex_element for index \c i for a DXF
+ * \brief Set the pointer of linked list of \c complex_element for a DXF
  * \c LTYPE entity.
  */
 DxfLType *
@@ -1808,9 +1802,7 @@ dxf_ltype_set_complex_element
 (
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
-        int i,
-                /*!< index. */
-        int complex_element
+        DxfInt16 *complex_element
                 /*!< an integer containing the \c complex_element for
                  * index \c i of the entity. */
 )
@@ -1826,21 +1818,14 @@ dxf_ltype_set_complex_element
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i < 0)
+        if (complex_element == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative index was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () an out of range index was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        ltype->complex_element[i] = complex_element;
+        ltype->complex_element = complex_element;
 #if DEBUG
         DXF_DEBUG_END
 #endif
