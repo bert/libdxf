@@ -131,7 +131,7 @@ dxf_ltype_struct
                  * <li value = "4"> Embedded element is a shape.</li>
                  * </ol>
                  * Group code = 74. */
-        int complex_shape_number[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+        DxfInt16 *complex_shape_number;
                 /*!< Shape number (one per element) if code 74 specifies
                  * an embedded shape.\n
                  * If code 74 specifies an embedded text string, this
@@ -191,8 +191,8 @@ int dxf_ltype_get_number_of_linetype_elements (DxfLType *ltype);
 DxfLType *dxf_ltype_set_number_of_linetype_elements (DxfLType *ltype, int number_of_linetype_elements);
 DxfInt16 *dxf_ltype_get_complex_element (DxfLType *ltype);
 DxfLType *dxf_ltype_set_complex_element (DxfLType *ltype, DxfInt16 *complex_element);
-int dxf_ltype_get_complex_shape_number (DxfLType *ltype, int i);
-DxfLType *dxf_ltype_set_complex_shape_number (DxfLType *ltype, int i, int complex_shape_number);
+DxfInt16 *dxf_ltype_get_complex_shape_number (DxfLType *ltype);
+DxfLType *dxf_ltype_set_complex_shape_number (DxfLType *ltype, DxfInt16 *complex_shape_number);
 char *dxf_ltype_get_dictionary_owner_soft (DxfLType *ltype);
 DxfLType *dxf_ltype_set_dictionary_owner_soft (DxfLType *ltype, char *dictionary_owner_soft);
 DxfChar *dxf_ltype_get_complex_style_pointer (DxfLType *ltype);
