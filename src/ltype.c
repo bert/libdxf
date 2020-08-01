@@ -930,8 +930,8 @@ dxf_ltype_get_complex_text_string
 
 
 /*!
- * \brief Set the \c complex_text_string for index \c i for a DXF
- * \c LTYPE entity.
+ * \brief Set the pointer to the linked list of \c complex_text_string
+ * values  for a DXF \c LTYPE entity.
  */
 DxfLType *
 dxf_ltype_set_complex_text_string
@@ -939,8 +939,8 @@ dxf_ltype_set_complex_text_string
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
         DxfChar *complex_text_string
-                /*!< a string containing the \c complex_text_string for
-                 * index \c i of the entity. */
+                /*!< a linked list of strings containing the
+                 * \c complex_text_string values for the entity. */
 )
 {
 #if DEBUG
