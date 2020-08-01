@@ -891,8 +891,8 @@ dxf_ltype_set_description
 
 
 /*!
- * \brief Get the \c complex_text_string indexed by \c i from a DXF
- * \c LTYPE entity.
+ * \brief Get the pointer to the linked list of \c complex_text_string
+ * values from a DXF \c LTYPE entity.
  *
  * \return \c complex_text_string when sucessful, \c NULL when an error
  * occurred.
