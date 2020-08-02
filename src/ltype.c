@@ -1124,10 +1124,11 @@ dxf_ltype_set_complex_x_offset
 
 
 /*!
- * \brief Get the \c complex_y_offset indexed by \c i from a DXF
- * \c LTYPE entity.
+ * \brief Get the pointer to the linked list of \c complex_y_offset
+ * values from a DXF \c LTYPE entity.
  *
- * \return \c complex_y_offset when sucessful.
+ * \return \c complex_y_offset when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDouble *
 dxf_ltype_get_complex_y_offset
