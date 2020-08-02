@@ -1084,8 +1084,8 @@ dxf_ltype_get_complex_x_offset
 
 
 /*!
- * \brief Set the \c complex_x_offset for index \c i for a DXF
- * \c LTYPE entity.
+ * \brief Set the pointer of a linked list of \c complex_x_offset
+ * values for a DXF \c LTYPE entity.
  */
 DxfLType *
 dxf_ltype_set_complex_x_offset
@@ -1093,8 +1093,8 @@ dxf_ltype_set_complex_x_offset
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
         DxfDouble *complex_x_offset
-                /*!< a double containing the \c complex_x_offset for
-                 * index \c i of the entity. */
+                /*!< a pointer to a linked list of \c complex_x_offset
+                 * values for the entity. */
 )
 {
 #if DEBUG
