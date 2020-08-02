@@ -1049,7 +1049,8 @@ dxf_ltype_set_total_pattern_length
  * \brief Get the pointer to the linked list of \c complex_x_offset
  * values from a DXF \c LTYPE entity.
  *
- * \return \c complex_x_offset when sucessful.
+ * \return \c complex_x_offset when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDouble *
 dxf_ltype_get_complex_x_offset
