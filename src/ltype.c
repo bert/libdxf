@@ -1287,7 +1287,8 @@ dxf_ltype_set_complex_scale
  * \brief Get a pointer to a linked list of \c dash_length values from a
  * DXF \c LTYPE entity.
  *
- * \return \c dash_length when sucessful.
+ * \return \c dash_length when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDouble *
 dxf_ltype_get_dash_length
