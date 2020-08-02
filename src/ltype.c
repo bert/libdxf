@@ -1046,8 +1046,8 @@ dxf_ltype_set_total_pattern_length
 
 
 /*!
- * \brief Get the \c complex_x_offset indexed by \c i from a DXF
- * \c LTYPE entity.
+ * \brief Get the pointer to the linked list of \c complex_x_offset
+ * values from a DXF \c LTYPE entity.
  *
  * \return \c complex_x_offset when sucessful.
  */
