@@ -986,7 +986,8 @@ dxf_ltype_set_complex_text_string
 /*!
  * \brief Get the \c total_pattern_length from a DXF \c LTYPE entity.
  *
- * \return \c total_pattern_length.
+ * \return \c total_pattern_length, \c EXIT_FAILURE when an error
+ * occurred.
  */
 double
 dxf_ltype_get_total_pattern_length
