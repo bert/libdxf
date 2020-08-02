@@ -1207,7 +1207,8 @@ dxf_ltype_set_complex_y_offset
  * \brief Get a pointer to a linked list of \c complex_scale values of a
  * DXF \c LTYPE entity.
  *
- * \return \c complex_scale when sucessful.
+ * \return \c complex_scale when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDouble *
 dxf_ltype_get_complex_scale
