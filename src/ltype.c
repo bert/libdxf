@@ -698,6 +698,9 @@ dxf_ltype_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_id_code
