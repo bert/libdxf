@@ -779,6 +779,9 @@ dxf_ltype_get_linetype_name
 
 /*!
  * \brief Set the \c linetype_name for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_linetype_name
