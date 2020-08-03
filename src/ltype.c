@@ -1028,6 +1028,9 @@ dxf_ltype_get_total_pattern_length
 
 /*!
  * \brief Set the \c total_pattern_length for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_total_pattern_length
