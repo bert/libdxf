@@ -1103,6 +1103,9 @@ dxf_ltype_get_complex_x_offset
 /*!
  * \brief Set the pointer of a linked list of \c complex_x_offset
  * values for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_complex_x_offset
