@@ -941,6 +941,9 @@ dxf_ltype_get_complex_text_string
 /*!
  * \brief Set the pointer to the linked list of \c complex_text_string
  * values  for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_complex_text_string
