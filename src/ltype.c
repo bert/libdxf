@@ -1267,6 +1267,9 @@ dxf_ltype_get_complex_scale
 /*!
  * \brief Set a pointer to a linked list of \c complex_scale values for
  * a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_complex_scale
