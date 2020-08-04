@@ -1474,7 +1474,8 @@ dxf_ltype_set_complex_rotation
 /*!
  * \brief Get the \c flag from a DXF \c LTYPE entity.
  *
- * \return \c flag.
+ * \return \c flag when successful, \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_ltype_get_flag
