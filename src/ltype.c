@@ -1650,7 +1650,8 @@ dxf_ltype_is_referenced
 /*!
  * \brief Get the \c alignment from a DXF \c LTYPE entity.
  *
- * \return \c alignment.
+ * \return \c alignment when successful, \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_ltype_get_alignment
