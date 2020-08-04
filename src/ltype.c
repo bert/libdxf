@@ -1393,7 +1393,8 @@ dxf_ltype_set_dash_length
  * \brief Get a pointer to a linked list of \c complex_rotation values
  * of a DXF \c LTYPE entity.
  *
- * \return \c complex_rotation when sucessful.
+ * \return \c complex_rotation when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfDouble *
 dxf_ltype_get_complex_rotation
