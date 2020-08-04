@@ -1431,6 +1431,9 @@ dxf_ltype_get_complex_rotation
 /*!
  * \brief Set a pointer of a linked list of \c complex_rotation values
  * for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_complex_rotation
