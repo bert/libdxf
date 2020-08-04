@@ -1510,6 +1510,9 @@ dxf_ltype_get_flag
 
 /*!
  * \brief Set the \c flag for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_flag
