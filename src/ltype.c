@@ -1349,6 +1349,9 @@ dxf_ltype_get_dash_length
 /*!
  * \brief Set a pointer to a linked list of \c dash_length values for a
  * DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfLType *
 dxf_ltype_set_dash_length
