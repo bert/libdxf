@@ -1891,7 +1891,8 @@ dxf_ltype_set_complex_element
  * \brief Get the pointer to the linked list of \c complex_shape_number
  * values from a DXF \c LTYPE entity.
  *
- * \return \c complex_shape_number when sucessful.
+ * \return \c complex_shape_number when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfInt16 *
 dxf_ltype_get_complex_shape_number
