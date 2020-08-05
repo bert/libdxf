@@ -1929,6 +1929,8 @@ dxf_ltype_get_complex_shape_number
 /*!
  * \brief Set the pointer to a linked list of \c complex_shape_number
  * values for a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error occurred.
  */
 DxfLType *
 dxf_ltype_set_complex_shape_number
@@ -1936,8 +1938,8 @@ dxf_ltype_set_complex_shape_number
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
         DxfInt16 *complex_shape_number
-                /*!< an integer containing the \c complex_shape_number
-                 * for index \c i of the entity. */
+                /*!< a pointer to a linked list of \c complex_shape_number
+                 * values for the entity. */
 )
 {
 #if DEBUG
