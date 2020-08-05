@@ -1848,6 +1848,8 @@ dxf_ltype_get_complex_element
 /*!
  * \brief Set the pointer of linked list of \c complex_element for a DXF
  * \c LTYPE entity.
+ *
+ * \return \c ltype when sucessful, \c NULL when an error occurred.
  */
 DxfLType *
 dxf_ltype_set_complex_element
@@ -1855,8 +1857,8 @@ dxf_ltype_set_complex_element
         DxfLType *ltype,
                 /*!< a pointer to a DXF \c LTYPE entity. */
         DxfInt16 *complex_element
-                /*!< an integer containing the \c complex_element for
-                 * index \c i of the entity. */
+                /*!< a pointer to a linked list of \c complex_element
+                 * values for the entity. */
 )
 {
 #if DEBUG
