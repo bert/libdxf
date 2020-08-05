@@ -1810,7 +1810,8 @@ dxf_ltype_set_number_of_linetype_elements
  * \brief Get the pointer to a linked list of \c complex_element from a
  * DXF \c LTYPE entity.
  *
- * \return \c complex_element when sucessful.
+ * \return \c complex_element when sucessful, \c NULL when an error
+ * occurred.
  */
 DxfInt16 *
 dxf_ltype_get_complex_element
