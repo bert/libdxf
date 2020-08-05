@@ -1729,7 +1729,8 @@ dxf_ltype_set_alignment
 /*!
  * \brief Get the \c number_of_linetype_elements from a DXF \c LTYPE entity.
  *
- * \return \c number_of_linetype_elements.
+ * \return \c number_of_linetype_elements, \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_ltype_get_number_of_linetype_elements
