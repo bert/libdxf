@@ -2225,7 +2225,7 @@ dxf_read_is_int32_t
 #endif
         if ((type >= 90 && type < 100)
           || (type >= 420 && type < 430)
-          || (type = 1071))
+          || (type == 1071))
         {
 #if DEBUG
         DXF_DEBUG_END
