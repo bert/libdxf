@@ -2136,7 +2136,8 @@ dxf_ltype_set_complex_style_pointer
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c LTYPE entity.
  *
- * \return hard pointer to the dictionary owner.
+ * \return A hard pointer to the dictionary owner \c dictionay_owner_hard,
+ * or \c NULL when an error occurred.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
