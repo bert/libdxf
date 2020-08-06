@@ -2093,6 +2093,8 @@ dxf_ltype_get_complex_style_pointer
 /*!
  * \brief Set a pointer to a linked list of \c complex_style_pointer for
  * a DXF \c LTYPE entity.
+ *
+ * \return \c ltype when successful, or \c NULL when an error occurred.
  */
 DxfLType *
 dxf_ltype_set_complex_style_pointer
