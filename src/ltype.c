@@ -1972,9 +1972,10 @@ dxf_ltype_set_complex_shape_number
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c LTYPE entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return soft pointer to the dictionary owner \dictonary_owner_soft,
+ * \c NULL when an error occurred.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning no checks are performed on the returned pointer (string).
  */
 char *
 dxf_ltype_get_dictionary_owner_soft
