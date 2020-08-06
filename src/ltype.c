@@ -2012,6 +2012,8 @@ dxf_ltype_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c LTYPE entity.
+ *
+ * \return \c ltype when successful, or \c NULL when an error occurred.
  */
 DxfLType *
 dxf_ltype_set_dictionary_owner_soft
