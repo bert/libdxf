@@ -2176,6 +2176,8 @@ dxf_ltype_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c LTYPE entity.
+ *
+ * \return \c ltype when successful, or \c NULL when an error occurred.
  */
 DxfLType *
 dxf_ltype_set_dictionary_owner_hard
