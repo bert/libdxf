@@ -2259,6 +2259,9 @@ dxf_ltype_get_next
 /*!
  * \brief Set the pointer to the next \c LTYPE for a DXF \c LTYPE
  * entity.
+ *
+ * \return pointer to the \c LTYPE entity, or \c NULL when an error
+ * occurred..
  */
 DxfLType *
 dxf_ltype_set_next
