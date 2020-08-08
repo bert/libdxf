@@ -2219,7 +2219,8 @@ dxf_ltype_set_dictionary_owner_hard
  * \brief Get the pointer to the next \c LTYPE entity from a DXF 
  * \c LTYPE entity.
  *
- * \return pointer to the next \c LTYPE entity.
+ * \return pointer to the next \c LTYPE entity, or \c NULL when an error
+ * occurred..
  *
  * \warning No checks are performed on the returned pointer.
  */
