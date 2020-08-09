@@ -416,7 +416,6 @@ dxf_layer_index_write
                 iter = (DxfLayerName *) iter->next;
                 i++;
         }
-        i = 0;
         /*! \todo Implement reading of \c hard_owner_reference and
          * \c number_of_entries  properly.
         while (strlen (layer_index->layer_name->name) > 0)
