@@ -178,7 +178,6 @@ dxf_layer_index_read
         char *temp_string = NULL;
         DxfLayerName *iter;
         int i;
-        int j;
         int k;
 
         /* Do some basic checks. */
@@ -205,7 +204,6 @@ dxf_layer_index_read
                 layer_index = dxf_layer_index_init (layer_index);
         }
         i = 0;
-        j = 0;
         k = 0;
         iter = (DxfLayerName *) layer_index->layer_name; /* Pointer to first entry. */
         (fp->line_number)++;
