@@ -515,7 +515,7 @@ dxf_layer_index_free_list
 /*!
  * \brief Get the ID code from a DXF \c LAYER_INDEX object.
  *
- * \return \c id_code if successful, or \c EXIT_FAILURE if an error
+ * \return \c id_code if successful, or \c EXIT_FAILURE when an error
  * occurred.
  */
 int
