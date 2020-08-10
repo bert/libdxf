@@ -638,6 +638,9 @@ dxf_layer_index_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c LAYER_INDEX object.
+ *
+ * \return a pointer to \c layer_index if successful, or \c NULL when an
+ * error occurred.
  */
 DxfLayerIndex *
 dxf_layer_index_set_dictionary_owner_soft
