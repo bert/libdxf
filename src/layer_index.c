@@ -597,7 +597,9 @@ dxf_layer_index_set_id_code
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c LAYER_INDEX object.
  *
- * \return soft pointer to the dictionary owner.
+ *
+ * \return a pointer to \c dictionary_owner_soft if successful,
+ * or \c EXIT_FAILURE when an error occurred.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
