@@ -552,6 +552,9 @@ dxf_layer_index_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c LAYER_INDEX object.
+ *
+ * \return a pointer to \c layer_index if successful, or \c NULL when an
+ * error occurred.
  */
 DxfLayerIndex *
 dxf_layer_index_set_id_code
