@@ -205,7 +205,6 @@ dxf_mleaderstyle_read
 #endif
         char *temp_string = NULL;
         DxfBinaryGraphicsData *iter310 = NULL;
-        int iter92;
         int iter330;
 
         /* Do some basic checks. */
@@ -226,7 +225,6 @@ dxf_mleaderstyle_read
                 mleaderstyle = dxf_mleaderstyle_init (mleaderstyle);
         }
         iter310 = (DxfBinaryGraphicsData *) mleaderstyle->binary_graphics_data;
-        iter92 = 0;
         iter330 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
