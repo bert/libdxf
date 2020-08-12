@@ -765,7 +765,8 @@ dxf_layer_index_set_dictionary_owner_hard
 /*!
  * \brief Get the \c time_stamp from a DXF \c LAYER_INDEX object.
  *
- * \return \c time_stamp.
+ *
+ * \return \c time_stamp, or \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_layer_index_get_time_stamp
