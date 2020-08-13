@@ -929,7 +929,8 @@ dxf_layer_index_set_next
  * \brief Get the pointer to the last \c LAYER_INDEX object from a
  * linked list of DXF \c LAYER_INDEX object.
  *
- * \return pointer to the last \c LAYER_INDEX object.
+ * \return pointer to the last \c LAYER_INDEX object, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
