@@ -885,6 +885,9 @@ dxf_layer_index_get_next
 /*!
  * \brief Set the pointer to the next \c LAYER_INDEX object for a DXF
  * \c LAYER_INDEX object.
+ *
+ * \return a pointer to \c layer_index, or \c NULL when an error
+ * occurred.
  */
 DxfLayerIndex *
 dxf_layer_index_set_next
