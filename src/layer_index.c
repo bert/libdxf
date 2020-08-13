@@ -845,7 +845,8 @@ dxf_layer_index_set_time_stamp
  * \brief Get the pointer to the next \c LAYER_INDEX object from a DXF 
  * \c LAYER_INDEX object.
  *
- * \return pointer to the next \c LAYER_INDEX object.
+ * \return pointer to the next \c LAYER_INDEX object, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
