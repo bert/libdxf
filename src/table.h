@@ -1,7 +1,7 @@
 /*!
  * \file table.h
  *
- * \author Copyright (C) 2009, 2012, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2009, 2012, 2014, 2015, 2016, 2017, 2018, 2020
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
@@ -475,15 +475,16 @@ dxf_table_struct
 
 
 DxfTableCell *dxf_table_cell_new ();
-DxfTable *dxf_table_new ();
 DxfTableCell *dxf_table_cell_init (DxfTableCell *cell);
+int dxf_table_cell_write (DxfFile *fp, DxfTableCell *cell);
+int dxf_table_cell_free (DxfTableCell *cell);
+void dxf_table_cell_free_list (DxfTableCell *cells);
+
+DxfTable *dxf_table_new ();
 DxfTable *dxf_table_init (DxfTable *table);
 DxfTable *dxf_table_read (DxfFile *fp, DxfTable *table);
-int dxf_table_cell_write (DxfFile *fp, DxfTableCell *cell);
 int dxf_table_write (DxfFile *fp, DxfTable *table);
-int dxf_table_cell_free (DxfTableCell *cell);
 int dxf_table_free (DxfTable *table);
-void dxf_table_cell_free_list (DxfTableCell *cells);
 void dxf_table_free_list (DxfTable *tables);
 
 
