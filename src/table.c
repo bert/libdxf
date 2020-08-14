@@ -86,44 +86,6 @@ dxf_table_cell_new ()
 
 
 /*!
- * \brief Allocate memory for a DXF \c TABLE.
- *
- * Fill the memory contents with zeros.
- *
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when successful.
- */
-DxfTable *
-dxf_table_new ()
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfTable *table = NULL;
-        size_t size;
-
-        size = sizeof (DxfTable);
-        /* avoid malloc of 0 bytes */
-        if (size == 0) size = 1;
-        if ((table = malloc (size)) == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfTable struct.\n")),
-                  __FUNCTION__);
-                table = NULL;
-        }
-        else
-        {
-                memset (table, 0, size);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (table);
-}
-
-
-/*!
  * \brief Allocate memory and initialize data fields in a DXF \c TABLE
  * cell.
  * 
@@ -200,6 +162,215 @@ dxf_table_cell_init
         DXF_DEBUG_END
 #endif
         return (cell);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a DXF \c TABLE cell.
+ * 
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_table_cell_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfTableCell *cell
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (cell == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "171\n%d\n", cell->type);
+        fprintf (fp->fp, "172\n%d\n", cell->flag);
+        fprintf (fp->fp, "173\n%d\n", cell->merged);
+        fprintf (fp->fp, "174\n%d\n", cell->autofit);
+        fprintf (fp->fp, "175\n%lf\n", cell->border_width);
+        fprintf (fp->fp, "176\n%lf\n", cell->border_height);
+        fprintf (fp->fp, " 91\n%d\n", cell->override_flag);
+        fprintf (fp->fp, "178\n%d\n", cell->virtual_edge);
+        fprintf (fp->fp, "145\n%lf\n", cell->block_rotation);
+        fprintf (fp->fp, "344\n%s\n", cell->field_object_pointer);
+        i = 0;
+        while ((cell->optional_text_string[i] != NULL)
+          && (strcmp (cell->optional_text_string[i], "") != 0))
+        {
+                fprintf (fp->fp, "  2\n%s\n", cell->optional_text_string[i]);
+                i++;
+        }
+        fprintf (fp->fp, "  1\n%s\n", cell->text_string);
+        fprintf (fp->fp, "340\n%s\n", cell->block_table_record_hard_pointer);
+        fprintf (fp->fp, "144\n%lf\n", cell->block_scale);
+        fprintf (fp->fp, "179\n%d\n", cell->number_of_block_attdefs);
+        i = 0;
+        while ((cell->attdef_soft_pointer[i] != NULL)
+          && (strcmp (cell->attdef_soft_pointer[i], "") != 0))
+        {
+                fprintf (fp->fp, "331\n%s\n", cell->attdef_soft_pointer[i]);
+                i++;
+        }
+        if (cell->number_of_block_attdefs < (i + 1))
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () more attdefs encountered than expected.\n")),
+                  __FUNCTION__);
+        }
+        else if (cell->number_of_block_attdefs > (i + 1))
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () less attdefs encountered than expected.\n")),
+                  __FUNCTION__);
+        }
+
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c TABLE cell and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_table_cell_free
+(
+        DxfTableCell *cell
+                /*!< a pointer to a DXF \c TABLE cell. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (cell == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (cell->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (cell->text_string);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (cell->optional_text_string[i]);
+                free (cell->attdef_soft_pointer[i]);
+        }
+        free (cell->text_style_name);
+        free (cell->attdef_text_string);
+        free (cell->block_table_record_hard_pointer);
+        free (cell->field_object_pointer);
+        free (cell);
+        cell = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a single linked list of DXF
+ * \c TABLE cells and all their data fields.
+ */
+void
+dxf_table_cell_free_list
+(
+        DxfTableCell *cells
+                /*!< pointer to the single linked list of DXF \c TABLE
+                 * cells. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (cells == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (cells != NULL)
+        {
+                DxfTableCell *iter = (DxfTableCell *) cells->next;
+                dxf_table_cell_free (cells);
+                cells = (DxfTableCell *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
+ * \brief Allocate memory for a DXF \c TABLE.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when successful.
+ */
+DxfTable *
+dxf_table_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfTable *table = NULL;
+        size_t size;
+
+        size = sizeof (DxfTable);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((table = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTable struct.\n")),
+                  __FUNCTION__);
+                table = NULL;
+        }
+        else
+        {
+                memset (table, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
 }
 
 
@@ -569,90 +740,6 @@ dxf_table_read
 
 
 /*!
- * \brief Write DXF output to a file for a DXF \c TABLE cell.
- * 
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_table_cell_write
-(
-        DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
-        DxfTableCell *cell
-                /*!< a pointer to a DXF \c TABLE entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL file pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (cell == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        /* Start writing output. */
-        fprintf (fp->fp, "171\n%d\n", cell->type);
-        fprintf (fp->fp, "172\n%d\n", cell->flag);
-        fprintf (fp->fp, "173\n%d\n", cell->merged);
-        fprintf (fp->fp, "174\n%d\n", cell->autofit);
-        fprintf (fp->fp, "175\n%lf\n", cell->border_width);
-        fprintf (fp->fp, "176\n%lf\n", cell->border_height);
-        fprintf (fp->fp, " 91\n%d\n", cell->override_flag);
-        fprintf (fp->fp, "178\n%d\n", cell->virtual_edge);
-        fprintf (fp->fp, "145\n%lf\n", cell->block_rotation);
-        fprintf (fp->fp, "344\n%s\n", cell->field_object_pointer);
-        i = 0;
-        while ((cell->optional_text_string[i] != NULL)
-          && (strcmp (cell->optional_text_string[i], "") != 0))
-        {
-                fprintf (fp->fp, "  2\n%s\n", cell->optional_text_string[i]);
-                i++;
-        }
-        fprintf (fp->fp, "  1\n%s\n", cell->text_string);
-        fprintf (fp->fp, "340\n%s\n", cell->block_table_record_hard_pointer);
-        fprintf (fp->fp, "144\n%lf\n", cell->block_scale);
-        fprintf (fp->fp, "179\n%d\n", cell->number_of_block_attdefs);
-        i = 0;
-        while ((cell->attdef_soft_pointer[i] != NULL)
-          && (strcmp (cell->attdef_soft_pointer[i], "") != 0))
-        {
-                fprintf (fp->fp, "331\n%s\n", cell->attdef_soft_pointer[i]);
-                i++;
-        }
-        if (cell->number_of_block_attdefs < (i + 1))
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () more attdefs encountered than expected.\n")),
-                  __FUNCTION__);
-        }
-        else if (cell->number_of_block_attdefs > (i + 1))
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () less attdefs encountered than expected.\n")),
-                  __FUNCTION__);
-        }
-
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Write DXF output to a file for a DXF \c TABLE entity.
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -754,59 +841,6 @@ dxf_table_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c TABLE cell and all it's
- * data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_table_cell_free
-(
-        DxfTableCell *cell
-                /*!< a pointer to a DXF \c TABLE cell. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (cell == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (cell->next != NULL)
-        {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
-        }
-        free (cell->text_string);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (cell->optional_text_string[i]);
-                free (cell->attdef_soft_pointer[i]);
-        }
-        free (cell->text_style_name);
-        free (cell->attdef_text_string);
-        free (cell->block_table_record_hard_pointer);
-        free (cell->field_object_pointer);
-        free (cell);
-        cell = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c TABLE and all it's
  * data fields.
  *
@@ -859,40 +893,6 @@ dxf_table_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a single linked list of DXF
- * \c TABLE cells and all their data fields.
- */
-void
-dxf_table_cell_free_list
-(
-        DxfTableCell *cells
-                /*!< pointer to the single linked list of DXF \c TABLE
-                 * cells. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (cells == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (cells != NULL)
-        {
-                DxfTableCell *iter = (DxfTableCell *) cells->next;
-                dxf_table_cell_free (cells);
-                cells = (DxfTableCell *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 
