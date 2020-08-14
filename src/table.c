@@ -52,8 +52,8 @@
  *
  * Fill the memory contents with zeros.
  *
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when successful.
+ * \return a pointer to the allocated memory when successful,or \c NULL
+ * when no memory was allocated.
  */
 DxfTableCell *
 dxf_table_cell_new ()
