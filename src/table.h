@@ -486,6 +486,7 @@ DxfTable *dxf_table_read (DxfFile *fp, DxfTable *table);
 int dxf_table_write (DxfFile *fp, DxfTable *table);
 int dxf_table_free (DxfTable *table);
 void dxf_table_free_list (DxfTable *tables);
+DxfTable *dxf_table_get_next (DxfTable *table);
 
 
 #ifdef __cplusplus
