@@ -1013,4 +1013,49 @@ dxf_table_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c TABLE entity from a linked
+ * list of DXF \c TABLE entities.
+ *
+ * \return pointer to the last \c TABLE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfTable *
+dxf_table_get_last
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfTable *) table);
+        }
+        DxfTable *iter = (DxfTable *) table->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfTable *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfTable *) iter);
+}
+
+
 /* EOF */
