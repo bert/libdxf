@@ -487,6 +487,7 @@ int dxf_table_write (DxfFile *fp, DxfTable *table);
 int dxf_table_free (DxfTable *table);
 void dxf_table_free_list (DxfTable *tables);
 int dxf_table_get_id_code (DxfTable *table);
+DxfTable *dxf_table_set_id_code (DxfTable *table, int id_code);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);

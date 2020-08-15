@@ -967,6 +967,48 @@ dxf_table_get_id_code
 
 
 /*!
+ * \brief Set the \c id_code for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_id_code
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        table->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
