@@ -971,4 +971,46 @@ dxf_table_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c TABLE for a DXF \c TABLE
+ * entity.
+ *
+ * \return a pointer to \c table when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTable *
+dxf_table_set_next
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        DxfTable *next
+                /*!< a pointer to the next \c TABLE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->next = (struct DxfTable *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
 /* EOF */
