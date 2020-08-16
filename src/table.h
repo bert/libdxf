@@ -489,6 +489,7 @@ void dxf_table_free_list (DxfTable *tables);
 int dxf_table_get_id_code (DxfTable *table);
 DxfTable *dxf_table_set_id_code (DxfTable *table, int id_code);
 char *dxf_table_get_linetype (DxfTable *table);
+DxfTable *dxf_table_set_linetype (DxfTable *table, char *linetype);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);

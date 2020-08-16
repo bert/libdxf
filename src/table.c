@@ -1047,6 +1047,50 @@ dxf_table_get_linetype
 
 
 /*!
+ * \brief Set the \c linetype for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \warning The passed \c linetype variable is not freed by this
+ * function.
+ */
+DxfTable *
+dxf_table_set_linetype
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        char *linetype
+                /*!< a string containing the \c linetype for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
