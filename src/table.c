@@ -1009,6 +1009,44 @@ dxf_table_set_id_code
 
 
 /*!
+ * \brief Get the linetype from a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c linetype when sucessful, \c NULL when an
+ * error occurred.
+ */
+char *
+dxf_table_get_linetype
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (table->linetype));
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
