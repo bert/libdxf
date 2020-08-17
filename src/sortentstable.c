@@ -220,7 +220,7 @@ dxf_sortentstable_read
                         /* Now follows a string containing a Sort handle
                          * (zero or more entries may exist). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &iter_5->value);
+                        fscanf (fp->fp, "%x\n", (uint *) &iter_5->value);
                         iter_5->next = (struct DxfInt *) dxf_int_init ((DxfInt *) iter_5->next);
                         iter_5 = (DxfInt *) iter_5->next;
                 }
