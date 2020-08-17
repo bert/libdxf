@@ -546,7 +546,7 @@ dxf_sun_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, sun->id_code);
+                  __FUNCTION__, dxf_entity_name, (uint) sun->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
@@ -556,7 +556,7 @@ dxf_sun_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, sun->id_code);
+                  __FUNCTION__, dxf_entity_name, (uint) sun->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
@@ -566,7 +566,7 @@ dxf_sun_write
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (sun->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", sun->id_code);
+                fprintf (fp->fp, "  5\n%x\n", (uint) sun->id_code);
         }
         /*!
          * \todo for version R14.\n
