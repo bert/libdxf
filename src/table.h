@@ -495,6 +495,7 @@ DxfTable *dxf_table_set_layer (DxfTable *table, char *layer);
 double dxf_table_get_elevation (DxfTable *table);
 DxfTable *dxf_table_set_elevation (DxfTable *table, double elevation);
 double dxf_table_get_thickness (DxfTable *table);
+DxfTable *dxf_table_set_thickness (DxfTable *table, double thickness);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
