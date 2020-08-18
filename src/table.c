@@ -1129,6 +1129,49 @@ dxf_table_get_layer
 
 
 /*!
+ * \brief Set the \c layer for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \warning The passed \c layer variable is not freed by this function.
+ */
+DxfTable *
+dxf_table_set_layer
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        char *layer
+                /*!< a string containing the \c layer for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *

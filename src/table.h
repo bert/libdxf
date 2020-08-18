@@ -491,6 +491,7 @@ DxfTable *dxf_table_set_id_code (DxfTable *table, int id_code);
 char *dxf_table_get_linetype (DxfTable *table);
 DxfTable *dxf_table_set_linetype (DxfTable *table, char *linetype);
 char *dxf_table_get_layer (DxfTable *table);
+DxfTable *dxf_table_set_layer (DxfTable *table, char *layer);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
