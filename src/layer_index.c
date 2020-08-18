@@ -225,7 +225,7 @@ dxf_layer_index_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &layer_index->id_code);
+                        fscanf (fp->fp, "%x\n", (uint *) &layer_index->id_code);
                 }
                 if (strcmp (temp_string, "8") == 0)
                 {
