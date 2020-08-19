@@ -1314,6 +1314,43 @@ dxf_table_set_thickness
 
 
 /*!
+ * \brief Get the \c linetype_scale from a DXF \c TABLE entity.
+ *
+ * \return \c linetype_scale when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+double
+dxf_table_get_linetype_scale
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (table->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->linetype_scale);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
