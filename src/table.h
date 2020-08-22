@@ -500,6 +500,7 @@ double dxf_table_get_linetype_scale (DxfTable *table);
 DxfTable *dxf_table_set_linetype_scale (DxfTable *table, double linetype_scale);
 int16_t dxf_table_get_visibility (DxfTable *table);
 DxfTable *dxf_table_set_visibility (DxfTable *table, int16_t visibility);
+int16_t dxf_table_get_color (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
