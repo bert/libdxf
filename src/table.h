@@ -301,7 +301,7 @@ dxf_table_struct
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
-        int graphics_data_size;
+        int32_t graphics_data_size;
                 /*!< The number of bytes in the image (and subsequent
                  * binary chunk records) (optional).\n
                  * Group code = 92.
