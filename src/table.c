@@ -408,6 +408,7 @@ dxf_table_init
                   __FUNCTION__);
                 return (NULL);
         }
+        /* Assign initial values to members. */
         table->id_code = 0;
         table->linetype = strdup (DXF_DEFAULT_LINETYPE);
         table->layer = strdup (DXF_DEFAULT_LAYER);
@@ -419,7 +420,6 @@ dxf_table_init
         table->graphics_data_size = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                table->binary_graphics_data[i] = strdup ("");
                 table->row_height[i] = 0.0;
                 table->column_height[i] = 0.0;
         }
@@ -457,6 +457,9 @@ dxf_table_init
         table->table_cell_color_fill_override = 0;
         table->tablestyle_object_pointer = strdup ("");
         table->owning_block_pointer = strdup ("");
+        /* Initialize new structs for the following members later,
+         * when they are required and when we have content. */
+        table->binary_graphics_data = NULL;
         table->cells = NULL;
         table->next = NULL;
 #if DEBUG
@@ -490,6 +493,7 @@ dxf_table_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfBinaryData *iter310 = NULL;
         int i;
         int j;
         int k;
@@ -517,6 +521,7 @@ dxf_table_read
         j = 0;
         k = 0;
         l = 0;
+        iter310 = (DxfBinaryData *) table->binary_graphics_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -685,8 +690,9 @@ dxf_table_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", table->binary_graphics_data[j]);
-                        j++;
+                        fscanf (fp->fp, DXF_MAX_STRING_FORMAT, iter310->data_line);
+                        dxf_binary_data_init ((DxfBinaryData *) iter310->next);
+                        iter310 = (DxfBinaryData *) iter310->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -790,12 +796,24 @@ dxf_table_write
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        fprintf (fp->fp, " 92\n%d\n", table->graphics_data_size);
-        i = 0;
-        while (strlen (table->binary_graphics_data[i]) > 0)
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (table->binary_graphics_data != NULL))
         {
-                fprintf (fp->fp, "310\n%s\n", table->binary_graphics_data[i]);
-                i++;
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%" PRIi32 "\n", table->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%" PRIi32 "\n", table->graphics_data_size);
+#endif
+                if (table->binary_graphics_data != NULL)
+                {
+                        DxfBinaryData *iter;
+                        iter = (DxfBinaryData *) table->binary_graphics_data;
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                                iter = (DxfBinaryData *) iter->next;
+                        }
+                }
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -857,8 +875,6 @@ dxf_table_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (table == NULL)
         {
@@ -876,10 +892,7 @@ dxf_table_free
         }
         free (table->linetype);
         free (table->layer);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (table->binary_graphics_data[i]);
-        }
+        dxf_binary_data_free_list (table->binary_graphics_data);
         free (table->dictionary_owner_soft);
         free (table->dictionary_owner_hard);
         free (table->block_name);
