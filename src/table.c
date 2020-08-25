@@ -1768,6 +1768,49 @@ dxf_table_set_graphics_data_size
 
 
 /*!
+ * \brief Get the \c shadow_mode from a DXF \c TABLE entity.
+ *
+ * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_table_get_shadow_mode
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (table->shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (table->shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->shadow_mode);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *

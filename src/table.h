@@ -570,6 +570,7 @@ int16_t dxf_table_get_paperspace (DxfTable *table);
 DxfTable *dxf_table_set_paperspace (DxfTable *table, int16_t paperspace);
 int32_t dxf_table_get_graphics_data_size (DxfTable *table);
 DxfTable *dxf_table_set_graphics_data_size (DxfTable *table, int32_t graphics_data_size);
+int16_t dxf_table_get_shadow_mode (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
