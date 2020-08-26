@@ -1897,6 +1897,49 @@ dxf_table_get_binary_graphics_data
 
 
 /*!
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
+ * \c TABLE entity.
+ *
+ * \return a pointer to \c table when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTable *
+dxf_table_set_binary_graphics_data
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        DxfBinaryData *data
+                /*!< a string containing the pointer to the
+                 * \c binary_graphics_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->binary_graphics_data = (DxfBinaryData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
