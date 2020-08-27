@@ -910,10 +910,12 @@ dxf_table_write
         fprintf (fp->fp, " 94\n%d\n", table->border_color_override_flag);
         fprintf (fp->fp, " 95\n%d\n", table->border_lineweight_override_flag);
         fprintf (fp->fp, " 96\n%d\n", table->border_visibility_override_flag);
+        /*! \todo implemnet a linked list of doubles. */
         for (i = 0; i < table->number_of_rows; i++)
         {
                 fprintf (fp->fp, "141\n%f\n", table->row_height[i]);
         }
+        /*! \todo implemnet a linked list of doubles. */
         for (i = 0; i < table->number_of_columns; i++)
         {
                 fprintf (fp->fp, "142\n%f\n", table->column_height[i]);
