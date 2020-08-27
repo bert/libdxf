@@ -783,6 +783,13 @@ dxf_table_write
         int i;
 
         /* Do some basic checks. */
+        if (dxf_entity_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a char string.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp == NULL)
         {
                 fprintf (stderr,
@@ -807,7 +814,16 @@ dxf_table_write
         {
                 fprintf (fp->fp, "  5\n%x\n", table->id_code);
         }
-        fprintf (fp->fp, "330\n%s\n", table->dictionary_owner_soft);
+        if (table->dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+        }
+        else
+        {
+                fprintf (fp->fp, "330\n%s\n", table->dictionary_owner_soft);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
