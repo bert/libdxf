@@ -808,6 +808,24 @@ dxf_table_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (table->layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("\tSetting entity to default layer.\n")));
+                table->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (table->linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("\tSetting entity to default linetype.\n")));
+                table->layer = strdup (DXF_DEFAULT_LINETYPE);
+        }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (table->id_code != -1)
