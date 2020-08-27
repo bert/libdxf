@@ -838,10 +838,7 @@ dxf_table_write
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
         }
-        else
-        {
-                fprintf (fp->fp, "330\n%s\n", table->dictionary_owner_soft);
-        }
+        else fprintf (fp->fp, "330\n%s\n", table->dictionary_owner_soft);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
