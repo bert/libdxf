@@ -812,23 +812,28 @@ dxf_table_write
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if ((fp->acad_version_number >= AutoCAD_2000)
-          && (table->binary_graphics_data != NULL))
+        if (fp->acad_version_number >= AutoCAD_2000)
         {
 #ifdef BUILD_64
                 fprintf (fp->fp, "160\n%" PRIi32 "\n", table->graphics_data_size);
 #else
                 fprintf (fp->fp, " 92\n%" PRIi32 "\n", table->graphics_data_size);
 #endif
-                if (table->binary_graphics_data != NULL)
+        }
+        if (table->binary_graphics_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+        }
+        else
+        {
+                DxfBinaryData *iter;
+                iter = (DxfBinaryData *) table->binary_graphics_data;
+                while (iter != NULL)
                 {
-                        DxfBinaryData *iter;
-                        iter = (DxfBinaryData *) table->binary_graphics_data;
-                        while (iter != NULL)
-                        {
-                                fprintf (fp->fp, "310\n%s\n", iter->data_line);
-                                iter = (DxfBinaryData *) iter->next;
-                        }
+                        fprintf (fp->fp, "310\n%s\n", iter->data_line);
+                        iter = (DxfBinaryData *) iter->next;
                 }
         }
         if (fp->acad_version_number >= AutoCAD_13)
