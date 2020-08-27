@@ -874,7 +874,13 @@ dxf_table_write
         {
                 fprintf (fp->fp, "100\nAcDbBlockReference\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", table->block_name);
+        if (table->block_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+        }
+        else fprintf (fp->fp, "  2\n%s\n", table->block_name);
         fprintf (fp->fp, " 10\n%f\n", table->x0);
         fprintf (fp->fp, " 20\n%f\n", table->y0);
         fprintf (fp->fp, " 30\n%f\n", table->z0);
