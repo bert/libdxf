@@ -495,7 +495,6 @@ dxf_table_read
         char *temp_string = NULL;
         DxfBinaryData *iter310 = NULL;
         int i;
-        int j;
         int k;
         int l;
 
@@ -534,7 +533,6 @@ dxf_table_read
                 }
         }
         i = 0;
-        j = 0;
         k = 0;
         l = 0;
         iter310 = (DxfBinaryData *) table->binary_graphics_data;
