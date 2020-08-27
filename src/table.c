@@ -886,8 +886,20 @@ dxf_table_write
                 fprintf (fp->fp, "100\nAcDbTable\n");
         }
         fprintf (fp->fp, "280\n%d\n", table->table_data_version);
-        fprintf (fp->fp, "342\n%s\n", table->tablestyle_object_pointer);
-        fprintf (fp->fp, "343\n%s\n", table->owning_block_pointer);
+        if (table->tablestyle_object_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+        }
+        else fprintf (fp->fp, "342\n%s\n", table->tablestyle_object_pointer);
+        if (table->owning_block_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+        }
+        else fprintf (fp->fp, "343\n%s\n", table->owning_block_pointer);
         fprintf (fp->fp, " 11\n%f\n", table->x1);
         fprintf (fp->fp, " 21\n%f\n", table->y1);
         fprintf (fp->fp, " 31\n%f\n", table->z1);
