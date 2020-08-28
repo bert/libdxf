@@ -1998,7 +1998,8 @@ dxf_table_set_binary_graphics_data
  * \brief Get the soft pointer to the \c dictionary_owner_soft from a
  * DXF \c TABLE entity.
  *
- * \return a pointer to the \c dictionary_owner_soft.
+ * \return a pointer to the \c dictionary_owner_soft if successful, or
+ * \c NULL when an error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
