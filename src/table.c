@@ -1914,7 +1914,8 @@ dxf_table_set_shadow_mode
  * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c TABLE entity.
  *
- * \return pointer to the \c binary_graphics_data.
+ * \return pointer to the \c binary_graphics_data if successful, or
+ * \c NULL when an error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
