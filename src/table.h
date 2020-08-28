@@ -574,6 +574,7 @@ int16_t dxf_table_get_shadow_mode (DxfTable *table);
 DxfTable *dxf_table_set_shadow_mode (DxfTable *table, int16_t shadow_mode);
 DxfBinaryData *dxf_table_get_binary_graphics_data (DxfTable *table);
 DxfTable *dxf_table_set_binary_graphics_data (DxfTable *table, DxfBinaryData *data);
+char *dxf_table_get_dictionary_owner_soft (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
