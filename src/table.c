@@ -2079,6 +2079,47 @@ dxf_table_set_dictionary_owner_soft
 
 
 /*!
+ * \brief Get the soft pointer to the object owner from a DXF 
+ * \c TABLE entity.
+ *
+ * \return a pointer to \c object_owner_soft if successful, or \c NULL
+ * when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_table_get_object_owner_soft
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->object_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (table->object_owner_soft));
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
