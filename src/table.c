@@ -2245,6 +2245,47 @@ dxf_table_set_material
 
 
 /*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
+ * \c TABLE entity.
+ *
+ * \return a pointer to the \c dictionary_owner_hard when successful,
+ * or \c NULL if an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_table_get_dictionary_owner_hard
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (table->dictionary_owner_hard));
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
