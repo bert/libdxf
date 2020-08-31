@@ -581,6 +581,7 @@ DxfTable *dxf_table_set_object_owner_soft (DxfTable *table, char *object_owner_s
 char *dxf_table_get_material (DxfTable *table);
 DxfTable *dxf_table_set_material (DxfTable *table, char *material);
 char *dxf_table_get_dictionary_owner_hard (DxfTable *table);
+DxfTable *dxf_table_set_dictionary_owner_hard (DxfTable *table, char *dictionary_owner_hard);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
