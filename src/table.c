@@ -2360,6 +2360,40 @@ dxf_table_get_lineweight
 
 
 /*!
+ * \brief Set the \c lineweight for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTable *
+dxf_table_set_lineweight
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *

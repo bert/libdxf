@@ -583,6 +583,7 @@ DxfTable *dxf_table_set_material (DxfTable *table, char *material);
 char *dxf_table_get_dictionary_owner_hard (DxfTable *table);
 DxfTable *dxf_table_set_dictionary_owner_hard (DxfTable *table, char *dictionary_owner_hard);
 int16_t dxf_table_get_lineweight (DxfTable *table);
+DxfTable *dxf_table_set_lineweight (DxfTable *table, int16_t lineweight);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
