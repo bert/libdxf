@@ -2394,6 +2394,44 @@ dxf_table_set_lineweight
 
 
 /*!
+ * \brief Get the \c plot_style_name from a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c plot_style_name when sucessful, or \c NULL
+ * when an error occurred.
+ */
+char *
+dxf_table_get_plot_style_name
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (table->plot_style_name));
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
