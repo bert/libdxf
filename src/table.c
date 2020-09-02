@@ -2505,6 +2505,40 @@ dxf_table_get_color_value
 
 
 /*!
+ * \brief Set the \c color_value for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTable *
+dxf_table_set_color_value
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        int32_t color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
