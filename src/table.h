@@ -586,6 +586,7 @@ int16_t dxf_table_get_lineweight (DxfTable *table);
 DxfTable *dxf_table_set_lineweight (DxfTable *table, int16_t lineweight);
 char *dxf_table_get_plot_style_name (DxfTable *table);
 DxfTable *dxf_table_set_plot_style_name (DxfTable *table, char *plot_style_name);
+int32_t dxf_table_get_color_value (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);

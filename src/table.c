@@ -2474,6 +2474,37 @@ dxf_table_set_plot_style_name
 
 
 /*!
+ * \brief Get the \c color_value from a DXF \c TABLE entity.
+ *
+ * \return \c color_value when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int32_t
+dxf_table_get_color_value
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->color_value);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
