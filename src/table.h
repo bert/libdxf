@@ -48,6 +48,7 @@
 
 
 #include "global.h"
+#include "point.h"
 #include "binary_data.h"
 
 
@@ -394,6 +395,9 @@ dxf_table_struct
                  * table entity level.\n
                  * There may be one entry for each cell type.\n
                  * Group code = 7. */
+        DxfPoint *p0;
+                /*!< Insertion point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X-value of the insertion point coordinate.\n
                  * Group code = 10. */
@@ -403,6 +407,9 @@ dxf_table_struct
         double z0;
                 /*!< Z-value of the insertion point coordinate.\n
                  * Group code = 30. */
+        DxfPoint *p1;
+                /*!< Horizontal direction vector.\n
+                 * Group codes = 11, 21 and 31. */
         double x1;
                 /*!< X-value of the horizontal direction vector.\n
                  * Group code = 11. */
