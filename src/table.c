@@ -460,6 +460,8 @@ dxf_table_init
         /* Initialize new structs for the following members later,
          * when they are required and when we have content. */
         table->binary_graphics_data = NULL;
+        table->p0 = NULL;
+        table->p1 = NULL;
         table->cells = NULL;
         table->next = NULL;
 #if DEBUG
