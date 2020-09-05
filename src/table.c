@@ -570,7 +570,7 @@ dxf_table_read
                         /* Now follows a string containing the
                          * X-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->x0);
+                        fscanf (fp->fp, "%lf\n", &table->p0->x0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -578,14 +578,14 @@ dxf_table_read
                          * X-coordinate of the horizontal direction
                          * vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->x1);
+                        fscanf (fp->fp, "%lf\n", &table->p1->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->y0);
+                        fscanf (fp->fp, "%lf\n", &table->p0->y0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
@@ -593,14 +593,14 @@ dxf_table_read
                          * Y-coordinate of the horizontal direction
                          * vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->y1);
+                        fscanf (fp->fp, "%lf\n", &table->p1->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->z0);
+                        fscanf (fp->fp, "%lf\n", &table->p0->z0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
@@ -608,7 +608,7 @@ dxf_table_read
                          * Z-coordinate of the horizontal direction
                          * vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->z1);
+                        fscanf (fp->fp, "%lf\n", &table->p1->z0);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
