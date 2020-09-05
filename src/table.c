@@ -878,9 +878,9 @@ dxf_table_write
                   __FUNCTION__);
         }
         else fprintf (fp->fp, "  2\n%s\n", table->block_name);
-        fprintf (fp->fp, " 10\n%f\n", table->x0);
-        fprintf (fp->fp, " 20\n%f\n", table->y0);
-        fprintf (fp->fp, " 30\n%f\n", table->z0);
+        fprintf (fp->fp, " 10\n%f\n", table->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", table->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", table->p0->z0);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbTable\n");
@@ -900,9 +900,9 @@ dxf_table_write
                   __FUNCTION__);
         }
         else fprintf (fp->fp, "343\n%s\n", table->owning_block_pointer);
-        fprintf (fp->fp, " 11\n%f\n", table->x1);
-        fprintf (fp->fp, " 21\n%f\n", table->y1);
-        fprintf (fp->fp, " 31\n%f\n", table->z1);
+        fprintf (fp->fp, " 11\n%f\n", table->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", table->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", table->p1->z0);
         fprintf (fp->fp, " 90\n%d\n", table->table_value_flag);
         fprintf (fp->fp, " 91\n%d\n", table->number_of_rows);
         fprintf (fp->fp, " 92\n%d\n", table->number_of_columns);
