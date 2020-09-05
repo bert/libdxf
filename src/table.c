@@ -427,12 +427,6 @@ dxf_table_init
         table->dictionary_owner_hard = strdup ("");
         table->block_name = strdup ("");
         table->table_text_style_name = strdup ("");
-        table->x0 = 0.0;
-        table->y0 = 0.0;
-        table->z0 = 0.0;
-        table->x1 = 0.0;
-        table->y1 = 0.0;
-        table->z1 = 0.0;
         table->horizontal_cell_margin = 0.0;
         table->vertical_cell_margin = 0.0;
         table->table_cell_color_bg = 0;
