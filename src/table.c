@@ -2749,6 +2749,47 @@ dxf_table_get_p0
 
 
 /*!
+ * \brief Set the insertion point \c p0 of a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTable *
+dxf_table_set_p0
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->p0 = (DxfPoint *) point;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
