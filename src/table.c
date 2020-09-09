@@ -3063,6 +3063,45 @@ dxf_table_set_z0
 
 
 /*!
+ * \brief Get the horizontal direction vector \c p1 of a DXF \c TABLE
+ * entity.
+ *
+ * \return the horizontal direction vector \c p1 if successful,
+ * or \c NULL when an error occurred.
+ */
+DxfPoint *
+dxf_table_get_p1
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->p1);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
