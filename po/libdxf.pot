@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=glib&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2020-08-18 22:51+0200\n"
+"POT-Creation-Date: 2020-09-22 21:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,10 +148,12 @@ msgstr ""
 #: ../src/surface.c:9449 ../src/surface.c:9492 ../src/surface.c:9501
 #: ../src/surface.c:9509 ../src/surface.c:9517 ../src/surface.c:9525
 #: ../src/surface.c:9533 ../src/surface.c:9541 ../src/surface.c:9549
-#: ../src/text.c:3821 ../src/tolerance.c:3062 ../src/trace.c:3658
-#: ../src/util.c:62 ../src/util.c:105 ../src/util.c:501 ../src/util.c:544
-#: ../src/util.c:843 ../src/util.c:886 ../src/util.c:1185 ../src/util.c:1228
-#: ../src/util.c:1527 ../src/util.c:1570 ../src/util.c:1869 ../src/util.c:1912
+#: ../src/table.c:526 ../src/table.c:542 ../src/table.c:558 ../src/table.c:2870
+#: ../src/table.c:2961 ../src/table.c:3052 ../src/text.c:3821
+#: ../src/tolerance.c:3062 ../src/trace.c:3658 ../src/util.c:62
+#: ../src/util.c:105 ../src/util.c:501 ../src/util.c:544 ../src/util.c:843
+#: ../src/util.c:886 ../src/util.c:1185 ../src/util.c:1228 ../src/util.c:1527
+#: ../src/util.c:1570 ../src/util.c:1869 ../src/util.c:1912
 #, c-format
 msgid "Error in %s () could not allocate memory.\n"
 msgstr ""
@@ -239,8 +241,8 @@ msgstr ""
 #: ../src/surface.c:5895 ../src/surface.c:5984 ../src/surface.c:6240
 #: ../src/surface.c:7389 ../src/surface.c:7501 ../src/surface.c:7806
 #: ../src/surface.c:9485 ../src/surface.c:9631 ../src/surface.c:9979
-#: ../src/table.c:111 ../src/table.c:324 ../src/table.c:400 ../src/table.c:511
-#: ../src/table.c:918 ../src/tables.c:98 ../src/text.c:102 ../src/text.c:204
+#: ../src/table.c:111 ../src/table.c:324 ../src/table.c:400 ../src/table.c:510
+#: ../src/table.c:1029 ../src/tables.c:98 ../src/text.c:102 ../src/text.c:204
 #: ../src/text.c:881 ../src/thumbnail.c:119 ../src/thumbnail.c:179
 #: ../src/tolerance.c:104 ../src/tolerance.c:196 ../src/tolerance.c:750
 #: ../src/trace.c:106 ../src/trace.c:197 ../src/trace.c:785 ../src/ucs.c:104
@@ -304,7 +306,7 @@ msgstr ""
 #: ../src/surface.c:3236 ../src/surface.c:3505 ../src/surface.c:5969
 #: ../src/surface.c:6132 ../src/surface.c:7486 ../src/surface.c:7684
 #: ../src/surface.c:9616 ../src/surface.c:9876 ../src/table.c:192
-#: ../src/table.c:502 ../src/table.c:767 ../src/tables.c:150 ../src/text.c:195
+#: ../src/table.c:501 ../src/table.c:822 ../src/tables.c:150 ../src/text.c:195
 #: ../src/text.c:572 ../src/thumbnail.c:170 ../src/thumbnail.c:264
 #: ../src/tolerance.c:187 ../src/tolerance.c:507 ../src/trace.c:188
 #: ../src/trace.c:540 ../src/ucs.c:183 ../src/ucs.c:449 ../src/vertex.c:185
@@ -423,10 +425,12 @@ msgstr ""
 #: ../src/sortentstable.c:1190 ../src/sortentstable.c:1410
 #: ../src/sortentstable.c:1535 ../src/spatial_filter.c:2388
 #: ../src/spatial_index.c:856 ../src/spline.c:5002 ../src/style.c:1847
-#: ../src/sun.c:3371 ../src/table.c:1428 ../src/text.c:4225
-#: ../src/thumbnail.c:757 ../src/tolerance.c:3466 ../src/trace.c:4062
-#: ../src/ucs.c:2664 ../src/util.c:387 ../src/util.c:730 ../src/util.c:1072
-#: ../src/util.c:1414 ../src/util.c:1756 ../src/util.c:2098
+#: ../src/sun.c:3371 ../src/table.c:518 ../src/table.c:534 ../src/table.c:550
+#: ../src/table.c:840 ../src/table.c:849 ../src/table.c:2862
+#: ../src/table.c:2953 ../src/table.c:3044 ../src/table.c:3297
+#: ../src/text.c:4225 ../src/thumbnail.c:757 ../src/tolerance.c:3466
+#: ../src/trace.c:4062 ../src/ucs.c:2664 ../src/util.c:387 ../src/util.c:730
+#: ../src/util.c:1072 ../src/util.c:1414 ../src/util.c:1756 ../src/util.c:2098
 #: ../src/vertex.c:3372 ../src/view.c:2436 ../src/viewport.c:6678
 #: ../src/vport.c:228 ../src/vport.c:235 ../src/vport.c:242 ../src/vport.c:249
 #: ../src/vport.c:256 ../src/vport.c:263 ../src/vport.c:270 ../src/vport.c:277
@@ -445,7 +449,7 @@ msgstr ""
 #: ../src/dimension.c:244 ../src/ellipse.c:207 ../src/helix.c:203
 #: ../src/image.c:220 ../src/insert.c:208 ../src/leader.c:231
 #: ../src/light.c:215 ../src/line.c:230 ../src/lwpolyline.c:207
-#: ../src/mesh.c:215
+#: ../src/mesh.c:215 ../src/table.c:521
 #, c-format
 msgid "Initializing a DxfBinaryData struct.\n"
 msgstr ""
@@ -503,7 +507,8 @@ msgstr ""
 #: ../src/light.c:3002 ../src/light.c:3093 ../src/line.c:248 ../src/line.c:266
 #: ../src/line.c:2542 ../src/line.c:2633 ../src/line.c:2724 ../src/line.c:2892
 #: ../src/line.c:2983 ../src/line.c:3074 ../src/mesh.c:233 ../src/mesh.c:2623
-#: ../src/mesh.c:2714 ../src/mesh.c:2805
+#: ../src/mesh.c:2714 ../src/mesh.c:2805 ../src/table.c:537 ../src/table.c:553
+#: ../src/table.c:2865 ../src/table.c:2956 ../src/table.c:3047
 #, c-format
 msgid "Initializing a DxfPoint.\n"
 msgstr ""
@@ -528,7 +533,7 @@ msgstr ""
 #: ../src/spatial_filter.c:211 ../src/spatial_index.c:198 ../src/spline.c:422
 #: ../src/style.c:192 ../src/sun.c:212 ../src/surface.c:235
 #: ../src/surface.c:3267 ../src/surface.c:5996 ../src/surface.c:7515
-#: ../src/surface.c:9648 ../src/table.c:527 ../src/text.c:215
+#: ../src/surface.c:9648 ../src/table.c:574 ../src/text.c:215
 #: ../src/thumbnail.c:196 ../src/tolerance.c:207 ../src/trace.c:208
 #: ../src/ucs.c:204 ../src/vertex.c:205 ../src/view.c:198 ../src/viewport.c:244
 #: ../src/viewport.c:383 ../src/viewport.c:395 ../src/viewport.c:408
@@ -564,7 +569,7 @@ msgstr ""
 #: ../src/rtext.c:349 ../src/seqend.c:288 ../src/shape.c:349
 #: ../src/sortentstable.c:237 ../src/spatial_filter.c:342
 #: ../src/spatial_index.c:230 ../src/style.c:279 ../src/sun.c:353
-#: ../src/surface.c:409 ../src/table.c:663 ../src/text.c:408
+#: ../src/surface.c:409 ../src/table.c:710 ../src/text.c:408
 #: ../src/tolerance.c:344 ../src/trace.c:381 ../src/ucs.c:363
 #: ../src/vertex.c:380 ../src/view.c:345 ../src/xline.c:353
 #: ../src/xrecord.c:211
@@ -601,7 +606,7 @@ msgstr ""
 #: ../src/solid.c:533 ../src/sortentstable.c:288 ../src/spatial_filter.c:395
 #: ../src/spatial_index.c:258 ../src/spline.c:743 ../src/style.c:313
 #: ../src/sun.c:484 ../src/surface.c:513 ../src/surface.c:3473
-#: ../src/table.c:729 ../src/thumbnail.c:228 ../src/tolerance.c:457
+#: ../src/table.c:777 ../src/thumbnail.c:228 ../src/tolerance.c:457
 #: ../src/trace.c:494 ../src/ucs.c:412 ../src/vertex.c:472 ../src/view.c:373
 #: ../src/viewport.c:997 ../src/xline.c:445 ../src/xrecord.c:303
 #, c-format
@@ -2361,48 +2366,65 @@ msgstr ""
 #: ../src/surface.c:11799 ../src/surface.c:11806 ../src/surface.c:11840
 #: ../src/surface.c:11879 ../src/surface.c:11886 ../src/surface.c:11920
 #: ../src/surface.c:11959 ../src/surface.c:11966 ../src/surface.c:12000
-#: ../src/table.c:199 ../src/table.c:275 ../src/table.c:776 ../src/table.c:866
-#: ../src/table.c:952 ../src/table.c:993 ../src/table.c:1031
-#: ../src/table.c:1074 ../src/table.c:1081 ../src/table.c:1113
-#: ../src/table.c:1155 ../src/table.c:1162 ../src/table.c:1194
-#: ../src/table.c:1227 ../src/table.c:1259 ../src/table.c:1298
-#: ../src/table.c:1339 ../src/table.c:1380 ../src/table.c:1387
-#: ../src/table.c:1421 ../src/tables.c:186 ../src/tables.c:226
-#: ../src/tables.c:262 ../src/tables.c:299 ../src/tables.c:336
-#: ../src/tables.c:343 ../src/tables.c:374 ../src/tables.c:411
-#: ../src/tables.c:418 ../src/tables.c:449 ../src/tables.c:486
-#: ../src/tables.c:493 ../src/tables.c:524 ../src/tables.c:561
-#: ../src/tables.c:568 ../src/tables.c:599 ../src/tables.c:636
-#: ../src/tables.c:643 ../src/tables.c:674 ../src/tables.c:711
-#: ../src/tables.c:718 ../src/tables.c:749 ../src/tables.c:786
-#: ../src/tables.c:793 ../src/tables.c:824 ../src/tables.c:861
-#: ../src/tables.c:868 ../src/tables.c:899 ../src/tables.c:936
-#: ../src/tables.c:943 ../src/text.c:581 ../src/text.c:831 ../src/text.c:915
-#: ../src/text.c:953 ../src/text.c:990 ../src/text.c:1028 ../src/text.c:1035
-#: ../src/text.c:1066 ../src/text.c:1104 ../src/text.c:1111 ../src/text.c:1142
-#: ../src/text.c:1172 ../src/text.c:1203 ../src/text.c:1239 ../src/text.c:1276
-#: ../src/text.c:1312 ../src/text.c:1349 ../src/text.c:1391 ../src/text.c:1434
-#: ../src/text.c:1470 ../src/text.c:1507 ../src/text.c:1550 ../src/text.c:1594
-#: ../src/text.c:1640 ../src/text.c:1684 ../src/text.c:1729 ../src/text.c:1775
-#: ../src/text.c:1814 ../src/text.c:1821 ../src/text.c:1855 ../src/text.c:1894
-#: ../src/text.c:1901 ../src/text.c:1935 ../src/text.c:1976 ../src/text.c:1983
-#: ../src/text.c:2017 ../src/text.c:2056 ../src/text.c:2063 ../src/text.c:2095
-#: ../src/text.c:2128 ../src/text.c:2160 ../src/text.c:2201 ../src/text.c:2208
-#: ../src/text.c:2240 ../src/text.c:2273 ../src/text.c:2305 ../src/text.c:2346
-#: ../src/text.c:2353 ../src/text.c:2385 ../src/text.c:2418 ../src/text.c:2450
-#: ../src/text.c:2491 ../src/text.c:2498 ../src/text.c:2530 ../src/text.c:2571
-#: ../src/text.c:2578 ../src/text.c:2609 ../src/text.c:2648 ../src/text.c:2655
-#: ../src/text.c:2688 ../src/text.c:2730 ../src/text.c:2770 ../src/text.c:2812
-#: ../src/text.c:2852 ../src/text.c:2894 ../src/text.c:2932 ../src/text.c:2971
-#: ../src/text.c:2978 ../src/text.c:3011 ../src/text.c:3053 ../src/text.c:3093
-#: ../src/text.c:3135 ../src/text.c:3175 ../src/text.c:3217 ../src/text.c:3255
-#: ../src/text.c:3297 ../src/text.c:3340 ../src/text.c:3376 ../src/text.c:3413
-#: ../src/text.c:3449 ../src/text.c:3486 ../src/text.c:3522 ../src/text.c:3553
-#: ../src/text.c:3595 ../src/text.c:3638 ../src/text.c:3680 ../src/text.c:3723
-#: ../src/text.c:3765 ../src/text.c:3813 ../src/text.c:3856 ../src/text.c:3891
-#: ../src/text.c:3924 ../src/text.c:3959 ../src/text.c:3992 ../src/text.c:4027
-#: ../src/text.c:4059 ../src/text.c:4066 ../src/text.c:4103 ../src/text.c:4139
-#: ../src/text.c:4177 ../src/text.c:4184 ../src/text.c:4218
+#: ../src/table.c:199 ../src/table.c:275 ../src/table.c:831 ../src/table.c:980
+#: ../src/table.c:1063 ../src/table.c:1104 ../src/table.c:1142
+#: ../src/table.c:1185 ../src/table.c:1192 ../src/table.c:1224
+#: ../src/table.c:1266 ../src/table.c:1273 ../src/table.c:1305
+#: ../src/table.c:1338 ../src/table.c:1370 ../src/table.c:1409
+#: ../src/table.c:1447 ../src/table.c:1486 ../src/table.c:1524
+#: ../src/table.c:1569 ../src/table.c:1613 ../src/table.c:1652
+#: ../src/table.c:1690 ../src/table.c:1736 ../src/table.c:1781
+#: ../src/table.c:1827 ../src/table.c:1872 ../src/table.c:1917
+#: ../src/table.c:1964 ../src/table.c:2006 ../src/table.c:2013
+#: ../src/table.c:2048 ../src/table.c:2090 ../src/table.c:2097
+#: ../src/table.c:2132 ../src/table.c:2174 ../src/table.c:2181
+#: ../src/table.c:2215 ../src/table.c:2256 ../src/table.c:2263
+#: ../src/table.c:2298 ../src/table.c:2340 ../src/table.c:2347
+#: ../src/table.c:2379 ../src/table.c:2412 ../src/table.c:2444
+#: ../src/table.c:2485 ../src/table.c:2492 ../src/table.c:2524
+#: ../src/table.c:2557 ../src/table.c:2589 ../src/table.c:2630
+#: ../src/table.c:2637 ../src/table.c:2669 ../src/table.c:2702
+#: ../src/table.c:2733 ../src/table.c:2773 ../src/table.c:2780
+#: ../src/table.c:2813 ../src/table.c:2855 ../src/table.c:2904
+#: ../src/table.c:2946 ../src/table.c:2995 ../src/table.c:3037
+#: ../src/table.c:3086 ../src/table.c:3127 ../src/table.c:3134
+#: ../src/table.c:3167 ../src/table.c:3208 ../src/table.c:3249
+#: ../src/table.c:3256 ../src/table.c:3290 ../src/tables.c:186
+#: ../src/tables.c:226 ../src/tables.c:262 ../src/tables.c:299
+#: ../src/tables.c:336 ../src/tables.c:343 ../src/tables.c:374
+#: ../src/tables.c:411 ../src/tables.c:418 ../src/tables.c:449
+#: ../src/tables.c:486 ../src/tables.c:493 ../src/tables.c:524
+#: ../src/tables.c:561 ../src/tables.c:568 ../src/tables.c:599
+#: ../src/tables.c:636 ../src/tables.c:643 ../src/tables.c:674
+#: ../src/tables.c:711 ../src/tables.c:718 ../src/tables.c:749
+#: ../src/tables.c:786 ../src/tables.c:793 ../src/tables.c:824
+#: ../src/tables.c:861 ../src/tables.c:868 ../src/tables.c:899
+#: ../src/tables.c:936 ../src/tables.c:943 ../src/text.c:581 ../src/text.c:831
+#: ../src/text.c:915 ../src/text.c:953 ../src/text.c:990 ../src/text.c:1028
+#: ../src/text.c:1035 ../src/text.c:1066 ../src/text.c:1104 ../src/text.c:1111
+#: ../src/text.c:1142 ../src/text.c:1172 ../src/text.c:1203 ../src/text.c:1239
+#: ../src/text.c:1276 ../src/text.c:1312 ../src/text.c:1349 ../src/text.c:1391
+#: ../src/text.c:1434 ../src/text.c:1470 ../src/text.c:1507 ../src/text.c:1550
+#: ../src/text.c:1594 ../src/text.c:1640 ../src/text.c:1684 ../src/text.c:1729
+#: ../src/text.c:1775 ../src/text.c:1814 ../src/text.c:1821 ../src/text.c:1855
+#: ../src/text.c:1894 ../src/text.c:1901 ../src/text.c:1935 ../src/text.c:1976
+#: ../src/text.c:1983 ../src/text.c:2017 ../src/text.c:2056 ../src/text.c:2063
+#: ../src/text.c:2095 ../src/text.c:2128 ../src/text.c:2160 ../src/text.c:2201
+#: ../src/text.c:2208 ../src/text.c:2240 ../src/text.c:2273 ../src/text.c:2305
+#: ../src/text.c:2346 ../src/text.c:2353 ../src/text.c:2385 ../src/text.c:2418
+#: ../src/text.c:2450 ../src/text.c:2491 ../src/text.c:2498 ../src/text.c:2530
+#: ../src/text.c:2571 ../src/text.c:2578 ../src/text.c:2609 ../src/text.c:2648
+#: ../src/text.c:2655 ../src/text.c:2688 ../src/text.c:2730 ../src/text.c:2770
+#: ../src/text.c:2812 ../src/text.c:2852 ../src/text.c:2894 ../src/text.c:2932
+#: ../src/text.c:2971 ../src/text.c:2978 ../src/text.c:3011 ../src/text.c:3053
+#: ../src/text.c:3093 ../src/text.c:3135 ../src/text.c:3175 ../src/text.c:3217
+#: ../src/text.c:3255 ../src/text.c:3297 ../src/text.c:3340 ../src/text.c:3376
+#: ../src/text.c:3413 ../src/text.c:3449 ../src/text.c:3486 ../src/text.c:3522
+#: ../src/text.c:3553 ../src/text.c:3595 ../src/text.c:3638 ../src/text.c:3680
+#: ../src/text.c:3723 ../src/text.c:3765 ../src/text.c:3813 ../src/text.c:3856
+#: ../src/text.c:3891 ../src/text.c:3924 ../src/text.c:3959 ../src/text.c:3992
+#: ../src/text.c:4027 ../src/text.c:4059 ../src/text.c:4066 ../src/text.c:4103
+#: ../src/text.c:4139 ../src/text.c:4177 ../src/text.c:4184 ../src/text.c:4218
 #: ../src/thumbnail.c:273 ../src/thumbnail.c:330 ../src/thumbnail.c:365
 #: ../src/thumbnail.c:401 ../src/thumbnail.c:440 ../src/thumbnail.c:479
 #: ../src/thumbnail.c:486 ../src/thumbnail.c:519 ../src/thumbnail.c:558
@@ -2728,7 +2750,7 @@ msgstr ""
 #: ../src/spatial_index.c:396 ../src/spline.c:1011 ../src/style.c:464
 #: ../src/sun.c:726 ../src/surface.c:788 ../src/surface.c:3617
 #: ../src/surface.c:6208 ../src/surface.c:7771 ../src/surface.c:9941
-#: ../src/table.c:282 ../src/table.c:873 ../src/text.c:838
+#: ../src/table.c:282 ../src/table.c:987 ../src/text.c:838
 #: ../src/tolerance.c:714 ../src/trace.c:742 ../src/ucs.c:585 ../src/util.c:432
 #: ../src/util.c:775 ../src/util.c:1117 ../src/util.c:1459 ../src/util.c:1801
 #: ../src/view.c:527 ../src/viewport.c:1241 ../src/vport.c:835
@@ -2874,7 +2896,9 @@ msgstr ""
 #: ../src/surface.c:1436 ../src/surface.c:1512 ../src/surface.c:1603
 #: ../src/surface.c:1694 ../src/surface.c:2789 ../src/surface.c:2874
 #: ../src/surface.c:5018 ../src/surface.c:5173 ../src/surface.c:5219
-#: ../src/surface.c:11087 ../src/table.c:959 ../src/table.c:1266
+#: ../src/surface.c:11087 ../src/table.c:1070 ../src/table.c:1377
+#: ../src/table.c:1454 ../src/table.c:1531 ../src/table.c:1620
+#: ../src/table.c:1697 ../src/table.c:1788 ../src/table.c:1879
 #: ../src/tables.c:233 ../src/text.c:922 ../src/text.c:1210 ../src/text.c:1283
 #: ../src/text.c:1356 ../src/text.c:1441 ../src/text.c:1514 ../src/text.c:1601
 #: ../src/text.c:1691 ../src/text.c:3262 ../src/text.c:3420 ../src/text.c:3493
@@ -3032,26 +3056,28 @@ msgstr ""
 #: ../src/surface.c:1393 ../src/surface.c:1475 ../src/surface.c:1558
 #: ../src/surface.c:1650 ../src/surface.c:1739 ../src/surface.c:2831
 #: ../src/surface.c:2916 ../src/surface.c:5065 ../src/surface.c:11134
-#: ../src/table.c:1000 ../src/table.c:1305 ../src/tables.c:269
-#: ../src/text.c:960 ../src/text.c:1246 ../src/text.c:1319 ../src/text.c:1398
-#: ../src/text.c:1477 ../src/text.c:1557 ../src/text.c:1647 ../src/text.c:1736
-#: ../src/text.c:3304 ../src/text.c:3456 ../src/text.c:3602 ../src/text.c:3687
-#: ../src/text.c:3772 ../src/thumbnail.c:408 ../src/thumbnail.c:637
-#: ../src/tolerance.c:829 ../src/tolerance.c:1115 ../src/tolerance.c:1188
-#: ../src/tolerance.c:1267 ../src/tolerance.c:1346 ../src/tolerance.c:1427
-#: ../src/tolerance.c:1519 ../src/tolerance.c:1608 ../src/trace.c:864
-#: ../src/trace.c:1150 ../src/trace.c:1223 ../src/trace.c:1302
-#: ../src/trace.c:1381 ../src/trace.c:1461 ../src/trace.c:1551
-#: ../src/trace.c:1640 ../src/ucs.c:698 ../src/util.c:267 ../src/vertex.c:828
-#: ../src/vertex.c:1114 ../src/vertex.c:1187 ../src/vertex.c:1266
-#: ../src/vertex.c:1345 ../src/vertex.c:2943 ../src/vertex.c:3025
-#: ../src/vertex.c:3101 ../src/vertex.c:3177 ../src/vertex.c:3253
-#: ../src/view.c:640 ../src/view.c:2084 ../src/view.c:2157
-#: ../src/viewport.c:1360 ../src/viewport.c:1885 ../src/vport.c:954
-#: ../src/vport.c:3824 ../src/vport.c:3903 ../src/vport.c:3978
-#: ../src/vport.c:4053 ../src/vport.c:4128 ../src/vport.c:4201
-#: ../src/vport.c:4274 ../src/vport.c:4347 ../src/vport.c:4420
-#: ../src/xline.c:1350 ../src/xrecord.c:600 ../src/xrecord.c:835
+#: ../src/table.c:1111 ../src/table.c:1416 ../src/table.c:1493
+#: ../src/table.c:1576 ../src/table.c:1659 ../src/table.c:1743
+#: ../src/table.c:1924 ../src/tables.c:269 ../src/text.c:960 ../src/text.c:1246
+#: ../src/text.c:1319 ../src/text.c:1398 ../src/text.c:1477 ../src/text.c:1557
+#: ../src/text.c:1647 ../src/text.c:1736 ../src/text.c:3304 ../src/text.c:3456
+#: ../src/text.c:3602 ../src/text.c:3687 ../src/text.c:3772
+#: ../src/thumbnail.c:408 ../src/thumbnail.c:637 ../src/tolerance.c:829
+#: ../src/tolerance.c:1115 ../src/tolerance.c:1188 ../src/tolerance.c:1267
+#: ../src/tolerance.c:1346 ../src/tolerance.c:1427 ../src/tolerance.c:1519
+#: ../src/tolerance.c:1608 ../src/trace.c:864 ../src/trace.c:1150
+#: ../src/trace.c:1223 ../src/trace.c:1302 ../src/trace.c:1381
+#: ../src/trace.c:1461 ../src/trace.c:1551 ../src/trace.c:1640 ../src/ucs.c:698
+#: ../src/util.c:267 ../src/vertex.c:828 ../src/vertex.c:1114
+#: ../src/vertex.c:1187 ../src/vertex.c:1266 ../src/vertex.c:1345
+#: ../src/vertex.c:2943 ../src/vertex.c:3025 ../src/vertex.c:3101
+#: ../src/vertex.c:3177 ../src/vertex.c:3253 ../src/view.c:640
+#: ../src/view.c:2084 ../src/view.c:2157 ../src/viewport.c:1360
+#: ../src/viewport.c:1885 ../src/vport.c:954 ../src/vport.c:3824
+#: ../src/vport.c:3903 ../src/vport.c:3978 ../src/vport.c:4053
+#: ../src/vport.c:4128 ../src/vport.c:4201 ../src/vport.c:4274
+#: ../src/vport.c:4347 ../src/vport.c:4420 ../src/xline.c:1350
+#: ../src/xrecord.c:600 ../src/xrecord.c:835
 #, c-format
 msgid "Warning in %s () a negative value was passed.\n"
 msgstr ""
@@ -3397,106 +3423,112 @@ msgstr ""
 #: ../src/surface.c:10145 ../src/surface.c:10185 ../src/surface.c:10227
 #: ../src/surface.c:10267 ../src/surface.c:10309 ../src/surface.c:10349
 #: ../src/surface.c:10432 ../src/surface.c:10786 ../src/surface.c:10869
-#: ../src/surface.c:11767 ../src/surface.c:11847 ../src/table.c:1038
-#: ../src/table.c:1120 ../src/table.c:1346 ../src/tables.c:306
-#: ../src/tables.c:381 ../src/tables.c:456 ../src/tables.c:531
-#: ../src/tables.c:606 ../src/tables.c:681 ../src/tables.c:756
-#: ../src/tables.c:831 ../src/tables.c:906 ../src/text.c:997 ../src/text.c:1073
-#: ../src/text.c:1782 ../src/text.c:1862 ../src/text.c:1942 ../src/text.c:2024
-#: ../src/text.c:2167 ../src/text.c:2312 ../src/text.c:2457 ../src/text.c:2537
-#: ../src/text.c:2616 ../src/text.c:2695 ../src/text.c:2737 ../src/text.c:2777
-#: ../src/text.c:2819 ../src/text.c:2859 ../src/text.c:2901 ../src/text.c:2939
-#: ../src/text.c:3018 ../src/text.c:3060 ../src/text.c:3100 ../src/text.c:3142
-#: ../src/text.c:3182 ../src/text.c:3224 ../src/text.c:4146
-#: ../src/thumbnail.c:447 ../src/thumbnail.c:526 ../src/thumbnail.c:677
-#: ../src/tolerance.c:866 ../src/tolerance.c:942 ../src/tolerance.c:1654
-#: ../src/tolerance.c:1734 ../src/tolerance.c:1815 ../src/tolerance.c:1898
-#: ../src/tolerance.c:2041 ../src/tolerance.c:2186 ../src/tolerance.c:2331
-#: ../src/tolerance.c:2410 ../src/tolerance.c:2489 ../src/tolerance.c:2531
-#: ../src/tolerance.c:2571 ../src/tolerance.c:2613 ../src/tolerance.c:2653
-#: ../src/tolerance.c:2695 ../src/tolerance.c:2733 ../src/tolerance.c:2812
-#: ../src/tolerance.c:2854 ../src/tolerance.c:2894 ../src/tolerance.c:2936
-#: ../src/tolerance.c:2976 ../src/tolerance.c:3018 ../src/tolerance.c:3387
-#: ../src/trace.c:901 ../src/trace.c:977 ../src/trace.c:1686
-#: ../src/trace.c:1766 ../src/trace.c:1846 ../src/trace.c:1928
-#: ../src/trace.c:2071 ../src/trace.c:2216 ../src/trace.c:2360
-#: ../src/trace.c:2439 ../src/trace.c:2481 ../src/trace.c:2521
-#: ../src/trace.c:2563 ../src/trace.c:2603 ../src/trace.c:2645
-#: ../src/trace.c:2683 ../src/trace.c:2762 ../src/trace.c:2804
-#: ../src/trace.c:2844 ../src/trace.c:2886 ../src/trace.c:2926
-#: ../src/trace.c:2968 ../src/trace.c:3006 ../src/trace.c:3085
-#: ../src/trace.c:3127 ../src/trace.c:3167 ../src/trace.c:3209
-#: ../src/trace.c:3249 ../src/trace.c:3291 ../src/trace.c:3329
-#: ../src/trace.c:3408 ../src/trace.c:3450 ../src/trace.c:3490
-#: ../src/trace.c:3532 ../src/trace.c:3572 ../src/trace.c:3614
-#: ../src/trace.c:3983 ../src/ucs.c:735 ../src/ucs.c:812 ../src/ucs.c:892
-#: ../src/ucs.c:934 ../src/ucs.c:974 ../src/ucs.c:1016 ../src/ucs.c:1056
-#: ../src/ucs.c:1098 ../src/ucs.c:1137 ../src/ucs.c:1218 ../src/ucs.c:1261
-#: ../src/ucs.c:1302 ../src/ucs.c:1345 ../src/ucs.c:1386 ../src/ucs.c:1429
-#: ../src/ucs.c:1468 ../src/ucs.c:1549 ../src/ucs.c:1592 ../src/ucs.c:1633
-#: ../src/ucs.c:1676 ../src/ucs.c:1717 ../src/ucs.c:1760 ../src/ucs.c:1800
-#: ../src/ucs.c:1882 ../src/ucs.c:1926 ../src/ucs.c:1968 ../src/ucs.c:2012
-#: ../src/ucs.c:2054 ../src/ucs.c:2098 ../src/ucs.c:2264 ../src/ucs.c:2344
-#: ../src/ucs.c:2424 ../src/ucs.c:2504 ../src/ucs.c:2584 ../src/util.c:305
-#: ../src/util.c:648 ../src/util.c:990 ../src/util.c:1332 ../src/util.c:1674
-#: ../src/util.c:2016 ../src/vertex.c:865 ../src/vertex.c:941
-#: ../src/vertex.c:1658 ../src/vertex.c:1738 ../src/vertex.c:1818
-#: ../src/vertex.c:1900 ../src/vertex.c:2043 ../src/vertex.c:2188
-#: ../src/vertex.c:2332 ../src/vertex.c:2411 ../src/vertex.c:2453
-#: ../src/vertex.c:2493 ../src/vertex.c:2535 ../src/vertex.c:2575
-#: ../src/vertex.c:2617 ../src/vertex.c:3293 ../src/view.c:677
-#: ../src/view.c:754 ../src/view.c:834 ../src/view.c:876 ../src/view.c:916
-#: ../src/view.c:958 ../src/view.c:997 ../src/view.c:1077 ../src/view.c:1119
-#: ../src/view.c:1159 ../src/view.c:1201 ../src/view.c:1241 ../src/view.c:1283
-#: ../src/view.c:1322 ../src/view.c:1402 ../src/view.c:1444 ../src/view.c:1484
-#: ../src/view.c:1526 ../src/view.c:1566 ../src/view.c:1608 ../src/view.c:2197
-#: ../src/view.c:2277 ../src/view.c:2357 ../src/viewport.c:1397
-#: ../src/viewport.c:1473 ../src/viewport.c:2198 ../src/viewport.c:2278
-#: ../src/viewport.c:2359 ../src/viewport.c:2442 ../src/viewport.c:2585
-#: ../src/viewport.c:2730 ../src/viewport.c:2875 ../src/viewport.c:2954
-#: ../src/viewport.c:2996 ../src/viewport.c:3036 ../src/viewport.c:3078
-#: ../src/viewport.c:3118 ../src/viewport.c:3160 ../src/viewport.c:3443
-#: ../src/viewport.c:3523 ../src/viewport.c:3604 ../src/viewport.c:3747
-#: ../src/viewport.c:3826 ../src/viewport.c:3868 ../src/viewport.c:3908
-#: ../src/viewport.c:3950 ../src/viewport.c:3990 ../src/viewport.c:4032
-#: ../src/viewport.c:4071 ../src/viewport.c:4151 ../src/viewport.c:4193
-#: ../src/viewport.c:4233 ../src/viewport.c:4275 ../src/viewport.c:4315
-#: ../src/viewport.c:4357 ../src/viewport.c:4518 ../src/viewport.c:4598
-#: ../src/viewport.c:4640 ../src/viewport.c:4680 ../src/viewport.c:4722
-#: ../src/viewport.c:5495 ../src/viewport.c:5575 ../src/viewport.c:5617
-#: ../src/viewport.c:5657 ../src/viewport.c:5699 ../src/viewport.c:5737
-#: ../src/viewport.c:5817 ../src/viewport.c:5859 ../src/viewport.c:5899
-#: ../src/viewport.c:5941 ../src/viewport.c:5979 ../src/viewport.c:6059
-#: ../src/viewport.c:6101 ../src/viewport.c:6141 ../src/viewport.c:6183
-#: ../src/viewport.c:6284 ../src/viewport.c:6362 ../src/viewport.c:6440
-#: ../src/viewport.c:6519 ../src/viewport.c:6599 ../src/vport.c:656
-#: ../src/vport.c:665 ../src/vport.c:674 ../src/vport.c:683 ../src/vport.c:692
-#: ../src/vport.c:701 ../src/vport.c:710 ../src/vport.c:719 ../src/vport.c:993
-#: ../src/vport.c:1070 ../src/vport.c:1150 ../src/vport.c:1192
-#: ../src/vport.c:1232 ../src/vport.c:1274 ../src/vport.c:1313
-#: ../src/vport.c:1393 ../src/vport.c:1435 ../src/vport.c:1475
-#: ../src/vport.c:1517 ../src/vport.c:1556 ../src/vport.c:1637
-#: ../src/vport.c:1680 ../src/vport.c:1721 ../src/vport.c:1764
-#: ../src/vport.c:1803 ../src/vport.c:1883 ../src/vport.c:1925
-#: ../src/vport.c:1965 ../src/vport.c:2007 ../src/vport.c:2046
-#: ../src/vport.c:2126 ../src/vport.c:2168 ../src/vport.c:2208
-#: ../src/vport.c:2250 ../src/vport.c:2289 ../src/vport.c:2369
-#: ../src/vport.c:2411 ../src/vport.c:2451 ../src/vport.c:2493
-#: ../src/vport.c:2532 ../src/vport.c:2613 ../src/vport.c:2655
-#: ../src/vport.c:2696 ../src/vport.c:2738 ../src/vport.c:2779
-#: ../src/vport.c:2821 ../src/vport.c:2860 ../src/vport.c:2940
-#: ../src/vport.c:2982 ../src/vport.c:3022 ../src/vport.c:3064
-#: ../src/vport.c:3104 ../src/vport.c:3146 ../src/vport.c:4460
-#: ../src/vport.c:4540 ../src/vport.c:4620 ../src/xline.c:509
-#: ../src/xline.c:518 ../src/xline.c:864 ../src/xline.c:939 ../src/xline.c:1666
-#: ../src/xline.c:1746 ../src/xline.c:1827 ../src/xline.c:1910
-#: ../src/xline.c:2053 ../src/xline.c:2198 ../src/xline.c:2342
-#: ../src/xline.c:2421 ../src/xline.c:2463 ../src/xline.c:2503
-#: ../src/xline.c:2545 ../src/xline.c:2585 ../src/xline.c:2627
-#: ../src/xline.c:2665 ../src/xline.c:2744 ../src/xline.c:2786
-#: ../src/xline.c:2826 ../src/xline.c:2868 ../src/xline.c:2908
-#: ../src/xline.c:2950 ../src/xline.c:2991 ../src/xrecord.c:641
-#: ../src/xrecord.c:721 ../src/xrecord.c:1180 ../src/xrecord.c:1258
+#: ../src/surface.c:11767 ../src/surface.c:11847 ../src/table.c:864
+#: ../src/table.c:883 ../src/table.c:903 ../src/table.c:918 ../src/table.c:925
+#: ../src/table.c:1149 ../src/table.c:1231 ../src/table.c:1971
+#: ../src/table.c:2055 ../src/table.c:2139 ../src/table.c:2222
+#: ../src/table.c:2305 ../src/table.c:2451 ../src/table.c:2596
+#: ../src/table.c:2740 ../src/table.c:2820 ../src/table.c:2911
+#: ../src/table.c:3002 ../src/table.c:3093 ../src/table.c:3174
+#: ../src/table.c:3215 ../src/tables.c:306 ../src/tables.c:381
+#: ../src/tables.c:456 ../src/tables.c:531 ../src/tables.c:606
+#: ../src/tables.c:681 ../src/tables.c:756 ../src/tables.c:831
+#: ../src/tables.c:906 ../src/text.c:997 ../src/text.c:1073 ../src/text.c:1782
+#: ../src/text.c:1862 ../src/text.c:1942 ../src/text.c:2024 ../src/text.c:2167
+#: ../src/text.c:2312 ../src/text.c:2457 ../src/text.c:2537 ../src/text.c:2616
+#: ../src/text.c:2695 ../src/text.c:2737 ../src/text.c:2777 ../src/text.c:2819
+#: ../src/text.c:2859 ../src/text.c:2901 ../src/text.c:2939 ../src/text.c:3018
+#: ../src/text.c:3060 ../src/text.c:3100 ../src/text.c:3142 ../src/text.c:3182
+#: ../src/text.c:3224 ../src/text.c:4146 ../src/thumbnail.c:447
+#: ../src/thumbnail.c:526 ../src/thumbnail.c:677 ../src/tolerance.c:866
+#: ../src/tolerance.c:942 ../src/tolerance.c:1654 ../src/tolerance.c:1734
+#: ../src/tolerance.c:1815 ../src/tolerance.c:1898 ../src/tolerance.c:2041
+#: ../src/tolerance.c:2186 ../src/tolerance.c:2331 ../src/tolerance.c:2410
+#: ../src/tolerance.c:2489 ../src/tolerance.c:2531 ../src/tolerance.c:2571
+#: ../src/tolerance.c:2613 ../src/tolerance.c:2653 ../src/tolerance.c:2695
+#: ../src/tolerance.c:2733 ../src/tolerance.c:2812 ../src/tolerance.c:2854
+#: ../src/tolerance.c:2894 ../src/tolerance.c:2936 ../src/tolerance.c:2976
+#: ../src/tolerance.c:3018 ../src/tolerance.c:3387 ../src/trace.c:901
+#: ../src/trace.c:977 ../src/trace.c:1686 ../src/trace.c:1766
+#: ../src/trace.c:1846 ../src/trace.c:1928 ../src/trace.c:2071
+#: ../src/trace.c:2216 ../src/trace.c:2360 ../src/trace.c:2439
+#: ../src/trace.c:2481 ../src/trace.c:2521 ../src/trace.c:2563
+#: ../src/trace.c:2603 ../src/trace.c:2645 ../src/trace.c:2683
+#: ../src/trace.c:2762 ../src/trace.c:2804 ../src/trace.c:2844
+#: ../src/trace.c:2886 ../src/trace.c:2926 ../src/trace.c:2968
+#: ../src/trace.c:3006 ../src/trace.c:3085 ../src/trace.c:3127
+#: ../src/trace.c:3167 ../src/trace.c:3209 ../src/trace.c:3249
+#: ../src/trace.c:3291 ../src/trace.c:3329 ../src/trace.c:3408
+#: ../src/trace.c:3450 ../src/trace.c:3490 ../src/trace.c:3532
+#: ../src/trace.c:3572 ../src/trace.c:3614 ../src/trace.c:3983 ../src/ucs.c:735
+#: ../src/ucs.c:812 ../src/ucs.c:892 ../src/ucs.c:934 ../src/ucs.c:974
+#: ../src/ucs.c:1016 ../src/ucs.c:1056 ../src/ucs.c:1098 ../src/ucs.c:1137
+#: ../src/ucs.c:1218 ../src/ucs.c:1261 ../src/ucs.c:1302 ../src/ucs.c:1345
+#: ../src/ucs.c:1386 ../src/ucs.c:1429 ../src/ucs.c:1468 ../src/ucs.c:1549
+#: ../src/ucs.c:1592 ../src/ucs.c:1633 ../src/ucs.c:1676 ../src/ucs.c:1717
+#: ../src/ucs.c:1760 ../src/ucs.c:1800 ../src/ucs.c:1882 ../src/ucs.c:1926
+#: ../src/ucs.c:1968 ../src/ucs.c:2012 ../src/ucs.c:2054 ../src/ucs.c:2098
+#: ../src/ucs.c:2264 ../src/ucs.c:2344 ../src/ucs.c:2424 ../src/ucs.c:2504
+#: ../src/ucs.c:2584 ../src/util.c:305 ../src/util.c:648 ../src/util.c:990
+#: ../src/util.c:1332 ../src/util.c:1674 ../src/util.c:2016 ../src/vertex.c:865
+#: ../src/vertex.c:941 ../src/vertex.c:1658 ../src/vertex.c:1738
+#: ../src/vertex.c:1818 ../src/vertex.c:1900 ../src/vertex.c:2043
+#: ../src/vertex.c:2188 ../src/vertex.c:2332 ../src/vertex.c:2411
+#: ../src/vertex.c:2453 ../src/vertex.c:2493 ../src/vertex.c:2535
+#: ../src/vertex.c:2575 ../src/vertex.c:2617 ../src/vertex.c:3293
+#: ../src/view.c:677 ../src/view.c:754 ../src/view.c:834 ../src/view.c:876
+#: ../src/view.c:916 ../src/view.c:958 ../src/view.c:997 ../src/view.c:1077
+#: ../src/view.c:1119 ../src/view.c:1159 ../src/view.c:1201 ../src/view.c:1241
+#: ../src/view.c:1283 ../src/view.c:1322 ../src/view.c:1402 ../src/view.c:1444
+#: ../src/view.c:1484 ../src/view.c:1526 ../src/view.c:1566 ../src/view.c:1608
+#: ../src/view.c:2197 ../src/view.c:2277 ../src/view.c:2357
+#: ../src/viewport.c:1397 ../src/viewport.c:1473 ../src/viewport.c:2198
+#: ../src/viewport.c:2278 ../src/viewport.c:2359 ../src/viewport.c:2442
+#: ../src/viewport.c:2585 ../src/viewport.c:2730 ../src/viewport.c:2875
+#: ../src/viewport.c:2954 ../src/viewport.c:2996 ../src/viewport.c:3036
+#: ../src/viewport.c:3078 ../src/viewport.c:3118 ../src/viewport.c:3160
+#: ../src/viewport.c:3443 ../src/viewport.c:3523 ../src/viewport.c:3604
+#: ../src/viewport.c:3747 ../src/viewport.c:3826 ../src/viewport.c:3868
+#: ../src/viewport.c:3908 ../src/viewport.c:3950 ../src/viewport.c:3990
+#: ../src/viewport.c:4032 ../src/viewport.c:4071 ../src/viewport.c:4151
+#: ../src/viewport.c:4193 ../src/viewport.c:4233 ../src/viewport.c:4275
+#: ../src/viewport.c:4315 ../src/viewport.c:4357 ../src/viewport.c:4518
+#: ../src/viewport.c:4598 ../src/viewport.c:4640 ../src/viewport.c:4680
+#: ../src/viewport.c:4722 ../src/viewport.c:5495 ../src/viewport.c:5575
+#: ../src/viewport.c:5617 ../src/viewport.c:5657 ../src/viewport.c:5699
+#: ../src/viewport.c:5737 ../src/viewport.c:5817 ../src/viewport.c:5859
+#: ../src/viewport.c:5899 ../src/viewport.c:5941 ../src/viewport.c:5979
+#: ../src/viewport.c:6059 ../src/viewport.c:6101 ../src/viewport.c:6141
+#: ../src/viewport.c:6183 ../src/viewport.c:6284 ../src/viewport.c:6362
+#: ../src/viewport.c:6440 ../src/viewport.c:6519 ../src/viewport.c:6599
+#: ../src/vport.c:656 ../src/vport.c:665 ../src/vport.c:674 ../src/vport.c:683
+#: ../src/vport.c:692 ../src/vport.c:701 ../src/vport.c:710 ../src/vport.c:719
+#: ../src/vport.c:993 ../src/vport.c:1070 ../src/vport.c:1150
+#: ../src/vport.c:1192 ../src/vport.c:1232 ../src/vport.c:1274
+#: ../src/vport.c:1313 ../src/vport.c:1393 ../src/vport.c:1435
+#: ../src/vport.c:1475 ../src/vport.c:1517 ../src/vport.c:1556
+#: ../src/vport.c:1637 ../src/vport.c:1680 ../src/vport.c:1721
+#: ../src/vport.c:1764 ../src/vport.c:1803 ../src/vport.c:1883
+#: ../src/vport.c:1925 ../src/vport.c:1965 ../src/vport.c:2007
+#: ../src/vport.c:2046 ../src/vport.c:2126 ../src/vport.c:2168
+#: ../src/vport.c:2208 ../src/vport.c:2250 ../src/vport.c:2289
+#: ../src/vport.c:2369 ../src/vport.c:2411 ../src/vport.c:2451
+#: ../src/vport.c:2493 ../src/vport.c:2532 ../src/vport.c:2613
+#: ../src/vport.c:2655 ../src/vport.c:2696 ../src/vport.c:2738
+#: ../src/vport.c:2779 ../src/vport.c:2821 ../src/vport.c:2860
+#: ../src/vport.c:2940 ../src/vport.c:2982 ../src/vport.c:3022
+#: ../src/vport.c:3064 ../src/vport.c:3104 ../src/vport.c:3146
+#: ../src/vport.c:4460 ../src/vport.c:4540 ../src/vport.c:4620
+#: ../src/xline.c:509 ../src/xline.c:518 ../src/xline.c:864 ../src/xline.c:939
+#: ../src/xline.c:1666 ../src/xline.c:1746 ../src/xline.c:1827
+#: ../src/xline.c:1910 ../src/xline.c:2053 ../src/xline.c:2198
+#: ../src/xline.c:2342 ../src/xline.c:2421 ../src/xline.c:2463
+#: ../src/xline.c:2503 ../src/xline.c:2545 ../src/xline.c:2585
+#: ../src/xline.c:2627 ../src/xline.c:2665 ../src/xline.c:2744
+#: ../src/xline.c:2786 ../src/xline.c:2826 ../src/xline.c:2868
+#: ../src/xline.c:2908 ../src/xline.c:2950 ../src/xline.c:2991
+#: ../src/xrecord.c:641 ../src/xrecord.c:721 ../src/xrecord.c:1180
+#: ../src/xrecord.c:1258
 #, c-format
 msgid "Error in %s () a NULL pointer was found.\n"
 msgstr ""
@@ -3555,8 +3587,9 @@ msgstr ""
 #: ../src/sun.c:3027 ../src/sun.c:3072 ../src/sun.c:3115 ../src/sun.c:3160
 #: ../src/sun.c:3203 ../src/sun.c:3249 ../src/surface.c:1354
 #: ../src/surface.c:1518 ../src/surface.c:1700 ../src/surface.c:5024
-#: ../src/surface.c:11093 ../src/text.c:1362 ../src/text.c:1520
-#: ../src/text.c:1697 ../src/text.c:3566 ../src/text.c:3651 ../src/text.c:3736
+#: ../src/surface.c:11093 ../src/table.c:1537 ../src/table.c:1703
+#: ../src/table.c:1885 ../src/text.c:1362 ../src/text.c:1520 ../src/text.c:1697
+#: ../src/text.c:3566 ../src/text.c:3651 ../src/text.c:3736
 #: ../src/tolerance.c:1231 ../src/tolerance.c:1390 ../src/tolerance.c:1569
 #: ../src/trace.c:1266 ../src/trace.c:1424 ../src/trace.c:1601
 #: ../src/vertex.c:1230 ../src/vertex.c:1388 ../src/vertex.c:2907
@@ -3613,7 +3646,8 @@ msgstr ""
 #: ../src/spline.c:4249 ../src/style.c:1156 ../src/style.c:1422
 #: ../src/sun.c:1310 ../src/sun.c:1475 ../src/sun.c:1654 ../src/sun.c:2648
 #: ../src/surface.c:1399 ../src/surface.c:1564 ../src/surface.c:1745
-#: ../src/surface.c:5071 ../src/surface.c:11140 ../src/text.c:1404
+#: ../src/surface.c:5071 ../src/surface.c:11140 ../src/table.c:1582
+#: ../src/table.c:1749 ../src/table.c:1930 ../src/text.c:1404
 #: ../src/text.c:1563 ../src/text.c:1742 ../src/text.c:3608 ../src/text.c:3693
 #: ../src/text.c:3778 ../src/tolerance.c:1273 ../src/tolerance.c:1433
 #: ../src/tolerance.c:1614 ../src/trace.c:1308 ../src/trace.c:1467
@@ -3636,8 +3670,9 @@ msgstr ""
 #: ../src/point.c:1487 ../src/ray.c:1342 ../src/region.c:1337
 #: ../src/rtext.c:1504 ../src/seqend.c:1342 ../src/shape.c:1511
 #: ../src/solid.c:1578 ../src/sun.c:1519 ../src/surface.c:1609
-#: ../src/text.c:1607 ../src/tolerance.c:1478 ../src/trace.c:1511
-#: ../src/vertex.c:1478 ../src/viewport.c:2018 ../src/xline.c:1485
+#: ../src/table.c:1794 ../src/text.c:1607 ../src/tolerance.c:1478
+#: ../src/trace.c:1511 ../src/vertex.c:1478 ../src/viewport.c:2018
+#: ../src/xline.c:1485
 #, c-format
 msgid "Warning in %s () a zero value was found.\n"
 msgstr ""
@@ -3675,11 +3710,11 @@ msgstr ""
 #: ../src/region.c:1377 ../src/region.c:1469 ../src/seqend.c:971
 #: ../src/seqend.c:1046 ../src/seqend.c:1128 ../src/seqend.c:1289
 #: ../src/seqend.c:1383 ../src/seqend.c:1475 ../src/shape.c:1148
-#: ../src/shape.c:1222 ../src/vertex.c:1425 ../src/vertex.c:1518
-#: ../src/vertex.c:1610 ../src/viewport.c:1647 ../src/viewport.c:1722
-#: ../src/viewport.c:1804 ../src/viewport.c:1965 ../src/viewport.c:2058
-#: ../src/viewport.c:2150 ../src/xline.c:1112 ../src/xline.c:1187
-#: ../src/xline.c:1526 ../src/xline.c:1618
+#: ../src/shape.c:1222 ../src/table.c:1834 ../src/vertex.c:1425
+#: ../src/vertex.c:1518 ../src/vertex.c:1610 ../src/viewport.c:1647
+#: ../src/viewport.c:1722 ../src/viewport.c:1804 ../src/viewport.c:1965
+#: ../src/viewport.c:2058 ../src/viewport.c:2150 ../src/xline.c:1112
+#: ../src/xline.c:1187 ../src/xline.c:1526 ../src/xline.c:1618
 #, c-format
 msgid "Error in %s () a negative value was passed.\n"
 msgstr ""
@@ -3696,9 +3731,9 @@ msgstr ""
 #: ../src/oleframe.c:1353 ../src/point.c:1533 ../src/ray.c:1389
 #: ../src/region.c:1384 ../src/rtext.c:1550 ../src/seqend.c:1390
 #: ../src/shape.c:1557 ../src/solid.c:1624 ../src/sun.c:1565
-#: ../src/surface.c:1656 ../src/text.c:1653 ../src/tolerance.c:1525
-#: ../src/trace.c:1557 ../src/vertex.c:1525 ../src/viewport.c:2065
-#: ../src/xline.c:1533
+#: ../src/surface.c:1656 ../src/table.c:1841 ../src/text.c:1653
+#: ../src/tolerance.c:1525 ../src/trace.c:1557 ../src/vertex.c:1525
+#: ../src/viewport.c:2065 ../src/xline.c:1533
 #, c-format
 msgid "Warning in %s () a zero value was passed.\n"
 msgstr ""
@@ -5875,6 +5910,21 @@ msgstr ""
 #: ../src/table.c:362 ../src/table.c:407
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfTable struct.\n"
+msgstr ""
+
+#: ../src/table.c:815
+#, c-format
+msgid "Error in %s () could not allocate memory for a char string.\n"
+msgstr ""
+
+#: ../src/table.c:843
+#, c-format
+msgid "\tSetting entity to default layer.\n"
+msgstr ""
+
+#: ../src/table.c:852
+#, c-format
+msgid "\tSetting entity to default linetype.\n"
 msgstr ""
 
 #: ../src/tables.c:62 ../src/tables.c:105
