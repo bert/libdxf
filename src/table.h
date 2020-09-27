@@ -595,6 +595,7 @@ double dxf_table_get_x1 (DxfTable *table);
 DxfTable *dxf_table_set_x1 (DxfTable *table, double x1);
 double dxf_table_get_y1 (DxfTable *table);
 DxfTable *dxf_table_set_y1 (DxfTable *table, double y1);
+double dxf_table_get_z1 (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
