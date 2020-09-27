@@ -2712,6 +2712,44 @@ dxf_table_set_transparency
 
 
 /*!
+ * \brief Get the \c block_name from a DXF \c TABLE entity.
+ *
+ * \return \c block_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_table_get_block_name
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->block_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (table->block_name));
+}
+
+
+/*!
  * \brief Get the insertion point of a DXF \c TABLE entity.
  *
  * \return the insertion point \c p0, or \c NULL if an error occurred.
