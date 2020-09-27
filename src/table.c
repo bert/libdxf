@@ -2792,6 +2792,44 @@ dxf_table_set_block_name
 
 
 /*!
+ * \brief Get the \c table_text_style_name from a DXF \c TABLE entity.
+ *
+ * \return \c table_text_style_name when sucessful, or \c NULL when an
+ * error occurred.
+ */
+char *
+dxf_table_get_table_text_style_name
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table->table_text_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (table->table_text_style_name));
+}
+
+
+/*!
  * \brief Get the insertion point of a DXF \c TABLE entity.
  *
  * \return the insertion point \c p0, or \c NULL if an error occurred.
