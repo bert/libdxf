@@ -582,6 +582,7 @@ DxfTable *dxf_table_set_color_name (DxfTable *table, char *color_name);
 int32_t dxf_table_get_transparency (DxfTable *table);
 DxfTable *dxf_table_set_transparency (DxfTable *table, int32_t transparency);
 char *dxf_table_get_block_name (DxfTable *table);
+DxfTable *dxf_table_set_block_name (DxfTable *table, char *block_name);
 DxfPoint *dxf_table_get_p0 (DxfTable *table);
 DxfTable *dxf_table_set_p0 (DxfTable *table, DxfPoint *point);
 double dxf_table_get_x0 (DxfTable *table);
