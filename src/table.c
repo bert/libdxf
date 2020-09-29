@@ -3577,6 +3577,38 @@ dxf_table_set_z1
 
 
 /*!
+ * \brief Get the horizontal cell margin \c horizontal_cell_margin
+ * of a DXF \c TABLE entity.
+ *
+ * \return the horizontal cell margin \c horizontal_cell_margin.
+ */
+double
+dxf_table_get_horizontal_cell_margin
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->horizontal_cell_margin);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
