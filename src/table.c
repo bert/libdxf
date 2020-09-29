@@ -2830,6 +2830,48 @@ dxf_table_get_table_text_style_name
 
 
 /*!
+ * \brief Set the \c table_text_style_name for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTable *
+dxf_table_set_table_text_style_name
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        char *table_text_style_name
+                /*!< a string containing the \c table_text_style_name
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table_text_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->table_text_style_name = strdup (table_text_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the insertion point of a DXF \c TABLE entity.
  *
  * \return the insertion point \c p0, or \c NULL if an error occurred.
