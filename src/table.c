@@ -3609,6 +3609,42 @@ dxf_table_get_horizontal_cell_margin
 
 
 /*!
+ * \brief Set the horizontal cell margin \c horizontal_cell_margin of a
+ * DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c table when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfTable *
+dxf_table_set_horizontal_cell_margin
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        double horizontal_cell_margin
+                /*!< the horizontal cell margin
+                 * \c horizontal_cell_margin of a DXF \c TABLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->horizontal_cell_margin = horizontal_cell_margin;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
