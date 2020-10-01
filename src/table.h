@@ -603,6 +603,7 @@ double dxf_table_get_z1 (DxfTable *table);
 DxfTable *dxf_table_set_z1 (DxfTable *table, double z1);
 double dxf_table_get_horizontal_cell_margin (DxfTable *table);
 DxfTable *dxf_table_set_horizontal_cell_margin (DxfTable *table, double horizontal_cell_margin);
+double dxf_table_get_vertical_cell_margin (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
