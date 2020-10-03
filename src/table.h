@@ -409,61 +409,61 @@ dxf_table_struct
                 /*!< Vertical cell margin; override applied at the
                  * table entity level.\n
                  * Group code = 41. */
-        int table_cell_color_bg;
+        int16_t table_cell_color_bg;
                 /*!< Color value for cell background or for the vertical,
                  * left border of the table; override applied at the
                  * table entity level.\n
                  * There may be one entry for each cell type.\n
                  * Group code = 63. */
-        int table_cell_color_fg;
+        int16_t table_cell_color_fg;
                 /*!< Color value for cell content or for the horizontal,
                  * top border of the table; override applied at the
                  * table entity level.\n
                  * There may be one entry for each cell type.\n
                  * Group code = 64. */
-        int table_cell_border_color_horizontal;
+        int16_t table_cell_border_color_horizontal;
                 /*!< Color value for the horizontal, inside border lines;
                  * override applied at the table entity level.\n
                  * Group code = 65. */
-        int table_cell_border_color_bottom;
+        int16_t table_cell_border_color_bottom;
                 /*!< Color value for the horizontal, bottom border lines;
                  * override applied at the table entity level.\n
                  * Group code = 66. */
-        int table_cell_border_color_vertical;
+        int16_t table_cell_border_color_vertical;
                 /*!< Color value for the vertical, inside border lines;
                  * override applied at the table entity level.\n
                  * Group code = 68. */
-        int table_cell_border_color_right;
+        int16_t table_cell_border_color_right;
                 /*!< Color value for the vertical, right border lines;
                  * override applied at the table entity level.\n
                  * Group code = 69. */
-        int flow_direction;
+        int16_t flow_direction;
                 /*!< Flow direction; override applied at the table
                  * entity level.\n
                  * Group code = 70. */
         int32_t table_value_flag;
                 /*!< Flag for table value (unsigned integer).\n
                  * Group code = 90. */
-        int number_of_rows;
+        int32_t number_of_rows;
                 /*!< Number of rows.\n
                  * Group code = 91.
                  *
                  * \warning Multiple entries with Group code 91. */
-        int number_of_columns;
+        int32_t number_of_columns;
                 /*!< Number of columns.\n
                  * Group code = 92.
                  *
                  * \warning Multiple entries with Group code 92. */
-        int override_flag;
+        int32_t override_flag;
                 /*!< Flag for an override.\n
                  * Group code = 93. */
-        int border_color_override_flag;
+        int32_t border_color_override_flag;
                 /*!< Flag for an override of border color.\n
                  * Group code = 94. */
-        int border_lineweight_override_flag;
+        int32_t border_lineweight_override_flag;
                 /*!< Flag for an override of border lineweight.\n
                  * Group code = 95. */
-        int border_visibility_override_flag;
+        int32_t border_visibility_override_flag;
                 /*!< Flag for an override of border visibility.\n
                  * Group code = 96. */
         double table_text_height;
@@ -486,23 +486,23 @@ dxf_table_struct
                  * Group code = 170. */
         double table_cell_border_lineweight_right;
                 /*!< Group code = 274. */
-        int table_data_version;
+        int16_t table_data_version;
                 /*!< Table data version number:\n
                  * 0 = 2010.\n
                  * Group code = 280.
                  *
                  * \warning Multiple entries with Group code 280. */
-        int suppress_table_title;
+        int16_t suppress_table_title;
                 /*!< Flag for whether the title is suppressed; override
                  * applied at the table entity level.\n
                  * Group code = 280.
                  *
                  * \warning Multiple entries with Group code 280. */
-        int suppress_header_row;
+        int16_t suppress_header_row;
                 /*!< Flag for whether the header row is suppressed;
                  * override applied at the table entity level.\n
                  * Group code = 281. */
-        int table_cell_color_fill_override;
+        int16_t table_cell_color_fill_override;
                 /*!< Flag for whether background color is enabled
                  * (default = 0); override applied at the table entity
                  * level.\n
