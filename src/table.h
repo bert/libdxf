@@ -446,13 +446,11 @@ dxf_table_struct
                  * Group code = 90. */
         int32_t number_of_rows;
                 /*!< Number of rows.\n
-                 * Group code = 91.
-                 *
+                 * Group code = 91.\n
                  * \warning Multiple entries with Group code 91. */
         int32_t number_of_columns;
                 /*!< Number of columns.\n
-                 * Group code = 92.
-                 *
+                 * Group code = 92.\n
                  * \warning Multiple entries with Group code 92. */
         int32_t override_flag;
                 /*!< Flag for an override.\n
