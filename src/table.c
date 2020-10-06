@@ -3939,6 +3939,54 @@ dxf_table_get_table_cell_border_color_horizontal
 
 
 /*!
+ * \brief Set the \c table_cell_border_color_horizontal for a DXF
+ * \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_table_cell_border_color_horizontal
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        int16_t table_cell_border_color_horizontal
+                /*!< the \c table_cell_border_color_horizontal value to
+                 * be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (table_cell_border_color_horizontal < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (table_cell_border_color_horizontal > DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        table->table_cell_border_color_horizontal = table_cell_border_color_horizontal;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
