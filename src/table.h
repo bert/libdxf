@@ -613,6 +613,7 @@ int16_t dxf_table_get_table_cell_border_color_bottom (DxfTable *table);
 DxfTable *dxf_table_set_table_cell_border_color_bottom (DxfTable *table, int16_t table_cell_border_color_bottom);
 int16_t dxf_table_get_table_cell_border_color_vertical (DxfTable *table);
 DxfTable *dxf_table_set_table_cell_border_color_vertical (DxfTable *table, int16_t table_cell_border_color_vertical);
+int16_t dxf_table_get_table_cell_border_color_right (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);

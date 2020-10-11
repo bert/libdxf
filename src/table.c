@@ -4171,6 +4171,50 @@ dxf_table_set_table_cell_border_color_vertical
 
 
 /*!
+ * \brief Get the \c table_cell_border_color_right value from a DXF
+ * \c TABLE entity.
+ *
+ * \return \c table_cell_border_color_right value if successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int16_t
+dxf_table_get_table_cell_border_color_right
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (table->table_cell_border_color_right < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (table->table_cell_border_color_right > DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->table_cell_border_color_right);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
