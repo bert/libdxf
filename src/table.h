@@ -616,6 +616,7 @@ DxfTable *dxf_table_set_table_cell_border_color_vertical (DxfTable *table, int16
 int16_t dxf_table_get_table_cell_border_color_right (DxfTable *table);
 DxfTable *dxf_table_set_table_cell_border_color_right (DxfTable *table, int16_t table_cell_border_color_right);
 int16_t dxf_table_get_flow_direction (DxfTable *table);
+DxfTable *dxf_table_set_flow_direction (DxfTable *table, int16_t flow_direction);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
