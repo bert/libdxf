@@ -4558,6 +4558,41 @@ dxf_table_get_override_flag
 
 
 /*!
+ * \brief Set the \c override_flag for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_override_flag
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        int32_t override_flag
+                /*!< the \c override_flag value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->override_flag = override_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
