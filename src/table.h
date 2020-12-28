@@ -621,6 +621,7 @@ int32_t dxf_table_get_table_value_flag (DxfTable *table);
 DxfTable *dxf_table_set_table_value_flag (DxfTable *table, int32_t table_value_flag);
 int32_t dxf_table_get_number_of_rows (DxfTable *table);
 DxfTable *dxf_table_set_number_of_rows (DxfTable *table, int32_t number_of_rows);
+int32_t dxf_table_get_number_of_columns (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
