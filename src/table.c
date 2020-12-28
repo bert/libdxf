@@ -4492,6 +4492,41 @@ dxf_table_get_number_of_columns
 
 
 /*!
+ * \brief Set the \c number_of_columns for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_number_of_columns
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        int32_t number_of_columns
+                /*!< the \c number_of_columns value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->number_of_columns = number_of_columns;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
