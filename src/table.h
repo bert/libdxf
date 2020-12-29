@@ -630,6 +630,7 @@ DxfTable *dxf_table_set_border_color_override_flag (DxfTable *table, int32_t bor
 int32_t dxf_table_get_border_lineweight_override_flag (DxfTable *table);
 DxfTable *
 dxf_table_set_border_lineweight_override_flag (DxfTable *table, int32_t border_lineweight_override_flag);
+int32_t dxf_table_get_border_visibility_override_flag (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
