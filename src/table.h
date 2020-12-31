@@ -469,11 +469,11 @@ dxf_table_struct
                  * entity level.\n
                  * There may be one entry for each cell type.\n
                  * Group code = 140. */
-        double row_height[DXF_MAX_PARAM];
+        double row_height;
                 /*!< Row height; this value is repeated, 1 value per
                  * row.\n
                  * Group code = 141. */
-        double column_height[DXF_MAX_PARAM];
+        double column_height;
                 /*!< Column height; this value is repeated, 1 value per
                  * column.\n
                  * Group code = 142. */

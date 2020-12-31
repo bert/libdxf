@@ -418,11 +418,8 @@ dxf_table_init
         table->color = DXF_COLOR_BYLAYER;
         table->paperspace = DXF_MODELSPACE;
         table->graphics_data_size = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                table->row_height[i] = 0.0;
-                table->column_height[i] = 0.0;
-        }
+        table->row_height = 0.0;
+        table->column_height = 0.0;
         table->dictionary_owner_soft = strdup ("");
         table->dictionary_owner_hard = strdup ("");
         table->block_name = strdup ("");
@@ -716,7 +713,7 @@ dxf_table_read
                         /* Now follows a string containing the row
                          * height. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->row_height[k]);
+                        fscanf (fp->fp, "%lf\n", &table->row_height);
                         k++;
                 }
                 else if (strcmp (temp_string, "142") == 0)
@@ -724,7 +721,7 @@ dxf_table_read
                         /* Now follows a string containing the column
                          * height. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &table->column_height[l]);
+                        fscanf (fp->fp, "%lf\n", &table->column_height);
                         l++;
                 }
                 else if (strcmp (temp_string, "310") == 0)
@@ -936,15 +933,15 @@ dxf_table_write
         fprintf (fp->fp, " 94\n%d\n", table->border_color_override_flag);
         fprintf (fp->fp, " 95\n%d\n", table->border_lineweight_override_flag);
         fprintf (fp->fp, " 96\n%d\n", table->border_visibility_override_flag);
-        /*! \todo implemnet a linked list of doubles. */
+        /*! \todo implement a linked list of dxf_doubles. */
         for (i = 0; i < table->number_of_rows; i++)
         {
-                fprintf (fp->fp, "141\n%f\n", table->row_height[i]);
+                fprintf (fp->fp, "141\n%f\n", table->row_height);
         }
         /*! \todo implemnet a linked list of doubles. */
         for (i = 0; i < table->number_of_columns; i++)
         {
-                fprintf (fp->fp, "142\n%f\n", table->column_height[i]);
+                fprintf (fp->fp, "142\n%f\n", table->column_height);
         }
 
         /* Clean up. */
