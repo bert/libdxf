@@ -633,6 +633,7 @@ int32_t dxf_table_get_border_visibility_override_flag (DxfTable *table);
 DxfTable *dxf_table_set_border_visibility_override_flag (DxfTable *table, int32_t border_visibility_override_flag);
 double dxf_table_get_table_text_height (DxfTable *table);
 DxfTable *dxf_table_set_table_text_height (DxfTable *table, double table_text_height);
+double dxf_table_get_row_height (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
