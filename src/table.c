@@ -4951,6 +4951,41 @@ dxf_table_get_column_height
 
 
 /*!
+ * \brief Set the \c column_height for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_column_height
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        double column_height
+                /*!< the \c column_height value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->column_height = column_height;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
