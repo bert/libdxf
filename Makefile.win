@@ -365,6 +365,9 @@ src/mline.o: src/mesh.c
 src/mline.o: src/mleader.c
 	$(CC) -c src/mleader.c -o src/mleader.o $(CFLAGS)
 
+src/mline.o: src/mleaderstyle.c
+	$(CC) -c src/mleaderstyle.c -o src/mleaderstyle.o $(CFLAGS)
+
 src/mline.o: src/mline.c
 	$(CC) -c src/mline.c -o src/mline.o $(CFLAGS)
 
@@ -436,6 +439,12 @@ src/spline.o: src/spline.c
 
 src/style.o: src/style.c
 	$(CC) -c src/style.c -o src/style.o $(CFLAGS)
+
+src/style.o: src/sun.c
+	$(CC) -c src/sun.c -o src/sun.o $(CFLAGS)
+
+src/style.o: src/surface.c
+	$(CC) -c src/surface.c -o src/surface.o $(CFLAGS)
 
 src/table.o: src/table.c
 	$(CC) -c src/table.c -o src/table.o $(CFLAGS)

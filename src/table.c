@@ -391,8 +391,6 @@ dxf_table_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (table == NULL)
         {
