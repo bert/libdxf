@@ -4986,6 +4986,37 @@ dxf_table_set_column_height
 
 
 /*!
+ *
+ * \brief Get the \c table_cell_alignment from a DXF \c TABLE entity.
+ * \return \c table_cell_alignment if successful, or \c EXIT_FAILURE
+ * when an error occurred.
+ */
+int
+dxf_table_get_table_cell_alignment
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->table_cell_alignment);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
