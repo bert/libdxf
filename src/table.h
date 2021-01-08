@@ -639,6 +639,7 @@ double dxf_table_get_column_height (DxfTable *table);
 DxfTable *dxf_table_set_column_height (DxfTable *table, double column_height);
 int dxf_table_get_table_cell_alignment (DxfTable *table);
 DxfTable *dxf_table_set_table_cell_alignment (DxfTable *table, int table_cell_alignment);
+double dxf_table_get_table_cell_border_lineweight_right (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
