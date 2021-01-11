@@ -5118,6 +5118,37 @@ dxf_table_set_table_cell_border_lineweight_right
 
 
 /*!
+ *
+ * \brief Get the \c table_data_version from a DXF \c TABLE entity.
+ * \return \c table_data_version if successful, or \c EXIT_FAILURE when
+ * an error occurred.
+ */
+int16_t
+dxf_table_get_table_data_version
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->table_data_version);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
