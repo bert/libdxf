@@ -644,6 +644,7 @@ DxfTable *dxf_table_set_table_cell_border_lineweight_right (DxfTable *table, dou
 int16_t dxf_table_get_table_data_version (DxfTable *table);
 DxfTable *dxf_table_set_table_data_version (DxfTable *table, int16_t table_data_version);
 int16_t dxf_table_get_suppress_table_title (DxfTable *table);
+DxfTable *dxf_table_set_suppress_table_title (DxfTable *table, int16_t suppress_table_title);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
