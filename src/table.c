@@ -5348,6 +5348,42 @@ dxf_table_get_table_cell_color_fill_override
 
 
 /*!
+ * \brief Set the \c table_cell_color_fill_override for a DXF \c TABLE
+ * entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_table_cell_color_fill_override
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        int16_t table_cell_color_fill_override
+                /*!< the \c table_cell_color_fill_override value to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->table_cell_color_fill_override = table_cell_color_fill_override;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
