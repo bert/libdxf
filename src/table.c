@@ -5416,6 +5416,42 @@ dxf_table_get_tablestyle_object_pointer
 
 
 /*!
+ * \brief Set the \c tablestyle_object_pointer for a DXF \c TABLE
+ * entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_tablestyle_object_pointer
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        char *tablestyle_object_pointer
+                /*!< the \c tablestyle_object_pointer value to be set
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->tablestyle_object_pointer = tablestyle_object_pointer;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
