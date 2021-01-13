@@ -651,6 +651,7 @@ int16_t dxf_table_get_table_cell_color_fill_override (DxfTable *table);
 DxfTable *dxf_table_set_table_cell_color_fill_override (DxfTable *table, int16_t table_cell_color_fill_override);
 char *dxf_table_get_tablestyle_object_pointer (DxfTable *table);
 DxfTable *dxf_table_set_tablestyle_object_pointer (DxfTable *table, char *tablestyle_object_pointer);
+char *dxf_table_get_owning_block_pointer (DxfTable *table);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
