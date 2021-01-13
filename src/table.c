@@ -5316,6 +5316,38 @@ dxf_table_set_suppress_header_row
 
 
 /*!
+ *
+ * \brief Get the \c table_cell_color_fill_override from a DXF
+ * \c TABLE entity.
+ * \return \c table_cell_color_fill_override if successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int16_t
+dxf_table_get_table_cell_color_fill_override
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->table_cell_color_fill_override);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
