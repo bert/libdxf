@@ -5518,6 +5518,37 @@ dxf_table_set_owning_block_pointer
 
 
 /*!
+ *
+ * \brief Get the \c cells from a DXF \c TABLE entity.
+ * \return \c cells if successful, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+struct DxfTableCell *
+dxf_table_get_cells
+(
+        DxfTable *table
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table->cells);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *
