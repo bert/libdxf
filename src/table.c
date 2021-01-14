@@ -990,6 +990,8 @@ dxf_table_free
         free (table->dictionary_owner_hard);
         free (table->block_name);
         free (table->table_text_style_name);
+        dxf_point_free_list ((DxfPoint *) table->p0);
+        dxf_point_free_list ((DxfPoint *) table->p1);
         free (table->tablestyle_object_pointer);
         free (table->owning_block_pointer);
         dxf_table_cell_free_list ((DxfTableCell *) table->cells);
