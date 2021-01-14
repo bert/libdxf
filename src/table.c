@@ -5406,7 +5406,7 @@ dxf_table_get_tablestyle_object_pointer
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
