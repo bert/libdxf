@@ -992,7 +992,7 @@ dxf_table_free
         free (table->table_text_style_name);
         free (table->tablestyle_object_pointer);
         free (table->owning_block_pointer);
-//        dxf_table_cells_free_list (table->cells);
+        dxf_table_cell_free_list ((DxfTableCell *) table->cells);
         free (table);
         table = NULL;
 #if DEBUG
