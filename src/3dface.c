@@ -596,6 +596,9 @@ dxf_3dface_read
 /*!
  * \brief Write DXF output to a file for a DXF \c 3DFACE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_write.png
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
