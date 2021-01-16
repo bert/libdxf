@@ -2430,6 +2430,9 @@ dxf_3dline_get_color_name
 /*!
  * \brief Set the \c color_name for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_color_name.png
+ * 
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
  */
