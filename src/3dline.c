@@ -1275,6 +1275,9 @@ dxf_3dline_get_linetype_scale
 /*!
  * \brief Set the linetype scale for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_linetype_scale.png
+ *
  * \since The linetype scale was added in DXF R13.
  */
 Dxf3dline *
