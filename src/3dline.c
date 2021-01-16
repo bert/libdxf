@@ -1617,6 +1617,9 @@ dxf_3dline_get_graphics_data_size
  * \brief Set the \c graphics_data_size value for a DXF \c 3DLINE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_graphics_data_size.png
+ *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
  */
