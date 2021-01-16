@@ -2133,6 +2133,10 @@ dxf_3dline_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_dictionary_owner_hard.png
+ *
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_hard
