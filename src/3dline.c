@@ -1123,6 +1123,9 @@ dxf_3dline_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_elevation.png
  */
 Dxf3dline *
 dxf_3dline_set_elevation
