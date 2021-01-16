@@ -540,6 +540,9 @@ dxf_3dline_read
  * \brief Write DXF output to a file (or a device) for a DXF \c 3DLINE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_write.png
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
  *
