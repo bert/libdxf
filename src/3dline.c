@@ -1437,6 +1437,9 @@ dxf_3dline_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_color.png
  */
 Dxf3dline *
 dxf_3dline_set_color
