@@ -971,6 +971,9 @@ dxf_3dline_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_linetype.png
  */
 Dxf3dline *
 dxf_3dline_set_linetype
