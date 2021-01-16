@@ -2355,6 +2355,9 @@ dxf_3dline_get_color_value
 /*!
  * \brief Set the \c color_value for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_color_value.png
+ *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
  */
