@@ -886,6 +886,9 @@ dxf_3dline_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_id_code.png
  */
 Dxf3dline *
 dxf_3dline_set_id_code
