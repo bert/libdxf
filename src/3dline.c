@@ -1046,6 +1046,9 @@ dxf_3dline_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_layer.png
  */
 Dxf3dline *
 dxf_3dline_set_layer
@@ -1784,6 +1787,9 @@ dxf_3dline_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_binary_graphics_data.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
