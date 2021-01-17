@@ -1490,6 +1490,9 @@ dxf_3dline_set_color
 /*!
  * \brief Get the paperspace flag value from a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_paperspace.png
+ *
  * \return paperspace flag value.
  */
 int16_t
