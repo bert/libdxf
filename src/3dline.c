@@ -1682,6 +1682,9 @@ dxf_3dline_set_graphics_data_size
 /*!
  * \brief Get the \c shadow_mode from a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_shadow_mode.png
+ *
  * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
