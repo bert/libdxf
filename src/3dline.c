@@ -1317,6 +1317,9 @@ dxf_3dline_set_linetype_scale
 /*!
  * \brief Get the visibility from a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_visibility.png
+ *
  * \return visibility.
  *
  * \note The visibility was added in DXF R13 and is included for
