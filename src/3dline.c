@@ -4122,6 +4122,9 @@ dxf_3dline_get_next
 /*!
  * \brief Set the pointer to the next \c 3DLINE for a DXF \c 3DLINE
  * entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_next.png
  */
 Dxf3dline *
 dxf_3dline_set_next
