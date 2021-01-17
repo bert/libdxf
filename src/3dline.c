@@ -1980,6 +1980,9 @@ dxf_3dline_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_object_owner_soft.png
  */
 Dxf3dline *
 dxf_3dline_set_object_owner_soft
