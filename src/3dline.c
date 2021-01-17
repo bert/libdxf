@@ -2063,6 +2063,9 @@ dxf_3dline_get_material
 /*!
  * \brief Set the pointer to the \c material for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_material.png
+ *
  * \return a pointer to \c 3dline when successful, or \c NULL when an
  * error occurred.
  */
