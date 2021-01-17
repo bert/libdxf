@@ -2226,6 +2226,9 @@ dxf_3dline_get_lineweight
 /*!
  * \brief Set the \c lineweight for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_lineweight.png
+ *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
  */
