@@ -1725,6 +1725,9 @@ dxf_3dline_get_shadow_mode
 /*!
  * \brief Set the \c shadow_mode for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_shadow_mode.png
+ *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
  */
