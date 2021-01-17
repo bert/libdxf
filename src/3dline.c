@@ -1532,6 +1532,9 @@ dxf_3dline_get_paperspace
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_paperspace.png
+ *
  * \note the paperpspace flag was added in DXF R13 and is included for
  * forward compatibility.
  */
