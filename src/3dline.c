@@ -2611,6 +2611,9 @@ dxf_3dline_get_p0
 /*!
  * \brief Set the start point of a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_p0.png
+ *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
 Dxf3dline *
