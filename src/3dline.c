@@ -2561,6 +2561,9 @@ dxf_3dline_get_transparency
 /*!
  * \brief Set the \c transparency for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_transparency.png
+ *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
  */
