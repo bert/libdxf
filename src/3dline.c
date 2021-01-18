@@ -1920,7 +1920,7 @@ dxf_3dline_get_dictionary_owner_soft
  * \c 3DLINE entity.
  *
  * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_dictionary_owner_soft.png
+ * \image html drakon/dxf_3dline_set_dictionary_owner_soft.png
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_soft
