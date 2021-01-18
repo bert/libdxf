@@ -1371,6 +1371,9 @@ dxf_3dline_get_visibility
 /*!
  * \brief Set the visibility for a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_visibility.png
+ *
  * \note The visibility was added in DXF R13 and is included for
  * forward compatibility.
  */
