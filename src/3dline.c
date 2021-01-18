@@ -2536,6 +2536,9 @@ dxf_3dline_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_transparency.png
+ *
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
