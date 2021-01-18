@@ -1831,7 +1831,7 @@ dxf_3dline_get_binary_graphics_data
  * \c 3DLINE entity.
  *
  * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_binary_graphics_data.png
+ * \image html drakon/dxf_3dline_set_binary_graphics_data.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
