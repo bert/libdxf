@@ -1161,6 +1161,9 @@ dxf_3dline_set_elevation
 /*!
  * \brief Get the thickness from a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_thickness.png
+ *
  * \return thickness.
  */
 double
