@@ -2919,6 +2919,9 @@ dxf_3dline_get_z0
 /*!
  * \brief Set the Z-value of the start point of a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_z0.png
+ *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
 Dxf3dline *
