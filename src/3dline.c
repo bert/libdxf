@@ -3198,6 +3198,9 @@ dxf_3dline_get_y1
 /*!
  * \brief Set the Y-value of the end point of a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_y1.png
+ *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
 Dxf3dline *
