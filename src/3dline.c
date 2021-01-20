@@ -3104,6 +3104,9 @@ dxf_3dline_get_x1
 /*!
  * \brief Set the X-value of the end point of a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_x1.png
+ *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
 Dxf3dline *
