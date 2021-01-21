@@ -3292,6 +3292,9 @@ dxf_3dline_get_z1
 /*!
  * \brief Set the Z-value of the end point of a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_z1.png
+ *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
 Dxf3dline *
