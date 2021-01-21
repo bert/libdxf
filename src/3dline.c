@@ -3420,6 +3420,9 @@ dxf_3dline_set_extr_x0
  * \brief Get the Y-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_extr_y0.png
+ *
  * \return the Y-value of the extrusion vector.
  */
 double
