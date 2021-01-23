@@ -3668,6 +3668,9 @@ dxf_3dline_set_extrusion_vector_from_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c 3DLINE entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_set_extrusion_vector.png
  */
 Dxf3dline *
 dxf_3dline_set_extrusion_vector
