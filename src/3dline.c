@@ -3709,6 +3709,9 @@ dxf_3dline_set_extrusion_vector
 /*!
  * \brief Get the mid point of a DXF \c 3DLINE entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_mid_point.png
+ *
  * \return the mid point.
  */
 DxfPoint *
