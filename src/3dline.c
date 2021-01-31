@@ -3843,6 +3843,9 @@ dxf_3dline_get_mid_point
  * \brief Get the length of a DXF \c 3DLINE (straight distance between
  * start point and end point).
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dline_get_length.png
+ *
  * \return the length of the \c line in drawing units.
  */
 double
