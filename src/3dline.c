@@ -3863,6 +3863,13 @@ dxf_3dline_get_length
                   __FUNCTION__);
                 return (0.0);
         }
+        if ((line->p0 == NULL) || (line->p1 == NULL))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (0.0);
+        }
         if ((line->p0->x0 == line->p1->x0)
           && (line->p0->y0 == line->p1->y0)
           && (line->p0->z0 == line->p1->z0))
