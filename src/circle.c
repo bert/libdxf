@@ -2,7 +2,7 @@
  * \file circle.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017, 2018,
- * 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -748,7 +748,6 @@ dxf_circle_free
         free (circle->dictionary_owner_soft);
         free (circle->dictionary_owner_hard);
         free (circle);
-        circle = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
