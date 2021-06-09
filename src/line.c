@@ -2,7 +2,7 @@
  * \file line.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF line entity (\c LINE).
  *
@@ -811,7 +811,6 @@ dxf_line_free
         dxf_point_free (line->p0);
         dxf_point_free (line->p1);
         free (line);
-        line = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
