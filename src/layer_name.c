@@ -1,7 +1,7 @@
 /*!
  * \file layer_name.c
  *
- * \author Copyright (C) 2017, 2018
+ * \author Copyright (C) 2017, 2018, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF layer name object.
@@ -156,7 +156,6 @@ dxf_layer_name_free
         }
         free (layer_name->name);
         free (layer_name);
-        layer_name = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
