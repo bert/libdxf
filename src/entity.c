@@ -2,7 +2,7 @@
  * \file entity.c
  *
  * \author Copyright (C) 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2018,
- * 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -39,8 +39,8 @@
 
 
 /*!
- * \brief Prints warning on stderr and asks for confirmation (if interactive)
- * on skipping output for an entity to a file (or device).
+ * \brief Prints a warning on skipping output for an entity to a file
+ * (or device).
  */
 int
 dxf_entity_skip
@@ -52,25 +52,12 @@ dxf_entity_skip
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_entity_name == NULL) return (EXIT_FAILURE);
-        if (INTER_ACTIVE_PROMPT)
+        if ((dxf_entity_name == NULL) || (strcmp (dxf_entity_name, "") == 0 ))
         {
-                char answer;
+                return (EXIT_FAILURE);
+        }
 
-                fprintf (stderr,
-                  (_("    skip %s entity ? [Y/N]:\n")), dxf_entity_name);
-                answer = getchar ();
-                if ((answer == 'Y') || (answer == 'y'))
-                {
-                        fprintf (stderr,
-                          (_("    OK, done.\n")));
-                }
-        }
-        else
-        {
-                fprintf (stderr,
-                  (_("    skipping %s entity.\n")), dxf_entity_name);
-        }
+        fprintf (stderr, (_("skipping %s entity.\n")), dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
