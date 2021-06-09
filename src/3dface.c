@@ -743,7 +743,7 @@ dxf_3dface_write
 #else
                 fprintf (fp->fp, " 92\n%" PRIi32 "\n", face->graphics_data_size);
 #endif
-                if (face->binary_graphics_data != NULL)
+                if (face->binary_graphics_data)
                 {
                         DxfBinaryData *iter;
                         iter = (DxfBinaryData *) face->binary_graphics_data;
