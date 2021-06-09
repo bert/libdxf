@@ -804,7 +804,6 @@ dxf_3dline_free
         dxf_point_free_list (line->p0);
         dxf_point_free_list (line->p1);
         free (line);
-        line = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
