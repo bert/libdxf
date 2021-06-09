@@ -2,7 +2,7 @@
  * \file arc.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF arc entity (\c ARC).
  *
@@ -834,7 +834,6 @@ dxf_arc_free
         free (arc->color_name);
         dxf_point_free (arc->p0);
         free (arc);
-        arc = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
