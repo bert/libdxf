@@ -2,7 +2,7 @@
  * \file class.c
  *
  * \author Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2017,
- * 2018, 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -453,7 +453,6 @@ dxf_class_free
         free (class->class_name);
         free (class->app_name);
         free (class);
-        class = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
