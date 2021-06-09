@@ -2,7 +2,7 @@
  * \file attrib.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF attribute entity (\c ATTRIB).
  *
@@ -977,7 +977,6 @@ dxf_attrib_free
         dxf_point_free (attrib->p0);
         dxf_point_free (attrib->p1);
         free (attrib);
-        attrib = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
