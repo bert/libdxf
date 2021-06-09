@@ -2,7 +2,7 @@
  * \file block.c
  *
  * \author Copyright (C) 2008, 2009, 2010, 2012, 2014, 2015, 2016, 2017,
- * 2018, 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -445,20 +445,20 @@ dxf_block_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (((block->xref_name == NULL)
-          || (strcmp (block->xref_name, "") == 0))
-          && ((block->block_type != 4)
-          || (block->block_type != 32)))
+        if ((block->block_type == 4) || (block->block_type == 32))
         {
-                fprintf (stderr,
-                  (_("Error in %s () empty xref path name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, block->id_code);
-                fprintf (stderr,
-                  (_("\t%s entity is discarded from output.\n")),
-                  dxf_entity_name);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
+                if ((block->xref_name == NULL) || (strcmp (block->xref_name, "") == 0))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () empty xref path name string for the %s entity with id-code: %x\n")),
+                          __FUNCTION__, dxf_entity_name, block->id_code);
+                        fprintf (stderr,
+                          (_("\t%s entity is discarded from output.\n")),
+                          dxf_entity_name);
+                        /* Clean up. */
+                        free (dxf_entity_name);
+                        return (EXIT_FAILURE);
+                }
         }
         if (block->description == NULL)
         {
