@@ -1,7 +1,7 @@
 /*!
  * \file block_record.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF block record symbol table entry
@@ -521,7 +521,6 @@ dxf_block_record_free
         free (block_record->dictionary_owner_soft);
         free (block_record->dictionary_owner_hard);
         free (block_record);
-        block_record = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
