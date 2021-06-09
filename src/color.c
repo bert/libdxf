@@ -1,7 +1,7 @@
 /*!
  * \file color.c
  *
- * \author Copyright (C) 2012, 2014, 2015, 2017, 2018, 2020
+ * \author Copyright (C) 2012, 2014, 2015, 2017, 2018, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF colors.
@@ -2291,7 +2291,6 @@ dxf_RGB_color_free
         }
         free (RGB_color->name);
         free (RGB_color);
-        RGB_color = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
