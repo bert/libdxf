@@ -706,10 +706,6 @@ dxf_point_free
         free (point->dictionary_owner_soft);
         free (point->dictionary_owner_hard);
         free (point);
-        if (point != NULL)
-        {
-          point = NULL;
-        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
