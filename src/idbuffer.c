@@ -416,7 +416,6 @@ dxf_idbuffer_free
         free (idbuffer->dictionary_owner_hard);
         dxf_idbuffer_entity_pointer_free_list ((DxfIdbufferEntityPointer *) idbuffer->entity_pointer);
         free (idbuffer);
-        idbuffer = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
