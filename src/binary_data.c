@@ -1,7 +1,7 @@
 /*!
  * \file binary_data.c
  *
- * \author Copyright (C) 2019
+ * \author Copyright (C) 2019, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF binary data object.
@@ -184,7 +184,6 @@ dxf_binary_data_free
         }
         free (data->data_line);
         free (data);
-        data = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
