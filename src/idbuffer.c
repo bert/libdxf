@@ -1104,7 +1104,6 @@ dxf_idbuffer_entity_pointer_free
         }
         free (entity_pointer->soft_pointer);
         free (entity_pointer);
-        entity_pointer = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
