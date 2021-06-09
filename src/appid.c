@@ -2,7 +2,7 @@
  * \file appid.c
  *
  * \author Copyright (C) 2009, 2011, 2012, 2014, 2015, 2016, 2017, 2018,
- * 2019 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>
  *
@@ -411,7 +411,6 @@ dxf_appid_free
         free (appid->object_owner_soft);
         free (appid->dictionary_owner_hard);
         free (appid);
-        appid = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
