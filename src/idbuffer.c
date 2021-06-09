@@ -1,7 +1,7 @@
 /*!
  * \file idbuffer.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF idbuffer object (\c IDBUFFER).
@@ -363,11 +363,11 @@ dxf_idbuffer_write
         {
                 fprintf (fp->fp, "100\nAcDbIdBuffer\n");
         }
-        entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_get_entity_pointer (idbuffer);
-        while (idbuffer->entity_pointer != NULL)
+        entity_pointer = (DxfIdbufferEntityPointer *) idbuffer->entity_pointer;
+        while (entity_pointer != NULL)
         {
-                fprintf (fp->fp, "330\n%s\n", dxf_idbuffer_entity_pointer_get_soft_pointer (dxf_idbuffer_get_entity_pointer (idbuffer)));
-                entity_pointer = dxf_idbuffer_entity_pointer_get_next (dxf_idbuffer_get_entity_pointer (idbuffer));
+                fprintf (fp->fp, "330\n%s\n", entity_pointer->soft_pointer);
+                entity_pointer = (DxfIdbufferEntityPointer *) entity_pointer->next;
         }
         /* Clean up. */
         free (dxf_entity_name);
