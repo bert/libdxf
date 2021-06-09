@@ -1,8 +1,8 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+ * 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
@@ -821,7 +821,6 @@ dxf_acad_proxy_entity_free
         dxf_binary_data_free_list (acad_proxy_entity->binary_entity_data);
         dxf_object_id_free_list (acad_proxy_entity->object_id);
         free (acad_proxy_entity);
-        acad_proxy_entity = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
