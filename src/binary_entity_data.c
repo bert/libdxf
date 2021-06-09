@@ -1,7 +1,7 @@
 /*!
  * \file binary_entity_data.c
  *
- * \author Copyright (C) 2016, 2017, 2018
+ * \author Copyright (C) 2016, 2017, 2018, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF binary entity data object.
@@ -183,7 +183,6 @@ dxf_binary_entity_data_free
         }
         free (data->data_line);
         free (data);
-        data = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
