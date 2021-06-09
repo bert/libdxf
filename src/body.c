@@ -1,8 +1,8 @@
 /*!
  * \file body.c
  *
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+ * 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF body entity (\c BODY).
  *
@@ -749,7 +749,6 @@ dxf_body_free
         dxf_binary_data_free_list (body->proprietary_data);
         dxf_binary_data_free_list (body->additional_proprietary_data);
         free (body);
-        body = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
