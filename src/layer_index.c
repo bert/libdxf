@@ -1,7 +1,7 @@
 /*!
  * \file layer_index.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF layer_index object (\c LAYER_INDEX).
@@ -471,7 +471,6 @@ dxf_layer_index_free
         dxf_char_free_list (layer_index->layer_name);
         dxf_char_free_list (layer_index->hard_owner_reference);
         free (layer_index);
-        layer_index = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
