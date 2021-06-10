@@ -6178,7 +6178,6 @@ dxf_hatch_boundary_path_free
         free (path->edges);
         free (path->polylines);
         free (path);
-        path = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
