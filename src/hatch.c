@@ -7618,7 +7618,6 @@ dxf_hatch_boundary_path_polyline_vertex_free
                 return (EXIT_FAILURE);
         }
         free (vertex);
-        vertex = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
