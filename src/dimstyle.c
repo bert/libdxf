@@ -1,8 +1,8 @@
 /*!
  * \file dimstyle.c
  *
- * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018, 2019, 2020
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+ * 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension style table (\c DIMSTYLE).
  *
@@ -983,7 +983,6 @@ dxf_dimstyle_free
         free (dimstyle->object_owner_soft);
         free (dimstyle->dictionary_owner_hard);
         free (dimstyle);
-        dimstyle = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
