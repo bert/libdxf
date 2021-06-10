@@ -1,7 +1,7 @@
 /*!
  * \file drawing.c
  *
- * \author Copyright (C) 2016, 2018, 2020
+ * \author Copyright (C) 2016, 2018, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a libDXF drawing.
@@ -163,7 +163,6 @@ dxf_drawing_free
         dxf_object_free_list ((DxfObject *) drawing->object_list);
         dxf_thumbnail_free ((DxfThumbnail *) drawing->thumbnail);
         free (drawing);
-        drawing = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
