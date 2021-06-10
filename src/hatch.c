@@ -441,7 +441,6 @@ dxf_hatch_free
         dxf_hatch_pattern_def_line_free_list ((DxfHatchPatternDefLine *) hatch->def_lines);
         dxf_hatch_pattern_seedpoint_free_list ((DxfHatchPatternSeedPoint *) hatch->seed_points);
         free (hatch);
-        hatch = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
