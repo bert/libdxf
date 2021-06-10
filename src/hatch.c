@@ -4305,7 +4305,6 @@ dxf_hatch_pattern_def_line_dash_free
                 return (EXIT_FAILURE);
         }
         free (dash);
-        dash = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
