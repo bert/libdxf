@@ -14121,7 +14121,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
                 return (EXIT_FAILURE);
         }
         free (control_point);
-        control_point = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
