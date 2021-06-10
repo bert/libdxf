@@ -11019,7 +11019,6 @@ dxf_hatch_boundary_path_edge_line_free
                 return (EXIT_FAILURE);
         }
         free (line);
-        line = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
