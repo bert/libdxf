@@ -3647,7 +3647,6 @@ dxf_hatch_pattern_free
         free (pattern->def_lines);
         free (pattern->seed_points);
         free (pattern);
-        pattern = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
