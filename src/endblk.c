@@ -1,7 +1,7 @@
 /*!
  * \file endblk.c
  *
- * \author Copyright (C) 2014, 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2014, 2015, 2016, 2017, 2018, 2019, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF end of block marker entity (\c ENDBLK).
@@ -320,7 +320,6 @@ dxf_endblk_free
         free (endblk->layer);
         free (endblk->object_owner_soft);
         free (endblk);
-        endblk = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
