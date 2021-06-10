@@ -1,7 +1,7 @@
 /*!
  * \file dictionary.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dictionary object (\c DICTIONARY).
@@ -394,7 +394,6 @@ dxf_dictionary_free
         free (dictionary->entry_name);
         free (dictionary->entry_object_handle);
         free (dictionary);
-        dictionary = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
