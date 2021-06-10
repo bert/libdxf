@@ -1,7 +1,7 @@
 /*!
  * \file comment.c
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2016, 2017, 2018, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
@@ -203,7 +203,6 @@ dxf_comment_free
         }
         free (dxf_comment_get_value (comment));
         free (comment);
-        comment = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
