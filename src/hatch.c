@@ -11850,7 +11850,6 @@ dxf_hatch_boundary_path_edge_spline_free
         }
         free (spline->control_points);
         free (spline);
-        spline = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
