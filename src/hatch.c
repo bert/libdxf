@@ -5608,7 +5608,6 @@ dxf_hatch_pattern_seedpoint_free
                 return (EXIT_FAILURE);
         }
         free (seedpoint);
-        seedpoint = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
