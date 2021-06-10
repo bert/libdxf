@@ -1,7 +1,7 @@
 /*!
  * \file entities.c
  *
- * \author Copyright (C) 2012, 2014, 2017, 2018
+ * \author Copyright (C) 2012, 2014, 2017, 2018, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF entities section (/c ENTITIES).
@@ -541,7 +541,6 @@ dxf_entities_free
         //dxf_wipeout_free_list (DxfWipeout *) entities->wipeout_list);
         //dxf_xline_free_list (DxfXLine *) entities->xline_list);
         free (entities);
-        entities = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
