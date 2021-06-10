@@ -9893,7 +9893,6 @@ dxf_hatch_boundary_path_edge_ellipse_free
                 return (EXIT_FAILURE);
         }
         free (ellipse);
-        ellipse = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
