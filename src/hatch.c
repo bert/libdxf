@@ -8349,7 +8349,6 @@ dxf_hatch_boundary_path_edge_free
         free (edge->lines);
         free (edge->splines);
         free (edge);
-        edge = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
