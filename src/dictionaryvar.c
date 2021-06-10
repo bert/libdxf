@@ -1,7 +1,7 @@
 /*!
  * \file dictionaryvar.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dictionaryvar object (\c DICTIONARYVAR).
@@ -397,7 +397,6 @@ dxf_dictionaryvar_free
         free (dxf_dictionaryvar_get_value (dictionaryvar));
         free (dxf_dictionaryvar_get_object_schema_number (dictionaryvar));
         free (dictionaryvar);
-        dictionaryvar = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
