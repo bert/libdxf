@@ -628,7 +628,7 @@ dxf_xline_write
 #else
                 fprintf (fp->fp, " 92\n%d\n", xline->graphics_data_size);
 #endif
-                if (xline->binary_graphics_data != NULL)
+                if (xline->binary_graphics_data)
                 {
                         DxfBinaryGraphicsData *iter;
                         iter = xline->binary_graphics_data;
