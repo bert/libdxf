@@ -2,7 +2,7 @@
  * \file insert.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2017, 2018, 2019,
- * 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF insert entity (\c INSERT).
  *
@@ -773,7 +773,6 @@ dxf_insert_free
         free (insert->block_name);
         dxf_point_free_list (insert->p0);
         free (insert);
-        insert = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
