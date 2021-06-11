@@ -1,7 +1,7 @@
 /*!
  * \file imagedef.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF imagedef object (\c IMAGEDEF).
@@ -536,7 +536,6 @@ dxf_imagedef_free
                 free (imagedef->imagedef_reactor_soft[i]);
         }
         free (imagedef);
-        imagedef = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
