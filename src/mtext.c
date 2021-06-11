@@ -1,8 +1,8 @@
 /*!
  * \file mtext.c
  *
- * \author Copyright (C) 2012, 2013, 2014, 2015, 2017, 2018, 2019, 2020
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012, 2013, 2014, 2015, 2017, 2018, 2019, 2020,
+ * 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2012, 2013 by Paolo Caroni <kenren89@gmail.com>.
  *
@@ -759,7 +759,6 @@ dxf_mtext_free
         free (mtext->dictionary_owner_hard);
         free (mtext->background_color_name);
         free (mtext);
-        mtext = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
