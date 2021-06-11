@@ -1,7 +1,7 @@
 /*!
  * \file object_ptr.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF object_ptr object (\c OBJECT_PTR).
@@ -378,8 +378,6 @@ dxf_object_ptr_free
         }
         free (object_ptr);
         free (iter);
-        object_ptr = NULL;
-        iter = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
