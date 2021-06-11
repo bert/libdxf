@@ -10734,7 +10734,6 @@ dxf_mleader_leader_node_free
         dxf_point_free_list (node->p2);
         dxf_point_free_list (node->p3);
         free (node);
-        node = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
