@@ -1,7 +1,7 @@
 /*!
  * \file object.c
  *
- * \author Copyright (C) 2009, 2010, 2012, 2014, 2015, 2017, 2018
+ * \author Copyright (C) 2009, 2010, 2012, 2014, 2015, 2017, 2018, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF objects.
@@ -177,7 +177,6 @@ dxf_object_free
                 return (EXIT_FAILURE);
         }
         free (object);
-        object = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
