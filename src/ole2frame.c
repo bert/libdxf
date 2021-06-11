@@ -1,7 +1,7 @@
 /*!
  * \file ole2frame.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ole2frame entity (\c OLE2FRAME).
@@ -644,7 +644,6 @@ dxf_ole2frame_free
         free (ole2frame->binary_data);
         /*! \todo Needs a proper implementation. */
         free (ole2frame);
-        ole2frame = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
