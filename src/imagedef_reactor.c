@@ -1,7 +1,7 @@
 /*!
  * \file imagedef_reactor.c
  *
- * \author Copyright (C) 2015, 2017. 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017. 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
@@ -403,7 +403,6 @@ dxf_imagedef_reactor_free
         free (imagedef_reactor->dictionary_owner_hard);
         free (imagedef_reactor->associated_image_object);
         free (imagedef_reactor);
-        imagedef_reactor = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
