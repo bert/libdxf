@@ -1,7 +1,7 @@
 /*!
  * \file rastervariables.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF rastervariables object (\c RASTERVARIABLES).
@@ -405,7 +405,6 @@ dxf_rastervariables_free
         free (rastervariables->dictionary_owner_soft);
         free (rastervariables->dictionary_owner_hard);
         free (rastervariables);
-        rastervariables = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
