@@ -1,7 +1,7 @@
 /*!
  * \file mesh.c
  *
- * \author Copyright (C) 2018, 2019, 2020
+ * \author Copyright (C) 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mesh entity (\c MESH).
@@ -774,7 +774,6 @@ dxf_mesh_free
         dxf_int32_free_list (mesh->edge_vertex_index);
         dxf_double_free_list (mesh->edge_create_value);
         free (mesh);
-        mesh = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
