@@ -1,7 +1,7 @@
 /*!
  * \file spatial_index.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF spatial_index object (\c SPATIAL_INDEX).
@@ -400,7 +400,6 @@ dxf_spatial_index_free
         free (spatial_index->dictionary_owner_soft);
         free (spatial_index->dictionary_owner_hard);
         free (spatial_index);
-        spatial_index = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
