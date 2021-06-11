@@ -12618,7 +12618,6 @@ dxf_mleader_leader_line_free
         dxf_point_free_list (line->p1);
         dxf_point_free_list (line->p2);
         free (line);
-        line = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
