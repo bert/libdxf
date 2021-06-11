@@ -1,7 +1,7 @@
 /*!
  * \file object_id.c
  *
- * \author Copyright (C) 2016, 2017, 2018
+ * \author Copyright (C) 2016, 2017, 2018, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF object ids.
@@ -147,7 +147,6 @@ dxf_object_id_free
         }
         free (object_id->data);
         free (object_id);
-        object_id = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
