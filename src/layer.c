@@ -2,7 +2,7 @@
  * \file layer.c
  *
  * \author Copyright (C) 2008, 2012, 2013, 2014, 2015, 2017, 2018, 2019,
- * 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF layer table (\c LAYER).
  *
@@ -466,7 +466,6 @@ dxf_layer_free
         free (dxf_layer_get_dictionary_owner_hard (layer));
         free (dxf_layer_get_plot_style_name (layer));
         free (layer);
-        layer = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
