@@ -1,7 +1,7 @@
 /*!
  * \file rtext.c
  *
- * \author Copyright (C) 2019, 2020
+ * \author Copyright (C) 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF rtext entity (\c RTEXT).
@@ -749,7 +749,6 @@ dxf_rtext_free
         free (rtext->text_style);
         dxf_point_free (rtext->p0);
         free (rtext);
-        rtext = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
