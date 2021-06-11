@@ -1,7 +1,7 @@
 /*!
  * \file light.c
  *
- * \author Copyright (C) 2018, 2019
+ * \author Copyright (C) 2018, 2019, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF light entity (\c LIGHT).
@@ -775,7 +775,6 @@ dxf_light_free
         dxf_point_free (light->p0);
         dxf_point_free (light->p1);
         free (light);
-        light = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
