@@ -918,7 +918,6 @@ dxf_mleader_free
         free (mleader->block_content_id);
         free (mleader->arrow_head_id);
         free (mleader);
-        mleader = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
