@@ -1,7 +1,7 @@
 /*!
  * \file mlinestyle.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mlinestyle object (\c MLINESTYLE).
@@ -497,7 +497,6 @@ dxf_mlinestyle_free
                 free (dxf_mlinestyle_get_ith_element_linetype (mlinestyle, 1));
         }
         free (mlinestyle);
-        mlinestyle = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
