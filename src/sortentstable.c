@@ -1,7 +1,7 @@
 /*!
  * \file sortentstable.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF sortentstable object (\c SORTENTSTABLE).
@@ -445,7 +445,6 @@ dxf_sortentstable_free
         free (sortentstable->block_owner);
         dxf_char_free_list (sortentstable->entity_owner);
         free (sortentstable);
-        sortentstable = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
