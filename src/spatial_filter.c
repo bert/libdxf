@@ -1,7 +1,7 @@
 /*!
  * \file spatial_filter.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF spatial_filter object (\c SPATIAL_FILTER).
@@ -586,7 +586,6 @@ dxf_spatial_filter_free
         free (spatial_filter->dictionary_owner_soft);
         free (spatial_filter->dictionary_owner_hard);
         free (spatial_filter);
-        spatial_filter = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
