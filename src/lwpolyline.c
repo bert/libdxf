@@ -685,7 +685,6 @@ dxf_lwpolyline_free
         free (lwpolyline->linetype);
         free (lwpolyline->layer);
         free (lwpolyline);
-        lwpolyline = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
