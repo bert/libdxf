@@ -1,7 +1,7 @@
 /*!
  * \file proprietary_data.c
  *
- * \author Copyright (C) 2016, 2017, 2018
+ * \author Copyright (C) 2016, 2017, 2018, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF proprietary data entity.
@@ -147,7 +147,6 @@ dxf_proprietary_data_free
         }
         free (data->line);
         free (data);
-        data = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
