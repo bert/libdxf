@@ -1,7 +1,7 @@
 /*!
  * \file mleaderstyle.c
  *
- * \author Copyright (C) 2019, 2020
+ * \author Copyright (C) 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mleaderstyle entity (\c MLEADERSTYLE).
@@ -518,7 +518,6 @@ dxf_mleaderstyle_free
         free (mleaderstyle->mtext_style_id);
         free (mleaderstyle->block_content_id);
         free (mleaderstyle);
-        mleaderstyle = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
