@@ -1,7 +1,7 @@
 /*!
  * \file mleader.c
  *
- * \author Copyright (C) 2018, 2019, 2020
+ * \author Copyright (C) 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mleader entity (\c MLEADER).
@@ -5612,7 +5612,6 @@ dxf_mleader_context_data_free
         free (data->type_style_id);
         free (data->block_content_id);
         free (data);
-        data = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
