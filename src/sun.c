@@ -1,7 +1,8 @@
 /*!
  * \file sun.c
  *
- * \author Copyright (C) 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2019, 2020, 2021
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF sun entity (\c SUN).
  *
@@ -736,7 +737,6 @@ dxf_sun_free
         free (sun->plot_style_name);
         free (sun->color_name);
         free (sun);
-        sun = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
