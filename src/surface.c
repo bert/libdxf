@@ -6209,7 +6209,6 @@ dxf_surface_lofted_free
         }
         dxf_double_free_list (lofted_surface->transform_matrix);
         free (lofted_surface);
-        lofted_surface = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
