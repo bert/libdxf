@@ -9946,7 +9946,6 @@ dxf_surface_swept_free
         dxf_binary_data_free_list (swept_surface->sweep_binary_data);
         dxf_binary_data_free_list (swept_surface->path_binary_data);
         free (swept_surface);
-        swept_surface = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
