@@ -1,7 +1,7 @@
 /*!
  * \file surface.c
  *
- * \author Copyright (C) 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF surface entity (\c SURFACE).
  *
@@ -3625,7 +3625,6 @@ dxf_surface_extruded_free
         dxf_double_free_list (extruded_surface->path_matrix);
         dxf_binary_data_free_list (extruded_surface->binary_data);
         free (extruded_surface);
-        extruded_surface = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
