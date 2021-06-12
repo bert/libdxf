@@ -294,7 +294,6 @@ dxf_table_cell_free
         free (cell->block_table_record_hard_pointer);
         free (cell->field_object_pointer);
         free (cell);
-        cell = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
