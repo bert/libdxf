@@ -7774,7 +7774,6 @@ dxf_surface_revolved_free
         dxf_double_free_list (revolved_surface->transform_matrix);
         dxf_binary_data_free_list (revolved_surface->binary_data);
         free (revolved_surface);
-        revolved_surface = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
