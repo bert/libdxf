@@ -1,7 +1,8 @@
 /*!
  * \file tables.c
  *
- * \author Copyright (C) 2014, 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014, 2015, 2017, 2021
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF tables section (\c TABLES).
  *
@@ -196,7 +197,6 @@ dxf_tables_free
         free (tables->ucss);
         free (tables->views);
         free (tables->vports);
-        tables = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
