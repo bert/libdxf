@@ -1,8 +1,8 @@
 /*!
  * \file spline.c
  * 
- * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+ * 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF spline entity (\c SPLINE).
  *
@@ -1027,7 +1027,6 @@ dxf_spline_free
         dxf_double_free_list (spline->knot_value);
         dxf_double_free_list (spline->weight_value);
         free (spline);
-        spline = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
