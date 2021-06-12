@@ -1117,7 +1117,6 @@ dxf_int_free
                 return (EXIT_FAILURE);
         }
         free (i);
-        i = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
