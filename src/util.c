@@ -2456,7 +2456,6 @@ dxf_read_close
                 fclose (file->fp);
                 free (file->filename);
                 free (file);
-                file = NULL;
         }
 #if DEBUG
         DXF_DEBUG_END
