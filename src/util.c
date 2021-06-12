@@ -435,7 +435,6 @@ dxf_char_free
         }
         free (c->value);
         free (c);
-        c = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
