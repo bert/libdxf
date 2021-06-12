@@ -1800,7 +1800,6 @@ dxf_int32_free
                 return (EXIT_FAILURE);
         }
         free (i);
-        i = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
