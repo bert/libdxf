@@ -5549,6 +5549,41 @@ dxf_table_get_cells
 
 
 /*!
+ * \brief Set a pointer to \c cells pointer for a DXF \c TABLE entity.
+ *
+ * \return a pointer to \c table when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfTable *
+dxf_table_set_cells
+(
+        DxfTable *table,
+                /*!< a pointer to a DXF \c TABLE entity. */
+        struct DxfTableCell *cells
+                /*!< a pointer to \c cells to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        table->cells = cells;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (table);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c TABLE entity from a DXF 
  * \c TABLE entity.
  *

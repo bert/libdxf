@@ -654,6 +654,7 @@ DxfTable *dxf_table_set_tablestyle_object_pointer (DxfTable *table, char *tables
 char *dxf_table_get_owning_block_pointer (DxfTable *table);
 DxfTable *dxf_table_set_owning_block_pointer (DxfTable *table, char *owning_block_pointer);
 struct DxfTableCell *dxf_table_get_cells (DxfTable *table);
+DxfTable *dxf_table_set_cells (DxfTable *table, struct DxfTableCell *cells);
 DxfTable *dxf_table_get_next (DxfTable *table);
 DxfTable *dxf_table_set_next (DxfTable *table, DxfTable *next);
 DxfTable *dxf_table_get_last (DxfTable *table);
