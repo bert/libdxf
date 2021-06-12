@@ -531,6 +531,7 @@ int dxf_table_cell_write (DxfFile *fp, DxfTableCell *cell);
 int dxf_table_cell_free (DxfTableCell *cell);
 void dxf_table_cell_free_list (DxfTableCell *cells);
 DxfTableCell *dxf_table_cell_get_next (DxfTableCell *cell);
+DxfTableCell *dxf_table_cell_set_next (DxfTableCell *cell,  DxfTableCell *next);
 
 DxfTable *dxf_table_new ();
 DxfTable *dxf_table_init (DxfTable *table);
