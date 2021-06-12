@@ -2148,6 +2148,41 @@ dxf_int64_free
 
 
 /*!
+ * \brief Free the allocated memory for a single linked list of DxfInt64
+ * objects and all their data fields.
+ */
+int
+dxf_int64_free_list
+(
+        DxfInt64 *ints
+                /*!< a pointer to the single linked list of DxfInt64
+                 * objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (ints == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        while (ints != NULL)
+        {
+                DxfInt64 *iter = (DxfInt64 *) ints->next;
+                dxf_int64_free (ints);
+                ints = (DxfInt64 *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Test for double type group codes.
  */
 int
