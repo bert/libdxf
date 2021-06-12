@@ -336,6 +336,47 @@ dxf_table_cell_free_list
 
 
 /*!
+ * \brief Get the pointer to the next \c table cell from a linked list
+ * of DXF \c table cells.
+ *
+ * \return pointer to the next \c table cell, or \c NULL when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfTableCell *
+dxf_table_cell_get_next
+(
+        DxfTableCell *cell
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (cell == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (cell->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfTableCell *) cell->next);
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c TABLE.
  *
  * Fill the memory contents with zeros.
