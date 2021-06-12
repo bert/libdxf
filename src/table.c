@@ -995,7 +995,6 @@ dxf_table_free
         free (table->owning_block_pointer);
         dxf_table_cell_free_list ((DxfTableCell *) table->cells);
         free (table);
-        table = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
