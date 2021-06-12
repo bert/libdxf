@@ -776,7 +776,6 @@ dxf_double_free
                 return (EXIT_FAILURE);
         }
         free (d);
-        d = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
