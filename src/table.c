@@ -419,6 +419,51 @@ dxf_table_cell_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c table cell from a linked
+ * list of DXF \c table cells.
+ *
+ * \return pointer to the last \c table cell.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfTableCell *
+dxf_table_cell_get_last
+(
+        DxfTableCell *cells
+                /*!< a pointer to a linked list of DXF \c table cells. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (cells == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (cells->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfTableCell *) cells);
+        }
+        DxfTableCell *iter = (DxfTableCell *) cells->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfTableCell *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfTableCell *) iter);
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c TABLE.
  *
  * Fill the memory contents with zeros.
