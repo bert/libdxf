@@ -1,7 +1,7 @@
 /*!
  * \file viewport.c
  *
- * \author Copyright (C) 2010, 2012, 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2010, 2012, 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF viewport entity (\c VIEWPORT).
@@ -1252,7 +1252,6 @@ dxf_viewport_free
         free (viewport->frozen_layer_list_end);
         free (viewport->window_descriptor_end);
         free (viewport);
-        viewport = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
