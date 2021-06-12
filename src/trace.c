@@ -1,8 +1,8 @@
 /*!
  * \file trace.c
  *
- * \author Copyright (C) 2008, 2012, 2014, 2015, 2017, 2018, 2019, 2020
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2017, 2018, 2019, 2020,
+ * 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -756,7 +756,6 @@ dxf_trace_free
         dxf_point_free (trace->p2);
         dxf_point_free (trace->p3);
         free (trace);
-        trace = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
