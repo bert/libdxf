@@ -800,7 +800,6 @@ dxf_surface_free
         dxf_proprietary_data_free_list (surface->proprietary_data);
         dxf_proprietary_data_free_list (surface->additional_proprietary_data);
         free (surface);
-        surface = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
