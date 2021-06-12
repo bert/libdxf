@@ -2536,10 +2536,10 @@ dxf_read_scanf (DxfFile *fp, const char *template, ...)
                         *++search_result;
                 }
         }
-        return ret;
 #if DEBUG
         DXF_DEBUG_END
 #endif
+        return ret;
 }
 
 
