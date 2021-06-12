@@ -1,7 +1,7 @@
 /*!
  * \file tolerance.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF tolerance entity (\c TOLERANCE).
@@ -721,7 +721,6 @@ dxf_tolerance_free
         free (tolerance->dictionary_owner_soft);
         free (tolerance->dictionary_owner_hard);
         free (tolerance);
-        tolerance = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
