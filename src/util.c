@@ -2386,7 +2386,27 @@ dxf_read_is_string
  * counter.
  * 
  * Reset the line counting to 0.
- * 
+ *
+ * \todo add a test for invalid characters in \c filename.
+ * You may use any character in the current code page (Unicode/ANSI
+ * above 127), except:
+ * <ul>
+ * <li> < > : " / \ | ? * </li>
+ * <li> Characters whose integer representations are 0-31 (less than
+ *      ASCII space)</li>
+ * <li> Any other character that the target file system does not allow
+ *      (say, trailing periods or spaces)</li>
+ * <li> Any of the DOS names: CON, PRN, AUX, NUL, COM0, COM1, COM2,
+ *      COM3, COM4, COM5, COM6, COM7, COM8, COM9, LPT0, LPT1, LPT2,
+ *      LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9 (and avoid AUX.txt,
+ *      etc)</li>
+ * <li> The file name is all periods</li>
+ * <li> File paths (including the file name) may not have more than 260
+ *      characters (that don't use the \?\ prefix)</li>
+ * <li> Unicode file paths (including the file name) with more than
+ *      32,000 characters when using \?\ (note that prefix may expand
+ *      directory components and cause it to overflow the 32,000 limit)</li>
+ * </ul>
  */
 DxfFile *
 dxf_read_init
@@ -2424,10 +2444,10 @@ dxf_read_init
         file->fp = fp;
         file->filename = strdup(filename);
         file->line_number = 0;
-        /*! \todo FIXME: dxf header and blocks need initialized ?
-        dxf_header_init (file->dxf_header);
-        dxf_block_init (file->dxf_block);
-        */
+        /*! \todo do dxf header and blocks need initialized ?
+         * dxf_header_init (file->dxf_header);
+         * dxf_block_init (file->dxf_block);
+         */
 #if DEBUG
         DXF_DEBUG_END
 #endif
