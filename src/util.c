@@ -2465,7 +2465,6 @@ dxf_read_close
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        /*! \todo FIXME: how to free other sub structures */
         if (file == NULL)
         {
                 fprintf (stderr,
@@ -2475,6 +2474,7 @@ dxf_read_close
         {
                 fclose (file->fp);
                 free (file->filename);
+                /*! \todo free other sub structures */
                 free (file);
         }
 #if DEBUG
