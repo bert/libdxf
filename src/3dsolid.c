@@ -2,7 +2,7 @@
  * \file 3dsolid.c
  *
  * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
- * 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2020, 2021, 2022 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -697,6 +697,9 @@ dxf_3dsolid_write
  * \brief Free the allocated memory for a DXF \c 3DSOLID and all it's
  * data fields.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_free.png
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -749,6 +752,9 @@ dxf_3dsolid_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c 3DSOLID entities and all their data fields.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_free_list.png
  */
 void
 dxf_3dsolid_free_list
@@ -1299,6 +1305,9 @@ dxf_3dsolid_set_visibility
 /*!
  * \brief Get the color from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_color.png
+ *
  * \return color.
  */
 int16_t
@@ -1636,6 +1645,9 @@ dxf_3dsolid_set_shadow_mode
 /*!
  * \brief Get the pointer to the binary graphics data from a DXF 
  * \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_binary_graphics_data.png
  *
  * \return pointer to the binary graphics data.
  *
@@ -2187,6 +2199,9 @@ dxf_3dsolid_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_color_value.png
+ *
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2251,6 +2266,9 @@ dxf_3dsolid_set_color_value
 
 /*!
  * \brief Get the \c color_name from a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_color_name.png
  *
  * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.
