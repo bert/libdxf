@@ -2,7 +2,7 @@
  * \file 3dsolid.c
  *
  * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
- * 2020, 2021, 2022 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2020, 2021, 2022, 2023 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -55,6 +55,9 @@
  * \brief Allocate memory for a DXF \c 3DSOLID.
  *
  * Fill the memory contents with zeros.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_new.png
  */
 Dxf3dsolid *
 dxf_3dsolid_new ()
@@ -89,7 +92,10 @@ dxf_3dsolid_new ()
 /*!
  * \brief Allocate memory and initialize data fields in a \c 3DSOLID
  * entity.
- * 
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_init.png
+ *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
@@ -788,6 +794,9 @@ dxf_3dsolid_free_list
 /*!
  * \brief Get the ID code from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_id_code.png
+ *
  * \return ID code.
  */
 int
@@ -823,6 +832,9 @@ dxf_3dsolid_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_id_code.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_id_code
@@ -863,6 +875,9 @@ dxf_3dsolid_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_linetype.png
+ *
  * \return linetype when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -899,6 +914,9 @@ dxf_3dsolid_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_linetype.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_linetype
@@ -938,6 +956,9 @@ dxf_3dsolid_set_linetype
 /*!
  * \brief Get the layer from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_layer.png
+ *
  * \return layer when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -974,6 +995,9 @@ dxf_3dsolid_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_layer.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_layer
@@ -1013,6 +1037,9 @@ dxf_3dsolid_set_layer
 /*!
  * \brief Get the elevation from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_elevation.png
+ *
  * \return elevation.
  */
 double
@@ -1042,6 +1069,9 @@ dxf_3dsolid_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_elevation.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_elevation
@@ -1073,6 +1103,9 @@ dxf_3dsolid_set_elevation
 
 /*!
  * \brief Get the thickness from a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_thickness.png
  *
  * \return thickness.
  */
@@ -1109,6 +1142,9 @@ dxf_3dsolid_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_thickness.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_thickness
@@ -1147,6 +1183,9 @@ dxf_3dsolid_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_linetype_scale.png
+ *
  * \return linetype scale.
  */
 double
@@ -1182,6 +1221,9 @@ dxf_3dsolid_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_linetype_scale.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_linetype_scale
@@ -1734,6 +1776,9 @@ dxf_3dsolid_set_binary_graphics_data
  *
  * \return soft pointer to the dictionary owner.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_dictionary_owner_soft.png
+ *
  * \warning No checks are performed on the returned pointer (string).
  */
 char *
@@ -1974,6 +2019,9 @@ dxf_3dsolid_set_material
 /*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_dictionary_owner_hard.png
  *
  * \return hard pointer to the dictionary owner.
  *
