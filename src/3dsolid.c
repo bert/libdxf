@@ -1767,7 +1767,7 @@ dxf_3dsolid_set_binary_graphics_data
         }
         if (solid->binary_graphics_data == NULL)
         {
-                solid->binary_graphics_data = dxf_binary_graphics_data_new ();
+                solid->binary_graphics_data = dxf_binary_data_new ();
         }
         solid->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
