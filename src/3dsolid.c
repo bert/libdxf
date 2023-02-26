@@ -1731,6 +1731,9 @@ dxf_3dsolid_get_binary_graphics_data
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_binary_graphics_data.png
+ *
  * \return a pointer to \c solid when successful, or \c NULL when an
  * error occurred.
  */
