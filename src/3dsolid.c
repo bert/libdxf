@@ -1768,6 +1768,13 @@ dxf_3dsolid_set_binary_graphics_data
         if (solid->binary_graphics_data == NULL)
         {
                 solid->binary_graphics_data = dxf_binary_data_new ();
+                if (solid->binary_graphics_data == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (NULL);
+                }
         }
         solid->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
