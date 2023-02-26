@@ -1262,6 +1262,9 @@ dxf_3dsolid_set_linetype_scale
 /*!
  * \brief Get the visibility from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_visibility.png
+ *
  * \return visibility.
  */
 int16_t
@@ -1303,6 +1306,9 @@ dxf_3dsolid_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_visibility.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_visibility
@@ -1385,6 +1391,9 @@ dxf_3dsolid_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_color.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_color
@@ -1736,6 +1745,9 @@ dxf_3dsolid_get_binary_graphics_data
  *
  * \return a pointer to \c solid when successful, or \c NULL when an
  * error occurred.
+ *
+ * \warning The passed pointer to the binary graphics data may not be
+ * freed.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_binary_graphics_data
