@@ -1432,6 +1432,9 @@ dxf_3dsolid_set_color
 /*!
  * \brief Get the paperspace flag value from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_paperspace.png
+ *
  * \return paperspace flag value.
  */
 int16_t
@@ -1473,6 +1476,9 @@ dxf_3dsolid_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_paperspace.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_paperspace
@@ -1517,6 +1523,9 @@ dxf_3dsolid_set_paperspace
 /*!
  * \brief Get the \c graphics_data_size value from a DXF \c 3DSOLID entity.
  *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_get_graphics_data_size.png
+ *
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
@@ -1559,6 +1568,9 @@ dxf_3dsolid_get_graphics_data_size
 
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c 3DSOLID entity.
+ *
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dsolid_set_graphics_data_size.png
  *
  * \return a pointer to \c solid when successful, or \c NULL when an
  * error occurred.
