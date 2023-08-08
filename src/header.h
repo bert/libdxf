@@ -478,7 +478,7 @@ dxf_header_struct
                  *   <li value = 2> Gradians.</li>
                  *   <li value = 3> Radians.</li>
                  *   <li value = 4> Surveyor's units.</li>
-                 * </lo>
+                 * </ol>
                  * Group code = 70. */
         int DimADEC;
                 /*!< Number of precision places displayed in angular
