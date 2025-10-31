@@ -109,9 +109,9 @@ dxf_3dface_init
         if (face == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
+                  (_("Critical error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
-                return (NULL);
+                exit (EXIT_FAILURE);
         }
         /* Assign initial values to members. */
         face->id_code = 0;
@@ -135,14 +135,6 @@ dxf_3dface_init
         face->color_name = strdup ("");
         face->transparency = 0;
         face->flag = 0;
-        /* Initialize new structs for the following members later,
-         * when they are required and when we have content. */
-        face->binary_graphics_data = NULL;
-        face->p0 = NULL;
-        face->p1 = NULL;
-        face->p2 = NULL;
-        face->p3 = NULL;
-        face->next = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
