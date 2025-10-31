@@ -175,16 +175,21 @@ dxf_3dface_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
-                /* Clean up. */
-                free (temp_string);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                face = dxf_3dface_init (face);
+                face = dxf_3dface_new ();
+                if (face == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
         }
         if (face->binary_graphics_data == NULL)
         {
@@ -193,13 +198,13 @@ dxf_3dface_read
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("Initializing a DxfBinaryData struct.\n")));
-                face->binary_graphics_data = dxf_binary_data_init (face->binary_graphics_data);
+                face->binary_graphics_data = dxf_binary_data_new ();
                 if (face->binary_graphics_data == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         if (face->p0 == NULL)
@@ -209,13 +214,13 @@ dxf_3dface_read
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("Initializing a DxfPoint.\n")));
-                face->p0 = dxf_point_init (face->p0);
+                face->p0 = dxf_point_new ();
                 if (face->p0 == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         if (face->p1 == NULL)
@@ -225,13 +230,13 @@ dxf_3dface_read
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("Initializing a DxfPoint.\n")));
-                face->p1 = dxf_point_init (face->p1);
+                face->p1 = dxf_point_new ();
                 if (face->p1 == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         if (face->p2 == NULL)
@@ -241,13 +246,13 @@ dxf_3dface_read
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("Initializing a DxfPoint.\n")));
-                face->p2 = dxf_point_init (face->p2);
+                face->p2 = dxf_point_new ();
                 if (face->p2 == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         if (face->p3 == NULL)
@@ -257,13 +262,13 @@ dxf_3dface_read
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("Initializing a DxfPoint.\n")));
-                face->p3 = dxf_point_init (face->p3);
+                face->p3 = dxf_point_new ();
                 if (face->p3 == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         iter310 = (DxfBinaryData *) face->binary_graphics_data;
@@ -277,10 +282,7 @@ dxf_3dface_read
                         fprintf (stderr,
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
-                        /* Clean up. */
-                        free (temp_string);
-                        fclose (fp->fp);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -568,8 +570,11 @@ dxf_3dface_read
         {
                 face->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        /* Clean up. */
-        free (temp_string);
+        /* Clean up any leftovers. */
+        if (temp_string)
+        {
+                free (temp_string);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
