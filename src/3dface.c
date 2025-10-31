@@ -793,14 +793,14 @@ dxf_3dface_write
  * \brief Free the allocated memory for a DXF \c 3DFACE and all it's
  * data fields.
  *
- * \return \c NULL when successful, or pointer to \c face when an error
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_free
 (
         Dxf3dface *face
-                /*!< a pointer to the memory occupied by the DXF
+                /*!< [in] a pointer to the memory occupied by the DXF
                  * \c 3DFACE entity. */
 )
 {
@@ -812,14 +812,14 @@ dxf_3dface_free
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
-              return (face);
+              return (EXIT_FAILURE);
         }
         free (face->linetype);
         free (face->layer);
@@ -839,7 +839,7 @@ dxf_3dface_free
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
