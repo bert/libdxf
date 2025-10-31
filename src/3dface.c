@@ -847,12 +847,14 @@ dxf_3dface_free
  * \brief Free the allocated memory for a single linked list of
  * DXF \c 3DFACE entities and all their data fields.
  *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-void
+int
 dxf_3dface_free_list
 (
         Dxf3dface *faces
-                /*!< a pointer to the single linked list of DXF
+                /*!< [in] a pointer to the single linked list of DXF
                  * \c 3DFACE entities. */
 )
 {
@@ -864,6 +866,7 @@ dxf_3dface_free_list
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         while (faces != NULL)
         {
@@ -874,6 +877,7 @@ dxf_3dface_free_list
 #if DEBUG
         DXF_DEBUG_END
 #endif
+        return (EXIT_SUCCESS);
 }
 
 

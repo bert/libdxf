@@ -221,7 +221,7 @@ Dxf3dface *dxf_3dface_init (Dxf3dface *face);
 Dxf3dface *dxf_3dface_read (DxfFile *fp, Dxf3dface *face);
 int dxf_3dface_write (DxfFile *fp, Dxf3dface *face);
 int dxf_3dface_free (Dxf3dface *face);
-void dxf_3dface_free_list (Dxf3dface *faces);
+int dxf_3dface_free_list (Dxf3dface *faces);
 int dxf_3dface_get_id_code (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_id_code (Dxf3dface *face, int id_code);
 char *dxf_3dface_get_linetype (Dxf3dface *face);
