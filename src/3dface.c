@@ -62,12 +62,13 @@ dxf_3dface_new ()
         size = sizeof (Dxf3dface);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((face = malloc (size)) == NULL)
+        face = malloc (size);
+        if (face == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
+                  (_("Critical error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
-                face = NULL;
+                exit (EXIT_FAILURE);
         }
         else
         {
