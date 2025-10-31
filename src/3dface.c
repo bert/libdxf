@@ -2,7 +2,7 @@
  * \file 3dface.c
  *
  * \author Copyright (C) 2010, 2012, 2013, 2014, 2015, 2016, 2017, 2018,
- * 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2020, 2021, 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
@@ -47,9 +47,6 @@
  *
  * Fill the memory contents with zeros.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_new.png
- *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
@@ -86,9 +83,6 @@ dxf_3dface_new ()
 /*!
  * \brief Allocate memory and initialize data fields in a DXF \c 3DFACE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_init.png
  *
  * \return \c NULL when an error occurred, a pointer to the initialized
  * memory when successful.
@@ -162,9 +156,6 @@ dxf_3dface_init
  * Now follows some data for the \c 3DFACE, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_read.png
  *
  * \return a pointer to a DXF \c 3DFACE entity, or \c NULL when an error
  * occurred.
@@ -596,9 +587,6 @@ dxf_3dface_read
 /*!
  * \brief Write DXF output to a file for a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_write.png
- *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -807,9 +795,6 @@ dxf_3dface_write
  * \brief Free the allocated memory for a DXF \c 3DFACE and all it's
  * data fields.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_free.png
- *
  * \return \c NULL when successful, or pointer to \c face when an error
  * occurred.
  */
@@ -864,8 +849,6 @@ dxf_3dface_free
  * \brief Free the allocated memory for a single linked list of
  * DXF \c 3DFACE entities and all their data fields.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_free_list.png
  */
 void
 dxf_3dface_free_list
@@ -898,9 +881,6 @@ dxf_3dface_free_list
 
 /*!
  * \brief Get the \c id_code from a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_id_code.png
  *
  * \return \c id_code.
  */
@@ -937,9 +917,6 @@ dxf_3dface_get_id_code
 
 /*!
  * \brief Set the \c id_code for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_id_code.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -983,9 +960,6 @@ dxf_3dface_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_linetype.png
- *
  * \return a pointer to \c linetype when sucessful, \c NULL when an
  * error occurred.
  */
@@ -1023,9 +997,6 @@ dxf_3dface_get_linetype
 
 /*!
  * \brief Set the \c linetype for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_linetype.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1071,9 +1042,6 @@ dxf_3dface_set_linetype
 /*!
  * \brief Get the \c layer from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_layer.png
- *
  * \return a pointer to \c layer when sucessful, \c NULL when an error
  * occurred.
  */
@@ -1111,9 +1079,6 @@ dxf_3dface_get_layer
 
 /*!
  * \brief Set the \c layer for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_layer.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1158,9 +1123,6 @@ dxf_3dface_set_layer
 /*!
  * \brief Get the \c elevation a this DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_elevation.png
- *
  * \return \c elevation.
  */
 double
@@ -1190,9 +1152,6 @@ dxf_3dface_get_elevation
 
 /*!
  * \brief Set the \c elevation for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_elevation.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1227,9 +1186,6 @@ dxf_3dface_set_elevation
 
 /*!
  * \brief Get the \c thickness from a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_thickness.png
  *
  * \return \c thickness.
  */
@@ -1266,9 +1222,6 @@ dxf_3dface_get_thickness
 
 /*!
  * \brief Set the \c thickness for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_thickness.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1310,9 +1263,6 @@ dxf_3dface_set_thickness
 /*!
  * \brief Get the \c linetype_scale from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_linetype_scale.png
- *
  * \return \c linetype_scale.
  */
 double
@@ -1348,9 +1298,6 @@ dxf_3dface_get_linetype_scale
 
 /*!
  * \brief Set the \c linetype_scale for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_linetype_scale.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1391,9 +1338,6 @@ dxf_3dface_set_linetype_scale
 
 /*!
  * \brief Get the \c visibility from a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_visibility.png
  *
  * \return \c visibility.
  */
@@ -1436,9 +1380,6 @@ dxf_3dface_get_visibility
 
 /*!
  * \brief Set the \c visibility for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_visibility.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1486,9 +1427,6 @@ dxf_3dface_set_visibility
 /*!
  * \brief Get the \c color from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_color.png
- *
  * \return \c color.
  */
 int16_t
@@ -1524,9 +1462,6 @@ dxf_3dface_get_color
 
 /*!
  * \brief Set the \c color for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_color.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1567,9 +1502,6 @@ dxf_3dface_set_color
 
 /*!
  * \brief Get the \c paperspace flag value from a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_paperspace.png
  *
  * \return \c paperspace flag value.
  */
@@ -1612,9 +1544,6 @@ dxf_3dface_get_paperspace
 
 /*!
  * \brief Set the \c paperspace flag for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_paperspace.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -1663,9 +1592,6 @@ dxf_3dface_set_paperspace
  * \brief Get the \c graphics_data_size value from a DXF \c 3DFACE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_graphics_data_size.png
- *
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
@@ -1708,9 +1634,6 @@ dxf_3dface_get_graphics_data_size
 
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_graphics_data_size.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -1760,9 +1683,6 @@ dxf_3dface_set_graphics_data_size
 /*!
  * \brief Get the \c shadow_mode from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_shadow_mode.png
- *
  * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -1805,9 +1725,6 @@ dxf_3dface_get_shadow_mode
 
 /*!
  * \brief Set the \c shadow_mode for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_shadow_mode.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -1856,9 +1773,6 @@ dxf_3dface_set_shadow_mode
  * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_binary_graphics_data.png
- *
  * \return pointer to the \c binary_graphics_data.
  *
  * \warning No checks are performed on the returned pointer.
@@ -1898,9 +1812,6 @@ dxf_3dface_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_binary_graphics_data.png
  */
 Dxf3dface *
 dxf_3dface_set_binary_graphics_data
@@ -1942,9 +1853,6 @@ dxf_3dface_set_binary_graphics_data
  * \brief Get the soft pointer to the \c dictionary_owner_soft from a
  * DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_dictionary_owner_soft.png
- *
  * \return a pointer to the \c dictionary_owner_soft.
  *
  * \warning No checks are performed on the returned pointer.
@@ -1984,9 +1892,6 @@ dxf_3dface_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_dictionary_owner_soft.png
  */
 Dxf3dface *
 dxf_3dface_set_dictionary_owner_soft
@@ -2028,9 +1933,6 @@ dxf_3dface_set_dictionary_owner_soft
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_object_owner_soft.png
- *
  * \return soft pointer to the object owner.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -2070,9 +1972,6 @@ dxf_3dface_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_object_owner_soft.png
  */
 Dxf3dface *
 dxf_3dface_set_object_owner_soft
@@ -2113,9 +2012,6 @@ dxf_3dface_set_object_owner_soft
 /*!
  * \brief Get the pointer to the \c material from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_material.png
- *
  * \return a pointer to \c material when successful, or \c NULL when an
  * error occurred.
  *
@@ -2155,9 +2051,6 @@ dxf_3dface_get_material
 
 /*!
  * \brief Set the pointer to the \c material for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_material.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2202,9 +2095,6 @@ dxf_3dface_set_material
  * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_dictionary_owner_hard.png
- *
  * \return a pointer to the \c dictionary_owner_hard.
  *
  * \warning No checks are performed on the returned pointer.
@@ -2244,9 +2134,6 @@ dxf_3dface_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_dictionary_owner_hard.png
  *
  * \return a pointer to \c face when sucessful, \c NULL when an error
  * occurred.
@@ -2290,9 +2177,6 @@ dxf_3dface_set_dictionary_owner_hard
 /*!
  * \brief Get the \c lineweight from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_lineweight.png
- *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2323,9 +2207,6 @@ dxf_3dface_get_lineweight
 
 /*!
  * \brief Set the \c lineweight for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_lineweight.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2360,9 +2241,6 @@ dxf_3dface_set_lineweight
 
 /*!
  * \brief Get the \c plot_style_name from a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_plot_style_name.png
  *
  * \return a pointer to \c plot_style_name when sucessful, or \c NULL
  * when an error occurred.
@@ -2401,9 +2279,6 @@ dxf_3dface_get_plot_style_name
 
 /*!
  * \brief Set the \c plot_style_name for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_plot_style_name.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2447,9 +2322,6 @@ dxf_3dface_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_color_value.png
- *
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2480,9 +2352,6 @@ dxf_3dface_get_color_value
 
 /*!
  * \brief Set the \c color_value for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_color_value.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2517,9 +2386,6 @@ dxf_3dface_set_color_value
 
 /*!
  * \brief Get the \c color_name from a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_color_name.png
  *
  * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.
@@ -2558,9 +2424,6 @@ dxf_3dface_get_color_name
 
 /*!
  * \brief Set the \c color_name for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_color_name.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2604,9 +2467,6 @@ dxf_3dface_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_transparency.png
- *
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2637,9 +2497,6 @@ dxf_3dface_get_transparency
 
 /*!
  * \brief Set the \c transparency for a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_transparency.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2674,9 +2531,6 @@ dxf_3dface_set_transparency
 
 /*!
  * \brief Get the base point of a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_p0.png
  *
  * \return the base point \c p0.
  */
@@ -2714,9 +2568,6 @@ dxf_3dface_get_p0
 
 /*!
  * \brief Set the base point \c p0 of a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_p0.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2760,9 +2611,6 @@ dxf_3dface_set_p0
  * \brief Get the X-value of the base point \c x0 of a DXF \c 3DFACE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_x0.png
- *
  * \return the X-value of the base point \c x0.
  */
 double
@@ -2801,9 +2649,6 @@ dxf_3dface_get_x0
 /*!
  * \brief Set the X-value of the base point \c x0 of a DXF \c 3DFACE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_x0.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2857,9 +2702,6 @@ dxf_3dface_set_x0
  * \brief Get the Y-value of the base point \c y0 of a DXF \c 3DFACE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_y0.png
- *
  * \return the Y-value of the base point \c y0.
  */
 double
@@ -2898,9 +2740,6 @@ dxf_3dface_get_y0
 /*!
  * \brief Set the Y-value of the base point \c y0 of a DXF \c 3DFACE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_y0.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -2954,9 +2793,6 @@ dxf_3dface_set_y0
  * \brief Get the Z-value of the base point \c z0 of a DXF \c 3DFACE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_z0.png
- *
  * \return the Z-value of the base point \c z0.
  */
 double
@@ -2995,9 +2831,6 @@ dxf_3dface_get_z0
 /*!
  * \brief Set the Z-value of the base point \c z0 of a DXF \c 3DFACE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_z0.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3050,9 +2883,6 @@ dxf_3dface_set_z0
 /*!
  * \brief Get the first alignment point \c p1 of a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_p1.png
- *
  * \return the first alignment point \c p1.
  */
 DxfPoint *
@@ -3089,9 +2919,6 @@ dxf_3dface_get_p1
 
 /*!
  * \brief Set the first alignment point \c p1 of a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_p1.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3135,9 +2962,6 @@ dxf_3dface_set_p1
  * \brief Get the X-value of the first alignment point \c x1 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_x1.png
- *
  * \return the X-value of the first alignment point \c x1.
  */
 double
@@ -3176,9 +3000,6 @@ dxf_3dface_get_x1
 /*!
  * \brief Set the X-value of the first alignment point \c x1 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_x1.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3232,9 +3053,6 @@ dxf_3dface_set_x1
  * \brief Get the Y-value of the first alignment point \c y1 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_y1.png
- *
  * \return the Y-value of the first alignment point \c y1.
  */
 double
@@ -3273,9 +3091,6 @@ dxf_3dface_get_y1
 /*!
  * \brief Set the Y-value of the first alignment point \c y1 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_y1.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3329,9 +3144,6 @@ dxf_3dface_set_y1
  * \brief Get the Z-value of the first alignment point \c z1 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_z1.png
- *
  * \return the Z-value of the first alignment point \c z1.
  */
 double
@@ -3370,9 +3182,6 @@ dxf_3dface_get_z1
 /*!
  * \brief Set the Z-value of the first alignment point \c z1 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_z1.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3425,9 +3234,6 @@ dxf_3dface_set_z1
 /*!
  * \brief Get the second alignment point \c p2 of a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_p2.png
- *
  * \return the second alignment point \c p2.
  */
 DxfPoint *
@@ -3464,9 +3270,6 @@ dxf_3dface_get_p2
 
 /*!
  * \brief Set the second alignment point \c p2 of a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_p2.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3510,9 +3313,6 @@ dxf_3dface_set_p2
  * \brief Get the X-value of the second alignment point \c x2 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_x2.png
- *
  * \return the X-value of the second alignment point \c x2.
  */
 double
@@ -3551,9 +3351,6 @@ dxf_3dface_get_x2
 /*!
  * \brief Set the X-value of the second alignment point \c x2 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_x2.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3607,9 +3404,6 @@ dxf_3dface_set_x2
  * \brief Get the Y-value of the second alignment point \c y2 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_y2.png
- *
  * \return the Y-value of the second alignment point \c y2.
  */
 double
@@ -3648,9 +3442,6 @@ dxf_3dface_get_y2
 /*!
  * \brief Set the Y-value of the second alignment point \c y2 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_y2.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3704,9 +3495,6 @@ dxf_3dface_set_y2
  * \brief Get the Z-value of the second alignment point \c z2 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_z2.png
- *
  * \return the Z-value of the second alignment point \c z2.
  */
 double
@@ -3745,9 +3533,6 @@ dxf_3dface_get_z2
 /*!
  * \brief Set the Z-value of the second alignment point \c z2 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_z2.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3800,9 +3585,6 @@ dxf_3dface_set_z2
 /*!
  * \brief Get the third alignment point \c p3 of a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_p3.png
- *
  * \return the third alignment point \c p3.
  */
 DxfPoint *
@@ -3839,9 +3621,6 @@ dxf_3dface_get_p3
 
 /*!
  * \brief Set the third alignment point \c p3 of a DXF \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_p3.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3885,9 +3664,6 @@ dxf_3dface_set_p3
  * \brief Get the X-value of the third alignment point \c x3 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_x3.png
- *
  * \return the X-value of the third alignment point \c x3.
  */
 double
@@ -3926,9 +3702,6 @@ dxf_3dface_get_x3
 /*!
  * \brief Set the X-value of the third alignment point \c x3 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_x3.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -3982,9 +3755,6 @@ dxf_3dface_set_x3
  * \brief Get the Y-value of the third alignment point \c y3 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_y3.png
- *
  * \return the Y-value of the third alignment point \c y3.
  */
 double
@@ -4023,9 +3793,6 @@ dxf_3dface_get_y3
 /*!
  * \brief Set the Y-value of the third alignment point \c y3 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_y3.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -4079,9 +3846,6 @@ dxf_3dface_set_y3
  * \brief Get the Z-value of the third alignment point \c z3 of a DXF
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_z3.png
- *
  * \return the Z-value of the third alignment point \c z3.
  */
 double
@@ -4120,9 +3884,6 @@ dxf_3dface_get_z3
 /*!
  * \brief Set the Z-value of the third alignment point \c z3 of a DXF
  * \c 3DFACE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_z3.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -4175,9 +3936,6 @@ dxf_3dface_set_z3
 /*!
  * \brief Get the \c flag value from a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_flag.png
- *
  * \return \c flag value.
  */
 int16_t
@@ -4222,9 +3980,6 @@ dxf_3dface_get_flag
 /*!
  * \brief Set the flag value for a DXF \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_flag.png
- *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
@@ -4266,9 +4021,6 @@ dxf_3dface_set_flag
 /*!
  * \brief Test if the first edge of a DXF \c 3DFACE is invisible.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_is_first_edge_invisible.png
- *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge
  * is visible.
  */
@@ -4299,9 +4051,6 @@ dxf_3dface_is_first_edge_invisible
 
 /*!
  * \brief Test if the second edge of a DXF \c 3DFACE is invisible.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_is_second_edge_invisible.png
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge
  * is visible.
@@ -4334,9 +4083,6 @@ dxf_3dface_is_second_edge_invisible
 /*!
  * \brief Test if the third edge of a DXF \c 3DFACE is invisible.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_is_third_edge_invisible.png
- *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge
  * is visible.
  */
@@ -4367,9 +4113,6 @@ dxf_3dface_is_third_edge_invisible
 
 /*!
  * \brief Test if the fourth edge of a DXF \c 3DFACE is invisible.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_is_fourth_edge_invisible.png
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge
  * is visible.
@@ -4402,9 +4145,6 @@ dxf_3dface_is_fourth_edge_invisible
 /*!
  * \brief Create a DXF \c 3DFACE by means of at least three valid DXF
  * \c POINT entities.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_create_from_points.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -4945,9 +4685,6 @@ dxf_3dface_create_from_points
  * \brief Get the pointer to the next \c 3DFACE entity from a DXF 
  * \c 3DFACE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_next.png
- *
  * \return pointer to the next \c 3DFACE entity.
  *
  * \warning No checks are performed on the returned pointer.
@@ -4987,9 +4724,6 @@ dxf_3dface_get_next
 /*!
  * \brief Set the pointer to the next \c 3DFACE for a DXF \c 3DFACE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_set_next.png
  *
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
@@ -5032,9 +4766,6 @@ dxf_3dface_set_next
 /*!
  * \brief Get the pointer to the last \c 3DFACE entity from a linked
  * list of DXF \c 3DFACE entities.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_last.png
  *
  * \return pointer to the last \c 3DFACE entity.
  *

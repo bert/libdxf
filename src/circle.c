@@ -2,7 +2,7 @@
  * \file circle.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2014, 2015, 2016, 2017, 2018,
- * 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2020, 2021, 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
@@ -47,9 +47,6 @@
 /*!
  * \brief Allocate memory for a DXF \c CIRCLE.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_new.png
- *
  * Fill the memory contents with zeros.
  */
 DxfCircle *
@@ -86,9 +83,6 @@ dxf_circle_new ()
  * \brief Allocate memory and initialize data fields in a \c CIRCLE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_init.png
- * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
@@ -165,9 +159,6 @@ dxf_circle_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c circle. \n
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_read.png
  *
  * \return a pointer to \c circle.
  */
@@ -510,9 +501,6 @@ dxf_circle_read
 
 /*!
  * \brief Write DXF output to file for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_write.png
  */
 int
 dxf_circle_write
@@ -711,9 +699,6 @@ dxf_circle_write
  * \brief Free the allocated memory for a DXF \c CIRCLE and all it's
  * data fields.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_free.png
- *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -758,9 +743,6 @@ dxf_circle_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c CIRCLE entities and all their data fields.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_free_list.png
  */
 void
 dxf_circle_free_list
@@ -793,9 +775,6 @@ dxf_circle_free_list
 
 /*!
  * \brief Get the ID code from a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_id_code.png
  *
  * \return ID code.
  */
@@ -832,9 +811,6 @@ dxf_circle_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_id_code.png
  */
 DxfCircle *
 dxf_circle_set_id_code
@@ -875,9 +851,6 @@ dxf_circle_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_linetype.png
- *
  * \return linetype when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -914,9 +887,6 @@ dxf_circle_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_linetype.png
  */
 DxfCircle *
 dxf_circle_set_linetype
@@ -956,9 +926,6 @@ dxf_circle_set_linetype
 /*!
  * \brief Get the layer from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_layer.png
- *
  * \return layer when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -995,9 +962,6 @@ dxf_circle_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_layer.png
  */
 DxfCircle *
 dxf_circle_set_layer
@@ -1037,9 +1001,6 @@ dxf_circle_set_layer
 /*!
  * \brief Get the elevation from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_elevation.png
- *
  * \return elevation.
  */
 double
@@ -1069,9 +1030,6 @@ dxf_circle_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_elevation.png
  */
 DxfCircle *
 dxf_circle_set_elevation
@@ -1103,9 +1061,6 @@ dxf_circle_set_elevation
 
 /*!
  * \brief Get the thickness from a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_thickness.png
  *
  * \return thickness.
  */
@@ -1142,9 +1097,6 @@ dxf_circle_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_thickness.png
  */
 DxfCircle *
 dxf_circle_set_thickness
@@ -1183,9 +1135,6 @@ dxf_circle_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_linetype_scale.png
- *
  * \return linetype scale.
  */
 double
@@ -1221,9 +1170,6 @@ dxf_circle_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_linetype_scale.png
  */
 DxfCircle *
 dxf_circle_set_linetype_scale
@@ -1261,9 +1207,6 @@ dxf_circle_set_linetype_scale
 
 /*!
  * \brief Get the visibility from a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_visibility.png
  *
  * \return visibility.
  */
@@ -1306,9 +1249,6 @@ dxf_circle_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_visibility.png
  */
 DxfCircle *
 dxf_circle_set_visibility
@@ -1353,9 +1293,6 @@ dxf_circle_set_visibility
 /*!
  * \brief Get the color from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_color.png
- *
  * \return color.
  */
 int16_t
@@ -1391,9 +1328,6 @@ dxf_circle_get_color
 
 /*!
  * \brief Set the color for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_color.png
  */
 DxfCircle *
 dxf_circle_set_color
@@ -1433,9 +1367,6 @@ dxf_circle_set_color
 
 /*!
  * \brief Get the paperspace flag value from a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_paperspace.png
  *
  * \return paperspace flag value.
  */
@@ -1478,9 +1409,6 @@ dxf_circle_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_paperspace.png
  */
 DxfCircle *
 dxf_circle_set_paperspace
@@ -1526,9 +1454,6 @@ dxf_circle_set_paperspace
  * \brief Get the \c graphics_data_size value from a DXF \c CIRCLE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_graphics_data_size.png
- *
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
@@ -1571,9 +1496,6 @@ dxf_circle_get_graphics_data_size
 
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_graphics_data_size.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -1622,9 +1544,6 @@ dxf_circle_set_graphics_data_size
 /*!
  * \brief Get the \c shadow_mode from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_shadow_mode.png
- *
  * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -1667,9 +1586,6 @@ dxf_circle_get_shadow_mode
 
 /*!
  * \brief Set the \c shadow_mode for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_shadow_mode.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -1718,9 +1634,6 @@ dxf_circle_set_shadow_mode
  * \brief Get the pointer to the binary graphics data from a DXF 
  * \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_binary_graphics_data.png
- *
  * \return pointer to the binary graphics data.
  *
  * \warning No checks are performed on the returned pointer.
@@ -1760,9 +1673,6 @@ dxf_circle_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_binary_graphics_data.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -1809,9 +1719,6 @@ dxf_circle_set_binary_graphics_data
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_dictionary_owner_soft.png
- *
  * \return soft pointer to the dictionary owner.
  *
  * \warning no checks are performed on the returned pointer (string).
@@ -1851,9 +1758,6 @@ dxf_circle_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_dictionary_owner_soft.png
  */
 DxfCircle *
 dxf_circle_set_dictionary_owner_soft
@@ -1895,9 +1799,6 @@ dxf_circle_set_dictionary_owner_soft
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_object_owner_soft.png
- *
  * \return soft pointer to the object owner.
  *
  * \warning no checks are performed on the returned pointer (string).
@@ -1937,9 +1838,6 @@ dxf_circle_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_object_owner_soft.png
  */
 DxfCircle *
 dxf_circle_set_object_owner_soft
@@ -1981,9 +1879,6 @@ dxf_circle_set_object_owner_soft
  * \brief Get the pointer to the \c material from a DXF \c CIRCLE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_material.png
- *
  * \return a pointer to \c material when successful, or \c NULL when an
  * error occurred.
  *
@@ -2023,9 +1918,6 @@ dxf_circle_get_material
 
 /*!
  * \brief Set the pointer to the \c material for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_material.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2070,9 +1962,6 @@ dxf_circle_set_material
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_dictionary_owner_hard.png
- *
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -2112,9 +2001,6 @@ dxf_circle_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_dictionary_owner_hard.png
  */
 DxfCircle *
 dxf_circle_set_dictionary_owner_hard
@@ -2155,9 +2041,6 @@ dxf_circle_set_dictionary_owner_hard
 /*!
  * \brief Get the \c lineweight from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_lineweight.png
- *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2188,9 +2071,6 @@ dxf_circle_get_lineweight
 
 /*!
  * \brief Set the \c lineweight for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_lineweight.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2225,9 +2105,6 @@ dxf_circle_set_lineweight
 
 /*!
  * \brief Get the \c plot_style_name from a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_plot_style_name.png
  *
  * \return \c plot_style_name when sucessful, or \c NULL when an error
  * occurred.
@@ -2266,9 +2143,6 @@ dxf_circle_get_plot_style_name
 
 /*!
  * \brief Set the \c plot_style_name for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_plot_style_name.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2312,9 +2186,6 @@ dxf_circle_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_color_value.png
- *
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2345,9 +2216,6 @@ dxf_circle_get_color_value
 
 /*!
  * \brief Set the \c color_value for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_color_value.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2382,9 +2250,6 @@ dxf_circle_set_color_value
 
 /*!
  * \brief Get the \c color_name from a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_color_name.png
  *
  * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.
@@ -2423,9 +2288,6 @@ dxf_circle_get_color_name
 
 /*!
  * \brief Set the \c color_name for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_color_name.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2469,9 +2331,6 @@ dxf_circle_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_transparency.png
- *
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2502,9 +2361,6 @@ dxf_circle_get_transparency
 
 /*!
  * \brief Set the \c transparency for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_transparency.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2539,9 +2395,6 @@ dxf_circle_set_transparency
 
 /*!
  * \brief Get the base point \c p0 of a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_p0.png
  *
  * \return the base point.
  */
@@ -2579,9 +2432,6 @@ dxf_circle_get_p0
 
 /*!
  * \brief Set the base point \c p0 of a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_p0.png
  *
  * \return a pointer to a DXF \c CIRCLE entity.
  */
@@ -2624,9 +2474,6 @@ dxf_circle_set_p0
  * \brief Get the X-value of the base point \c x0 of a DXF \c CIRCLE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_x0.png
- *
  * \return the X-value of the base point \c x0.
  */
 double
@@ -2665,9 +2512,6 @@ dxf_circle_get_x0
 /*!
  * \brief Set the X-value of the base point \c x0 of a DXF \c CIRCLE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_x0.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2721,9 +2565,6 @@ dxf_circle_set_x0
  * \brief Get the Y-value of the base point \c y0 of a DXF \c CIRCLE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_y0.png
- *
  * \return the Y-value of the base point \c y0.
  */
 double
@@ -2762,9 +2603,6 @@ dxf_circle_get_y0
 /*!
  * \brief Set the Y-value of the base point \c y0 of a DXF \c CIRCLE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_y0.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2818,9 +2656,6 @@ dxf_circle_set_y0
  * \brief Get the Z-value of the base point \c z0 of a DXF \c CIRCLE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_z0.png
- *
  * \return the Z-value of the base point \c z0.
  */
 double
@@ -2859,9 +2694,6 @@ dxf_circle_get_z0
 /*!
  * \brief Set the Z-value of the base point \c z0 of a DXF \c CIRCLE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_z0.png
  *
  * \return a pointer to \c circle when successful, or \c NULL when an
  * error occurred.
@@ -2914,9 +2746,6 @@ dxf_circle_set_z0
 /*!
  * \brief Get the radius from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_radius.png
- *
  * \return radius.
  */
 double
@@ -2958,9 +2787,6 @@ dxf_circle_get_radius
 
 /*!
  * \brief Set the radius for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_radius.png
  */
 DxfCircle *
 dxf_circle_set_radius
@@ -3006,9 +2832,6 @@ dxf_circle_set_radius
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_extrusion_vector_as_point.png
- *
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning no other members are copied into the DXF \c POINT.
@@ -3053,9 +2876,6 @@ dxf_circle_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_extrusion_vector.png
  */
 DxfCircle *
 dxf_circle_set_extrusion_vector
@@ -3094,9 +2914,6 @@ dxf_circle_set_extrusion_vector
 /*!
  * \brief Get the \c extr_x0 from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_extr_x0.png
- *
  * \return \c extr_xo.
  */
 double
@@ -3126,9 +2943,6 @@ dxf_circle_get_extr_x0
 
 /*!
  * \brief Set the \c extr_x0 for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_extr_x0.png
  */
 DxfCircle *
 dxf_circle_set_extr_x0
@@ -3161,9 +2975,6 @@ dxf_circle_set_extr_x0
 /*!
  * \brief Get the \c extr_y0 from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_extr_y0.png
- *
  * \return \c extr_xo.
  */
 double
@@ -3193,9 +3004,6 @@ dxf_circle_get_extr_y0
 
 /*!
  * \brief Set the \c extr_y0 for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_extr_y0.png
  */
 DxfCircle *
 dxf_circle_set_extr_y0
@@ -3228,9 +3036,6 @@ dxf_circle_set_extr_y0
 /*!
  * \brief Get the \c extr_z0 from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_extr_z0.png
- *
  * \return \c extr_zo.
  */
 double
@@ -3260,9 +3065,6 @@ dxf_circle_get_extr_z0
 
 /*!
  * \brief Set the \c extr_z0 for a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_extr_z0.png
  */
 DxfCircle *
 dxf_circle_set_extr_z0
@@ -3294,9 +3096,6 @@ dxf_circle_set_extr_z0
 
 /*!
  * \brief Get the \c area from a DXF \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_area.png
  *
  * \return \c area.
  *
@@ -3342,9 +3141,6 @@ dxf_circle_get_area
 /*!
  * \brief Get the \c circumference from a DXF \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_circumference.png
- *
  * \return \c circumference.
  *
  * \note the absolute value radius is used for the calculation.
@@ -3389,9 +3185,6 @@ dxf_circle_get_circumference
 /*!
  * \brief Test if a DXF \c POINT lies within, on top or outside a DXF
  * \c CIRCLE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_test_point_in_circle.png
  *
  * \return \c INSIDE if the point lies inside the circle,
  * \c OUTSIDE if the point lies outside the circle,
@@ -3464,9 +3257,6 @@ dxf_circle_test_point_in_circle
  * \brief Get the pointer to the next \c CIRCLE entity from a DXF 
  * \c CIRCLE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_next.png
- *
  * \return pointer to the next \c CIRCLE entity.
  *
  * \warning No checks are performed on the returned pointer.
@@ -3506,9 +3296,6 @@ dxf_circle_get_next
 /*!
  * \brief Set the pointer to the next \c CIRCLE for a DXF \c CIRCLE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_set_next.png
  */
 DxfCircle *
 dxf_circle_set_next
@@ -3548,9 +3335,6 @@ dxf_circle_set_next
 /*!
  * \brief Get the pointer to the last \c CIRCLE entity from a linked
  * list of DXF \c CIRCLE entities.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_circle_get_last.png
  *
  * \return pointer to the last \c CIRCLE entity.
  *

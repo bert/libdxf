@@ -2,7 +2,7 @@
  * \file 3dsolid.c
  *
  * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
- * 2020, 2021, 2022, 2023 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2020, 2021, 2022, 2023, 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -55,9 +55,6 @@
  * \brief Allocate memory for a DXF \c 3DSOLID.
  *
  * Fill the memory contents with zeros.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_new.png
  */
 Dxf3dsolid *
 dxf_3dsolid_new ()
@@ -92,9 +89,6 @@ dxf_3dsolid_new ()
 /*!
  * \brief Allocate memory and initialize data fields in a \c 3DSOLID
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_init.png
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
@@ -703,9 +697,6 @@ dxf_3dsolid_write
  * \brief Free the allocated memory for a DXF \c 3DSOLID and all it's
  * data fields.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_free.png
- *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -758,9 +749,6 @@ dxf_3dsolid_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c 3DSOLID entities and all their data fields.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_free_list.png
  */
 void
 dxf_3dsolid_free_list
@@ -793,9 +781,6 @@ dxf_3dsolid_free_list
 
 /*!
  * \brief Get the ID code from a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_id_code.png
  *
  * \return ID code.
  */
@@ -832,9 +817,6 @@ dxf_3dsolid_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_id_code.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_id_code
@@ -875,9 +857,6 @@ dxf_3dsolid_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_linetype.png
- *
  * \return linetype when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -914,9 +893,6 @@ dxf_3dsolid_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_linetype.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_linetype
@@ -956,9 +932,6 @@ dxf_3dsolid_set_linetype
 /*!
  * \brief Get the layer from a DXF \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_layer.png
- *
  * \return layer when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -995,9 +968,6 @@ dxf_3dsolid_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_layer.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_layer
@@ -1037,9 +1007,6 @@ dxf_3dsolid_set_layer
 /*!
  * \brief Get the elevation from a DXF \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_elevation.png
- *
  * \return elevation.
  */
 double
@@ -1069,9 +1036,6 @@ dxf_3dsolid_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_elevation.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_elevation
@@ -1103,9 +1067,6 @@ dxf_3dsolid_set_elevation
 
 /*!
  * \brief Get the thickness from a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_thickness.png
  *
  * \return thickness.
  */
@@ -1142,9 +1103,6 @@ dxf_3dsolid_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_thickness.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_thickness
@@ -1183,9 +1141,6 @@ dxf_3dsolid_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_linetype_scale.png
- *
  * \return linetype scale.
  */
 double
@@ -1221,9 +1176,6 @@ dxf_3dsolid_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_linetype_scale.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_linetype_scale
@@ -1261,9 +1213,6 @@ dxf_3dsolid_set_linetype_scale
 
 /*!
  * \brief Get the visibility from a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_visibility.png
  *
  * \return visibility.
  */
@@ -1306,9 +1255,6 @@ dxf_3dsolid_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_visibility.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_visibility
@@ -1353,9 +1299,6 @@ dxf_3dsolid_set_visibility
 /*!
  * \brief Get the color from a DXF \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_color.png
- *
  * \return color.
  */
 int16_t
@@ -1391,9 +1334,6 @@ dxf_3dsolid_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_color.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_color
@@ -1431,9 +1371,6 @@ dxf_3dsolid_set_color
 
 /*!
  * \brief Get the paperspace flag value from a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_paperspace.png
  *
  * \return paperspace flag value.
  */
@@ -1476,9 +1413,6 @@ dxf_3dsolid_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_paperspace.png
  */
 Dxf3dsolid *
 dxf_3dsolid_set_paperspace
@@ -1523,9 +1457,6 @@ dxf_3dsolid_set_paperspace
 /*!
  * \brief Get the \c graphics_data_size value from a DXF \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_graphics_data_size.png
- *
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
@@ -1568,9 +1499,6 @@ dxf_3dsolid_get_graphics_data_size
 
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_graphics_data_size.png
  *
  * \return a pointer to \c solid when successful, or \c NULL when an
  * error occurred.
@@ -1709,9 +1637,6 @@ dxf_3dsolid_set_shadow_mode
  * \brief Get the pointer to the binary graphics data from a DXF 
  * \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_binary_graphics_data.png
- *
  * \return pointer to the binary graphics data.
  *
  * \warning No checks are performed on the returned pointer.
@@ -1751,9 +1676,6 @@ dxf_3dsolid_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_set_binary_graphics_data.png
  *
  * \return a pointer to \c solid when successful, or \c NULL when an
  * error occurred.
@@ -1813,9 +1735,6 @@ dxf_3dsolid_set_binary_graphics_data
  * \c 3DSOLID entity.
  *
  * \return soft pointer to the dictionary owner.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_dictionary_owner_soft.png
  *
  * \warning No checks are performed on the returned pointer (string).
  */
@@ -2058,9 +1977,6 @@ dxf_3dsolid_set_material
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_dictionary_owner_hard.png
- *
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -2285,9 +2201,6 @@ dxf_3dsolid_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c 3DSOLID entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_color_value.png
- *
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2352,9 +2265,6 @@ dxf_3dsolid_set_color_value
 
 /*!
  * \brief Get the \c color_name from a DXF \c 3DSOLID entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dsolid_get_color_name.png
  *
  * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.

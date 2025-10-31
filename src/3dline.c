@@ -1,7 +1,7 @@
 /*!
  * \file 3dline.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2025
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D line entity (\c 3DLINE).
@@ -49,9 +49,6 @@
  * \brief Allocate memory for a DXF \c 3DLINE entity.
  *
  * Fill the memory contents with zeros.
- * 
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_new.png
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
@@ -89,9 +86,6 @@ dxf_3dline_new ()
 /*!
  * \brief Allocate memory and initialize data fields in a DXF \c 3DLINE
  * entity.
- * 
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_init.png
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
@@ -166,9 +160,6 @@ dxf_3dline_init
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c line.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_read.png
  *
  * \return a pointer to \c line.
  */
@@ -540,9 +531,6 @@ dxf_3dline_read
  * \brief Write DXF output to a file (or a device) for a DXF \c 3DLINE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_write.png
- *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
  *
@@ -761,9 +749,6 @@ dxf_3dline_write
  * \brief Free the allocated memory for a DXF \c 3DLINE entity and all
  * it's data fields.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_free.png
- *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -815,8 +800,6 @@ dxf_3dline_free
  * \brief Free the allocated memory for a single linked list of DXF
  * \c 3DLINE entities and all their data fields.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_free_list.png
  */
 void
 dxf_3dline_free_list
@@ -849,9 +832,6 @@ dxf_3dline_free_list
 
 /*!
  * \brief Get the ID code from a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_id_code.png
  *
  * \return \c id_code.
  */
@@ -888,9 +868,6 @@ dxf_3dline_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_id_code.png
  */
 Dxf3dline *
 dxf_3dline_set_id_code
@@ -931,9 +908,6 @@ dxf_3dline_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_linetype.png
- *
  * \return \c linetype when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -970,9 +944,6 @@ dxf_3dline_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_linetype.png
  */
 Dxf3dline *
 dxf_3dline_set_linetype
@@ -1012,9 +983,6 @@ dxf_3dline_set_linetype
 /*!
  * \brief Get the layer from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_layer.png
- *
  * \return layer when sucessful, \c NULL when an error occurred.
  */
 char *
@@ -1051,9 +1019,6 @@ dxf_3dline_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_layer.png
  */
 Dxf3dline *
 dxf_3dline_set_layer
@@ -1093,9 +1058,6 @@ dxf_3dline_set_layer
 /*!
  * \brief Get the elevation from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_elevation.png
- *
  * \return elevation.
  */
 double
@@ -1125,9 +1087,6 @@ dxf_3dline_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_elevation.png
  */
 Dxf3dline *
 dxf_3dline_set_elevation
@@ -1159,9 +1118,6 @@ dxf_3dline_set_elevation
 
 /*!
  * \brief Get the thickness from a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_thickness.png
  *
  * \return thickness.
  */
@@ -1198,9 +1154,6 @@ dxf_3dline_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_thickness.png
  */
 Dxf3dline *
 dxf_3dline_set_thickness
@@ -1238,9 +1191,6 @@ dxf_3dline_set_thickness
 
 /*!
  * \brief Get the linetype scale from a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_linetype_scale.png
  *
  * \return \c linetype_scale.
  *
@@ -1280,9 +1230,6 @@ dxf_3dline_get_linetype_scale
 /*!
  * \brief Set the linetype scale for a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_linetype_scale.png
- *
  * \since The linetype scale was added in DXF R13.
  */
 Dxf3dline *
@@ -1321,9 +1268,6 @@ dxf_3dline_set_linetype_scale
 
 /*!
  * \brief Get the visibility from a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_visibility.png
  *
  * \return visibility.
  *
@@ -1369,9 +1313,6 @@ dxf_3dline_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_visibility.png
  *
  * \note The visibility was added in DXF R13 and is included for
  * forward compatibility.
@@ -1419,9 +1360,6 @@ dxf_3dline_set_visibility
 /*!
  * \brief Get the color from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_color.png
- *
  * \return \c color.
  */
 int16_t
@@ -1457,9 +1395,6 @@ dxf_3dline_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_color.png
  */
 Dxf3dline *
 dxf_3dline_set_color
@@ -1497,9 +1432,6 @@ dxf_3dline_set_color
 
 /*!
  * \brief Get the paperspace flag value from a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_paperspace.png
  *
  * \return paperspace flag value.
  */
@@ -1542,9 +1474,6 @@ dxf_3dline_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_paperspace.png
  *
  * \note the paperpspace flag was added in DXF R13 and is included for
  * forward compatibility.
@@ -1593,9 +1522,6 @@ dxf_3dline_set_paperspace
  * \brief Get the \c graphics_data_size value from a DXF \c 3DLINE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_graphics_data_size.png
- *
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
@@ -1639,9 +1565,6 @@ dxf_3dline_get_graphics_data_size
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c 3DLINE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_graphics_data_size.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
@@ -1690,9 +1613,6 @@ dxf_3dline_set_graphics_data_size
 /*!
  * \brief Get the \c shadow_mode from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_shadow_mode.png
- *
  * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -1735,9 +1655,6 @@ dxf_3dline_get_shadow_mode
 
 /*!
  * \brief Set the \c shadow_mode for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_shadow_mode.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
@@ -1786,9 +1703,6 @@ dxf_3dline_set_shadow_mode
  * \brief Get the pointer to the binary graphics data from a DXF 
  * \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_binary_graphics_data.png
- *
  * \return pointer to the binary graphics data.
  *
  * \warning No checks are performed on the returned pointer.
@@ -1828,9 +1742,6 @@ dxf_3dline_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_binary_graphics_data.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
@@ -1875,9 +1786,6 @@ dxf_3dline_set_binary_graphics_data
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_dictionary_owner_soft.png
- *
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -1917,9 +1825,6 @@ dxf_3dline_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_dictionary_owner_soft.png
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_soft
@@ -1961,9 +1866,6 @@ dxf_3dline_set_dictionary_owner_soft
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_object_owner_soft.png
- *
  * \return soft pointer to the object owner.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -2003,9 +1905,6 @@ dxf_3dline_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_object_owner_soft.png
  */
 Dxf3dline *
 dxf_3dline_set_object_owner_soft
@@ -2046,9 +1945,6 @@ dxf_3dline_set_object_owner_soft
 /*!
  * \brief Get the pointer to the \c material from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_material.png
- *
  * \return a pointer to \c material when successful, or \c NULL when an
  * error occurred.
  *
@@ -2088,9 +1984,6 @@ dxf_3dline_get_material
 
 /*!
  * \brief Set the pointer to the \c material for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_material.png
  *
  * \return a pointer to \c 3dline when successful, or \c NULL when an
  * error occurred.
@@ -2135,9 +2028,6 @@ dxf_3dline_set_material
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_dictionary_owner_hard.png
- *
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -2177,10 +2067,6 @@ dxf_3dline_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_dictionary_owner_hard.png
- *
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_hard
@@ -2221,9 +2107,6 @@ dxf_3dline_set_dictionary_owner_hard
 /*!
  * \brief Get the \c lineweight from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_lineweight.png
- *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2254,9 +2137,6 @@ dxf_3dline_get_lineweight
 
 /*!
  * \brief Set the \c lineweight for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_lineweight.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
@@ -2291,9 +2171,6 @@ dxf_3dline_set_lineweight
 
 /*!
  * \brief Get the \c plot_style_name from a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_plot_style_name.png
  *
  * \return \c plot_style_name when sucessful, or \c NULL when an error
  * occurred.
@@ -2332,9 +2209,6 @@ dxf_3dline_get_plot_style_name
 
 /*!
  * \brief Set the \c plot_style_name for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_plot_style_name.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
@@ -2378,9 +2252,6 @@ dxf_3dline_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_color_value.png
- *
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2411,9 +2282,6 @@ dxf_3dline_get_color_value
 
 /*!
  * \brief Set the \c color_value for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_color_value.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
@@ -2448,9 +2316,6 @@ dxf_3dline_set_color_value
 
 /*!
  * \brief Get the \c color_name from a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_color_name.png
  *
  * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.
@@ -2490,9 +2355,6 @@ dxf_3dline_get_color_name
 /*!
  * \brief Set the \c color_name for a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_color_name.png
- * 
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
  */
@@ -2535,9 +2397,6 @@ dxf_3dline_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_transparency.png
- *
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2568,9 +2427,6 @@ dxf_3dline_get_transparency
 
 /*!
  * \brief Set the \c transparency for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_transparency.png
  *
  * \return a pointer to \c line when successful, or \c NULL when an
  * error occurred.
@@ -2605,9 +2461,6 @@ dxf_3dline_set_transparency
 
 /*!
  * \brief Get the start point \c p0 of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_p0.png
  *
  * \return the start point \c p0.
  */
@@ -2645,9 +2498,6 @@ dxf_3dline_get_p0
 
 /*!
  * \brief Set the start point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_p0.png
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
@@ -2689,9 +2539,6 @@ dxf_3dline_set_p0
 /*!
  * \brief Get the X-value of the start point of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_x0.png
- *
  * \return the X-value of the start point.
  */
 double
@@ -2729,9 +2576,6 @@ dxf_3dline_get_x0
 
 /*!
  * \brief Set the X-value of the start point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_x0.png
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
@@ -2783,9 +2627,6 @@ dxf_3dline_set_x0
 /*!
  * \brief Get the Y-value of the start point of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_y0.png
- *
  * \return the Y-value of the start point.
  */
 double
@@ -2823,9 +2664,6 @@ dxf_3dline_get_y0
 
 /*!
  * \brief Set the Y-value of the start point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_y0.png
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
@@ -2877,9 +2715,6 @@ dxf_3dline_set_y0
 /*!
  * \brief Get the Z-value of the start point of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_z0.png
- *
  * \return the Z-value of the start point.
  */
 double
@@ -2917,9 +2752,6 @@ dxf_3dline_get_z0
 
 /*!
  * \brief Set the Z-value of the start point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_z0.png
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
@@ -2971,9 +2803,6 @@ dxf_3dline_set_z0
 /*!
  * \brief Get the end point \c p1 of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_p1.png
- *
  * \return the end point \c p1.
  */
 DxfPoint *
@@ -3019,9 +2848,6 @@ dxf_3dline_get_p1
 /*!
  * \brief Set the end point of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_p1.png
- *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
 Dxf3dline *
@@ -3062,9 +2888,6 @@ dxf_3dline_set_p1
 /*!
  * \brief Get the X-value of the end point of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_x1.png
- *
  * \return the X-value of the end point.
  */
 double
@@ -3102,9 +2925,6 @@ dxf_3dline_get_x1
 
 /*!
  * \brief Set the X-value of the end point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_x1.png
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
@@ -3156,9 +2976,6 @@ dxf_3dline_set_x1
 /*!
  * \brief Get the Y-value of the end point of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_y1.png
- *
  * \return the Y-value of the end point.
  */
 double
@@ -3196,9 +3013,6 @@ dxf_3dline_get_y1
 
 /*!
  * \brief Set the Y-value of the end point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_y1.png
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
@@ -3250,9 +3064,6 @@ dxf_3dline_set_y1
 /*!
  * \brief Get the Z-value of the end point of a DXF \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_z1.png
- *
  * \return the Z-value of the end point.
  */
 double
@@ -3290,9 +3101,6 @@ dxf_3dline_get_z1
 
 /*!
  * \brief Set the Z-value of the end point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_z1.png
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
@@ -3345,9 +3153,6 @@ dxf_3dline_set_z1
  * \brief Get the X-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_extr_x0.png
- *
  * \return the X-value of the extrusion vector.
  */
 double
@@ -3379,9 +3184,6 @@ dxf_3dline_get_extr_x0
 /*!
  * \brief Set the X-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_extr_x0.png
  *
  * \return a pointer to a DXF \c 3DLINE entity when successful, \c NULL
  * when an error occurred.
@@ -3419,9 +3221,6 @@ dxf_3dline_set_extr_x0
  * \brief Get the Y-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_extr_y0.png
- *
  * \return the Y-value of the extrusion vector.
  */
 double
@@ -3453,9 +3252,6 @@ dxf_3dline_get_extr_y0
 /*!
  * \brief Set the Y-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_extr_y0.png
  *
  * \return a pointer to a DXF \c 3DLINE entity when successful, \c NULL
  * when an error occurred.
@@ -3493,9 +3289,6 @@ dxf_3dline_set_extr_y0
  * \brief Get the Z-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_extr_z0.png
- *
  * \return the Z-value of the extrusion vector.
  */
 double
@@ -3527,9 +3320,6 @@ dxf_3dline_get_extr_z0
 /*!
  * \brief Set the Z-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_extr_z0.png
  *
  * \return a pointer to a DXF \c 3DLINE entity when successful, \c NULL
  * when an error occurred.
@@ -3566,9 +3356,6 @@ dxf_3dline_set_extr_z0
 /*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_extrusion_vector_as_point.png
  *
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
@@ -3624,9 +3411,6 @@ dxf_3dline_get_extrusion_vector_as_point
 /*!
  * \brief Set the extrusion vector from a DXF \c POINT for a DXF
  * \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_extrusion_vector_from_point.png
  */
 Dxf3dline *
 dxf_3dline_set_extrusion_vector_from_point
@@ -3667,9 +3451,6 @@ dxf_3dline_set_extrusion_vector_from_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_extrusion_vector.png
  */
 Dxf3dline *
 dxf_3dline_set_extrusion_vector
@@ -3707,9 +3488,6 @@ dxf_3dline_set_extrusion_vector
 
 /*!
  * \brief Get the mid point of a DXF \c 3DLINE entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_mid_point.png
  *
  * \return the mid point.
  */
@@ -3842,9 +3620,6 @@ dxf_3dline_get_mid_point
  * \brief Get the length of a DXF \c 3DLINE (straight distance between
  * start point and end point).
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_length.png
- *
  * \return the length of the \c line in drawing units.
  */
 double
@@ -3895,9 +3670,6 @@ dxf_3dline_get_length
 
 /*!
  * \brief Create a DXF \c 3DLINE by means of two DXF \c POINT entities.
- *
- * \return \c NULL when failed, a pointer to the DXF \c 3DLINE entity
- * when successful.
  *
  * \warning Both DXF \c POINT entities need to be freed by the caller.
  */
@@ -4182,9 +3954,6 @@ dxf_3dline_create_from_points
  * \brief Get the pointer to the next \c 3DLINE entity from a DXF 
  * \c 3DLINE entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_next.png
- *
  * \return pointer to the next \c 3DLINE entity.
  *
  * \warning No checks are performed on the returned pointer.
@@ -4224,9 +3993,6 @@ dxf_3dline_get_next
 /*!
  * \brief Set the pointer to the next \c 3DLINE for a DXF \c 3DLINE
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_set_next.png
  */
 Dxf3dline *
 dxf_3dline_set_next
@@ -4266,9 +4032,6 @@ dxf_3dline_set_next
 /*!
  * \brief Get the pointer to the last \c 3DLINE entity from a linked
  * list of DXF \c 3DLINE entities.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dline_get_last.png
  *
  * \return pointer to the last \c 3DLINE entity.
  *

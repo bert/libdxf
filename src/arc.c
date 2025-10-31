@@ -2,7 +2,7 @@
  * \file arc.c
  *
  * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017,
- * 2018, 2019, 2020, 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2018, 2019, 2020, 2021. 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF arc entity (\c ARC).
  *
@@ -47,9 +47,6 @@
  *
  * Fill the memory contents with zeros.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_new.png
- *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
@@ -87,9 +84,6 @@ dxf_arc_new ()
  * \brief Allocate memory and initialize data fields in a DXF \c ARC
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_init.png
- * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when successful.
  */
@@ -168,9 +162,6 @@ dxf_arc_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c arc. \n
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_read.png
  *
  * \return a pointer to \c arc.
  */
@@ -527,9 +518,6 @@ dxf_arc_read
 /*!
  * \brief Write DXF output for a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_write.png
- *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -791,9 +779,6 @@ dxf_arc_write
  * \brief Free the allocated memory for a DXF \c ARC entity and all it's
  * data fields.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_free.png
- *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -844,9 +829,6 @@ dxf_arc_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c ARC entities and all their data fields.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_free_list.png
  */
 void
 dxf_arc_free_list
@@ -879,9 +861,6 @@ dxf_arc_free_list
 
 /*!
  * \brief Get the \c id_code from a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_id_code.png
  *
  * \return \c id_code.
  */
@@ -918,9 +897,6 @@ dxf_arc_get_id_code
 
 /*!
  * \brief Set the \c id_code for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_id_code.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -964,9 +940,6 @@ dxf_arc_set_id_code
 /*!
  * \brief Get the \c linetype from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_linetype.png
- *
  * \return \c linetype when successful, \c NULL when an error occurred.
  */
 char *
@@ -1003,9 +976,6 @@ dxf_arc_get_linetype
 
 /*!
  * \brief Set the \c linetype for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_linetype.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1051,9 +1021,6 @@ dxf_arc_set_linetype
 /*!
  * \brief Get the \c layer from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_layer.png
- *
  * \return \c layer when successful, \c NULL when an error occurred.
  */
 char *
@@ -1090,9 +1057,6 @@ dxf_arc_get_layer
 
 /*!
  * \brief Set the \c layer for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_layer.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1136,9 +1100,6 @@ dxf_arc_set_layer
 /*!
  * \brief Get the \c elevation from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_elevation.png
- *
  * \return \c elevation.
  */
 double
@@ -1168,9 +1129,6 @@ dxf_arc_get_elevation
 
 /*!
  * \brief Set the \c elevation for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_elevation.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1205,9 +1163,6 @@ dxf_arc_set_elevation
 
 /*!
  * \brief Get the \c thickness from a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_thickness.png
  *
  * \return \c thickness.
  */
@@ -1250,9 +1205,6 @@ dxf_arc_get_thickness
 
 /*!
  * \brief Set the \c thickness for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_thickness.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1300,9 +1252,6 @@ dxf_arc_set_thickness
 /*!
  * \brief Get the \c linetype_scale from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_linetype_scale.png
- *
  * \return \c linetype_scale.
  */
 double
@@ -1344,9 +1293,6 @@ dxf_arc_get_linetype_scale
 
 /*!
  * \brief Set the \c linetype_scale for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_linetype_scale.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1394,9 +1340,6 @@ dxf_arc_set_linetype_scale
 /*!
  * \brief Get the \c visibility from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_visibility.png
- *
  * \return \c visibility.
  */
 int16_t
@@ -1438,9 +1381,6 @@ dxf_arc_get_visibility
 
 /*!
  * \brief Set the \c visibility for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_visibility.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1488,9 +1428,6 @@ dxf_arc_set_visibility
 /*!
  * \brief Get the \c color from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_color.png
- *
  * \return color.
  */
 int16_t
@@ -1526,9 +1463,6 @@ dxf_arc_get_color
 
 /*!
  * \brief Set the \c color for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_color.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1569,9 +1503,6 @@ dxf_arc_set_color
 
 /*!
  * \brief Get the \c paperspace flag value from a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_paperspace.png
  *
  * \return \c paperspace flag value.
  */
@@ -1614,9 +1545,6 @@ dxf_arc_get_paperspace
 
 /*!
  * \brief Set the \c paperspace flag for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_paperspace.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1665,9 +1593,6 @@ dxf_arc_set_paperspace
 /*!
  * \brief Get the \c graphics_data_size value from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_graphics_data_size.png
- *
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
@@ -1710,9 +1635,6 @@ dxf_arc_get_graphics_data_size
 
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_graphics_data_size.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1761,9 +1683,6 @@ dxf_arc_set_graphics_data_size
 /*!
  * \brief Get the \c shadow_mode from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_shadow_mode.png
- *
  * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -1806,9 +1725,6 @@ dxf_arc_get_shadow_mode
 
 /*!
  * \brief Set the \c shadow_mode for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_shadow_mode.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1857,9 +1773,6 @@ dxf_arc_set_shadow_mode
  * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_binary_graphics_data.png
- *
  * \return pointer to the \c binary_graphics_data.
  *
  * \warning No checks are performed on the returned pointer.
@@ -1899,9 +1812,6 @@ dxf_arc_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_binary_graphics_data.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -1946,9 +1856,6 @@ dxf_arc_set_binary_graphics_data
  * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_dictionary_owner_soft.png
- *
  * \return pointer to the \c dictionary_owner_soft.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -1988,9 +1895,6 @@ dxf_arc_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_dictionary_owner_soft.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2035,9 +1939,6 @@ dxf_arc_set_dictionary_owner_soft
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_object_owner_soft.png
- *
  * \return soft pointer to the object owner.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -2077,9 +1978,6 @@ dxf_arc_get_object_owner_soft
 /*!
  * \brief Set the pointer to the \c object_owner_soft for a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_object_owner_soft.png
  */
 DxfArc *
 dxf_arc_set_object_owner_soft
@@ -2120,9 +2018,6 @@ dxf_arc_set_object_owner_soft
 /*!
  * \brief Get the pointer to the \c material from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_material.png
- *
  * \return a pointer to \c material when successful, or \c NULL when an
  * error occurred.
  *
@@ -2162,9 +2057,6 @@ dxf_arc_get_material
 
 /*!
  * \brief Set the pointer to the \c material for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_material.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2209,9 +2101,6 @@ dxf_arc_set_material
  * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_dictionary_owner_hard.png
- *
  * \return pointer to the \c dictionary_owner_hard.
  *
  * \warning No checks are performed on the returned pointer (string).
@@ -2251,9 +2140,6 @@ dxf_arc_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_dictionary_owner_hard.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2297,9 +2183,6 @@ dxf_arc_set_dictionary_owner_hard
 /*!
  * \brief Get the \c lineweight from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_lineweight.png
- *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2330,9 +2213,6 @@ dxf_arc_get_lineweight
 
 /*!
  * \brief Set the \c lineweight for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_lineweight.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2367,9 +2247,6 @@ dxf_arc_set_lineweight
 
 /*!
  * \brief Get the \c plot_style_name from a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_plot_style_name.png
  *
  * \return a pointer to \c plot_style_name when successful, or \c NULL
  * when an error occurred.
@@ -2408,9 +2285,6 @@ dxf_arc_get_plot_style_name
 
 /*!
  * \brief Set the \c plot_style_name for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_plot_style_name.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2454,9 +2328,6 @@ dxf_arc_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_color_value.png
- *
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2487,9 +2358,6 @@ dxf_arc_get_color_value
 
 /*!
  * \brief Set the \c color_value for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_color_value.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2524,9 +2392,6 @@ dxf_arc_set_color_value
 
 /*!
  * \brief Get the \c color_name from a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_color_name.png
  *
  * \return \c color_name when successful, or \c NULL when an error
  * occurred.
@@ -2565,9 +2430,6 @@ dxf_arc_get_color_name
 
 /*!
  * \brief Set the \c color_name for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_color_name.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2611,9 +2473,6 @@ dxf_arc_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_transparency.png
- *
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
@@ -2644,9 +2503,6 @@ dxf_arc_get_transparency
 
 /*!
  * \brief Set the \c transparency for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_transparency.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2681,9 +2537,6 @@ dxf_arc_set_transparency
 
 /*!
  * \brief Get the center point \c p0 of a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_p0.png
  *
  * \return the center point \c p0.
  */
@@ -2721,9 +2574,6 @@ dxf_arc_get_p0
 
 /*!
  * \brief Set the center point \c p0 of a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_p0.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2767,9 +2617,6 @@ dxf_arc_set_p0
  * \brief Get the X-value of the center point \c x0 of a DXF \c ARC
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_x0.png
- *
  * \return the X-value of the center point \c x0.
  */
 double
@@ -2808,9 +2655,6 @@ dxf_arc_get_x0
 /*!
  * \brief Set the X-value of the center point \c x0 of a DXF \c ARC
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_x0.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2864,9 +2708,6 @@ dxf_arc_set_x0
  * \brief Get the Y-value of the center point \c y0 of a DXF \c ARC
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_y0.png
- *
  * \return the Y-value of the center point \c y0.
  */
 double
@@ -2905,9 +2746,6 @@ dxf_arc_get_y0
 /*!
  * \brief Set the Y-value of the center point \c y0 of a DXF \c ARC
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_y0.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -2961,9 +2799,6 @@ dxf_arc_set_y0
  * \brief Get the Z-value of the center point \c z0 of a DXF \c ARC
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_z0.png
- *
  * \return the Z-value of the center point \c z0.
  */
 double
@@ -3002,9 +2837,6 @@ dxf_arc_get_z0
 /*!
  * \brief Set the Z-value of the center point \c z0 of a DXF \c ARC
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_z0.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3057,9 +2889,6 @@ dxf_arc_set_z0
 /*!
  * \brief Get the \c radius from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_radius.png
- *
  * \return \c radius.
  */
 double
@@ -3101,9 +2930,6 @@ dxf_arc_get_radius
 
 /*!
  * \brief Set the \c radius for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_radius.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3151,9 +2977,6 @@ dxf_arc_set_radius
 /*!
  * \brief Get the \c start_angle from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_start_angle.png
- *
  * \return \c start_angle.
  */
 double
@@ -3183,9 +3006,6 @@ dxf_arc_get_start_angle
 
 /*!
  * \brief Set the \c start_angle for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_start_angle.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3221,9 +3041,6 @@ dxf_arc_set_start_angle
 /*!
  * \brief Get the \c end_angle from a DXF \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_end_angle.png
- *
  * \return \c end_angle.
  */
 double
@@ -3253,9 +3070,6 @@ dxf_arc_get_end_angle
 
 /*!
  * \brief Set the \c end_angle for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_end_angle.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3290,9 +3104,6 @@ dxf_arc_set_end_angle
 
 /*!
  * \brief Calculate the \c length of a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_length.png
  *
  * \return the \c length.
  */
@@ -3337,9 +3148,6 @@ dxf_arc_get_length
 /*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_extrusion_vector_as_point.png
  *
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
@@ -3387,9 +3195,6 @@ dxf_arc_get_extrusion_vector_as_point
  * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_extr_x0.png
- *
  * \return the X-value of the extrusion vector \c extr_x0.
  */
 double
@@ -3421,9 +3226,6 @@ dxf_arc_get_extr_x0
 /*!
  * \brief Set the X-value of the extrusion vector \c extr_x0 of a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_extr_x0.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3461,9 +3263,6 @@ dxf_arc_set_extr_x0
  * \brief Get the Y-value of the extrusion vector \c extr_y0 of a DXF
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_extr_y0.png
- *
  * \return the Y-value of the extrusion vector \c extr_y0.
  */
 double
@@ -3495,9 +3294,6 @@ dxf_arc_get_extr_y0
 /*!
  * \brief Set the Y-value of the extrusion vector \c extr_y0 of a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_extr_y0.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3535,9 +3331,6 @@ dxf_arc_set_extr_y0
  * \brief Get the Z-value of the extrusion vector \c extr_z0 of a DXF
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_extr_z0.png
- *
  * \return the Z-value of the extrusion vector \c extr_z0.
  */
 double
@@ -3569,9 +3362,6 @@ dxf_arc_get_extr_z0
 /*!
  * \brief Set the Z-value of the extrusion vector \c extr_z0 of a DXF
  * \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_extr_z0.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3608,9 +3398,6 @@ dxf_arc_set_extr_z0
 /*!
  * \brief Set the extrusion vector from a DXF \c POINT for a DXF \c ARC
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_extrusion_vector_from_point.png
  */
 DxfArc *
 dxf_arc_set_extrusion_vector_from_point
@@ -3651,9 +3438,6 @@ dxf_arc_set_extrusion_vector_from_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c ARC entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_extrusion_vector.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3696,9 +3480,6 @@ dxf_arc_set_extrusion_vector
  * \brief Get the pointer to the next \c ARC entity from a DXF
  * \c ARC entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_next.png
- *
  * \return pointer to the next \c ARC entity.
  *
  * \warning No checks are performed on the returned pointer.
@@ -3738,9 +3519,6 @@ dxf_arc_get_next
 /*!
  * \brief Set the pointer to the next \c ARC for a DXF \c ARC
  * entity.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_set_next.png
  *
  * \return a pointer to \c arc when successful, or \c NULL when an error
  * occurred.
@@ -3785,9 +3563,6 @@ dxf_arc_set_next
 /*!
  * \brief Get the pointer to the last \c ARC entity from a linked list
  * of DXF \c ARC entities.
- *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_arc_get_last.png
  *
  * \return pointer to the last \c ARC entity.
  *
