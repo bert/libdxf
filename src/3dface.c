@@ -884,13 +884,18 @@ dxf_3dface_free_list
 /*!
  * \brief Get the \c id_code from a DXF \c 3DFACE entity.
  *
- * \return \c id_code.
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
 int
 dxf_3dface_get_id_code
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        int *id_code
+                /*!< [out] a pointer to \c id_code. */
 )
 {
 #if DEBUG
@@ -904,16 +909,31 @@ dxf_3dface_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (id_code == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                id_code = malloc (sizeof (int));
+                if (id_code == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
         if (face->id_code < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        id_code = &face->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->id_code);
+        return (EXIT_SUCCESS);
 }
 
 
