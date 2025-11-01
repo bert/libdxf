@@ -982,14 +982,18 @@ dxf_3dface_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c linetype when sucessful, \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dface_get_linetype
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        char *linetype
+                /*!< [out] a pointer to \c linetype. */
 )
 {
 #if DEBUG
@@ -1001,19 +1005,34 @@ dxf_3dface_get_linetype
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->linetype ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                linetype = malloc (sizeof (char));
+                if (linetype == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        linetype = strdup (face->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (face->linetype));
+        return (EXIT_SUCCESS);
 }
 
 
