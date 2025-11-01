@@ -940,10 +940,10 @@ dxf_3dface_get_id_code
 /*!
  * \brief Set the \c id_code for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when sucessful, \c NULL when an error
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_id_code
 (
         Dxf3dface *face,
@@ -963,7 +963,7 @@ dxf_3dface_set_id_code
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (id_code < 0)
         {
@@ -975,7 +975,7 @@ dxf_3dface_set_id_code
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
