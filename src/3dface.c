@@ -1140,18 +1140,19 @@ dxf_3dface_get_layer
 /*!
  * \brief Set the \c layer for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when sucessful, \c NULL when an error
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
  * occurred.
  *
- * \warning The passed \c layer variable is not freed by this function.
+ * \warning No checks are performed on the returned pointer.
  */
-Dxf3dface *
+int
 dxf_3dface_set_layer
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         char *layer
-                /*!< a string containing the \c layer for the entity. */
+                /*!< a pointer to a string containing the \c layer for
+                 * the entity. */
 )
 {
 #if DEBUG
@@ -1163,20 +1164,20 @@ dxf_3dface_set_layer
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->layer = strdup (layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
