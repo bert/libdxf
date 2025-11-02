@@ -1184,13 +1184,18 @@ dxf_3dface_set_layer
 /*!
  * \brief Get the \c elevation a this DXF \c 3DFACE entity.
  *
- * \return \c elevation.
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-double
+int
 dxf_3dface_get_elevation
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        double *elevation
+                /*!< [out] a pointer to \c elevation. */
 )
 {
 #if DEBUG
@@ -1204,10 +1209,25 @@ dxf_3dface_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (elevation == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                elevation = malloc (sizeof (double));
+                if (elevation == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        elevation = &face->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->elevation);
+        return (EXIT_SUCCESS);
 }
 
 
