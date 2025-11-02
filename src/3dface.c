@@ -1083,14 +1083,18 @@ dxf_3dface_set_linetype
 /*!
  * \brief Get the \c layer from a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c layer when sucessful, \c NULL when an error
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dface_get_layer
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        char *layer
+                /*!< [out] a pointer to \c layer. */
 )
 {
 #if DEBUG
@@ -1102,19 +1106,34 @@ dxf_3dface_get_layer
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->layer ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                layer = malloc (sizeof (char));
+                if (layer == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        layer = strdup (face->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (face->layer));
+        return (EXIT_SUCCESS);
 }
 
 
