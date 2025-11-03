@@ -6,4 +6,5 @@ The following persons contributed to libdxf with patches or bug reports:
 - Luis Matos
 - mtarek
 - Paolo Caroni
+- Calvin Tower
 - [Bert Timmerman](mailto:bert.timmerman@xs4all.nl)
