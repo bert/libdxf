@@ -1336,13 +1336,18 @@ dxf_3dface_set_thickness
 /*!
  * \brief Get the \c linetype_scale from a DXF \c 3DFACE entity.
  *
- * \return \c linetype_scale.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-double
+int
 dxf_3dface_get_linetype_scale
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        double *linetype_scale
+                /*!< a pointer to \c linetype_scale. */
 )
 {
 #if DEBUG
@@ -1356,16 +1361,24 @@ dxf_3dface_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (linetype_scale == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (face->linetype_scale < 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        linetype_scale = &face->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->linetype_scale);
+        return (EXIT_SUCCESS);
 }
 
 
