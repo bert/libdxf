@@ -20,10 +20,6 @@ help with patches or [bug reports](https://launchpad.net/libdxf)
 
 Developer documentation can be found [here](http://ljh4timm.home.xs4all.nl/libdxf/doxygen/index.html) .
 
-Travis-CI Status: [![Build Status](https://travis-ci.org/bert/libdxf.svg?branch=master)](https://travis-ci.org/bert/libdxf)
-
-Codacy Status: [![Codacy Badge](https://api.codacy.com/project/badge/Grade/21d03c493b7d4fbf8753217d53477666)](https://www.codacy.com/app/bert_2/libdxf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bert/libdxf&amp;utm_campaign=Badge_Grade)
-
 Kind regards,
 
 Bert Timmerman.
