@@ -1490,10 +1490,15 @@ dxf_3dface_get_visibility
 /*!
  * \brief Set the \c visibility for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when sucessful, \c NULL when an error
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \since \c visibility was added in DXF R13 and is included for
+ * forward compatibility.
  */
-Dxf3dface *
+int
 dxf_3dface_set_visibility
 (
         Dxf3dface *face,
@@ -1511,7 +1516,7 @@ dxf_3dface_set_visibility
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (visibility < 0)
         {
@@ -1529,7 +1534,7 @@ dxf_3dface_set_visibility
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
