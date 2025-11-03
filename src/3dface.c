@@ -1010,16 +1010,9 @@ dxf_3dface_get_linetype
         if (linetype == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                linetype = malloc (sizeof (char));
-                if (linetype == NULL)
-                {
-                        fprintf (stderr,
-                          (_("Critical error in %s () could not allocate memory.\n")),
-                          __FUNCTION__);
-                        exit (EXIT_FAILURE);
-                }
+                return (EXIT_FAILURE);
         }
         linetype = strdup (face->linetype);
 #if DEBUG
