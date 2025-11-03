@@ -21,5 +21,4 @@ For more information see the libDXF repository on
 <a href="https://github.com/bert/libdxf">Github</a> or the project
 page on <a href="https://launchpad.net/libdxf">Launchpad</a>.<br>
 <p>
-For statistics see <a href="http://www.openhub.net/p/libdxf/"><b>Black</b>Duck | Open HUB</a>.<br>
 */
