@@ -1296,10 +1296,10 @@ dxf_3dface_get_thickness
 /*!
  * \brief Set the \c thickness for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when sucessful, \c NULL when an error
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
  * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_thickness
 (
         Dxf3dface *face,
@@ -1317,7 +1317,7 @@ dxf_3dface_set_thickness
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (thickness < 0.0)
         {
@@ -1329,7 +1329,7 @@ dxf_3dface_set_thickness
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
