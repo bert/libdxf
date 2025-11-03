@@ -1541,13 +1541,18 @@ dxf_3dface_set_visibility
 /*!
  * \brief Get the \c color from a DXF \c 3DFACE entity.
  *
- * \return \c color.
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-int16_t
+int
 dxf_3dface_get_color
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        int16_t *color
+                /*!< [out] a pointer to \c color. */
 )
 {
 #if DEBUG
@@ -1561,16 +1566,24 @@ dxf_3dface_get_color
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (color == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (face->color < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        color = (int16_t *) &face->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->color);
+        return (EXIT_SUCCESS);
 }
 
 
