@@ -1425,13 +1425,21 @@ dxf_3dface_set_linetype_scale
 /*!
  * \brief Get the \c visibility from a DXF \c 3DFACE entity.
  *
- * \return \c visibility.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \since \c visibility was added in DXF R13 and is included for
+ * forward compatibility.
  */
-int16_t
+int
 dxf_3dface_get_visibility
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        int16_t *visibility
+                /*!< [out] a pointer to \c visibility. */
 )
 {
 #if DEBUG
@@ -1445,6 +1453,20 @@ dxf_3dface_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (visibility == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                visibility = malloc (sizeof (int16_t));
+                if (visibility == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
         if (face->visibility < 0)
         {
                 fprintf (stderr,
@@ -1457,10 +1479,11 @@ dxf_3dface_get_visibility
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        visibility = &face->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->visibility);
+        return (EXIT_SUCCESS);
 }
 
 

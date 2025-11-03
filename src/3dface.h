@@ -234,7 +234,7 @@ int dxf_3dface_get_thickness (Dxf3dface *face, double *elevation);
 int dxf_3dface_set_thickness (Dxf3dface *face, double thickness);
 int dxf_3dface_get_linetype_scale (Dxf3dface *face, double *linetype_scale);
 int dxf_3dface_set_linetype_scale (Dxf3dface *face, double linetype_scale);
-int16_t dxf_3dface_get_visibility (Dxf3dface *face);
+int dxf_3dface_get_visibility (Dxf3dface *face, int16_t *visibility);
 Dxf3dface *dxf_3dface_set_visibility (Dxf3dface *face, int16_t visibility);
 int16_t dxf_3dface_get_color (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_color (Dxf3dface *face, int16_t color);
