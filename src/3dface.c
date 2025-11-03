@@ -1437,9 +1437,9 @@ int
 dxf_3dface_get_visibility
 (
         Dxf3dface *face,
-                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
         int16_t *visibility
-                /*!< [out] a pointer to \c visibility. */
+                /*!< a pointer to \c visibility. */
 )
 {
 #if DEBUG
@@ -1550,9 +1550,9 @@ int
 dxf_3dface_get_color
 (
         Dxf3dface *face,
-                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
         int16_t *color
-                /*!< [out] a pointer to \c color. */
+                /*!< a pointer to \c color. */
 )
 {
 #if DEBUG
