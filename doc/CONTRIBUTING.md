@@ -38,9 +38,9 @@ Or on Launchpad:
   that branch.
 * To quickly create a topic branch based on master with:
     git branch fix/master/my_contribution master
-* then checkout the new branch with:
+* Checkout the new branch with:
     git checkout fix/master/my_contribution
-* or do this combined with:
+* Or do this combined with:
     git checkout -b fix/master/my_contribution
 * Make commits of logical units.
 * Check for unnecessary whitespace with git diff --check before committing.
