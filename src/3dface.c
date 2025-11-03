@@ -1247,13 +1247,18 @@ dxf_3dface_set_elevation
 /*!
  * \brief Get the \c thickness from a DXF \c 3DFACE entity.
  *
- * \return \c thickness.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-double
+int
 dxf_3dface_get_thickness
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        double *thickness
+                /*!< a pointer to \c thickness. */
 )
 {
 #if DEBUG
@@ -1267,16 +1272,24 @@ dxf_3dface_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (thickness == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (face->thickness < 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        thickness = &face->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->thickness);
+        return (EXIT_SUCCESS);
 }
 
 
