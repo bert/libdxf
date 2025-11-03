@@ -1106,14 +1106,7 @@ dxf_3dface_get_layer
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                layer = malloc (sizeof (char));
-                if (layer == NULL)
-                {
-                        fprintf (stderr,
-                          (_("Critical error in %s () could not allocate memory.\n")),
-                          __FUNCTION__);
-                        exit (EXIT_FAILURE);
-                }
+                return (EXIT_FAILURE);
         }
         layer = strdup (face->layer);
 #if DEBUG
