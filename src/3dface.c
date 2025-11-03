@@ -1213,10 +1213,10 @@ dxf_3dface_get_elevation
 /*!
  * \brief Set the \c elevation for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when sucessful, \c NULL when an error
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_elevation
 (
         Dxf3dface *face,
@@ -1234,13 +1234,13 @@ dxf_3dface_set_elevation
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->elevation = elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
