@@ -800,7 +800,7 @@ int
 dxf_3dface_free
 (
         Dxf3dface *face
-                /*!< [in] a pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c 3DFACE entity. */
 )
 {
@@ -854,7 +854,7 @@ int
 dxf_3dface_free_list
 (
         Dxf3dface *faces
-                /*!< [in] a pointer to the single linked list of DXF
+                /*!< a pointer to the single linked list of DXF
                  * \c 3DFACE entities. */
 )
 {
@@ -893,9 +893,9 @@ int
 dxf_3dface_get_id_code
 (
         Dxf3dface *face,
-                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
         int *id_code
-                /*!< [out] a pointer to \c id_code. */
+                /*!< a pointer to \c id_code. */
 )
 {
 #if DEBUG
@@ -984,9 +984,9 @@ int
 dxf_3dface_get_linetype
 (
         Dxf3dface *face,
-                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
         char *linetype
-                /*!< [out] a pointer to \c linetype. */
+                /*!< a pointer to \c linetype. */
 )
 {
 #if DEBUG
@@ -1078,9 +1078,9 @@ int
 dxf_3dface_get_layer
 (
         Dxf3dface *face,
-                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
         char *layer
-                /*!< [out] a pointer to \c layer. */
+                /*!< a pointer to \c layer. */
 )
 {
 #if DEBUG
@@ -1172,9 +1172,9 @@ int
 dxf_3dface_get_elevation
 (
         Dxf3dface *face,
-                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
         double *elevation
-                /*!< [out] a pointer to \c elevation. */
+                /*!< a pointer to \c elevation. */
 )
 {
 #if DEBUG
