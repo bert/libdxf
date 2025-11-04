@@ -1630,13 +1630,18 @@ dxf_3dface_set_color
 /*!
  * \brief Get the \c paperspace flag value from a DXF \c 3DFACE entity.
  *
- * \return \c paperspace flag value.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-int16_t
+int
 dxf_3dface_get_paperspace
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        int16_t *paperspace
+                /*!< a pointer to \c paperspace. */
 )
 {
 #if DEBUG
@@ -1644,6 +1649,13 @@ dxf_3dface_get_paperspace
 #endif
         /* Do some basic checks. */
         if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (paperspace == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -1662,10 +1674,11 @@ dxf_3dface_get_paperspace
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        paperspace = &face->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->paperspace);
+        return (EXIT_SUCCESS);
 }
 
 
