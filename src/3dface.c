@@ -1104,7 +1104,7 @@ dxf_3dface_get_layer
         if (layer == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
