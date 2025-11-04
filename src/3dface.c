@@ -1191,16 +1191,9 @@ dxf_3dface_get_elevation
         if (elevation == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                elevation = malloc (sizeof (double));
-                if (elevation == NULL)
-                {
-                        fprintf (stderr,
-                          (_("Critical error in %s () could not allocate memory.\n")),
-                          __FUNCTION__);
-                        exit (EXIT_FAILURE);
-                }
+                return (EXIT_FAILURE);
         }
         elevation = &face->elevation;
 #if DEBUG
