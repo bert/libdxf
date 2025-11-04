@@ -1449,16 +1449,9 @@ dxf_3dface_get_visibility
         if (visibility == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                visibility = malloc (sizeof (int16_t));
-                if (visibility == NULL)
-                {
-                        fprintf (stderr,
-                          (_("Critical error in %s () could not allocate memory.\n")),
-                          __FUNCTION__);
-                        exit (EXIT_FAILURE);
-                }
+                return (EXIT_FAILURE);
         }
         if (face->visibility < 0)
         {
