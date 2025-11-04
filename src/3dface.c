@@ -1776,10 +1776,10 @@ dxf_3dface_get_graphics_data_size
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
+ * \return \c EXIT_SUCCESS when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_graphics_data_size
 (
         Dxf3dface *face,
@@ -1798,14 +1798,13 @@ dxf_3dface_set_graphics_data_size
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (graphics_data_size == 0)
         {
@@ -1817,7 +1816,7 @@ dxf_3dface_set_graphics_data_size
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 

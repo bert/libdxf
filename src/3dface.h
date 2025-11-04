@@ -241,7 +241,7 @@ int dxf_3dface_set_color (Dxf3dface *face, int16_t color);
 int dxf_3dface_get_paperspace (Dxf3dface *face, int16_t *paperspace);
 int dxf_3dface_set_paperspace (Dxf3dface *face, int16_t paperspace);
 int dxf_3dface_get_graphics_data_size (Dxf3dface *face, int32_t *graphics_data_size);
-Dxf3dface *dxf_3dface_set_graphics_data_size (Dxf3dface *face, int32_t graphics_data_size);
+int dxf_3dface_set_graphics_data_size (Dxf3dface *face, int32_t graphics_data_size);
 int16_t dxf_3dface_get_shadow_mode (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_shadow_mode (Dxf3dface *face, int16_t shadow_mode);
 DxfBinaryData *dxf_3dface_get_binary_graphics_data (Dxf3dface *face);
