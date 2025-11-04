@@ -1718,14 +1718,21 @@ dxf_3dface_set_paperspace
  * \brief Get the \c graphics_data_size value from a DXF \c 3DFACE
  * entity.
  *
- * \return \c graphics_data_size value when successful, or
- * \c EXIT_FAILURE when an error occurred.
+ * <b>Flow diagram:</b>
+ * \image html drakon/dxf_3dface_get_graphics_data_size.png
+ *
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-int32_t
+int
 dxf_3dface_get_graphics_data_size
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        int32_t *graphics_data_size
+                /*!< a pointer to \c graphics_data_size. */
 )
 {
 #if DEBUG
@@ -1733,6 +1740,13 @@ dxf_3dface_get_graphics_data_size
 #endif
         /* Do some basic checks. */
         if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (graphics_data_size == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -1751,10 +1765,11 @@ dxf_3dface_get_graphics_data_size
                   (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
+        graphics_data_size = &face->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->graphics_data_size);
+        return (EXIT_SUCCESS);
 }
 
 
