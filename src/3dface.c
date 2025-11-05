@@ -1975,8 +1975,11 @@ dxf_3dface_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c 3DFACE entity.
+ *
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_binary_graphics_data
 (
         Dxf3dface *face,
@@ -1995,20 +1998,20 @@ dxf_3dface_set_binary_graphics_data
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (data == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
