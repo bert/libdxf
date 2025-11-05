@@ -1878,10 +1878,10 @@ dxf_3dface_get_shadow_mode
 /*!
  * \brief Set the \c shadow_mode for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
+ * \return \c EXIT_SUCCESS when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_shadow_mode
 (
         Dxf3dface *face,
@@ -1899,7 +1899,7 @@ dxf_3dface_set_shadow_mode
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (shadow_mode < 0)
         {
@@ -1917,7 +1917,7 @@ dxf_3dface_set_shadow_mode
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
