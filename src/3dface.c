@@ -1925,15 +1925,18 @@ dxf_3dface_set_shadow_mode
  * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c 3DFACE entity.
  *
- * \return pointer to the \c binary_graphics_data.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryData *
+int
 dxf_3dface_get_binary_graphics_data
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        DxfBinaryData *data
+                /*!< a pointer to a DXF \c DxfBinaryData entity. */
 )
 {
 #if DEBUG
@@ -1945,19 +1948,27 @@ dxf_3dface_get_binary_graphics_data
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        data = (DxfBinaryData *) face->binary_graphics_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryData *) face->binary_graphics_data);
+        return (EXIT_SUCCESS);
 }
 
 
