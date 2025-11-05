@@ -2019,15 +2019,18 @@ dxf_3dface_set_binary_graphics_data
  * \brief Get the soft pointer to the \c dictionary_owner_soft from a
  * DXF \c 3DFACE entity.
  *
- * \return a pointer to the \c dictionary_owner_soft.
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dface_get_dictionary_owner_soft
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        char *dictionary_owner_soft
+                /*!< a pointer to a \c dictionary_owner_soft. */
 )
 {
 #if DEBUG
@@ -2039,19 +2042,27 @@ dxf_3dface_get_dictionary_owner_soft
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dictionary_owner_soft = strdup (face->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (face->dictionary_owner_soft));
+        return (EXIT_SUCCESS);
 }
 
 
