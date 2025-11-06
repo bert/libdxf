@@ -2392,14 +2392,18 @@ dxf_3dface_set_dictionary_owner_hard
 /*!
  * \brief Get the \c lineweight from a DXF \c 3DFACE entity.
  *
- * \return \c lineweight when successful, or \c EXIT_FAILURE when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-int16_t
+int
 dxf_3dface_get_lineweight
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        int16_t *lineweight
+                /*!< a pointer to \c lineweight. */
 )
 {
 #if DEBUG
@@ -2413,10 +2417,24 @@ dxf_3dface_get_lineweight
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (lineweight == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (face->lineweight < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        lineweight = &face->lineweight;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->lineweight);
+        return (EXIT_SUCCESS);
 }
 
 
