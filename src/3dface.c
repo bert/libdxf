@@ -2069,8 +2069,11 @@ dxf_3dface_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c 3DFACE entity.
+ *
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_dictionary_owner_soft
 (
         Dxf3dface *face,
@@ -2089,20 +2092,20 @@ dxf_3dface_set_dictionary_owner_soft
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (dictionary_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->dictionary_owner_soft = strdup (dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 

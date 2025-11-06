@@ -247,7 +247,7 @@ int dxf_3dface_set_shadow_mode (Dxf3dface *face, int16_t shadow_mode);
 int dxf_3dface_get_binary_graphics_data (Dxf3dface *face, DxfBinaryData *data);
 int dxf_3dface_set_binary_graphics_data (Dxf3dface *face, DxfBinaryData *data);
 int dxf_3dface_get_dictionary_owner_soft (Dxf3dface *face, char *dictionary_owner_soft);
-Dxf3dface *dxf_3dface_set_dictionary_owner_soft (Dxf3dface *face, char *dictionary_owner_soft);
+int dxf_3dface_set_dictionary_owner_soft (Dxf3dface *face, char *dictionary_owner_soft);
 char *dxf_3dface_get_object_owner_soft (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_object_owner_soft (Dxf3dface *face, char *object_owner_soft);
 char *dxf_3dface_get_material (Dxf3dface *face);
