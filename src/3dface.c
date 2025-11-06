@@ -2113,15 +2113,18 @@ dxf_3dface_set_dictionary_owner_soft
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c 3DFACE entity.
  *
- * \return soft pointer to the object owner.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dface_get_object_owner_soft
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        char *object_owner_soft
+                /*!< a pointer to \c object_owner_soft. */
 )
 {
 #if DEBUG
@@ -2133,19 +2136,27 @@ dxf_3dface_get_object_owner_soft
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->object_owner_soft ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        object_owner_soft = strdup (face->object_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (face->object_owner_soft));
+        return (EXIT_SUCCESS);
 }
 
 
