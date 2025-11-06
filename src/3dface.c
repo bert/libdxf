@@ -2206,16 +2206,18 @@ dxf_3dface_set_object_owner_soft
 /*!
  * \brief Get the pointer to the \c material from a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c material when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dface_get_material
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        char *material
+                /*!< a pointer to \c material. */
 )
 {
 #if DEBUG
@@ -2227,19 +2229,27 @@ dxf_3dface_get_material
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->material ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        material = strdup (face->material);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (face->material));
+        return (EXIT_SUCCESS);
 }
 
 
