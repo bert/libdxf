@@ -2610,10 +2610,10 @@ dxf_3dface_get_color_value
 /*!
  * \brief Set the \c color_value for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_color_value
 (
         Dxf3dface *face,
@@ -2631,13 +2631,13 @@ dxf_3dface_set_color_value
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->color_value = color_value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
