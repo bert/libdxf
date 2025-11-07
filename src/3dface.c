@@ -2567,14 +2567,18 @@ dxf_3dface_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c 3DFACE entity.
  *
- * \return \c color_value when successful, or \c EXIT_FAILURE when an
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
  * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-int32_t
+int
 dxf_3dface_get_color_value
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        int32_t *color_value
+                /*!< a pointer to \c color_value. */
 )
 {
 #if DEBUG
@@ -2588,10 +2592,18 @@ dxf_3dface_get_color_value
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (color_value == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        color_value = (int32_t *) &face->color_value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->color_value);
+        return (EXIT_SUCCESS);
 }
 
 

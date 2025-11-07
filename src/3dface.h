@@ -258,7 +258,7 @@ int dxf_3dface_get_lineweight (Dxf3dface *face, int16_t *lineweight);
 int dxf_3dface_set_lineweight (Dxf3dface *face, int16_t lineweight);
 int dxf_3dface_get_plot_style_name (Dxf3dface *face, char *plot_style_name);
 int dxf_3dface_set_plot_style_name (Dxf3dface *face, char *plot_style_name);
-int32_t dxf_3dface_get_color_value (Dxf3dface *face);
+int dxf_3dface_get_color_value (Dxf3dface *face, int32_t *color_value);
 Dxf3dface *dxf_3dface_set_color_value (Dxf3dface *face, int32_t color_value);
 char *dxf_3dface_get_color_name (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_color_name (Dxf3dface *face, char *color_name);
