@@ -2475,14 +2475,18 @@ dxf_3dface_set_lineweight
 /*!
  * \brief Get the \c plot_style_name from a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c plot_style_name when sucessful, or \c NULL
- * when an error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dface_get_plot_style_name
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        char *plot_style_name
+                /*!< a pointer to \c plot_style_name. */
 )
 {
 #if DEBUG
@@ -2494,19 +2498,27 @@ dxf_3dface_get_plot_style_name
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        plot_style_name = strdup (face->plot_style_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (face->plot_style_name));
+        return (EXIT_SUCCESS);
 }
 
 
