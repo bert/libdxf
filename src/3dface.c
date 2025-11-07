@@ -2736,14 +2736,18 @@ dxf_3dface_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c 3DFACE entity.
  *
- * \return \c transparency when successful, or \c EXIT_FAILURE when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-int32_t
+int
 dxf_3dface_get_transparency
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        int32_t *transparency
+                /*!< a pointer to \c transparency. */
 )
 {
 #if DEBUG
@@ -2757,10 +2761,18 @@ dxf_3dface_get_transparency
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (transparency == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        transparency = &face->transparency;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->transparency);
+        return (EXIT_SUCCESS);
 }
 
 
