@@ -2644,14 +2644,18 @@ dxf_3dface_set_color_value
 /*!
  * \brief Get the \c color_name from a DXF \c 3DFACE entity.
  *
- * \return \c color_name when sucessful, or \c NULL when an error
- * occurred.
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dface_get_color_name
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        char *color_name
+                /*!< a pointer to \c color_name. */
 )
 {
 #if DEBUG
@@ -2663,29 +2667,37 @@ dxf_3dface_get_color_name
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->color_name ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (color_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        color_name = strdup (face->color_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (face->color_name));
+        return (EXIT_SUCCESS);
 }
 
 
 /*!
  * \brief Set the \c color_name for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_color_name
 (
         Dxf3dface *face,
@@ -2704,20 +2716,20 @@ dxf_3dface_set_color_name
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (color_name == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->color_name = strdup (color_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
