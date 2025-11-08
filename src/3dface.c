@@ -2811,15 +2811,20 @@ dxf_3dface_set_transparency
 
 
 /*!
- * \brief Get the base point of a DXF \c 3DFACE entity.
+ * \brief Get a pointer to the base point of a DXF \c 3DFACE entity.
  *
- * \return the base point \c p0.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-DxfPoint *
+int
 dxf_3dface_get_p0
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
@@ -2831,19 +2836,27 @@ dxf_3dface_get_p0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        point = face->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p0);
+        return (EXIT_SUCCESS);
 }
 
 
