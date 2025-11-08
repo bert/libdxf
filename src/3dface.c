@@ -2905,13 +2905,18 @@ dxf_3dface_set_p0
  * \brief Get the X-value of the base point \c x0 of a DXF \c 3DFACE
  * entity.
  *
- * \return the X-value of the base point \c x0.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-double
+int
 dxf_3dface_get_x0
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        double *x0
+                /*!< a pointer to \c x0. */
 )
 {
 #ifdef DEBUG
@@ -2933,10 +2938,25 @@ dxf_3dface_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (x0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                x0 = malloc (sizeof (double));
+                if (x0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        x0 = &face->p0->x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p0->x0);
+        return (EXIT_SUCCESS);
 }
 
 
