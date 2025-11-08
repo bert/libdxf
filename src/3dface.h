@@ -263,7 +263,7 @@ int dxf_3dface_set_color_value (Dxf3dface *face, int32_t color_value);
 int dxf_3dface_get_color_name (Dxf3dface *face, char *color_name);
 int dxf_3dface_set_color_name (Dxf3dface *face, char *color_name);
 int dxf_3dface_get_transparency (Dxf3dface *face, int32_t *transparency);
-Dxf3dface *dxf_3dface_set_transparency (Dxf3dface *face, int32_t transparency);
+int dxf_3dface_set_transparency (Dxf3dface *face, int32_t transparency);
 DxfPoint *dxf_3dface_get_p0 (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_p0 (Dxf3dface *face, DxfPoint *point);
 double dxf_3dface_get_x0 (Dxf3dface *face);

@@ -2779,10 +2779,10 @@ dxf_3dface_get_transparency
 /*!
  * \brief Set the \c transparency for a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_transparency
 (
         Dxf3dface *face,
@@ -2800,13 +2800,13 @@ dxf_3dface_set_transparency
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->transparency = transparency;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
