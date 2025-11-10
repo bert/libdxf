@@ -3018,11 +3018,14 @@ dxf_3dface_set_x0
  *
  * \return the Y-value of the base point \c y0.
  */
-double
+int
 dxf_3dface_get_y0
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        double *y0
+                /*!< a pointer to the Y-value of the base point \c y0 of
+                 * a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3044,10 +3047,25 @@ dxf_3dface_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (y0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                y0 = malloc (sizeof (double));
+                if (y0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        y0 =&face->p0->y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p0->y0);
+        return (EXIT_SUCCESS);
 }
 
 
