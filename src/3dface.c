@@ -3073,10 +3073,10 @@ dxf_3dface_get_y0
  * \brief Set the Y-value of the base point \c y0 of a DXF \c 3DFACE
  * entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_y0
 (
         Dxf3dface *face,
@@ -3095,7 +3095,7 @@ dxf_3dface_set_y0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->p0 == NULL)
         {
@@ -3110,14 +3110,14 @@ dxf_3dface_set_y0
                         fprintf (stderr,
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
         }
         face->p0->y0 = y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
