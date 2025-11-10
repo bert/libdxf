@@ -3125,13 +3125,16 @@ dxf_3dface_set_y0
  * \brief Get the Z-value of the base point \c z0 of a DXF \c 3DFACE
  * entity.
  *
- * \return the Z-value of the base point \c z0.
+ * \return a pointer to the Z-value of the base point \c z0.
  */
-double
+int
 dxf_3dface_get_z0
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        double *z0
+                /*!< a pointer to the Z-value of the base point \c z0 of
+                 * a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3153,10 +3156,25 @@ dxf_3dface_get_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (z0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                z0 = malloc (sizeof (double));
+                if (z0 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        z0 = &face->p0->z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p0->z0);
+        return (EXIT_SUCCESS);
 }
 
 
