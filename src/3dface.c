@@ -3443,11 +3443,14 @@ dxf_3dface_set_x1
  *
  * \return the Y-value of the first alignment point \c y1.
  */
-double
+int
 dxf_3dface_get_y1
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        double *y1
+                /*!< a pointer to the Y-value of the first alignment
+                 * point \c y1 of a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3469,10 +3472,25 @@ dxf_3dface_get_y1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (y1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                y1 = malloc (sizeof (double));
+                if (y1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        y1 = &face->p1->y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p1->y0);
+        return (EXIT_SUCCESS);
 }
 
 
