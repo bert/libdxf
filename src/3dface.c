@@ -105,13 +105,13 @@ dxf_3dface_init
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 face = dxf_3dface_new ();
-        }
-        if (face == NULL)
-        {
-                fprintf (stderr,
-                  (_("Critical error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                exit (EXIT_FAILURE);
+                if (face == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
         }
         /* Assign initial values to members. */
         face->id_code = 0;
