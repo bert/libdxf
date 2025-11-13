@@ -3593,10 +3593,10 @@ dxf_3dface_get_z1
  * \brief Set the Z-value of the first alignment point \c z1 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_z1
 (
         Dxf3dface *face,
@@ -3615,7 +3615,7 @@ dxf_3dface_set_z1
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->p1 == NULL)
         {
@@ -3630,14 +3630,14 @@ dxf_3dface_set_z1
                         fprintf (stderr,
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
         }
         face->p1->z0 = z1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 

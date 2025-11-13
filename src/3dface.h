@@ -279,7 +279,7 @@ int dxf_3dface_set_x1 (Dxf3dface *face, double x1);
 int dxf_3dface_get_y1 (Dxf3dface *face, double *y1);
 int dxf_3dface_set_y1 (Dxf3dface *face, double y1);
 int dxf_3dface_get_z1 (Dxf3dface *face, double *z1);
-Dxf3dface *dxf_3dface_set_z1 (Dxf3dface *face, double z1);
+int dxf_3dface_set_z1 (Dxf3dface *face, double z1);
 DxfPoint *dxf_3dface_get_p2 (Dxf3dface *face);
 Dxf3dface *dxf_3dface_set_p2 (Dxf3dface *face, DxfPoint *point);
 double dxf_3dface_get_x2 (Dxf3dface *face);
