@@ -3552,11 +3552,14 @@ dxf_3dface_set_y1
  *
  * \return the Z-value of the first alignment point \c z1.
  */
-double
+int
 dxf_3dface_get_z1
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        double *z1
+                /*!< a pointer to the Z-value of the first alignment
+                 * point \c z1 of a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3578,10 +3581,11 @@ dxf_3dface_get_z1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        z1 = &face->p1->z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p1->z0);
+        return (EXIT_SUCCESS);
 }
 
 
