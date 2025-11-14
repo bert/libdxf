@@ -854,7 +854,7 @@ int
 dxf_3dface_free_list
 (
         Dxf3dface *faces
-                /*!< a pointer to the single linked list of DXF
+                /*!< [in] a pointer to the single linked list of DXF
                  * \c 3DFACE entities. */
 )
 {
