@@ -893,9 +893,9 @@ int
 dxf_3dface_get_id_code
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int *id_code
-                /*!< a pointer to \c id_code. */
+                /*!< [out] a pointer to \c id_code. */
 )
 {
 #if DEBUG
