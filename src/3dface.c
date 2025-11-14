@@ -800,7 +800,7 @@ int
 dxf_3dface_free
 (
         Dxf3dface *face
-                /*!< a pointer to the memory occupied by the DXF
+                /*!< [in] a pointer to the memory occupied by the DXF
                  * \c 3DFACE entity. */
 )
 {
