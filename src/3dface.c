@@ -150,10 +150,10 @@ dxf_3dface_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return a pointer to a DXF \c 3DFACE entity, or \c NULL when an error
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_read
 (
         DxfFile *fp,
@@ -578,7 +578,7 @@ dxf_3dface_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
