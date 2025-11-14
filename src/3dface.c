@@ -3644,13 +3644,18 @@ dxf_3dface_set_z1
 /*!
  * \brief Get the second alignment point \c p2 of a DXF \c 3DFACE entity.
  *
- * \return the second alignment point \c p2.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-DxfPoint *
+int
 dxf_3dface_get_p2
 (
-        Dxf3dface *face
+        Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
@@ -3662,19 +3667,34 @@ dxf_3dface_get_p2
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                point = dxf_point_new ();
+                if (point == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        point = face->p2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p2);
+        return (EXIT_SUCCESS);
 }
 
 
