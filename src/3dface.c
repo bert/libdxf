@@ -157,9 +157,9 @@ int
 dxf_3dface_read
 (
         DxfFile *fp,
-                /*!< a DXF \c FILE pointer to an input file (or device). */
+                /*!< [in] a DXF \c FILE pointer to an input file (or device). */
         Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [inout] a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
