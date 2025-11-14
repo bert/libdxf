@@ -88,11 +88,11 @@ dxf_3dface_new ()
  * \return \c NULL when an error occurred, a pointer to the initialized
  * memory when successful.
  */
-Dxf3dface *
+int
 dxf_3dface_init
 (
         Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [inout] a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -138,7 +138,7 @@ dxf_3dface_init
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -4639,8 +4639,7 @@ dxf_3dface_create_from_points
                   (_("Warning in %s () an illegal inherit value was passed.\n")),
                   __FUNCTION__);
         }
-        face = dxf_3dface_init (face);
-        if (face == NULL)
+        if (dxf_3dface_init (face))
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),

@@ -217,7 +217,7 @@ dxf_3dface_struct
 
 
 Dxf3dface *dxf_3dface_new ();
-Dxf3dface *dxf_3dface_init (Dxf3dface *face);
+int dxf_3dface_init (Dxf3dface *face);
 int dxf_3dface_read (DxfFile *fp, Dxf3dface *face);
 int dxf_3dface_write (DxfFile *fp, Dxf3dface *face);
 int dxf_3dface_free (Dxf3dface *face);
