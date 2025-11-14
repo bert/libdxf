@@ -933,16 +933,16 @@ dxf_3dface_get_id_code
 /*!
  * \brief Set the \c id_code for a DXF \c 3DFACE entity.
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
  */
 int
 dxf_3dface_set_id_code
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [inout] a pointer to a DXF \c 3DFACE entity. */
         int id_code
-                /*!< Identification number for the entity.\n
+                /*!< [in] Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
 )
