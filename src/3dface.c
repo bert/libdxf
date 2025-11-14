@@ -592,9 +592,9 @@ int
 dxf_3dface_write
 (
         DxfFile *fp,
-                /*!< a DXF \c FILE pointer to an output file (or device). */
+                /*!< [inout] a DXF \c FILE pointer to an output file (or device). */
         Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
