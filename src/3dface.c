@@ -1172,9 +1172,9 @@ int
 dxf_3dface_get_elevation
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         double *elevation
-                /*!< a pointer to \c elevation. */
+                /*!< [out] a pointer to \c elevation. */
 )
 {
 #if DEBUG
