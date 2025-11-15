@@ -1128,9 +1128,9 @@ int
 dxf_3dface_set_layer
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         char *layer
-                /*!< a pointer to a string containing the \c layer for
+                /*!< [in] a pointer to a string containing the \c layer for
                  * the entity. */
 )
 {
