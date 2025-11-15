@@ -592,7 +592,7 @@ int
 dxf_3dface_write
 (
         DxfFile *fp,
-                /*!< [inout] a DXF \c FILE pointer to an output file (or device). */
+                /*!< [in,out] a DXF \c FILE pointer to an output file (or device). */
         Dxf3dface *face
                 /*!< [in] a pointer to a DXF \c 3DFACE entity. */
 )
