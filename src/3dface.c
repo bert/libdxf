@@ -1035,7 +1035,7 @@ int
 dxf_3dface_set_linetype
 (
         Dxf3dface *face,
-                /*!< [inout] a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         char *linetype
                 /*!< [in] a string containing the \c linetype for the entity. */
 )
