@@ -1213,9 +1213,9 @@ int
 dxf_3dface_set_elevation
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double elevation
-                /*!< the \c elevation to be set for the entity. */
+                /*!< [in] the \c elevation to be set for the entity. */
 )
 {
 #if DEBUG
