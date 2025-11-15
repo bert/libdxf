@@ -940,7 +940,7 @@ int
 dxf_3dface_set_id_code
 (
         Dxf3dface *face,
-                /*!< [inout] a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         int id_code
                 /*!< [in] Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
