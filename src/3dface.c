@@ -1249,9 +1249,9 @@ int
 dxf_3dface_get_thickness
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         double *thickness
-                /*!< a pointer to \c thickness. */
+                /*!< [out] a pointer to \c thickness. */
 )
 {
 #if DEBUG
