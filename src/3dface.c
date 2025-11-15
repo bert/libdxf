@@ -1078,9 +1078,9 @@ int
 dxf_3dface_get_layer
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         char *layer
-                /*!< a pointer to \c layer. */
+                /*!< [out] a pointer to \c layer. */
 )
 {
 #if DEBUG
