@@ -1296,9 +1296,9 @@ int
 dxf_3dface_set_thickness
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double thickness
-                /*!< the \c thickness to be set for the entity. */
+                /*!< [in] the \c thickness to be set for the entity. */
 )
 {
 #if DEBUG
