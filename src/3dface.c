@@ -1385,9 +1385,9 @@ int
 dxf_3dface_set_linetype_scale
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double linetype_scale
-                /*!< the \c linetype_scale to be set for the entity. */
+                /*!< [in] the \c linetype_scale to be set for the entity. */
 )
 {
 #if DEBUG
