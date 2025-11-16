@@ -1430,9 +1430,9 @@ int
 dxf_3dface_get_visibility
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int16_t *visibility
-                /*!< a pointer to \c visibility. */
+                /*!< [out] a pointer to \c visibility. */
 )
 {
 #if DEBUG
