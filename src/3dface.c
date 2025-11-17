@@ -3938,13 +3938,17 @@ dxf_3dface_set_y2
  * \brief Get the Z-value of the second alignment point \c z2 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Z-value of the second alignment point \c z2.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dface_get_z2
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        double *z2
+                /*!< [out] a pointer to the Z-value of the second
+                 * alignment point \c z2 of a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3966,10 +3970,11 @@ dxf_3dface_get_z2
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        z2 = &face->p2->z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p2->z0);
+        return (EXIT_SUCCESS);
 }
 
 
