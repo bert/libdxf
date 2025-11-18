@@ -4033,13 +4033,18 @@ dxf_3dface_set_z2
 /*!
  * \brief Get the third alignment point \c p3 of a DXF \c 3DFACE entity.
  *
- * \return the third alignment point \c p3.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-DxfPoint *
+int
 dxf_3dface_get_p3
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        DxfPoint *point
+                /*!< [out] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
@@ -4051,19 +4056,34 @@ dxf_3dface_get_p3
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                point = dxf_point_new ();
+                if (point == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        point = &face->p3;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p3);
+        return (EXIT_SUCCESS);
 }
 
 
