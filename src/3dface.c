@@ -4090,16 +4090,16 @@ dxf_3dface_get_p3
 /*!
  * \brief Set the third alignment point \c p3 of a DXF \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_p3
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
@@ -4111,20 +4111,20 @@ dxf_3dface_set_p3
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (point == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         face->p3 = (DxfPoint *) point;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
