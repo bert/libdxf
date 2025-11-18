@@ -4079,7 +4079,7 @@ dxf_3dface_get_p3
                         exit (EXIT_FAILURE);
                 }
         }
-        point = &face->p3;
+        point = face->p3;
 #if DEBUG
         DXF_DEBUG_END
 #endif
