@@ -4176,17 +4176,17 @@ dxf_3dface_get_x3
  * \brief Set the X-value of the third alignment point \c x3 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_set_x3
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double x3
-                /*!< the X-value of the third alignment point \c x3 of a
-                 * DXF \c 3DFACE entity. */
+                /*!< [in] the X-value of the third alignment point \c x3
+                 * of a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -4198,7 +4198,7 @@ dxf_3dface_set_x3
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->p3 == NULL)
         {
@@ -4213,14 +4213,14 @@ dxf_3dface_set_x3
                         fprintf (stderr,
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
         }
         face->p3->x0 = x3;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
