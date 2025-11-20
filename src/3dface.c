@@ -4321,13 +4321,17 @@ dxf_3dface_set_y3
  * \brief Get the Z-value of the third alignment point \c z3 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Z-value of the third alignment point \c z3.
+ * \return the Z-value of the third alignment point \c z3,
+ * \c EXIT_FAILURE when an error occurred.
  */
-double
+int
 dxf_3dface_get_z3
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        double *z3
+                /*!< [out] a pointer to the Z-value of the third
+                 * alignment point \c z3 of a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -4349,10 +4353,11 @@ dxf_3dface_get_z3
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        z3 = &face->p3->z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->p3->z0);
+        return (EXIT_SUCCESS);
 }
 
 
