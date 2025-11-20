@@ -1718,9 +1718,6 @@ dxf_3dface_set_paperspace
  * \brief Get the \c graphics_data_size value from a DXF \c 3DFACE
  * entity.
  *
- * <b>Flow diagram:</b>
- * \image html drakon/dxf_3dface_get_graphics_data_size.png
- *
  * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
  * error occurred.
  *
@@ -1730,9 +1727,9 @@ int
 dxf_3dface_get_graphics_data_size
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int32_t *graphics_data_size
-                /*!< a pointer to \c graphics_data_size. */
+                /*!< [out] a pointer to \c graphics_data_size. */
 )
 {
 #if DEBUG
