@@ -1583,9 +1583,9 @@ int
 dxf_3dface_set_color
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         int16_t color
-                /*!< the \c color to be set for the entity. */
+                /*!< [in] the \c color to be set for the entity. */
 )
 {
 #if DEBUG
