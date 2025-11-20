@@ -1829,9 +1829,9 @@ int
 dxf_3dface_get_shadow_mode
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int16_t *shadow_mode
-                /*!< a pointer to \c shadow_mode. */
+                /*!< [out] a pointer to \c shadow_mode. */
 )
 {
 #if DEBUG
