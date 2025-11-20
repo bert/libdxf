@@ -1536,9 +1536,9 @@ int
 dxf_3dface_get_color
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int16_t *color
-                /*!< a pointer to \c color. */
+                /*!< [out] a pointer to \c color. */
 )
 {
 #if DEBUG
