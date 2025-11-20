@@ -1931,9 +1931,9 @@ int
 dxf_3dface_get_binary_graphics_data
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         DxfBinaryData *data
-                /*!< a pointer to a DXF \c DxfBinaryData entity. */
+                /*!< [out] a pointer to a DXF \c DxfBinaryData entity. */
 )
 {
 #if DEBUG
