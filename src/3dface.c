@@ -1882,9 +1882,9 @@ int
 dxf_3dface_set_shadow_mode
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         int16_t shadow_mode
-                /*!< the shadow mode to be set for the entity. */
+                /*!< [in] the shadow mode to be set for the entity. */
 )
 {
 #if DEBUG
