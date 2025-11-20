@@ -1780,7 +1780,7 @@ int
 dxf_3dface_set_graphics_data_size
 (
         Dxf3dface *face,
-                /*!< [in,out]a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         int32_t graphics_data_size
                 /*!< [in] the \c graphics_data_size value to be set for the
                  * entity. */
