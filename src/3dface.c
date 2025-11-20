@@ -1980,9 +1980,9 @@ int
 dxf_3dface_set_binary_graphics_data
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         DxfBinaryData *data
-                /*!< a string containing the pointer to the
+                /*!< [in] a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
 )
 {
