@@ -4416,13 +4416,18 @@ dxf_3dface_set_z3
 /*!
  * \brief Get the \c flag value from a DXF \c 3DFACE entity.
  *
- * \return \c flag value.
+ * \return \c EXIT_SUCCESS when successful, \c EXIT_FAILURE when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
  */
-int16_t
+int
 dxf_3dface_get_flag
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        int16_t *flag
+                /*!< [out] a pointer to \c flag. */
 )
 {
 #if DEBUG
@@ -4436,24 +4441,37 @@ dxf_3dface_get_flag
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (flag == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                flag = malloc (sizeof (int16_t));
+                if (flag == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
         if (face->flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (face->flag > 15)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
+        flag = &face->flag;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face->flag);
+        return (EXIT_SUCCESS);
 }
 
 

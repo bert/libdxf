@@ -296,7 +296,7 @@ int dxf_3dface_get_y3 (Dxf3dface *face, double *y3);
 int dxf_3dface_set_y3 (Dxf3dface *face, double y3);
 int dxf_3dface_get_z3 (Dxf3dface *face, double *z3);
 int dxf_3dface_set_z3 (Dxf3dface *face, double z3);
-int16_t dxf_3dface_get_flag (Dxf3dface *face);
+int dxf_3dface_get_flag (Dxf3dface *face, int16_t *flag);
 Dxf3dface *dxf_3dface_set_flag (Dxf3dface *face, int16_t flag);
 int dxf_3dface_is_first_edge_invisible (Dxf3dface *face);
 int dxf_3dface_is_second_edge_invisible (Dxf3dface *face);
