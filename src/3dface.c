@@ -5206,15 +5206,19 @@ dxf_3dface_create_from_points
  * \brief Get the pointer to the next \c 3DFACE entity from a DXF 
  * \c 3DFACE entity.
  *
- * \return pointer to the next \c 3DFACE entity.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-Dxf3dface *
+int
 dxf_3dface_get_next
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in,out]a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *next
+                /*!< [in] a pointer to the next DXF \c 3DFACE entity in
+                 *   a linked list. */
 )
 {
 #if DEBUG
@@ -5226,19 +5230,34 @@ dxf_3dface_get_next
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (face->next == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                next = dxf_3dface_new ();
+                if (next == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        next = (Dxf3dface *) face->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((Dxf3dface *) face->next);
+        return (EXIT_SUCCESS);
 }
 
 
