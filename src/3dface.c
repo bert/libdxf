@@ -5215,9 +5215,9 @@ int
 dxf_3dface_get_next
 (
         Dxf3dface *face,
-                /*!< [in,out]a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         Dxf3dface *next
-                /*!< [in] a pointer to the next DXF \c 3DFACE entity in
+                /*!< [out] a pointer to the next DXF \c 3DFACE entity in
                  *   a linked list. */
 )
 {
