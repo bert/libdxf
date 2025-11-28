@@ -4613,13 +4613,13 @@ dxf_3dface_is_third_edge_invisible
  * \brief Test if the fourth edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge
- * is visible.
+ * is visible, or \c EXIT_FAILURE when an error occurred.
  */
 int
 dxf_3dface_is_fourth_edge_invisible
 (
         Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #if DEBUG
