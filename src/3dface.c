@@ -4647,23 +4647,26 @@ dxf_3dface_is_fourth_edge_invisible
  * \return a pointer to \c face when successful, or \c NULL when an
  * error occurred.
  */
-Dxf3dface *
+int
 dxf_3dface_create_from_points
 (
+        Dxf3dface *face,
+                /*!< [out] a pointer to the memory occupied by the DXF
+                 * \c 3DFACE entity. */
         DxfPoint *p0,
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
         DxfPoint *p1,
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
         DxfPoint *p2,
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
         DxfPoint *p3,
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
         int id_code,
-                /*!< Identification number for the entity.\n
+                /*!< [in] Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
         int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
+                /*!< [in] Inherit layer, linetype, color and other relevant
                  * properties from either:
                  * <ol>
                  * <li value = "0"> Default (as initialised).</li>
@@ -4678,9 +4681,27 @@ dxf_3dface_create_from_points
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dface *face = NULL;
-
         /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                face = dxf_3dface_new ();
+                if (face == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () overwriting existing entity data.\n")),
+                  __FUNCTION__);
+        }
         if (((p0 != NULL) && (p1 != NULL) && (p2 != NULL))
           || ((p0 != NULL) && (p1 != NULL) && (p3 != NULL))
           || ((p1 != NULL) && (p2 != NULL) && (p3 != NULL)))
@@ -4693,7 +4714,7 @@ dxf_3dface_create_from_points
                 fprintf (stderr,
                   (_("Error in %s () to many NULL pointers were passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (id_code < 0)
         {
@@ -4706,13 +4727,7 @@ dxf_3dface_create_from_points
                 fprintf (stderr,
                   (_("Warning in %s () an illegal inherit value was passed.\n")),
                   __FUNCTION__);
-        }
-        if (dxf_3dface_init (face))
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                  __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (p0 == NULL)
         {
@@ -4754,427 +4769,436 @@ dxf_3dface_create_from_points
         {
                 face->p3 = (DxfPoint *) p3;
         }
-        switch (inheritance)
+        if (inheritance == 0)
         {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (p0 == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                                  __FUNCTION__);
-                                break;
-                        }
-                        if (p0->linetype == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->linetype = strdup (p0->linetype);
-                        }
-                        if (p0->layer == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->layer = strdup (p0->layer);
-                        }
-                        face->elevation = p0->elevation;
-                        face->thickness = p0->thickness;
-                        face->linetype_scale = p0->linetype_scale;
-                        face->visibility = p0->visibility;
-                        face->color = p0->color;
-                        face->paperspace = p0->paperspace;
-                        /*! \todo Add graphics_data_size. */
-                        face->shadow_mode = p0->shadow_mode;
-                        /*! \todo Add binary_graphics_data. */
-                        if (p0->dictionary_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_soft = strdup (p0->dictionary_owner_soft);
-                        }
-                        if (p0->object_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->object_owner_soft = strdup (p0->object_owner_soft);
-                        }
-                        if (p0->material == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->material = strdup (p0->material);
-                        }
-                        if (p0->dictionary_owner_hard == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_hard = strdup (p0->dictionary_owner_hard);
-                        }
-                        face->lineweight = p0->lineweight;
-                        if (p0->plot_style_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->plot_style_name = strdup (p0->plot_style_name);
-                        }
-                        face->color_value = p0->color_value;
-                        if (p0->color_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->color_name = strdup (p0->color_name);
-                        }
-                        face->transparency = p0->transparency;
-                        break;
-                case 2:
-                        if (p1 == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                                  __FUNCTION__);
-                                break;
-                        }
-                        if (p1->linetype == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->linetype = strdup (p1->linetype);
-                        }
-                        if (p1->layer == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->layer = strdup (p1->layer);
-                        }
-                        face->elevation = p1->elevation;
-                        face->thickness = p1->thickness;
-                        face->linetype_scale = p1->linetype_scale;
-                        face->visibility = p1->visibility;
-                        face->color = p1->color;
-                        face->paperspace = p1->paperspace;
-                        /*! \todo Add graphics_data_size. */
-                        face->shadow_mode = p1->shadow_mode;
-                        /*! \todo Add binary_graphics_data. */
-                        if (p1->dictionary_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_soft = strdup (p1->dictionary_owner_soft);
-                        }
-                        if (p1->object_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->object_owner_soft = strdup (p1->object_owner_soft);
-                        }
-                        if (p1->material == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->material = strdup (p1->material);
-                        }
-                        if (p1->dictionary_owner_hard == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
-                        }
-                        face->lineweight = p1->lineweight;
-                        if (p1->plot_style_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->plot_style_name = strdup (p1->plot_style_name);
-                        }
-                        face->color_value = p1->color_value;
-                        if (p1->color_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->color_name = strdup (p1->color_name);
-                        }
-                        face->transparency = p1->transparency;
-                        break;
-                case 3:
-                        if (p2 == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                                  __FUNCTION__);
-                                break;
-                        }
-                        if (p2->linetype == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->linetype = strdup (p2->linetype);
-                        }
-                        if (p2->layer == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->layer = strdup (p2->layer);
-                        }
-                        face->elevation = p2->elevation;
-                        face->thickness = p2->thickness;
-                        face->linetype_scale = p2->linetype_scale;
-                        face->visibility = p2->visibility;
-                        face->color = p2->color;
-                        face->paperspace = p2->paperspace;
-                        /*! \todo Add graphics_data_size. */
-                        face->shadow_mode = p2->shadow_mode;
-                        /*! \todo Add binary_graphics_data. */
-                        if (p2->dictionary_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_soft = strdup (p2->dictionary_owner_soft);
-                        }
-                        if (p2->object_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->object_owner_soft = strdup (p2->object_owner_soft);
-                        }
-                        if (p2->material == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->material = strdup (p2->material);
-                        }
-                        if (p2->dictionary_owner_hard == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_hard = strdup (p2->dictionary_owner_hard);
-                        }
-                        face->lineweight = p2->lineweight;
-                        if (p2->plot_style_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->plot_style_name = strdup (p2->plot_style_name);
-                        }
-                        face->color_value = p2->color_value;
-                        if (p2->color_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->color_name = strdup (p2->color_name);
-                        }
-                        face->transparency = p2->transparency;
-                        break;
-                case 4:
-                        if (p3 == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                                  __FUNCTION__);
-                                break;
-                        }
-                        if (p3->linetype == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->linetype = strdup (p3->linetype);
-                        }
-                        if (p3->layer == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->layer = strdup (p3->layer);
-                        }
-                        face->elevation = p3->elevation;
-                        face->thickness = p3->thickness;
-                        face->linetype_scale = p3->linetype_scale;
-                        face->visibility = p3->visibility;
-                        face->color = p3->color;
-                        face->paperspace = p3->paperspace;
-                        /*! \todo Add graphics_data_size. */
-                        face->shadow_mode = p3->shadow_mode;
-                        /*! \todo Add binary_graphics_data. */
-                        if (p3->dictionary_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_soft = strdup (p3->dictionary_owner_soft);
-                        }
-                        if (p3->object_owner_soft == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->object_owner_soft = strdup (p3->object_owner_soft);
-                        }
-                        if (p3->material == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->material = strdup (p3->material);
-                        }
-                        if (p3->dictionary_owner_hard == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->dictionary_owner_hard = strdup (p3->dictionary_owner_hard);
-                        }
-                        face->lineweight = p3->lineweight;
-                        if (p3->plot_style_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->plot_style_name = strdup (p3->plot_style_name);
-                        }
-                        face->color_value = p3->color_value;
-                        if (p3->color_name == NULL)
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () a NULL pointer was found.\n")),
-                                  __FUNCTION__);
-                        }
-                        else
-                        {
-                                face->color_name = strdup (p3->color_name);
-                        }
-                        face->transparency = p3->transparency;
-                        break;
-                default:
+                fprintf (stderr,
+                  (_("\tResolving to default properties.\n")));
+                dxf_3dface_init (face);
+                return (EXIT_SUCCESS);
+        }
+        else if (inheritance == 1)
+        {
+                if (p0 == NULL)
+                {
                         fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
+                          (_("Warning in %s () a NULL pointer was passed.\n")),
                           __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
+                if (p0->linetype == NULL)
+                {
                         fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->linetype = strdup (p0->linetype);
+                }
+                if (p0->layer == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->layer = strdup (p0->layer);
+                }
+                face->elevation = p0->elevation;
+                face->thickness = p0->thickness;
+                face->linetype_scale = p0->linetype_scale;
+                face->visibility = p0->visibility;
+                face->color = p0->color;
+                face->paperspace = p0->paperspace;
+                /*! \todo Add graphics_data_size. */
+                face->shadow_mode = p0->shadow_mode;
+                /*! \todo Add binary_graphics_data. */
+                if (p0->dictionary_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_soft = strdup (p0->dictionary_owner_soft);
+                }
+                if (p0->object_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->object_owner_soft = strdup (p0->object_owner_soft);
+                }
+                if (p0->material == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->material = strdup (p0->material);
+                }
+                if (p0->dictionary_owner_hard == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_hard = strdup (p0->dictionary_owner_hard);
+                }
+                face->lineweight = p0->lineweight;
+                if (p0->plot_style_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->plot_style_name = strdup (p0->plot_style_name);
+                }
+                face->color_value = p0->color_value;
+                if (p0->color_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->color_name = strdup (p0->color_name);
+                }
+                face->transparency = p0->transparency;
+                return (EXIT_SUCCESS);
+        }
+        else if (inheritance == 2)
+        {
+                if (p1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was passed.\n")),
+                          __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
+                if (p1->linetype == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->linetype = strdup (p1->linetype);
+                }
+                if (p1->layer == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->layer = strdup (p1->layer);
+                }
+                face->elevation = p1->elevation;
+                face->thickness = p1->thickness;
+                face->linetype_scale = p1->linetype_scale;
+                face->visibility = p1->visibility;
+                face->color = p1->color;
+                face->paperspace = p1->paperspace;
+                /*! \todo Add graphics_data_size. */
+                face->shadow_mode = p1->shadow_mode;
+                /*! \todo Add binary_graphics_data. */
+                if (p1->dictionary_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_soft = strdup (p1->dictionary_owner_soft);
+                }
+                if (p1->object_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->object_owner_soft = strdup (p1->object_owner_soft);
+                }
+                if (p1->material == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->material = strdup (p1->material);
+                }
+                if (p1->dictionary_owner_hard == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
+                }
+                face->lineweight = p1->lineweight;
+                if (p1->plot_style_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->plot_style_name = strdup (p1->plot_style_name);
+                }
+                face->color_value = p1->color_value;
+                if (p1->color_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->color_name = strdup (p1->color_name);
+                }
+                face->transparency = p1->transparency;
+                return (EXIT_SUCCESS);
+        }
+        else if (inheritance == 3)
+        {
+                if (p2 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was passed.\n")),
+                          __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
+                if (p2->linetype == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->linetype = strdup (p2->linetype);
+                }
+                if (p2->layer == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->layer = strdup (p2->layer);
+                }
+                face->elevation = p2->elevation;
+                face->thickness = p2->thickness;
+                face->linetype_scale = p2->linetype_scale;
+                face->visibility = p2->visibility;
+                face->color = p2->color;
+                face->paperspace = p2->paperspace;
+                /*! \todo Add graphics_data_size. */
+                face->shadow_mode = p2->shadow_mode;
+                /*! \todo Add binary_graphics_data. */
+                if (p2->dictionary_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_soft = strdup (p2->dictionary_owner_soft);
+                }
+                if (p2->object_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->object_owner_soft = strdup (p2->object_owner_soft);
+                }
+                if (p2->material == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->material = strdup (p2->material);
+                }
+                if (p2->dictionary_owner_hard == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_hard = strdup (p2->dictionary_owner_hard);
+                }
+                face->lineweight = p2->lineweight;
+                if (p2->plot_style_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->plot_style_name = strdup (p2->plot_style_name);
+                }
+                face->color_value = p2->color_value;
+                if (p2->color_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->color_name = strdup (p2->color_name);
+                }
+                face->transparency = p2->transparency;
+                return (EXIT_SUCCESS);
+        }
+        else if (inheritance == 4)
+        {
+                if (p3 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was passed.\n")),
+                          __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
+                if (p3->linetype == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->linetype = strdup (p3->linetype);
+                }
+                if (p3->layer == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->layer = strdup (p3->layer);
+                }
+                face->elevation = p3->elevation;
+                face->thickness = p3->thickness;
+                face->linetype_scale = p3->linetype_scale;
+                face->visibility = p3->visibility;
+                face->color = p3->color;
+                face->paperspace = p3->paperspace;
+                /*! \todo Add graphics_data_size. */
+                face->shadow_mode = p3->shadow_mode;
+                /*! \todo Add binary_graphics_data. */
+                if (p3->dictionary_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_soft = strdup (p3->dictionary_owner_soft);
+                }
+                if (p3->object_owner_soft == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->object_owner_soft = strdup (p3->object_owner_soft);
+                }
+                if (p3->material == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->material = strdup (p3->material);
+                }
+                if (p3->dictionary_owner_hard == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->dictionary_owner_hard = strdup (p3->dictionary_owner_hard);
+                }
+                face->lineweight = p3->lineweight;
+                if (p3->plot_style_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->plot_style_name = strdup (p3->plot_style_name);
+                }
+                face->color_value = p3->color_value;
+                if (p3->color_name == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () a NULL pointer was found.\n")),
+                          __FUNCTION__);
+                }
+                else
+                {
+                        face->color_name = strdup (p3->color_name);
+                }
+                face->transparency = p3->transparency;
+                return (EXIT_SUCCESS);
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Warning in %s (): unknown inheritance option passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
