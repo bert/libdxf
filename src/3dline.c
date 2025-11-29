@@ -158,15 +158,16 @@ dxf_3dline_init
  * \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c line.
  *
- * \return a pointer to \c line.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_read
 (
         DxfFile *fp,
-                /*!< a DXF file pointer to an input file (or device). */
+                /*!< [in] a DXF file pointer to an input file (or device). */
         Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [out] a pointer to a DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
@@ -184,7 +185,7 @@ dxf_3dline_read
                   __FUNCTION__);
                 /* Clean up. */
                 free (temp_string);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line == NULL)
         {
@@ -192,6 +193,13 @@ dxf_3dline_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dline_init (line);
+                if (line == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
         }
         if (line->binary_graphics_data == NULL)
         {
@@ -204,9 +212,9 @@ dxf_3dline_read
                 if (line->binary_graphics_data == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         if (line->p0 == NULL)
@@ -220,9 +228,9 @@ dxf_3dline_read
                 if (line->p0 == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         if (line->p1 == NULL)
@@ -236,9 +244,9 @@ dxf_3dline_read
                 if (line->p1 == NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () could not allocate memory.\n")),
+                          (_("Critical error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        exit (EXIT_FAILURE);
                 }
         }
         iter310 = (DxfBinaryData *) line->binary_graphics_data;
@@ -255,7 +263,7 @@ dxf_3dline_read
                         fclose (fp->fp);
                         /* Clean up. */
                         free (temp_string);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -520,7 +528,7 @@ dxf_3dline_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
