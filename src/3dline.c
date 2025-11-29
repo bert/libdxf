@@ -89,15 +89,15 @@ dxf_3dline_new
 /*!
  * \brief Allocate memory and initialize data fields in a DXF \c 3DLINE
  * entity.
- *
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when successful.
+ * 
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_init
 (
         Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
@@ -114,9 +114,9 @@ dxf_3dline_init
         if (line == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
+                  (_("Critical error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
-              return (NULL);
+                exit (EXIT_FAILURE);
         }
         /* Assign initial values to members. */
         line->id_code = 0;
@@ -142,16 +142,10 @@ dxf_3dline_init
         line->extr_x0 = 0.0;
         line->extr_y0 = 0.0;
         line->extr_z0 = 0.0;
-        /* Initialize new structs for the following members later,
-         * when they are required and when we have content. */
-        line->binary_graphics_data = NULL;
-        line->p0 = NULL;
-        line->p1 = NULL;
-        line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -197,7 +191,7 @@ dxf_3dline_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                line = dxf_3dline_init (line);
+                dxf_3dline_init (line);
         }
         if (line->binary_graphics_data == NULL)
         {
@@ -3724,7 +3718,7 @@ dxf_3dline_create_from_points
                   (_("Warning in %s () an illegal inherit value was passed.\n")),
                   __FUNCTION__);
         }
-        line = dxf_3dline_init (line);
+        dxf_3dline_init (line);
         if (line == NULL)
         {
               fprintf (stderr,
