@@ -47,16 +47,19 @@
  *
  * Fill the memory contents with zeros.
  *
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when successful.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dface *
-dxf_3dface_new ()
+int
+dxf_3dface_new
+(
+        Dxf3dface *face
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
+)
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dface *face = NULL;
         size_t size;
 
         size = sizeof (Dxf3dface);
@@ -77,7 +80,7 @@ dxf_3dface_new ()
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (face);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -104,7 +107,7 @@ dxf_3dface_init
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                face = dxf_3dface_new ();
+                dxf_3dface_new (face);
                 if (face == NULL)
                 {
                         fprintf (stderr,
@@ -182,7 +185,7 @@ dxf_3dface_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                face = dxf_3dface_new ();
+                dxf_3dface_new (face);
                 if (face == NULL)
                 {
                         fprintf (stderr,
@@ -4687,7 +4690,7 @@ dxf_3dface_create_from_points
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                face = dxf_3dface_new ();
+                dxf_3dface_new (face);
                 if (face == NULL)
                 {
                         fprintf (stderr,
@@ -5244,7 +5247,7 @@ dxf_3dface_get_next
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                next = dxf_3dface_new ();
+                dxf_3dface_new (next);
                 if (next == NULL)
                 {
                         fprintf (stderr,
