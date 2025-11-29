@@ -1,8 +1,8 @@
 /*!
  * \file 3dline.c
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2025
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023,
+ * 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D line entity (\c 3DLINE).
  *
@@ -50,16 +50,19 @@
  *
  * Fill the memory contents with zeros.
  *
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when successful.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
-dxf_3dline_new ()
+int
+dxf_3dline_new
+(
+        Dxf3dline *line
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dline *line = NULL;
         size_t size;
 
         size = sizeof (Dxf3dline);
@@ -68,9 +71,9 @@ dxf_3dline_new ()
         if ((line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
+                  (_("Critical error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
-                line = NULL;
+                exit (EXIT_FAILURE);
         }
         else
         {
@@ -79,7 +82,7 @@ dxf_3dline_new ()
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -106,7 +109,7 @@ dxf_3dline_init
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                line = dxf_3dline_new ();
+                dxf_3dline_new (line);
         }
         if (line == NULL)
         {

@@ -216,7 +216,7 @@ dxf_3dline_struct
 } Dxf3dline;
 
 
-Dxf3dline *dxf_3dline_new ();
+int dxf_3dline_new (Dxf3dline *line);
 Dxf3dline *dxf_3dline_init (Dxf3dline *line);
 Dxf3dline *dxf_3dline_read (DxfFile *fp, Dxf3dline *line);
 int dxf_3dline_write (DxfFile *fp, Dxf3dline *line);
