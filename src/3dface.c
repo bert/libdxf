@@ -5307,15 +5307,19 @@ dxf_3dface_set_next
  * \brief Get the pointer to the last \c 3DFACE entity from a linked
  * list of DXF \c 3DFACE entities.
  *
- * \return pointer to the last \c 3DFACE entity.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-Dxf3dface *
+int
 dxf_3dface_get_last
 (
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *face,
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *last
+                /*!< [out] a pointer to the last DXF \c 3DFACE entity in
+                 *   a linked list. */
 )
 {
 #if DEBUG
@@ -5327,24 +5331,43 @@ dxf_3dface_get_last
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
+        }
+        if (last == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                last = malloc (sizeof (Dxf3dface));
+                if (last == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
         }
         if (face->next == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return ((Dxf3dface *) face);
+                last = ((Dxf3dface *) face);
+                return (EXIT_SUCCESS);
         }
-        Dxf3dface *iter = (Dxf3dface *) face->next;
-        while (iter->next != NULL)
+        else
         {
-                iter = (Dxf3dface *) iter->next;
+                Dxf3dface *iter = (Dxf3dface *) face->next;
+                while (iter->next != NULL)
+                {
+                        iter = (Dxf3dface *) iter->next;
+                }
+                last = ((Dxf3dface *) iter);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((Dxf3dface *) iter);
+        return (EXIT_SUCCESS);
 }
 
 
