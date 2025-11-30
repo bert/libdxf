@@ -847,8 +847,10 @@ dxf_3dline_free_list
 int
 dxf_3dline_get_id_code
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int *id_code
+                /*!< [out] a pointer to \c id_code. */
 )
 {
 #if DEBUG
@@ -868,10 +870,11 @@ dxf_3dline_get_id_code
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        id_code = &line->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->id_code);
+        return (EXIT_SUCCESS);
 }
 
 
