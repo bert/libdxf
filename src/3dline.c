@@ -880,14 +880,17 @@ dxf_3dline_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DLINE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_id_code
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         int id_code
-                /*!< Identification number for the entity.\n
+                /*!< [in] identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
 )
@@ -901,7 +904,7 @@ dxf_3dline_set_id_code
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (id_code < 0)
         {
@@ -913,7 +916,7 @@ dxf_3dline_set_id_code
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 

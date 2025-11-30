@@ -223,7 +223,7 @@ int dxf_3dline_write (DxfFile *fp, Dxf3dline *line);
 int dxf_3dline_free (Dxf3dline *line);
 int dxf_3dline_free_list (Dxf3dline *lines);
 int dxf_3dline_get_id_code (Dxf3dline *line, int *id_code);
-Dxf3dline *dxf_3dline_set_id_code (Dxf3dline *line, int id_code);
+int dxf_3dline_set_id_code (Dxf3dline *line, int id_code);
 char *dxf_3dline_get_linetype (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_linetype (Dxf3dline *line, char *linetype);
 char *dxf_3dline_get_layer (Dxf3dline *line);
