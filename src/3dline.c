@@ -842,7 +842,8 @@ dxf_3dline_free_list
 /*!
  * \brief Get the ID code from a DXF \c 3DLINE entity.
  *
- * \return \c id_code.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dline_get_id_code
