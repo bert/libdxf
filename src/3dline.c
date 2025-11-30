@@ -924,13 +924,17 @@ dxf_3dline_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DLINE entity.
  *
- * \return \c linetype when sucessful, \c NULL when an error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-char *
+int
 dxf_3dline_get_linetype
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        char *linetype
+                /*!< [out] a pointer to a string containing the
+                 * \c linetype for the entity. */
 )
 {
 #if DEBUG
@@ -942,19 +946,27 @@ dxf_3dline_get_linetype
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->linetype ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        linetype = strdup (line->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (line->linetype));
+        return (EXIT_SUCCESS);
 }
 
 
