@@ -226,7 +226,7 @@ int dxf_3dline_get_id_code (Dxf3dline *line, int *id_code);
 int dxf_3dline_set_id_code (Dxf3dline *line, int id_code);
 int dxf_3dline_get_linetype (Dxf3dline *line, char *linetype);
 int dxf_3dline_set_linetype (Dxf3dline *line, char *linetype);
-char *dxf_3dline_get_layer (Dxf3dline *line);
+int dxf_3dline_get_layer (Dxf3dline *line, char *layer);
 Dxf3dline *dxf_3dline_set_layer (Dxf3dline *line, char *layer);
 double dxf_3dline_get_elevation (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_elevation (Dxf3dline *line, double elevation);

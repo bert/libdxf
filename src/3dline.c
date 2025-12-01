@@ -1017,13 +1017,16 @@ dxf_3dline_set_linetype
 /*!
  * \brief Get the layer from a DXF \c 3DLINE entity.
  *
- * \return layer when sucessful, \c NULL when an error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-char *
+int
 dxf_3dline_get_layer
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        char *layer
+                /*!< [out] a pointer to \c layer. */
 )
 {
 #if DEBUG
@@ -1044,10 +1047,18 @@ dxf_3dline_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        layer = strdup (line->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (line->layer));
+        return (EXIT_SUCCESS);
 }
 
 
