@@ -1108,13 +1108,17 @@ dxf_3dline_set_layer
 /*!
  * \brief Get the elevation from a DXF \c 3DLINE entity.
  *
- * \return elevation.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dline_get_elevation
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *elevation
+                /*!< [out] a pointer to the \celevation to be set for
+                 * the entity. */
 )
 {
 #if DEBUG
@@ -1128,10 +1132,18 @@ dxf_3dline_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (elevation == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        elevation = &line->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->elevation);
+        return (EXIT_SUCCESS);
 }
 
 
