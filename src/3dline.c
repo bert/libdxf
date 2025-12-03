@@ -1117,8 +1117,7 @@ dxf_3dline_get_elevation
         Dxf3dline *line,
                 /*!< [in] a pointer to a DXF \c 3DLINE entity. */
         double *elevation
-                /*!< [out] a pointer to the \celevation to be set for
-                 * the entity. */
+                /*!< [out] a pointer to \c elevation. */
 )
 {
 #if DEBUG
