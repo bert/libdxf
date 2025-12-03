@@ -1186,11 +1186,13 @@ dxf_3dline_set_elevation
  *
  * \return thickness.
  */
-double
+int
 dxf_3dline_get_thickness
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *thickness
+                /*!< [out] a pointer to \c thickness. */
 )
 {
 #if DEBUG
@@ -1204,16 +1206,24 @@ dxf_3dline_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (thickness == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (line->thickness < 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        thickness = &line->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->thickness);
+        return (EXIT_SUCCESS);
 }
 
 
