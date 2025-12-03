@@ -1184,7 +1184,8 @@ dxf_3dline_set_elevation
 /*!
  * \brief Get the thickness from a DXF \c 3DLINE entity.
  *
- * \return thickness.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dline_get_thickness
