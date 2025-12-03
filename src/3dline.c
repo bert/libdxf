@@ -1159,7 +1159,8 @@ dxf_3dline_set_elevation
         Dxf3dline *line,
                 /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         double elevation
-                /*!< [in] the elevation to be set for the entity. */
+                /*!< [in] a pointer to the \c elevation to be set for
+                 * the entity. */
 )
 {
 #if DEBUG
