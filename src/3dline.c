@@ -1271,15 +1271,18 @@ dxf_3dline_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c 3DLINE entity.
  *
- * \return \c linetype_scale.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \since The linetype scale was added in DXF R13.
  */
-double
+int
 dxf_3dline_get_linetype_scale
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *linetype_scale
+                /*!< [out] the linetype scale to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1293,16 +1296,24 @@ dxf_3dline_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (linetype_scale == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (line->linetype_scale < 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        linetype_scale = &line->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->linetype_scale);
+        return (EXIT_SUCCESS);
 }
 
 
