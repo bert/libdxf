@@ -1513,14 +1513,17 @@ dxf_3dline_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DLINE entity.
+ *
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_color
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         int16_t color
-                /*!< the color to be set for the entity. */
+                /*!< [in] the color to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1532,7 +1535,7 @@ dxf_3dline_set_color
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (color < 0)
         {
@@ -1544,7 +1547,7 @@ dxf_3dline_set_color
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
