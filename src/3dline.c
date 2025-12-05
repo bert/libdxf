@@ -1607,16 +1607,20 @@ dxf_3dline_get_paperspace
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DLINE entity.
  *
- * \note the paperpspace flag was added in DXF R13 and is included for
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \since the paperpspace flag was added in DXF R13 and is included for
  * forward compatibility.
  */
-Dxf3dline *
+int
 dxf_3dline_set_paperspace
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         int16_t paperspace
-                /*!< the paperspace flag value to be set for the entity. */
+                /*!< [in] the \c paperspace flag value to be set for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -1628,7 +1632,7 @@ dxf_3dline_set_paperspace
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (paperspace < 0)
         {
@@ -1646,7 +1650,7 @@ dxf_3dline_set_paperspace
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
