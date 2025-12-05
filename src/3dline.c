@@ -1418,16 +1418,19 @@ dxf_3dline_get_visibility
 /*!
  * \brief Set the visibility for a DXF \c 3DLINE entity.
  *
- * \note The visibility was added in DXF R13 and is included for
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \since The visibility was added in DXF R13 and is included for
  * forward compatibility.
  */
-Dxf3dline *
+int
 dxf_3dline_set_visibility
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         int16_t visibility
-                /*!< the visibility to be set for the entity. */
+                /*!< [in] the visibility to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1439,7 +1442,7 @@ dxf_3dline_set_visibility
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (visibility < 0)
         {
@@ -1457,7 +1460,7 @@ dxf_3dline_set_visibility
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
