@@ -1554,13 +1554,16 @@ dxf_3dline_set_color
 /*!
  * \brief Get the paperspace flag value from a DXF \c 3DLINE entity.
  *
- * \return paperspace flag value.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-int16_t
+int
 dxf_3dline_get_paperspace
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int16_t *paperspace
+                /*!< [out] a pointer to \c paperspace. */
 )
 {
 #if DEBUG
@@ -1568,6 +1571,13 @@ dxf_3dline_get_paperspace
 #endif
         /* Do some basic checks. */
         if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (paperspace == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -1586,10 +1596,11 @@ dxf_3dline_get_paperspace
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        paperspace = &line->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->paperspace);
+        return (EXIT_SUCCESS);
 }
 
 
