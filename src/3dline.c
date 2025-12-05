@@ -1374,7 +1374,7 @@ dxf_3dline_get_visibility
         Dxf3dline *line,
                 /*!< [in] a pointer to a DXF \c 3DLINE entity. */
         int16_t *visibility
-                /*!< [out] the visibility to be set for the entity. */
+                /*!< [out] a pointer to \c visibility. */
 )
 {
 #if DEBUG
