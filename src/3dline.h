@@ -236,7 +236,7 @@ int dxf_3dline_get_linetype_scale (Dxf3dline *line, double *linetype_scale);
 int dxf_3dline_set_linetype_scale (Dxf3dline *line, double linetype_scale);
 int dxf_3dline_get_visibility (Dxf3dline *line, int16_t *visibility);
 int dxf_3dline_set_visibility (Dxf3dline *line, int16_t visibility);
-int16_t dxf_3dline_get_color (Dxf3dline *line);
+int dxf_3dline_get_color (Dxf3dline *line, int16_t *color);
 Dxf3dline *dxf_3dline_set_color (Dxf3dline *line, int16_t color);
 int16_t dxf_3dline_get_paperspace (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_paperspace (Dxf3dline *line, int16_t paperspace);

@@ -1467,13 +1467,16 @@ dxf_3dline_set_visibility
 /*!
  * \brief Get the color from a DXF \c 3DLINE entity.
  *
- * \return \c color.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-int16_t
+int
 dxf_3dline_get_color
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int16_t *color
+                /*!< [out] a pointer to \c color. */
 )
 {
 #if DEBUG
@@ -1487,16 +1490,24 @@ dxf_3dline_get_color
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (color == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (line->color < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        color = &line->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->color);
+        return (EXIT_SUCCESS);
 }
 
 
