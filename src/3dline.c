@@ -1282,7 +1282,7 @@ dxf_3dline_get_linetype_scale
         Dxf3dline *line,
                 /*!< [in] a pointer to a DXF \c 3DLINE entity. */
         double *linetype_scale
-                /*!< [out] the linetype scale to be set for the entity. */
+                /*!< [out] a pointer to \c linetype_scale. */
 )
 {
 #if DEBUG
