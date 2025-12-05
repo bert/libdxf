@@ -1362,16 +1362,19 @@ dxf_3dline_set_linetype_scale
 /*!
  * \brief Get the visibility from a DXF \c 3DLINE entity.
  *
- * \return visibility.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \note The visibility was added in DXF R13 and is included for
  * forward compatibility.
  */
-int16_t
+int
 dxf_3dline_get_visibility
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int16_t *visibility
+                /*!< [out] the visibility to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1379,6 +1382,13 @@ dxf_3dline_get_visibility
 #endif
         /* Do some basic checks. */
         if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (visibility == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -1397,10 +1407,11 @@ dxf_3dline_get_visibility
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        visibility = &line->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->visibility);
+        return (EXIT_SUCCESS);
 }
 
 
