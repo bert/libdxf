@@ -1859,15 +1859,18 @@ dxf_3dline_set_shadow_mode
  * \brief Get the pointer to the binary graphics data from a DXF 
  * \c 3DLINE entity.
  *
- * \return pointer to the binary graphics data.
+ * \return \c EXIT_SUCCESS when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-DxfBinaryData *
+int
 dxf_3dline_get_binary_graphics_data
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        DxfBinaryData *data
+                /*!< [out] a pointer to the \c binary_graphics_data. */
 )
 {
 #if DEBUG
@@ -1879,19 +1882,27 @@ dxf_3dline_get_binary_graphics_data
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         if (line->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        data = (DxfBinaryData *) &line->binary_graphics_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryData *) line->binary_graphics_data);
+        return (EXIT_SUCCESS);
 }
 
 

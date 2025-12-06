@@ -244,7 +244,7 @@ int dxf_3dline_get_graphics_data_size (Dxf3dline *line, int32_t *graphics_data_s
 int dxf_3dline_set_graphics_data_size (Dxf3dline *line, int32_t graphics_data_size);
 int dxf_3dline_get_shadow_mode (Dxf3dline *line, int16_t *shadow_mode);
 int dxf_3dline_set_shadow_mode (Dxf3dline *line, int16_t shadow_mode);
-DxfBinaryData *dxf_3dline_get_binary_graphics_data (Dxf3dline *line);
+int dxf_3dline_get_binary_graphics_data (Dxf3dline *line, DxfBinaryData *data);
 Dxf3dline *dxf_3dline_set_binary_graphics_data (Dxf3dline *line, DxfBinaryData *data);
 char *dxf_3dline_get_dictionary_owner_soft (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_dictionary_owner_soft (Dxf3dline *line, char *dictionary_owner_soft);
