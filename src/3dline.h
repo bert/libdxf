@@ -241,7 +241,7 @@ int dxf_3dline_set_color (Dxf3dline *line, int16_t color);
 int dxf_3dline_get_paperspace (Dxf3dline *line, int16_t *paperspace);
 int dxf_3dline_set_paperspace (Dxf3dline *line, int16_t paperspace);
 int dxf_3dline_get_graphics_data_size (Dxf3dline *line, int32_t *graphics_data_size);
-Dxf3dline *dxf_3dline_set_graphics_data_size (Dxf3dline *line, int32_t graphics_data_size);
+int dxf_3dline_set_graphics_data_size (Dxf3dline *line, int32_t graphics_data_size);
 int16_t dxf_3dline_get_shadow_mode (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_shadow_mode (Dxf3dline *line, int16_t shadow_mode);
 DxfBinaryData *dxf_3dline_get_binary_graphics_data (Dxf3dline *line);
