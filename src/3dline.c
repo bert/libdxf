@@ -1759,14 +1759,16 @@ dxf_3dline_set_graphics_data_size
 /*!
  * \brief Get the \c shadow_mode from a DXF \c 3DLINE entity.
  *
- * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
+ * \return \c EXIT_SUCCESS when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-int16_t
+int
 dxf_3dline_get_shadow_mode
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int16_t *shadow_mode
+                /*!< [out] a pointer to \c shadow mode. */
 )
 {
 #if DEBUG
@@ -1774,6 +1776,13 @@ dxf_3dline_get_shadow_mode
 #endif
         /* Do some basic checks. */
         if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (shadow_mode == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -1792,10 +1801,11 @@ dxf_3dline_get_shadow_mode
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        shadow_mode = &line->shadow_mode;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->shadow_mode);
+        return (EXIT_SUCCESS);
 }
 
 
