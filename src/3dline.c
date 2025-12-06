@@ -1910,17 +1910,16 @@ dxf_3dline_get_binary_graphics_data
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c 3DLINE entity.
  *
- * \return a pointer to \c line when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_binary_graphics_data
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         DxfBinaryData *data
-                /*!< a string containing the pointer to the
-                 * binary_graphics_data for the entity. */
+                /*!< [in] a pointer to \c binary_graphics_data. */
 )
 {
 #if DEBUG
@@ -1932,20 +1931,20 @@ dxf_3dline_set_binary_graphics_data
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (data == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         line->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
