@@ -1812,16 +1812,16 @@ dxf_3dline_get_shadow_mode
 /*!
  * \brief Set the \c shadow_mode for a DXF \c 3DLINE entity.
  *
- * \return a pointer to \c line when successful, or \c NULL when an
+ * \return \c EXIT_SUCCESS when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_shadow_mode
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         int16_t shadow_mode
-                /*!< the shadow mode to be set for the entity. */
+                /*!< [in] the shadow mode to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1833,7 +1833,7 @@ dxf_3dline_set_shadow_mode
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (shadow_mode < 0)
         {
@@ -1851,7 +1851,7 @@ dxf_3dline_set_shadow_mode
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
