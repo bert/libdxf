@@ -1661,11 +1661,13 @@ dxf_3dline_set_paperspace
  * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
-int32_t
+int
 dxf_3dline_get_graphics_data_size
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
+        int32_t *graphics_data_size
+                /*!< [out] a pointer to \c graphics_data_size. */
 )
 {
 #if DEBUG
@@ -1673,6 +1675,13 @@ dxf_3dline_get_graphics_data_size
 #endif
         /* Do some basic checks. */
         if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (graphics_data_size == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -1691,10 +1700,11 @@ dxf_3dline_get_graphics_data_size
                   (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
+        graphics_data_size = &line->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->graphics_data_size);
+        return (EXIT_SUCCESS);
 }
 
 
