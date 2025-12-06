@@ -2003,15 +2003,18 @@ dxf_3dline_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c 3DLINE entity.
+ *
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_dictionary_owner_soft
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         char *dictionary_owner_soft
-                /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                /*!< [in] a pointer to \c dictionary_owner_soft for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -2023,20 +2026,20 @@ dxf_3dline_set_dictionary_owner_soft
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (dictionary_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         line->dictionary_owner_soft = strdup (dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
