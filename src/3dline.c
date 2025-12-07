@@ -2047,15 +2047,19 @@ dxf_3dline_set_dictionary_owner_soft
  * \brief Get the soft pointer to the object owner from a DXF 
  * \c 3DLINE entity.
  *
- * \return soft pointer to the object owner.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
-char *
+int
 dxf_3dline_get_object_owner_soft
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        char *object_owner_soft
+                /*!< [out] a pointer to a string containing the
+                 * \c object_owner_soft. */
 )
 {
 #if DEBUG
@@ -2067,19 +2071,27 @@ dxf_3dline_get_object_owner_soft
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->object_owner_soft ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (object_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        object_owner_soft = strdup (line->object_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (line->object_owner_soft));
+        return (EXIT_SUCCESS);
 }
 
 
