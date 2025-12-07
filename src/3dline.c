@@ -2141,16 +2141,19 @@ dxf_3dline_set_object_owner_soft
 /*!
  * \brief Get the pointer to the \c material from a DXF \c 3DLINE entity.
  *
- * \return a pointer to \c material when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-char *
+int
 dxf_3dline_get_material
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        char *material
+                /*!< [out] a pointer to a string containing the the \c
+                 * material. */
 )
 {
 #if DEBUG
@@ -2162,19 +2165,27 @@ dxf_3dline_get_material
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->material ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        material = strdup (line->material);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (line->material));
+        return (EXIT_SUCCESS);
 }
 
 
