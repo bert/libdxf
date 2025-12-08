@@ -2329,14 +2329,16 @@ dxf_3dline_set_dictionary_owner_hard
 /*!
  * \brief Get the \c lineweight from a DXF \c 3DLINE entity.
  *
- * \return \c lineweight when successful, or \c EXIT_FAILURE when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-int16_t
+int
 dxf_3dline_get_lineweight
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int16_t *lineweight
+                /*!< [out] a pointer to the \c lineweight. */
 )
 {
 #if DEBUG
@@ -2350,10 +2352,24 @@ dxf_3dline_get_lineweight
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (lineweight == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->lineweight < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        lineweight = &line->lineweight;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->lineweight);
+        return (EXIT_SUCCESS);
 }
 
 
