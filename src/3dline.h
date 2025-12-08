@@ -252,7 +252,7 @@ int dxf_3dline_get_object_owner_soft (Dxf3dline *line, char *object_owner_soft);
 int dxf_3dline_set_object_owner_soft (Dxf3dline *line, char *object_owner_soft);
 int dxf_3dline_get_material (Dxf3dline *line, char *material);
 int dxf_3dline_set_material (Dxf3dline *line, char *material);
-char *dxf_3dline_get_dictionary_owner_hard (Dxf3dline *line);
+int dxf_3dline_get_dictionary_owner_hard (Dxf3dline *line, char *dictionary_owner_hard);
 Dxf3dline *dxf_3dline_set_dictionary_owner_hard (Dxf3dline *line, char *dictionary_owner_hard);
 int16_t dxf_3dline_get_lineweight (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_lineweight (Dxf3dline *line, int16_t lineweight);
