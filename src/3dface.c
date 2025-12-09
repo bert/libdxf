@@ -2464,6 +2464,12 @@ dxf_3dface_set_lineweight
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (lineweight < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
         face->lineweight = lineweight;
 #if DEBUG
         DXF_DEBUG_END
