@@ -256,7 +256,7 @@ int dxf_3dline_get_dictionary_owner_hard (Dxf3dline *line, char *dictionary_owne
 int dxf_3dline_set_dictionary_owner_hard (Dxf3dline *line, char *dictionary_owner_hard);
 int dxf_3dline_get_lineweight (Dxf3dline *line, int16_t *lineweight);
 int dxf_3dline_set_lineweight (Dxf3dline *line, int16_t lineweight);
-char *dxf_3dline_get_plot_style_name (Dxf3dline *line);
+int dxf_3dline_get_plot_style_name (Dxf3dline *line, char *plot_style_name);
 Dxf3dline *dxf_3dline_set_plot_style_name (Dxf3dline *line, char *plot_style_name);
 int32_t dxf_3dline_get_color_value (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_color_value (Dxf3dline *line, int32_t color_value);
