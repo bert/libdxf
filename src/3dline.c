@@ -2376,16 +2376,16 @@ dxf_3dline_get_lineweight
 /*!
  * \brief Set the \c lineweight for a DXF \c 3DLINE entity.
  *
- * \return a pointer to \c line when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_lineweight
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         int16_t lineweight
-                /*!< the \c lineweight to be set for the entity. */
+                /*!< [in] the \c lineweight to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2397,13 +2397,19 @@ dxf_3dline_set_lineweight
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
+        }
+        if (lineweight < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
         }
         line->lineweight = lineweight;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
