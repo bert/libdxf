@@ -2507,14 +2507,16 @@ dxf_3dline_set_plot_style_name
 /*!
  * \brief Get the \c color_value from a DXF \c 3DLINE entity.
  *
- * \return \c color_value when successful, or \c EXIT_FAILURE when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-int32_t
+int
 dxf_3dline_get_color_value
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int32_t *color_value
+                /*!< [out] a pointer to the \c color_value. */
 )
 {
 #if DEBUG
@@ -2528,10 +2530,18 @@ dxf_3dline_get_color_value
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (color_value == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        color_value = (int32_t *) &line->color_value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->color_value);
+        return (EXIT_SUCCESS);
 }
 
 

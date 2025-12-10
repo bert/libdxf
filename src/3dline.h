@@ -258,7 +258,7 @@ int dxf_3dline_get_lineweight (Dxf3dline *line, int16_t *lineweight);
 int dxf_3dline_set_lineweight (Dxf3dline *line, int16_t lineweight);
 int dxf_3dline_get_plot_style_name (Dxf3dline *line, char *plot_style_name);
 int dxf_3dline_set_plot_style_name (Dxf3dline *line, char *plot_style_name);
-int32_t dxf_3dline_get_color_value (Dxf3dline *line);
+int dxf_3dline_get_color_value (Dxf3dline *line, int32_t *color_value);
 Dxf3dline *dxf_3dline_set_color_value (Dxf3dline *line, int32_t color_value);
 char *dxf_3dline_get_color_name (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_color_name (Dxf3dline *line, char *color_name);
