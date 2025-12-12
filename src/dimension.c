@@ -2,7 +2,7 @@
  * \file dimension.c
  *
  * \author Copyright (C) 2012, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
- * 2021 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2021, 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension entity (\c DIMENSION).
  *
