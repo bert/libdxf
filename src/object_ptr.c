@@ -1,7 +1,7 @@
 /*!
  * \file object_ptr.c
  *
- * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021
+ * \author Copyright (C) 2015, 2017, 2018, 2019, 2020, 2021, 2025
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF object_ptr object (\c OBJECT_PTR).
@@ -364,8 +364,6 @@ dxf_object_ptr_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (object_ptr->dictionary_owner_soft);
-        free (object_ptr->dictionary_owner_hard);
         while (object_ptr->xdata->value != NULL)
         {
                 iter = (struct DxfChar *) object_ptr->xdata->next;
@@ -376,8 +374,22 @@ dxf_object_ptr_free
                         object_ptr->xdata = (DxfChar *) iter;
                 }
         }
-        free (object_ptr);
-        free (iter);
+        if (object_ptr->dictionary_owner_soft)
+        {
+                free (object_ptr->dictionary_owner_soft);
+        }
+        if (object_ptr->dictionary_owner_soft)
+        {
+                free (object_ptr->dictionary_owner_hard);
+        }
+        if (object_ptr)
+        {
+                free (object_ptr);
+        }
+        if (iter)
+        {
+                free (iter);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
