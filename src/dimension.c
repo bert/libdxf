@@ -885,9 +885,9 @@ int
 dxf_dimension_write
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
+                /*!< [in] DXF file pointer to an output file (or device). */
         DxfDimension *dimension
-                /*!< Pointer to the memory occupied by the DXF \c
+                /*!< [in] Pointer to the memory occupied by the DXF \c
                  * DIMENSION entity. */
 )
 {
@@ -903,7 +903,11 @@ dxf_dimension_write
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
                 /* Clean up. */
-                free (dxf_entity_name);
+                if (!dxf_entity_name)
+                {
+                        free (dxf_entity_name);
+                }
+                dxf_entity_name = NULL;
                 return (EXIT_FAILURE);
         }
         if (dimension == NULL)
@@ -912,7 +916,11 @@ dxf_dimension_write
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 /* Clean up. */
-                free (dxf_entity_name);
+                if (!dxf_entity_name)
+                {
+                        free (dxf_entity_name);
+                }
+                dxf_entity_name = NULL;
                 return (EXIT_FAILURE);
         }
         if ((dimension->flag > 6)
@@ -921,8 +929,6 @@ dxf_dimension_write
                 fprintf (stderr,
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
         }
         if (strcmp (dimension->layer, "") == 0)
         {
@@ -1186,7 +1192,10 @@ dxf_dimension_write
                 fprintf (fp->fp, " 39\n%f\n", dimension->thickness);
         }
         /* Clean up. */
-        free (dxf_entity_name);
+        if (!dxf_entity_name)
+        {
+                free (dxf_entity_name);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
