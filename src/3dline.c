@@ -2631,17 +2631,17 @@ dxf_3dline_get_color_name
 /*!
  * \brief Set the \c color_name for a DXF \c 3DLINE entity.
  *
- * \return a pointer to \c line when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_color_name
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         char *color_name
-                /*!< a string containing the \c color_name for the
-                 * entity. */
+                /*!< [in] a pointer to the string containing the
+                 * \c color_name for the entity. */
 )
 {
 #if DEBUG
@@ -2653,20 +2653,20 @@ dxf_3dline_set_color_name
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (color_name == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         line->color_name = strdup (color_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
