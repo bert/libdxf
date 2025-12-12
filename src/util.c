@@ -2498,16 +2498,25 @@ dxf_read_line (char * temp_string, DxfFile *fp)
         int ret;
 
         ret = fscanf (fp->fp, "%[^\n]\n", temp_string);
-        if (ferror (fp->fp))
+        if (ret == EOF)
         {
-                fprintf (stderr,
-                  (_("Error: while reading from: %s in line: %d.\n")),
-                  fp->filename, fp->line_number);
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error: while reading from: %s in line: %d.\n")),
+                          fp->filename, fp->line_number);
+                }
+                /* Return failure on EOF or error. */
                 return (EXIT_FAILURE);
         }
-        if (ret)
+        if (ret == 1)
         {
                 fp->line_number++;
+        }
+        else
+        {
+                /* No items read; treat as a failure. */
+                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
