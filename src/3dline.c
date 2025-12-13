@@ -2673,8 +2673,8 @@ dxf_3dline_set_color_name
 /*!
  * \brief Get the \c transparency from a DXF \c 3DLINE entity.
  *
- * \return \c transparency when successful, or \c EXIT_FAILURE when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dline_get_transparency
