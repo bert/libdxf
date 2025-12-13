@@ -367,8 +367,14 @@ dxf_object_ptr_free
         while (object_ptr->xdata->value != NULL)
         {
                 iter = (struct DxfChar *) object_ptr->xdata->next;
-                free (object_ptr->xdata->value);
-                free (object_ptr->xdata);
+                if (object_ptr->xdata->value)
+                {
+                        free (object_ptr->xdata->value);
+                }
+                if (object_ptr->xdata)
+                {
+                        free (object_ptr->xdata);
+                }
                 if (iter != NULL)
                 {
                         object_ptr->xdata = (DxfChar *) iter;
