@@ -2676,11 +2676,13 @@ dxf_3dline_set_color_name
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-int32_t
+int
 dxf_3dline_get_transparency
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        int32_t *transparency
+                /*!< [out] a pointer to the \c transparency. */
 )
 {
 #if DEBUG
@@ -2694,10 +2696,18 @@ dxf_3dline_get_transparency
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (transparency == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        transparency = &line->transparency;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->transparency);
+        return (EXIT_SUCCESS);
 }
 
 

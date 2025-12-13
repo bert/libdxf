@@ -262,7 +262,7 @@ int dxf_3dline_get_color_value (Dxf3dline *line, int32_t *color_value);
 int dxf_3dline_set_color_value (Dxf3dline *line, int32_t color_value);
 int dxf_3dline_get_color_name (Dxf3dline *line, char *color_name);
 int dxf_3dline_set_color_name (Dxf3dline *line, char *color_name);
-int32_t dxf_3dline_get_transparency (Dxf3dline *line);
+int dxf_3dline_get_transparency (Dxf3dline *line, int32_t *transparency);
 Dxf3dline *dxf_3dline_set_transparency (Dxf3dline *line, int32_t transparency);
 DxfPoint *dxf_3dline_get_p0 (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_p0 (Dxf3dline *line, DxfPoint *p0);
