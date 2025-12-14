@@ -2748,13 +2748,16 @@ dxf_3dline_set_transparency
 /*!
  * \brief Get the start point \c p0 of a DXF \c 3DLINE entity.
  *
- * \return the start point \c p0.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-DxfPoint *
+int
 dxf_3dline_get_p0
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        DxfPoint *p0
+                /*!< [out]a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
@@ -2766,19 +2769,20 @@ dxf_3dline_get_p0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        p0 = line->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->p0);
+        return (EXIT_SUCCESS);
 }
 
 
