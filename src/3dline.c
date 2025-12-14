@@ -2789,15 +2789,16 @@ dxf_3dline_get_p0
 /*!
  * \brief Set the start point of a DXF \c 3DLINE entity.
  *
- * \return a pointer to a DXF \c 3DLINE entity.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_p0
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         DxfPoint *p0
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
@@ -2809,20 +2810,20 @@ dxf_3dline_set_p0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         line->p0 = (DxfPoint *) p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
