@@ -2887,16 +2887,17 @@ dxf_3dline_get_x0
 /*!
  * \brief Set the X-value of the start point of a DXF \c 3DLINE entity.
  *
- * \return a pointer to a DXF \c 3DLINE entity.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_x0
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         double x0
-                /*!< the X-value of the start point of a DXF \c 3DLINE
-                 * entity. */
+                /*!< [in] the X-value of the start point \c x0 of a DXF
+                 * \c 3DLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -2908,7 +2909,7 @@ dxf_3dline_set_x0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->p0 == NULL)
         {
@@ -2923,14 +2924,14 @@ dxf_3dline_set_x0
                         fprintf (stderr,
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
         }
         line->p0->x0 = x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
