@@ -3140,13 +3140,16 @@ dxf_3dline_set_z0
 /*!
  * \brief Get the end point \c p1 of a DXF \c 3DLINE entity.
  *
- * \return the end point \c p1.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-DxfPoint *
+int
 dxf_3dline_get_p1
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        DxfPoint *point
+                /*!< [out] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
@@ -3158,27 +3161,34 @@ dxf_3dline_get_p1
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
-        if ((line->p0->x0 == line->p1->x0)
-          && (line->p0->y0 == line->p1->y0)
-          && (line->p0->z0 == line->p1->z0))
+        if (point == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                point = dxf_point_new ();
+                if (point == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
         }
+        point = line->p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->p1);
+        return (EXIT_SUCCESS);
 }
 
 
