@@ -3238,13 +3238,17 @@ dxf_3dline_set_p1
 /*!
  * \brief Get the X-value of the end point of a DXF \c 3DLINE entity.
  *
- * \return the X-value of the end point.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dline_get_x1
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *x1
+                /*!< [out] a pointer to the X-value of the end point of
+                 * a DXF \c 3DLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3266,10 +3270,11 @@ dxf_3dline_get_x1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        x1 = &line->p1->x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->p1->x0);
+        return (EXIT_SUCCESS);
 }
 
 
