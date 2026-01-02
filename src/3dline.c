@@ -3204,9 +3204,9 @@ int
 dxf_3dline_set_p1
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
