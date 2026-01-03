@@ -2077,10 +2077,10 @@ int
 dxf_3dface_set_dictionary_owner_soft
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         char *dictionary_owner_soft
-                /*!< a string containing the pointer to the
-                 * \c dictionary_owner_soft for the entity. */
+                /*!< [in] a pointer to a string containing the pointer
+                 * to the \c dictionary_owner_soft for the entity. */
 )
 {
 #if DEBUG
