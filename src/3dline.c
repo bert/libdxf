@@ -3332,13 +3332,17 @@ dxf_3dline_set_x1
 /*!
  * \brief Get the Y-value of the end point of a DXF \c 3DLINE entity.
  *
- * \return the Y-value of the end point.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dline_get_y1
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *y1
+                /*!< [out] a pointer to the Y-value of the first alignment
+                 * point \c y1 of a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3360,10 +3364,25 @@ dxf_3dline_get_y1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (y1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                y1 = malloc (sizeof (double));
+                if (y1 == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
+        y1 = &line->p1->y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->p1->y0);
+        return (EXIT_SUCCESS);
 }
 
 
