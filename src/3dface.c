@@ -2171,10 +2171,10 @@ int
 dxf_3dface_set_object_owner_soft
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         char *object_owner_soft
-                /*!< a string containing the pointer to the
-                 * \c object_owner_soft for the entity. */
+                /*!< [in] a pointer to a string containing the pointer
+                 * to the \c object_owner_soft for the entity. */
 )
 {
 #if DEBUG
