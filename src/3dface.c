@@ -2215,9 +2215,9 @@ int
 dxf_3dface_get_material
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         char *material
-                /*!< a pointer to \c material. */
+                /*!< [out] a pointer to \c material. */
 )
 {
 #if DEBUG
