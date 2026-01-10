@@ -2263,9 +2263,9 @@ int
 dxf_3dface_set_material
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< a [in.out] pointer to a DXF \c 3DFACE entity. */
         char *material
-                /*!< a string containing the pointer to the \c
+                /*!< [in] a string containing the pointer to the \c
                  * material for the entity. */
 )
 {
