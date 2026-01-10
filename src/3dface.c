@@ -2308,9 +2308,9 @@ int
 dxf_3dface_get_dictionary_owner_hard
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         char *dictionary_owner_hard
-                /*!< a pointer to a \c dictionary_owner_hard. */
+                /*!< [out] a pointer to a \c dictionary_owner_hard. */
 )
 {
 #if DEBUG
