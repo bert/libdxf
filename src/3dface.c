@@ -3405,9 +3405,9 @@ int
 dxf_3dface_set_x1
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double x1
-                /*!< the X-value of the first alignment point \c x1 of a
+                /*!< [in] the X-value of the first alignment point \c x1 of a
                  * DXF \c 3DFACE entity. */
 )
 {
