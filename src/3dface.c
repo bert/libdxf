@@ -2977,9 +2977,9 @@ int
 dxf_3dface_set_x0
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double x0
-                /*!< the X-value of the base point \c x0 of a DXF
+                /*!< [in] the X-value of the base point \c x0 of a DXF
                  * \c 3DFACE entity. */
 )
 {
