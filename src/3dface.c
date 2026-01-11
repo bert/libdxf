@@ -2659,9 +2659,9 @@ int
 dxf_3dface_get_color_name
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         char *color_name
-                /*!< a pointer to \c color_name. */
+                /*!< [out] a pointer to \c color_name. */
 )
 {
 #if DEBUG
