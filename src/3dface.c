@@ -3611,9 +3611,9 @@ int
 dxf_3dface_set_z1
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double z1
-                /*!< the Z-value of the first alignment point \c z1 of a
+                /*!< [in] the Z-value of the first alignment point \c z1 of a
                  * DXF \c 3DFACE entity. */
 )
 {
