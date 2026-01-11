@@ -1961,7 +1961,7 @@ int
 dxf_3dline_get_dictionary_owner_soft
 (
         Dxf3dline *line,
-                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
         char *dictionary_owner_soft
                 /*!< [out] a string containing the pointer to the
                  * \c dictionary_owner_soft for the entity. */
