@@ -2828,9 +2828,9 @@ int
 dxf_3dface_get_p0
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [out] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
