@@ -3904,9 +3904,9 @@ int
 dxf_3dface_set_y2
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         double y2
-                /*!< the Y-value of the second alignment point \c y2 of
+                /*!< [in] the Y-value of the second alignment point \c y2 of
                  * a DXF \c 3DFACE entity. */
 )
 {
