@@ -2707,9 +2707,9 @@ int
 dxf_3dface_set_color_name
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         char *color_name
-                /*!< a string containing the \c color_name for the
+                /*!< [in] a string containing the \c color_name for the
                  * entity. */
 )
 {
