@@ -2490,9 +2490,9 @@ int
 dxf_3dface_get_plot_style_name
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         char *plot_style_name
-                /*!< a pointer to \c plot_style_name. */
+                /*!< [out] a pointer to \c plot_style_name. */
 )
 {
 #if DEBUG
