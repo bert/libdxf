@@ -2244,7 +2244,7 @@ int
 dxf_3dline_get_dictionary_owner_hard
 (
         Dxf3dline *line,
-                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
         char *dictionary_owner_hard
                 /*!< [out] a pointer to a string containing the \c
                  * dictionary_owner_hard. */
