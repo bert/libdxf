@@ -2357,9 +2357,9 @@ int
 dxf_3dface_set_dictionary_owner_hard
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         char *dictionary_owner_hard
-                /*!< a string containing the pointer to the \c
+                /*!< [in] a string containing the pointer to the \c
                  * dictionary_owner_hard for the entity. */
 )
 {
