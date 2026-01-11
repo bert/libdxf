@@ -3022,15 +3022,16 @@ dxf_3dface_set_x0
  * \brief Get the Y-value of the base point \c y0 of a DXF \c 3DFACE
  * entity.
  *
- * \return the Y-value of the base point \c y0.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dface_get_y0
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         double *y0
-                /*!< a pointer to the Y-value of the base point \c y0 of
+                /*!< [out] a pointer to the Y-value of the base point \c y0 of
                  * a DXF \c 3DFACE entity. */
 )
 {
