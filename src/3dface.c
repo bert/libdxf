@@ -3560,15 +3560,16 @@ dxf_3dface_set_y1
  * \brief Get the Z-value of the first alignment point \c z1 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Z-value of the first alignment point \c z1.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dface_get_z1
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         double *z1
-                /*!< a pointer to the Z-value of the first alignment
+                /*!< [out] a pointer to the Z-value of the first alignment
                  * point \c z1 of a DXF \c 3DFACE entity. */
 )
 {
