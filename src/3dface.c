@@ -2448,9 +2448,9 @@ int
 dxf_3dface_set_lineweight
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DFACE entity. */
         int16_t lineweight
-                /*!< the \c lineweight to be set for the entity. */
+                /*!< [in] the \c lineweight to be set for the entity. */
 )
 {
 #if DEBUG
