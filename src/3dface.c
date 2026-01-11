@@ -2582,9 +2582,9 @@ int
 dxf_3dface_get_color_value
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int32_t *color_value
-                /*!< a pointer to \c color_value. */
+                /*!< [out] a pointer to \c color_value. */
 )
 {
 #if DEBUG
