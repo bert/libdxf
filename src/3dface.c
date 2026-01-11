@@ -2401,9 +2401,9 @@ int
 dxf_3dface_get_lineweight
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int16_t *lineweight
-                /*!< a pointer to \c lineweight. */
+                /*!< [out] a pointer to \c lineweight. */
 )
 {
 #if DEBUG
