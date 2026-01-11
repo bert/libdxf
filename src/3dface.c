@@ -2751,9 +2751,9 @@ int
 dxf_3dface_get_transparency
 (
         Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< [in] a pointer to a DXF \c 3DFACE entity. */
         int32_t *transparency
-                /*!< a pointer to \c transparency. */
+                /*!< [out] a pointer to \c transparency. */
 )
 {
 #if DEBUG
