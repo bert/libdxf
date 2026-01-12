@@ -278,7 +278,7 @@ int dxf_3dline_get_x1 (Dxf3dline *line, double *x1);
 int dxf_3dline_set_x1 (Dxf3dline *line, double x1);
 int dxf_3dline_get_y1 (Dxf3dline *line, double *y1);
 int dxf_3dline_set_y1 (Dxf3dline *line, double y1);
-double dxf_3dline_get_z1 (Dxf3dline *line);
+int dxf_3dline_get_z1 (Dxf3dline *line, double *z1);
 Dxf3dline *dxf_3dline_set_z1 (Dxf3dline *line, double z1);
 double dxf_3dline_get_extr_x0 (Dxf3dline *line);
 Dxf3dline *dxf_3dline_set_extr_x0 (Dxf3dline *line, double extr_x0);
