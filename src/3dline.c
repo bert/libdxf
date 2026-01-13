@@ -2,7 +2,7 @@
  * \file 3dline.c
  *
  * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023,
- * 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2025, 2026 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D line entity (\c 3DLINE).
  *
