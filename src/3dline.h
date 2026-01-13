@@ -1,7 +1,7 @@
 /*!
  * \file 3dline.h
  *
- * \author Copyright (C) 2015, 2016, 2017, 2018, 2019
+ * \author Copyright (C) 2015, 2016, 2017, 2018, 2019, 2025, 2026
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D line entity (\c 3DLINE).
