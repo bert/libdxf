@@ -555,6 +555,9 @@ dxf_3dline_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("3DLINE");
+        double *extr_x0 = NULL;
+        double *extr_y0 = NULL;
+        double *extr_z0 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -732,14 +735,17 @@ dxf_3dline_write
         fprintf (fp->fp, " 11\n%f\n", line->p1->x0);
         fprintf (fp->fp, " 21\n%f\n", line->p1->y0);
         fprintf (fp->fp, " 31\n%f\n", line->p1->z0);
-        if ((fp->acad_version_number >= AutoCAD_12)
-                && (dxf_3dline_get_extr_x0 (line) != 0.0)
-                && (dxf_3dline_get_extr_y0 (line) != 0.0)
-                && (dxf_3dline_get_extr_z0 (line) != 1.0))
+        if (fp->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp->fp, "210\n%f\n", dxf_3dline_get_extr_x0 (line));
-                fprintf (fp->fp, "220\n%f\n", dxf_3dline_get_extr_y0 (line));
-                fprintf (fp->fp, "230\n%f\n", dxf_3dline_get_extr_z0 (line));
+                dxf_3dline_get_extr_x0 (line, extr_x0);
+                dxf_3dline_get_extr_y0 (line, extr_y0);
+                dxf_3dline_get_extr_z0 (line, extr_z0);
+                if ((*extr_x0 != 0.0) || (*extr_y0 != 0.0) || (*extr_z0 != 1.0))
+                {
+                        fprintf (fp->fp, "210\n%f\n", *extr_x0);
+                        fprintf (fp->fp, "220\n%f\n", *extr_y0);
+                        fprintf (fp->fp, "230\n%f\n", *extr_z0);
+                }
         }
         /* Clean up. */
         free (dxf_entity_name);
@@ -3535,13 +3541,17 @@ dxf_3dline_set_z1
  * \brief Get the X-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
  *
- * \return the X-value of the extrusion vector.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dline_get_extr_x0
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *extr_x0
+                /*!< [out] the \c extr_x0 value of the end point of a
+                 * DXF \c 3DLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3556,10 +3566,11 @@ dxf_3dline_get_extr_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        extr_x0 = &line->extr_x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->extr_x0);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -3603,13 +3614,17 @@ dxf_3dline_set_extr_x0
  * \brief Get the Y-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
  *
- * \return the Y-value of the extrusion vector.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dline_get_extr_y0
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *extr_y0
+                /*!< [out] the \c extr_y0 value of the end point of a
+                 * DXF \c 3DLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3624,10 +3639,11 @@ dxf_3dline_get_extr_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        extr_y0 = &line->extr_y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->extr_y0);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -3671,13 +3687,17 @@ dxf_3dline_set_extr_y0
  * \brief Get the Z-value of the extrusion vector of a DXF \c 3DLINE
  * entity.
  *
- * \return the Z-value of the extrusion vector.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dline_get_extr_z0
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *extr_z0
+                /*!< [out] the \c extr_z0 value of the end point of a
+                 * DXF \c 3DLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -3692,10 +3712,11 @@ dxf_3dline_get_extr_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        extr_z0 = &line->extr_z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line->extr_z0);
+        return (EXIT_SUCCESS);
 }
 
 
