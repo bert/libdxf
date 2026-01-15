@@ -3760,46 +3760,50 @@ dxf_3dline_set_extr_z0
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c 3DLINE entity.
  *
- * \return a DXF \c POINT containing the extrusion coordinates.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No other members are copied into the DXF \c POINT.
  */
-DxfPoint *
+int
 dxf_3dline_get_extrusion_vector_as_point
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        DxfPoint *point
+                /*!< [out] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *point = NULL;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if ((line->p0->x0 == line->p1->x0)
           && (line->p0->y0 == line->p1->y0)
           && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
-                  (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  (_("Warning in %s () a 3DLINE with points with identical coordinates were passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
-        point = dxf_point_init (point);
         if (point == NULL)
         {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
+                point = dxf_point_init (point);
+                if (point == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
         }
         point->x0 = line->extr_x0;
         point->y0 = line->extr_y0;
@@ -3807,7 +3811,7 @@ dxf_3dline_get_extrusion_vector_as_point
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (point);
+        return (EXIT_SUCCESS);
 }
 
 
