@@ -3861,18 +3861,21 @@ dxf_3dline_set_extrusion_vector_from_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c 3DLINE entity.
+ *
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_extrusion_vector
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         double extr_x0,
-                /*!<  X-value of the extrusion direction. */
+                /*!<  [in] X-value of the extrusion direction. */
         double extr_y0,
-                /*!<  Y-value of the extrusion direction. */
+                /*!<  [in] Y-value of the extrusion direction. */
         double extr_z0
-                /*!<  Z-value of the extrusion direction. */
+                /*!<  [in] Z-value of the extrusion direction. */
 )
 {
 #if DEBUG
@@ -3884,7 +3887,7 @@ dxf_3dline_set_extrusion_vector
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         line->extr_x0 = extr_x0;
         line->extr_y0 = extr_y0;
@@ -3892,7 +3895,7 @@ dxf_3dline_set_extrusion_vector
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
