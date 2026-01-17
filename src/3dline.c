@@ -3902,9 +3902,10 @@ dxf_3dline_set_extrusion_vector
 /*!
  * \brief Get the mid point of a DXF \c 3DLINE entity.
  *
- * \return the mid point.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-DxfPoint *
+int
 dxf_3dline_get_mid_point
 (
         Dxf3dline *line,
@@ -3913,7 +3914,7 @@ dxf_3dline_get_mid_point
                 /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
-        int inheritance
+        int inheritance,
                 /*!< Inherit layer, linetype, color and other relevant
                  * properties from either:
                  * <ol>
@@ -3921,20 +3922,31 @@ dxf_3dline_get_mid_point
                  * <li value = "1"> \c 3DLINE.</li>
                  * </ol>
                  */
+        DxfPoint *point
+                /*!< [in] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *point = NULL;
-
         /* Do some basic checks. */
+        if (point == NULL)
+        {
+                point = dxf_point_init (point);
+                if (point == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
+        }
         if (line == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if ((line->p0->x0 == line->p1->x0)
           && (line->p0->y0 == line->p1->y0)
@@ -3943,15 +3955,7 @@ dxf_3dline_get_mid_point
                 fprintf (stderr,
                   (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
                   __FUNCTION__);
-                return (NULL);
-        }
-        point = dxf_point_init (point);
-        if (point == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory.\n")),
-                __FUNCTION__);
-              return (NULL);
+                return (EXIT_FAILURE);
         }
         if (id_code < 0)
         {
@@ -4025,7 +4029,7 @@ dxf_3dline_get_mid_point
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (point);
+        return (EXIT_SUCCESS);
 }
 
 
