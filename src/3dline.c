@@ -4092,21 +4092,22 @@ dxf_3dline_get_length
 /*!
  * \brief Create a DXF \c 3DLINE by means of two DXF \c POINT entities.
  *
- * \warning Both DXF \c POINT entities need to be freed by the caller.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_create_from_points
 (
         DxfPoint *p0,
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
         DxfPoint *p1,
-                /*!< a pointer to a DXF \c POINT entity. */
+                /*!< [in] a pointer to a DXF \c POINT entity. */
         int id_code,
-                /*!< Identification number for the entity.\n
+                /*!< [in] Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
+        int inheritance,
+                /*!< [in] Inherit layer, linetype, color and other relevant
                  * properties from either:
                  * <ol>
                  * <li value = "0"> Default (as initialised).</li>
@@ -4114,27 +4115,27 @@ dxf_3dline_create_from_points
                  * <li value = "2"> Point 1.</li>
                  * </ol>
                  */
+        Dxf3dline *line
+                /*!< [out] a pointer to a DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dline *line = NULL;
-
         /* Do some basic checks. */
         if ((p0 == NULL) || (p1 == NULL))
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if ((p0->x0 == p1->x0) && (p0->y0 == p1->y0) && (p0->z0 == p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () points with identical coordinates were passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if ((inheritance < 0) || (inheritance > 2))
         {
@@ -4148,7 +4149,7 @@ dxf_3dline_create_from_points
               fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
-              return (NULL);
+              return (EXIT_FAILURE);
         }
         if (id_code < 0)
         {
@@ -4367,7 +4368,7 @@ dxf_3dline_create_from_points
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
