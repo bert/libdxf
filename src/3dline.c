@@ -4037,13 +4037,16 @@ dxf_3dline_get_mid_point
  * \brief Get the length of a DXF \c 3DLINE (straight distance between
  * start point and end point).
  *
- * \return the length of the \c line in drawing units.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dline_get_length
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        double *length
+                /*!< [out] a pointer to length of the DXF \c 3DLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -4055,14 +4058,14 @@ dxf_3dline_get_length
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (0.0);
+                return (EXIT_FAILURE);
         }
         if ((line->p0 == NULL) || (line->p1 == NULL))
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (0.0);
+                return (EXIT_FAILURE);
         }
         if ((line->p0->x0 == line->p1->x0)
           && (line->p0->y0 == line->p1->y0)
@@ -4071,17 +4074,18 @@ dxf_3dline_get_length
                 fprintf (stderr,
                   (_("Error in %s () endpoints with identical coordinates were passed.\n")),
                   __FUNCTION__);
-                return (0.0);
+                return (EXIT_FAILURE);
         }
+        *length = (sqrt (
+                         ((line->p1->x0 - line->p0->x0) * (line->p1->x0 - line->p0->x0))
+                       + ((line->p1->y0 - line->p0->y0) * (line->p1->y0 - line->p0->y0))
+                       + ((line->p1->z0 - line->p0->z0) * (line->p1->z0 - line->p0->z0))
+                       )
+                 );
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (sqrt (
-                       ((line->p1->x0 - line->p0->x0) * (line->p1->x0 - line->p0->x0))
-                     + ((line->p1->y0 - line->p0->y0) * (line->p1->y0 - line->p0->y0))
-                     + ((line->p1->z0 - line->p0->z0) * (line->p1->z0 - line->p0->z0))
-                     )
-               );
+        return (EXIT_SUCCESS);
 }
 
 
