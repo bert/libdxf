@@ -3909,13 +3909,13 @@ int
 dxf_3dline_get_mid_point
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
         int id_code,
-                /*!< Identification number for the entity.\n
+                /*!< [in] Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
         int inheritance,
-                /*!< Inherit layer, linetype, color and other relevant
+                /*!< [in] Inherit layer, linetype, color and other relevant
                  * properties from either:
                  * <ol>
                  * <li value = "0"> Default (as initialised).</li>
@@ -3923,7 +3923,7 @@ dxf_3dline_get_mid_point
                  * </ol>
                  */
         DxfPoint *point
-                /*!< [in] a pointer to a DXF \c POINT entity. */
+                /*!< [out] a pointer to a DXF \c POINT entity. */
 )
 {
 #ifdef DEBUG
