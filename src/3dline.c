@@ -4419,14 +4419,17 @@ dxf_3dline_get_next
 /*!
  * \brief Set the pointer to the next \c 3DLINE for a DXF \c 3DLINE
  * entity.
+ *
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dline *
+int
 dxf_3dline_set_next
 (
         Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DLINE entity. */
         Dxf3dline *next
-                /*!< a pointer to the next \c 3DLINE for the entity. */
+                /*!< [in] a pointer to the next \c 3DLINE for the entity. */
 )
 {
 #if DEBUG
@@ -4438,20 +4441,20 @@ dxf_3dline_set_next
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (next == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         line->next = (struct Dxf3dline *) next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (EXIT_SUCCESS);
 }
 
 
