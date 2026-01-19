@@ -4462,15 +4462,18 @@ dxf_3dline_set_next
  * \brief Get the pointer to the last \c 3DLINE entity from a linked
  * list of DXF \c 3DLINE entities.
  *
- * \return pointer to the last \c 3DLINE entity.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-Dxf3dline *
+int
 dxf_3dline_get_last
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *last
+                /*!< [out] a pointer to the last DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
@@ -4482,24 +4485,27 @@ dxf_3dline_get_last
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->next == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return ((Dxf3dline *) line);
+                last = (Dxf3dline *) line;
+                return (EXIT_SUCCESS);
         }
         Dxf3dline *iter = (Dxf3dline *) line->next;
         while (iter->next != NULL)
         {
                 iter = (Dxf3dline *) iter->next;
         }
+        last = (Dxf3dline *) iter;
+        dxf_3dline_free (iter);       
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((Dxf3dline *) iter);
+        return (EXIT_SUCCESS);
 }
 
 
