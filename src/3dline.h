@@ -292,7 +292,7 @@ int dxf_3dline_set_extrusion_vector (Dxf3dline *line, double extr_x0, double ext
 int dxf_3dline_get_mid_point (Dxf3dline *line, int id_code, int inheritance, DxfPoint *point);
 int dxf_3dline_get_length (Dxf3dline *line, double *length);
 int dxf_3dline_create_from_points (DxfPoint *p0, DxfPoint *p1, int id_code, int inheritance, Dxf3dline *line);
-Dxf3dline *dxf_3dline_get_next (Dxf3dline *line);
+int dxf_3dline_get_next (Dxf3dline *line, Dxf3dline *next);
 Dxf3dline *dxf_3dline_set_next (Dxf3dline *line, Dxf3dline *next);
 Dxf3dline *dxf_3dline_get_last (Dxf3dline *line);
 

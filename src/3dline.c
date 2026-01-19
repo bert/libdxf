@@ -4376,15 +4376,18 @@ dxf_3dline_create_from_points
  * \brief Get the pointer to the next \c 3DLINE entity from a DXF 
  * \c 3DLINE entity.
  *
- * \return pointer to the next \c 3DLINE entity.
+ * \return \c EXIT_SUCCESS when sucessful, \c EXIT_FAILURE when an error
+ * occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
-Dxf3dline *
+int
 dxf_3dline_get_next
 (
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *line,
+                /*!< [in] a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *next
+                /*!< [out] a pointer to the next DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
@@ -4396,19 +4399,20 @@ dxf_3dline_get_next
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (line->next == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        next = (Dxf3dline *) line->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((Dxf3dline *) line->next);
+        return (EXIT_SUCCESS);
 }
 
 
