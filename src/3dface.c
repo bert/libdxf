@@ -5377,6 +5377,7 @@ dxf_3dface_get_last
                         iter = (Dxf3dface *) iter->next;
                 }
                 last = ((Dxf3dface *) iter);
+                dxf_3dface_free (iter);
         }
 #if DEBUG
         DXF_DEBUG_END
