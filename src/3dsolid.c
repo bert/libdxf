@@ -97,14 +97,14 @@ dxf_3dsolid_new
  * \brief Allocate memory and initialize data fields in a \c 3DSOLID
  * entity.
  *
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when successful.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_init
 (
         Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DSOLID entity. */
 )
 {
 #if DEBUG
@@ -123,7 +123,7 @@ dxf_3dsolid_init
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         /* Assign initial values to members. */
         solid->id_code = 0;
@@ -157,7 +157,7 @@ dxf_3dsolid_init
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
