@@ -2,7 +2,7 @@
  * \file 3dface.h
  *
  * \author Copyright (C) 2010, 2012, 2013, 2014, 2015 2016, 2017, 2018,
- * 2019, 2020 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2019, 2020, 2025, 2026 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
  *
