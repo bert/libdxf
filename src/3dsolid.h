@@ -1,8 +1,8 @@
 /*!
  * \file 3dsolid.h
  *
- * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019
- * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+ * 2026 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -211,7 +211,7 @@ dxf_3dsolid_struct
 } Dxf3dsolid;
 
 
-Dxf3dsolid *dxf_3dsolid_new ();
+int dxf_3dsolid_new (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_init (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_read (DxfFile *fp, Dxf3dsolid *solid);
 int dxf_3dsolid_write (DxfFile *fp, Dxf3dsolid *solid);

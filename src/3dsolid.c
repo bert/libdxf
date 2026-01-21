@@ -2,7 +2,8 @@
  * \file 3dsolid.c
  *
  * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
- * 2020, 2021, 2022, 2023, 2025 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * 2020, 2021, 2022, 2023, 2025, 2026
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -55,14 +56,20 @@
  * \brief Allocate memory for a DXF \c 3DSOLID.
  *
  * Fill the memory contents with zeros.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
-dxf_3dsolid_new ()
+int
+dxf_3dsolid_new
+(
+        Dxf3dsolid *solid
+                /*!< [in,out] a pointer to a DXF \c 3DSOLID entity. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dsolid *solid = NULL;
         size_t size;
 
         size = sizeof (Dxf3dsolid);
@@ -73,7 +80,7 @@ dxf_3dsolid_new ()
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         else
         {
@@ -82,7 +89,7 @@ dxf_3dsolid_new ()
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -109,7 +116,7 @@ dxf_3dsolid_init
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                solid = dxf_3dsolid_new ();
+                dxf_3dsolid_new (solid);
         }
         if (solid == NULL)
         {
