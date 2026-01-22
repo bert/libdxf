@@ -170,9 +170,10 @@ dxf_3dsolid_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c solid. \n
  *
- * \return \c a pointer to \c solid.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_read
 (
         DxfFile *fp,
@@ -198,7 +199,7 @@ dxf_3dsolid_read
                   __FUNCTION__);
                 /* Clean up. */
                 free (temp_string);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
         {
@@ -230,7 +231,7 @@ dxf_3dsolid_read
                         /* Clean up. */
                         free (temp_string);
                         fclose (fp->fp);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
                 else if (strcmp (temp_string, "  1") == 0)
                 {
@@ -468,7 +469,7 @@ dxf_3dsolid_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 

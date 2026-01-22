@@ -213,7 +213,7 @@ dxf_3dsolid_struct
 
 int dxf_3dsolid_new (Dxf3dsolid *solid);
 int dxf_3dsolid_init (Dxf3dsolid *solid);
-Dxf3dsolid *dxf_3dsolid_read (DxfFile *fp, Dxf3dsolid *solid);
+int dxf_3dsolid_read (DxfFile *fp, Dxf3dsolid *solid);
 int dxf_3dsolid_write (DxfFile *fp, Dxf3dsolid *solid);
 int dxf_3dsolid_free (Dxf3dsolid *solid);
 void dxf_3dsolid_free_list (Dxf3dsolid *solids);
