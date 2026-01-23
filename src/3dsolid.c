@@ -483,9 +483,9 @@ int
 dxf_3dsolid_write
 (
         DxfFile *fp,
-                /*!< a DXF file pointer to an output file (or device). */
+                /*!< [out] a DXF file pointer to an output file (or device). */
         Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
 )
 {
 #if DEBUG
