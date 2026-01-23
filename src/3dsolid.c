@@ -757,12 +757,15 @@ dxf_3dsolid_free
 /*!
  * \brief Free the allocated memory for a single linked list of DXF
  * \c 3DSOLID entities and all their data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-void
+int
 dxf_3dsolid_free_list
 (
         Dxf3dsolid *solids
-                /*!< a pointer to the single linked list of DXF
+                /*!< [in] a pointer to the single linked list of DXF
                  * \c 3DSOLID entities. */
 )
 {
@@ -784,6 +787,7 @@ dxf_3dsolid_free_list
 #if DEBUG
         DXF_DEBUG_END
 #endif
+        return (EXIT_SUCCESS);
 }
 
 
