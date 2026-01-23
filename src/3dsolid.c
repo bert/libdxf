@@ -177,9 +177,9 @@ int
 dxf_3dsolid_read
 (
         DxfFile *fp,
-                /*!< a DXF file pointer to an input file (or device). */
+                /*!< [in] a DXF file pointer to an input file (or device). */
         Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [out] a pointer to a DXF \c 3DSOLID entity. */
 )
 {
 #if DEBUG
