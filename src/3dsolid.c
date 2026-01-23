@@ -799,8 +799,13 @@ dxf_3dsolid_free_list
 int
 dxf_3dsolid_get_id_code
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        int *id_code
+                /*!< [out] a pinter to the Identification number for the
+                 * entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file. */
 )
 {
 #if DEBUG
@@ -820,10 +825,11 @@ dxf_3dsolid_get_id_code
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        id_code = &solid->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->id_code);
+        return (EXIT_SUCCESS);
 }
 
 
