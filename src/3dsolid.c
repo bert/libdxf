@@ -794,7 +794,8 @@ dxf_3dsolid_free_list
 /*!
  * \brief Get the ID code from a DXF \c 3DSOLID entity.
  *
- * \return ID code.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dsolid_get_id_code
@@ -802,7 +803,7 @@ dxf_3dsolid_get_id_code
         Dxf3dsolid *solid,
                 /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
         int *id_code
-                /*!< [out] a pinter to the Identification number for the
+                /*!< [out] a pointer to the Identification number for the
                  * entity.\n
                  * This is to be an unique (sequential) number in the
                  * DXF file. */
