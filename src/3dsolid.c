@@ -835,14 +835,17 @@ dxf_3dsolid_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_id_code
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DSOLID entity. */
         int id_code
-                /*!< Identification number for the entity.\n
+                /*!< [in] Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
                  * file. */
 )
@@ -856,7 +859,7 @@ dxf_3dsolid_set_id_code
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (id_code < 0)
         {
@@ -868,7 +871,7 @@ dxf_3dsolid_set_id_code
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 

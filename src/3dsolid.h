@@ -218,7 +218,7 @@ int dxf_3dsolid_write (DxfFile *fp, Dxf3dsolid *solid);
 int dxf_3dsolid_free (Dxf3dsolid *solid);
 int dxf_3dsolid_free_list (Dxf3dsolid *solids);
 int dxf_3dsolid_get_id_code (Dxf3dsolid *solid, int *id_code);
-Dxf3dsolid *dxf_3dsolid_set_id_code (Dxf3dsolid *solid, int id_code);
+int dxf_3dsolid_set_id_code (Dxf3dsolid *solid, int id_code);
 char *dxf_3dsolid_get_linetype (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_linetype (Dxf3dsolid *solid, char *linetype);
 char *dxf_3dsolid_get_layer (Dxf3dsolid *solid);
