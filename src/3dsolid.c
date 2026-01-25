@@ -879,13 +879,17 @@ dxf_3dsolid_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DSOLID entity.
  *
- * \return linetype when sucessful, \c NULL when an error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-char *
+int
 dxf_3dsolid_get_linetype
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        char *linetype
+                /*!< [out] a pointer to a string containing the
+                 * \c linetype for the entity. */
 )
 {
 #if DEBUG
@@ -897,7 +901,7 @@ dxf_3dsolid_get_linetype
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (solid->linetype ==  NULL)
         {
@@ -906,10 +910,18 @@ dxf_3dsolid_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        linetype = strdup (solid->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (solid->linetype));
+        return (EXIT_SUCCESS);
 }
 
 
