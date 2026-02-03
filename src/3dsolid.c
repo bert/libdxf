@@ -972,13 +972,16 @@ dxf_3dsolid_set_linetype
 /*!
  * \brief Get the layer from a DXF \c 3DSOLID entity.
  *
- * \return layer when sucessful, \c NULL when an error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-char *
+int
 dxf_3dsolid_get_layer
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        char *layer
+                /*!< [out] a string containing the layer for the entity. */
 )
 {
 #if DEBUG
@@ -990,19 +993,27 @@ dxf_3dsolid_get_layer
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (solid->layer ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        layer = strdup (solid->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (solid->layer));
+        return (EXIT_SUCCESS);
 }
 
 
