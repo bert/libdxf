@@ -927,8 +927,14 @@ dxf_3dsolid_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DSOLID entity.
+ *
+ * Copies the string provided into the struct member \c linetype of the
+ * DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_linetype
 (
         Dxf3dsolid *solid,
@@ -946,20 +952,20 @@ dxf_3dsolid_set_linetype
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (linetype == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         solid->linetype = strdup (linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
