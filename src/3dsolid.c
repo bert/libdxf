@@ -938,9 +938,9 @@ int
 dxf_3dsolid_set_linetype
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DSOLID entity. */
         char *linetype
-                /*!< a string containing the linetype for the entity. */
+                /*!< [in] a string containing the linetype for the entity. */
 )
 {
 #if DEBUG
