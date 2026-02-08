@@ -1101,14 +1101,17 @@ dxf_3dsolid_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_elevation
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DSOLID entity. */
         double elevation
-                /*!< the elevation to be set for the entity. */
+                /*!< [in] the elevation to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1120,13 +1123,13 @@ dxf_3dsolid_set_elevation
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         solid->elevation = elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
