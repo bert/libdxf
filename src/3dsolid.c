@@ -1019,14 +1019,17 @@ dxf_3dsolid_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_layer
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [in,out] a pointer to a DXF \c 3DSOLID entity. */
         char *layer
-                /*!< a string containing the layer for the entity. */
+                /*!< [in] a string containing the layer for the entity. */
 )
 {
 #if DEBUG
@@ -1038,20 +1041,20 @@ dxf_3dsolid_set_layer
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         solid->layer = strdup (layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
