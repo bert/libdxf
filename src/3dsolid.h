@@ -226,7 +226,7 @@ int dxf_3dsolid_set_layer (Dxf3dsolid *solid, char *layer);
 int dxf_3dsolid_get_elevation (Dxf3dsolid *solid, double *elevation);
 int dxf_3dsolid_set_elevation (Dxf3dsolid *solid, double elevation);
 int dxf_3dsolid_get_thickness (Dxf3dsolid *solid, double *thickness);
-Dxf3dsolid *dxf_3dsolid_set_thickness (Dxf3dsolid *solid, double thickness);
+int dxf_3dsolid_set_thickness (Dxf3dsolid *solid, double thickness);
 double dxf_3dsolid_get_linetype_scale (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_linetype_scale (Dxf3dsolid *solid, double linetype_scale);
 int16_t dxf_3dsolid_get_visibility (Dxf3dsolid *solid);
