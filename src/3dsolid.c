@@ -1134,15 +1134,18 @@ dxf_3dsolid_set_elevation
 
 
 /*!
- * \brief Get the thickness from a DXF \c 3DSOLID entity.
+ * \brief Get the \c thickness from a DXF \c 3DSOLID entity.
  *
- * \return thickness.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dsolid_get_thickness
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        double *thickness
+                /*!< [out] the thickness to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1156,16 +1159,24 @@ dxf_3dsolid_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (thickness == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (solid->thickness < 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        thickness = &solid->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->thickness);
+        return (EXIT_SUCCESS);
 }
 
 
