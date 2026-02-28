@@ -1223,13 +1223,16 @@ dxf_3dsolid_set_thickness
 /*!
  * \brief Get the linetype scale from a DXF \c 3DSOLID entity.
  *
- * \return linetype scale.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-double
+int
 dxf_3dsolid_get_linetype_scale
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        double *linetype_scale
+                /*!< [out] the linetype scale to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1243,16 +1246,24 @@ dxf_3dsolid_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (linetype_scale == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (solid->linetype_scale < 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        linetype_scale = &solid->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->linetype_scale);
+        return (EXIT_SUCCESS);
 }
 
 
