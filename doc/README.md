@@ -18,8 +18,6 @@ You are always welcome to help with patches or bug reports :-)
 In the mean time one can always fork the latest code from the Github repository and
 help with patches or [bug reports](https://launchpad.net/libdxf)
 
-Developer documentation can be found [here](http://ljh4timm.home.xs4all.nl/libdxf/doxygen/index.html) .
-
 Kind regards,
 
 Bert Timmerman.
