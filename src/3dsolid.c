@@ -908,7 +908,7 @@ dxf_3dsolid_get_linetype
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (linetype == NULL)
         {
