@@ -1232,7 +1232,8 @@ dxf_3dsolid_get_linetype_scale
         Dxf3dsolid *solid,
                 /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
         double *linetype_scale
-                /*!< [out] the linetype scale to be set for the entity. */
+                /*!< [out] a pointer for the \c linetype_scale of the
+                 * entity. */
 )
 {
 #if DEBUG
