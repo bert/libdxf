@@ -1269,8 +1269,13 @@ dxf_3dsolid_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \since The linetype scale was added in DXF R13.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_linetype_scale
 (
         Dxf3dsolid *solid,
@@ -1288,7 +1293,7 @@ dxf_3dsolid_set_linetype_scale
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (linetype_scale < 0.0)
         {
@@ -1300,7 +1305,7 @@ dxf_3dsolid_set_linetype_scale
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
