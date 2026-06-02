@@ -1359,8 +1359,11 @@ dxf_3dsolid_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_visibility
 (
         Dxf3dsolid *solid,
@@ -1378,7 +1381,7 @@ dxf_3dsolid_set_visibility
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (visibility < 0)
         {
@@ -1396,7 +1399,7 @@ dxf_3dsolid_set_visibility
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
