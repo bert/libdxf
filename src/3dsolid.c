@@ -803,7 +803,7 @@ dxf_3dsolid_get_id_code
         Dxf3dsolid *solid,
                 /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
         int *id_code
-                /*!< [out] a pointer to the Identification number for the
+                /*!< [out] a pointer to the Identification number of the
                  * entity.\n
                  * This is to be an unique (sequential) number in the
                  * DXF file. */
