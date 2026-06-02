@@ -1312,13 +1312,17 @@ dxf_3dsolid_set_linetype_scale
 /*!
  * \brief Get the visibility from a DXF \c 3DSOLID entity.
  *
- * \return visibility.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-int16_t
+int
 dxf_3dsolid_get_visibility
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        int16_t *visibility
+                /*!< [out] a pointer for the \c visibility of the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -1344,10 +1348,11 @@ dxf_3dsolid_get_visibility
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        visibility = &solid->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->visibility);
+        return (EXIT_SUCCESS);
 }
 
 
