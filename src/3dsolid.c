@@ -212,7 +212,14 @@ dxf_3dsolid_read
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                solid = dxf_3dsolid_init (solid);
+                dxf_3dsolid_init (solid);
+                if (solid == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Critical error in %s () could not allocate memory.\n")),
+                          __FUNCTION__);
+                        exit (EXIT_FAILURE);
+                }
         }
         iter310 = (DxfBinaryData *) solid->binary_graphics_data;
         i = 1;
