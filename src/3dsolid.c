@@ -1413,13 +1413,16 @@ dxf_3dsolid_set_visibility
 /*!
  * \brief Get the color from a DXF \c 3DSOLID entity.
  *
- * \return color.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-int16_t
+int
 dxf_3dsolid_get_color
 (
-        Dxf3dsolid *solid
+        Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3DSOLID entity. */
+        int16_t *color
+                /*!< a pointer for the \c color of the entity. */
 )
 {
 #if DEBUG
@@ -1439,10 +1442,11 @@ dxf_3dsolid_get_color
                   (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
+        color = &solid->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->color);
+        return (EXIT_SUCCESS);
 }
 
 
