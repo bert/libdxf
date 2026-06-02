@@ -1279,9 +1279,9 @@ int
 dxf_3dsolid_set_linetype_scale
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [inout] a pointer to a DXF \c 3DSOLID entity. */
         double linetype_scale
-                /*!< the linetype scale to be set for the entity. */
+                /*!< [in] the linetype scale to be set for the entity. */
 )
 {
 #if DEBUG
