@@ -1374,9 +1374,9 @@ int
 dxf_3dsolid_set_visibility
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [inout] a pointer to a DXF \c 3DSOLID entity. */
         int16_t visibility
-                /*!< the visibility to be set for the entity. */
+                /*!< [in] the \c visibility to be set for the entity. */
 )
 {
 #if DEBUG
