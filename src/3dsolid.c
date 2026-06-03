@@ -1420,9 +1420,9 @@ int
 dxf_3dsolid_get_color
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
         int16_t *color
-                /*!< a pointer for the \c color of the entity. */
+                /*!< [out] a pointer for the \c color of the entity. */
 )
 {
 #if DEBUG
