@@ -232,7 +232,7 @@ int dxf_3dsolid_set_linetype_scale (Dxf3dsolid *solid, double linetype_scale);
 int dxf_3dsolid_get_visibility (Dxf3dsolid *solid, int16_t *visibility);
 int dxf_3dsolid_set_visibility (Dxf3dsolid *solid, int16_t visibility);
 int dxf_3dsolid_get_color (Dxf3dsolid *solid, int16_t *color);
-Dxf3dsolid *dxf_3dsolid_set_color (Dxf3dsolid *solid, int16_t color);
+int dxf_3dsolid_set_color (Dxf3dsolid *solid, int16_t color);
 int16_t dxf_3dsolid_get_paperspace (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_paperspace (Dxf3dsolid *solid, int16_t paperspace);
 int32_t dxf_3dsolid_get_graphics_data_size (Dxf3dsolid *solid);
