@@ -1495,11 +1495,14 @@ dxf_3dsolid_set_color
  *
  * \return paperspace flag value.
  */
-int16_t
+int
 dxf_3dsolid_get_paperspace
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        int16_t *paperspace
+                /*!< [out] a pointer for the \c paperspace flag value of
+                 * the entity. */
 )
 {
 #if DEBUG
@@ -1525,10 +1528,11 @@ dxf_3dsolid_get_paperspace
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        paperspace = &solid->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->paperspace);
+        return (EXIT_SUCCESS);
 }
 
 
