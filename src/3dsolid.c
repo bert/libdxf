@@ -1586,14 +1586,17 @@ dxf_3dsolid_set_paperspace
 /*!
  * \brief Get the \c graphics_data_size value from a DXF \c 3DSOLID entity.
  *
- * \return \c graphics_data_size value when successful, or
- * \c EXIT_FAILURE when an error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-int32_t
+int
 dxf_3dsolid_get_graphics_data_size
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        int32_t *graphics_data_size
+                /*!< [out] a pointer to the \c graphics_data_size value
+                 * of the entity. */
 )
 {
 #if DEBUG
@@ -1619,10 +1622,11 @@ dxf_3dsolid_get_graphics_data_size
                   (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
+        graphics_data_size = &solid->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->graphics_data_size);
+        return (EXIT_SUCCESS);
 }
 
 
