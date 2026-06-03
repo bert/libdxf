@@ -1538,14 +1538,17 @@ dxf_3dsolid_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_paperspace
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [inout] a pointer to a DXF \c 3DSOLID entity. */
         int16_t paperspace
-                /*!< the paperspace flag value to be set for the entity. */
+                /*!< [in] the paperspace flag value to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1557,7 +1560,7 @@ dxf_3dsolid_set_paperspace
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (paperspace < 0)
         {
@@ -1575,7 +1578,7 @@ dxf_3dsolid_set_paperspace
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
