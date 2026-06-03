@@ -1493,7 +1493,8 @@ dxf_3dsolid_set_color
 /*!
  * \brief Get the paperspace flag value from a DXF \c 3DSOLID entity.
  *
- * \return paperspace flag value.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dsolid_get_paperspace
