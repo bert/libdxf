@@ -1683,11 +1683,14 @@ dxf_3dsolid_set_graphics_data_size
  * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
  * error occurred.
  */
-int16_t
+int
 dxf_3dsolid_get_shadow_mode
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        int16_t *shadow_mode
+                /*!< [out] a pointer to the \c shadow_mode of the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -1713,10 +1716,11 @@ dxf_3dsolid_get_shadow_mode
                   (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
+        shadow_mode = &solid->shadow_mode;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid->shadow_mode);
+        return (EXIT_SUCCESS);
 }
 
 
