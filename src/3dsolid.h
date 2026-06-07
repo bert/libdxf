@@ -236,7 +236,7 @@ int dxf_3dsolid_set_color (Dxf3dsolid *solid, int16_t color);
 int dxf_3dsolid_get_paperspace (Dxf3dsolid *solid, int16_t *paperspace);
 int dxf_3dsolid_set_paperspace (Dxf3dsolid *solid, int16_t paperspace);
 int dxf_3dsolid_get_graphics_data_size (Dxf3dsolid *solid, int32_t *graphics_data_size);
-Dxf3dsolid *dxf_3dsolid_set_graphics_data_size (Dxf3dsolid *solid, int32_t graphics_data_size);
+int dxf_3dsolid_set_graphics_data_size (Dxf3dsolid *solid, int32_t graphics_data_size);
 int16_t dxf_3dsolid_get_shadow_mode (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_shadow_mode (Dxf3dsolid *solid, int16_t shadow_mode);
 DxfBinaryData *dxf_3dsolid_get_binary_graphics_data (Dxf3dsolid *solid);
