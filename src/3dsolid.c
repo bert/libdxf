@@ -1771,18 +1771,20 @@ dxf_3dsolid_set_shadow_mode
 
 
 /*!
- * \brief Get the pointer to the binary graphics data from a DXF 
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF 
  * \c 3DSOLID entity.
  *
- * \return pointer to the binary graphics data.
- *
- * \warning No checks are performed on the returned pointer.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-DxfBinaryData *
+int
 dxf_3dsolid_get_binary_graphics_data
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        DxfBinaryData *data
+                /*!< [out] a pointer to a string containing the
+                 * \c binary_graphics_data of the entity. */
 )
 {
 #if DEBUG
@@ -1794,19 +1796,27 @@ dxf_3dsolid_get_binary_graphics_data
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (solid->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        data = (DxfBinaryData *) solid->binary_graphics_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfBinaryData *) solid->binary_graphics_data);
+        return (EXIT_SUCCESS);
 }
 
 
