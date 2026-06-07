@@ -1824,20 +1824,17 @@ dxf_3dsolid_get_binary_graphics_data
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c 3DSOLID entity.
  *
- * \return a pointer to \c solid when successful, or \c NULL when an
- * error occurred.
- *
- * \warning The passed pointer to the binary graphics data may not be
- * freed.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-Dxf3dsolid *
+int
 dxf_3dsolid_set_binary_graphics_data
 (
         Dxf3dsolid *solid,
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+                /*!< [inout] a pointer to a DXF \c 3DSOLID entity. */
         DxfBinaryData *data
-                /*!< a string containing the pointer to the
-                 * binary_graphics_data for the entity. */
+                /*!< [in] a pointer to a string containing
+                 * \cbinary_graphics_data for the entity. */
 )
 {
 #if DEBUG
@@ -1849,14 +1846,14 @@ dxf_3dsolid_set_binary_graphics_data
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (data == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (solid->binary_graphics_data == NULL)
         {
@@ -1866,14 +1863,14 @@ dxf_3dsolid_set_binary_graphics_data
                         fprintf (stderr,
                           (_("Error in %s () could not allocate memory.\n")),
                           __FUNCTION__);
-                        return (NULL);
+                        return (EXIT_FAILURE);
                 }
         }
         solid->binary_graphics_data = (DxfBinaryData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (solid);
+        return (EXIT_SUCCESS);
 }
 
 
