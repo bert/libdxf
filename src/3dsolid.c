@@ -1680,8 +1680,8 @@ dxf_3dsolid_set_graphics_data_size
 /*!
  * \brief Get the \c shadow_mode from a DXF \c 3DSOLID entity.
  *
- * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dsolid_get_shadow_mode
