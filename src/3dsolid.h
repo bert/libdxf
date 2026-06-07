@@ -241,7 +241,7 @@ int dxf_3dsolid_get_shadow_mode (Dxf3dsolid *solid, int16_t *shadow_mode);
 int dxf_3dsolid_set_shadow_mode (Dxf3dsolid *solid, int16_t shadow_mode);
 int dxf_3dsolid_get_binary_graphics_data (Dxf3dsolid *solid, DxfBinaryData *data);
 int dxf_3dsolid_set_binary_graphics_data (Dxf3dsolid *solid, DxfBinaryData *data);
-char *dxf_3dsolid_get_dictionary_owner_soft (Dxf3dsolid *solid);
+int dxf_3dsolid_get_dictionary_owner_soft (Dxf3dsolid *solid, char *dictionary_owner_soft);
 Dxf3dsolid *dxf_3dsolid_set_dictionary_owner_soft (Dxf3dsolid *solid, char *dictionary_owner_soft);
 char *dxf_3dsolid_get_object_owner_soft (Dxf3dsolid *solid);
 Dxf3dsolid *dxf_3dsolid_set_object_owner_soft (Dxf3dsolid *solid, char *object_owner_soft);

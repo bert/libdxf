@@ -1878,15 +1878,17 @@ dxf_3dsolid_set_binary_graphics_data
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DSOLID entity.
  *
- * \return soft pointer to the dictionary owner.
- *
- * \warning No checks are performed on the returned pointer (string).
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-char *
+int
 dxf_3dsolid_get_dictionary_owner_soft
 (
-        Dxf3dsolid *solid
-                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        Dxf3dsolid *solid,
+                /*!< [in] a pointer to a DXF \c 3DSOLID entity. */
+        char *dictionary_owner_soft
+                /*!< [out] a pointer to a string containing the
+                 * \c dictionary_owner_soft of the entity. */
 )
 {
 #if DEBUG
@@ -1898,19 +1900,27 @@ dxf_3dsolid_get_dictionary_owner_soft
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
         if (solid->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
+        if (dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dictionary_owner_soft = strdup (solid->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (solid->dictionary_owner_soft));
+        return (EXIT_SUCCESS);
 }
 
 
